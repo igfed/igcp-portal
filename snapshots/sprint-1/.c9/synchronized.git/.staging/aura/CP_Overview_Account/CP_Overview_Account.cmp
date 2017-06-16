@@ -1,0 +1,31 @@
+<aura:component >
+    
+    <aura:attribute name="accountTitle" type="String" />
+    <aura:attribute name="accountType" type="String" />
+    <aura:attribute name="accountTotal" type="String" />
+    <aura:attribute name="accountName" type="String" />
+    <aura:attribute name="accounts" type="List" default="[]"/>
+    <aura:attribute name="val1" type="String" />
+    <aura:attribute name="val2" type="String" />
+    <aura:attribute name="col1Name" type="String" />
+    <aura:attribute name="col2Name" type="String" />
+    
+    <div class="igcp-overview--account slds-size_12-of-12 slds-m-bottom--small slds-large-m-bottom--large">
+        <aura:if isTrue="{!v.accountTitle}">
+            <h3 class="slds-text-title_caps slds-m-top--x-small slds-m-bottom--small slds-large-m-bottom--large">{!v.accountTitle}</h3>
+        </aura:if>
+    
+        <c:CP_Overview_Account_Heading col1Name="{!v.col1Name}" col2Name="{!v.col2Name}" accountType="{!v.accountType}"/>
+        
+        <aura:iteration var="account" items="{!v.accounts}">
+            <c:CP_Overview_Account_Item 
+            accountName="{!account.name}" 
+            val1="{!account.val1}"
+            val2="{!account.val2}"/>
+        </aura:iteration>
+        
+        <div class="igcp-account--total slds-grid slds-grid_align-end">
+            <div class="slds-text-align_right slds-p-right--large slds-p-vertical--small slds-size_12-of-12"><span class="slds-p-bottom--xx-small">{!v.accountTotal}</span></div>
+        </div>
+    </div>
+</aura:component>

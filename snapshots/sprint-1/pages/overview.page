@@ -1,0 +1,42 @@
+<apex:page sidebar="false" showHeader="false">
+<apex:includeLightning />
+  <html>
+    <head>
+      <meta charset="utf-8" />
+      <title>Investors Group Client Portal - Overview</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui"/>
+      
+      <!-- Static Resources for CSS -->
+      <apex:stylesheet value="{!URLFOR($Resource.patternlib, '/pattern-lib/styles/vendor.css')}"/>
+      
+      <apex:stylesheet value="{!URLFOR($Resource.patternlib, '/pattern-lib/styles/main.css')}"/>
+      
+      <style>
+        .slds-scope:not(html), .slds-scope body {
+          background-image: url("{!URLFOR($Resource.login_assets, '/login/images/bg-tile.jpg')}");
+          background-repeat: repeat;
+        }
+        
+        #contentWrapper {
+          min-width: 375px !important;
+        }
+      </style>
+    </head>
+    <body>
+      <div id="main" class="cCP_Overview_App"/>
+      
+      <script>
+        $Lightning.use("c:CP_Overview_App",    
+          function() {                  
+            $Lightning.createComponent("c:CP_Header_Signed_Out", {}, "main",function(cmp) {});
+          
+            $Lightning.createComponent("c:CP_Overview", {}, "main", function(cmp) {});
+          
+            $Lightning.createComponent("c:CP_Footer_Component", {}, "main", function(cmp) {});
+          },
+          'http://investorsgroup-developer-edition.na50.force.com/overview'
+        );
+      </script>
+    </body>
+  </html>
+</apex:page>

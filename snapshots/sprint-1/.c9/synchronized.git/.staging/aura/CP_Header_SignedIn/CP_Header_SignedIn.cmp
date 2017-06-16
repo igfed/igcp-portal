@@ -1,0 +1,18 @@
+<aura:component >
+    <header role="banner" class="igcp-header">
+         <nav class="igcp-nav">
+        	<div class="top-bar">
+              <div class="top-bar-left">
+                    <a class="home-link" href="/">
+                       <img src="{!$Resource.images + '/images/logo-en-color.svg'}" alt="" class="igcp-nav--logo" />
+                    </a>
+              </div>
+              <div class="top-bar-right">
+                <ul class="dropdown menu" data-dropdown-menu="">
+                  <li><a class="igcp-nav--link" href="#">Francais</a></li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+    </header>
+</aura:component>

@@ -1,0 +1,9 @@
+bc70e7f9bc3fe2bb0c7ec90b30ee464c47962936	refs/heads/master
+bc70e7f9bc3fe2bb0c7ec90b30ee464c47962936	refs/heads/merging
+17ae783ce232e957a21ad6f54b69be62c294e949	refs/heads/salesforce
+e515fb3a0509b1294ad2b7f99ed066eca06c1d14	refs/heads/staging
+e515fb3a0509b1294ad2b7f99ed066eca06c1d14	refs/tags/committed
+17ae783ce232e957a21ad6f54b69be62c294e949	refs/tags/fetched
+bc70e7f9bc3fe2bb0c7ec90b30ee464c47962936	refs/tags/merged
+e515fb3a0509b1294ad2b7f99ed066eca06c1d14	refs/tags/pushed
+e515fb3a0509b1294ad2b7f99ed066eca06c1d14	refs/tags/staged
