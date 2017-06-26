@@ -1,0 +1,203 @@
+//BEM convention
+//[namespace]-[block]__[element]--[modifier]
+//See https://seesparkbox.com/foundry/bem_by_example for details
+
+//Global Styles - specific styles for elements that can be used globally 
+
+.THIS {
+  
+    .#{$igcp-namespace}-container {
+      background-color: #fff;
+    }
+  
+    .#{$igcp-namespace}-wrapper {
+      max-width: $ig-x-large;
+      margin: 0 auto;
+    }
+    
+    .#{$igcp-namespace}-input__help-link {
+      font-family: token(whitneyBook);
+      letter-spacing: token(igLetterSpacing);
+      font-size: token(igLabelSmall);
+    }
+    
+    .#{$igcp-namespace}-input {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+      margin-bottom: 0;
+    }
+    
+    .#{$igcp-namespace}-link {
+      font-family: token(whitneyBook);
+      font-size: token(spaceXSmall);
+      letter-spacing: token(igLetterSpacing);
+      text-transform: uppercase;
+    }
+    
+    .#{$igcp-namespace}-link__variant--a {
+      font-family: token(whitneySemiBold);
+      font-size: token(spaceXSmall);
+      letter-spacing: token(igLetterSpacing);
+      text-transform: capitalize;
+    }
+    
+    .#{$igcp-namespace}-link__glyph--after {
+        position: relative;
+        top: -1px;
+        padding-left: token(spaceXxxSmall);
+    }
+    
+    .#{$igcp-namespace}-underline {
+      border-bottom: 1px solid $ig-grey;
+    }
+    
+    .#{$igcp-namespace}-underline--thick-blue {
+      border-bottom: token(spaceXxSmall) solid $ig-dark-blue;
+      transform-origin: left bottom;
+      transform: skewX(25deg);
+    }
+    
+    .#{$igcp-namespace}-underline--white {
+      border-bottom: 1px solid $ig-white;
+    }
+    
+    .#{$igcp-namespace}-value--large {
+      font-family: token(whitneyLight);
+      line-height: token(lineHeightText);
+      font-size: $ig-m-h1;
+      
+      sup {
+            font-size: 70%;
+            top: -0.25em;
+      }
+    }
+    
+    .#{$igcp-namespace}-value--medium {
+      line-height: token(lineHeightText);
+      font-size: $ig-h2;
+    }
+    
+    .#{$igcp-namespace}-value--small {
+      line-height: token(lineHeightText);
+      font-size: $ig-h3;
+    }
+    
+    .#{$igcp-namespace}-value--x-small {
+      line-height: token(lineHeightText);
+      font-size: $ig-h4;
+    }
+    
+    .#{$igcp-namespace}-value--gain {
+      color: $ig-dark-green;
+    }
+    
+    .#{$igcp-namespace}-value--gain use {
+      fill: $ig-dark-green;
+    }
+    
+    .#{$igcp-namespace}-value--loss {
+      color: $ig-red;
+    }
+    
+    .#{$igcp-namespace}-value--loss use {
+      fill: $ig-dark-green;
+    }
+    
+    .#{$igcp-namespace}-arrow--up {
+      position: relative;
+      top: -8px;
+    }
+    
+    .#{$igcp-namespace}-arrow--down {
+      position: relative;
+      top: -8px;
+    }
+    
+    .#{$igcp-namespace}-percentage--large {
+      font-size: 45%;
+    }
+    
+    .#{$igcp-namespace}-horizontal-rule {
+      border-bottom: 1px solid #fff;
+      width: 100%;
+      height: token(spaceLarge);
+    }
+    
+    .#{$igcp-namespace}-separator--large {
+      width: 100%;
+      height: token(spaceXxSmall);
+      background-color: $ig-light-grey;
+    }
+    
+    .#{$igcp-namespace}-label {
+      font-family: token(whitneySemiBold);
+      font-size: token(spaceSmall);
+      letter-spacing: token(igLetterSpacing);
+      text-transform: uppercase;
+    }
+    
+    .#{$igcp-namespace}-label--small {
+      font-family: token(whitneySemiBold);
+      font-size: token(spaceXSmall);
+      letter-spacing: token(igLetterSpacing);
+      text-transform: uppercase;
+    }
+    
+    .#{$igcp-namespace}-account-arrow--right {
+      position: relative;
+      left: 35px;
+    }
+    
+    .#{$igcp-namespace}-account--total div {
+      
+      span {
+        font-size: $ig-h3;
+        border-bottom: 2px solid $ig-dark-blue;
+      }
+    }
+    
+    .#{$igcp-namespace}-alert--item {
+      border-bottom: 1px solid $ig-grey;
+      
+      &:last-child {
+        border-bottom: none;
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+      }
+      
+      p {
+        font-size: token(spaceXSmall);
+      }
+    }
+    
+    .#{$igcp-namespace}-cta {
+      background-color: $ig-beige;
+    }
+    
+    .#{$igcp-namespace}-card {
+      border: none;
+      background: transparent;
+      
+      .#{$igcp-namespace}-link {
+        position: relative;
+        top: -4px;
+      }
+    }
+    
+    .#{$igcp-namespace}-card__image {
+        width: 50%;
+    }
+    
+    .#{$igcp-namespace}-background__gradient {
+      background: rgba(247,248,249,1);
+      background: -moz-linear-gradient(top, rgba(247,248,249,1) 0%, rgba(219,219,219,1) 0%, rgba(255,255,255,1) 100%);
+      background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(247,248,249,1)), color-stop(0%, rgba(219,219,219,1)), color-stop(100%, rgba(255,255,255,1)));
+      background: -webkit-linear-gradient(top, rgba(247,248,249,1) 0%, rgba(219,219,219,1) 0%, rgba(255,255,255,1) 100%);
+      background: -o-linear-gradient(top, rgba(247,248,249,1) 0%, rgba(219,219,219,1) 0%, rgba(255,255,255,1) 100%);
+      background: -ms-linear-gradient(top, rgba(247,248,249,1) 0%, rgba(219,219,219,1) 0%, rgba(255,255,255,1) 100%);
+      background: linear-gradient(to bottom, rgba(247,248,249,1) 0%, rgba(219,219,219,1) 0%, rgba(255,255,255,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f8f9', endColorstr='#ffffff', GradientType=0 );
+    }
+}

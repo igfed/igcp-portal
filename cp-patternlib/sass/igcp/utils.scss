@@ -1,0 +1,96 @@
+//BEM convention
+//[namespace]-[block]__[element]--[modifier]
+//See https://seesparkbox.com/foundry/bem_by_example for details
+
+//Utils - contains generic classes that can used on any element, generally should contain only one property, before adding new classes here, ensure that the SLDS(https://lightningdesignsystem.com/) does not already have the class you need. 
+
+.THIS {
+    
+    .#{$igcp-namespace}-utils__font--light {
+      font-family: token(whitneyLight);
+    }
+  
+    .#{$igcp-namespace}-utils__font--semibold {
+      font-family: token(whitneySemiBold);
+    }
+    
+    .#{$igcp-namespace}-utils__font--book {
+      font-family: token(whitneyBook);
+    }
+  
+    .#{$igcp-namespace}-utils__text--uppercase {
+      text-transform: uppercase;
+    }
+    
+    .#{$igcp-namespace}-utils__text--lowercase {
+      text-transform: lowercase;
+    }
+    
+    .#{$igcp-namespace}-utils__text--capitalize {
+      text-transform: capitalize;
+    }
+    
+    .#{$igcp-namespace}-utils__text--underline {
+      text-decoration: underline;
+    }
+    
+    .#{$igcp-namespace}-utils__text--no-underline {
+      text-decoration: none;
+    }
+    
+    .#{$igcp-namespace}-utils__width--25 {
+      width: 25%;
+    }
+    
+    .#{$igcp-namespace}-utils__width--50 {
+      width: 50%;
+    }
+    
+    .#{$igcp-namespace}-utils__width--75 {
+      width: 75%;
+    }
+    
+    .#{$igcp-namespace}-utils__width--full {
+      width: 100%;
+    }
+    
+    .#{$igcp-namespace}-utils__width--auto {
+      width: auto;
+    }
+    
+    .#{$igcp-namespace}-utils__max-width--large {
+      max-width: $ig-large;
+    }
+    
+    .#{$igcp-namespace}-utils__max-width--medium {
+      max-width: $ig-medium;
+    }
+    
+    .#{$igcp-namespace}-utils__max-width--small {
+      max-width: $ig-small;
+    }
+    
+    .#{$igcp-namespace}-utils__max-width--none {
+      max-width: none;
+    }
+    
+    .#{$igcp-namespace}-utils__hide {
+      display: none;
+    }
+    
+    .#{$igcp-namespace}-utils__show--inline {
+      display: inline;
+    }
+    
+    .#{$igcp-namespace}-utils__show--block {
+      display: block;
+    }
+    
+    .#{$igcp-namespace}-utils__show--inline-block {
+      display: inline-block;
+    }
+    
+    .#{$igcp-namespace}-utils__show--table-cell {
+      display: table-cell;
+    }
+}

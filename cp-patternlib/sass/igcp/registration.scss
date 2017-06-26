@@ -1,0 +1,14 @@
+//BEM convention
+//[namespace]-[block]__[element]--[modifier]
+//See https://seesparkbox.com/foundry/bem_by_example for details
+
+//Registration - any styling related to the registration process 
+
+.THIS {
+    .#{$igcp-namespace}-registration {
+    
+        .#{$igcp-namespace}-registration__step {
+            min-height: 84px;
+        }
+    }   
+}

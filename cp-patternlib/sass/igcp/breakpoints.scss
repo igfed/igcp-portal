@@ -1,0 +1,227 @@
+//BEM convention
+//[namespace]-[block]__[element]--[modifier]
+//See https://seesparkbox.com/foundry/bem_by_example for details
+
+//Breakpoints - contains any igcp classes that are breakpoint sensitive
+
+//Small
+@media (min-width: $ig-small) {
+  .THIS {
+    
+    .#{$igcp-namespace}-small-utils__hide {
+      display: none;
+    }
+    
+    .#{$igcp-namespace}-small-utils__show--inline {
+      display: inline;
+    }
+    
+    .#{$igcp-namespace}-small-utils__show--block {
+      display: block;
+    }
+    
+    .#{$igcp-namespace}-small-utils__show--inline-block {
+      display: inline-block;
+    }
+    
+    .#{$igcp-namespace}-small-utils__show--table-cell {
+      display: table-cell;
+    }
+    
+    .#{$igcp-namespace}-small-utils__width--25 {
+      width: 25%;
+    }
+    
+    .#{$igcp-namespace}-small-utils__width--50 {
+      width: 50%;
+    }
+    
+    .#{$igcp-namespace}-small-utils__width--75 {
+      width: 75%;
+    }
+    
+    .#{$igcp-namespace}-small-utils__width--full {
+      width: 100%;
+    }
+    
+    .#{$igcp-namespace}-small-utils__width--auto {
+      width: auto;
+    }
+    
+    .#{$igcp-namespace}-small-utils__text--underline {
+      text-decoration: underline;
+    }
+    
+    .#{$igcp-namespace}-small-utils__text--no-underline {
+      text-decoration: none;
+    }
+  }
+}
+
+//Medium
+@media (min-width: $ig-medium) { 
+  .THIS {
+    
+    .#{$igcp-namespace}-medium-utils__hide {
+      display: none;
+    }
+    
+    .#{$igcp-namespace}-medium-utils__show--inline {
+      display: inline;
+    }
+    
+    .#{$igcp-namespace}-medium-utils__show--block {
+      display: block;
+    }
+    
+    .#{$igcp-namespace}-medium-utils__show--inline-block {
+      display: inline-block;
+    }
+    
+    .#{$igcp-namespace}-medium-utils__show--table-cell {
+      display: table-cell;
+    }
+    
+    .#{$igcp-namespace}-medium-utils__width--25 {
+      width: 25%;
+    }
+    
+    .#{$igcp-namespace}-medium-utils__width--50 {
+      width: 50%;
+    }
+    
+    .#{$igcp-namespace}-medium-utils__width--75 {
+      width: 75%;
+    }
+    
+    .#{$igcp-namespace}-medium-utils__width--full {
+      width: 100%;
+    }
+    
+    .#{$igcp-namespace}-medium-utils__width--auto {
+      width: auto;
+    }
+    
+    .#{$igcp-namespace}-medium-utils__text--underline {
+      text-decoration: underline;
+    }
+    
+    .#{$igcp-namespace}-medium-utils__text--no-underline {
+      text-decoration: none;
+    }
+    
+    .#{$igcp-namespace}-footer { 
+      .footer-link {
+        float: left;
+      }
+    }
+    
+    .#{$igcp-namespace}-card__image {
+        width: 75%;
+    }
+  }
+  
+}
+
+//Large
+@media (min-width: $ig-large) {
+  .THIS {
+    
+    .#{$igcp-namespace}-large-utils__hide {
+      display: none;
+    }
+    
+    .#{$igcp-namespace}-large-utils__show--inline {
+      display: inline;
+    }
+    
+    .#{$igcp-namespace}-large-utils__show--block {
+      display: block;
+    }
+    
+    .#{$igcp-namespace}-large-utils__show--inline-block {
+      display: inline-block;
+    }
+    
+    .#{$igcp-namespace}-large-utils__show--table-cell {
+      display: table-cell;
+    }
+    
+    .#{$igcp-namespace}-large-utils__width--25 {
+      width: 25%;
+    }
+    
+    .#{$igcp-namespace}-large-utils__width--50 {
+      width: 50%;
+    }
+    
+    .#{$igcp-namespace}-large-utils__width--75 {
+      width: 75%;
+    }
+    
+    .#{$igcp-namespace}-large-utils__width--full {
+      width: 100%;
+    }
+    
+    .#{$igcp-namespace}-large-utils__width--auto {
+      width: auto;
+    }
+    
+    .#{$igcp-namespace}-large-utils__text--underline {
+      text-decoration: underline;
+    }
+    
+    .#{$igcp-namespace}-large-utils__text--no-underline {
+      text-decoration: none;
+    }
+    
+    .#{$igcp-namespace}-value--large {
+      font-size: $ig-h1;
+    }
+    
+    .#{$igcp-namespace}-container {
+      margin-right: token(spaceMedium);
+    }
+    
+    .#{$igcp-namespace}-value--medium {
+      line-height: token(lineHeightText);
+      font-size: $ig-h2;
+    }
+    
+    .#{$igcp-namespace}-value--small {
+      line-height: token(lineHeightText);
+      font-size: $ig-h3;
+    }
+    
+    .#{$igcp-namespace}-value--x-small {
+      line-height: token(lineHeightText);
+      font-size: $ig-h4;
+    }
+    
+    .#{$igcp-namespace}-separator--large {
+      height: token(spaceXSmall);
+    }
+    
+    .#{$igcp-namespace}-card__image {
+        width: 100%;
+    }
+    
+    .#{$igcp-namespace}-footer {
+      padding-top: 0;
+    
+      .footer-copyright {
+        .footer-copyright-border-top .row {
+            border-top: none;
+            
+            .columns ul li {
+                border-right: none;
+            }
+        }        
+      }
+        
+      .footer-navigation .columns {
+          text-align: left;
+      }
+    }
+  }
+}
