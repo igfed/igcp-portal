@@ -1,0 +1,6 @@
+<aura:component >
+    <div class="igcp-registration">
+        <c:CP_Registration_PFA />
+        <c:CP_Registration_Start />
+    </div>
+</aura:component>

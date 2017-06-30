@@ -1,0 +1,6 @@
+@mixin fadeTo($amount: 1, $speed: 0.25s, $easeType: linear) {
+    transition: opacity $speed $easeType;
+    -moz-transition: opacity $speed $easeType;
+    -webkit-transition: opacity $speed $easeType;
+    opacity: $amount;
+}

@@ -1,0 +1,44 @@
+<aura:component >
+    
+	<aura:attribute name="showPassword" type="Boolean" default="false" />
+    <aura:attribute name="passcode" type="String" default="" />
+    
+    <aura:registerEvent name="onValidateUserName" type="c:validateTextInputEvent"/>
+    
+    <aura:registerEvent name="onValidatePassword" type="c:validatePasswordInputEvent"/>
+    
+        <!--COLUMN ONE-->
+        <div class="igcp-login--col1 slds-size--4-of-12 slds-large-size--4-of-12 slds-medium-size--8-of-12 slds-x-small-size--9-of-12">
+            <h1 class="slds-text-heading--large slds-m-bottom--xx-large">Client Account</h1>
+            <!--LOGIN FORM-->
+            <div class="slds-form slds-form_stacked">
+                
+                <!--USERNAME-->
+                <c:CP_Input_Text 
+                    label="Username"
+                    icon="utility:user"
+                    helpText="Forgot username"
+                    errorText="Must Have a Name"
+                    required="true"/>
+                
+                <!--PASSWORD-->
+                <c:CP_Input_Password />
+            </div>
+            <!--SIGN IN-->
+            <div class="slds-form-element slds-m-top--large slds-m-bottom--large">
+                <button class="igcp-login--sign-in slds-button slds-button--brand slds-p-horizontal--xx-large slds-p-vertical--xx-small igcp-utils__width--full" onclick="{!c.onSignIn}">Sign In</button>
+            </div>
+            <!--REMEMBER ME-->
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <span class="slds-checkbox">
+                    <input type="checkbox" name="options" id="checkbox-644"/>
+                    <label class="slds-checkbox__label" for="checkbox-644">
+                      <span class="slds-checkbox--faux"></span>
+                      <span class="slds-form-element__label input-label">Remember me</span>
+                    </label>
+                    </span>
+                </div>
+            </div>
+        </div>
+</aura:component>

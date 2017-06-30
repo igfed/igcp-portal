@@ -1,0 +1,11 @@
+<aura:component >
+    <div class="igcp-container slds-show_large slds-p-around--medium slds-m-bottom--x-small slds-large-m-bottom--medium slds-m-right_none">
+        <h3>Alerts</h3>
+        <c:CP_Overview_Alert_Item date="May 8, 2017" 
+            message="You online statement for Q1 is ready" 
+            ctaLink="/"/>
+        <c:CP_Overview_Alert_Item date="May 14, 2017" 
+            message="You online statement for Q2 is ready" 
+            ctaLink="/"/>
+    </div>
+</aura:component>
