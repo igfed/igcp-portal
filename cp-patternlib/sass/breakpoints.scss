@@ -1,22 +1,19 @@
 //Breakpoints - this file is for breakpoint styling that target elements only, any class specific styling should be put in the breakpoints file in the igcp folder.
 
-//Small
-@media (min-width: $ig-small) {
-    .THIS {
-    
-    }
-}
-
 //Medium
 @media (min-width: $ig-medium) { 
-    .THIS {
-    
-    }
+    //.THIS {
+        h1 {
+            font-family: $ig-whitney-light;
+            font-size: $ig-m-h1;
+            line-height: $ig-m-h1-line-height;
+        }
+    //}
 }
 
 //Large
 @media (min-width: $ig-large) {
-    .THIS {
+    //.THIS {
         h1 {
             font-size: $ig-h1;
             line-height: $ig-h1-line-height;
@@ -39,5 +36,5 @@
         p {
             font-size: $ig-p;
         }
-    }
+    //}
 }

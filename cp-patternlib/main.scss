@@ -1,5 +1,6 @@
 @import "sass/global";
 @import "sass/mixins";
+@import "sass/functions";
 @import "sass/fonts";
 @import "sass/elements";
 @import "sass/breakpoints";
@@ -16,8 +17,3 @@
 @import "sass/igcp/utils";
 @import "sass/igcp/global-styles";
 @import "sass/igcp/breakpoints";
-
-.THIS {
-    background-image: url('/resource/login_assets/login/images/bg-tile.jpg');
-    background-repeat: repeat;
-}

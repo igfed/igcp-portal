@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	worktree = /home/ubuntu/workspace
+	excludesFile = /dev/null
+	attributesFile = /dev/null

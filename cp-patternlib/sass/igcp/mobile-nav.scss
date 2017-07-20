@@ -4,7 +4,7 @@
 
 //Mobile Nav - any styles pertaining to the mobile menu and nav go here
 
-.THIS {
+//.THIS {
     
     .#{$namespace}-mobile-nav {
         position: fixed;
@@ -105,11 +105,11 @@
     }
     
     .#{$namespace}-mobile-nav__menu > li > a {
-        font-family: token(whitneySemiBold);
+        font-family: $ig-whitney-semibold;
         font-size: $ig-label-small;
         text-transform: uppercase;
         
-        padding: token(spaceSmall) 0;
+        padding: $ig-space-small 0;
         
       -webkit-justify-content: flex-start;
           -ms-flex-pack: start;
@@ -133,7 +133,7 @@
     
     .#{$namespace}-mobile-nav__close {
         color: $ig-white;
-        font-family: token(whitneySemiBold);
+        font-family: $ig-whitney-semibold;
         font-size: $ig-label-small;
         text-transform: uppercase;
         width: 50px;
@@ -156,9 +156,9 @@
     
     .#{$namespace}-mobile-nav__profile {
         color: $ig-white;
-        font-family: token(whitneyBook);
+        font-family: $ig-whitney-book;
         height: 50px;
-        padding-top: token(spaceXxSmall);
+        padding-top: $ig-space-xx-small;
         
         svg {
             fill: $ig-white;
@@ -167,9 +167,9 @@
     
     .#{$namespace}-mobile-nav__username, 
     .#{$namespace}-mobile-nav__menu-text {
-        padding-left: token(spaceXxSmall);
+        padding-left: $ig-space-xx-small;
         position: relative;
-        top: token(spaceXxxSmall);
+        top: $ig-space-xxx-small;
     }
     
     //Left nav specific styling
@@ -201,4 +201,4 @@
         -ms-transform: translateX(0);
         transform: translateX(0);
     }
-}
+//}

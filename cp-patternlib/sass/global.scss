@@ -1,5 +1,4 @@
 //Global vars - all SASS vars should be placed here, check SLDS design token for pre-existing token before adding an new vars here.
-
 $namespace: 'igcp';
 
 //Colours
@@ -30,20 +29,43 @@ $ig-medium: 768px;
 $ig-large: 1024px;
 $ig-x-large: 1280px;
 
+$ig-breakpoints: (
+    default 0,
+    small $ig-small,
+    medium $ig-medium,
+    large $ig-large
+);
+
+//Spacing
+$ig-space-xx-large: 60px;
+$ig-space-x-large: 40px;
+$ig-space-large: 32px;
+$ig-space-medium: 24px;
+$ig-space-small: 16px;
+$ig-space-x-small: 12px;
+$ig-space-xx-small: 8px;
+$ig-space-xxx-small: 4px;
+
 //Sizing - Margin/Padding/Icon Size etc.
 $ig-sizes: (
-    xx-large token(spaceXxLarge),
-    x-large token(spaceXLarge),
-    large token(spaceLarge),
-    medium token(spaceMedium),
-    small token(spaceSmall),
-    x-small token(spaceXSmall),
-    xx-small token(spaceXxSmall),
-    xxx-small token(spaceXxxSmall),
+    xx-large $ig-space-xx-large,
+    x-large $ig-space-x-large,
+    large $ig-space-large,
+    medium $ig-space-medium,
+    small $ig-space-small,
+    x-small $ig-space-x-small,
+    xx-small $ig-space-xx-small,
+    xxx-small $ig-space-xxx-small,
     zero 0
 );
 
 //Typography
+$ig-whitney-semibold: "'WhitneySemiBold', Arial, sans-serif";
+$ig-whitney-book: "'WhitneyBook', Arial, sans-serif";
+$ig-whitney-light: "'WhitneyLight', Arial, sans-serif";
+
+$ig-line-height-text: 26px;
+
 $ig-h1: 36px;
 $ig-h1-line-height: 46px;
 
@@ -54,6 +76,7 @@ $ig-h3: 20px;
 $ig-h3-line-height: 28px;
 
 $ig-h4: 16px;
+$ig-h4-line-height: 26px;
 
 $ig-p: 16px;
 $ig-p-small: 12px;
@@ -71,12 +94,15 @@ $ig-m-h3: 20px;
 $ig-m-h3-line-height: 28px;
 
 $ig-m-h4: 16px;
+$ig-m-h4-line-height: 26px;
 
 $ig-m-p: 18px;
 $ig-m-p-small: 12px;
 
 $ig-m-label: 16px;
 $ig-m-label-small: 12px;
+
+$ig-letter-spacing: 0.8px;
 
 //Mobile nav
 $ig-mobile-nav-left-width: 100%;

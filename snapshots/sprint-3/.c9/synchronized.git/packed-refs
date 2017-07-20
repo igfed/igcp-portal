@@ -1,0 +1,9 @@
+# pack-refs with: peeled fully-peeled 
+17adc5223859aabb360e5255e4f4bee831e44237 refs/heads/master
+8ad0acc61aa974f71b8eff462e70e1b7e9613633 refs/heads/salesforce
+e4c352354b13cd767ab807930c17eee23ea5571f refs/heads/staging
+e4c352354b13cd767ab807930c17eee23ea5571f refs/tags/committed
+8ad0acc61aa974f71b8eff462e70e1b7e9613633 refs/tags/fetched
+17adc5223859aabb360e5255e4f4bee831e44237 refs/tags/merged
+e4c352354b13cd767ab807930c17eee23ea5571f refs/tags/pushed
+e4c352354b13cd767ab807930c17eee23ea5571f refs/tags/staged

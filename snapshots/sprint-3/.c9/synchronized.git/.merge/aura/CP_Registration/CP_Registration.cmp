@@ -1,0 +1,14 @@
+<aura:component >
+    <div class="igcp-registration">
+        <!--<c:CP_Registration_PFA />-->
+        <!--<c:CP_Registration_Start />-->
+        
+        <!--<c:CP_Registration_Step1 />-->
+        
+        <!--<c:CP_Registration_Step2 />-->
+        
+        <c:CP_Registration_Step3 />
+        
+        <!--<c:CP_Registration_Thank_You />-->
+    </div>
+</aura:component>

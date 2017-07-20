@@ -1,45 +1,5 @@
 //NOTE: This file contains extended/modified/new slds classes to fill in missing gaps in the SLDS capabilities. For reference see: https://lightningdesignsystem.com/
-.THIS {
-    
-    // .slds-m-vertical--zero,
-    // .slds-m-top--zero {
-    //   margin-top: 0;
-    // }
-    
-    // .slds-m-horizontal--zero,
-    // .slds-m-right--zero {
-    //   margin-right: 0;
-    // }
-    
-    // .slds-m-vertical--zero,
-    // .slds-m-bottom--zero {
-    //   margin-bottom: 0;
-    // }
-    
-    // .slds-m-horizontal--zero,
-    // .slds-m-left--zero {
-    //   margin-left: 0;
-    // }
-    
-    // .slds-p-vertical--zero,
-    // .slds-p-top--zero {
-    //   padding-top: 0;
-    // }
-    
-    // .slds-p-horizontal--zero,
-    // .slds-p-right--zero {
-    //   padding-right: 0;
-    // }
-    
-    // .slds-p-vertical--zero,
-    // .slds-p-bottom--zero {
-    //   padding-bottom: 0;
-    // }
-    
-    // .slds-p-horizontal--zero,
-    // .slds-p-left--zero {
-    //   padding-left: 0;
-    // }
+//.THIS {
     
     @each $value in $ig-sizes {
 
@@ -91,4 +51,4 @@
             padding-left: #{nth($value, 2)};
         }
     }
-}
+//}

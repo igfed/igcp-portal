@@ -1,36 +1,51 @@
 //NOTE: This file contains extended/modified/new slds classes to fill in missing gaps in the SLDS capabilities. For reference see: https://lightningdesignsystem.com/
 
-.THIS {
-
-    .slds-button {
-      font-family: token(whitneySemiBold);
-      font-size: token(igLabelSmall);
-      letter-spacing: token(igLetterSpacing);
-      text-transform: uppercase;
-    }
-    
-    .slds-form-element__label {
-        font-family: token(whitneySemiBold);
-        font-size: token(igLabelSmall);
-        letter-spacing: token(igLetterSpacing);
-        
-        &.input-label {
-          position: relative;
-          top: 3px;
-          font-size: token(igLabelSmall);
-        }
-    }
-    
-    .slds-checkbox {
-        .slds-checkbox__label .slds-checkbox--faux {
-          border-color: token(igDarkBlue);  
-        }
-        
-        .slds-form-element__label.input-label {
-            font-size: token(igLabelSmall);
-            top: 0;
-        }
-    }
+//.THIS {
+  
+  
+  .slds-button {
+    font-family: $ig-whitney-semibold;
+    font-size: $ig-p-small;
+    letter-spacing: $ig-letter-spacing;
+    text-transform: uppercase;
+  }
+  
+  .slds-button--neutral {
+    background-color: transparent;
+  } 
+  
+  .slds-form-element__label {
+      font-family: $ig-whitney-semibold;
+      font-size: $ig-p-small;
+      letter-spacing: $ig-letter-spacing;
+      
+      &.input-label {
+        position: relative;
+        top: 3px;
+        font-size: $ig-p-small;
+        margin-right: $ig-space-xxx-small;
+      }
+  }
+  
+  .slds-checkbox {
+      
+      .slds-form-element__label.input-label {
+          font-family: $ig-whitney-book;
+          font-size: $ig-p;
+          line-height: $ig-line-height-text;
+          top: 0;
+      }
+  }
+  
+  .slds-checkbox [type=checkbox]:checked+.slds-checkbox_faux:after, .slds-checkbox [type=checkbox]:checked+.slds-checkbox--faux:after, .slds-checkbox [type=checkbox]:checked~.slds-checkbox_faux:after, .slds-checkbox [type=checkbox]:checked~.slds-checkbox--faux:after, .slds-checkbox [type=checkbox]:checked+.slds-checkbox__label .slds-checkbox_faux:after, .slds-checkbox [type=checkbox]:checked+.slds-checkbox__label .slds-checkbox--faux:after {
+      
+      border-bottom: 2px solid $ig-dark-blue;
+      border-left: 2px solid $ig-dark-blue;
+  }
+  
+  .slds-checkbox__label {
+    border: none; 
+  }
     
   .slds-progress {
     
@@ -52,8 +67,8 @@
       }
       
       .slds-progress__marker {
-        width: token(spaceMedium);
-        height: token(spaceMedium);
+        width: $ig-space-medium;
+        height: $ig-space-medium;
         border: none;
         background: $ig-dark-grey;
       }
@@ -68,8 +83,8 @@
     }
     
     .slds-icon {
-      width: token(spaceMedium);
-      height: token(spaceMedium);
+      width: $ig-space-medium;
+      height: $ig-space-medium;
     }
     
     .slds-icon-utility-success {
@@ -78,4 +93,4 @@
       }
     }
   }
-}
+//}

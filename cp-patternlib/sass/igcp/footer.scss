@@ -4,11 +4,11 @@
 
 //Footer - all styling for global footer goes in here, much of the styling here now is a carry over from IG.com
 
-.THIS {
+//.THIS {
 
     .#{$namespace}-footer {
       padding-top: 0;
-      padding-bottom: token(spaceLarge);
+      padding-bottom: $ig-space-large;
       
         a {
           color: $ig-white;
@@ -18,14 +18,14 @@
           float: none;
           position: relative;
           top: 48px;
-          padding-top: token(spaceXxxSmall);
-          padding-bottom: token(spaceXxxSmall);
+          padding-top: $ig-space-xxx-small;
+          padding-bottom: $ig-space-xxx-small;
         }
         
         .footer-link a {
-          font-family: token(whitneySemiBold);
-          letter-spacing: token(igLetterSpacing);
-          font-size: token(igLabelSmall);
+          font-family: $ig-whitney-semibold;
+          letter-spacing: $ig-letter-spacing;
+          font-size: $ig-label-small;
           text-decoration: none;
           text-transform: uppercase;
         }
@@ -35,18 +35,18 @@
         }
         
         .footer-back-to-top-button {
-          padding-left: token(spaceLarge);
-          padding-right: token(spaceLarge);
+          padding-left: $ig-space-large;
+          padding-right: $ig-space-large;
           margin-bottom: 0;
         }
         
         .footer-navigation {
-          padding-left: token(spaceLarge);
-          padding-right: token(spaceLarge);
+          padding-left: $ig-space-large;
+          padding-right: $ig-space-large;
           
           .menu {
             margin-top: -32px;    
-            margin-bottom: token(spaceSmall);
+            margin-bottom: $ig-space-small;
           }
         }
         
@@ -57,4 +57,4 @@
           padding-right: 0;
         }
     }
-}
+//}

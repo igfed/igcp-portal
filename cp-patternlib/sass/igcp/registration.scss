@@ -3,21 +3,37 @@
 //See https://seesparkbox.com/foundry/bem_by_example for details
 
 //Registration - any styling related to the registration process 
-
-.THIS {
+//.THIS {
     .#{$namespace}-registration {
+        
+        overflow: hidden;
+        
+        .#{$namespace}-registration__pfa {
+            
+            h1 {
+                font-size: $ig-m-h2;
+                line-height: $ig-m-h2-line-height;
+            }
+        }
     
         .#{$namespace}-registration__pfa--step {
-            
             p {
-                height: 72px;
                 min-height: 48px;
             }
         }
         
         .#{$namespace}-registration__pfa--monitor {
             position: relative;
-            top: 10px;
+            top: 0;
+            
+            width: 280px;
+            height: 141px;
+            overflow: hidden;
+            margin: 0 auto;
+            
+            img {
+                width: 100%;
+            }
         }
     }   
-}
+//}

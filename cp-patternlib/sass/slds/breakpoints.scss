@@ -2,7 +2,7 @@
 
 //Small
 @media (min-width: $ig-small) {
-  .THIS {
+  //.THIS {
       
          .slds-small-float_left {
              float: left;
@@ -126,12 +126,12 @@
             padding-left: #{nth($value, 2)};
         }
     }
-  }
+  //}
 }
 
 //Medium
 @media (min-width: $ig-medium) { 
-  .THIS {
+  //.THIS {
       
     .slds-medium-float_left {
         float: left;
@@ -255,12 +255,12 @@
             padding-left: #{nth($value, 2)};
         }
     }
-  }
+  //}
 }
 
 //Large
 @media (min-width: $ig-large) {
-  .THIS {
+  //.THIS {
       
     .slds-large-float_left {
         float: left;
@@ -382,7 +382,6 @@
         .slds-large-p-horizontal--#{nth($value, 1)}{
             padding-left: #{nth($value, 2)};
         }
-    }
-    
-  }
+    } 
+  //}
 }

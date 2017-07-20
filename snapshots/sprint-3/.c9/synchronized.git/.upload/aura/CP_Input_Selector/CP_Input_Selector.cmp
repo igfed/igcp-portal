@@ -1,0 +1,30 @@
+<aura:component >
+    
+    <aura:attribute name="id" type="String" />
+    <aura:attribute name="label" type="String" />
+    <aura:attribute name="placeholder" type="String" />
+    <aura:attribute name="options" type="List" />
+    <aura:attribute name="class" type="String" />
+    <aura:attribute name="tooltip" type="String" />
+    
+    <div class="{!v.class}">
+        <div class="slds-form-element">
+            <label class="igcp-utils__text--uppercase slds-form-element__label input-label" for="{!v.id}">{!v.label}</label>
+            
+            <aura:renderIf isTrue="{!v.tooltip}">
+                <c:CP_Tooltip_Icon id="{!'tooltip_' + v.id}"
+                    tooltip="{!v.tooltip}"/>
+            </aura:renderIf>
+        
+        
+            <div class="slds-form-element__control">
+                <ui:inputSelect class="igcp-input">
+                    <ui:inputSelectOption text="{!v.placeholder}" label="{!v.placeholder}" disabled="true" value="true"/>
+                    <aura:iteration items="{!v.options}" var="opt">
+                         <ui:inputSelectOption text="{!opt}" label="{!opt}"/>
+                    </aura:iteration>
+                </ui:inputSelect>
+            </div>
+        </div>
+    </div>
+</aura:component>

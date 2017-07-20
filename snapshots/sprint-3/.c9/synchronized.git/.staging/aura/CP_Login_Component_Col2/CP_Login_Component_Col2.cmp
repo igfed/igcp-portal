@@ -1,0 +1,30 @@
+<aura:component >
+	<div class="slds-large-size--3-of-12">
+            <!--CARD-->
+            <article class="slds-card slds-m-top--large">
+                <div class="slds-card__header slds-grid">
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                        <div class="slds-media__figure">
+                            <span class="slds-icon_container slds-icon-standard-contact" title="description of icon when needed">
+                               <lightning:icon iconName="standard:person_account" size="large" alternativeText="Indicates approval"/>
+                          </span>
+                        </div>
+                    </header>
+                </div>
+                <!--CARD BODY-->
+                <div class="slds-card__body slds-card__body_inner">
+                    <div class="slds-media__body slds-p-horizontal--large">
+                        <h2>
+                          <span class="slds-text-heading--medium">Don't have an account?</span>
+                      </h2>
+                        <p>
+                            Sed volutpat mauris quam, sit amet imperdiet metus viverra non. Nam non dui vulputate, tincidunt ante et, finibus velit. Proin varius imperdiet viverra. Sed et mattis enim. Maecenas facilisis a mi in aliquam. Sed ullamcorper a odio et consectetur.
+                        </p>
+                    </div>
+                </div>
+                <footer class="slds-card__footer">
+                    <button class="slds-button slds-button--neutral slds-container--fluid" onclick="{!c.onRegisterNow}">Register Now</button>
+                </footer>
+            </article>
+        </div>
+</aura:component>
