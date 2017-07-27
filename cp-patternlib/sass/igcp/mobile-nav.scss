@@ -1,204 +1,195 @@
 //BEM convention
 //[namespace]-[block]__[element]--[modifier]
 //See https://seesparkbox.com/foundry/bem_by_example for details
-
 //Mobile Nav - any styles pertaining to the mobile menu and nav go here
+.#{$namespace}-mobile-nav {
+    position: fixed;
+    z-index: 1;
+    transition: -webkit-transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out,
+    -webkit-transform 0.3s ease-in-out;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background: $ig-dark-blue;
+    top: 0;
+    height: 100%;
+    overflow-y: auto;
 
-.THIS {
-    
-    .#{$namespace}-mobile-nav {
-        position: fixed;
-        z-index: 1;
-        transition: -webkit-transform 0.3s ease-in-out;
-        transition: transform 0.3s ease-in-out;
-        transition: transform 0.3s ease-in-out, 
-        -webkit-transform 0.3s ease-in-out;
-        -webkit-backface-visibility: hidden;
-              backface-visibility: hidden;
-        background: $ig-dark-blue;
+    &.is-transition-overlap {
+        z-index: 10;
+    }
+
+    &.is-transition-overlap.is-open {
+        box-shadow: 0 0 10px $ig-mobile-nav-boxshadow;
+    }
+
+    &.is-transition-overlap.is-open~.off-canvas-content {
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none;
+    }
+
+    &.is-open {
+        -webkit-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        transform: translate(0, 0);
+    }
+
+    &.is-transition-push::after {
+        position: absolute;
         top: 0;
-        height: 100%;
-        overflow-y: auto;
-      
-        &.is-transition-overlap {
-          z-index: 10;
-        }
-        
-        &.is-transition-overlap.is-open {
-          box-shadow: 0 0 10px $ig-mobile-nav-boxshadow;
-        }
-        
-        &.is-transition-overlap.is-open ~ .off-canvas-content {
-            -webkit-transform: none;
-            -ms-transform: none;
-            transform: none;
-        }
-        
-        &.is-open {
-            -webkit-transform: translate(0, 0);
-            -ms-transform: translate(0, 0);
-            transform: translate(0, 0);
-        }
-        
-        &.is-transition-push::after {
-            position: absolute;
-            top: 0;
-            right: 0;
-            height: 100%;
-            width: 1px;
-            box-shadow: 0 0 10px $ig-mobile-nav-boxshadow;
-            content: " ";
-        }
-    }
-    
-    [data-whatinput='mouse'] .#{$namespace}-mobile-nav {
-      outline: 0;
-    }
-    
-    .#{$namespace}-mobile-nav__inner {
-      padding: 1rem;
-    }
-    
-    .#{$namespace}-mobile-nav__menu {
-      margin: 0;
-      list-style-type: none;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-flex-wrap: nowrap;
-          -ms-flex-wrap: nowrap;
-              flex-wrap: nowrap;
-      width: 100%;
-      -webkit-flex-wrap: wrap;
-          -ms-flex-wrap: wrap;
-              flex-wrap: wrap;
-    }
-    
-    .#{$namespace}-mobile-nav__menu > li {
-      -webkit-flex: 0 0 auto;
-          -ms-flex: 0 0 auto;
-              flex: 0 0 auto;
-    }
-    
-    [data-whatinput='mouse'] .#{$namespace}-mobile-nav__menu > li {
-      outline: 0;
-    }
-    
-    .#{$namespace}-mobile-nav__menu > li > a {
-      display: block;
-      line-height: 1;
-      border-bottom: 1px solid rgba(red($ig-blue), green($ig-blue), blue($ig-blue), 0.25);
-    }
-    
-    .#{$namespace}-mobile-nav__menu input,
-    .#{$namespace}-mobile-nav__menu select,
-    .#{$namespace}-mobile-nav__menu a,
-    .#{$namespace}-mobile-nav__menu button {
-      margin-bottom: 0;
-    }
-    
-    .#{$namespace}-mobile-nav__menu > li {
-      -webkit-flex: 0 0 100%;
-          -ms-flex: 0 0 100%;
-              flex: 0 0 100%;
-      max-width: 100%;
-    }
-    
-    .#{$namespace}-mobile-nav__menu > li > a {
-        font-family: 'WhitneySemiBold', Arial, sans-serif;
-        font-size: $ig-label-small;
-        text-transform: uppercase;
-        
-        padding: $ig-space--small 0;
-        
-      -webkit-justify-content: flex-start;
-          -ms-flex-pack: start;
-              justify-content: flex-start;
-      -webkit-align-items: flex-start;
-          -ms-flex-align: start;
-              align-items: flex-start;
-              
-        svg {
-            fill: $ig-white;
-        }
-    }
-    
-    .#{$namespace}-mobile-nav__menu a {
-      color: $ig-white;
-    }
-    
-    .#{$namespace}-mobile-nav__menu a:hover {
-      color: $ig-white;
-    }
-    
-    .#{$namespace}-mobile-nav__close {
-        color: $ig-white;
-        font-family: 'WhitneySemiBold', Arial, sans-serif;
-        font-size: $ig-label-small;
-        text-transform: uppercase;
-        width: 50px;
-        height: 50px;
-        
-         svg {
-          fill: $ig-white;
-        }
-    }
-    
-    .#{$namespace}-mobile-nav__close-icon {
-        position: relative;
-        top: -3px;
-        left: 3px;
-    }
-    
-    .#{$namespace}-mobile-nav__close:hover {
-      color: $ig-white;
-    }
-    
-    .#{$namespace}-mobile-nav__profile {
-        color: $ig-white;
-        font-family: 'WhitneyBook', Arial, sans-serif;
-        height: 50px;
-        padding-top: $ig-space--xx-small;
-        
-        svg {
-            fill: $ig-white;
-        }
-    }
-    
-    .#{$namespace}-mobile-nav__username, 
-    .#{$namespace}-mobile-nav__menu-text {
-        padding-left: $ig-space--xx-small;
-        position: relative;
-        top: $ig-space--xxx-small;
-    }
-    
-    //Left nav specific styling
-    .#{$namespace}-mobile-nav__left {
-        left: 0;
-        width: $ig-mobile-nav-left-width;
-        -webkit-transform: translateX(-100%);
-        -ms-transform: translateX(-100%);
-        transform: translateX(-100%);
-    }
-    
-    .#{$namespace}-mobile-nav__left.is-open ~ .off-canvas-content {
-        -webkit-transform: translateX(100%);
-        -ms-transform: translateX(100%);
-        transform: translateX(100%);
-    }
-    
-    //Right nav specific styling
-    .#{$namespace}-mobile-nav__right {
         right: 0;
-        width: $ig-mobile-nav-right-width;
-        -webkit-transform: translateX(100%);
-        -ms-transform: translateX(100%);
-        transform: translateX(100%);
+        height: 100%;
+        width: 1px;
+        box-shadow: 0 0 10px $ig-mobile-nav-boxshadow;
+        content: " ";
     }
-    
-    .#{$namespace}-mobile-nav__right.is-open ~ .off-canvas-content {
-        -webkit-transform: translateX(0);
-        -ms-transform: translateX(0);
-        transform: translateX(0);
+}
+
+[data-whatinput='mouse'] .#{$namespace}-mobile-nav {
+    outline: 0;
+}
+
+.#{$namespace}-mobile-nav__inner {
+    padding: 1rem;
+}
+
+.#{$namespace}-mobile-nav__menu {
+    margin: 0;
+    list-style-type: none;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    width: 100%;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.#{$namespace}-mobile-nav__menu>li {
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+}
+
+[data-whatinput='mouse'] .#{$namespace}-mobile-nav__menu>li {
+    outline: 0;
+}
+
+.#{$namespace}-mobile-nav__menu>li>a {
+    display: block;
+    line-height: 1;
+    border-bottom: 1px solid rgba(red($ig-blue), green($ig-blue), blue($ig-blue), 0.25);
+}
+
+.#{$namespace}-mobile-nav__menu input,
+.#{$namespace}-mobile-nav__menu select,
+.#{$namespace}-mobile-nav__menu a,
+.#{$namespace}-mobile-nav__menu button {
+    margin-bottom: 0;
+}
+
+.#{$namespace}-mobile-nav__menu>li {
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.#{$namespace}-mobile-nav__menu>li>a {
+    font-family: 'WhitneySemiBold', Arial, sans-serif;
+    font-size: $ig-label-small;
+    text-transform: uppercase;
+
+    padding: $ig-space--small 0;
+
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+
+    svg {
+        fill: $ig-white;
     }
+}
+
+.#{$namespace}-mobile-nav__menu a {
+    color: $ig-white;
+}
+
+.#{$namespace}-mobile-nav__menu a:hover {
+    color: $ig-white;
+}
+
+.#{$namespace}-mobile-nav__close {
+    color: $ig-white;
+    font-family: 'WhitneySemiBold', Arial, sans-serif;
+    font-size: $ig-label-small;
+    text-transform: uppercase;
+    width: 50px;
+    height: 50px;
+
+    svg {
+        fill: $ig-white;
+    }
+}
+
+.#{$namespace}-mobile-nav__close-icon {
+    position: relative;
+    top: -3px;
+    left: 3px;
+}
+
+.#{$namespace}-mobile-nav__close:hover {
+    color: $ig-white;
+}
+
+.#{$namespace}-mobile-nav__profile {
+    color: $ig-white;
+    font-family: 'WhitneyBook', Arial, sans-serif;
+    height: 50px;
+    padding-top: $ig-space--xx-small;
+
+    svg {
+        fill: $ig-white;
+    }
+}
+
+.#{$namespace}-mobile-nav__username,
+.#{$namespace}-mobile-nav__menu-text {
+    padding-left: $ig-space--xx-small;
+    position: relative;
+    top: $ig-space--xxx-small;
+} //Left nav specific styling
+.#{$namespace}-mobile-nav__left {
+    left: 0;
+    width: $ig-mobile-nav-left-width;
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+.#{$namespace}-mobile-nav__left.is-open~.off-canvas-content {
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+} //Right nav specific styling
+.#{$namespace}-mobile-nav__right {
+    right: 0;
+    width: $ig-mobile-nav-right-width;
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+.#{$namespace}-mobile-nav__right.is-open~.off-canvas-content {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
 }

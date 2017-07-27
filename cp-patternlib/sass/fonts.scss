@@ -5,12 +5,12 @@
   font-style: normal;
   font-weight: 400;
   text-rendering: optimizeLegibility;
-  src: url('/resource/igcpresources/igcp-resources/fonts/whitney-book-webfont.woff2') format('woff2');
+  src: url(../fonts/whitney-book-webfont.woff2) format("woff2"), url(../fonts/whitney-book-webfont.woff) format("woff"), url(../fonts/whitney-book-webfont.ttf) format("truetype");
 }
 
 @font-face {
   font-family: 'WhitneySemiBold';
-  src: url('/resource/igcpresources/igcp-resources/fonts/whitney-semibold-webfont.woff') format('woff2');
+  src: url(../fonts/whitney-semibold-webfont.woff2) format("woff2"), url(../fonts/whitney-semibold-webfont.woff) format("woff"), url(../fonts/whitney-semibold-webfont.ttf) format("truetype");
 }
 
 @font-face {
@@ -18,5 +18,5 @@
   font-style: normal;
   font-weight: 400;
   text-rendering: optimizeLegibility;
-  src: url('/resource/igcpresources/igcp-resources/fonts/whitney-light-webfont.woff2') format('woff2');
+  src: url(../fonts/whitney-light-webfont.woff2) format("woff2"), url(../fonts/whitney-light-webfont.woff) format("woff"), url(../fonts/whitney-light-webfont.ttf) format("truetype");
 }

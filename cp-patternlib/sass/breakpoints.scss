@@ -1,48 +1,44 @@
 //Breakpoints - this file is for breakpoint styling that target elements only, any class specific styling should be put in the breakpoints file in the igcp folder.
-
 //Medium
-@media (min-width: $ig-medium) { 
-    .THIS {
-        h1 {
-            font-family: 'WhitneyLight', Arial, sans-serif;
-            font-size: $ig-m-h1;
-            line-height: $ig-m-h1-line-height;
-            text-transform: inherit;
-            text-transform: initial;
-        }
-        
-        h2 {
-            font-family: 'WhitneyLight', Arial, sans-serif;
-            font-size: $ig-m-h2;
-            line-height: $ig-m-h2-line-height;
-        }
+@media (min-width: $ig-medium) {
+
+    h1 {
+        font-family: 'WhitneyLight', Arial, sans-serif;
+        font-size: $ig-m-h1;
+        line-height: $ig-m-h1-line-height;
+        text-transform: inherit;
+        text-transform: initial;
+    }
+
+    h2 {
+        font-family: 'WhitneyLight', Arial, sans-serif;
+        font-size: $ig-m-h2;
+        line-height: $ig-m-h2-line-height;
     }
 }
 
 //Large
 @media (min-width: $ig-large) {
-    .THIS {
-        h1 {
-            font-size: $ig-h1;
-            line-height: $ig-h1-line-height;
-        }
-        
-        h2 {
-            font-size: $ig-h2;
-            line-height: $ig-h2-line-height;
-        }
-        
-        h3 {
-            font-size: $ig-h3;
-            line-height: $ig-h3-line-height;
-        }
-        
-        h4 {
-            font-size: $ig-h4;
-        }
-        
-        p {
-            font-size: $ig-p;
-        }
+    h1 {
+        font-size: $ig-h1;
+        line-height: $ig-h1-line-height;
+    }
+
+    h2 {
+        font-size: $ig-h2;
+        line-height: $ig-h2-line-height;
+    }
+
+    h3 {
+        font-size: $ig-h3;
+        line-height: $ig-h3-line-height;
+    }
+
+    h4 {
+        font-size: $ig-h4;
+    }
+
+    p {
+        font-size: $ig-p;
     }
 }

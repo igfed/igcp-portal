@@ -6,7 +6,6 @@
     />
 
 	<ltng:require styles="{!$Resource.igcpresources + '/igcp-resources/styles/vendor.css'}"/>
-    <ltng:require styles="{!$Resource.igcpresources + '/igcp-resources/styles/main.css'}"/>
     <ltng:require styles="{!$Resource.igcpresources + '/igcp-resources/styles/igcp.css'}"/>
 	
 	<div class="igcp-overview igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-around--xx-small slds-large-p-around--medium"> 

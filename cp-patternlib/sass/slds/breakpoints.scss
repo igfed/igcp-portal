@@ -1,388 +1,380 @@
 //NOTE: This file contains extended/modified/new slds classes to fill in missing gaps in the SLDS capabilities. For reference see: https://lightningdesignsystem.com/
-
 //Small
 @media (min-width: $ig-small) {
-  .THIS {
-      
-         .slds-small-float_left {
-             float: left;
-         }
-         
-         .slds-small-float_right {
-             float: right;
-         }
-         
-         .slds-small-float_none {
-             float: none;
-         }
-      
-         .slds-small-text-align_left {
-             text-align: left;
-         }
-         
-         .slds-small-text-align_right {
-             text-align: right;
-         }
-         
-         .slds-small-text-align_center {
-             text-align: center;
-         }
-      
-         .slds-small-m-around--zero {
-             margin: 0;
-         }
-         
-         .slds-small-m-vertical--zero,
-         .slds-small-m-top--zero {
-            margin-top: 0;
-         }
-         
-         .slds-small-m-horizontal--zero,
-         .slds-small-m-right--zero {
-             margin-right: 0;
-         }
-         
-         .slds-small-m-vertical--zero,
-         .slds-small-m-bottom--zero {
-             margin-bottom: 0;
-         }
-         
-         .slds-small-m-horizontal--zero,
-         .slds-small-m-left--zero {
-             margin-left: 0;
-         }
-         
-         .slds-small-p-around--zero {
-             padding: 0;
-         }
-         
-         .slds-small-p-vertical--zero,
-         .slds-small-p-top--zero {
-             padding-top: 0;
-         }
-         
-         .slds-small-p-horizontal--zero,
-         .slds-small-p-right--zero {
-             padding-right: 0;
-         }
-         
-         .slds-small-p-vertical--zero,
-         .slds-small-p-bottom--zero {
-             padding-bottom: 0;
-         }
-         
-         .slds-small-p-horizontal--zero,
-         .slds-small-p-left--zero {
-             padding-left: 0;
-         }
-      
+	
+    .slds-small-float_left {
+        float: left;
+    }
+
+    .slds-small-float_right {
+        float: right;
+    }
+
+    .slds-small-float_none {
+        float: none;
+    }
+
+    .slds-small-text-align_left {
+        text-align: left;
+    }
+
+    .slds-small-text-align_right {
+        text-align: right;
+    }
+
+    .slds-small-text-align_center {
+        text-align: center;
+    }
+
+    .slds-small-m-around--zero {
+        margin: 0;
+    }
+
+    .slds-small-m-vertical--zero,
+    .slds-small-m-top--zero {
+        margin-top: 0;
+    }
+
+    .slds-small-m-horizontal--zero,
+    .slds-small-m-right--zero {
+        margin-right: 0;
+    }
+
+    .slds-small-m-vertical--zero,
+    .slds-small-m-bottom--zero {
+        margin-bottom: 0;
+    }
+
+    .slds-small-m-horizontal--zero,
+    .slds-small-m-left--zero {
+        margin-left: 0;
+    }
+
+    .slds-small-p-around--zero {
+        padding: 0;
+    }
+
+    .slds-small-p-vertical--zero,
+    .slds-small-p-top--zero {
+        padding-top: 0;
+    }
+
+    .slds-small-p-horizontal--zero,
+    .slds-small-p-right--zero {
+        padding-right: 0;
+    }
+
+    .slds-small-p-vertical--zero,
+    .slds-small-p-bottom--zero {
+        padding-bottom: 0;
+    }
+
+    .slds-small-p-horizontal--zero,
+    .slds-small-p-left--zero {
+        padding-left: 0;
+    }
+
     @each $value in $ig-sizes {
 
         .slds-small-m-around--#{nth($value, 1)} {
             margin: #{nth($value, 2)};
         }
-        
+
         .slds-small-m-top--#{nth($value, 1)},
         .slds-small-m-vertical--#{nth($value, 1)} {
             margin-top: #{nth($value, 2)};
         }
-        
+
         .slds-small-m-bottom--#{nth($value, 1)},
-        .slds-small-m-vertical--#{nth($value, 1)}{
+        .slds-small-m-vertical--#{nth($value, 1)} {
             margin-bottom: #{nth($value, 2)};
         }
-        
+
         .slds-small-m-right--#{nth($value, 1)},
-        .slds-small-m-horizontal--#{nth($value, 1)}{
+        .slds-small-m-horizontal--#{nth($value, 1)} {
             margin-right: #{nth($value, 2)};
         }
-        
+
         .slds-small-m-left--#{nth($value, 1)},
-        .slds-small-m-horizontal--#{nth($value, 1)}{
+        .slds-small-m-horizontal--#{nth($value, 1)} {
             margin-left: #{nth($value, 2)};
         }
-        
+
         .slds-small-p-around--#{nth($value, 1)} {
-           padding: #{nth($value, 2)};
+            padding: #{nth($value, 2)};
         }
-        
+
         .slds-small-p-top--#{nth($value, 1)},
-        .slds-small-p-vertical--#{nth($value, 1)}{
+        .slds-small-p-vertical--#{nth($value, 1)} {
             padding-top: #{nth($value, 2)};
         }
-        
+
         .slds-small-p-bottom--#{nth($value, 1)},
-        .slds-small-p-vertical--#{nth($value, 1)}{
+        .slds-small-p-vertical--#{nth($value, 1)} {
             padding-bottom: #{nth($value, 2)};
         }
-        
+
         .slds-small-p-right--#{nth($value, 1)},
-        .slds-small-p-horizontal--#{nth($value, 1)}{
+        .slds-small-p-horizontal--#{nth($value, 1)} {
             padding-right: #{nth($value, 2)};
         }
-        
+
         .slds-small-p-left--#{nth($value, 1)},
-        .slds-small-p-horizontal--#{nth($value, 1)}{
+        .slds-small-p-horizontal--#{nth($value, 1)} {
             padding-left: #{nth($value, 2)};
         }
     }
-  }
 }
 
 //Medium
-@media (min-width: $ig-medium) { 
-  .THIS {
-      
+@media (min-width: $ig-medium) {
+
     .slds-medium-float_left {
         float: left;
     }
-     
+
     .slds-medium-float_right {
         float: right;
     }
-    
+
     .slds-medium-float_none {
         float: none;
     }
-      
+
     .slds-medium-text-align_left {
         text-align: left;
     }
-     
+
     .slds-medium-text-align_right {
         text-align: right;
     }
-     
+
     .slds-medium-text-align_center {
         text-align: center;
     }
-      
+
     .slds-medium-m-around--zero {
         margin: 0;
     }
-    
+
     .slds-medium-m-vertical--zero,
     .slds-medium-m-top--zero {
         margin-top: 0;
     }
-    
+
     .slds-medium-m-horizontal--zero,
     .slds-medium-m-right--zero {
         margin-right: 0;
     }
-    
+
     .slds-medium-m-vertical--zero,
     .slds-medium-m-bottom--zero {
         margin-bottom: 0;
     }
-    
+
     .slds-medium-m-horizontal--zero,
     .slds-medium-m-left--zero {
         margin-left: 0;
     }
-    
+
     .slds-medium-p-around--zero {
         padding: 0;
     }
-    
+
     .slds-medium-p-vertical--zero,
     .slds-medium-p-top--zero {
         padding-top: 0;
     }
-    
+
     .slds-medium-p-horizontal--zero,
     .slds-medium-p-right--zero {
         padding-right: 0;
     }
-    
+
     .slds-medium-p-vertical--zero,
     .slds-medium-p-bottom--zero {
         padding-bottom: 0;
     }
-    
+
     .slds-medium-p-horizontal--zero,
     .slds-medium-p-left--zero {
         padding-left: 0;
     }
-      
+
     @each $value in $ig-sizes {
 
         .slds-medium-m-around--#{nth($value, 1)} {
             margin: #{nth($value, 2)};
         }
-        
+
         .slds-medium-m-top--#{nth($value, 1)},
         .slds-medium-m-vertical--#{nth($value, 1)} {
             margin-top: #{nth($value, 2)};
         }
-        
+
         .slds-medium-m-bottom--#{nth($value, 1)},
-        .slds-medium-m-vertical--#{nth($value, 1)}{
+        .slds-medium-m-vertical--#{nth($value, 1)} {
             margin-bottom: #{nth($value, 2)};
         }
-        
+
         .slds-medium-m-right--#{nth($value, 1)},
-        .slds-medium-m-horizontal--#{nth($value, 1)}{
+        .slds-medium-m-horizontal--#{nth($value, 1)} {
             margin-right: #{nth($value, 2)};
         }
-        
+
         .slds-medium-m-left--#{nth($value, 1)},
-        .slds-medium-m-horizontal--#{nth($value, 1)}{
+        .slds-medium-m-horizontal--#{nth($value, 1)} {
             margin-left: #{nth($value, 2)};
         }
-        
+
         .slds-medium-p-around--#{nth($value, 1)} {
-           padding: #{nth($value, 2)};
+            padding: #{nth($value, 2)};
         }
-        
+
         .slds-medium-p-top--#{nth($value, 1)},
-        .slds-medium-p-vertical--#{nth($value, 1)}{
+        .slds-medium-p-vertical--#{nth($value, 1)} {
             padding-top: #{nth($value, 2)};
         }
-        
+
         .slds-medium-p-bottom--#{nth($value, 1)},
-        .slds-medium-p-vertical--#{nth($value, 1)}{
+        .slds-medium-p-vertical--#{nth($value, 1)} {
             padding-bottom: #{nth($value, 2)};
         }
-        
+
         .slds-medium-p-right--#{nth($value, 1)},
-        .slds-medium-p-horizontal--#{nth($value, 1)}{
+        .slds-medium-p-horizontal--#{nth($value, 1)} {
             padding-right: #{nth($value, 2)};
         }
-        
+
         .slds-medium-p-left--#{nth($value, 1)},
-        .slds-medium-p-horizontal--#{nth($value, 1)}{
+        .slds-medium-p-horizontal--#{nth($value, 1)} {
             padding-left: #{nth($value, 2)};
         }
     }
-  }
 }
 
 //Large
 @media (min-width: $ig-large) {
-  .THIS {
-      
+
     .slds-large-float_left {
         float: left;
     }
-     
+
     .slds-large-float_right {
         float: right;
     }
-    
+
     .slds-large-float_none {
         float: none;
     }
-      
+
     .slds-large-text-align_left {
         text-align: left;
     }
-    
+
     .slds-large-text-align_right {
         text-align: right;
     }
-    
+
     .slds-large-text-align_center {
         text-align: center;
     }
     .slds-large-m-around--zero {
         margin: 0;
     }
-     
+
     .slds-large-m-vertical--zero,
     .slds-large-m-top--zero {
         margin-top: 0;
     }
-     
+
     .slds-large-m-horizontal--zero,
     .slds-large-m-right--zero {
         margin-right: 0;
     }
-     
+
     .slds-large-m-vertical--zero,
     .slds-large-m-bottom--zero {
         margin-bottom: 0;
     }
-    
+
     .slds-large-m-horizontal--zero,
     .slds-large-m-left--zero {
         margin-left: 0;
     }
-    
+
     .slds-large-p-around--zero {
         padding: 0;
     }
-    
+
     .slds-large-p-vertical--zero,
     .slds-large-p-top--zero {
         padding-top: 0;
     }
-    
+
     .slds-large-p-horizontal--zero,
     .slds-large-p-right--zero {
         padding-right: 0;
     }
-    
+
     .slds-large-p-vertical--zero,
     .slds-large-p-bottom--zero {
         padding-bottom: 0;
     }
-    
+
     .slds-large-p-horizontal--zero,
     .slds-large-p-left--zero {
         padding-left: 0;
     }
-         
+
     @each $value in $ig-sizes {
 
         .slds-large-m-around--#{nth($value, 1)} {
             margin: #{nth($value, 2)};
         }
-        
+
         .slds-large-m-top--#{nth($value, 1)},
         .slds-large-m-vertical--#{nth($value, 1)} {
             margin-top: #{nth($value, 2)};
         }
-        
+
         .slds-large-m-bottom--#{nth($value, 1)},
-        .slds-large-m-vertical--#{nth($value, 1)}{
+        .slds-large-m-vertical--#{nth($value, 1)} {
             margin-bottom: #{nth($value, 2)};
         }
-        
+
         .slds-large-m-right--#{nth($value, 1)},
-        .slds-large-m-horizontal--#{nth($value, 1)}{
+        .slds-large-m-horizontal--#{nth($value, 1)} {
             margin-right: #{nth($value, 2)};
         }
-        
+
         .slds-large-m-left--#{nth($value, 1)},
-        .slds-large-m-horizontal--#{nth($value, 1)}{
+        .slds-large-m-horizontal--#{nth($value, 1)} {
             margin-left: #{nth($value, 2)};
         }
-        
+
         .slds-large-p-around--#{nth($value, 1)} {
-           padding: #{nth($value, 2)};
+            padding: #{nth($value, 2)};
         }
-        
+
         .slds-large-p-top--#{nth($value, 1)},
-        .slds-large-p-vertical--#{nth($value, 1)}{
+        .slds-large-p-vertical--#{nth($value, 1)} {
             padding-top: #{nth($value, 2)};
         }
-        
+
         .slds-large-p-bottom--#{nth($value, 1)},
-        .slds-large-p-vertical--#{nth($value, 1)}{
+        .slds-large-p-vertical--#{nth($value, 1)} {
             padding-bottom: #{nth($value, 2)};
         }
-        
+
         .slds-large-p-right--#{nth($value, 1)},
-        .slds-large-p-horizontal--#{nth($value, 1)}{
+        .slds-large-p-horizontal--#{nth($value, 1)} {
             padding-right: #{nth($value, 2)};
         }
-        
+
         .slds-large-p-left--#{nth($value, 1)},
-        .slds-large-p-horizontal--#{nth($value, 1)}{
+        .slds-large-p-horizontal--#{nth($value, 1)} {
             padding-left: #{nth($value, 2)};
         }
     }
-    
-  }
 }
