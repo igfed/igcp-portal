@@ -3,10 +3,11 @@
 //See https://seesparkbox.com/foundry/bem_by_example for details
 
 //Header - Any style pertaining to the global header and nav go in here
-//.THIS {
+
+.THIS {
    
     .#{$namespace}-header {
-      background-color: $ig-white;
+      background-color: token(igWhite);
       background-image: none;
       border-bottom: 1px solid $ig-grey;
       height: 60px;
@@ -36,15 +37,15 @@
         margin-top: 12px;
         .#{$namespace}-nav__link {
           
-          padding: $ig-space-xx-small 0;
-          margin: 0 $ig-space-small 0 $ig-space-xxx-small;
+          padding: token(spaceXxSmall) 0;
+          margin: 0 token(spaceSmall) 0 token(spaceXxxSmall);
           
           &:hover, &.#{$namespace}-nav__link--selected {
             border-bottom: none;
           }
           
           .#{$namespace}-nav__username {
-            font-family: $ig-whitney-semibold;
+            font-family: token(whitneyBook);
             position: relative;
             top: 4px;
           }
@@ -53,12 +54,12 @@
     }
 
     .#{$namespace}-nav__link {
-      font-family: $ig-whitney-semibold;
-      letter-spacing: $ig-letter-spacing;
-      font-size: $ig-label-small;
+      font-family: token(whitneySemiBold);
+      letter-spacing: token(igLetterSpacing);
+      font-size: token(igLabelSmall);
       text-decoration: none;
       height: 40px;
-      padding: $ig-space-xx-small 0;
+      padding: token(spaceXxSmall) 0;
        
       &:hover, &.#{$namespace}-nav__link--selected {
         border-bottom: 2px solid $ig-dark-blue;
@@ -86,18 +87,18 @@
          fill: #fff;
        }
     }
-//}
+}
 
 @media (min-width: $ig-small) {}
 
 @media (min-width: $ig-medium) {
-  //.THIS {
+  .THIS {
     .#{$namespace}-header {
       height: 48px;
     }
     
     .top-bar {
-      padding: $ig-space-xx-small;
+      padding: token(spaceXxSmall);
       
       .top-bar-left, .top-bar-right {
         margin-top: 0;
@@ -105,11 +106,11 @@
       
       .top-bar-right {
         .#{$namespace}-nav__link {
-          margin-right: $ig-space-xxx-small;
+          margin-right: token(spaceXxxSmall);
         }
       }
     }
-  //}
+  }
 }
 
 @media (min-width: $ig-large) {

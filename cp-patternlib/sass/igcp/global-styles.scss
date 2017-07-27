@@ -4,12 +4,7 @@
 
 //Global Styles - specific styles for elements that can be used globally, I may break these styles into sub categories down the road if this file gets too big 
 
-//.THIS {
-
-	.#{$namespace}-background {
-		background-image: url('/resource/login_assets/login/images/bg-tile.jpg');
-		background-repeat: repeat;
-	}
+.THIS {
   
     .#{$namespace}-container {
       background-color: #fff;
@@ -17,13 +12,15 @@
   
     .#{$namespace}-wrapper {
       max-width: $ig-x-large;
+      //Footer is currently 150px high, so 768 - 150
+      min-height: 618px;
       margin: 0 auto;
     }
     
     .#{$namespace}-input__help-link {
-      font-family: $ig-whitney-book;
-      letter-spacing: $ig-letter-spacing;
-      font-size: $ig-p-small;
+      font-family: token(whitneyBook);
+      letter-spacing: token(igLetterSpacing);
+      font-size: token(igLabelSmall);
     }
     
     .#{$namespace}-input {
@@ -35,24 +32,34 @@
       border-bottom: 1px solid $ig-dark-grey;
     }
     
+    .#{$namespace}-input__password {
+      
+      //Have to put this here because 
+      //I don't have access to the ui component 
+      //to give it a unique igcp class name
+      .slds-icon-utility-info {
+        top: 0;
+      }
+    }
+    
     .#{$namespace}-link {
-      font-family: $ig-whitney-book;
-      font-size: $ig-space-x-small;
-      letter-spacing: $ig-letter-spacing;
+      font-family: token(whitneyBook);
+      font-size: token(spaceXSmall);
+      letter-spacing: token(igLetterSpacing);
       text-transform: uppercase;
     }
     
     .#{$namespace}-link__variant--a {
-      font-family: $ig-whitney-semibold;
-      font-size: $ig-space-x-small;
-      letter-spacing: $ig-letter-spacing;
+      font-family: token(whitneySemiBold);
+      font-size: token(spaceXSmall);
+      letter-spacing: token(igLetterSpacing);
       text-transform: capitalize;
     }
     
     .#{$namespace}-link__glyph--after {
         position: relative;
         top: -1px;
-        padding-left: $ig-space-xxx-small;
+        padding-left: token(spaceXxxSmall);
     }
     
     .#{$namespace}-underline {
@@ -60,7 +67,7 @@
     }
     
     .#{$namespace}-underline--thick-blue {
-      border-bottom: $ig-space-xx-small solid $ig-dark-blue;
+      border-bottom: token(spaceXxSmall) solid $ig-dark-blue;
       transform-origin: left bottom;
       transform: skewX(25deg);
     }
@@ -78,8 +85,8 @@
     }
     
     .#{$namespace}-value--large {
-      font-family: $ig-whitney-light;
-      line-height: $ig-line-height-text;
+      font-family: token(whitneyLight);
+      line-height: token(lineHeightText);
       font-size: $ig-m-h1;
       
       sup {
@@ -89,17 +96,17 @@
     }
     
     .#{$namespace}-value--medium {
-      line-height: $ig-line-height-text;
+      line-height: token(lineHeightText);
       font-size: $ig-h2;
     }
     
     .#{$namespace}-value--small {
-      line-height: $ig-line-height-text;
+      line-height: token(lineHeightText);
       font-size: $ig-h3;
     }
     
     .#{$namespace}-value--x-small {
-      line-height: $ig-line-height-text;
+      line-height: token(lineHeightText);
       font-size: $ig-h4;
     }
     
@@ -136,26 +143,26 @@
     .#{$namespace}-horizontal-rule {
       border-bottom: 1px solid #fff;
       width: 100%;
-      height: $ig-space-large;
+      height: token(spaceLarge);
     }
     
     .#{$namespace}-separator--large {
       width: 100%;
-      height: $ig-space-xx-small;
+      height: token(spaceXxSmall);
       background-color: $ig-light-grey;
     }
     
     .#{$namespace}-label {
-      font-family: $ig-whitney-semibold;
-      font-size: $ig-space-small;
-      letter-spacing: $ig-letter-spacing;
+      font-family: token(whitneySemiBold);
+      font-size: token(spaceSmall);
+      letter-spacing: token(igLetterSpacing);
       text-transform: uppercase;
     }
     
     .#{$namespace}-label--small {
-      font-family: $ig-whitney-semibold;
-      font-size: $ig-space-x-small;
-      letter-spacing: $ig-letter-spacing;
+      font-family: token(whitneySemiBold);
+      font-size: token(spaceXSmall);
+      letter-spacing: token(igLetterSpacing);
       text-transform: uppercase;
     }
     
@@ -182,7 +189,7 @@
       }
       
       p {
-        font-size: $ig-p-small;
+        font-size: token(spaceXSmall);
       }
     }
     
@@ -227,13 +234,9 @@
       }
       
       .#{$namespace}-progress-indicator__step--complete {
-        margin-top: -18px;
+        margin-top: -16px;
         margin-left: -10px;
       }
-    }
-    
-    .#{$namespace}-tooltip {
-      opacity: 0;
     }
     
     .#{$namespace}-list {
@@ -246,10 +249,10 @@
       
       float: right;
 
-      padding-top: $ig-space-xx-small;
-      padding-bottom: $ig-space-xx-small;
+      padding-top: token(spaceXxSmall);
+      padding-bottom: token(spaceXxSmall);
       
-      border-radius: $ig-space-medium;
+      border-radius: token(spaceMedium);
       background-clip: padding-box;
       
       .slds-icon_container {
@@ -285,4 +288,93 @@
         top: -3px;
       }
     }
-//}
+    
+    .#{$namespace}-tooltip {
+      
+      display: inline-block;
+      
+      .#{$namespace}-tooltip__tip {
+        border: none;
+      }
+    }
+    
+    .#{$namespace}-tooltip__opened {
+      position: absolute;
+      top: calc(100% + .6495rem);
+      z-index: 1200;
+      max-width: 10rem;
+      padding: .75rem;
+      border-radius: 5px;
+      font-size: 80%;
+      color: $ig-white;
+      background-color: $ig-dark-blue;
+    }
+    
+    .#{$namespace}-checkbox {
+        position: absolute; // take it out of document flow
+        opacity: 0; // hide it
+      
+        & + label {
+          position: relative;
+          cursor: pointer;
+          padding: 0;
+        }
+      
+        // Box.
+        & + label:before {
+          content: '';
+          margin-right: 10px;
+          display: inline-block;
+          vertical-align: text-top;
+          width: 20px;
+          height: 20px;
+          background: white;
+        }
+      
+        // Box hover
+        &:hover + label:before {
+          background: #f35429;
+        }
+        
+        // Box focus
+        &:focus + label:before {
+          box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+        }
+      
+        // Box checked
+        &:checked + label:before {
+          background: #f35429;
+        }
+        
+        // Disabled state label.
+        &:disabled + label {
+          color: #b8b8b8;
+          cursor: auto;
+        }
+      
+        // Disabled box.
+        &:disabled + label:before {
+          box-shadow: none;
+          background: #ddd;
+        }
+      
+        // Checkmark. Could be replaced with an image
+        &:checked + label:after {
+          content: '';
+          position: absolute;
+          left: 5px;
+          top: 9px;
+          background: white;
+          width: 2px;
+          height: 2px;
+          box-shadow: 
+            2px 0 0 white,
+            4px 0 0 white,
+            4px -2px 0 white,
+            4px -4px 0 white,
+            4px -6px 0 white,
+            4px -8px 0 white;
+          transform: rotate(45deg);
+        }
+      }
+}

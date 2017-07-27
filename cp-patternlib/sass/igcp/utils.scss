@@ -6,22 +6,22 @@
 
 //
 
-//.THIS {
+.THIS {
   
     @each $value in $ig-breakpoints {
       
       @media (min-width: nth($value, 2)) {
       
         .#{getNamespace($value)}-utils__font--light {
-          font-family: $ig-whitney-light;
+          font-family: token(whitneyLight);
         }
       
         .#{getNamespace($value)}-utils__font--semibold {
-          font-family: $ig-whitney-semibold;
+          font-family: token(whitneySemiBold);
         }
         
         .#{getNamespace($value)}-utils__font--book {
-          font-family: $ig-whitney-book;
+          font-family: token(whitneyBook);
         }
       
         .#{getNamespace($value)}-utils__font-size--small {
@@ -33,7 +33,7 @@
         }
         
         .#{getNamespace($value)}-utils__line-height--regular {
-          line-height: $ig-line-height-text;
+          line-height: token(lineHeightText);
         }
       
         .#{getNamespace($value)}-utils__text--uppercase {
@@ -144,7 +144,6 @@
         
         .#{getNamespace($value)}-utils__fade--in {
            @include fadeTo();
-         
         }
         
         .#{getNamespace($value)}-utils__fade--out {
@@ -201,4 +200,4 @@
         
       }
     }
-//}
+}

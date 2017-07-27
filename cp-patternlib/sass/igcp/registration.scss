@@ -3,7 +3,7 @@
 //See https://seesparkbox.com/foundry/bem_by_example for details
 
 //Registration - any styling related to the registration process 
-//.THIS {
+.THIS {
     .#{$namespace}-registration {
         
         overflow: hidden;
@@ -36,4 +36,4 @@
             }
         }
     }   
-//}
+}

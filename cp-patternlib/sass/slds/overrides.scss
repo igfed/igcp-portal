@@ -1,12 +1,17 @@
 //NOTE: This file contains extended/modified/new slds classes to fill in missing gaps in the SLDS capabilities. For reference see: https://lightningdesignsystem.com/
 
-//.THIS {
+.THIS {
   
-  
+  .slds-icon_container {
+    top: -3px;
+    position: relative;
+  }
+    
+    
   .slds-button {
-    font-family: $ig-whitney-semibold;
-    font-size: $ig-p-small;
-    letter-spacing: $ig-letter-spacing;
+    font-family: token(whitneySemiBold);
+    font-size: token(igLabelSmall);
+    letter-spacing: token(igLetterSpacing);
     text-transform: uppercase;
   }
   
@@ -15,24 +20,24 @@
   } 
   
   .slds-form-element__label {
-      font-family: $ig-whitney-semibold;
-      font-size: $ig-p-small;
-      letter-spacing: $ig-letter-spacing;
+      font-family: token(whitneySemiBold);
+      font-size: token(igLabelSmall);
+      letter-spacing: token(igLetterSpacing);
       
       &.input-label {
         position: relative;
         top: 3px;
-        font-size: $ig-p-small;
-        margin-right: $ig-space-xxx-small;
+        font-size: token(igLabelSmall);
+        margin-right: token(spaceXxxSmall);
       }
   }
   
   .slds-checkbox {
       
       .slds-form-element__label.input-label {
-          font-family: $ig-whitney-book;
+          font-family: token(whitneyBook);
           font-size: $ig-p;
-          line-height: $ig-line-height-text;
+          line-height: token(lineHeightText);
           top: 0;
       }
   }
@@ -67,15 +72,15 @@
       }
       
       .slds-progress__marker {
-        width: $ig-space-medium;
-        height: $ig-space-medium;
+        width: token(spaceMedium);
+        height: token(spaceMedium);
         border: none;
         background: $ig-dark-grey;
       }
     }
     
     .slds-progress-bar__value {
-      background: $ig-dark-blue;
+      background: $ig-dark-grey;
     }
     
     .slds-icon-text-default {
@@ -83,8 +88,8 @@
     }
     
     .slds-icon {
-      width: $ig-space-medium;
-      height: $ig-space-medium;
+      width: token(spaceMedium);
+      height: token(spaceMedium);
     }
     
     .slds-icon-utility-success {
@@ -93,4 +98,4 @@
       }
     }
   }
-//}
+}

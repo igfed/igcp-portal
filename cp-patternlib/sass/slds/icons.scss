@@ -1,6 +1,6 @@
 //NOTE: This file contains extended/modified/new slds classes to fill in missing gaps in the SLDS capabilities. For reference see: https://lightningdesignsystem.com/
 
-//.THIS {
+.THIS {
     
     @each $value in $ig-sizes {
         
@@ -20,4 +20,4 @@
             }
         }   
     }
-//}
+}
