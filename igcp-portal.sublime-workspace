@@ -115,15 +115,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "cp-patternlib/main.scss",
-			"settings":
-			{
-				"buffer_size": 485,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -132,17 +123,17 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 58.0,
-		"last_filter": "MavensMate: Deploy Res",
+		"height": 392.0,
+		"last_filter": "MavensMate:",
 		"selected_items":
 		[
 			[
-				"MavensMate: Deploy Res",
-				"MavensMate: Deploy Resource Bundle..."
+				"MavensMate:",
+				"MavensMate: Edit Project..."
 			],
 			[
 				"MavensMate:Resou",
-				"MavensMate: Create Resource Bundle..."
+				"MavensMate: Deploy Resource Bundle..."
 			],
 			[
 				"install",
@@ -183,63 +174,37 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib"
+		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal"
 	],
 	"file_history":
 	[
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/README.md",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/sass/fonts.scss",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/resource-bundles/igcpresources.resource/igcp-resources/styles/igcp.css",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/sass/igcp/header.scss",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/sass/igcp/mobile-nav.scss",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/sass/igcp/footer.scss",
-		"/C/Users/boyled1/Workspace/igcp-portal/snapshots/sprint-4/aura/CP_Primary_Token/CP_Primary_Token.tokens",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/sass/global.scss",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/sass/slds/overrides.scss",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/sass/igcp/utils.scss",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/sass/igcp/global-styles.scss",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/sass/igcp/breakpoints.scss",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/sass/elements.scss",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/sass/breakpoints.scss",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/.sass-cache/bd8010c53d2475e9989bba9a47706bdb888d1dcb/mobile-user-navigation.scssc",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/.sass-cache/bd8010c53d2475e9989bba9a47706bdb888d1dcb/mobile-navigation.scssc",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/.sass-cache/bd8010c53d2475e9989bba9a47706bdb888d1dcb/mobile-nav.scssc",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/.sass-cache/bd8010c53d2475e9989bba9a47706bdb888d1dcb/header.scssc",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/.sass-cache/bd8010c53d2475e9989bba9a47706bdb888d1dcb/footer.scssc",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/.sass-cache/bd8010c53d2475e9989bba9a47706bdb888d1dcb/breakpoints.scssc",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/.sass-cache/6b5e5c036b132adc845d941941427c667e026f77/overrides.scssc",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview/CP_Overview.cmp",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/.sass-cache/bd8010c53d2475e9989bba9a47706bdb888d1dcb/global-styles.scssc",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/.sass-cache/8145b15ae3b332ac12a0676e2b22b38377bd2b15/global.scssc",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/cp-patternlib/main.scss",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/config/.lightning",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/config/.settings",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/staticresources/slds-meta.xml",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/staticresources/igcp-resources-meta.xml",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/staticresources/igcpresources",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox",
+		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/igcp-portal.sublime-workspace",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/staticresources/slds-meta.xml",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/staticresources/igcp-resources-meta.xml",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/staticresources/igcpresources",
 		"/C/Users/boyled1/Workspace/igcp-resources/styles/vendor.css",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview_CTA/CP_Overview_CTA.cmp",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Overview_CTA/CP_Overview_CTA.cmp",
 		"/C/Users/boyled1/Workspace/igcp-resources/styles/igcp.css",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview/CP_Overview.cmp",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview_Account/CP_Overview_Account.cmp",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview_Account_Heading/CP_Overview_Account_Heading.cmp",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview_Account_Item/CP_Overview_Account_Item.cmp",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview_Alert_Item/CP_Overview_Alert_Item.cmp",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview_Alerts/CP_Overview_Alerts.cmp",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview_Gain_Loss/CP_Overview_Gain_Loss.cmp",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview_Insurance/CP_Overview_Insurance.cmp",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview_Investments/CP_Overview_Investments.cmp",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview_Mortgages/CP_Overview_Mortgages.cmp",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview_Total_Value/CP_Overview_Total_Value.cmp",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Card/CP_Card.cmp",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview_Account_Item/CP_Overview_Account_Item.cmp-meta.xml",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview/CP_Overview.cmp-meta.xml",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview_App/CP_Overview_App.app-meta.xml",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview_CTA/CP_Overview_CTA.cmp-meta.xml",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Card/CP_Card.cmp-meta.xml",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview_App/CP_Overview_App.app",
-		"/C/Users/boyled1/Workspace/mm_workspace/igcp-portal/src/aura/CP_Overview_Investments/CP_Overview_Investments.cmp-meta.xml",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Overview/CP_Overview.cmp",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Overview_Account/CP_Overview_Account.cmp",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Overview_Account_Heading/CP_Overview_Account_Heading.cmp",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Overview_Account_Item/CP_Overview_Account_Item.cmp",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Overview_Alert_Item/CP_Overview_Alert_Item.cmp",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Overview_Alerts/CP_Overview_Alerts.cmp",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Overview_Gain_Loss/CP_Overview_Gain_Loss.cmp",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Overview_Insurance/CP_Overview_Insurance.cmp",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Overview_Investments/CP_Overview_Investments.cmp",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Overview_Mortgages/CP_Overview_Mortgages.cmp",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Overview_Total_Value/CP_Overview_Total_Value.cmp",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Card/CP_Card.cmp",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Overview_Account_Item/CP_Overview_Account_Item.cmp-meta.xml",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Overview/CP_Overview.cmp-meta.xml",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Overview_App/CP_Overview_App.app-meta.xml",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Overview_CTA/CP_Overview_CTA.cmp-meta.xml",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Card/CP_Card.cmp-meta.xml",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Overview_App/CP_Overview_App.app",
+		"/C/Users/boyled1/Workspace/mm_workspace/Client Portal Sandbox/src/aura/CP_Overview_Investments/CP_Overview_Investments.cmp-meta.xml",
 		"/C/Users/boyled1/AppData/Roaming/Sublime Text 3/Packages/User/mavensmate.sublime-settings",
 		"/C/Users/boyled1/Downloads/workspace/cp-patternlib/sass/functions.scss",
 		"/C/Users/boyled1/Downloads/workspace/aura/CP_Registration_Step2/CP_Registration_Step2.cmp",
@@ -315,7 +280,32 @@
 		"/C/Users/boyled1/Downloads/pattern-library/gulpfile.js",
 		"/C/Users/boyled1/Workspace/pattern-library/gulpfiles/tasks/lint.js",
 		"/C/Users/boyled1/Workspace/pattern-library/gulpfiles/tasks/clean.js",
-		"/C/Users/boyled1/Workspace/pattern-library/gulpfiles/githubpages.js"
+		"/C/Users/boyled1/Workspace/pattern-library/gulpfiles/githubpages.js",
+		"/C/Users/boyled1/Workspace/pattern-library/gulpfiles/lint.js",
+		"/C/Users/boyled1/Workspace/pattern-library/app/ig-com/styles/main.scss",
+		"/C/Users/boyled1/Workspace/pattern-library/app/ig-com/sprint-1.html",
+		"/C/Users/boyled1/Workspace/pattern-library/gulpfiles/bundle.js",
+		"/C/Users/boyled1/Workspace/pattern-library/dist/main.css",
+		"/C/Users/boyled1/Workspace/pattern-library/gulpfiles/igcom/styles.js",
+		"/C/Users/boyled1/Workspace/pattern-library/app/test.scss",
+		"/C/Users/boyled1/Workspace/pattern-library/gulpfiles/ig-com.js",
+		"/C/Users/boyled1/Workspace/pattern-library/app/styles/elements/_buttons.scss",
+		"/C/Users/boyled1/Workspace/pattern-library/app/styles/modules/_more-header.scss",
+		"/C/Users/boyled1/Workspace/pattern-library/app/styles/elements/_typography.scss",
+		"/C/Users/boyled1/Workspace/pattern-library/app/styles/modules/_more-carousel.scss",
+		"/C/Users/boyled1/Workspace/pattern-library/app/templates/content/principles.md",
+		"/C/Users/boyled1/Workspace/pattern-library/app/styles/main.scss",
+		"/C/Users/boyled1/Workspace/pattern-library/app/styles/elements/_tables.scss",
+		"/C/Users/boyled1/Workspace/pattern-library/app/styles/elements/_images.scss",
+		"/C/Users/boyled1/Workspace/pattern-library/app/styles/elements/_grid.scss",
+		"/C/Users/boyled1/Workspace/pattern-library/app/styles/elements/_animations.scss",
+		"/C/Users/boyled1/Downloads/dist/section-2.html",
+		"/C/Users/boyled1/Workspace/pattern-library/app/styles/components/_topBar.scss",
+		"/C/Users/boyled1/Workspace/pattern-library/app/styles/components/_rates.scss",
+		"/C/Users/boyled1/Workspace/pattern-library/app/styles/components/_modal.scss",
+		"/C/Users/boyled1/Workspace/pattern-library/app/styles/components/_figure.scss",
+		"/C/Users/boyled1/Workspace/pattern-library/app/styles/components/_dropdown.scss",
+		"/C/Users/boyled1/Workspace/pattern-library/app/styles/components/_callout.scss"
 	],
 	"find":
 	{
@@ -326,8 +316,6 @@
 		"height": 102.0,
 		"where_history":
 		[
-			"C:\\Users\\boyled1\\Workspace\\mm_workspace\\igcp-portal\\cp-patternlib\\sass",
-			"C:\\Users\\boyled1\\Workspace\\mm_workspace\\igcp-portal\\cp-patternlib",
 			"C:\\Users\\boyled1\\Workspace\\mm_workspace\\igcp-portal",
 			"C:\\Users\\boyled1\\Workspace\\igcp-portal\\snapshots\\sprint-1\\cp-patternlib\\sass\\igcp",
 			"C:\\Users\\boyled1\\Workspace\\design-system\\design-tokens",
@@ -384,25 +372,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"token",
-			"token(igLabelSmall)",
-			"token",
-			"$ig-label-small",
-			"token(lineHeightText)",
-			"token",
-			"token(igLetterSpacing)",
-			"token(whitneyLight)",
-			"token(whitneySemiBold)",
-			"token(whitneyBook)",
-			"token(spaceXxxSmall)",
-			"token(spaceXxSmall)",
-			"token(spaceXSmall)",
-			"token(spaceSmall)",
-			"token(spaceMedium)",
-			"token(spaceLarge)",
-			"token(spaceXLarge)",
-			"token(spaceXxLarge)",
-			"igcp-portal",
+			"Client Portal Sandbox",
 			"whitney-book",
 			"whitney",
 			"WhitneyBook",
@@ -511,6 +481,24 @@
 			"section-title",
 			"h4",
 			"more-small-section-title",
+			"ig-carousel",
+			"_cq_htmlTag",
+			"imageCaption parbase",
+			"imageCaption",
+			"more-image-with-caption",
+			"imageCaption",
+			"resize",
+			"bg-primary",
+			"<h1>Client Support</h1>",
+			"Client Support",
+			"title",
+			"granite/ui/components/foundation/form/textfield",
+			"textfield",
+			"\"",
+			"&amp;quot;",
+			"breakpoint",
+			"\"",
+			"&quot;",
 			"ig-carousel"
 		],
 		"highlight": true,
@@ -519,21 +507,7 @@
 		"regex": false,
 		"replace_history":
 		[
-			"$ig-label-small",
-			"token(igLabelSmall)",
-			"$ig-line-height-text",
-			"$ig-letter-spacing",
-			"'WhitneyLight', Arial, sans-serif",
-			"'WhitneySemiBold', Arial, sans-serif",
-			"'WhitneyBook', Arial, sans-serif",
-			"$ig-space--xxx-small",
-			"$ig-space--xx-small",
-			"$ig-space--x-small",
-			"$ig-space--small",
-			"$ig-space--medium",
-			"$ig-space--large",
-			"$ig-space--x-large",
-			"$ig-space--xx-large",
+			"igcp-portal",
 			"spaceXxxSmall",
 			"xxx-small",
 			" token(spaceXxSmall);",
@@ -585,37 +559,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "cp-patternlib/main.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 485,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								268,
-								268
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -652,7 +597,7 @@
 	"menu_visible": true,
 	"output.MavensMate-OutputPanel":
 	{
-		"height": 130.0
+		"height": 0.0
 	},
 	"output.find_results":
 	{
