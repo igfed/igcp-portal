@@ -1,0 +1,52 @@
+<aura:component >
+    <div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
+        
+        <div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
+        <div class="slds-p-around--small slds-medium-p-around--zero slds-size_12-of-12 slds-medium-size_6-of-12">
+            
+            <h1>Register for Online Access</h1>
+            
+            <c:CP_Progress_Indicator currentStep="3" totalSteps="3" />
+            
+            <div class="igcp-label--small">Step 3</div>
+            
+            <h2>Review and Accept</h2>
+            
+            <p class="igcp-utils__width--100 igcp-large-utils__width--75">You’re almost finished! Please ensure your online profile information listed below is correct.</p>
+            
+            <div class="slds-grid slds-wrap">
+                
+                <!--NAME VALUE LIST-->
+                <c:CP_Name_Value_List id="review-list"
+                    class="slds-size_12-of-12 slds-m-vertical--medium"
+                    values="{ 
+                    values: [
+                        { username: 'Rami5990'},
+                        { email: 'remi.sedenco@mail.com'},
+                        { notification: 'Opted In'},
+                        { question_1: 'What is the name of your favourite sports team?'},
+                        { answer_1: 'Montreal Canadians'},
+                        { question_2: 'What is the name of your favourite superhero?'},
+                        { answer_2: 'Batman &amp; Robin'},
+                        { question_3: 'What was your first job?'},
+                        { answer_3: 'Paper Boy'}
+                        ]}"/>
+                
+                <div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
+                
+                <!--CTAS-->
+                <c:CP_Form_Back_Next backLabel="Edit Profile"
+                    nextLabel="Next"
+                    modalID="igcp-modal"/>
+                    
+                <c:CP_Button_Chat class="slds-size_12-of-12 slds-is-relative slds-m-bottom--medium"
+                label="Need help?"
+                icon="utility:chat"/>
+                
+            </div>
+        </div>
+        <div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
+        
+    </div>
+</aura:component>
+

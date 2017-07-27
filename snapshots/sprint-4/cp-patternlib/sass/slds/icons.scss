@@ -1,0 +1,23 @@
+//NOTE: This file contains extended/modified/new slds classes to fill in missing gaps in the SLDS capabilities. For reference see: https://lightningdesignsystem.com/
+
+.THIS {
+    
+    @each $value in $ig-sizes {
+        
+        .slds-icon--#{nth($value, 1)} {
+            width: #{nth($value, 2)};
+            height: #{nth($value, 2)};
+        }  
+    }
+    
+    .slds-icon_container {
+        &.slds-icon-standard-person-account {
+            background: #fff;
+            border-radius: 0; 
+            
+            use {
+                fill: $ig-green;
+            }
+        }   
+    }
+}

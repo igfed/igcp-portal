@@ -1,0 +1,25 @@
+<aura:component >
+    <header role="banner" class="igcp-header">
+         <nav class="igcp-nav">
+        	<div class="top-bar centered">
+        	    <div class="igcp-nav__logo igcp-medium-utils__display--none slds-text-align_center slds-m-top--small">
+        	        <a class="home-link" href="/">
+        	            <img class="slds-m-left--x-large" src="{!$Resource.patternlib + '/pattern-lib/images/IG_EN_M.svg'}" alt="" />
+        	        </a>
+        	    </div>
+              <div class="top-bar-left">
+                <div class="igcp-nav__logo igcp-utils__display--none igcp-medium-utils__display--inline-block">
+                    <a class="home-link" href="/">
+                       <img src="{!$Resource.images + '/images/logo-en-color.svg'}" alt="" />
+                    </a>
+                </div>
+              </div>
+              <div class="top-bar-right">
+                <ul class="dropdown menu" data-dropdown-menu="">
+                  
+                </ul>
+              </div>
+            </div>
+        </nav>
+    </header>
+</aura:component>

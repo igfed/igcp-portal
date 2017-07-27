@@ -1,0 +1,8 @@
+<aura:component >
+    <c:mobileViewport />
+    <header>
+        <div class="slds-grid slds-grid--align-center">
+    	    <img src="{!$Resource.login_assets + '/login/images/header.jpg'}" alt="Header"/>
+    	</div>
+    </header>
+</aura:component>

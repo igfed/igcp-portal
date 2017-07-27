@@ -1,0 +1,230 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
+        
+        <div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
+        <div class="slds-p-around--small slds-medium-p-around--zero slds-size_12-of-12 slds-medium-size_6-of-12">
+            
+            <h1>Register for Online Access</h1>
+            
+            <c:CP_Progress_Indicator currentStep="1" totalSteps="3" />
+            
+            <div class="igcp-label--small">Step 1</div>
+            
+            <h2>Link Your Account</h2>
+            
+            <p class="igcp-utils__width--100 igcp-large-utils__width--75">Enter your Investors Group information to link your account to your online profile.</p>
+            
+            <div class="slds-grid slds-wrap">
+                
+                <div class="slds-form slds-size_12-of-12">
+                
+                    <!--FIELDS-->
+                    <div class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium">
+                        <label class="slds-form-element__label input-label igcp-utils__text--uppercase" for="input-id-01">Client Number 
+                        </label>
+                        <div class="slds-form-element__control">
+                            <ui:inputText aura:id="text-input" label="" value="" placeholder="Client Number" class="slds-input igcp-input" required="false" />
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium">
+                        <label class="slds-form-element__label input-label igcp-utils__text--uppercase" for="input-id-01">Postal Code 
+                        </label>
+                        <div class="slds-form-element__control">
+                            <ui:inputText aura:id="text-input" label="" value="" placeholder="Postal Code" class="slds-input igcp-input" required="false" />
+                        </div>
+                    </div>
+                    
+                    <div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
+                    
+                    <div class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium">
+                        <label class="slds-form-element__label input-label igcp-utils__text--uppercase" for="input-id-01">Date of Birth 
+                        </label>
+                        <div class="slds-form-element__control">
+                            <ui:inputText aura:id="text-input" label="" value="" placeholder="Date of Birth" class="slds-input igcp-input" required="false" />
+                        </div>
+                    </div>
+                    
+                    <div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
+                        
+                
+                </div>
+            
+                <div class="igcp-label--small">Step 2</div>
+                
+                <h2>Create Your Online Profile</h2>
+                
+                <p class="igcp-utils__width--100 igcp-large-utils__width--75">You'll use your online profile to securely access your account online.</p>
+                  
+                  
+                    
+                <div class="slds-grid slds-wrap">
+                
+                <div class="slds-form slds-size_12-of-12" >
+                
+                
+                <!--FIELDS-->
+                <div class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium">
+                    <label class="slds-form-element__label input-label igcp-utils__text--uppercase" for="input-id-01">Username 
+                    </label>
+                    <div class="slds-form-element__control">
+                        <ui:inputText aura:id="text-input" label="" value="" placeholder="Username" class="slds-input igcp-input" required="false" />
+                    </div>
+                </div>
+                    
+                <div class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium">
+                    <label class="slds-form-element__label input-label igcp-utils__text--uppercase" for="input-id-01">Password 
+                    </label>
+                    <div class="slds-form-element__control">
+                        <ui:inputSecret aura:id="password" label="" class="slds-input igcp-input" value="" />
+                    </div>
+                </div>
+                
+                <div class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium">
+                    <label class="slds-form-element__label input-label igcp-utils__text--uppercase" for="input-id-01">Confirm Password 
+                    </label>
+                    <div class="slds-form-element__control">
+                        <ui:inputSecret aura:id="password" label="" class="slds-input igcp-input" value="" />
+                    </div>
+                </div>
+                
+                <div class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium">
+                    <label class="slds-form-element__label input-label igcp-utils__text--uppercase" for="input-id-01">Email 
+                    </label>
+                    <div class="slds-form-element__control">
+                        <ui:inputText aura:id="text-input" label="" value="" placeholder="Email" class="slds-input igcp-input" required="false" />
+                    </div>
+                </div>
+                    
+                    
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                       
+                        
+                        
+                        <label class="slds-checkbox">
+                          <ui:inputCheckbox aura:id="checkbox" value="false" change=""/>
+                          <span class="slds-checkbox--faux"></span>
+                          <span class="slds-form-element__label input-label">I'd like to receive the latest news and offers from Investors Group to my email address (optional)</span>
+                        </label>
+                       
+                    </div>
+                </div>
+                
+                <div class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium">
+                    <label class="slds-form-element__label input-label igcp-utils__text--uppercase" for="input-id-01">Phone 
+                    </label>
+                    <div class="slds-form-element__control">
+                        <ui:inputText aura:id="text-input" label="" value="" placeholder="Phone" class="slds-input igcp-input" required="false" />
+                    </div>
+                </div>
+                
+                
+                <div class="slds-form-element">
+                    <label class="igcp-utils__text--uppercase slds-form-element__label input-label" for="{!v.id}">Security Question 1 of 3</label>
+                    
+            
+                
+                
+                    <div class="slds-form-element__control">
+                        <ui:inputSelect class="igcp-input">
+                            <ui:inputSelectOption text="Select a security question" label="Select a security question" disabled="true" value="true"/>
+                            
+                             <ui:inputSelectOption text="What\'s your dogs name?" label="What\'s your dogs name?"/>
+                             
+                             <ui:inputSelectOption text="Where were you born?" label="Where were you born?"/>
+                             
+                             <ui:inputSelectOption text="What\'s your mothers maiden name??" label="What\'s your mothers maiden name??"/>
+                            
+                        </ui:inputSelect>
+                    </div>
+                </div>
+            
+                <div class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium">
+                    <label class="slds-form-element__label input-label igcp-utils__text--uppercase" for="input-id-01">Answer 1 
+                    </label>
+                    <div class="slds-form-element__control">
+                        <ui:inputText aura:id="text-input" label="" value="" placeholder="Answer1" class="slds-input igcp-input" required="false" />
+                    </div>
+                </div>    
+                
+                <div class="slds-form-element">
+                    <label class="igcp-utils__text--uppercase slds-form-element__label input-label" for="{!v.id}">Security Question 2 of 3</label>
+                    
+            
+                
+                
+                    <div class="slds-form-element__control">
+                        <ui:inputSelect class="igcp-input">
+                            <ui:inputSelectOption text="Select a security question" label="Select a security question" disabled="true" value="true"/>
+                            
+                             <ui:inputSelectOption text="What\'s your dogs name?" label="What\'s your dogs name?"/>
+                             
+                             <ui:inputSelectOption text="Where were you born?" label="Where were you born?"/>
+                             
+                             <ui:inputSelectOption text="What\'s your mothers maiden name??" label="What\'s your mothers maiden name??"/>
+                            
+                        </ui:inputSelect>
+                    </div>
+                </div>
+            
+                <div class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium">
+                    <label class="slds-form-element__label input-label igcp-utils__text--uppercase" for="input-id-01">Answer 2 
+                    </label>
+                    <div class="slds-form-element__control">
+                        <ui:inputText aura:id="text-input" label="" value="" placeholder="Answer1" class="slds-input igcp-input" required="false" />
+                    </div>
+                </div>    
+                
+                <div class="slds-form-element">
+                    <label class="igcp-utils__text--uppercase slds-form-element__label input-label" for="{!v.id}">Security Question 3 of 3</label>
+                    
+            
+                
+                
+                    <div class="slds-form-element__control">
+                        <ui:inputSelect class="igcp-input">
+                            <ui:inputSelectOption text="Select a security question" label="Select a security question" disabled="true" value="true"/>
+                            
+                             <ui:inputSelectOption text="What\'s your dogs name?" label="What\'s your dogs name?"/>
+                             
+                             <ui:inputSelectOption text="Where were you born?" label="Where were you born?"/>
+                             
+                             <ui:inputSelectOption text="What\'s your mothers maiden name??" label="What\'s your mothers maiden name??"/>
+                            
+                        </ui:inputSelect>
+                    </div>
+                </div>
+            
+                <div class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium">
+                    <label class="slds-form-element__label input-label igcp-utils__text--uppercase" for="input-id-01">Answer 3 
+                    </label>
+                    <div class="slds-form-element__control">
+                        <ui:inputText aura:id="text-input" label="" value="" placeholder="Answer1" class="slds-input igcp-input" required="false" />
+                    </div>
+                </div> 
+                
+                </div>   
+                
+                </div>
+                
+                <!--CTAS-->
+                <div class="igcp-utils__order--2 igcp-medium-utils__order--1 slds-m-horizontal--medium slds-medium-m-horizontal--zero slds-size_12-of-12 slds-medium-size_5-of-12">
+                        
+                        <button class="igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-button slds-button--neutral slds-p-vertical--xx-small slds-float_left">Cancel</button>
+                    </div>
+                    
+                    <div class="igcp-utils__display--none igcp-medium-utils__display--flex igcp-utils__order--2 slds-size_2-of-12"></div>
+                    
+                    <div class="igcp-utils__order--1 igcp-medium-utils__order--3 slds-m-horizontal--medium slds-medium-m-horizontal--zero slds-size_12-of-12 slds-medium-size_5-of-12">
+                       
+                        <button data-open="" class="igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-button slds-button--brand slds-p-vertical--xx-small slds-float_right">Next</button>
+                    </div>
+                    
+                
+            </div>
+        </div>
+        <div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
+    </div>
+</aura:component>

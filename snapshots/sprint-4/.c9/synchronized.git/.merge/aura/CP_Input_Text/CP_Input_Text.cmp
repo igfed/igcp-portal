@@ -1,0 +1,53 @@
+<aura:component >
+    
+    <aura:attribute name="label" type="String" />
+    <aura:attribute name="icon" type="String" />
+    <aura:attribute name="placeholder" type="String" default=""/>
+    <aura:attribute name="helpText" type="String"/>
+    <aura:attribute name="helpLink" type="String" default="#" />
+    <aura:attribute name="errorText" type="String" default="This is a required field" />
+    <aura:attribute name="required" type="Boolean" default="false" />
+    <aura:attribute name="class" type="String" default="igcp-input__text slds-form-element slds-clearfix" />
+    
+    <aura:attribute name="tooltip" type="String" />
+    
+    <aura:attribute name="instructions" type="List" />
+    
+    <aura:handler event="c:validateTextInputEvent" action="{!c.onValidate}" /> 
+
+    
+    <div class="{!'igcp-input__text slds-form-element slds-clearfix' + v.class}">
+        
+        <aura:renderIf isTrue="{!v.icon}">
+            <lightning:icon iconName="{!v.icon}" size="small" class="slds-m-right--xx-small" alternativeText="{!v.label}" />
+        </aura:renderIf>
+        
+        <label class="slds-form-element__label input-label igcp-utils__text--uppercase" for="input-id-01">{!v.label} 
+        </label>
+        
+        <aura:renderIf isTrue="{!v.tooltip}">
+            <c:CP_Tooltip_Icon id="tooltip_client-number"
+                tooltip="{!v.tooltip}"/>
+        </aura:renderIf>
+        
+        
+        <aura:renderIf isTrue="{!v.instructions}">
+            <ul class="igcp-utils__bullets--disc slds-m-bottom--xx-small">
+                <aura:iteration items="{!v.instructions}" var="item">
+                    <li class="igcp-utils__font-size--x-small">{!item}</li>
+                </aura:iteration>
+            </ul>
+        </aura:renderIf>
+        
+        <div class="slds-form-element__control">
+            <ui:inputText aura:id="text-input" label="" value="" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" />
+        </div>
+        
+        <aura:renderIf isTrue="{!v.helpText}">
+            <div class="igcp-input__help-link slds-float--right">
+                <a class="igcp-link__variant--a igcp-underline" href="{!v.helpLink}">{!v.helpText}</a>
+            </div>
+        </aura:renderIf>
+        
+    </div>
+</aura:component>

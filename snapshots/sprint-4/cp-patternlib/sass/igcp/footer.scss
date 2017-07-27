@@ -1,0 +1,60 @@
+//BEM convention
+//[namespace]-[block]__[element]--[modifier]
+//See https://seesparkbox.com/foundry/bem_by_example for details
+
+//Footer - all styling for global footer goes in here, much of the styling here now is a carry over from IG.com
+
+.THIS {
+
+    .#{$namespace}-footer {
+      padding-top: 0;
+      padding-bottom: token(spaceLarge);
+      
+        a {
+          color: $ig-white;
+        }
+      
+        .footer-link {
+          float: none;
+          position: relative;
+          top: 48px;
+          padding-top: token(spaceXxxSmall);
+          padding-bottom: token(spaceXxxSmall);
+        }
+        
+        .footer-link a {
+          font-family: token(whitneySemiBold);
+          letter-spacing: token(igLetterSpacing);
+          font-size: token(igLabelSmall);
+          text-decoration: none;
+          text-transform: uppercase;
+        }
+        
+        .footer-link a:first-child {
+          padding-left: 0;
+        }
+        
+        .footer-back-to-top-button {
+          padding-left: token(spaceLarge);
+          padding-right: token(spaceLarge);
+          margin-bottom: 0;
+        }
+        
+        .footer-navigation {
+          padding-left: token(spaceLarge);
+          padding-right: token(spaceLarge);
+          
+          .menu {
+            margin-top: -32px;    
+            margin-bottom: token(spaceSmall);
+          }
+        }
+        
+        &.site-footer .footer-copyright .footer-copyright-border-top .row .columns {
+          text-align: left;
+          border: 0;
+          padding-left: 0;
+          padding-right: 0;
+        }
+    }
+}

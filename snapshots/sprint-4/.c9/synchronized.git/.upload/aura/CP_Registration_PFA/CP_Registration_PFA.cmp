@@ -1,0 +1,42 @@
+<aura:component >
+    <div class="igcp-registration__pfa igcp-background__gradient"> 
+            <div class="igcp-utils__max-width--large igcp-utils__margin--zero-auto slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-bottom--none slds-p-around--medium slds-large-p-bottom--none">
+        
+            <div class="slds-size_12-of-12 slds-large-size_9-of-12">
+                
+                <div class="slds-size_12-of-12 slds-medium-size_9-of-12 slds-m-top--zero slds-medium-m-top--medium slds-large-m-top--none slds-m-bottom--medium slds-large-m-bottom--large slds-medium-p-left--xx-large">
+                    <h1>Register for an Online Access profile in 3 easy steps</h1>
+                    <p class="igcp-utils__display--none igcp-medium-utils__display--block">It takes just a few minutes to complete registration for an<br/>Online Access Profile. We will walk you through 3 easy steps:</p>
+                </div>
+                
+                <div class="slds-grid slds-wrap slds-size_12-of-12 slds-p-left--zero slds-medium-p-left--xx-large slds-p-right--zero slds-medium-p-right--medium slds-large-m-bottom--medium">
+                    
+                    <div class="igcp-registration__pfa--step slds-size_12-of-12 slds-medium-size_4-of-12 slds-p-right--zero slds-medium-p-right--medium">
+                        <div class="igcp-label--small">Step 1</div>
+                        
+                        <div class="igcp-underline--thick-grey igcp-utils__display--none igcp-medium-utils__display--block slds-m-top--xx-small"></div>
+                        <p class="igcp-utils__width--100">Linking your Investors Group accounts</p>
+                    </div>
+                    
+                    <div class="igcp-registration__pfa--step slds-size_12-of-12 slds-medium-size_4-of-12 slds-p-horizontal--zero slds-medium-p-horizontal--medium">
+                        <div class="igcp-label--small">Step 2</div>
+                        <div class="igcp-underline--thick-grey igcp-utils__display--none igcp-medium-utils__display--block slds-m-top--xx-small"></div>
+                        <p class="igcp-utils__width--100 igcp-large-utils__width--75">Creating your online profile</p>
+                    </div>
+                    
+                    <div class="igcp-registration__pfa--step slds-size_12-of-12 slds-medium-size_4-of-12 slds-p-horizontal--zero  slds-medium-p-horizontal--medium">
+                        <div class="igcp-label--small">Step 3</div>
+                        <div class="igcp-underline--thick-grey igcp-utils__display--none igcp-medium-utils__display--block slds-m-top--xx-small"></div>
+                        <p class="igcp-utils__width--100 igcp-large-utils__width--75">Accepting our Online Agreement</p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="igcp-utils__text-align--center igcp-large-utils__text-align--left slds-size_12-of-12 slds-large-size_3-of-12 slds-m-top--large slds-large-m-top--zero">
+                <div class="igcp-registration__pfa--monitor">
+                    <img class="igcp-utils__max-width--none" src="{!$Resource.patternlib + '/pattern-lib/images/monitor-full.png'}" />
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

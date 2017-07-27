@@ -1,0 +1,21 @@
+<aura:component >
+    
+    
+    <aura:attribute name="id" type="String" />
+    <aura:attribute name="copy" type="String" default="Tooltip copy required" />
+    
+    <!--See https://lightningdesignsystem.com/components/popovers/#flavor-nubbins to learn more about nubbin position options-->
+    <aura:attribute name="nubPosition" type="String" default="bottom-left" />
+    
+    <!--Right now I am using these offset values to position the tooltip, but I hope to use javascript later to get it to automatically position-->
+    <aura:attribute name="offsetX" type="String" default="-15px" />
+    <aura:attribute name="offsetY" type="String" default="-75px" />
+    
+    <aura:handler event="c:toggleTooltipEvent" action="{!c.toggleTooltip}" /> 
+    
+    <div id="{!v.id}" aura:id="{!v.id}" class="igcp-utils__fade--out igcp-utils__display--none" style="{!'position: absolute; top: ' + v.offsetY + '; left: ' + v.offsetX}">
+        <div class="{!'slds-popover slds-popover_tooltip slds-nubbin_' + v.nubPosition}" role="tooltip" >
+            <div class="slds-popover__body">{!v.copy}</div>
+        </div>
+    </div>
+</aura:component>

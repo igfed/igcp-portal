@@ -1,0 +1,18 @@
+<aura:component >
+    <aura:attribute name="icon" Type="String" />
+    <aura:attribute name="iconSize" Type="String" default="small"/>
+    <aura:attribute name="class" type="String" />
+    <aura:attribute name="buttonClass" type="String" default=""/>
+    <aura:attribute name="label" type="String" default="Back" />
+    
+    <div class="{!v.class}">
+        <button class="{!'igcp-utils__width--100 slds-button slds-button--brand slds-p-vertical--xx-small ' + v.buttonClass}">
+            
+            <aura:if isTrue="{!v.icon}">
+                <lightning:icon iconName="{!v.icon}" size="{!v.iconSize}" class="slds-m-right--xx-small" alternativeText="{!v.label}" />
+            </aura:if> 
+            
+            {!v.label}
+        </button>
+    </div>
+</aura:component>

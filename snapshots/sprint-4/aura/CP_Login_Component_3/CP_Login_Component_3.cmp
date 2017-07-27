@@ -1,0 +1,19 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <ltng:require styles="{!$Resource.patternlib + '/pattern-lib/styles/vendor.css'}"/>
+    <ltng:require styles="{!$Resource.patternlib + '/pattern-lib/styles/main.css'}"/>
+    
+    <div class="igcp-login slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-vertical--xx-large">
+        <div class="slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded">
+            <!--LOGIN
+            <c:CP_Login_Component_Col1_V2 />
+-->
+            <!--LOGIN TEST -->
+            <c:CP_Login_Component_Col1_RoryV1 />
+            <!--SPACER-->
+            <div class="slds-large-size--1-of-12 igcp-login--spacer"></div>
+            <!--REGISTER NOW-->
+            <c:CP_Login_Component_Col2_V2 />
+        </div>
+    </div>
+    
+</aura:component>

@@ -1,0 +1,8 @@
+<aura:component >
+    
+    <aura:attribute name="class" type="String" default="" />
+    
+    <div class="{!v.class}">
+        <a class="igcp-link__print igcp-label--small slds-size_12-of-12 slds-m-bottom--x-small"><lightning:icon iconName="utility:record" size="small" class="igcp-link__print--icon slds-m-right--xxx-small"/>Print</a>
+    </div>
+</aura:component>

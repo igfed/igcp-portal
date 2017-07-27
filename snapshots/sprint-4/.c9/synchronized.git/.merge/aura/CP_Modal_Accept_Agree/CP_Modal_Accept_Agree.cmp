@@ -1,0 +1,11 @@
+<aura:component >
+    
+    <aura:attribute name="class" type="String" default="" />
+    
+    <div class="{!'igcp-modal__accept-agree igcp-large-utils__display--none slds-grid slds-wrap slds-grid_align-center slds-grid_vertical-align-center' + v.class}">
+        
+        <c:CP_Input_Checkbox 
+            id="read-and-agree-mobile"
+            copy="I have read and agree to the above Terms and Conditions"/>
+    </div>
+</aura:component>

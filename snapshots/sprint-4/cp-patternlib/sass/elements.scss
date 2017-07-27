@@ -1,0 +1,57 @@
+//Elements - elements styling only, class specific styles should be placed in the igcp folder.
+
+.THIS {
+    
+    h1, h2, h3, h4 {
+        color: $ig-dark-blue;
+    }
+    
+    h1 {
+        font-family: token(whitneySemiBold);
+        font-size: $ig-m-label-small;
+        line-height: $ig-m-label-small;
+        letter-spacing: $ig-letter-spacing;
+        text-transform: uppercase;
+    }
+    
+    h2 {
+        font-family: token(whitneyBook);
+        font-size: $ig-m-h3;
+        line-height: $ig-m-h3-line-height;
+        text-transform: inherit;
+        text-transform: initial;
+        letter-spacing: $ig-letter-spacing;
+        
+    }
+    
+    h3 {
+        font-family: token(whitneyBook);
+        font-size: $ig-m-h3;
+        line-height: $ig-m-h3-line-height;
+        text-transform: inherit;
+        text-transform: initial;
+       
+    }
+    
+    h4 {
+        font-family: token(whitneyBook);
+        font-size: $ig-m-h4;
+        line-height: token(lineHeightText);
+        text-transform: inherit;
+        text-transform: initial;
+    }
+    
+    p {
+        font-family: token(whitneyBook);
+        font-size: $ig-m-p;
+        letter-spacing: $ig-letter-spacing;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    label {
+        border: none;
+    }
+}
