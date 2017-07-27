@@ -1,0 +1,13 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    
+    <aura:attribute name="date" type="String" default="" />
+    <aura:attribute name="message" type="String" default="" />
+    <aura:attribute name="cta" type="String" default="View Document" />
+    <aura:attribute name="ctaLink" type="String" default="" />
+    
+    <div class="igcp-alert--item slds-p-bottom--medium slds-m-bottom--medium">
+        <div class="igcp-label--small">{!v.date}</div>
+        <p>{!v.message}</p>
+        <a href="{!v.ctaLink}" class="igcp-link"><span class="igcp-underline igcp-utils__font--semibold">{!v.cta}</span><lightning:icon iconName="utility:chevronright" class="igcp-link__glyph--after" size="x-small" alternativeText="View Document" /></a>
+    </div>
+</aura:component>

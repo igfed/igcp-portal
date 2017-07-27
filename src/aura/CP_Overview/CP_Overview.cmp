@@ -1,0 +1,35 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+	
+	
+	<ltng:require 
+    styles="{!$Resource.slds + '/slds-lib/styles/salesforce-lightning-design-system.min.css'}"
+    />
+
+	<ltng:require styles="{!$Resource.igcpresources + '/igcp-resources/styles/vendor.css'}"/>
+    <ltng:require styles="{!$Resource.igcpresources + '/igcp-resources/styles/main.css'}"/>
+    <ltng:require styles="{!$Resource.igcpresources + '/igcp-resources/styles/igcp.css'}"/>
+	
+	<div class="igcp-overview igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-around--xx-small slds-large-p-around--medium"> 
+		<div class="slds-size_12-of-12">
+			<div class="slds-m-top--medium slds-large-m-top--none slds-m-bottom--large">
+				<h1>Hi Jasper, here's your overview</h1>
+			</div>
+		</div>
+
+		<div class="slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_8-of-12">
+			<div>    
+				<c:CP_Overview_Investments /> 
+				<c:CP_Overview_Mortgages />
+				<c:CP_Overview_Insurance />
+			</div>
+		</div>
+
+		<div class="slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_4-of-12">
+			<div>
+				<c:CP_Overview_Alerts />
+				<c:CP_Overview_CTA />
+			</div>
+		</div>
+
+	</div>
+</aura:component>

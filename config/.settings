@@ -1,0 +1,17 @@
+{
+    "projectName": "igcp-portal",
+    "username": "dave.boyle@investorsgroup.com.portaldev",
+    "id": "9204c690-720c-11e7-bfcb-8d13e739f8ce",
+    "namespace": "",
+    "orgType": "developer",
+    "loginUrl": "https://login.salesforce.com/",
+    "instanceUrl": "https://igportaldev--portaldev.cs14.my.salesforce.com",
+    "workspace": "C:\\Users\\boyled1\\Workspace\\mm_workspace",
+    "subscription": [
+        "ApexClass",
+        "ApexComponent",
+        "ApexPage",
+        "ApexTrigger",
+        "StaticResource"
+    ]
+}
