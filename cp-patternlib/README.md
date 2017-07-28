@@ -6,4 +6,4 @@ This is the standalone version of the IGCP Pattern Library, the primary differen
 
 1) Install Sass CLI: http://sass-lang.com/install
 2) Terminal into cp-patternlib
-3) Run: sass --watch main.scss:../resource-bundles/igcpresources.resource/igcp-resources/styles/igcp.css
+3) Run: sass --watch main.scss:../resource-bundles/cppatternlib.resource/cp-patternlib/styles/igcp.css

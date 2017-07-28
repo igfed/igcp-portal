@@ -54,7 +54,9 @@ p {
   letter-spacing: 0.8px; }
 
 body {
-  font-family: 'WhitneyBook', Arial, sans-serif; }
+  font-family: 'WhitneyBook', Arial, sans-serif;
+  background-image: url("../images/bg-tile.jpg");
+  background-repeat: repeat; }
 
 a {
   text-decoration: none; }

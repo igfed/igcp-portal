@@ -1,4 +1,4 @@
-/*! Lightning Design System 2.3.2 */
+/*! Lightning Design System 2.3.1 */
 @charset "UTF-8";
 /*!
  * Copyright (c) 2015-present, Salesforce.com, Inc. - All rights reserved.
@@ -76,6 +76,7 @@ audio:not([controls]) {
   display: none;
   height: 0; }
 
+[hidden],
 template {
   display: none; }
 
@@ -707,25 +708,25 @@ img {
  * display a “like” link. All button variations are built by adding another
  * class to `.slds-button`.
  *
- * Add the `.slds-button_neutral` class to create a neutral button, which
+ * Add the `.slds-button--neutral` class to create a neutral button, which
  * has a white background and gray border.
  *
  * Use a neutral icon button is for buttons with an icon on the left or
- * right (not for stateful buttons). Add the `.slds-button_neutral` class
+ * right (not for stateful buttons). Add the `.slds-button--neutral` class
  * to `.slds-button`.
  *
  * The SVG inside receives the `.slds-button__icon` class. You can position
- * the icon on the right or the left using `.slds-button__icon_right` or
- * `.slds-button__icon_left` , which apply the correct amount of space
+ * the icon on the right or the left using `.slds-button__icon--right` or
+ * `.slds-button__icon--left` , which apply the correct amount of space
  * between the icon and the text.
  *
- * To create the brand button, add the `.slds-button_brand` class to
+ * To create the brand button, add the `.slds-button--brand` class to
  * the `.slds-button` class.
  *
- * To create the destructive button, add the `.slds-button_destructive`
+ * To create the destructive button, add the `.slds-button--destructive`
  * class to the `.slds-button` class.
  *
- * Use the inverse button on dark backgrounds. Add the `.slds-button_inverse`
+ * Use the inverse button on dark backgrounds. Add the `.slds-button--inverse`
  * class to the `.slds-button` class.
  *
  * @summary This neutralizes all the base styles making it look like a text link
@@ -772,8 +773,7 @@ img {
   color: #d8dde6; }
 
 .slds-button:hover .slds-button__icon, .slds-button:focus .slds-button__icon, .slds-button:active .slds-button__icon, .slds-button[disabled] .slds-button__icon {
-  fill: currentColor;
-  pointer-events: none; }
+  fill: currentColor; }
 
 .slds-button + .slds-button-group,
 .slds-button + .slds-button-group-list {
@@ -1184,7 +1184,7 @@ a.slds-button--inverse:focus {
   display: block; }
 
 /**
- * Sizing for icon that sits inside button__icon
+ * Sizing for icon that sits inside button--icon
  *
  * @name with-icon
  * @selector .slds-button__icon
@@ -1620,7 +1620,7 @@ a.slds-button--inverse:focus {
   fill: white; }
 
 /**
- * @summary A parent class must be put on anything that contains a .slds-button__icon_hint so that the child reacts when the parent is hovered.
+ * @summary A parent class must be put on anything that contains a .slds-button__icon--hint so that the child reacts when the parent is hovered.
  *
  * @name icon-with-hint-hover
  * @selector .slds-button__icon_hint
@@ -1633,7 +1633,7 @@ a.slds-button--inverse:focus {
 
 /**
  * A parent class must be put on anything that contains
- * a .slds-button__icon_inverse-hint so that the child reacts
+ * a .slds-button__icon--inverse-hint so that the child reacts
  * when the parent is hovered. This is for a dark background.
  *
  * @selector .slds-button__icon_inverse-hint
@@ -3308,18 +3308,6 @@ a.slds-button--inverse:focus {
 .slds-icon-standard-macros {
   background-color: #47cfd2; }
 
-.slds-icon-standard-service-crew-member {
-  background-color: #7e8be4; }
-
-.slds-icon-standard-service-crew {
-  background-color: #fa975c; }
-
-.slds-icon-standard-contract-line-item {
-  background-color: #6ec06e; }
-
-.slds-icon-standard-quip-sheet {
-  background-color: #78db94; }
-
 /**
  * @selector .slds-icon
  * @restrict .slds-icon_container svg, svg
@@ -3814,7 +3802,7 @@ a.slds-button--inverse:focus {
   stroke-width: 0.95px;
   fill: transparent;
   stroke: #ccc;
-  transition: fill 0.4s ease-in-out, stroke 0.4s ease-in-out;
+  transition: fill 0.4s ease-in-out, stroke 0.4s ease-in-out;
   will-change: fill, stroke; }
 
 .slds-icon-strength[data-slds-strength="1"] circle:nth-child(1),
@@ -4405,7 +4393,7 @@ a.slds-button--inverse:focus {
    * @group position
    */
   /**
-   * Positions .slds-input__icon_left to the left of the text input and .slds-input__icon_right to the right of the text input
+   * Positions .slds-input__icon--left to the left of the text input and .slds-input__icon--right to the right of the text input
    *
    * @selector .slds-input-has-icon_left-right
    * @restrict .slds-input-has-icon
@@ -4451,7 +4439,7 @@ a.slds-button--inverse:focus {
      * @restrict .slds-input__icon
      */
   /**
-     * Hook for .slds-input-has-icon_left-right
+     * Hook for .slds-input-has-icon--left-right
      *
      * @selector .slds-input__icon_right
      * @restrict .slds-input__icon
@@ -6468,7 +6456,6 @@ a.slds-button--inverse:focus {
  * @selector .slds-panel_filters
  * @restrict .slds-panel
  * @variant
- * @s1 false
  */
 .slds-panel_filters,
 .slds-panel--filters {
@@ -7864,7 +7851,6 @@ a.slds-button--inverse:focus {
  * @selector .slds-combobox-picklist
  * @restrict div
  * @variant
- * @s1 false
  */
 .slds-picklist {
   position: relative;
@@ -11130,7 +11116,6 @@ a.slds-button--inverse:focus {
  * @restrict div
  * @required
  * @variant
- * @s1 false
  */
 .slds-path-coach {
   border: transparent 1px solid;
@@ -11362,7 +11347,7 @@ a.slds-button--inverse:focus {
   min-width: 5rem;
   text-align: center;
   perspective: 500px;
-  transition: transform 0.1s ease-in-out, background-color 0.1s linear; }
+  transition: transform 0.1s ease-in-out, background-color 0.1s linear; }
 
 .slds-tabs_path__item:first-child,
 .slds-tabs--path__item:first-child {
@@ -12773,18 +12758,18 @@ a.slds-button--inverse:focus {
 /**
  * The default tab set style encapsulates everything that is underneath it
  * without enclosing it visually. Initialize a default tab set by applying the
- * `.slds-tab_default` class to the containing `<div>` around the tab list and
- * tab panels. The `<ul>` element also requires the class `.slds-tab_default__nav`
+ * `.slds-tab--default` class to the containing `<div>` around the tab list and
+ * tab panels. The `<ul>` element also requires the class `.slds-tab--default__nav`
  * to prevent styles from bleeding into nested tabs.
  *
  * The overflow tab style is provided as a tab item type that acts as a menu
  * component and appears as a tab item. It could contain those tab items that
  * don't all fit in a horizontal orientation. Initialize a default tab set and
  * in the last tab item of the set, apply the additional classes `slds-dropdown-trigger`
- * and `.slds-tabs__item_overflow`. Include an `<a>` element to contain the
+ * and `.slds-tabs__item--overflow`. Include an `<a>` element to contain the
  * tab item label like the other tab items. After the `<a>` element, the
  * `.slds-dropdown` segment of a search overflow menu component is used. The
- * `slds-dropdown__list` element also then requires a `slds-dropdown_length-X`
+ * `slds-dropdown__list` element also then requires a `slds-dropdown--length-X`
  * class, where X is the number of items to show in it.
  *
  * @summary Initializes a default tablist
@@ -12987,9 +12972,9 @@ a.slds-button--inverse:focus {
 
 /**
  * A scoped tabset style has a closed container with a defined border. Initialize
- * a scoped tab set by applying the `.slds-tab_scoped` class to the containing
+ * a scoped tab set by applying the `.slds-tab--scoped` class to the containing
  * `<div>` around the tab list and tab panels. The `<ul>` element also requires
- * the class `.slds-tab_scoped__nav` to prevent styles from bleeding into nested tabs.
+ * the class `.slds-tab--scoped__nav` to prevent styles from bleeding into nested tabs.
  *
  * @summary Initializes scoped tabs
  *
@@ -14015,7 +14000,7 @@ a.slds-button--inverse:focus {
   cursor: default; }
 
 /**
- * A figure component is a self-contained unit of content, such as an image with an optional caption. The figure component should NOT be used with icons or logos. A figure can optionally be cropped to a specific ratio such as 16x9, 4x3 and 1x1 with the use of `.slds-image__crop` and passing in a ratio class such as `.slds-image__crop_16-by-9`.
+ * A figure component is a self-contained unit of content, such as an image with an optional caption. The figure component should NOT be used with icons or logos. A figure can optionally be cropped to a specific ratio such as 16x9, 4x3 and 1x1 with the use of `.slds-image__crop` and passing in a ratio class such as `.slds-image__crop--16-by-9`.
  *
  * @summary Initializes a file component
  *
@@ -14526,7 +14511,7 @@ a.slds-button--inverse:focus {
  * Actionable area inside th
  *
  * @selector .slds-th__action
- * @restrict .slds-table_fixed-layout th div, .slds-table_fixed-layout th a
+ * @restrict .slds-table_fixed-layout th div, .slds-table--fixed-layout th a
  */
 .slds-th__action {
   display: -ms-flexbox;
@@ -14947,7 +14932,7 @@ a.slds-button--inverse:focus {
  * Informs a table cell that it has editing capabilities
  *
  * @selector .slds-cell-edit
- * @restrict .slds-table_edit th, .slds-table_edit td
+ * @restrict .slds-table_edit th, .slds-table--edit td
  */
 .slds-cell-edit {
   outline: 0;
@@ -15154,7 +15139,6 @@ a.slds-button--inverse:focus {
  * @restrict div
  * @support dev-ready
  * @variant
- * @s1 false
  */
 .slds-tree-container,
 .slds-tree_container {
@@ -15326,7 +15310,6 @@ a.slds-button--inverse:focus {
  * @selector .slds-table_tree
  * @restrict .slds-tree
  * @variant
- * @s1 false
  */
 .slds-table_tree .slds-tree__item,
 .slds-table--tree .slds-tree__item {
@@ -15620,7 +15603,7 @@ a.slds-button--inverse:focus {
         align-items: stretch; } }
 
 /**
- * @summary Normalizes the 0.75rem of padding when nesting a grid in a region with `.slds-p-horizontal_small`
+ * @summary Normalizes the 0.75rem of padding when nesting a grid in a region with `.slds-p-horizontal--small`
  *
  * @selector .slds-grid_pull-padded
  * @modifier
@@ -15631,7 +15614,7 @@ a.slds-button--inverse:focus {
   margin-left: -0.75rem; }
 
 /**
- * @summary Normalizes the 0.125rem of padding when nesting a grid in a region with `.slds-p-horizontal_xxx-small`
+ * @summary Normalizes the 0.125rem of padding when nesting a grid in a region with `.slds-p-horizontal--xxx-small`
  *
  * @selector .slds-grid_pull-padded-xxx-small
  * @modifier
@@ -15642,7 +15625,7 @@ a.slds-button--inverse:focus {
   margin-left: -0.125rem; }
 
 /**
- * @summary Normalizes the 0.25rem of padding when nesting a grid in a region with `.slds-p-horizontal_xx-small`
+ * @summary Normalizes the 0.25rem of padding when nesting a grid in a region with `.slds-p-horizontal--xx-small`
  *
  * @selector .slds-grid_pull-padded-xx-small
  * @modifier
@@ -15653,7 +15636,7 @@ a.slds-button--inverse:focus {
   margin-left: -0.25rem; }
 
 /**
- * @summary Normalizes the 0.5rem of padding when nesting a grid in a region with `.slds-p-horizontal_x-small`
+ * @summary Normalizes the 0.5rem of padding when nesting a grid in a region with `.slds-p-horizontal--x-small`
  *
  * @selector .slds-grid_pull-padded-x-small
  * @modifier
@@ -15664,7 +15647,7 @@ a.slds-button--inverse:focus {
   margin-left: -0.5rem; }
 
 /**
- * @summary Normalizes the 0.75rem of padding when nesting a grid in a region with `.slds-p-horizontal_small`
+ * @summary Normalizes the 0.75rem of padding when nesting a grid in a region with `.slds-p-horizontal--small`
  *
  * @selector .slds-grid_pull-padded-small
  * @modifier
@@ -15675,7 +15658,7 @@ a.slds-button--inverse:focus {
   margin-left: -0.75rem; }
 
 /**
- * @summary Normalizes the 1rem of padding when nesting a grid in a region with `.slds-p-horizontal_medium`
+ * @summary Normalizes the 1rem of padding when nesting a grid in a region with `.slds-p-horizontal--medium`
  *
  * @selector .slds-grid_pull-padded-medium
  * @modifier
@@ -15686,7 +15669,7 @@ a.slds-button--inverse:focus {
   margin-left: -1rem; }
 
 /**
- * @summary Normalizes the 1.5rem of padding when nesting a grid in a region with `.slds-p-horizontal_large`
+ * @summary Normalizes the 1.5rem of padding when nesting a grid in a region with `.slds-p-horizontal--large`
  *
  * @selector .slds-grid_pull-padded-large
  * @modifier
@@ -17077,7 +17060,7 @@ a.slds-button--inverse:focus {
 /**
  * Used in combination with `.slds-text-link--reset`, you can apply the class `.slds-text-link` to a child element to reset its styles back to that of a link.
  *
- * @summary Makes text inside of .slds-text-link_reset to appear as a link.
+ * @summary Makes text inside of .slds-text-link--reset to appear as a link.
  *
  * @selector .slds-text-link
  * @modifier
