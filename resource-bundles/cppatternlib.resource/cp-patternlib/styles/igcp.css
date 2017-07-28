@@ -2600,7 +2600,7 @@ label {
   .igcp-large-utils__order--5 {
     order: 5; } }
 .igcp-background {
-  background-image: url("/resource/login_assets/login/images/bg-tile.jpg");
+  background-image: url("../images/bg-tile.jpg");
   background-repeat: repeat; }
 
 .igcp-container {
@@ -2608,7 +2608,6 @@ label {
 
 .igcp-wrapper {
   max-width: 1280px;
-  min-height: 618px;
   margin: 0 auto; }
 
 .igcp-input__help-link {

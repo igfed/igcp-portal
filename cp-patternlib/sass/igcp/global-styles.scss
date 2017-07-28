@@ -4,7 +4,7 @@
 //Global Styles - specific styles for elements that can be used globally, I may break these styles into sub categories down the road if this file gets too big 
 
 .#{$namespace}-background {
-    background-image: url('/resource/login_assets/login/images/bg-tile.jpg');
+    background-image: url('../images/bg-tile.jpg');
     background-repeat: repeat;
 }
 
@@ -13,8 +13,7 @@
 }
 
 .#{$namespace}-wrapper {
-    max-width: $ig-x-large; //Footer is currently 150px high, so 768 - 150
-    min-height: 618px;
+    max-width: $ig-x-large;
     margin: 0 auto;
 }
 
