@@ -38,19 +38,29 @@ $ig-breakpoints: (
 );
 
 //Sizing - Margin/Padding/Icon Size etc.
+$ig-space--xx-large: 60px;
+$ig-space--x-large: 40px;
+$ig-space--large: 32px;
+$ig-space--medium: 24px;
+$ig-space--small: 16px;
+$ig-space--x-small: 12px;
+$ig-space--xx-small: 8px;
+$ig-space--xxx-small: 4px;
+
 $ig-sizes: (
-    xx-large token(spaceXxLarge),
-    x-large token(spaceXLarge),
-    large token(spaceLarge),
-    medium token(spaceMedium),
-    small token(spaceSmall),
-    x-small token(spaceXSmall),
-    xx-small token(spaceXxSmall),
-    xxx-small token(spaceXxxSmall),
+    xx-large $ig-space--xx-large,
+    x-large $ig-space--x-large,
+    large $ig-space--large,
+    medium $ig-space--medium,
+    small $ig-space--small,
+    x-small $ig-space--x-small,
+    xx-small $ig-space--xx-small,
+    xxx-small $ig-space--xxx-small,
     zero 0
 );
 
 //Typography
+//Desktop
 $ig-h1: 36px;
 $ig-h1-line-height: 46px;
 
@@ -68,6 +78,7 @@ $ig-p-small: 12px;
 $ig-label: 16px;
 $ig-label-small: 12px;
 
+//Mobile
 $ig-m-h1: 28px;
 $ig-m-h1-line-height: 38px;
 
@@ -85,6 +96,7 @@ $ig-m-p-small: 12px;
 $ig-m-label: 16px;
 $ig-m-label-small: 12px;
 
+$ig-line-height-text: 26px;
 $ig-letter-spacing: 0.8px;
 
 //Mobile nav

@@ -1,0 +1,6 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <div class="slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+         <h3 class="igcp-label--small slds-m-bottom--none slds-large-m-bottom--x-small">Total Value</h3>
+         <div class="igcp-value--large slds-m-bottom--small slds-large-m-bottom--none"><sup>$</sup>153,954.82</div>
+    </div>
+</aura:component>

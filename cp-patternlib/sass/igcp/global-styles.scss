@@ -4,377 +4,364 @@
 
 //Global Styles - specific styles for elements that can be used globally, I may break these styles into sub categories down the road if this file gets too big 
 
-.THIS {
-  
-    .#{$namespace}-container {
-      background-color: #fff;
-    }
-  
-    .#{$namespace}-wrapper {
-      max-width: $ig-x-large;
-      //Footer is currently 150px high, so 768 - 150
-      min-height: 618px;
-      margin: 0 auto;
-    }
-    
-    .#{$namespace}-input__help-link {
-      font-family: token(whitneyBook);
-      letter-spacing: token(igLetterSpacing);
-      font-size: token(igLabelSmall);
-    }
-    
-    .#{$namespace}-input {
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      border-radius: 0;
-      margin-bottom: 0;
-      border-bottom: 1px solid $ig-dark-grey;
-    }
-    
-    .#{$namespace}-input__password {
-      
-      //Have to put this here because 
-      //I don't have access to the ui component 
-      //to give it a unique igcp class name
-      .slds-icon-utility-info {
+.#{$namespace}-background {
+    background-image: url('../images/bg-tile.jpg');
+    background-repeat: repeat;
+}
+
+.#{$namespace}-container {
+    background-color: #fff;
+}
+
+.#{$namespace}-wrapper {
+    max-width: $ig-x-large;
+    margin: 0 auto;
+}
+
+.#{$namespace}-input__help-link {
+    font-family: 'WhitneyBook', Arial, sans-serif;
+    letter-spacing: $ig-letter-spacing;
+    font-size: $ig-label-small;
+}
+
+.#{$namespace}-input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid $ig-dark-grey;
+}
+
+.#{$namespace}-input__password {
+
+    //Have to put this here because 
+    //I don't have access to the ui component 
+    //to give it a unique igcp class name
+    .slds-icon-utility-info {
         top: 0;
-      }
     }
-    
-    .#{$namespace}-link {
-      font-family: token(whitneyBook);
-      font-size: token(spaceXSmall);
-      letter-spacing: token(igLetterSpacing);
-      text-transform: uppercase;
+}
+
+.#{$namespace}-link {
+    font-family: 'WhitneyBook', Arial, sans-serif;
+    font-size: $ig-space--x-small;
+    letter-spacing: $ig-letter-spacing;
+    text-transform: uppercase;
+}
+
+.#{$namespace}-link__variant--a {
+    font-family: 'WhitneySemiBold', Arial, sans-serif;
+    font-size: $ig-space--x-small;
+    letter-spacing: $ig-letter-spacing;
+    text-transform: capitalize;
+}
+
+.#{$namespace}-link__glyph--after {
+    position: relative;
+    top: -1px;
+    padding-left: $ig-space--xxx-small;
+}
+
+.#{$namespace}-underline {
+    border-bottom: 1px solid $ig-grey;
+}
+
+.#{$namespace}-underline--thick-blue {
+    border-bottom: $ig-space--xx-small solid $ig-dark-blue;
+    transform-origin: left bottom;
+    transform: skewX(25deg);
+}
+
+.#{$namespace}-underline--white {
+    border-bottom: 1px solid $ig-white;
+}
+
+.#{$namespace}-underline--thick-white {
+    border-bottom: 3px solid $ig-white;
+}
+
+.#{$namespace}-underline--thick-grey {
+    border-bottom: 3px solid $ig-grey;
+}
+
+.#{$namespace}-value--large {
+    font-family: 'WhitneyLight', Arial, sans-serif;
+    line-height: $ig-line-height-text;
+    font-size: $ig-m-h1;
+
+    sup {
+        font-size: 70%;
+        top: -0.25em;
     }
-    
-    .#{$namespace}-link__variant--a {
-      font-family: token(whitneySemiBold);
-      font-size: token(spaceXSmall);
-      letter-spacing: token(igLetterSpacing);
-      text-transform: capitalize;
-    }
-    
-    .#{$namespace}-link__glyph--after {
-        position: relative;
-        top: -1px;
-        padding-left: token(spaceXxxSmall);
-    }
-    
-    .#{$namespace}-underline {
-      border-bottom: 1px solid $ig-grey;
-    }
-    
-    .#{$namespace}-underline--thick-blue {
-      border-bottom: token(spaceXxSmall) solid $ig-dark-blue;
-      transform-origin: left bottom;
-      transform: skewX(25deg);
-    }
-    
-    .#{$namespace}-underline--white {
-      border-bottom: 1px solid $ig-white;
-    }
-    
-    .#{$namespace}-underline--thick-white {
-      border-bottom: 3px solid $ig-white;
-    }
-    
-    .#{$namespace}-underline--thick-grey {
-      border-bottom: 3px solid $ig-grey;
-    }
-    
-    .#{$namespace}-value--large {
-      font-family: token(whitneyLight);
-      line-height: token(lineHeightText);
-      font-size: $ig-m-h1;
-      
-      sup {
-            font-size: 70%;
-            top: -0.25em;
-      }
-    }
-    
-    .#{$namespace}-value--medium {
-      line-height: token(lineHeightText);
-      font-size: $ig-h2;
-    }
-    
-    .#{$namespace}-value--small {
-      line-height: token(lineHeightText);
-      font-size: $ig-h3;
-    }
-    
-    .#{$namespace}-value--x-small {
-      line-height: token(lineHeightText);
-      font-size: $ig-h4;
-    }
-    
-    .#{$namespace}-value--gain {
-      color: $ig-dark-green;
-    }
-    
-    .#{$namespace}-value--gain use {
-      fill: $ig-dark-green;
-    }
-    
-    .#{$namespace}-value--loss {
-      color: $ig-red;
-    }
-    
-    .#{$namespace}-value--loss use {
-      fill: $ig-dark-green;
-    }
-    
-    .#{$namespace}-arrow--up {
-      position: relative;
-      top: -8px;
-    }
-    
-    .#{$namespace}-arrow--down {
-      position: relative;
-      top: -8px;
-    }
-    
-    .#{$namespace}-percentage--large {
-      font-size: 45%;
-    }
-    
-    .#{$namespace}-horizontal-rule {
-      border-bottom: 1px solid #fff;
-      width: 100%;
-      height: token(spaceLarge);
-    }
-    
-    .#{$namespace}-separator--large {
-      width: 100%;
-      height: token(spaceXxSmall);
-      background-color: $ig-light-grey;
-    }
-    
-    .#{$namespace}-label {
-      font-family: token(whitneySemiBold);
-      font-size: token(spaceSmall);
-      letter-spacing: token(igLetterSpacing);
-      text-transform: uppercase;
-    }
-    
-    .#{$namespace}-label--small {
-      font-family: token(whitneySemiBold);
-      font-size: token(spaceXSmall);
-      letter-spacing: token(igLetterSpacing);
-      text-transform: uppercase;
-    }
-    
-    .#{$namespace}-account-arrow--right {
-      position: relative;
-      left: 35px;
-    }
-    
-    .#{$namespace}-account--total div {
-      
-      span {
+}
+
+.#{$namespace}-value--medium {
+    line-height: $ig-line-height-text;
+    font-size: $ig-h2;
+}
+
+.#{$namespace}-value--small {
+    line-height: $ig-line-height-text;
+    font-size: $ig-h3;
+}
+
+.#{$namespace}-value--x-small {
+    line-height: $ig-line-height-text;
+    font-size: $ig-h4;
+}
+
+.#{$namespace}-value--gain {
+    color: $ig-dark-green;
+}
+
+.#{$namespace}-value--gain use {
+    fill: $ig-dark-green;
+}
+
+.#{$namespace}-value--loss {
+    color: $ig-red;
+}
+
+.#{$namespace}-value--loss use {
+    fill: $ig-dark-green;
+}
+
+.#{$namespace}-arrow--up {
+    position: relative;
+    top: -8px;
+}
+
+.#{$namespace}-arrow--down {
+    position: relative;
+    top: -8px;
+}
+
+.#{$namespace}-percentage--large {
+    font-size: 45%;
+}
+
+.#{$namespace}-horizontal-rule {
+    border-bottom: 1px solid #fff;
+    width: 100%;
+    height: $ig-space--large;
+}
+
+.#{$namespace}-separator--large {
+    width: 100%;
+    height: $ig-space--xx-small;
+    background-color: $ig-light-grey;
+}
+
+.#{$namespace}-label {
+    font-family: 'WhitneySemiBold', Arial, sans-serif;
+    font-size: $ig-space--small;
+    letter-spacing: $ig-letter-spacing;
+    text-transform: uppercase;
+}
+
+.#{$namespace}-label--small {
+    font-family: 'WhitneySemiBold', Arial, sans-serif;
+    font-size: $ig-space--x-small;
+    letter-spacing: $ig-letter-spacing;
+    text-transform: uppercase;
+}
+
+.#{$namespace}-account-arrow--right {
+    position: relative;
+    left: 35px;
+}
+
+.#{$namespace}-account--total div {
+
+    span {
         font-size: $ig-h3;
         border-bottom: 2px solid $ig-dark-blue;
-      }
     }
-    
-    .#{$namespace}-alert--item {
-      border-bottom: 1px solid $ig-grey;
-      
-      &:last-child {
+}
+
+.#{$namespace}-alert--item {
+    border-bottom: 1px solid $ig-grey;
+
+    &:last-child {
         border-bottom: none;
         margin-bottom: 0 !important;
         padding-bottom: 0 !important;
-      }
-      
-      p {
-        font-size: token(spaceXSmall);
-      }
     }
-    
-    .#{$namespace}-cta {
-      background-color: $ig-beige;
+
+    p {
+        font-size: $ig-space--x-small;
     }
-    
-    .#{$namespace}-card {
-      border: none;
-      background: transparent;
+}
+
+.#{$namespace}-cta {
+    background-color: $ig-beige;
+}
+
+.#{$namespace}-card {
+    border: none;
+    background: transparent;
+}
+
+.#{$namespace}-card__link {
+    position: relative;
+    top: -4px;
+}
+
+.#{$namespace}-card__image {
+    width: 50%;
+}
+
+.#{$namespace}-background__gradient {
+    background: rgba(247, 248, 249, 1);
+    background: -moz-linear-gradient(top, rgba(247, 248, 249, 1) 0%, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(247, 248, 249, 1)), color-stop(0%, rgba(219, 219, 219, 1)), color-stop(100%, rgba(255, 255, 255, 1)));
+    background: -webkit-linear-gradient(top, rgba(247, 248, 249, 1) 0%, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    background: -o-linear-gradient(top, rgba(247, 248, 249, 1) 0%, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(247, 248, 249, 1) 0%, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    background: linear-gradient(to bottom, rgba(247, 248, 249, 1) 0%, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f8f9', endColorstr='#ffffff', GradientType=0);
+}
+
+.#{$namespace}-progress-indicator {
+
+
+    .#{$namespace}-progress-indicator__step {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -15px;
+        margin-left: -3px;
     }
-    
-    .#{$namespace}-card__link {
-        position: relative;
-        top: -4px;
-      }
-    
-    .#{$namespace}-card__image {
-        width: 50%;
-    }
-    
-    .#{$namespace}-background__gradient {
-      background: rgba(247,248,249,1);
-      background: -moz-linear-gradient(top, rgba(247,248,249,1) 0%, rgba(219,219,219,1) 0%, rgba(255,255,255,1) 100%);
-      background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(247,248,249,1)), color-stop(0%, rgba(219,219,219,1)), color-stop(100%, rgba(255,255,255,1)));
-      background: -webkit-linear-gradient(top, rgba(247,248,249,1) 0%, rgba(219,219,219,1) 0%, rgba(255,255,255,1) 100%);
-      background: -o-linear-gradient(top, rgba(247,248,249,1) 0%, rgba(219,219,219,1) 0%, rgba(255,255,255,1) 100%);
-      background: -ms-linear-gradient(top, rgba(247,248,249,1) 0%, rgba(219,219,219,1) 0%, rgba(255,255,255,1) 100%);
-      background: linear-gradient(to bottom, rgba(247,248,249,1) 0%, rgba(219,219,219,1) 0%, rgba(255,255,255,1) 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f8f9', endColorstr='#ffffff', GradientType=0 );
-    }
-    
-    .#{$namespace}-progress-indicator {
-      
-      
-      .#{$namespace}-progress-indicator__step {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          margin-top: -15px;
-          margin-left: -3px;
-      }
-      
-      .#{$namespace}-progress-indicator__step--complete {
+
+    .#{$namespace}-progress-indicator__step--complete {
         margin-top: -16px;
         margin-left: -10px;
-      }
     }
-    
-    .#{$namespace}-list {
-      dt {
-        padding-top: 5px;
-      }
-    }
-    
-    .#{$namespace}-button__chat {
-      
-      float: right;
+}
 
-      padding-top: token(spaceXxSmall);
-      padding-bottom: token(spaceXxSmall);
-      
-      border-radius: token(spaceMedium);
-      background-clip: padding-box;
-      
-      .slds-icon_container {
+.#{$namespace}-list {
+    dt {
+        padding-top: 5px;
+    }
+}
+
+.#{$namespace}-button__chat {
+
+    float: right;
+
+    padding-top: $ig-space--xx-small;
+    padding-bottom: $ig-space--xx-small;
+
+    border-radius: $ig-space--medium;
+    background-clip: padding-box;
+
+    .slds-icon_container {
         top: -2px;
         position: relative;
-      }
-      
-       svg {
-         fill: $ig-white;
-       } 
     }
-    
-    .#{$namespace}-modal {
-      .#{$namespace}-modal__button--close {
+
+    svg {
+        fill: $ig-white;
+    }
+}
+
+.#{$namespace}-modal {
+    .#{$namespace}-modal__button--close {
         position: relative;
         float: right;
-      }
     }
-    
-    .#{$namespace}-modal__accept-agree {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 72px;
-      background-color: $ig-grey;
-    }
-    
-    .#{$namespace}-link__print {
-      
-      .#{$namespace}-link__print--icon {
+}
+
+.#{$namespace}-modal__accept-agree {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 72px;
+    background-color: $ig-grey;
+}
+
+.#{$namespace}-link__print {
+
+    .#{$namespace}-link__print--icon {
         position: relative;
         top: -3px;
-      }
     }
-    
-    .#{$namespace}-tooltip {
-      
-      display: inline-block;
-      
-      .#{$namespace}-tooltip__tip {
+}
+
+.#{$namespace}-tooltip {
+
+    display: inline-block;
+
+    .#{$namespace}-tooltip__tip {
         border: none;
-      }
     }
-    
-    .#{$namespace}-tooltip__opened {
-      position: absolute;
-      top: calc(100% + .6495rem);
-      z-index: 1200;
-      max-width: 10rem;
-      padding: .75rem;
-      border-radius: 5px;
-      font-size: 80%;
-      color: $ig-white;
-      background-color: $ig-dark-blue;
+}
+
+.#{$namespace}-tooltip__opened {
+    position: absolute;
+    top: calc(100% + .6495rem);
+    z-index: 1200;
+    max-width: 10rem;
+    padding: .75rem;
+    border-radius: 5px;
+    font-size: 80%;
+    color: $ig-white;
+    background-color: $ig-dark-blue;
+}
+
+
+//Not sure if we're actually using this, 
+//will investigate later
+.#{$namespace}-checkbox {
+    position: absolute; // take it out of document flow
+    opacity: 0; // hide it
+    &+label {
+        position: relative;
+        cursor: pointer;
+        padding: 0;
+    } // Box.
+    &+label:before {
+        content: '';
+        margin-right: 10px;
+        display: inline-block;
+        vertical-align: text-top;
+        width: 20px;
+        height: 20px;
+        background: white;
+    } // Box hover
+    &:hover+label:before {
+        background: #f35429;
+    } // Box focus
+    &:focus+label:before {
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+    } // Box checked
+    &:checked+label:before {
+        background: #f35429;
+    } // Disabled state label.
+    &:disabled+label {
+        color: #b8b8b8;
+        cursor: auto;
+    } // Disabled box.
+    &:disabled+label:before {
+        box-shadow: none;
+        background: #ddd;
+    } // Checkmark. Could be replaced with an image
+    &:checked+label:after {
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 9px;
+        background: white;
+        width: 2px;
+        height: 2px;
+        box-shadow: 2px 0 0 white,
+        4px 0 0 white,
+        4px -2px 0 white,
+        4px -4px 0 white,
+        4px -6px 0 white,
+        4px -8px 0 white;
+        transform: rotate(45deg);
     }
-    
-    .#{$namespace}-checkbox {
-        position: absolute; // take it out of document flow
-        opacity: 0; // hide it
-      
-        & + label {
-          position: relative;
-          cursor: pointer;
-          padding: 0;
-        }
-      
-        // Box.
-        & + label:before {
-          content: '';
-          margin-right: 10px;
-          display: inline-block;
-          vertical-align: text-top;
-          width: 20px;
-          height: 20px;
-          background: white;
-        }
-      
-        // Box hover
-        &:hover + label:before {
-          background: #f35429;
-        }
-        
-        // Box focus
-        &:focus + label:before {
-          box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
-        }
-      
-        // Box checked
-        &:checked + label:before {
-          background: #f35429;
-        }
-        
-        // Disabled state label.
-        &:disabled + label {
-          color: #b8b8b8;
-          cursor: auto;
-        }
-      
-        // Disabled box.
-        &:disabled + label:before {
-          box-shadow: none;
-          background: #ddd;
-        }
-      
-        // Checkmark. Could be replaced with an image
-        &:checked + label:after {
-          content: '';
-          position: absolute;
-          left: 5px;
-          top: 9px;
-          background: white;
-          width: 2px;
-          height: 2px;
-          box-shadow: 
-            2px 0 0 white,
-            4px 0 0 white,
-            4px -2px 0 white,
-            4px -4px 0 white,
-            4px -6px 0 white,
-            4px -8px 0 white;
-          transform: rotate(45deg);
-        }
-      }
 }

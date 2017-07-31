@@ -1,0 +1,44 @@
+{
+    "igcpresources.resource": {
+        "createdById": "005c0000003JAXuAAO",
+        "createdByName": "Dave Boyle",
+        "createdDate": "2017-07-26T21:04:33.000Z",
+        "fileName": "unpackaged/staticresources/igcpresources.resource",
+        "fullName": "igcpresources",
+        "id": "081c00000001G0FAAU",
+        "lastModifiedById": "005c0000003JAXuAAO",
+        "lastModifiedByName": "Dave Boyle",
+        "lastModifiedDate": "2017-07-28T14:43:26.000Z",
+        "manageableState": "unmanaged",
+        "type": "StaticResource",
+        "mmState": "clean"
+    },
+    "cppatternlib.resource": {
+        "createdById": "005c0000003JAXuAAO",
+        "createdByName": "Dave Boyle",
+        "createdDate": "2017-07-28T14:13:28.000Z",
+        "fileName": "unpackaged/staticresources/cppatternlib.resource",
+        "fullName": "cppatternlib",
+        "id": "081c00000001GeFAAU",
+        "lastModifiedById": "005c0000003JAXuAAO",
+        "lastModifiedByName": "Dave Boyle",
+        "lastModifiedDate": "2017-07-28T15:03:47.000Z",
+        "manageableState": "unmanaged",
+        "type": "StaticResource",
+        "mmState": "clean"
+    },
+    "slds.resource": {
+        "createdById": "005c0000003JAXuAAO",
+        "createdByName": "Dave Boyle",
+        "createdDate": "2017-07-26T21:06:33.000Z",
+        "fileName": "unpackaged/staticresources/slds.resource",
+        "fullName": "slds",
+        "id": "081c00000001G0KAAU",
+        "lastModifiedById": "005c0000003JAXuAAO",
+        "lastModifiedByName": "Dave Boyle",
+        "lastModifiedDate": "2017-07-28T18:12:23.000Z",
+        "manageableState": "unmanaged",
+        "type": "StaticResource",
+        "mmState": "clean"
+    }
+}

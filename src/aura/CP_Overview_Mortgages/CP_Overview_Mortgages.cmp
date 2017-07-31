@@ -1,0 +1,22 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    
+    <aura:attribute name="accountTitle" type="String" />
+    <aura:attribute name="accountType" type="String" />
+    <aura:attribute name="accountTotal" type="String" />
+    
+    <aura:attribute name="mortgages" type="List" default="[{ name : 'Fixed Rate', val1 : '3.5%', val2: '$18,899.45'}]" />
+    
+    <div class="igcp-container slds-p-around--small slds-large-p-around--medium slds-m-bottom--x-small slds-large-m-bottom--medium">
+        <h2 class="slds-m-top--small slds-m-bottom--medium">Mortgage</h2>
+        <div class="slds-grid slds-wrap">
+             
+             <c:CP_Overview_Account 
+                col1Name="Interest"
+                col2Name="Balance"
+                accountType="Registered"
+                accountTotal="$18,078.34"
+                accounts="{!v.mortgages}"/>
+             
+         </div>
+    </div>
+</aura:component>

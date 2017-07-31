@@ -1,0 +1,39 @@
+# Ignore all hidden dotfiles
+.*
+
+# Whitelist useful dotfiles
+!/.scss-linters/
+!/.babelrc
+!/.editorconfig
+!/.eslintignore
+!/.eslintrc.yml
+!/.gitattributes
+!/.gitignore
+!/.hound.yml
+!/.scss-lint.yml
+!/.stylelintrc.yml
+!/.sldsrc.defaults.yml
+!/.stylestatsrc
+!/.travis.yml
+
+# Add a .gitkeep file in an empty
+# directory to check it in the repository
+!.gitkeep
+
+# Ignore generated styles
+/assets/styles
+
+# Ignore modules
+/node_modules
+
+# Ignore logs
+*.log
+
+# Ignore code coverage reports
+coverage
+
+# Ignore tokens distribution
+/design-tokens/dist
+
+# Legacy folders
+/git_modules
