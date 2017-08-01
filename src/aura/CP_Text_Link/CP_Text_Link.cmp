@@ -1,0 +1,17 @@
+<aura:component >
+	
+	<aura:attribute  name="label" type="String" />
+	<aura:attribute  name="class" type="String" default="" />
+	<aura:attribute  name="linkClass" type="String" default="igcp-link" />
+	<aura:attribute  name="icon" type="String" />
+	<aura:attribute  name="iconSize" Type="String" default="small"/>
+
+	<div class="{!v.class}">
+		<a class="{!v.linkClass}">
+			<aura:renderIf isTrue="{!v.icon}">
+                <lightning:icon iconName="{!v.icon}" size="{!v.iconSize}" class="slds-m-right--xx-small" alternativeText="{!v.label}" />
+            </aura:renderIf> 
+			{!v.label}
+		</a>
+	</div>
+</aura:component>

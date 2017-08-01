@@ -1,7 +1,0 @@
-<aura:component >
-	<ltng:require scripts="{!join(',', 
-    	$Resource.patternlib + '/pattern-lib/scripts/jquery.js',
-    	$Resource.patternlib + '/pattern-lib/scripts/what-input.js',
-    	$Resource.patternlib + '/pattern-lib/scripts/foundation.js')}" 
-	afterScriptsLoaded="{!c.scriptsLoaded}"/>
-</aura:component>

@@ -9,13 +9,13 @@ imports:
 - "../../../../design-tokens/force-base/aliases/color.yml"
 props:
   COLOR_BACKGROUND_BUTTON_BRAND:
-    value: "{!SCIENCE_BLUE}"
+    value: "{!IG_DARK_BLUE}"
     comment: Brandable primary button
   COLOR_BACKGROUND_BUTTON_BRAND_ACTIVE:
     value: "{!MIDNIGHT_BLUE}"
     comment: Brandable primary button - active state
   COLOR_BACKGROUND_BUTTON_BRAND_HOVER:
-    value: "{!ENDEAVOUR}"
+    value: "{!IG_DARK_BLUE}"
     comment: Brandable primary button - hover state
   COLOR_BACKGROUND_BUTTON_BRAND_DISABLED:
     value: "{!STEAM}"

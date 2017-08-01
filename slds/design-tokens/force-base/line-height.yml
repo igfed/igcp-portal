@@ -12,7 +12,7 @@ props:
     value: '1.25'
     comment: Unitless line-heights for reusability
   LINE_HEIGHT_TEXT:
-    value: '1.375'
+    value: '26px'
     comment: Unitless line-heights for reusability
   LINE_HEIGHT_RESET:
     value: '1'

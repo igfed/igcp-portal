@@ -11,10 +11,10 @@ imports:
 - ./aliases/font-family.yml
 props:
   FONT_FAMILY:
-    value: '{!SANS_SERIF}'
+    value: '{!WHITNEY_LIGHT}'
     deprecated: true
     comment: 'Deprecated: use FONT_FAMILY_TEXT instead for regular body text and FONT_FAMILY_HEADING for headings.'
   FONT_FAMILY_TEXT:
-    value: '{!SANS_SERIF}'
+    value: '{!WHITNEY_BOOK}'
   FONT_FAMILY_HEADING:
-    value: '{!SANS_SERIF}'
+    value: '{!WHITNEY_LIGHT}'

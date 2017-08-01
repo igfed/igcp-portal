@@ -11,7 +11,7 @@ imports:
 - ./aliases/color.yml
 props:
   COLOR_BORDER:
-    value: '{!GEYSER}'
+    value: '{!WHITE}'
     cssProperties:
     - 'border*'
     - box-shadow
@@ -123,7 +123,7 @@ props:
     value: '{!WHITE_TRANSPARENT_75}'
     comment: Hovered border color for a button with an icon that has a parent element that has a hover state
   COLOR_BORDER_BUTTON_BRAND:
-    value: '{!SCIENCE_BLUE}'
+    value: '{!IG_DARK_BLUE}'
     comment: Border color for brandable primary button
   COLOR_BORDER_BUTTON_BRAND_DISABLED:
     value: '{!TRANSPARENT}'
@@ -135,10 +135,10 @@ props:
     value: '{!WHITE_TRANSPARENT_15}'
     comment: Border color for disabled inverse button.
   COLOR_BORDER_INPUT:
-    value: '{!GEYSER}'
+    value: '{!IG_DARK_BLUE_20}'
     comment: Border color on form elements.
   COLOR_BORDER_INPUT_ACTIVE:
-    value: '{!AZURE}'
+    value: '{!IG_DARK_BLUE_20}'
     comment: Border color on active form elements.
   COLOR_BORDER_INPUT_DISABLED:
     value: '{!CADET_BLUE}'

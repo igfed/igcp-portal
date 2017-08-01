@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
-		<members>CP_Overview</members>
-		<members>CP_Overview_Investments</members>
-		<members>CP_Overview_Total_Value</members>
-		<members>CP_Overview_Gain_Loss</members>
-		<members>CP_Overview_Account</members>
-		<members>CP_Overview_Account_Heading</members>
-		<members>CP_Overview_Account_Item</members>
-		<members>CP_Overview_Mortgages</members>
-		<members>CP_Overview_Insurance</members>
-		<members>CP_Overview_Alerts</members>
-		<members>CP_Overview_Alert_Item</members>
-		<members>CP_Overview_CTA</members>
-		<members>CP_Card</members>
+		<members>CP_Account_Details</members>
+		<members>CP_CSS_Includes</members>
+		<members>CP_Text_Link</members>
+		<members>CP_Total_Value</members>
+		<members>CP_Gain_Loss</members>
+		<members>CP_Card_Performance</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<version>36.0</version>

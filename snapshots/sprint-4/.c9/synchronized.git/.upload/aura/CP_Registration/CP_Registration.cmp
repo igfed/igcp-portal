@@ -1,5 +1,0 @@
-<aura:component >
-    <div class="igcp-registration">
-        <c:CP_Registration_Step2_orig />
-    </div>
-</aura:component>

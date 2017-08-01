@@ -1,3 +1,0 @@
-<aura:event type="COMPONENT">
-    <aura:attribute name="isVisible" type="Boolean" default="false" />
-</aura:event>

@@ -1,0 +1,42 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+
+	<aura:attribute name="accountTitle" type="String" default="RRSP" ></aura:attribute>
+
+	<aura:attribute  name="accountNumber" type="String" default="3110863"></aura:attribute>
+
+	<c:CP_CSS_Includes />
+
+	<div class="igcp-overview igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-around--xx-small slds-large-p-around--medium">
+		
+		<div class="slds-size_12-of-12">
+			<div class="slds-m-top--medium slds-large-m-top--none slds-m-bottom--large">
+
+				<c:CP_Text_Link class="slds-float_left" linkClass="igcp-link__variant--a igcp-utils__text--uppercase" icon="utility:left" label="Overview" />
+
+				<c:CP_Text_Link class="slds-float_right" linkClass="igcp-link__variant--a igcp-utils__text--uppercase" icon="utility:table" label="View Statement" />
+
+			</div>
+		</div>
+
+		<div class="slds-size_12-of-12">
+			<h1 class="">{!v.accountTitle}</h1>
+			<!-- <div class="">- {!v.accountNumber}</div> -->
+		</div>
+
+		<div class="slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_8-of-12">
+			<div class="igcp-container slds-p-around--small slds-large-p-around--medium slds-m-bottom--x-small slds-large-m-bottom--medium">
+				<div class="slds-grid slds-wrap">
+
+					<c:CP_Total_Value label="Market Value" value="52,520.44" />
+					<c:CP_Gain_Loss label="Gain / Loss" value="2,363.41" percentage="4.5" />
+
+					<div class="igcp-separator--large slds-size_12-of-12 slds-m-vertical--xxx-small slds-large-m-vertical--large "></div>
+				</div>
+			</div>
+		</div>
+		<div class="slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_4-of-12">
+
+			<c:CP_Card_Performance />
+		</div>
+	</div>
+</aura:component>

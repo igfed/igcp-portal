@@ -1,7 +1,0 @@
-@function getNamespace($v) {
-    @if nth($v, 1) == default {
-        @return $namespace
-    } @else {
-        @return "#{$namespace}-#{nth($v, 1)}"
-    }
-}

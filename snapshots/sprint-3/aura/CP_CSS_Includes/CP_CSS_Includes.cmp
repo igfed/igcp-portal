@@ -1,5 +1,0 @@
-<aura:component >
-    
-	<ltng:require styles="{!$Resource.patternlib + '/pattern-lib/styles/vendor.css'}"/>
-    <ltng:require styles="{!$Resource.patternlib + '/pattern-lib/styles/main.css'}"/>
-</aura:component>

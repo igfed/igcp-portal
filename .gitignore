@@ -44,5 +44,13 @@ dwsync.xml
 .CVS
 .idea
 
-#node
+# Node
 node_modules
+
+#Lightning config
+config
+.debug
+.lightning
+.local_store
+.describe
+.settings

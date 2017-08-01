@@ -1,9 +1,9 @@
 //BEM convention
 //[namespace]-[block]__[element]--[modifier]
 //See https://seesparkbox.com/foundry/bem_by_example for details
-
 //Global Styles - specific styles for elements that can be used globally, I may break these styles into sub categories down the road if this file gets too big 
 
+//GENERAL
 .#{$namespace}-background {
     background-image: url('../images/bg-tile.jpg');
     background-repeat: repeat;
@@ -18,12 +18,34 @@
     margin: 0 auto;
 }
 
-.#{$namespace}-input__help-link {
-    font-family: 'WhitneyBook', Arial, sans-serif;
-    letter-spacing: $ig-letter-spacing;
-    font-size: $ig-label-small;
+.#{$namespace}-percentage--large {
+    font-size: 45%;
 }
 
+.#{$namespace}-horizontal-rule {
+    border-bottom: 1px solid #fff;
+    width: 100%;
+    height: $ig-space--large;
+}
+
+.#{$namespace}-separator--large {
+    width: 100%;
+    height: $ig-space--xx-small;
+    background-color: $ig-light-grey;
+}
+
+.#{$namespace}-background__gradient {
+    background: rgba(247, 248, 249, 1);
+    background: -moz-linear-gradient(top, rgba(247, 248, 249, 1) 0%, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(247, 248, 249, 1)), color-stop(0%, rgba(219, 219, 219, 1)), color-stop(100%, rgba(255, 255, 255, 1)));
+    background: -webkit-linear-gradient(top, rgba(247, 248, 249, 1) 0%, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    background: -o-linear-gradient(top, rgba(247, 248, 249, 1) 0%, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(247, 248, 249, 1) 0%, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    background: linear-gradient(to bottom, rgba(247, 248, 249, 1) 0%, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f8f9', endColorstr='#ffffff', GradientType=0);
+}
+
+//INPUT
 .#{$namespace}-input {
     border-top: none;
     border-left: none;
@@ -31,6 +53,12 @@
     border-radius: 0;
     margin-bottom: 0;
     border-bottom: 1px solid $ig-dark-grey;
+}
+
+.#{$namespace}-input__help-link {
+    font-family: 'WhitneyBook', Arial, sans-serif;
+    letter-spacing: $ig-letter-spacing;
+    font-size: $ig-label-small;
 }
 
 .#{$namespace}-input__password {
@@ -43,18 +71,17 @@
     }
 }
 
+//LINK
 .#{$namespace}-link {
     font-family: 'WhitneyBook', Arial, sans-serif;
     font-size: $ig-space--x-small;
     letter-spacing: $ig-letter-spacing;
-    text-transform: uppercase;
 }
 
 .#{$namespace}-link__variant--a {
     font-family: 'WhitneySemiBold', Arial, sans-serif;
     font-size: $ig-space--x-small;
     letter-spacing: $ig-letter-spacing;
-    text-transform: capitalize;
 }
 
 .#{$namespace}-link__glyph--after {
@@ -63,6 +90,15 @@
     padding-left: $ig-space--xxx-small;
 }
 
+.#{$namespace}-link__print {
+
+    .#{$namespace}-link__print--icon {
+        position: relative;
+        top: -3px;
+    }
+}
+
+//UNDERLINE
 .#{$namespace}-underline {
     border-bottom: 1px solid $ig-grey;
 }
@@ -85,6 +121,7 @@
     border-bottom: 3px solid $ig-grey;
 }
 
+//VALUE
 .#{$namespace}-value--large {
     font-family: 'WhitneyLight', Arial, sans-serif;
     line-height: $ig-line-height-text;
@@ -127,6 +164,8 @@
     fill: $ig-dark-green;
 }
 
+
+//ARROW
 .#{$namespace}-arrow--up {
     position: relative;
     top: -8px;
@@ -137,22 +176,8 @@
     top: -8px;
 }
 
-.#{$namespace}-percentage--large {
-    font-size: 45%;
-}
 
-.#{$namespace}-horizontal-rule {
-    border-bottom: 1px solid #fff;
-    width: 100%;
-    height: $ig-space--large;
-}
-
-.#{$namespace}-separator--large {
-    width: 100%;
-    height: $ig-space--xx-small;
-    background-color: $ig-light-grey;
-}
-
+//LABEL
 .#{$namespace}-label {
     font-family: 'WhitneySemiBold', Arial, sans-serif;
     font-size: $ig-space--small;
@@ -167,6 +192,8 @@
     text-transform: uppercase;
 }
 
+
+//ACCOUNT
 .#{$namespace}-account-arrow--right {
     position: relative;
     left: 35px;
@@ -180,6 +207,7 @@
     }
 }
 
+//ALERT
 .#{$namespace}-alert--item {
     border-bottom: 1px solid $ig-grey;
 
@@ -194,10 +222,14 @@
     }
 }
 
+
+//CTA
 .#{$namespace}-cta {
     background-color: $ig-beige;
 }
 
+
+//CARD
 .#{$namespace}-card {
     border: none;
     background: transparent;
@@ -212,17 +244,8 @@
     width: 50%;
 }
 
-.#{$namespace}-background__gradient {
-    background: rgba(247, 248, 249, 1);
-    background: -moz-linear-gradient(top, rgba(247, 248, 249, 1) 0%, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(247, 248, 249, 1)), color-stop(0%, rgba(219, 219, 219, 1)), color-stop(100%, rgba(255, 255, 255, 1)));
-    background: -webkit-linear-gradient(top, rgba(247, 248, 249, 1) 0%, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 100%);
-    background: -o-linear-gradient(top, rgba(247, 248, 249, 1) 0%, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 100%);
-    background: -ms-linear-gradient(top, rgba(247, 248, 249, 1) 0%, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 100%);
-    background: linear-gradient(to bottom, rgba(247, 248, 249, 1) 0%, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f8f9', endColorstr='#ffffff', GradientType=0);
-}
 
+//PROGRESS INDICATOR
 .#{$namespace}-progress-indicator {
 
 
@@ -240,12 +263,14 @@
     }
 }
 
+//LIST
 .#{$namespace}-list {
     dt {
         padding-top: 5px;
     }
 }
 
+//BUTTON
 .#{$namespace}-button__chat {
 
     float: right;
@@ -266,6 +291,7 @@
     }
 }
 
+//MODAL
 .#{$namespace}-modal {
     .#{$namespace}-modal__button--close {
         position: relative;
@@ -282,14 +308,7 @@
     background-color: $ig-grey;
 }
 
-.#{$namespace}-link__print {
-
-    .#{$namespace}-link__print--icon {
-        position: relative;
-        top: -3px;
-    }
-}
-
+//TOOLTIP
 .#{$namespace}-tooltip {
 
     display: inline-block;
@@ -309,59 +328,4 @@
     font-size: 80%;
     color: $ig-white;
     background-color: $ig-dark-blue;
-}
-
-
-//Not sure if we're actually using this, 
-//will investigate later
-.#{$namespace}-checkbox {
-    position: absolute; // take it out of document flow
-    opacity: 0; // hide it
-    &+label {
-        position: relative;
-        cursor: pointer;
-        padding: 0;
-    } // Box.
-    &+label:before {
-        content: '';
-        margin-right: 10px;
-        display: inline-block;
-        vertical-align: text-top;
-        width: 20px;
-        height: 20px;
-        background: white;
-    } // Box hover
-    &:hover+label:before {
-        background: #f35429;
-    } // Box focus
-    &:focus+label:before {
-        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
-    } // Box checked
-    &:checked+label:before {
-        background: #f35429;
-    } // Disabled state label.
-    &:disabled+label {
-        color: #b8b8b8;
-        cursor: auto;
-    } // Disabled box.
-    &:disabled+label:before {
-        box-shadow: none;
-        background: #ddd;
-    } // Checkmark. Could be replaced with an image
-    &:checked+label:after {
-        content: '';
-        position: absolute;
-        left: 5px;
-        top: 9px;
-        background: white;
-        width: 2px;
-        height: 2px;
-        box-shadow: 2px 0 0 white,
-        4px 0 0 white,
-        4px -2px 0 white,
-        4px -4px 0 white,
-        4px -6px 0 white,
-        4px -8px 0 white;
-        transform: rotate(45deg);
-    }
 }

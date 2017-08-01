@@ -1,7 +1,6 @@
 //BEM convention
 //[namespace]-[block]__[element]--[modifier]
 //See https://seesparkbox.com/foundry/bem_by_example for details
-
 //Utils - contains generic classes that can used on any element, generally should contain only one property, before adding new classes here, ensure that the SLDS(https://lightningdesignsystem.com/) does not already have the class you need. 
 @each $value in $ig-breakpoints {
 

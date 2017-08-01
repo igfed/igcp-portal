@@ -3,3 +3,6 @@
 
 aliases:
   SANS_SERIF: "'Salesforce Sans', Arial, sans-serif"
+  WHITNEY_BOOK: "'WhitneyBook', Arial, sans-serif"
+  WHITNEY_LIGHT: "'WhitneyLight', Arial, sans-serif"
+  WHITNEY_SEMIBOLD: "'WhitneySemiBold', Arial, sans-serif"
