@@ -1,8 +1,0 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
-    <div class="slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
-         <h3 class="igcp-label--small slds-m-bottom--none slds-large-m-bottom--x-small">Gain / Loss</h3>
-         <div class="igcp-value--large igcp-value--gain slds-m-bottom--small slds-large-m-bottom--none"><sup>$</sup>20,794.53<span class="igcp-percentage--large">(+8.5%)</span>
-             <sup><lightning:icon iconName="utility:arrowup" size="x-small" class="igcp-arrow--up igcp-value--gain" /></sup>
-         </div>
-    </div>
-</aura:component>
