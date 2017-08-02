@@ -23,6 +23,16 @@
 		<members>CP_Header_Signed_In</members>
 		<members>CP_Header_Signed_Out</members>
 		<members>CP_Footer</members>
+		<members>CP_Cmp_Total_Value</members>
+		<members>CP_Cmp_Card</members>
+		<members>CP_Cmp_Card_Performance</members>
+		<members>CP_Cmp_Footer</members>
+		<members>CP_Cmp_Gain_Loss</members>
+		<members>CP_Cmp_Header_Signed_In</members>
+		<members>CP_Cmp_Header_Signed_Out</members>
+		<members>CP_Cmp_Text_Link</members>
+		<members>CP_Cmp_Name_Value_List</members>
+		<members>CP_Cmp_Name_Value_Item</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<version>36.0</version>

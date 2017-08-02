@@ -2033,6 +2033,9 @@ label {
   .igcp-utils__line-height--regular {
     line-height: 26px; }
 
+  .igcp-utils__text--default {
+    text-transform: none; }
+
   .igcp-utils__text--uppercase {
     text-transform: uppercase; }
 
@@ -2180,6 +2183,9 @@ label {
 
   .igcp-small-utils__line-height--regular {
     line-height: 26px; }
+
+  .igcp-small-utils__text--default {
+    text-transform: none; }
 
   .igcp-small-utils__text--uppercase {
     text-transform: uppercase; }
@@ -2329,6 +2335,9 @@ label {
   .igcp-medium-utils__line-height--regular {
     line-height: 26px; }
 
+  .igcp-medium-utils__text--default {
+    text-transform: none; }
+
   .igcp-medium-utils__text--uppercase {
     text-transform: uppercase; }
 
@@ -2476,6 +2485,9 @@ label {
 
   .igcp-large-utils__line-height--regular {
     line-height: 26px; }
+
+  .igcp-large-utils__text--default {
+    text-transform: none; }
 
   .igcp-large-utils__text--uppercase {
     text-transform: uppercase; }
@@ -2723,14 +2735,6 @@ label {
 
 .igcp-value--loss use {
   fill: #008a2a; }
-
-.igcp-arrow--up {
-  position: relative;
-  top: -8px; }
-
-.igcp-arrow--down {
-  position: relative;
-  top: -8px; }
 
 .igcp-label {
   font-family: 'WhitneySemiBold', Arial, sans-serif;

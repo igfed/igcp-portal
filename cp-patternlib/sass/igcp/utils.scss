@@ -30,6 +30,10 @@
             line-height: $ig-line-height-text;
         }
 
+        .#{getNamespace($value)}-utils__text--default {
+            text-transform: none;
+        }
+
         .#{getNamespace($value)}-utils__text--uppercase {
             text-transform: uppercase;
         }

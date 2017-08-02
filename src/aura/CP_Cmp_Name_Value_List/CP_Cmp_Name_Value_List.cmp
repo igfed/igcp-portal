@@ -1,0 +1,15 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+	
+	<aura:attribute name="class" type="String" default=""></aura:attribute>
+	<aura:attribute name="values" type="Map" ></aura:attribute>
+	<aura:attribute  name="termClass" type="String" default="igcp-label--small"></aura:attribute>
+	<aura:attribute  name="descriptionClass" type="String" default="" ></aura:attribute>
+	
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	
+	<div class="{!'igcp-list ' + v.class}">
+		<dl class="slds-list_horizontal slds-wrap">
+			{!v.body}
+		</dl>
+	</div>
+</aura:component>
