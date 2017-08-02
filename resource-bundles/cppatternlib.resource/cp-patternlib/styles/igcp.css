@@ -1752,7 +1752,10 @@ label {
     margin-right: auto; }
 
 .top-bar {
-  padding: 0; }
+  padding: 0;
+  background-color: transparent; }
+  .top-bar ul {
+    background-color: transparent; }
   .top-bar .top-bar-left, .top-bar .top-bar-right {
     width: auto; }
   .top-bar .top-bar-left {
@@ -1977,7 +1980,8 @@ label {
 
 .igcp-footer {
   padding-top: 0;
-  padding-bottom: 32px; }
+  padding-bottom: 32px;
+  background-color: #0d263c; }
   .igcp-footer a {
     color: #fff; }
   .igcp-footer .footer-link {

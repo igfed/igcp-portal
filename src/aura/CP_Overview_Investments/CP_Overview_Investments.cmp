@@ -15,8 +15,13 @@
          <h2 class="slds-large-m-top--small slds-large-m-bottom--medium">Investments</h2>
          <div class="slds-grid slds-wrap">
              
-             <c:CP_Total_Value />
-             <c:CP_Gain_Loss />
+             <c:CP_Total_Value 
+             	label="Total Value"
+             	value="234,456"/>
+             <c:CP_Gain_Loss 
+             	label="Gain / Loss"
+             	value="20,789"
+             	percentage="8.5"/>
 
              <c:CP_Overview_Account accountTitle="Investors Group Financial Services Inc."
                 accountType="Registered"

@@ -18,6 +18,11 @@
 		<members>CP_Overview_Mortgages</members>
 		<members>CP_Text_Link</members>
 		<members>CP_Total_Value</members>
+		<members>szdfsdfg</members>
+		<members>Client_Portal_Theme_Layout</members>
+		<members>CP_Header_Signed_In</members>
+		<members>CP_Header_Signed_Out</members>
+		<members>CP_Footer</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<version>36.0</version>

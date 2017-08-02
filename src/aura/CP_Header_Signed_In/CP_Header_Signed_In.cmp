@@ -1,0 +1,45 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+  <header role="banner" class="igcp-header">
+    <nav class="igcp-nav">
+      <div class="top-bar">
+        
+        
+        <div class="igcp-hamburger igcp-medium-utils__hide float-left" data-toggle="igcp-mobile-nav--left">
+            <button type="button" ><lightning:icon iconName="utility:rows" alternativeText="Mobile Navigation Button" /></button>
+        </div>
+        
+        
+        <div class="top-bar-left">
+          <div class="igcp-nav__logo float-left">
+            <a class="home-link" href="/">
+            <img class="igcp-utils__hide igcp-medium-utils__show--inline-block" src="{!$Resource.igcpresources + '/igcp-resources/images/IG_EN.svg'}" alt="" />
+            
+            <img class="igcp-utils__show--inline-block igcp-medium-utils__hide" src="{!$Resource.igcpresources + '/igcp-resources/images/IG_EN_M.svg'}" alt="" />
+            </a>
+          </div>
+          
+          <ul class="menu float-right igcp-utils__hide igcp-medium-utils-show--block">
+            <li role="menuitem"><a class="igcp-nav__link igcp-nav__link--selected igcp-utils__text--uppercase" href="#">My Accounts</a></li>
+            <li role="menuitem"><a class="igcp-nav__link igcp-utils__text--uppercase" href="#">Activities</a></li>
+            <li role="menuitem"><a class="igcp-nav__link igcp-utils__text--uppercase" href="#">Documents</a></li>
+            <li role="menuitem"><a class="igcp-nav__link igcp-utils__text--uppercase" href="#">Help</a></li>
+          </ul>
+          
+        </div>
+        
+        <div class="top-bar-right">
+          <ul class="menu">
+          
+            <li class="igcp-utils__hide igcp-medium-utils__show--table-cell"><a class="igcp-nav__link" href="#"><lightning:icon iconName="utility:identity" size="x-small" alternativeText="Contact Advisor" /></a></li>
+            
+            <li class="igcp-utils__hide igcp-medium-utils__show--table-cell"><a class="igcp-nav__link" href="#"><lightning:icon iconName="utility:notification" size="x-small" alternativeText="Notifications" /></a></li>
+            
+            <li class="igcp-utils__hide igcp-medium-utils__show--table-cell"><a class="igcp-nav__link" href="#"><lightning:icon iconName="utility:user" size="x-small" alternativeText="User" /><span class="igcp-nav__username">Jasper</span></a></li>
+            
+            <li class="igcp-medium-utils__hide" data-toggle="igcp-mobile-nav--right"><a class="igcp-nav__link" href="#"><lightning:icon iconName="utility:user" size="small" alternativeText="User" /></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+</aura:component>
