@@ -1,0 +1,9 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+	
+	<aura:attribute name="label" type="String" ></aura:attribute>
+	<aura:attribute name="description" type="String" ></aura:attribute>
+	
+	<dt class="igcp-list__item-label--b" title="{!v.label}">{!v.label}</dt>
+	<dd class="igcp-list__item-detail--b" title="{!v.description}">{!v.description}</dd>
+
+</aura:component>

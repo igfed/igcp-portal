@@ -2,8 +2,8 @@
 	
 	<aura:attribute name="class" type="String" default=""></aura:attribute>
 	<aura:attribute name="values" type="Map" ></aura:attribute>
-	<aura:attribute  name="termClass" type="String" default="igcp-label--small"></aura:attribute>
-	<aura:attribute  name="descriptionClass" type="String" default="" ></aura:attribute>
+	<aura:attribute  name="variant" type="String" default="b" ></aura:attribute>
+
 	
 	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 	

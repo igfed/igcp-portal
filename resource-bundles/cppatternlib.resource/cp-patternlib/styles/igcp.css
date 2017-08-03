@@ -2789,8 +2789,18 @@ label {
   margin-top: -16px;
   margin-left: -10px; }
 
-.igcp-list dt {
+.igcp-list .igcp-list__item-label--a {
   padding-top: 5px; }
+.igcp-list .igcp-list__item-label--b {
+  font-family: "WhitneyBook", Arial, sans-serif;
+  font-weight: normal;
+  text-transform: capitalize;
+  width: 50%; }
+.igcp-list .igcp-list__item-detail--b {
+  font-family: "WhitneySemibold", Arial, sans-serif;
+  font-weight: normal;
+  width: 50%;
+  text-align: right; }
 
 .igcp-button__chat {
   float: right;

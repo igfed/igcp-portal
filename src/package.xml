@@ -33,6 +33,8 @@
 		<members>CP_Cmp_Text_Link</members>
 		<members>CP_Cmp_Name_Value_List</members>
 		<members>CP_Cmp_Name_Value_Item</members>
+		<members>CP_Cmp_Name_Value_Item_B</members>
+		<members>CP_Cmp_Name_Value_Item_A</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<version>36.0</version>
