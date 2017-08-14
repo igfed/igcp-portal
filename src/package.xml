@@ -35,6 +35,15 @@
 		<members>CP_Cmp_Name_Value_Item</members>
 		<members>CP_Cmp_Name_Value_Item_B</members>
 		<members>CP_Cmp_Name_Value_Item_A</members>
+		<members>CP_Account_Investment_Profile</members>
+		<members>CP_Table</members>
+		<members>CP_Cmp_Table</members>
+		<members>Cp_Cmp_Table_Header</members>
+		<members>Cp_Cmp_Table_Row</members>
+		<members>CP_Cmp_Input_Text</members>
+		<members>CP_Evt_Validate_Text_Input</members>
+		<members>CP_Test_Input_Validation</members>
+		<members>CP_Cmp_Button</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<version>36.0</version>

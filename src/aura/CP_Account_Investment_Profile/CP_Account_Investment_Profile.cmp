@@ -1,0 +1,28 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+	
+	<div class="igcp-container slds-p-around--medium slds-m-bottom--medium">
+		<h3 class="slds-m-bottom--small">Investment Profile</h3>
+		<dl class="igcp-list slds-grid slds-wrap">
+			<div class="slds-size_3-of-12 ">
+				<dt class="igcp-list__item-label--c slds-item_label slds-truncate" title="First Label">Investment Profile</dt>
+				<dd class="igcp-list__item-detail--c slds-item_detail slds-truncate" title="Description for first label">Moderate</dd>
+		    </div>
+
+		    <div class="slds-size_3-of-12 ">
+				<dt class="igcp-list__item-label--c slds-item_label slds-truncate" title="Second Label">Investment Objective</dt>
+				<dd class="igcp-list__item-detail--c slds-item_detail slds-truncate" title="Description for second label">Retirement Savings</dd>
+			</div>
+			<div class="slds-size_3-of-12 ">
+				<dt class="igcp-list__item-label--c slds-item_label slds-truncate" title="First Label">Risk Tolerance</dt>
+				<dd class="igcp-list__item-detail--c slds-item_detail slds-truncate" title="Description for first label">High</dd>
+		    </div>
+
+		    <div class="slds-size_3-of-12 ">
+				<dt class="igcp-list__item-label--c slds-item_label slds-truncate" title="Second Label">Investment Time Horizon</dt>
+				<dd class="igcp-list__item-detail--c slds-item_detail slds-truncate" title="Description for second label">5 - 10 yrs</dd>
+			</div>
+		</dl>
+
+	</div>
+	
+</aura:component>

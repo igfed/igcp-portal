@@ -270,6 +270,17 @@
     	width: 50%;
     	text-align: right;
     }
+
+    .#{$namespace}-list__item-label--c {
+    	font-family: $ig-whitney-book;
+    	font-weight: normal;
+    	margin-bottom: 0;
+    }
+
+    .#{$namespace}-list__item-detail--c {
+    	font-family: $ig-whitney-semibold;
+    	font-weight: normal;
+    }
 }
 
 //BUTTON

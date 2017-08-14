@@ -56,7 +56,8 @@ p {
 body {
   font-family: 'WhitneyBook', Arial, sans-serif;
   background-image: url("../images/bg-tile.jpg");
-  background-repeat: repeat; }
+  background-repeat: repeat;
+  color: #0d263c; }
 
 a {
   color: #0d263c;
@@ -64,6 +65,12 @@ a {
 
 label {
   border: none; }
+
+[type=button], [type=submit] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem; }
 
 @media (min-width: 768px) {
   h1 {
@@ -103,7 +110,7 @@ label {
   font-family: 'WhitneySemiBold', Arial, sans-serif;
   font-size: 12px;
   letter-spacing: 0.8px;
-  text-transform: uppercase; }
+  text-transform: capitalize; }
 
 .slds-button--neutral {
   background-color: transparent; }
@@ -2801,6 +2808,13 @@ label {
   font-weight: normal;
   width: 50%;
   text-align: right; }
+.igcp-list .igcp-list__item-label--c {
+  font-family: "WhitneyBook", Arial, sans-serif;
+  font-weight: normal;
+  margin-bottom: 0; }
+.igcp-list .igcp-list__item-detail--c {
+  font-family: "WhitneySemibold", Arial, sans-serif;
+  font-weight: normal; }
 
 .igcp-button__chat {
   float: right;
@@ -2873,9 +2887,6 @@ label {
 
   .igcp-value--large {
     font-size: 36px; }
-
-  .igcp-container {
-    margin-right: 24px; }
 
   .igcp-value--medium {
     line-height: 26px;

@@ -14,7 +14,7 @@
 			<!-- <div class="">- {!v.accountNumber}</div> -->
 		</div>
 		<div class="slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_8-of-12">
-			<div class="igcp-container slds-p-around--small slds-large-p-around--medium slds-m-bottom--x-small slds-large-m-bottom--medium">
+			<div class="igcp-container slds-large-m-right--medium slds-p-around--small slds-large-p-around--medium slds-m-bottom--x-small slds-large-m-bottom--medium">
 				<div class="slds-grid slds-wrap">
 					
 					<c:CP_Cmp_Total_Value label="Market Value" value="52,520.44" />
@@ -58,6 +58,30 @@
 		</div>
 		<div class="slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_4-of-12">
 			<c:CP_Cmp_Card_Performance />
+		</div>
+
+		<div class="slds-size_12-of-12">
+			<c:CP_Account_Investment_Profile />
+		</div>
+		<div class="slds-size_12-of-12">
+			<c:CP_Cmp_Table 
+				title="Holdings" 
+				values="{ 
+					headers: ['Name','Holding', 'Book Cost', 'Gain / Loss', 'Market Value'],
+	                values: [
+	                    { 
+                			name: 'Super Account',
+	                    	holding: '32.7',
+	                    	book_cost: '15,034.56',
+	                    	gain_loss: '5.3',
+	                    	market_value: '18, 000.67'  },
+                    	{ 
+                			name: 'Super Super Account',
+	                    	holding: '9000',
+	                    	book_cost: '45,034.56',
+	                    	gain_loss: '5',
+	                    	market_value: '24, 000.67'  }
+	                    ]}"/>
 		</div>
 	</div>
 </aura:component>

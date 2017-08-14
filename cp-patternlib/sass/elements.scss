@@ -49,6 +49,7 @@ body {
 	font-family: 'WhitneyBook', Arial, sans-serif;
 	background-image: url('../images/bg-tile.jpg');
     background-repeat: repeat;
+    color: $ig-dark-blue;
 }
 
 a {
@@ -58,4 +59,11 @@ a {
 
 label {
     border: none;
+}
+
+[type=button], [type=submit] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
 }
