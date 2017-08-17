@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<!-- Copyright (C) 2000 Tivoli Systems, Inc. -->
+<!-- Copyright (C) 1999 IBM Corporation -->
+<!-- Copyright (C) 1998 Dascom, Inc. -->
+<!-- All Rights Reserved. -->
+<!--
+     This is a WebSEAL error message template file.  It is used
+     by the WebSEAL server to build a response when a particular
+     error occurs.  This file can be modified as appropriate.
+
+     Error details:     
+
+     * Code: %ERROR_CODE%
+     * Text: %ERROR_TEXT%
+     
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content= "text/html; charset=UTF-8">
+<!-- Enter Page Title -->
+<title>Additional Login Denied</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<!-- Enter Message Header -->
+<h1><font color="#FF0000">Additional Login Denied</font></h1>
+
+<p><!-- Enter Error Message -->
+You are already logged in to this Web server.  A new session cannot be created.
+
+<BR><BR><BR>
+
+<!-- Provide Error Explanation -->
+<H4>Explanation</H4>
+<P>You have already logged in to this Web server from another client.  No 
+more new logins will be permitted until your initial session has ended.
+</P>
+
+<BR><BR><BR>
+
+<!-- Provide Possible Solution -->
+<H4>Solutions</H4>
+<UL>
+<LI><B>Resume your original session:</B> If you still have access to your 
+original session, you can return to that client and continue accessing the Web site.
+
+<LI><B>End your original session:</B> If you still have access to your original 
+session, you can return to that client and log out from the Web site.  Once you 
+have logged out from that client, you can log in from a new client.
+
+<LI><B>Wait for your original session to time out:</B> If you no longer have 
+access to your original session (for example, if you closed your browser without 
+properly logging out of the Web site), you can wait for your original session 
+to terminate automatically.
+
+<LI><B>Contact support personnel:</B> You can ask your support personnel to 
+terminate your original login session.
+</UL>
+<br>
+<br>
+<br>
+<!-- Enter Link -->
+<a href="%BACK_URL%">[%BACK_NAME% BUTTON]</a></p>
+</body>
+</html>
+

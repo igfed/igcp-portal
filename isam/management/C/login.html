@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!-- Copyright (C) 2015 IBM Corporation -->
+<!-- Copyright (C) 2000 Tivoli Systems, Inc. -->
+<!-- Copyright (C) 1999 IBM Corporation -->
+<!-- Copyright (C) 1998 Dascom, Inc. -->
+<!-- All Rights Reserved. -->
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>IBM Security Access Manager</title>
+	<!-- EXTERNAL INCLUDES-->
+	<link href="../../external_files/slds-lib/styles/salesforce-lightning-design-system.min.css" type="text/css" rel="stylesheet" />
+	<link href="../../external_files/igcp-resources/styles/vendor.css" type="text/css" rel="stylesheet" />
+	<link href="../../external_files/igcp-resources/styles/main.css" type="text/css" rel="stylesheet" />
+	<link href="../../external_files/cp-patternlib/styles/igcp.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript">
+	function onLoadPage() {
+		//showError();
+		//setFocus();
+	}
+
+	function showError() {
+		var elem = document.getElementById("error-box");
+		if ("%ERROR%" == "") {
+			elem.setAttribute("class", "error-box");
+		} else {
+			elem.setAttribute("class", "error-box active");
+		}
+	}
+
+	function setFocus() {
+		document.getElementById("username").focus();
+	}
+
+	function submitForm() {
+		document.getElementById("login-form").submit();
+		console.log('Submitting Form');
+	}
+
+	</script>
+	<!-- ClickJack projection from: 
+         https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet
+      -->
+	<style id="antiClickjack">
+	body {
+		display: none !important;
+	}
+	</style>
+	<script type="text/javascript">
+	if (self === top) {
+		var antiClickjack = document.getElementById("antiClickjack");
+		antiClickjack.parentNode.removeChild(antiClickjack);
+	} else {
+		top.location = self.location;
+	}
+	</script>
+</head>
+
+<body onload="onLoadPage()">
+	<div class="content">
+		<!-- DO NOT TRANSLATE OR MODIFY any part of the hidden parameter(s) -->
+		<!--
+        The following block of code provides users with a warning message
+        if they do not have cookies configured on their browsers.  
+        If this environment does not use cookies to maintain login sessions, 
+        simply remove or comment out the block below.
+      -->
+		<!-- BEGIN Cookie check block -->
+		<!--
+      DO NOT TRANSLATE anything inside the SCRIPT tag except the quoted 
+      string warningString and the first line of the JavaScript redirection 
+      instruction beginning with "// Uncomment the following ..." 
+
+      i.e.	var warningString = "Translate this string";
+      -->
+		<script type="text/javascript">
+		var warningString = "%ERROR%";
+		document.cookie = 'acceptsCookies=yes';
+		if (document.cookie == '') {
+			document.write(warningString);
+		} else {
+			document.cookie = 'acceptsCookies=yes; expires=Fri, 13-Apr-1970 00:00:00 GMT';
+			// Uncomment the following line for JavaScript redirection
+			// document.cookie = 'ISAMOriginalURL=' + encodeURIComponent(window.location) + "; Path=/;";
+		}
+		</script>
+		<noscript>
+			<b>WARNING:</b> To maintain your login session, make sure that
+			<br/> your browser is configured to accept Cookies.
+		</noscript>
+		<!-- END Cookie check block -->
+		<div class="igcp-login slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-vertical--xx-large">
+			<div class="slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded">
+				<!-- SIGN IN -->
+				<div class="slds-large-size--4-of-12">
+					<h1 class="slds-text-heading--large slds-m-bottom--large">Client Account</h1>
+					<!--LOGIN FORM-->
+					<form id="login-form" class="slds-form slds-form_stacked" method="POST" action="/pkmslogin.form">
+						<!--USERNAME-->
+						<div class="slds-form-element">
+							
+							<label class="slds-form-element__label" for="username">
+								<span class="slds-icon_container slds-icon-utility-user" title="Description of icon when needed">
+							  <svg class="slds-icon slds-icon-text-default slds-icon_xx-small" aria-hidden="true">
+							    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../../external_files/slds-lib/icons/utility-sprite/svg/symbols.svg#user"></use>
+							  </svg>
+							  <span class="slds-assistive-text">Username Icon</span>
+								</span>
+								Username
+							</label>
+
+							<div class="slds-form-element__control">
+								<input type="text" id="username" class="slds-input igcp-input input uiInput uiInputText uiInput--default uiInput--input" placeholder="Placeholder Text" required="true" name="username">
+							</div>
+
+							<div class="igcp-input__help-link slds-float--right">
+								<a href="" class="igcp-link__variant--a igcp-underline">Forgot username</a>
+							</div>
+						</div>
+						<!--PASSWORD-->
+						<div class="igcp-input__password slds-form-element slds-clearfix slds-m-top--large">
+							
+							<label class="slds-form-element__label" for="password">
+								<span class="slds-icon_container slds-icon-utility-lock" title="Password Icon">
+							  <svg class="slds-icon slds-icon-text-default slds-icon_xx-small" aria-hidden="true">
+							    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../../external_files/slds-lib/icons/utility-sprite/svg/symbols.svg#lock"></use>
+							  </svg>
+							  <span class="slds-assistive-text">Password Icon</span>
+								</span>
+								Password
+							</label>
+							<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+								<input type="password" id="password" class="igcp-input slds-input" name="password" autocomplete="off">
+							</div>
+							<div class="slds-text-align--right">
+								<a href="" class="igcp-link__variant--a igcp-underline">Forgot password</a>
+							</div>
+						</div>
+						<!--SIGN IN-->
+						<div class="slds-form-element slds-m-top--large slds-m-bottom--large">
+							<button class="slds-button slds-button--brand slds-p-vertical--xxx-small slds-p-horizontal--xx-large" onclick="submitForm()">Sign In</button>
+						</div>
+
+						<input TYPE="hidden" NAME="login-form-type" VALUE="pwd">
+      					<input TYPE="hidden" NAME="token" VALUE="%CREDATTR{tagvalue_session_index}%">
+
+      					<div class="error-box" id="error-box">
+				          <img style="float:left" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAWCAMAAADpVnyHAAAAb1BMVEUAAADcAADeAADaAADdAADaAADMAADdAADeAADeAADcAADeAADdAADeAADdAADdAADcAADdAADeAADeAADdAADdAADdAADdAADKAADdAADeAADeAADcAADdAADcAADaAADdAADeAADdAADbAADeAAB3WaKjAAAAJHRSTlMAUPopZBQF6dhxDsWtqEo+MePQurWbiH8J8O3Ok41XIh5rW1b9BCPkAAAAxElEQVQoz3WR2RKDMAhFMcZ917rVte39/29sYurYaLwPwHAyQID+1Tp0I5vVd+gB5GaSwkdkJK7P7BizCQUYaWFFdyVO/3SIGrRXVCMQNvTYeiY5fFd6juSMIqRkVSJdItPJjIrohYIow6CRrmA20QeliGNwbXkYt36xsAvzwoOsTA5OIRoSajAdKEGweY+T+oC9k+w3OHXKcTx2NCBVC0neKlHKhHpUqcBCdJTRS7t87xGr5hMi66wAvSOvDqNqefUb5V/3/RGXZ5OWvQAAAABJRU5ErkJggg=="/>
+				          <div id="errId">%ERROR%</div>
+				        </div>
+					</form>
+					<!--REMEMBER ME-->
+					<div class="slds-form-element">
+						<div class="slds-form-element__control">
+							<span class="slds-checkbox">
+                    <input type="checkbox" name="options" id="checkbox-644"/>
+                    <label class="slds-checkbox__label" for="checkbox-644">
+                      <span class="slds-checkbox--faux"></span>
+							<span class="slds-form-element__label">Remember Me</span>
+							</label>
+							</span>
+						</div>
+					</div>
+				</div>
+				<!--SPACER-->
+				<div class="slds-large-size--1-of-12 igcp-login--spacer"></div>
+				<!--REGISTER NOW-->
+				<div class="igcp-login--col2 slds-size--4-of-12 slds-large-size--4-of-12 slds-medium-size--8-of-12 slds-x-small-size--9-of-12">
+					<!--CARD-->
+					<article class="slds-card slds-m-top--large">
+						<div class="slds-card__header slds-grid">
+							<header class="slds-media slds-media_center slds-has-flexi-truncate">
+								<div class="slds-media__figure">
+									<span class="slds-icon_container slds-icon-standard-contact slds-icon--xx-large" title="description of icon when needed">
+                             
+									  <svg class="slds-icon" aria-hidden="true">
+									    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../../external_files/slds-lib/icons/standard-sprite/svg/symbols.svg#person_account"></use>
+									  </svg>
+									  <span class="slds-assistive-text">Password Icon</span>
+									</span>
+									</span>
+								</div>
+							</header>
+						</div>
+						<!--CARD BODY-->
+						<div class="slds-card__body slds-card__body_inner">
+							<div class="slds-media__body slds-m-horizontal--medium">
+								<h2 class="slds-m-bottom--none">
+                          <span class="slds-text-heading--medium">Don't have an account?</span>
+                        </h2>
+								<p class="slds-m-vertical--small">
+									Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+								</p>
+							</div>
+						</div>
+						<footer class="slds-card__footer slds-m-horizontal--x-small slds-m-bottom--large">
+							<button class="slds-button slds-button--neutral slds-container--fluid slds-p-vertical--xx-small">Register Now</button>
+						</footer>
+					</article>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

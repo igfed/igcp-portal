@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<!-- Copyright (C) 2000 Tivoli Systems, Inc. -->
+<!-- Copyright (C) 1999 IBM Corporation -->
+<!-- Copyright (C) 1998 Dascom, Inc. -->
+<!-- All Rights Reserved. -->
+<!--
+     This is a WebSEAL error message template file.  It is used
+     by the WebSEAL server to build a response when a particular
+     error occurs.  This file can be modified as appropriate.
+
+     Error details:     
+
+     * Code: %ERROR_CODE%
+     * Text: %ERROR_TEXT%
+     
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content= "text/html; charset=UTF-8">
+
+<!-- Enter Page Title -->
+<title>Forbidden</title>
+
+</head>
+<body bgcolor="#FFFFFF">
+
+<!-- Enter Message Header -->
+<h1><font color="#FF0000">Access Denied</font></h1>
+
+<p><!-- Enter Error Message --> 
+You cannot access the resource you have requested at this time. 
+
+<BR><BR><BR>
+
+<!-- Provide Error Explanation -->
+<H4>Explanation</H4>
+<P>The resource you have requested is protected by a policy restricting access to specific time periods.  Your request has occured outside of those permitted time periods.
+</P>
+
+<BR><BR><BR>
+
+<!-- Provide Possible Solution -->
+<H4>Solutions</H4>
+<P>Retry your request later, or contact the system administrator for assistance.
+</P>
+
+<br>
+<br>
+<br>
+<!-- Enter Link -->
+<a href="%BACK_URL%">[%BACK_NAME% BUTTON]</a></p>
+</body>
+</html>
+

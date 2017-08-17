@@ -1,5 +1,10 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
     
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events" />
+
+    <!-- ATTRS -->
+    <aura:attribute  name="id" type="String" default=""></aura:attribute>
     <aura:attribute name="label" type="String" />
     <aura:attribute name="icon" type="String" />
     <aura:attribute name="placeholder" type="String" default=""/>
@@ -8,14 +13,15 @@
     <aura:attribute name="errorText" type="String" default="This is a required field" />
     <aura:attribute name="required" type="Boolean" default="false" />
     <aura:attribute name="class" type="String" default="slds-form-element slds-clearfix" />
-    
     <aura:attribute name="tooltip" type="String" />
-    
     <aura:attribute name="instructions" type="List" />
+    <aura:attribute  name="inputValue" type="String" default="AHHHHHHH"></aura:attribute>
     
+    <!-- HANDLERS -->
     <aura:handler event="c:CP_Evt_Validate_Text_Input" action="{!c.onValidate}" /> 
-
+    <aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}" />
     
+    <!-- MARKUP -->
     <div class="{!v.class}">
         
         <aura:renderIf isTrue="{!v.icon}">
@@ -39,7 +45,8 @@
         </aura:renderIf>
         
         <div class="slds-form-element__control">
-            <ui:inputText aura:id="text-input" label="" value="" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" />
+
+            <ui:inputText label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" />
         </div>
         
         <aura:renderIf isTrue="{!v.helpText}">

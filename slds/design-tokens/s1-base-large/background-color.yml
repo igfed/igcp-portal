@@ -12,5 +12,5 @@ imports:
 - "../force-base/aliases/color.yml"
 props:
   CARD_COLOR_BACKGROUND:
-    value: '{!LINK_WATER}'
+    value: '{!WHITE}'
     comment: Default Card component background color.

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<!-- Copyright (C) 2000 Tivoli Systems, Inc. -->
+<!-- Copyright (C) 1999 IBM Corporation -->
+<!-- Copyright (C) 1998 Dascom, Inc. -->
+<!-- All Rights Reserved. -->
+<!--
+     This is a WebSEAL error message template file.  It is used
+     by the WebSEAL server to build a response when a particular
+     error occurs.  This file can be modified as appropriate.
+
+     Error details:     
+
+     * Code: %ERROR_CODE%
+     * Text: %ERROR_TEXT%
+     
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content= "text/html; charset=UTF-8">
+<!-- Enter Page Title -->
+<title>Could not Sign User On</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<img src="/pics/amlogo.gif" 
+     width=100% 
+     height="75" 
+     border="0"
+     alt= "Access Manager for Web Home">
+
+<!-- Enter Message Header -->
+<h1><font color="#FF0000">Could not Sign User On</font></h1>
+
+<p><!-- Enter Error Message -->
+Access Manager WebSEAL could not determine your sign-on information for the
+resource you have requested.
+
+<BR><BR><BR>
+
+<!-- Provide Error Explanation -->
+<H4>Explanation</H4>
+<P>The resource you have requested requires Access Manager WebSEAL server to sign you on to another Web server.  However, a problem occurred while WebSEAL was
+attempting to fetch the information.
+</P>
+
+<BR><BR><BR>
+
+<!-- Provide Possible Solution -->
+<H4>Solutions</H4>
+<P>
+Check the existence and accuracy of the single sign on information provided.
+</P>
+
+<br>
+<br>
+<br>
+<!-- Enter Link -->
+<a href="%BACK_URL%">[%BACK_NAME% BUTTON]</a></p>
+</body>
+</html>
+

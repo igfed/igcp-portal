@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<!-- Copyright (C) 2000 Tivoli Systems, Inc. -->
+<!-- Copyright (C) 1999 IBM Corporation -->
+<!-- Copyright (C) 1998 Dascom, Inc. -->
+<!-- All Rights Reserved. -->
+<!--
+     This is a WebSEAL error message template file.  It is used
+     by the WebSEAL server to build a response when a particular
+     error occurs.  This file can be modified as appropriate.
+
+     Error details:     
+
+     * Code: %ERROR_CODE%
+     * Text: %ERROR_TEXT%
+     
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content= "text/html; charset=UTF-8">
+<!-- Enter message title -->
+<title>Server Error</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<!-- Enter message title -->
+<h1><font color="#FF0000">Server Error</font></h1>
+
+<p><!-- Enter error description --> Access Manager WebSEAL could not complete your request due to an unexpected error.
+
+<BR><BR><BR>
+
+<H4>Diagnostic Information</H4>
+
+<P>Method: <I>%METHOD%</I><BR>
+<P>URL: <I>%URL%</I><BR>
+<P>Error Code: <I>%ERROR_CODE%</I><BR>
+<P>Error Text: <I>%ERROR_TEXT%</I>
+
+<BR><BR><BR>
+
+<H4>Solution</H4>
+
+Provide your System Administrator with the above information to assist in
+troubleshooting the problem.
+
+<br>
+<br>
+<br>
+<a href="%BACK_URL%">[%BACK_NAME% BUTTON]</a></p>
+</body>
+</html>
+

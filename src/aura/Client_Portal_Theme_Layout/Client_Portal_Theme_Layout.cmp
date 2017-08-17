@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:themeLayout" access="global" description="Client Portal Them Layout">
+<aura:component implements="forceCommunity:themeLayout" access="global" description="Client Portal Theme Layout">
     
     <aura:attribute name="blueBackground" type="Boolean" default="false"/> 
     <aura:attribute name="smallLogo" type="Boolean" default="false" />

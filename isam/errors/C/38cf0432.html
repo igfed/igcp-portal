@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<!-- Copyright (C) 2000 Tivoli Systems, Inc. -->
+<!-- Copyright (C) 1999 IBM Corporation -->
+<!-- Copyright (C) 1998 Dascom, Inc. -->
+<!-- All Rights Reserved. -->
+<!--
+     This is a WebSEAL error message template file.  It is used
+     by the WebSEAL server to build a response when a particular
+     error occurs.  This file can be modified as appropriate.
+
+     Error details:     
+
+     * Code: %ERROR_CODE%
+     * Text: %ERROR_TEXT%
+     
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content= "text/html; charset=UTF-8">
+<!-- Enter Page Title -->
+<title>Service Unavailable</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<img src="/pics/amlogo.gif" 
+     width=100% 
+     height="75" 
+     border="0"
+     alt= "Access Manager for Web Home">
+
+<!-- Enter Message Header -->
+<h1><font color="#FF0000">Service Unavailable</font></h1>
+
+<p><!-- Enter Error Message -->
+A service required by Access Manager WebSEAL to complete your request is currently not available.
+
+<BR><BR><BR>
+
+<!-- Provide Error Explanation -->
+<H4>Explanation</H4>
+<P>The service required by Access Manager WebSEAL is located on a junctioned
+back-end server that is temporarily down.
+</P>
+
+<BR><BR><BR>
+
+<!-- Provide Possible Solution -->
+<H4>Solutions</H4>
+<P>Please contact your System Administrator. The back-end server may be down.
+</P>
+
+<br>
+<br>
+<br>
+<!-- Enter Link -->
+<a href="%BACK_URL%">[%BACK_NAME% BUTTON]</a></p>
+</body>
+</html>
+

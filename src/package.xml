@@ -44,6 +44,14 @@
 		<members>CP_Evt_Validate_Text_Input</members>
 		<members>CP_Test_Input_Validation</members>
 		<members>CP_Cmp_Button</members>
+		<members>CP_Evt_Click</members>
+		<members>CP_Evt_Get_Input_Value</members>
+		<members>CP_Evt_Input</members>
+		<members>CP_Utils</members>
+		<members>CP_Events</members>
+		<members>CP_Cmp_Submit</members>
+		<members>CP_Evt_Submit</members>
+		<members>CP_Evt_Send_Input_Value</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<version>36.0</version>

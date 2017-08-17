@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<!-- Copyright (C) 2000 Tivoli Systems, Inc. -->
+<!-- Copyright (C) 1999 IBM Corporation -->
+<!-- Copyright (C) 1998 Dascom, Inc. -->
+<!-- All Rights Reserved. -->
+<!--
+     This is a WebSEAL error message template file.  It is used
+     by the WebSEAL server to build a response when a particular
+     error occurs.  This file can be modified as appropriate.
+
+     Error details:     
+
+     * Code: %ERROR_CODE%
+     * Text: %ERROR_TEXT%
+     
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content= "text/html; charset=UTF-8">
+<!-- Enter Page Title -->
+<title>Moved Permanently</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<img src="/pics/amlogo.gif" 
+     width=100% 
+     height="75" 
+     border="0"
+     alt= "Access Manager for Web Home">
+
+<!-- Enter Message Header -->
+<h1><font color="#FF0000">Moved Permanently</font></h1>
+
+<p><!-- Enter Error Message -->
+The Web resource you have requested has been moved permanently.
+
+<BR><BR><BR>
+
+<!-- Provide Error Explanation -->
+<H4>Explanation</H4>
+<P>The requested resource has been moved permanently. This usually occurs if there has been a mishandled redirect.
+</P>
+
+<BR><BR><BR>
+
+<!-- Provide Possible Solution -->
+<H4>Solutions</H4>
+<P><A HREF="%LOCATION%">Click here</A> to fetch the resource.
+</P>
+
+<br>
+<br>
+<br>
+<!-- Enter Link -->
+<a href="%BACK_URL%">[%BACK_NAME% BUTTON]</a></p>
+</body>
+</html>
+
