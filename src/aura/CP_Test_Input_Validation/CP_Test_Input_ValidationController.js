@@ -8,8 +8,12 @@
 			});
 	},
 	onInputValueReceived : function(cmp, evt, hlpr) {
+
 		console.log('onInputValueReceived');
 
-		console.log(evt.getParam("payload").value);
+		var validator = cmp.find('CP_Validation');
+		validator.validateUsername(evt.getParam("payload").value, function(evt){
+			console.log(evt);
+		});
 	}
 })

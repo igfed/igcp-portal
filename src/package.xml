@@ -52,6 +52,9 @@
 		<members>CP_Cmp_Submit</members>
 		<members>CP_Evt_Submit</members>
 		<members>CP_Evt_Send_Input_Value</members>
+		<members>CP_Validation</members>
+		<members>CP_JS_Includes</members>
+		<members>CP_Evt_Input_Error</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<version>36.0</version>

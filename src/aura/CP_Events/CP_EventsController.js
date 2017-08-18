@@ -10,7 +10,7 @@
 				"payload" : params.payload });
 			newEvent.fire();
         } else {
-        	console.warn('fireEvent: event was fired but no params received');
+        	console.warn('CP_Events.fire: event was fired but no params received');
         }
 	}
 })

@@ -5,10 +5,4 @@
         <aura:attribute name="callBack" type="function" default="" />
     </aura:method>
 
-    <aura:method name="fireEvent" action="{!c.onFireEvent}" > 
-        <aura:attribute name="type" type="String" default="default" />
-        <aura:attribute name="payload" type="Map" default="{}" />
-        <aura:attribute name="callBack" type="function" default="" />
-    </aura:method>
-
 </aura:component>

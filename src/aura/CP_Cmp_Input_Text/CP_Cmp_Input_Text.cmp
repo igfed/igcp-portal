@@ -15,11 +15,13 @@
     <aura:attribute name="class" type="String" default="slds-form-element slds-clearfix" />
     <aura:attribute name="tooltip" type="String" />
     <aura:attribute name="instructions" type="List" />
-    <aura:attribute  name="inputValue" type="String" default="AHHHHHHH"></aura:attribute>
+    <aura:attribute  name="inputValue" type="String" default=""></aura:attribute>
+    <aura:attribute  name="maxLength" type="Integer" default="100"></aura:attribute>
     
     <!-- HANDLERS -->
     <aura:handler event="c:CP_Evt_Validate_Text_Input" action="{!c.onValidate}" /> 
     <aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}" />
+    <aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}"/>
     
     <!-- MARKUP -->
     <div class="{!v.class}">
@@ -46,7 +48,7 @@
         
         <div class="slds-form-element__control">
 
-            <ui:inputText label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" />
+            <ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}"/>
         </div>
         
         <aura:renderIf isTrue="{!v.helpText}">

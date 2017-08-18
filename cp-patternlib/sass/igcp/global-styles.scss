@@ -53,6 +53,15 @@
     border-radius: 0;
     margin-bottom: 0;
     border-bottom: 1px solid $ig-dark-grey;
+
+    &.input {
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		border-radius: 0;
+		margin-bottom: 0;
+		border-bottom: 1px solid $ig-dark-grey;
+    }
 }
 
 .#{$namespace}-input__help-link {
