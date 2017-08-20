@@ -9,9 +9,13 @@
 				"value" : cmp.get("v.inputValue")
 			});
 	},
+	onValid: function(cmp, evt, hlpr) {
+		console.log('CP_Cmp_Input_Text: valid');
+		
+		var field = cmp.find("text-input");
+		field.set("v.errors", []);
+	},
 	onError : function(cmp, evt, hlpr) {
-		console.log('CP_Cmp_Input_Text: error');
-
 		var field = cmp.find("text-input");
 		field.set("v.errors", [{message: cmp.get("v.errorText")}]);
 	}	

@@ -19,6 +19,8 @@
 			
 				<c:CP_Cmp_Input_Text id="username_input" label="Username" placeholder="Please enter name" maxLength="32" errorText="Please enter a username"/>
 
+				<!-- <c:CP_Cmp_Input_Text id="password_input" label="Password" placeholder="Please enter password" maxLength="32" errorText="Please enter a password"/> -->
+
 				<div class="slds-grid slds-wrap ">
 					<c:CP_Cmp_Submit id="username_submit" for="username_input" label="Submit"  buttonType="submit" class="slds-m-top--large slds-size_6-of-12"/>
 				</div>

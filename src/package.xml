@@ -55,6 +55,7 @@
 		<members>CP_Validation</members>
 		<members>CP_JS_Includes</members>
 		<members>CP_Evt_Input_Error</members>
+		<members>CP_Evt_Input_Valid</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<version>36.0</version>

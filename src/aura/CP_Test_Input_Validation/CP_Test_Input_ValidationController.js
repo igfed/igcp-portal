@@ -8,12 +8,21 @@
 			});
 	},
 	onInputValueReceived : function(cmp, evt, hlpr) {
+		console.log(evt.getParam("payload"))
 
-		console.log('onInputValueReceived');
+		var 
+				validator = cmp.find('CP_Validation'),
+				events = cmp.find('CP_Events');
 
-		var validator = cmp.find('CP_Validation');
-		validator.validateUsername(evt.getParam("payload").value, function(evt){
-			console.log(evt);
+		validator.validateUsername(evt.getParam("payload").value, function(obj){
+
+			if(obj.isValid === false) {
+				events.fire("CP_Evt_Input_Error", {
+					"errors" : obj.errors
+				});
+			} else {
+				events.fire("CP_Evt_Input_Valid", {});
+			}
 		});
 	}
 })

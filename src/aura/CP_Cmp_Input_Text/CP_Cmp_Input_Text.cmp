@@ -19,8 +19,8 @@
     <aura:attribute  name="maxLength" type="Integer" default="100"></aura:attribute>
     
     <!-- HANDLERS -->
-    <aura:handler event="c:CP_Evt_Validate_Text_Input" action="{!c.onValidate}" /> 
     <aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}" />
+    <aura:handler event="c:CP_Evt_Input_Valid" action="{!c.onValid}"/>
     <aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}"/>
     
     <!-- MARKUP -->
