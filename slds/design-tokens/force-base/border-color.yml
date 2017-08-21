@@ -129,7 +129,7 @@ props:
     value: '{!TRANSPARENT}'
     comment: Border color for brandable primary button - disabled state
   COLOR_BORDER_BUTTON_DEFAULT:
-    value: '{!GEYSER}'
+    value: '{!IG_DARK_BLUE}'
     comment: Border color for default secondary button
   COLOR_BORDER_BUTTON_INVERSE_DISABLED:
     value: '{!WHITE_TRANSPARENT_15}'

@@ -11,9 +11,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>IBM Security Access Manager</title>
 	<!-- EXTERNAL INCLUDES-->
-	<link href="../../external_files/slds-lib/styles/salesforce-lightning-design-system.min.css" type="text/css" rel="stylesheet" />
 	<link href="../../external_files/igcp-resources/styles/vendor.css" type="text/css" rel="stylesheet" />
 	<link href="../../external_files/igcp-resources/styles/main.css" type="text/css" rel="stylesheet" />
+	<link href="../../external_files/slds-lib/styles/salesforce-lightning-design-system.min.css" type="text/css" rel="stylesheet" />
 	<link href="../../external_files/cp-patternlib/styles/igcp.css" type="text/css" rel="stylesheet" />
 	<script type="text/javascript">
 	function onLoadPage() {
@@ -23,11 +23,11 @@
 
 	function showError() {
 		var elem = document.getElementById("error-box");
-		if ("%ERROR%" == "") {
-			elem.setAttribute("class", "error-box");
-		} else {
-			elem.setAttribute("class", "error-box active");
-		}
+		// if ("%ERROR%" == "") {
+		// 	elem.setAttribute("class", "error-box");
+		// } else {
+		// 	elem.setAttribute("class", "error-box active");
+		// }
 	}
 
 	function setFocus() {
@@ -38,7 +38,6 @@
 		document.getElementById("login-form").submit();
 		console.log('Submitting Form');
 	}
-
 	</script>
 	<!-- ClickJack projection from: 
          https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet
@@ -76,31 +75,51 @@
       i.e.	var warningString = "Translate this string";
       -->
 		<script type="text/javascript">
-		var warningString = "%ERROR%";
-		document.cookie = 'acceptsCookies=yes';
-		if (document.cookie == '') {
-			document.write(warningString);
-		} else {
-			document.cookie = 'acceptsCookies=yes; expires=Fri, 13-Apr-1970 00:00:00 GMT';
-			// Uncomment the following line for JavaScript redirection
-			// document.cookie = 'ISAMOriginalURL=' + encodeURIComponent(window.location) + "; Path=/;";
-		}
+		//var warningString = "%ERROR%";
+		//document.cookie = 'acceptsCookies=yes';
+		//if (document.cookie == '') {
+		//	document.write(warningString);
+		//} else {
+		///	document.cookie = 'acceptsCookies=yes; expires=Fri, 13-Apr-1970 00:00:00 GMT';
+		// Uncomment the following line for JavaScript redirection
+		// document.cookie = 'ISAMOriginalURL=' + encodeURIComponent(window.location) + "; Path=/;";
+		//}
 		</script>
 		<noscript>
 			<b>WARNING:</b> To maintain your login session, make sure that
 			<br/> your browser is configured to accept Cookies.
 		</noscript>
 		<!-- END Cookie check block -->
-		<div class="igcp-login slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-vertical--xx-large">
-			<div class="slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded">
+		<!-- HEADER START -->
+		<header role="banner" class="igcp-header">
+			<nav class="igcp-nav">
+				<div class="top-bar centered">
+					<div class="top-bar-left">
+						<div class="igcp-nav__logo">
+							<a class="home-link" href="/">
+		                       <img src="../../external_files/igcp-resources/images/IG_EN.svg" alt="" />
+		                    </a>
+						</div>
+					</div>
+					<div class="top-bar-right">
+						<ul class="dropdown menu" data-dropdown-menu="">
+							<li><a class="igcp-nav__link" href="#">Francais</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<!-- HEADER END -->
+		<!-- LOGIN START -->
+		<div class="igcp-login slds-grid slds-wrap slds-grid--align-center slds-p-vertical--xx-large">
+			<div class="slds-grid slds-wrap slds-grid--align-center">
 				<!-- SIGN IN -->
-				<div class="slds-large-size--4-of-12">
-					<h1 class="slds-text-heading--large slds-m-bottom--large">Client Account</h1>
+				<div class="igcp-login--col1 slds-size--4-of-12 slds-large-size--4-of-12 slds-medium-size--8-of-12 slds-x-small-size--9-of-12">
+					<h1 class="slds-m-bottom--large">Client Account</h1>
 					<!--LOGIN FORM-->
 					<form id="login-form" class="slds-form slds-form_stacked" method="POST" action="/pkmslogin.form">
 						<!--USERNAME-->
-						<div class="slds-form-element">
-							
+						<div class="slds-form-element slds-m-bottom--x-large">
 							<label class="slds-form-element__label" for="username">
 								<span class="slds-icon_container slds-icon-utility-user" title="Description of icon when needed">
 							  <svg class="slds-icon slds-icon-text-default slds-icon_xx-small" aria-hidden="true">
@@ -110,18 +129,15 @@
 								</span>
 								Username
 							</label>
-
 							<div class="slds-form-element__control">
 								<input type="text" id="username" class="slds-input igcp-input input uiInput uiInputText uiInput--default uiInput--input" placeholder="Placeholder Text" required="true" name="username">
 							</div>
-
 							<div class="igcp-input__help-link slds-float--right">
 								<a href="" class="igcp-link__variant--a igcp-underline">Forgot username</a>
 							</div>
 						</div>
 						<!--PASSWORD-->
-						<div class="igcp-input__password slds-form-element slds-clearfix slds-m-top--large">
-							
+						<div class="igcp-input__password slds-form-element slds-clearfix slds-m-top--large slds-m-bottom--x-large">
 							<label class="slds-form-element__label" for="password">
 								<span class="slds-icon_container slds-icon-utility-lock" title="Password Icon">
 							  <svg class="slds-icon slds-icon-text-default slds-icon_xx-small" aria-hidden="true">
@@ -139,17 +155,15 @@
 							</div>
 						</div>
 						<!--SIGN IN-->
-						<div class="slds-form-element slds-m-top--large slds-m-bottom--large">
+						<div class="slds-form-element slds-m-top--large slds-m-bottom--medium">
 							<button class="slds-button slds-button--brand slds-p-vertical--xxx-small slds-p-horizontal--xx-large" onclick="submitForm()">Sign In</button>
 						</div>
-
 						<input TYPE="hidden" NAME="login-form-type" VALUE="pwd">
-      					<input TYPE="hidden" NAME="token" VALUE="%CREDATTR{tagvalue_session_index}%">
-
-      					<div class="error-box" id="error-box">
-				          <img style="float:left" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAWCAMAAADpVnyHAAAAb1BMVEUAAADcAADeAADaAADdAADaAADMAADdAADeAADeAADcAADeAADdAADeAADdAADdAADcAADdAADeAADeAADdAADdAADdAADdAADKAADdAADeAADeAADcAADdAADcAADaAADdAADeAADdAADbAADeAAB3WaKjAAAAJHRSTlMAUPopZBQF6dhxDsWtqEo+MePQurWbiH8J8O3Ok41XIh5rW1b9BCPkAAAAxElEQVQoz3WR2RKDMAhFMcZ917rVte39/29sYurYaLwPwHAyQID+1Tp0I5vVd+gB5GaSwkdkJK7P7BizCQUYaWFFdyVO/3SIGrRXVCMQNvTYeiY5fFd6juSMIqRkVSJdItPJjIrohYIow6CRrmA20QeliGNwbXkYt36xsAvzwoOsTA5OIRoSajAdKEGweY+T+oC9k+w3OHXKcTx2NCBVC0neKlHKhHpUqcBCdJTRS7t87xGr5hMi66wAvSOvDqNqefUb5V/3/RGXZ5OWvQAAAABJRU5ErkJggg=="/>
-				          <div id="errId">%ERROR%</div>
-				        </div>
+						<input TYPE="hidden" NAME="token" VALUE="%CREDATTR{tagvalue_session_index}%">
+						<!-- <div class="error-box" id="error-box">
+							<img style="float:left" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAWCAMAAADpVnyHAAAAb1BMVEUAAADcAADeAADaAADdAADaAADMAADdAADeAADeAADcAADeAADdAADeAADdAADdAADcAADdAADeAADeAADdAADdAADdAADdAADKAADdAADeAADeAADcAADdAADcAADaAADdAADeAADdAADbAADeAAB3WaKjAAAAJHRSTlMAUPopZBQF6dhxDsWtqEo+MePQurWbiH8J8O3Ok41XIh5rW1b9BCPkAAAAxElEQVQoz3WR2RKDMAhFMcZ917rVte39/29sYurYaLwPwHAyQID+1Tp0I5vVd+gB5GaSwkdkJK7P7BizCQUYaWFFdyVO/3SIGrRXVCMQNvTYeiY5fFd6juSMIqRkVSJdItPJjIrohYIow6CRrmA20QeliGNwbXkYt36xsAvzwoOsTA5OIRoSajAdKEGweY+T+oC9k+w3OHXKcTx2NCBVC0neKlHKhHpUqcBCdJTRS7t87xGr5hMi66wAvSOvDqNqefUb5V/3/RGXZ5OWvQAAAABJRU5ErkJggg==" />
+							<div id="errId">%ERROR%</div>
+						</div> -->
 					</form>
 					<!--REMEMBER ME-->
 					<div class="slds-form-element">
@@ -158,7 +172,7 @@
                     <input type="checkbox" name="options" id="checkbox-644"/>
                     <label class="slds-checkbox__label" for="checkbox-644">
                       <span class="slds-checkbox--faux"></span>
-							<span class="slds-form-element__label">Remember Me</span>
+							<span class="slds-form-element__label input-label">Remember Me</span>
 							</label>
 							</span>
 						</div>
@@ -170,12 +184,12 @@
 				<div class="igcp-login--col2 slds-size--4-of-12 slds-large-size--4-of-12 slds-medium-size--8-of-12 slds-x-small-size--9-of-12">
 					<!--CARD-->
 					<article class="slds-card slds-m-top--large">
-						<div class="slds-card__header slds-grid">
+						<div class="slds-card__header slds-grid slds-m-bottom--zero">
 							<header class="slds-media slds-media_center slds-has-flexi-truncate">
 								<div class="slds-media__figure">
-									<span class="slds-icon_container slds-icon-standard-contact slds-icon--xx-large" title="description of icon when needed">
+									<span class="slds-icon_container slds-icon-standard-person-account slds-icon--xx-large" title="description of icon when needed">
                              
-									  <svg class="slds-icon" aria-hidden="true">
+									  <svg class="slds-icon slds-icon--xx-large" aria-hidden="true">
 									    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../../external_files/slds-lib/icons/standard-sprite/svg/symbols.svg#person_account"></use>
 									  </svg>
 									  <span class="slds-assistive-text">Password Icon</span>
@@ -186,22 +200,63 @@
 						</div>
 						<!--CARD BODY-->
 						<div class="slds-card__body slds-card__body_inner">
-							<div class="slds-media__body slds-m-horizontal--medium">
+							<div class="slds-media__body">
 								<h2 class="slds-m-bottom--none">
-                          <span class="slds-text-heading--medium">Don't have an account?</span>
+                          Don't have an account?
                         </h2>
 								<p class="slds-m-vertical--small">
 									Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
 								</p>
 							</div>
 						</div>
-						<footer class="slds-card__footer slds-m-horizontal--x-small slds-m-bottom--large">
+						<footer class="slds-card__footer slds-m-vertical--large">
 							<button class="slds-button slds-button--neutral slds-container--fluid slds-p-vertical--xx-small">Register Now</button>
 						</footer>
 					</article>
 				</div>
 			</div>
 		</div>
+		<!-- LOGIN END -->
+		<!-- FOOTER START -->
+		<footer id="igcp-footer" class="igcp-footer site-footer" role="contentinfo">
+			<div class="row footer-navigation">
+				<li class="igcp-horizontal-rule"></li>
+				<ul class="menu vertical float-left " data-responsive-menu="medium">
+					<li class="footer-link">
+						<a href="#">Contact</a>
+					</li>
+					<li class="footer-link">
+						<a href="#">Privacy</a>
+					</li>
+					<li class="footer-link">
+						<a href="#">User Agreement</a>
+					</li>
+					<li class="footer-link">
+						<a href="#">Investor Performance</a>
+					</li>
+					<li class="footer-link">
+						<a href="#">Faq</a>
+					</li>
+				</ul>
+			</div>
+			<div class="row footer-back-to-top-button">
+				<div class="columns">
+					<a class="float-right" href="#top">top</a>
+				</div>
+			</div>
+			<div class="row footer-copyright">
+				<div class="columns footer-copyright-border-top">
+					<div class="row">
+						<div class="small-12 medium-12 large-3 columns float-left">
+							<ul class="menu">
+								<li>© 2017 Investors Group Inc. All rights Reserved</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- FOOTER END -->
 	</div>
 </body>
 

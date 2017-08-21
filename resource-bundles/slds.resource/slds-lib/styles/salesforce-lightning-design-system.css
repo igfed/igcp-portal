@@ -824,7 +824,7 @@ a.slds-button--inverse:focus {
   padding-right: 1rem;
   text-align: center;
   vertical-align: middle;
-  border: 1px solid #d8dde6;
+  border: 1px solid #0d263c;
   background-color: white; }
 
 .slds-button_neutral:hover, .slds-button_neutral:focus,
@@ -895,7 +895,7 @@ a.slds-button--inverse:focus {
   padding-right: 1rem;
   text-align: center;
   vertical-align: middle;
-  border: 1px solid #d8dde6;
+  border: 1px solid #0d263c;
   background-color: transparent; }
 
 .slds-button_inverse:hover, .slds-button_inverse:focus,
@@ -1094,7 +1094,7 @@ a.slds-button--inverse:focus {
 .slds-button_neutral.slds-is-selected:hover:not([disabled]), .slds-button_neutral.slds-is-selected:focus:not([disabled]),
 .slds-button--neutral.slds-is-selected:hover:not([disabled]),
 .slds-button--neutral.slds-is-selected:focus:not([disabled]) {
-  border: 1px solid #d8dde6;
+  border: 1px solid #0d263c;
   background-color: #f4f6f9; }
 
 .slds-button_neutral.slds-is-selected:active:not([disabled]),
@@ -1296,7 +1296,7 @@ a.slds-button--inverse:focus {
 .slds-button--icon-border-filled,
 .slds-button_icon-border,
 .slds-button--icon-border {
-  border: 1px solid #d8dde6; }
+  border: 1px solid #0d263c; }
 
 .slds-button_icon-border-filled:hover, .slds-button_icon-border-filled:focus,
 .slds-button--icon-border-filled:hover,
@@ -1332,7 +1332,7 @@ a.slds-button--inverse:focus {
  */
 .slds-button_icon-border-inverse,
 .slds-button--icon-border-inverse {
-  border: 1px solid #d8dde6;
+  border: 1px solid #0d263c;
   background-color: transparent;
   color: white; }
 
@@ -1364,7 +1364,7 @@ a.slds-button--inverse:focus {
 
 .slds-button_icon-border-filled[disabled],
 .slds-button--icon-border-filled[disabled] {
-  border: 1px solid #d8dde6;
+  border: 1px solid #0d263c;
   background-color: white; }
 
 /**
@@ -1521,7 +1521,7 @@ a.slds-button--inverse:focus {
   line-height: 1.875rem;
   padding: 0 0.5rem;
   vertical-align: middle;
-  border: 1px solid #d8dde6; }
+  border: 1px solid #0d263c; }
 
 .slds-button_icon-more-filled,
 .slds-button--icon-more-filled {
@@ -1530,7 +1530,7 @@ a.slds-button--inverse:focus {
 .slds-button_icon-more:hover, .slds-button_icon-more:focus,
 .slds-button--icon-more:hover,
 .slds-button--icon-more:focus {
-  border: 1px solid #d8dde6; }
+  border: 1px solid #0d263c; }
 
 .slds-button_icon-more:hover:hover, .slds-button_icon-more:hover:focus, .slds-button_icon-more:focus:hover, .slds-button_icon-more:focus:focus,
 .slds-button--icon-more:hover:hover,
@@ -4107,7 +4107,7 @@ a.slds-button--inverse:focus {
 */
 .slds-card {
   padding: 0;
-  background: #f4f6f9;
+  background: white;
   border: 1px solid white;
   border-radius: 0.25rem;
   background-clip: padding-box;
@@ -5397,7 +5397,7 @@ a.slds-button--inverse:focus {
   height: 2rem;
   position: relative;
   display: inline-block;
-  border: 1px solid #d8dde6;
+  border: 1px solid #0d263c;
   border-radius: 0.25rem;
   background-color: white;
   cursor: pointer; }
@@ -5434,7 +5434,7 @@ a.slds-button--inverse:focus {
 .slds-checkbox--add-button .slds-checkbox_faux:focus:not([disabled]),
 .slds-checkbox--add-button .slds-checkbox--faux:hover:not([disabled]),
 .slds-checkbox--add-button .slds-checkbox--faux:focus:not([disabled]) {
-  border: 1px solid #d8dde6;
+  border: 1px solid #0d263c;
   background-color: #f4f6f9; }
 
 .slds-checkbox_add-button .slds-checkbox_faux:active,
@@ -6511,7 +6511,7 @@ a.slds-button--inverse:focus {
 .slds-filters__item {
   padding: 0.75rem;
   background: white;
-  border: 1px solid #d8dde6;
+  border: 1px solid #0d263c;
   border-radius: 0.25rem;
   /**
    * Indicates that a filter is new and hasn't been saved
@@ -13003,7 +13003,7 @@ a.slds-button--inverse:focus {
   -ms-flex-align: start;
       align-items: flex-start;
   background-color: #fbf7eb;
-  border: 1px solid #d8dde6;
+  border: 1px solid #0d263c;
   border-radius: 0.25rem 0.25rem 0 0; }
 
 .slds-tabs_scoped .slds-tabs__item,
@@ -13061,7 +13061,7 @@ a.slds-button--inverse:focus {
 .slds-tabs_scoped > .slds-tabs__content,
 .slds-tabs--scoped > .slds-tabs__content {
   background-color: transparent;
-  border: 1px solid #d8dde6;
+  border: 1px solid #0d263c;
   border-top: 0;
   border-radius: 0 0 0.25rem 0.25rem;
   padding: 1rem; }
@@ -13101,7 +13101,7 @@ a.slds-button--inverse:focus {
 .slds-tabs_scoped__content,
 .slds-tabs--scoped__content {
   background-color: transparent;
-  border: 1px solid #d8dde6;
+  border: 1px solid #0d263c;
   border-top: 0;
   border-radius: 0 0 0.25rem 0.25rem;
   padding: 1rem; }

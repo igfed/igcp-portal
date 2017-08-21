@@ -4,7 +4,6 @@
     position: relative;
 }
 
-
 .slds-button {
     font-family: 'WhitneySemiBold', Arial, sans-serif;
     font-size: $ig-label-small;
@@ -100,4 +99,12 @@
             fill: $ig-dark-blue;
         }
     }
+}
+
+.slds-card {
+	.slds-icon_container {
+		&.slds-icon-standard-person-account {
+			left: -10px;
+		}
+	}
 }

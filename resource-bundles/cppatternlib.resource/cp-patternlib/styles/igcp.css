@@ -169,6 +169,9 @@ label {
   .slds-progress .slds-icon-utility-success svg {
     fill: #0d263c; }
 
+.slds-card .slds-icon_container.slds-icon-standard-person-account {
+  left: -10px; }
+
 .slds-m-around--xx-large {
   margin: 60px; }
 
