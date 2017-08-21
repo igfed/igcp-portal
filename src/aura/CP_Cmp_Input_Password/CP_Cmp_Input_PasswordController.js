@@ -10,21 +10,24 @@
 			events.fire("CP_Evt_Send_Input_Value", {
 				"id": cmp.get("v.id"),
 				"type": cmp.get("v.type"),
-				"value": cmp.get("v.inputValue")
+				"value": cmp.get("v.passcode")
 			});
 		}
 	},
 	onValid: function(cmp, evt, hlpr) {
 
 		if (cmp.get("v.id") === evt.getParam("payload").id) {
-			var field = cmp.find("text-input");
+			var field = cmp.find("password-input");
 			field.set("v.errors", []);
 		}
 	},
 	onError: function(cmp, evt, hlpr) {
 
 		if (cmp.get("v.id") === evt.getParam("payload").id) {
-			var field = cmp.find("text-input");
+
+			console.log(evt.getParam('payload').errors);
+
+			var field = cmp.find("password-input");
 			field.set("v.errors", [{ message: cmp.get("v.errorText") }]);
 		}
 	}

@@ -1,17 +1,15 @@
 <aura:component >
 
+	<!-- ATTRS -->
 	<aura:attribute  name="userMinLength" type="Integer" default="6"></aura:attribute>
 	<aura:attribute  name="userMaxLength" type="Integer" default="32"></aura:attribute>
 	<aura:attribute  name="userIsAlphanumeric" type="Boolean" default="true"></aura:attribute>
 
+	<aura:attribute  name="passMinLength" type="Integer" default="8" ></aura:attribute>
 
-    <aura:method name="form" action="{!c.onValidateForm}" > 
-        <aura:attribute name="value" type="String" default="" />
-        <aura:attribute name="callBack" type="function" default="" />
-    </aura:method>
-
-     <aura:method name="validateUsername" action="{!c.onValidateUsername}" > 
-        <aura:attribute name="value" type="String" default="" />
+	<!-- METHODS -->
+    <aura:method name="validate" action="{!c.onValidateForm}" > 
+        <aura:attribute name="payload" type="String" default="" />
         <aura:attribute name="callBack" type="function" default="" />
     </aura:method>
 

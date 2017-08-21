@@ -3,8 +3,6 @@
 		var params = evt.getParam('arguments');
         if (params) {
 
-        	console.log("Events.fire - e.c:" + params.evtName);
-
             var newEvent = $A.get("e.c:" + params.evtName);
 				newEvent.setParams({
 				"payload" : params.payload });
