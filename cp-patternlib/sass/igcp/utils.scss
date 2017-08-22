@@ -195,5 +195,21 @@
         .#{getNamespace($value)}-utils__order--5 {
             order: 5
         }
+
+        .#{getNamespace($value)}-utils__overflow--visible {
+        	overflow: visible;
+        }
+
+        .#{getNamespace($value)}-utils__overflow--hidden {
+        	overflow: hidden;
+        }
+
+        .#{getNamespace($value)}-utils__overflow--scroll {
+        	overflow: scroll;
+        }
+
+        .#{getNamespace($value)}-utils__overflow--auto {
+        	overflow: auto;
+        }
     }
 }

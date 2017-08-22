@@ -1,0 +1,14 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+
+	<!-- ATTRS -->	
+	<aura:attribute  name="parent" type="Aura.Component[]"></aura:attribute>
+
+	<!-- HANDLERS -->
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+	<!-- MARKUP -->
+	<div>	
+		<c:CP_Registration_PFA />
+		<c:CP_Registration_Instructions parent="{!v.parent}" />
+	</div>
+</aura:component>

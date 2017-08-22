@@ -2174,7 +2174,19 @@ label {
     order: 4; }
 
   .igcp-utils__order--5 {
-    order: 5; } }
+    order: 5; }
+
+  .igcp-utils__overflow--visible {
+    overflow: visible; }
+
+  .igcp-utils__overflow--hidden {
+    overflow: hidden; }
+
+  .igcp-utils__overflow--scroll {
+    overflow: scroll; }
+
+  .igcp-utils__overflow--auto {
+    overflow: auto; } }
 @media (min-width: 480px) {
   .igcp-small-utils__font--light {
     font-family: 'WhitneyLight', Arial, sans-serif; }
@@ -2325,7 +2337,19 @@ label {
     order: 4; }
 
   .igcp-small-utils__order--5 {
-    order: 5; } }
+    order: 5; }
+
+  .igcp-small-utils__overflow--visible {
+    overflow: visible; }
+
+  .igcp-small-utils__overflow--hidden {
+    overflow: hidden; }
+
+  .igcp-small-utils__overflow--scroll {
+    overflow: scroll; }
+
+  .igcp-small-utils__overflow--auto {
+    overflow: auto; } }
 @media (min-width: 768px) {
   .igcp-medium-utils__font--light {
     font-family: 'WhitneyLight', Arial, sans-serif; }
@@ -2476,7 +2500,19 @@ label {
     order: 4; }
 
   .igcp-medium-utils__order--5 {
-    order: 5; } }
+    order: 5; }
+
+  .igcp-medium-utils__overflow--visible {
+    overflow: visible; }
+
+  .igcp-medium-utils__overflow--hidden {
+    overflow: hidden; }
+
+  .igcp-medium-utils__overflow--scroll {
+    overflow: scroll; }
+
+  .igcp-medium-utils__overflow--auto {
+    overflow: auto; } }
 @media (min-width: 1024px) {
   .igcp-large-utils__font--light {
     font-family: 'WhitneyLight', Arial, sans-serif; }
@@ -2627,7 +2663,19 @@ label {
     order: 4; }
 
   .igcp-large-utils__order--5 {
-    order: 5; } }
+    order: 5; }
+
+  .igcp-large-utils__overflow--visible {
+    overflow: visible; }
+
+  .igcp-large-utils__overflow--hidden {
+    overflow: hidden; }
+
+  .igcp-large-utils__overflow--scroll {
+    overflow: scroll; }
+
+  .igcp-large-utils__overflow--auto {
+    overflow: auto; } }
 .igcp-background {
   background-image: url("../images/bg-tile.jpg");
   background-repeat: repeat; }

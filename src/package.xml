@@ -58,6 +58,13 @@
 		<members>CP_Evt_Input_Valid</members>
 		<members>CP_Cmp_Input_Password</members>
 		<members>CP_Evt_Validate_Form</members>
+		<members>CP_App_Registration</members>
+		<members>CP_Registration</members>
+		<members>CP_Registration_Start</members>
+		<members>CP_Registration_PFA</members>
+		<members>CP_Registration_Instructions</members>
+		<members>CP_Registration_Step_1</members>
+		<members>CP_Cmp_Progress_Indicator</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<version>36.0</version>

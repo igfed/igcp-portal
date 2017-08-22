@@ -1,0 +1,21 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+
+	<!-- INCLUDES -->	
+    <c:CP_CSS_Includes />
+    <c:CP_Utils aura:id="CP_Utils"/>
+
+    <!-- HANDLERS -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <!-- METHODS -->
+     <aura:method name="onStepOne" action="{!c.onStepOne}" 
+      description="Call step one method">
+    </aura:method>
+
+    <!-- COMPONENTS -->
+    <div class="igcp-utils__overflow--hidden">
+	    <c:CP_Cmp_Header_Signed_Out />
+		{!v.body}
+		<c:CP_Cmp_Footer />
+	</div>
+</aura:component>
