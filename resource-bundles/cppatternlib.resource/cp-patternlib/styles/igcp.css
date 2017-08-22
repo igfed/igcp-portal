@@ -2717,7 +2717,7 @@ label {
   border-radius: 0;
   margin-bottom: 0;
   border-bottom: 1px solid #cfd4d8; }
-  .igcp-input.input {
+  .igcp-input.input, .igcp-input.uiInput--input.input, .igcp-input.uiInput--select.select {
     border-top: none;
     border-left: none;
     border-right: none;
@@ -2732,6 +2732,9 @@ label {
 
 .igcp-input__password .slds-icon-utility-info {
   top: 0; }
+
+.igcp-input__selector.uiInput--select.select {
+  height: 38px; }
 
 .igcp-link {
   font-family: 'WhitneyBook', Arial, sans-serif;

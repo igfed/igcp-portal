@@ -54,7 +54,9 @@
     margin-bottom: 0;
     border-bottom: 1px solid $ig-dark-grey;
 
-    &.input {
+    &.input, 
+    &.uiInput--input.input,
+    &.uiInput--select.select {
 		border-top: none;
 		border-left: none;
 		border-right: none;
@@ -78,6 +80,13 @@
     .slds-icon-utility-info {
         top: 0;
     }
+}
+
+.#{$namespace}-input__selector {
+
+	&.uiInput--select.select {
+		height: 38px;
+	}
 }
 
 //LINK

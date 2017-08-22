@@ -36,7 +36,7 @@
         </label>
         
         <aura:renderIf isTrue="{!v.tooltip}">
-            //Add tooltip
+            <c:CP_Cmp_Tooltip />
         </aura:renderIf>
         
         

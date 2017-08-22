@@ -65,6 +65,15 @@
 		<members>CP_Registration_Instructions</members>
 		<members>CP_Registration_Step_1</members>
 		<members>CP_Cmp_Progress_Indicator</members>
+		<members>CP_Cmp_Dynamic_Container</members>
+		<members>Cp_Cmp_Dynamic_Container</members>
+		<members>CP_Cmp_Tooltip</members>
+		<members>CP_Cmp_Form_Back_Next</members>
+		<members>CP_Registration_Step_2</members>
+		<members>CP_Cmp_Input_Checkbox</members>
+		<members>CP_Cmp_Input_Selector</members>
+		<members>CP_Registration_Step_3</members>
+		<members>CP_Registration_Thank_You</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<version>36.0</version>

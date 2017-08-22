@@ -3,8 +3,13 @@
     <aura:method name="createComponent" action="{!c.onCreateComponent}" > 
         <aura:attribute name="cmpId" type="String" />
         <aura:attribute name="params" type="Map" default="{}" />
-        <aura:attribute name="cmp" type="Aura.component[]" />
+        <aura:attribute name="container" type="Aura.component[]" />
         <aura:attribute name="callback" type="function" default="" />
+    </aura:method>
+
+    <aura:method name="destroyComponent" action="{!c.onDestroyComponent}" > 
+        <aura:attribute name="child" type="Aura.component[]" />
+        <aura:attribute name="parent" type="Aura.component[]"></aura:attribute>
     </aura:method>
 
 </aura:component>
