@@ -1,0 +1,23 @@
+<aura:component controller="ec_QuickLinksController" access="global">
+    <aura:attribute name="SLDSPath" type="String" default="{!$Resource.ec_slds}" />
+
+    <aura:attribute name="className" type="String" default="quickLinksContainer" />
+    <aura:attribute name="taxonomyPath" type="String" required="true" />
+    <aura:attribute name="quickLinksEnabled" type="Boolean" default="false" />
+    <aura:attribute name="buttonImage" type="String" default="favorite" />
+    <aura:attribute name="loadSubscriptions" type="Boolean" default="true" />
+
+    <aura:registerEvent name="toggleQuickLinksEvt" type="c:ec_ToggleQuickLinksEvt"/>
+    <aura:handler name="change" value="{!v.quickLinksEnabled}" action="{!c.fireToggleQuickLinksEvt}" />
+    <aura:handler name="init" value="{!this}" action="{!c.scriptLoad}" />
+    <aura:handler event="c:ec_ChangeSubscriptionsEvt" action="{!c.reInit}" />
+
+    <div aura:id="quickLinks_c" class="{!v.className}">
+        <div aura:id="quickLinkToggle" class="quickLinkToggle slds-context-bar__icon-action">
+            <a href="javascript:void(0);">
+                <c:svgIcon class="slds-button__icon" svgPath="{!$Resource.ec_slds + '/assets/icons/utility-sprite/svg/symbols.svg#' + v.buttonImage}" category="utility" size="small" name="{!v.buttonImage}" />
+                <h3>{!$Label.c.ec_QuickLinks_Text}</h3>
+            </a>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,18 @@
+<aura:component controller="ec_SubscriptionEditorController">
+    <aura:attribute name="depth" type="Integer" default="0" />
+    <aura:attribute name="maxDepth" type="Integer" default="0" />
+    <aura:attribute name="taxonomyList" type="TaxonomyBundle[]" description="array of taxonomy bundles" />
+    <aura:attribute name="tagPath" type="String" />
+    <aura:attribute name="listClass" type="String" default="slds-has-dividers--bottom-space" />
+    <aura:attribute name="taxonomyInstanceName" type="String" />
+    <aura:attribute name="sitePrefix" type="String" />
+    <aura:attribute name="treeId" type="string" />
+    <aura:attribute name="ariaLevel" type="Integer" />
+    <aura:attribute name="subscriptions" type="String[]" default="[]" />
+    <aura:attribute name="uuid" type="String" />
+    <aura:attribute name="editMode" type="Boolean" default="false" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+        {!v.body}
+</aura:component>

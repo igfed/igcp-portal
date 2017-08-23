@@ -1,0 +1,63 @@
+<aura:component controller="ec_SubscriptionEditorController">
+    <aura:attribute name="taxonomyItemName" type="String" description="Taxonomy item name" />
+    <aura:attribute name="tagPath" type="String" description="Tag Path" />
+    <aura:attribute name="depth" type="Integer" default="0" />
+    <aura:attribute name="maxDepth" type="Integer" default="0" />
+    <aura:attribute name="taxonomyNode" type="TaxonomyBundle" description="Current Taxonomy Node bundle" />
+    <aura:attribute name="classNames" type="String" description="class names to apply to the LI item." />
+    <aura:attribute name="taxonomyList" type="TaxonomyBundle[]" description="A list of child taxonomy bundles" />
+    <aura:attribute name="taxonomyInstanceName" type="String" />
+    <aura:attribute name="sitePrefix" type="String" />
+    <aura:attribute name="nodeId" type="String" />
+    <aura:attribute name="ariaLevel" type="Integer" default="1" />
+    <aura:attribute name="buttonClass" type="String" />  <!-- used only to potentially disable/hide expandy -->
+    <aura:attribute name="ariaExpanded" type="Boolean" default="false" />
+    <aura:attribute name="subscriptions" type="String[]" default="[]" />
+    <aura:attribute name="subscribed" type="Boolean" default="false" />
+    <aura:attribute name="uuid" type="String" />
+    <aura:attribute name="editMode" type="Boolean" default="false" />
+
+    <aura:registerEvent name="toggleLoadingSpinnerEvt" type="c:ec_ToggleLoadingSpinnerEvt" />
+    <aura:registerEvent name="toggleSubscriptionEvt" type="c:ec_ToggleSubscriptionEvt" />
+    <aura:registerEvent name="subscriptionMatchEvt" type="c:ec_SubscriptionMatchEvt" />
+
+    <aura:handler event="c:ec_ToggleSubscriptionEditEvt" action="{!c.toggleEditMode}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.ariaExpanded}" action="{!c.handleAriaExpandedChange}" />
+
+    <li id="{!v.nodeId}" class="{!v.classNames}" role="treeitem" aria-level="{!v.ariaLevel}" aria-expanded="{!v.ariaExpanded}">
+        <div class="slds-tree__item" aura:id="treeItem">
+            <button class="{!'slds-button slds-p-horizontal--xx-small ' + v.buttonClass}"
+                    disabled=""
+                    title="expand / collapse"
+                    aria-controls="{!v.nodeId}"
+                    onclick="{!c.handleToggleTreeExpand}" >
+                <c:svgIcon class="slds-button__icon"
+                           svgPath="{!$Resource.ec_slds + '/assets/icons/utility-sprite/svg/symbols.svg#chevronright'}"
+                           category="utility"
+                           size="medium"
+                           name="chevronright" />
+                <span class="slds-assistive-text">{!$Label.c.ec_SubscriptionEditor_Expand_or_collapse}</span>
+            </button>
+            <a id="{!v.nodeId + '__label'}" onclick="{!c.taxItemClicked}" data-tagPath="{!v.tagPath}"
+               class="{!'slds-navigation-list--vertical__action slds-text-link--reset level-' + v.ariaLevel}">{!v.taxonomyItemName}</a>
+            <aura:if isTrue="{!v.subscribed}">
+                <figure>
+                    <c:svgIcon class="slds-icon"
+                               svgPath="{!$Resource.ec_slds + '/assets/icons/action-sprite/svg/symbols.svg#following'}"
+                               containerClass="slds-icon_container--circle"
+                               category="action"
+                               size="x-small"
+                               name="following" />
+                    <span class="slds-assistive-text">{!$Label.c.ec_SubscriptionEditor_You_are_subscribed}</span>
+                </figure>
+            </aura:if>
+        </div>
+        <ul class="{!if(v.ariaExpanded, 'slds-is-expanded', 'slds-is-collapsed')}"
+            aria-labelledby="{!v.nodeId + '__label'}"
+            role="group"
+            aura:id="subMenu">
+                {!v.body}
+        </ul>
+    </li>
+</aura:component>

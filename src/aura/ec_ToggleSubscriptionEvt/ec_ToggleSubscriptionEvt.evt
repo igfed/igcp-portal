@@ -1,0 +1,5 @@
+<aura:event type="APPLICATION" description="ec_ToggleSubscriptionEvt">
+    <aura:attribute name="uuid" type="String" />
+    <aura:attribute name="tagPath" type="String" />
+    <aura:attribute name="localeTagPath" type="String" />
+</aura:event>

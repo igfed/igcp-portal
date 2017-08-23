@@ -1,7 +1,7 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
 	<!-- ATTRS -->	
-	<aura:attribute  name="parent" type="Aura.Component[]"></aura:attribute>
+	<aura:attribute name="parent" type="Aura.Component[]"></aura:attribute>
 
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>

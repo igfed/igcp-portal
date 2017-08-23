@@ -4,7 +4,7 @@
 	<c:CP_Events aura:id="CP_Events" />
 
     <!-- ATTRS -->
-    <aura:attribute  name="id" type="String" default=""></aura:attribute>
+    <aura:attribute name="id" type="String" default=""></aura:attribute>
     <aura:attribute name="label" type="String" />
     <aura:attribute name="icon" type="String" />
     <aura:attribute name="placeholder" type="String" default=""/>
@@ -15,10 +15,10 @@
     <aura:attribute name="class" type="String" default="slds-form-element slds-clearfix" />
     <aura:attribute name="tooltip" type="String" />
     <aura:attribute name="instructions" type="List" />
-    <aura:attribute  name="inputValue" type="String" default=""></aura:attribute>
-    <aura:attribute  name="maxLength" type="Integer" default="100"></aura:attribute>
-    <aura:attribute  name="form" type="String" default=""></aura:attribute>
-    <aura:attribute  name="type" type="String" default="default"></aura:attribute>
+    <aura:attribute name="inputValue" type="String" default=""></aura:attribute>
+    <aura:attribute name="maxLength" type="Integer" default="100"></aura:attribute>
+    <aura:attribute name="form" type="String" default=""></aura:attribute>
+    <aura:attribute name="type" type="String" default="default"></aura:attribute>
     
     <!-- HANDLERS -->
     <aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}" />

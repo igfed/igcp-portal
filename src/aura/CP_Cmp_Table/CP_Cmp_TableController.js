@@ -3,7 +3,7 @@
 
 		var 
 			values = cmp.get("v.values")['values'],
-			componentName = "c:CP_Cmp_Table_Row";	
+			componentName = "c:Cp_Cmp_Table_Row";	
 
 		values.forEach(function(item, i) {
 

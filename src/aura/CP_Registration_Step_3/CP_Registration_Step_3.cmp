@@ -19,8 +19,7 @@
 	            <div class="slds-grid slds-wrap">
 	                
 	                <!--NAME VALUE LIST-->
-	                <c:CP_Cmp_Name_Value_List
-	                    class="slds-size_12-of-12 slds-m-vertical--medium"
+	                <c:CP_Cmp_Name_Value_List class="slds-size_12-of-12 slds-m-vertical--medium"
 	                    variant="a"
 	                    values="{ 
 	                    values: [

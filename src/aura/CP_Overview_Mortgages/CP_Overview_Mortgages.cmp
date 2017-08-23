@@ -10,8 +10,7 @@
         <h2 class="slds-m-top--small slds-m-bottom--medium">Mortgage</h2>
         <div class="slds-grid slds-wrap">
              
-             <c:CP_Overview_Account 
-                col1Name="Interest"
+             <c:CP_Overview_Account col1Name="Interest"
                 col2Name="Balance"
                 accountType="Registered"
                 accountTotal="$18,078.34"

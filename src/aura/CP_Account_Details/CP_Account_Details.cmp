@@ -31,8 +31,7 @@
 
 					<div class="slds-grid slds-wrap">
 
-						<c:CP_Cmp_Name_Value_List
-							class="slds-large-size_6-of-12"
+						<c:CP_Cmp_Name_Value_List class="slds-large-size_6-of-12"
 							values="{ 
 			                    values: [
 			                        { 	label: 'Balance Date',
@@ -45,8 +44,7 @@
 			                        	detail: 'Jamie Holmes'}
 			                        ]}" />
 
-			            <c:CP_Cmp_Name_Value_List
-							class="slds-large-size_6-of-12 slds-large-p-left--medium"
+			            <c:CP_Cmp_Name_Value_List class="slds-large-size_6-of-12 slds-large-p-left--medium"
 							values="{ 
 			                    values: [
 			                        { 	label: 'Net Contributions',
@@ -69,8 +67,7 @@
 			<c:CP_Account_Investment_Profile />
 		</div>
 		<div class="slds-size_12-of-12">
-			<c:CP_Cmp_Table 
-				title="Holdings" 
+			<c:CP_Cmp_Table title="Holdings" 
 				values="{ 
 					headers: ['Name','Holding', 'Book Cost', 'Gain / Loss', 'Market Value'],
 	                values: [

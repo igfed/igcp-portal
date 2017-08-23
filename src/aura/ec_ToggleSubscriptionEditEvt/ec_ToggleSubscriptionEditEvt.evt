@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="ec_ToggleSubscriptionEditEvt">
+    <aura:attribute name="uuid" type="String" />
+</aura:event>

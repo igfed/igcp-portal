@@ -1,10 +1,10 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
-	<aura:attribute  name="class" type="String" default="slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"></aura:attribute>
+	<aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"></aura:attribute>
 
-	<aura:attribute  name="label" type="String" default="Total Value"></aura:attribute>
+	<aura:attribute name="label" type="String" default="Total Value"></aura:attribute>
 
-	<aura:attribute  name="value" type="String"></aura:attribute>
+	<aura:attribute name="value" type="String"></aura:attribute>
 
     <div class="{!v.class}">
          <h3 class="igcp-label--small slds-m-bottom--none slds-large-m-bottom--x-small">{!v.label}</h3>

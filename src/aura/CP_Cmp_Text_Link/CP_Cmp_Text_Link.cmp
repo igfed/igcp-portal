@@ -1,10 +1,10 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 	
-	<aura:attribute  name="label" type="String" />
-	<aura:attribute  name="class" type="String" default="" />
-	<aura:attribute  name="linkClass" type="String" default="igcp-link" />
-	<aura:attribute  name="icon" type="String" />
-	<aura:attribute  name="iconSize" Type="String" default="small"/>
+	<aura:attribute name="label" type="String" />
+	<aura:attribute name="class" type="String" default="" />
+	<aura:attribute name="linkClass" type="String" default="igcp-link" />
+	<aura:attribute name="icon" type="String" />
+	<aura:attribute name="iconSize" Type="String" default="small"/>
 
 	<div class="{!v.class}">
 		<a class="{!v.linkClass}">

@@ -1,0 +1,112 @@
+<aura:component controller="ec_TaxonomyLoaderController" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
+    <ltng:require styles="{! $Resource.ec_Component_Helper + '/css/common.css' }"
+                   scripts="{! join(',',
+                           $Resource.ec_Component_Helper + '/js/common.js',
+                           $Resource.ec_Component_Helper + '/js/svgxuse.js')
+                           }"
+                   afterScriptsLoaded="{! c.scriptLoad }" />
+
+    <aura:attribute name="addContentAttributeComponents" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="SLDSPath" type="String" default="{!$Resource.ec_slds}" />
+
+    <aura:attribute name="ComponentHeading" type="string" default="Heading"/>
+    <aura:attribute name="renderedContent" type="string" default="" access="private" description="Content Rendered by OrchestraCMS" />
+    <aura:attribute name="siteName" type="string" />
+    <aura:attribute name="siteId" type="string" />
+    <aura:attribute name="tagPaths" type="string" required="true" />
+    <aura:attribute name="contentType" type="string" required="true" />
+    <aura:attribute name="layoutsForTaxonomy" type="string" description="What layout to render the content as" required="true" />
+    <aura:attribute name="columnCount" type="String" default="1 column" />
+    <aura:attribute name="order" type="string" default="Original Publish Date" />
+    <aura:attribute name="apiOrder" type="string" default="date" />
+    <aura:attribute name="ignoreTargets" type="boolean" default="false" description="Whether to ignore targeting" />
+    <aura:attribute name="limitCount" type="Integer" default="5" />
+    <aura:attribute name="origLimitCount" type="Integer" access="private" />
+    <aura:attribute name="incrementCount" type="Integer" default="5" />
+    <aura:attribute name="showLoadMore" type="Boolean" default="false" />
+    <aura:attribute name="depth" type="Integer" default="1" />
+    <aura:attribute name="detailPage" type="String" default="newsDetail" />
+    <aura:attribute name="taxonomyInstanceName" type="String" />
+    <aura:attribute name="detailOnNewPage" type="Boolean" default="false" />
+    <aura:attribute name="detailLayout" type="String" />
+    <aura:attribute name="displayNewStatus" type="Boolean" default="false" />
+    <aura:attribute name="tagOnNewPage" type="Boolean" default="false" />
+    <aura:attribute name="includeBreadcrumb" type="Boolean" default="false" />
+    <aura:attribute name="displayCategoryTags" type="Boolean" default="true" />
+    <aura:attribute name="loadSubscriptions" type="Boolean" default="false" />
+    <aura:attribute name="allowEditSubscriptions" type="Boolean" default="false" />
+
+    <aura:attribute name="pollTimer" type="Object" />
+    <aura:attribute name="pollTime" type="Integer" default="60" description="How often to look for new items, in minutes" />
+
+    <aura:attribute name="originId" type="String" />
+    <aura:attribute name="detailRendering" type="Aura.Component" />
+    <aura:attribute name="onboarding" type="Aura.Component" />
+
+    <aura:attribute name="likedContent" type="String" />
+    <aura:attribute name="likeCounts" type="Map" default="{}" />
+    <aura:attribute name="likedContentList" type="String[]" default="[]" />
+
+    <aura:attribute name="numResults" type="Integer" default="1" />
+    <aura:attribute name="errorMessage" type="String" />
+    <aura:attribute name="internalTagPathChange" type="Boolean" default="false" />
+    <aura:attribute name="showBreadcrumb" type="Boolean" default="true" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.tagPaths}" action="{!c.reInit}" />
+    <aura:handler name="change" value="{!v.order}" action="{!c.setOrderApiName}" />
+    <aura:handler name="change" value="{!v.originId}" action="{!c.toggleDetail}" />
+    <aura:handler name="change" value="{!v.likedContent}" action="{!c.likeContent}" />
+
+    <aura:handler event="c:ec_ChangeTaxonomyPathEvt" action="{!c.handleLoadTaxonomyContent}" />
+    <aura:handler event="c:ec_TaxonomyToggleDetailEvt" action="{!c.hideDetail}" />
+    <aura:handler event="c:ec_CompleteOnboardingEvt" action="{!c.completeOnboarding}" />
+    <aura:handler event="c:ec_ChangeSubscriptionsEvt" action="{!c.subscriptionsChanged}" />
+    <aura:handler event="c:ec_LikeUnlikeContentEvt" action="{!c.handleLikeUnlikeContent}" />
+
+    <aura:registerEvent name="taxonomyClickedEvent" type="c:ec_ChangeTaxonomyPathEvt"/>
+    <aura:registerEvent name="likeUnlikeContent" type="c:ec_LikeUnlikeContentEvt" />
+
+    <div aura:id="contentContainer" class="contentMarkup">
+        <aura:if isTrue="{!v.errorMessage}">
+            <ui:message title="Taxonomy Loader" severity="error">
+                {!v.errorMessage}
+            </ui:message>
+            <aura:set attribute="else">
+                <div class="slds-spinner_container hidden" aura:id="loadingSpinner">
+                    <div class="slds-spinner--brand slds-spinner slds-spinner--medium" role="status">
+                        <span class="slds-assistive-text">Loading</span>
+                        <div class="slds-spinner__dot-a"></div>
+                        <div class="slds-spinner__dot-b"></div>
+                    </div>
+                </div>
+
+                <aura:if isTrue="{!!empty(v.ComponentHeading)}">
+                    <h4 class="slds-text-title--caps componentHeading poweredBy-flush-with-padding slds-truncate"><aura:text value="{! v.ComponentHeading }" /></h4>
+                </aura:if>
+
+                <aura:if isTrue="{!and(v.includeBreadcrumb, v.showBreadcrumb)}">
+                    <c:ec_TaxonomyBreadcrumb tagPath="{!v.tagPaths}" taxonomyInstanceName="{!v.taxonomyInstanceName}" showFirstLevel="true" allowEditSubscriptions="{!v.allowEditSubscriptions}" />
+                </aura:if>
+
+                <aura:if isTrue="{!!v.numResults}">
+                    <ui:message severity="info">
+                        {!$Label.c.ec_TaxonomyLoader_No_Results}
+                    </ui:message>
+                </aura:if>
+
+                <div aura:id="taxLoaderDetail" class="hidden">
+                    {!v.detailRendering}
+                </div>
+                <div aura:id="onboarding" class="hidden">
+                    {!v.onboarding}
+                </div>
+                <div aura:id="taxLoaderContent">
+                    <div class="taxLoaderContentItems" aura:id="taxLoaderContentItems">
+                    </div>
+                    <ui:button label="{! $Label.c.ec_TaxonomyLoader_More }" class="hidden loadMoreButton" aura:id="loadMoreButton" press="{!c.loadMore}" />
+                </div>
+            </aura:set>
+        </aura:if>
+    </div>
+</aura:component>

@@ -1,10 +1,14 @@
 <aura:component >
     
+    <!-- ATTRS -->
     <aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-grid slds-wrap slds-grid--align-center slds-p-bottom--x-large slds-m-top--x-large"/>
     <aura:attribute name="backLabel" type="String" default="Back" />
     <aura:attribute name="nextLabel" type="String" default="Next" />
     <aura:attribute name="modalID" type="String" default=""/>
+    <aura:attribute name="nextType" type="String" default="button"></aura:attribute>
+    <aura:attribute name="form" type="String" default=""></aura:attribute>
     
+    <!-- MARKUP -->
     <div class="{!v.class}">
         <!--CTAS-->
         <div class="igcp-utils__order--2 igcp-medium-utils__order--1 slds-m-horizontal--medium slds-medium-m-horizontal--zero slds-size_12-of-12 slds-medium-size_5-of-12">
@@ -15,8 +19,16 @@
         <div class="igcp-utils__display--none igcp-medium-utils__display--flex igcp-utils__order--2 slds-size_2-of-12"></div>
         
         <div class="igcp-utils__order--1 igcp-medium-utils__order--3 slds-m-horizontal--medium slds-medium-m-horizontal--zero slds-size_12-of-12 slds-medium-size_5-of-12">
+
+            <aura:if isTrue="{!v.nextType == 'button'}">
+    			 <button data-open="{!v.modalID}" class="igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-button slds-button--brand slds-p-vertical--xx-small slds-float_right" onclick="{!c.onNext}">{!v.nextLabel}</button>	
+            </aura:if>
+
+            <aura:if isTrue="{!v.nextType == 'submit'}"  >
+            	<c:CP_Cmp_Submit id="form_submit" for="{!v.form}" label="{!v.nextLabel}" class="igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-button slds-button--brand slds-float_right" />
+            </aura:if>
+
            
-            <button data-open="{!v.modalID}" class="igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-button slds-button--brand slds-p-vertical--xx-small slds-float_right">{!v.nextLabel}</button>
         </div>
     </div>
 </aura:component>

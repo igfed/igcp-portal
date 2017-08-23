@@ -1,11 +1,11 @@
 <aura:component >
 
 	<!-- ATTRS -->
-	<aura:attribute  name="userMinLength" type="Integer" default="6"></aura:attribute>
-	<aura:attribute  name="userMaxLength" type="Integer" default="32"></aura:attribute>
-	<aura:attribute  name="userIsAlphanumeric" type="Boolean" default="true"></aura:attribute>
+	<aura:attribute name="userMinLength" type="Integer" default="6"></aura:attribute>
+	<aura:attribute name="userMaxLength" type="Integer" default="32"></aura:attribute>
+	<aura:attribute name="userIsAlphanumeric" type="Boolean" default="true"></aura:attribute>
 
-	<aura:attribute  name="passMinLength" type="Integer" default="8" ></aura:attribute>
+	<aura:attribute name="passMinLength" type="Integer" default="8" ></aura:attribute>
 
 	<!-- METHODS -->
     <aura:method name="validate" action="{!c.onValidateForm}" > 

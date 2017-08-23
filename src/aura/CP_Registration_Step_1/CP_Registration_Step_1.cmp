@@ -1,4 +1,16 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_RegistrationController" >
+
+	<aura:attribute  name="payload" type="String" default="{ 'clientNum' : '1234567890', 'postalCode': 'L3Y 5Y5', 'dob' : '1981-11-19'"></aura:attribute>
+
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Validation aura:id="CP_Validation" />
+	<!-- HANDLERS -->
+	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
+	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
+
+	<aura:method name="onSubmitForm" action="{!c.submitForm}" description="Call submit form">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
 
 	<!-- MARKUP -->
 	<div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
@@ -14,25 +26,34 @@
 				<form aura:id="registration-step-1-form" id="registration-step-1-form" method="get" action="" class="slds-grid slds-wrap">
 
 					<!-- CLIENT NUMBER -->
-					<c:CP_Cmp_Input_Text label="Client Number" 
+					<c:CP_Cmp_Input_Text id="client-number" 
+					type="username"
+					form="registration-step-1-form"
+					label="Client Number" 
 	                placeholder="Client Number" 
 	                class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 
 	                <!-- POSTAL CODE -->
-	                <c:CP_Cmp_Input_Text label="Postal Code" 
+	                <c:CP_Cmp_Input_Text id="postal-code" label="Postal Code" 
+	                	form="registration-step-1-form"
 	                placeholder="ie M2V 2V8" 
 	                class="slds-size_12-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
 	                
 	                <div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 	                
 	                <!-- DATE OF BIRTH -->
-	                <c:CP_Cmp_Input_Text label="Date of Birth" 
+	                <c:CP_Cmp_Input_Text id="dob" label="Date of Birth" 
+	                	form="registration-step-1-form"
 	                placeholder="ie DD/MM/YYYY" 
 	                class="slds-size_12-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
 	                
 	                <div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 
-	                <c:CP_Cmp_Form_Back_Next  backLabel="Cancel" nextLabel="Next"/>
+	                <!-- <c:CP_Cmp_Form_Back_Next  backLabel="Cancel" nextLabel="Next"/> -->
+
+
+					<c:CP_Cmp_Submit id="form_submit" for="registration-step-1-form" label="Submit" buttonType="submit" class="slds-m-top--large slds-size_6-of-12" />
+				
 
 	            </form>
 			

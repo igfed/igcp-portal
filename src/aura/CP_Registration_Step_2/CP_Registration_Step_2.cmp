@@ -1,5 +1,10 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
+
+	<!-- HANDLERS -->
+	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
+	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
+
 	<!-- MARKUP -->
     <div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
         
@@ -19,7 +24,7 @@
             <form aura:id="registration-step-1-form" id="registration-step-1-form" method="get" action="" class="slds-grid slds-wrap">
                 
                 <!--FIELDS-->
-                <c:CP_Cmp_Input_Text label="Username" 
+                <c:CP_Cmp_Input_Text id="username-input" label="Username" 
                     placeholder="" 
                     instructions="['Must be 6-32 characters', 'Must not contain any special characters']"
                     class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium"
@@ -29,8 +34,7 @@
                     instructions="['Must be 8-32 letters or numbers', 'At least one uppercase letter', 'At least one number or special character']"
                     tooltip="Pick a password."/>
                 
-                <c:CP_Cmp_Input_Password 
-                    label="Confirm password"
+                <c:CP_Cmp_Input_Password label="Confirm password"
                     revealPassword="false"
                     class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium"/>
                 
@@ -78,9 +82,11 @@
                 
                 <div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
                 
+
+                <c:CP_Cmp_Submit id="form_submit" for="registration-step-1-form" label="Submit" buttonType="submit" class="slds-m-top--large slds-size_6-of-12" />
                 <!--CTAS-->
-                <c:CP_Cmp_Form_Back_Next backLabel="Cancel"
-                    nextLabel="Update"/>
+                <!-- <c:CP_Cmp_Form_Back_Next backLabel="Cancel"
+                    nextLabel="Update"/> -->
 
                 
             </form>
@@ -89,4 +95,3 @@
         
     </div>
 </aura:component>
-

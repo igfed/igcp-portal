@@ -1,7 +1,7 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
 	<!-- ATTRS -->
-	<aura:attribute  name="registrationStart" type="Aura.component[]"></aura:attribute>
+	<aura:attribute name="registrationStart" type="Aura.component[]"></aura:attribute>
 
 	<!-- INCLUDES -->	
     <c:CP_CSS_Includes />
@@ -19,13 +19,13 @@
     <div class="igcp-utils__overflow--hidden">
     	<!-- <c:CP_Registration_Start parent="{!this}" /> -->
 
-    	<!-- <c:CP_Registration_Step_1 /> -->
+    	<c:CP_Registration_Step_1 />
 
     	<!-- <c:CP_Registration_Step_2 /> -->
 
     	<!-- <c:CP_Registration_Step_3 /> -->
 
-    	<c:CP_Registration_Thank_You />
+    	<!-- <c:CP_Registration_Thank_You /> -->
 
     	<!-- FOOTER -->	
 		<c:CP_Cmp_Footer />

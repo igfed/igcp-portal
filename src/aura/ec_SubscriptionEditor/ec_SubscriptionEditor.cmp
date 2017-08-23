@@ -1,0 +1,109 @@
+<aura:component controller="ec_SubscriptionEditorController" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
+    <ltng:require styles="{!$Resource.ec_Component_Helper + '/css/common.css'}"
+                  scripts="{!$Resource.ec_Component_Helper + '/js/common.js'}"
+                  afterScriptsLoaded="{!c.scriptLoad}" />
+
+    <aura:attribute name="ComponentHeading" type="String" />
+    <aura:attribute name="tagPaths" type="String" />
+    <aura:attribute name="siteName" type="String" />
+    <aura:attribute name="maxDepth" type="Integer" default="5" />
+    <aura:attribute name="sitePrefix" type="String" />
+    <aura:attribute name="showHeader" type="Boolean" default="true" />
+    <aura:attribute name="areaPageName" type="String" />
+    <aura:attribute name="showOthersSubs" type="Boolean" default="false" />
+    <aura:attribute name="allowEdit" type="Boolean" default="false" />
+    <aura:attribute name="hideEverything" type="Boolean" default="false" />
+    <aura:attribute name="cancelButtonIsSkip" type="Boolean" default="false" />
+    <aura:attribute name="loadedAsOnboarding" type="Boolean" default="false" />
+    <aura:attribute name="subscriptions" type="String[]" default="[]" />
+    <aura:attribute name="localeSubscriptions" type="String[]" default="[]" />
+    <aura:attribute name="originalSubscriptions" type="String[]" default="[]" />
+    <aura:attribute name="subscriptionBadges" type="Object[]" default="[]" />
+
+    <aura:attribute name="editMode" type="Boolean" default="false" />
+    <aura:attribute name="errorMessage" type="String" />
+
+    <aura:registerEvent name="toggleSubscriptionEditEvt" type="c:ec_ToggleSubscriptionEditEvt" />
+    <aura:registerEvent name="completeOnboardingEvt" type="c:ec_CompleteOnboardingEvt" />
+    <aura:registerEvent name="changeSubscriptionsEvt" type="c:ec_ChangeSubscriptionsEvt" />
+
+    <aura:handler event="c:ec_ToggleSubscriptionEvt" action="{!c.toggleSubscription}" />
+    <aura:handler event="c:ec_SubscriptionMatchEvt" action="{!c.matchSubscription}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.localeSubscriptions}" action="{!c.formatSubscriptions}" />
+
+    <div aura:id="subscriptionContainer" class="{!'taxonomyMenu slds-tree_container editMode-' + v.editMode}">
+        <aura:if isTrue="{!!v.hideEverything}">
+            <aura:if isTrue="{!v.errorMessage}">
+                <ui:message title="Taxonomy Menu" severity="error">
+                        {!v.errorMessage}
+                </ui:message>
+                <aura:set attribute="else">
+
+                    <div class="slds-spinner_container hidden" aura:id="loadingSpinner">
+                        <div class="slds-spinner--brand slds-spinner slds-spinner--medium" role="status">
+                            <span class="slds-assistive-text">Loading</span>
+                            <div class="slds-spinner__dot-a"></div>
+                            <div class="slds-spinner__dot-b"></div>
+                        </div>
+                    </div>
+
+                    <aura:if isTrue="{!!empty(v.ComponentHeading)}">
+                        <h4 class="slds-text-title--caps slds-truncate componentHeading poweredBy-flush-with-padding"><aura:text value="{!v.ComponentHeading}" /></h4>
+                    </aura:if>
+
+                    <div class="slds-box subscriptionEditorInner">
+
+
+                        <aura:if isTrue="{!v.allowEdit}">
+                            <div class="intro">
+                                <figure>
+                                    <c:svgIcon class="slds-icon"
+                                               svgPath="{!$Resource.ec_slds + '/assets/icons/action-sprite/svg/symbols.svg#following'}"
+                                               containerClass="slds-icon_container--circle"
+                                               category="action"
+                                               size="small"
+                                               name="following" />
+                                    <span class="slds-assistive-text">{!$Label.c.ec_SubscriptionEditor_You_are_subscribed}</span>
+                                </figure>
+                                <p>{!$Label.c.ec_SubscriptionEditor_Intro_Message}</p>
+                            </div>
+                            <div class="subscriptionButtons">
+                                <aura:if isTrue="{!v.editMode}">
+                                    <ui:button label="{!if(v.cancelButtonIsSkip, $Label.c.ec_SubscriptionEditor_Skip, $Label.c.ec_SubscriptionEditor_Cancel)}" press="{!c.cancelEditMode}" class="userSubscriptionsCancelButton slds-button slds-button--neutral uiButton" />
+                                    <ui:button label="{!$Label.c.ec_SubscriptionEditor_Save}" press="{!c.saveEditMode}" class="userSubscriptionsSaveButton slds-button slds-button--brand uiButton" />
+                                    <aura:set attribute="else">
+                                        <ui:button label="{!$Label.c.ec_SubscriptionEditor_Edit}" press="{!c.toggleEditMode}" class="userSubscriptionsEditButton slds-button slds-button--neutral uiButton" />
+                                    </aura:set>
+                                </aura:if>
+                            </div>
+                        </aura:if>
+                        <aura:if isTrue="{!v.editMode}">
+                            <ul class="{!'slds-tree includeParent-' + v.showHeader}" aria-labelledby="{!globalId + '_treeheading'}" role="tree">
+                                    {!v.body}
+                            </ul>
+
+                            <div class="flexContainer">
+                                <div class="subscriptionButtons">
+                                    <ui:button label="{!if(v.cancelButtonIsSkip, $Label.c.ec_SubscriptionEditor_Skip, $Label.c.ec_SubscriptionEditor_Cancel)}" press="{!c.cancelEditMode}" class="userSubscriptionsCancelButton slds-button slds-button--neutral uiButton" />
+                                    <ui:button label="{!$Label.c.ec_SubscriptionEditor_Save}" press="{!c.saveEditMode}" class="userSubscriptionsSaveButton slds-button slds-button--brand uiButton" />
+                                </div>
+                            </div>
+                            <aura:set attribute="else">
+                                <div></div>
+                                <aura:iteration items="{!v.subscriptionBadges}" var="taxonomy">
+                                    <div class="subscriptionSection">
+                                        <h2>{!taxonomy.root}</h2>
+                                        <aura:iteration items="{!taxonomy.nodes}" var="subscription">
+                                            <span class="slds-badge slds-m-around--xxx-small tagPathBadge" title="{!subscription.full}" onclick="{!c.goToArea}">{!subscription.leaf}</span>
+                                        </aura:iteration>
+                                    </div>
+                                </aura:iteration>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                </aura:set>
+            </aura:if>
+        </aura:if>
+    </div>
+</aura:component>

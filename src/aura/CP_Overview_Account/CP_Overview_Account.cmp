@@ -18,8 +18,7 @@
         <c:CP_Overview_Account_Heading col1Name="{!v.col1Name}" col2Name="{!v.col2Name}" accountType="{!v.accountType}"/>
         
         <aura:iteration var="account" items="{!v.accounts}">
-            <c:CP_Overview_Account_Item 
-            accountName="{!account.name}" 
+            <c:CP_Overview_Account_Item accountName="{!account.name}" 
             val1="{!account.val1}"
             val2="{!account.val2}"/>
         </aura:iteration>

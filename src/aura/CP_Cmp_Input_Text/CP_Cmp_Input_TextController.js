@@ -4,7 +4,7 @@
 		var
 			events = cmp.find('CP_Events'),
 			formId = evt.getParam('payload').formId,
-			form = cmp.get('v.form');
+			form = cmp.get('v.form');		
 
 		if (formId === form) {
 			events.fire("CP_Evt_Send_Input_Value", {

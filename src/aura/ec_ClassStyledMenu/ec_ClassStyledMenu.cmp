@@ -1,0 +1,19 @@
+<aura:component controller="ec_ClassStyledMenuController" extends="forceCommunity:navigationMenuBase" access="global" >
+    <aura:attribute name="location" type="string" default="header" />
+    <aura:attribute name="sitePrefix" type="string" />
+    <aura:attribute name="restrictWidth" type="Boolean" default="false" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <div class="slds-context-bar" aura:id="menuContainer">
+
+        <label for="show-menu" class="show-menu" onclick="{!c.showMenuClick}">{!$Label.c.ec_Mobile_Menu_Label}</label>
+        <input type="checkbox" id="show-menu" role="button" />
+
+        <nav class="{!'slds-context-bar__secondary' + if(v.restrictWidth, ' restrictWidthContainer', '')}" role="navigation">
+            <ul class="slds-grid" onclick="{!c.showMenuClick}">
+                {!v.body}
+            </ul>
+        </nav>
+    </div>
+</aura:component>

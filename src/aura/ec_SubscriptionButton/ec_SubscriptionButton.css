@@ -1,0 +1,28 @@
+.THIS {
+    position: relative;
+    margin-top: -.5rem;
+}
+
+.THIS .slds-popover {
+    display: none;
+    position: absolute;
+    bottom: 2.5rem;
+    left: calc(50% - 1.5rem);
+    min-width: 10rem;
+    /* remove undesired styles inherited from slds-breadcrumb */
+    text-transform: none;
+    letter-spacing: normal;
+    line-height: 1.375;
+}
+
+.THIS .toggleSubscription:hover + .slds-popover {
+    display: block;
+}
+
+.THIS .subscribed-true .slds-button__icon {
+    fill: #7dcf64; /* colour taken from .slds-icon-action-following */
+}
+
+.THIS .subscribed-false .slds-button__icon {
+    fill: #31b9f8; /* colour taken from .slds-icon-action-follow */
+}

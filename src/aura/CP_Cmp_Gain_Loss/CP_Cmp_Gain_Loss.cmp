@@ -1,13 +1,13 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
-	<aura:attribute  name="class" type="String" default="slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"></aura:attribute>
+	<aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"></aura:attribute>
 
-	<aura:attribute  name="label" type="String" default="Gain / Loss"></aura:attribute>
-	<aura:attribute  name="description" type="String" default=""></aura:attribute>
+	<aura:attribute name="label" type="String" default="Gain / Loss"></aura:attribute>
+	<aura:attribute name="description" type="String" default=""></aura:attribute>
 
-	<aura:attribute  name="value" type="String" ></aura:attribute>
+	<aura:attribute name="value" type="String" ></aura:attribute>
 
-	<aura:attribute  name="percentage" type="String" ></aura:attribute>
+	<aura:attribute name="percentage" type="String" ></aura:attribute>
 
     <div class="{v.class}">
          

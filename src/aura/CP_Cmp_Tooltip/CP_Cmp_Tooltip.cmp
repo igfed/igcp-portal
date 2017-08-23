@@ -1,4 +1,4 @@
-<aura:component>
+<aura:component >
 	<aura:attribute name="class" type="String" default=""/>
 	<div class="{!v.class}">
 		<button class="slds-button slds-button_icon slds-button slds-button_icon" aria-describedby="info" title="Info Tooltip">
