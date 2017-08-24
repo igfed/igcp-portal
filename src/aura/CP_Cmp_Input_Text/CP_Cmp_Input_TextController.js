@@ -1,4 +1,13 @@
 ({
+	onInit: function(cmp, evt, hlpr) {
+		if(cmp.get("v.id") === "default") {
+			console.error("CP_Cmp_Input_Text: A unique 'id' is required.");
+		}
+
+		if(cmp.get("v.form") === "default") {
+			console.error("CP_Cmp_Input_Text: Input needs to be associated with a 'form'.")
+		}
+	},
 	onGetValue: function(cmp, evt, hlpr) {
 
 		var
@@ -6,7 +15,12 @@
 			formId = evt.getParam('payload').formId,
 			form = cmp.get('v.form');		
 
+				console.log("formId: " + formId);
+				console.log("form: " + form);
+				
+
 		if (formId === form) {
+			console.log("id: " + cmp.get("v.id"));
 			events.fire("CP_Evt_Send_Input_Value", {
 				"id": cmp.get("v.id"),
 				"type": cmp.get("v.type"),

@@ -1,12 +1,23 @@
 ({
 	onSubmit : function(cmp, evt, hlpr) {
 
+		//Reset input errors	
+		cmp.set("v.inputErrors", false);
+
 		var events = cmp.find('CP_Events');
 		events.fire("CP_Evt_Get_Input_Value", { 'formId' : 'registration-step-1-form'});
 
 		//cmp.set("v.payload", { "clientNum" : "1234567890", "postalCode": "L3Y 5Y5", "dob" : "1981-11-19"});
 
-		cmp.onSubmitForm();
+		//cmp.onSubmitForm();	
+
+		//console.log(cmp.get("v.inputErrors"));	
+
+		// if(cmp.get("v.inputErrors") === false) {
+		// 	cmp.onNextStep();
+		// }
+
+
 	},
 	onInputValueReceived : function(cmp, evt, hlpr) {
 
@@ -14,13 +25,17 @@
 				validator = cmp.find('CP_Validation'),
 				events = cmp.find('CP_Events');
 
-		validator.validate(evt.getParam("payload"), function(obj){
+		validator.validate(evt.getParam("payload"), function(obj){	
+
+			console.log('On Input Received');	
+			console.log(obj);
 
 			if(obj.isValid === false) {
 				events.fire("CP_Evt_Input_Error", {
 					"id" : obj.id,
 					"errors" : obj.errors
 				});
+
 			} else {
 				events.fire("CP_Evt_Input_Valid", {
 					"id" : obj.id
@@ -73,5 +88,11 @@
         // other server-side action calls.
         // $A.enqueueAction adds the server-side action to the queue.
         $A.enqueueAction(action);
+	},
+	gotoNextStep: function(cmp, evt, hlpr) {
+		var event = cmp.find("CP_Events");
+		event.fire("CP_Evt_Next_Step", {
+			"id" : cmp.get("v.pageId")
+		});				
 	}
 })

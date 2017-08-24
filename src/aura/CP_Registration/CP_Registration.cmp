@@ -1,7 +1,6 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
-	<!-- ATTRS -->
-	<aura:attribute name="registrationStart" type="Aura.component[]"></aura:attribute>
+	<aura:attribute  name="currentStep" type="Integer" default="1" ></aura:attribute>
 
 	<!-- INCLUDES -->	
     <c:CP_CSS_Includes />
@@ -9,23 +8,31 @@
 
     <!-- HANDLERS -->
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-
-    <!-- METHODS -->
-     <aura:method name="onStepOne" action="{!c.onStepOne}" 
-      description="Call step one method">
-    </aura:method>
+    <aura:handler event="c:CP_Evt_Next_Step" action="{!c.onNextStep}"></aura:handler>
+    <aura:handler event="c:CP_Evt_Back_Step" action="{!c.onBackStep}"></aura:handler>
 
     <!-- COMPONENTS -->
     <div class="igcp-utils__overflow--hidden">
-    	<!-- <c:CP_Registration_Start parent="{!this}" /> -->
 
-    	<c:CP_Registration_Step_1 />
+    	<aura:if isTrue="{!v.currentStep == 0}"  >
+    		<c:CP_Registration_Start />
+    	</aura:if>
 
-    	<!-- <c:CP_Registration_Step_2 /> -->
+    	<aura:if isTrue="{!v.currentStep == 1}"  >
+    		<c:CP_Registration_Step_1 />
+    	</aura:if>
 
-    	<!-- <c:CP_Registration_Step_3 /> -->
+    	<aura:if isTrue="{!v.currentStep == 2}"  >
+    		<c:CP_Registration_Step_2 />
+    	</aura:if>
 
-    	<!-- <c:CP_Registration_Thank_You /> -->
+    	<aura:if isTrue="{!v.currentStep == 3}"  >
+    		<c:CP_Registration_Step_3 />
+    	</aura:if>
+
+    	<aura:if isTrue="{!v.currentStep == 4}"  >
+    		<c:CP_Registration_Thank_You />
+    	</aura:if>
 
     	<!-- FOOTER -->	
 		<c:CP_Cmp_Footer />

@@ -4,16 +4,16 @@
 	<c:CP_Events aura:id="CP_Events" />
 
     <!-- ATTRS -->
-    <aura:attribute name="id" Type="String" default=""/>
+    <aura:attribute name="id" Type="String" default="default"/>
+    <aura:attribute name="label" type="String" default="default" />
+    <aura:attribute name="buttonType" type="String" default="default"></aura:attribute>
     <aura:attribute name="icon" Type="String" />
     <aura:attribute name="iconSize" Type="String" default="small"/>
     <aura:attribute name="class" type="String" />
     <aura:attribute name="buttonClass" type="String" default="" ></aura:attribute>
-    <aura:attribute name="label" type="String" default="Back" />
-    <aura:attribute name="buttonType" type="String" default="default"></aura:attribute>
 
     <!-- HANDLERS -->
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
     
     <div id="{!v.id}" aura:id="{!v.id}" class="{!v.class}">
         <lightning:button label="{!v.label}" variant="brand" class="{!'igcp-utils__width--100 slds-p-vertical--xx-small ' + v.buttonClass}" onclick="{!c.onClick}">

@@ -1,5 +1,8 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_RegistrationController" >
 
+	<!-- ATTRS -->	
+	<aura:attribute  name="pageId" type="String" default="registration-step-1"></aura:attribute>
+	<aura:attribute  name="inputErrors" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute  name="payload" type="String" default="{ 'clientNum' : '1234567890', 'postalCode': 'L3Y 5Y5', 'dob' : '1981-11-19'"></aura:attribute>
 
 	<c:CP_Events aura:id="CP_Events" />
@@ -9,6 +12,10 @@
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 
 	<aura:method name="onSubmitForm" action="{!c.submitForm}" description="Call submit form">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
+
+	<aura:method name="onNextStep" action="{!c.gotoNextStep}" description="Called when ready to proceed to next step">
 		<aura:attribute name="payload" type="Map"></aura:attribute>
 	</aura:method>
 
@@ -26,16 +33,22 @@
 				<form aura:id="registration-step-1-form" id="registration-step-1-form" method="get" action="" class="slds-grid slds-wrap">
 
 					<!-- CLIENT NUMBER -->
-					<c:CP_Cmp_Input_Text id="client-number" 
-					type="username"
+					<c:CP_Cmp_Input_Text 
+					id="client-number" 
+					maxLength="13"
+					type="client-number"
 					form="registration-step-1-form"
 					label="Client Number" 
 	                placeholder="Client Number" 
 	                class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 
 	                <!-- POSTAL CODE -->
-	                <c:CP_Cmp_Input_Text id="postal-code" label="Postal Code" 
-	                	form="registration-step-1-form"
+	                <c:CP_Cmp_Input_Text 
+	                id="postal-code" 
+	                maxLength="7"
+	                type="postal"
+	                label="Postal Code" 
+	                form="registration-step-1-form"
 	                placeholder="ie M2V 2V8" 
 	                class="slds-size_12-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
 	                
@@ -49,12 +62,12 @@
 	                
 	                <div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 
-	                <!-- <c:CP_Cmp_Form_Back_Next  backLabel="Cancel" nextLabel="Next"/> -->
-
-
-					<c:CP_Cmp_Submit id="form_submit" for="registration-step-1-form" label="Submit" buttonType="submit" class="slds-m-top--large slds-size_6-of-12" />
-				
-
+	                <c:CP_Cmp_Form_Back_Next  
+	                	id="{!v.pageId}" 
+	                	backLabel="Cancel" 
+	                	nextLabel="Next" 
+	                	nextType="submit" 
+	                	form="registration-step-1-form"/>
 	            </form>
 			
 		</div>

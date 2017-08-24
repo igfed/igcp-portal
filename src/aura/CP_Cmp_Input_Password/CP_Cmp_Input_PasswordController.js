@@ -1,4 +1,13 @@
 ({
+	onInit: function(cmp, evt, hlpr) {
+		if(cmp.get("v.id") === "default") {
+			console.error("CP_Cmp_Input_Password: A unique 'id' is required.");
+		}
+
+		if(cmp.get("v.form") === "default") {
+			console.error("CP_Cmp_Input_Password: Input needs to be associated with a 'form'.")
+		}
+	},
 	onGetValue: function(cmp, evt, hlpr) {
 
 		var

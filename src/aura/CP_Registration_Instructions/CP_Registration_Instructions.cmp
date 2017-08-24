@@ -1,7 +1,7 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
-	<!-- ATTRS -->	
-	<aura:attribute name="parent" type="Aura.Component[]"></aura:attribute>
+	<!-- ATTRS -->
+	<aura:attribute name="pageId" type="String" default="registration-instructions" ></aura:attribute>
 
 	<!-- MARKUP -->	
 	<div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded">
@@ -40,12 +40,11 @@
                           <p class="igcp-utils__display--none igcp-medium-utils__display--block">Investors Group Online Access ensures online safety and security for your account and financial information.</p>
                           <a href="#" class="igcp-link"><span class="igcp-utils__font--semibold">More On Our Guarantee</span><lightning:icon iconName="utility:chevronright" class="igcp-link__glyph--after" size="x-small" alternativeText="View Document" /></a>
                       </div>
-                      <div class="slds-size_12-of-12 slds-medium-size_6-of-12 slds-clearfix">
-                          <button class="igcp-utils__width--100 igcp-medium-utils__width--75 slds-button slds-button--neutral slds-p-vertical--xx-small slds-float_left slds-m-top--large">Cancel</button>
-                      </div>
-                      <div class="slds-size_12-of-12 slds-medium-size_6-of-12 slds-clearfix">
-                          <button class="igcp-utils__width--100 igcp-medium-utils__width--75 slds-button slds-button--brand slds-p-vertical--xx-small slds-float_right slds-m-top--large" onclick="{!c.onStart}">Start</button>
-                      </div>
+                      
+                      <c:CP_Cmp_Form_Back_Next 
+                      	id="{!v.pageId}"
+                      	backLabel="Cancel" 
+                      	nextLabel="Start" />
                   </div>
                 </div>
                 <div class="slds-size_1-of-12 slds-large-size_2-of-12"></div>
