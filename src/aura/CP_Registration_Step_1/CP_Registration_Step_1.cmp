@@ -55,9 +55,12 @@
 	                <div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 	                
 	                <!-- DATE OF BIRTH -->
-	                <c:CP_Cmp_Input_Text id="dob" label="Date of Birth" 
-	                	form="registration-step-1-form"
-	                placeholder="ie DD/MM/YYYY" 
+	                <c:CP_Cmp_Input_Date 
+	                id="dob" 
+	                label="Date of Birth" 
+	                form="registration-step-1-form"
+	                type="date"
+	                placeholder="ie MM/DD/YYYY" 
 	                class="slds-size_12-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
 	                
 	                <div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>

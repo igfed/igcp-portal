@@ -12,6 +12,8 @@
 				hlpr.validateClientnumber(params.payload, params.callBack, cmp, hlpr);
 			} else if (params.payload.type === "postal") {
 				hlpr.validatePostalcode(params.payload, params.callBack, cmp, hlpr);
+			} else if(params.payload.type === "date") {
+				hlpr.validateDate(params.payload, params.callBack, cmp, hlpr);
 			}
 		}
 	}

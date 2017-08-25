@@ -1,6 +1,5 @@
 ({
 	isValid: function(errors) {
-		//console.log("isValid: " + errors.length)
 		if(errors.length === 0) {
 			return true;
 		} else {
@@ -13,6 +12,12 @@
 		} else {
 			return false;
 		}
+	},
+	lessThanOrEqual: function(val1, val2) {
+		return val1 <= val2 ? true : false;
+	},
+	greaterThanOrEqual: function(val1, val2) {
+		return val1 >= val2	? true : false;
 	},
 	min: function(length, param) {
 		return length >= param;
@@ -134,21 +139,25 @@
 			value = params.value,
 			id = params.id,
 			minLength = hlpr.min(value.length, cmp.get("v.clientMinLength")),
+			hasNumberOnly = hlpr.hasNumberOnly(value),
 			errors = [];
 
-		errors = hlpr.checkForErrors({ "minLength" : minLength });
+		errors = hlpr.checkForErrors({ 
+			"minLength" : minLength,
+			"hasNumberOnly" : hasNumberOnly 
+		});
 
 		errors.forEach(function(item, i){
 			if(item.type === "minLength") {
-				item["msg"] = ("The client number is less than " + cmp.get("v.clientMinLength") + " characters");
+				item["msg"] = "The client number is less than " + cmp.get("v.clientMinLength") + " characters";
+			} else if(item.type === "hasNumberOnly") {
+				item["msg"] = "The client number must only be numbers."
 			}
 		});
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
 	validatePostalcode: function(params, callBack, cmp, hlpr) {
-
-		console.log("VALIDAT# POSTAL CODE");
 
 		var 
 			value = params.value,
@@ -187,5 +196,46 @@
 		});
 
 		callBack({ "id": id, "isValid":  hlpr.isValid(errors), "errors": errors });
+	},
+	validateDate: function(params, callBack, cmp, hlpr) {
+			console.log('Validate Date')
+
+			var 
+				value = params.value,
+				id = params.id,
+				splitValues = [],
+				isEmpty = value.length === 0 ? true : false,
+				monthValid = false,
+				dayValid = false,
+				yearValid = false,
+				errors = [],
+				errorCheckObj = {};		
+
+		if(isEmpty === true) {
+			errorCheckObj["isEmpty"] = isEmpty;
+		} else {
+			splitValues = value.split("/");	
+			monthValid = hlpr.lessThanOrEqual(splitValues[0], 12);
+			dayValid = hlpr.lessThanOrEqual(splitValues[1], 31);
+			yearValid = hlpr.lessThanOrEqual(splitValues[2], (new Date()).getFullYear());	
+
+			errorCheckObj["monthValid"] = monthValid;
+			errorCheckObj["dayValid"] = dayValid;
+			errorCheckObj["yearValid"] = yearValid;
+		}  
+
+		errors = hlpr.checkForErrors(errorCheckObj);
+
+		errors.forEach(function(item, i){
+			if(item.type === "monthValid") {
+				item["msg"] = "Month must be 1 - 12";
+			} else if(item.type === "dayValid") {
+				item["msg"] = "Day must be 1 - 31";
+			} else if(item.type === "yearValid") {
+				item["msg"] = "Year must be less than current year";
+			}
+		});
+
+		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	}
 })

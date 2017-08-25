@@ -17,7 +17,7 @@
     <aura:attribute name="tooltip" type="String" />
     <aura:attribute name="instructions" type="List" />
     <aura:attribute name="inputValue" type="String" default=""></aura:attribute>
-    <aura:attribute name="maxLength" type="Integer" default="100"></aura:attribute>
+    <aura:attribute name="maxLength" type="Integer" default="10"></aura:attribute>
     <aura:attribute name="type" type="String" default="default"></aura:attribute>
     
     <!-- HANDLERS -->
@@ -33,7 +33,7 @@
             <lightning:icon iconName="{!v.icon}" size="small" class="slds-m-right--xx-small" alternativeText="{!v.label}" />
         </aura:renderIf>
         
-        <label class="slds-form-element__label input-label igcp-utils__text--uppercase" for="text-input">{!v.label} 
+        <label class="slds-form-element__label input-label igcp-utils__text--uppercase" for="date-input">{!v.label} 
         </label>
         
         <aura:renderIf isTrue="{!v.tooltip}">
@@ -51,7 +51,7 @@
         
         <div class="slds-form-element__control">
 
-            <ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}"/>
+            <ui:inputText aura:id="date-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" updateOn="keyup" keyup="{!c.onType}"/>
         </div>
         
         <aura:renderIf isTrue="{!v.helpText}">
