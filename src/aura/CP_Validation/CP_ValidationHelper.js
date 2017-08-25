@@ -1,5 +1,6 @@
 ({
 	isValid: function(errors) {
+		//console.log("isValid: " + errors.length)
 		if(errors.length === 0) {
 			return true;
 		} else {
@@ -38,25 +39,14 @@
 		return /[^a-z\d]+/i.test(value);
 	},
 	hasValidPostalCode: function(value) {
-		var isValid = value.match(/[a-zA-Z][0-9][a-zA-Z](-| |)[0-9][a-zA-Z][0-9]/) || value.match(/[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]/);
 		
+		var isValid = /[a-zA-Z][0-9][a-zA-Z](-| |)[0-9][a-zA-Z][0-9]/.test(value) || /[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]/.test(value);
+
 		if(isValid === null) {
 			return false;
 		} else {
 			return isValid;
 		}
-	},
-	hasValidZipcode: function(value){
-		// var 
-		// 	isValid = false,
-		// 	numbersOnly = /^\d+$/.test(value),
-		// 	length = value.length;
-
-		// if(numbersOnly === true && length === 5) {
-		// 	isValid = true;
-		// }		
-
-		// return isValid; 	
 	},
 	checkForErrors: function(valObj) {
 		var
@@ -157,6 +147,9 @@
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
 	validatePostalcode: function(params, callBack, cmp, hlpr) {
+
+		console.log("VALIDAT# POSTAL CODE");
+
 		var 
 			value = params.value,
 			id = params.id,
@@ -169,27 +162,30 @@
 
 		errorCheckObj["minLength"] = minLength;
 
-		// if(numbersOnly === true) {
-		// 	//This might be a zipcode
-		// 	errorCheckObj["hasValidZipcode"] = hlpr.hasValidZipcode(value);
-		// } else {
-		// 	//This might be a postal code
-		// 	errorCheckObj["hasValidPostalCode"] = hlpr.hasValidPostalCode(value);
-		// }
+		if(value.length === 5) {
 
-		errors = hlpr.checkForErrors(errorObj);
+			if(numbersOnly === true) {
+				errorCheckObj["hasValidZipcode"] = true;
+			} else {
+				errorCheckObj["hasValidZipcode"] = false;
+			}
+
+		} else if(value.length >= 5) {
+			errorCheckObj["hasValidPostalCode"] = hlpr.hasValidPostalCode(value);
+		}
+
+		errors = hlpr.checkForErrors(errorCheckObj);
 
 		errors.forEach(function(item, i){
 			if(item.type === "minLength") {
 				item["msg"] = "The postal/zip code must have at least 5 characters.";
-			} else if(item.type === "numbersOnly") {
-				item["msg"] = "Zip codes must contain numbers only."
+			} else if(item.type === "hasValidZipcode") {
+				item["msg"] = "Not a valid zip code format. Must be numeric only.";
+			} else if(item.type === "hasValidPostalCode") {
+				item["msg"] = "Not a valid postal code format."
 			}
 		});
 
-		console.log("VALIDATE POSTAL CODE");
-		console.log(errors);
-
-		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+		callBack({ "id": id, "isValid":  hlpr.isValid(errors), "errors": errors });
 	}
 })

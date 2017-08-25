@@ -14,13 +14,9 @@
 			events = cmp.find('CP_Events'),
 			formId = evt.getParam('payload').formId,
 			form = cmp.get('v.form');		
-
-				console.log("formId: " + formId);
-				console.log("form: " + form);
 				
 
 		if (formId === form) {
-			console.log("id: " + cmp.get("v.id"));
 			events.fire("CP_Evt_Send_Input_Value", {
 				"id": cmp.get("v.id"),
 				"type": cmp.get("v.type"),

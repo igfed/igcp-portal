@@ -44,8 +44,6 @@
 		});
 	},
 	submitForm: function(cmp, evt, hlpr) {
-		console.log('submitForm');
-		console.log(cmp.get("v.payload"));
 
 		pl= JSON.stringify(cmp.get("v.payload"));
 		var action = cmp.get("c.StepOne");
