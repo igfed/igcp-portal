@@ -1,27 +1,24 @@
 ({
 	onInit: function(cmp, evt, hlpr) {
-		console.log("init");
-		//collect the number of inputs in the form here			
+		//console.log("init");			
 	},
 	onSubmit : function(cmp, evt, hlpr) {
 
 		//Reset input errors	
-
 		cmp.set("v.inputErrors", false);
+		cmp.set("v.inputsReceived", 0);
 
 		var events = cmp.find('CP_Events');
 		events.fire("CP_Evt_Get_Input_Value", { 'formId' : 'registration-step-1-form'});	
-
-
-		//cmp.set("v.payload", { "clientNum" : "1234567890", "postalCode": "L3Y 5Y5", "dob" : "1981-11-19"});
-
-		//cmp.onSubmitForm();	
 	},
 	onInputValueReceived : function(cmp, evt, hlpr) {
 
 		var 
 				validator = cmp.find('CP_Validation'),
-				events = cmp.find('CP_Events');
+				events = cmp.find('CP_Events'),
+				utils = cmp.find('CP_Utils'),
+				inputs = cmp.get("v.inputsReceived"),
+				formattedDob = "";
 
 		validator.validate(evt.getParam("payload"), function(obj){	
 
@@ -35,34 +32,76 @@
 				});
 
 			} else {
+				
+				var 
+					inputId = evt.getParam("payload").id,
+					inputValue = evt.getParam("payload").value;		
+				
+				//Capture values
+				if(inputId === "client-number") {
+					cmp.set("v.clientNum", inputValue);	
+				} else if(inputId === "postal-code") {
+					cmp.set("v.postalCode", inputValue);	
+				} else if(inputId === "dob") {
+					cmp.set("v.dob", inputValue);	
+				}	 	
+
+				//Fire valid evt	
 				events.fire("CP_Evt_Input_Valid", {
 					"id" : obj.id
 				});
 			}
 		});
 
+		cmp.set("v.inputsReceived", (inputs += 1));
+
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
+		if(cmp.get("v.inputsReceived") === 3 && cmp.get("v.inputErrors") === false) {
+
+
+			utils.convertToYMD(cmp.get("v.dob"), function(value){
+				formattedDob = value;	
+			});	
+
+			cmp.set("v.payload", { 
+				"clientNum" : cmp.get("v.clientNum"), 
+				"postalCode": cmp.get("v.postalCode"), 
+				"dob" : formattedDob
+			});
+
+		    cmp.onSubmitForm();
+		}
 	},
 	submitForm: function(cmp, evt, hlpr) {
 
-		pl= JSON.stringify(cmp.get("v.payload"));
 		var action = cmp.get("c.StepOne");
-        action.setParams({ payload : pl});
-
+        action.setParams({ payload : JSON.stringify(cmp.get("v.payload"))});
 
         // Create a callback that is executed after 
         // the server-side action returns
         action.setCallback(this, function(response) {
-            var state = response.getState();
+            var state = response.getState(),
+            	res, isValid;
             if (state === "SUCCESS") {
                 // Alert the user with the value returned 
                 // from the server
-                alert("From server: " + response.getReturnValue());
+                console.log("Submit Response: " + response.getReturnValue());
+
+                res = JSON.parse(response.getReturnValue());
+                isValid = res["IsValid"];
+
+                if(isValid === true) {
+                	cmp.onNextStep();
+                } else {
+                	console.warn("Submission error: ");
+                	console.warn(res["Messages"]);
+                }
 
                 // You would typically fire a event here to trigger 
                 // client-side notification that the server-side 
                 // action is complete
+
             }
             else if (state === "INCOMPLETE") {
                 // do something
@@ -71,11 +110,11 @@
                 var errors = response.getError();
                 if (errors) {
                     if (errors[0] && errors[0].message) {
-                        console.log("Error message: " + 
+                        console.error("Error message: " + 
                                  errors[0].message);
                     }
                 } else {
-                    console.log("Unknown error");
+                    console.error("Unknown error");
                 }
             }
         });

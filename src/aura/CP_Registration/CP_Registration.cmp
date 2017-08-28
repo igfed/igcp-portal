@@ -1,6 +1,6 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
-	<aura:attribute  name="currentStep" type="Integer" default="2" ></aura:attribute>
+	<aura:attribute  name="currentStep" type="Integer" default="1" ></aura:attribute>
 
 	<!-- INCLUDES -->	
     <c:CP_CSS_Includes />

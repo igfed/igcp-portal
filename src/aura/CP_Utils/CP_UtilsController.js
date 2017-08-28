@@ -39,5 +39,16 @@
 		} else {
 			console.warn('CP_Utils: onDestroyComponent: No params passed.');
 		}
+	},
+	convertToYMD: function(cmp, evt, hlpr){
+		var params = evt.getParam('arguments');
+		if (params) {
+			var 
+				date = params.date,
+				splitArr = date.split("/");
+
+			console.log("CONVERT")	
+			params.callback(splitArr[2] + "-" + splitArr[0] + "-" + splitArr[1]);
+		}
 	}
 })

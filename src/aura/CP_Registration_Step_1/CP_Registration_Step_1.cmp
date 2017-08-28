@@ -3,14 +3,23 @@
 	<!-- ATTRS -->	
 	<aura:attribute  name="pageId" type="String" default="registration-step-1"></aura:attribute>
 	<aura:attribute  name="inputErrors" type="Boolean" default="false"></aura:attribute>
-	<aura:attribute  name="payload" type="String" default="{ 'clientNum' : '1234567890', 'postalCode': 'L3Y 5Y5', 'dob' : '1981-11-19'"></aura:attribute>
+	<aura:attribute  name="inputsReceived" type="Integer" default="0" ></aura:attribute>
+	<aura:attribute  name="payload" type="Map" default="{}"></aura:attribute>
 
+	<aura:attribute  name="clientNum" type="String" default=""></aura:attribute>
+	<aura:attribute  name="postalCode" type="String" default=""></aura:attribute>
+	<aura:attribute  name="dob" type="String" default=""></aura:attribute>
+
+	<!-- INCLUDES -->	
 	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
 	<c:CP_Validation aura:id="CP_Validation" />
+
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 
+	<!-- METHODS-->
 	<aura:method name="onSubmitForm" action="{!c.submitForm}" description="Call submit form">
 		<aura:attribute name="payload" type="Map"></aura:attribute>
 	</aura:method>

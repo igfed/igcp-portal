@@ -198,8 +198,7 @@
 		callBack({ "id": id, "isValid":  hlpr.isValid(errors), "errors": errors });
 	},
 	validateDate: function(params, callBack, cmp, hlpr) {
-			console.log('Validate Date')
-
+	
 			var 
 				value = params.value,
 				id = params.id,
