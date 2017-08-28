@@ -73,31 +73,31 @@
 		var
 			isValid = false,
 			errors = [],
+			errorCheckObj = {},
 			value = params.value,
+			isEmpty = value.length === 0 ? true : false,
 			id = params.id,
 			minLength = hlpr.min(value.length, cmp.get("v.userMinLength")),
 			isAlphanumeric = hlpr.alphanumeric(value);
 
-		//Check for min length
-		if (minLength === true) {
-			isValid = true;
+		if(isEmpty === true) {
+			errorCheckObj["isEmpty"] = isEmpty;
 		} else {
-			isValid = false
-			errors.push({ type: "minLength", msg: ("The username is less than " + cmp.get("v.userMinLength") + " characters") });
+			errorCheckObj["minLength"] = minLength;
+			errorCheckObj["isAlphanumeric"] = isAlphanumeric;	
 		}
 
-		//Check for non alpha numeric chars
-		if (minLength === true) {
-			if (isAlphanumeric === true && cmp.get("v.userIsAlphanumeric") === true) {
-				isValid = true;
-			} else {
-				isValid = hlpr.isSame(isAlphanumeric, cmp.get("v.userIsAlphanumeric"));
+		errors = hlpr.checkForErrors(errorCheckObj);
 
-				if (value.length !== 0) {
-					errors.push({ type: "isAlphanumeric", msg: ("The username must not contain any special characters") });
-				}
+		errors.forEach(function(item, i){
+			if(item.type === "minLength") {
+				item["msg"] = "The username is less than " + cmp.get("v.userMinLength") + " characters";
+			} else if(item.type === "isAlphanumeric") {
+				item["msg"] = "The username must not have any special characters";
+			} else if(item.type === "isEmpty") {
+				item["msg"] = "The username must not be empty";
 			}
-		}
+		});
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
@@ -107,17 +107,28 @@
 			value = params.value,
 			id = params.id,
 			errors = [],
+			errorCheckObj = {},
+			isEmpty = value.length === 0 ? true : false,
 			minLength = hlpr.min(value.length, cmp.get("v.passMinLength")),
 			hasUppercase = hlpr.hasUppercase(value),
 			hasNumber = hlpr.hasNumber(value),
 			hasSpecialChar = hlpr.hasSpecialChar(value);
 
-		errors = hlpr.checkForErrors({ 
-			"minLength" : minLength,
-			"hasUppercase" : hasUppercase,
-			"hasNumber" : hasNumber,
-			"hasSpecialChar" : hasSpecialChar 
-		});
+		if(isEmpty === true) {
+			errorCheckObj["isEmpty"] = isEmpty;
+		} else {
+			errorCheckObj["minLength"] = minLength;
+			errorCheckObj["hasUppercase"] = hasUppercase;
+			errorCheckObj["hasNumber"] = hasNumber;
+			errorCheckObj["hasSpecialChar"] = hasSpecialChar;
+ 		}		
+
+		if(params.confirmValue && isEmpty === false) {
+
+			errorCheckObj["passwordsMatch"] = hlpr.isSame(params.value, params.confirmValue);
+		}
+
+		errors = hlpr.checkForErrors(errorCheckObj);
 
 		errors.forEach(function(item, i){
 			if(item.type === "minLength") {
@@ -128,6 +139,8 @@
 				item["msg"] = "The password must have at least one number";
 			} else if(item.type === "hasSpecialChar") {
 				item["msg"] = "The password must have at least one special character";	
+			} else if(item.type === "passwordsMatch") {
+				item["msg"] = "The passwords do not match."
 			}
 		});
 

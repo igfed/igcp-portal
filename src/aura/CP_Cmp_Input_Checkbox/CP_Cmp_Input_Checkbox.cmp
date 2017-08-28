@@ -1,9 +1,19 @@
 <aura:component >
     
-    <aura:attribute name="id" type="String" />
+    <!-- ATTRS -->
+    <aura:attribute name="id" type="String" default="default"  />
+    <aura:attribute  name="form" type="String" default="default" ></aura:attribute>
+    <aura:attribute  name="type" type="String" default="checkbox" ></aura:attribute>
     <aura:attribute name="copy" type="String" />
     <aura:attribute name="class" type="String" default="" />
+
+    <!-- HANDLERS -->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}" />
+    <aura:handler event="c:CP_Evt_Input_Valid" action="{!c.onValid}"/>
+    <aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}"/>
     
+    <!-- MARKUP -->
     <div class="{!v.class}">
         <div class="slds-form-element">
             <div class="slds-form-element__control">

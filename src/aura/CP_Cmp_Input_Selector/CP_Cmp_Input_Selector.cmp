@@ -2,6 +2,7 @@
     
     <!-- ATTRS -->
     <aura:attribute name="id" type="String" />
+    <aura:attribute  name="form" type="String"></aura:attribute>
     <aura:attribute name="label" type="String" />
     <aura:attribute name="placeholder" type="String" />
     <aura:attribute name="options" type="List" />

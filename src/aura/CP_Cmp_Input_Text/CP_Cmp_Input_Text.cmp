@@ -6,6 +6,7 @@
     <!-- ATTRS -->
     <aura:attribute name="id" type="String" default="default"></aura:attribute>
     <aura:attribute name="form" type="String" default="default"></aura:attribute>
+    <aura:attribute name="type" type="String" default="default"></aura:attribute>
     <aura:attribute name="label" type="String" />
     <aura:attribute name="icon" type="String" />
     <aura:attribute name="placeholder" type="String" default=""/>
@@ -18,7 +19,6 @@
     <aura:attribute name="instructions" type="List" />
     <aura:attribute name="inputValue" type="String" default=""></aura:attribute>
     <aura:attribute name="maxLength" type="Integer" default="100"></aura:attribute>
-    <aura:attribute name="type" type="String" default="default"></aura:attribute>
     
     <!-- HANDLERS -->
     <aura:handler name="init" value="{!this}" action="{!c.onInit}" />

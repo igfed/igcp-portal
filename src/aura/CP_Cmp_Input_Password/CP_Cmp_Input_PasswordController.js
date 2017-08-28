@@ -13,14 +13,20 @@
 		var
 			events = cmp.find('CP_Events'),
 			formId = evt.getParam('payload').formId,
-			form = cmp.get('v.form');
+			form = cmp.get('v.form'),
+			evtParams = {};
 
 		if (formId === form) {
-			events.fire("CP_Evt_Send_Input_Value", {
-				"id": cmp.get("v.id"),
-				"type": cmp.get("v.type"),
-				"value": cmp.get("v.passcode")
-			});
+
+			evtParams["id"] = cmp.get("v.id");
+			evtParams["type"] = cmp.get("v.type");
+			evtParams["value"] = cmp.get("v.passcode");
+
+			if(cmp.get("v.confirmPassword") === true) {
+				evtParams["confirmValue"] = cmp.get("v.passcodeConfirm");
+			}					
+
+			events.fire("CP_Evt_Send_Input_Value", evtParams);
 		}
 	},
 	onValid: function(cmp, evt, hlpr) {
