@@ -50,5 +50,22 @@
 			console.log("CONVERT")	
 			params.callback(splitArr[2] + "-" + splitArr[0] + "-" + splitArr[1]);
 		}
+	},
+	onDeleteAt: function(cmp, evt, hlpr) {
+		var params = evt.getParam('arguments');
+		if (params) {
+			var 
+				array = params.array,
+				index = params.index,
+				newArr = [];
+
+			array.forEach(function(item, i){
+				if(i != index) {
+					newArr.push(item);
+				}
+			});
+
+			params.callback(newArr);			
+		}
 	}
 })

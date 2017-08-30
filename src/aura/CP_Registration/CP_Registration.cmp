@@ -1,6 +1,25 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
-	<aura:attribute  name="currentStep" type="Integer" default="2" ></aura:attribute>
+	<!-- ATTRS -->
+	<aura:attribute name="currentStep" type="Integer" default="2" ></aura:attribute>
+	<!-- Step 1 -->
+	<aura:attribute name="clientNum" type="String" default=""/>
+    <aura:attribute name="postalCode" type="String" default=""/>
+    <aura:attribute name="dob" type="String" default=""/>
+    <!-- Step 2 -->
+    <aura:attribute name="username" type="String" default=""/>
+    <aura:attribute name="password" type="String" default=""/>
+    <aura:attribute name="confirmPassword" type="String" default=""/>
+    <aura:attribute name="email" type="String" default=""/>
+    <aura:attribute name="emailOptIn" type="Boolean" default="true" ></aura:attribute>
+    <aura:attribute name="mobilePhone" type="String" default=""/>
+    <aura:attribute name="securityQuestion1" type="String" default="What's your dog's name?"></aura:attribute>	
+    <aura:attribute name="answer1" type="String" default="Doggy"></aura:attribute>
+    <aura:attribute name="securityQuestion2" type="String" default="Where were you born?"></aura:attribute>	
+    <aura:attribute name="answer2" type="String" default="Toronto"></aura:attribute>
+    <aura:attribute name="securityQuestion3" type="String" default="What's you mother's maiden name?"></aura:attribute>	
+    <aura:attribute name="answer3" type="String" default="Smith"></aura:attribute>
+
 
 	<!-- INCLUDES -->	
     <c:CP_CSS_Includes />
@@ -19,15 +38,45 @@
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 1}"  >
-    		<c:CP_Registration_Step_1 />
+    		<c:CP_Registration_Step_1 
+    			clientNum="{!v.clientNum}" 
+    			postalCode="{!v.postalCode}" 
+    			dob="{!v.dob}" />
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 2}"  >
-    		<c:CP_Registration_Step_2 />
+    		<c:CP_Registration_Step_2 
+    			username="{!v.username}"
+    			password="{!v.password}"
+    			confirmPassword="{!v.confirmPassword}"
+    			email="{!v.email}"
+    			optIn="{!v.optIn}"
+    			mobilePhone="{!v.mobilePhone}"
+    			securityQuestion1="{!v.securityQuestion1}"
+    			answer1="{!v.answer1}"
+    			securityQuestion2="{!v.securityQuestion2}"
+    			answer2="{!v.answer2}"
+    			securityQuestion3="{!v.securityQuestion3}"
+    			answer3="{!v.answer3}"/>
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 3}"  >
-    		<c:CP_Registration_Step_3 />
+    		<c:CP_Registration_Step_3 
+    			clientNum="{!v.clientNum}" 
+    			postalCode="{!v.postalCode}" 
+    			dob="{!v.dob}"
+    			username="{!v.username}"
+    			password="{!v.password}"
+    			confirmPassword="{!v.confirmPassword}"
+    			email="{!v.email}"
+    			optIn="{!v.optIn}"
+    			mobilePhone="{!v.mobilePhone}"
+    			securityQuestion1="{!v.securityQuestion1}"
+    			answer1="{!v.answer1}"
+    			securityQuestion2="{!v.securityQuestion2}"
+    			answer2="{!v.answer2}"
+    			securityQuestion3="{!v.securityQuestion3}"
+    			answer3="{!v.answer3}"/>
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 4}"  >

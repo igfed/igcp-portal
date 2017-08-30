@@ -3,7 +3,7 @@
 
 	},
 	doneRendering: function(cmp, evt, hlpr) {
-    		console.log('RENDER COMPLETE');
+    		console.log('Registration Render Complete');
   	},
   	onNextStep: function(cmp, evt, hlpr){
   		console.log('Registration: onNextStep');

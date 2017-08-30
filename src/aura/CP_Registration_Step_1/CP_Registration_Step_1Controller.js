@@ -75,6 +75,8 @@
 	},
 	submitForm: function(cmp, evt, hlpr) {
 
+		console.log(JSON.stringify(cmp.get("v.payload")));	
+
 		var action = cmp.get("c.StepOne");
         action.setParams({ payload : JSON.stringify(cmp.get("v.payload"))});
 
@@ -86,10 +88,10 @@
             if (state === "SUCCESS") {
                 // Alert the user with the value returned 
                 // from the server
-                console.log("Submit Response: " + response.getReturnValue());
+                alert("Submit Response: " + response.getReturnValue());
 
                 res = JSON.parse(response.getReturnValue());
-                isValid = res["IsValid"];
+                isValid = res["State"]["IsValid"];
 
                 if(isValid === true) {
                 	cmp.onNextStep();
@@ -112,6 +114,8 @@
                     if (errors[0] && errors[0].message) {
                         console.error("Error message: " + 
                                  errors[0].message);
+
+
                     }
                 } else {
                     console.error("Unknown error");

@@ -1,11 +1,24 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_RegistrationController" >
 
 	<!-- ATTRS	 -->
-	<aura:attribute  name="pageId" type="String" default="registration-step-2"></aura:attribute>
-	<aura:attribute  name="inputErrors" type="Boolean" default="false"></aura:attribute>
-	<aura:attribute  name="inputsReceived" type="Integer" default="0" ></aura:attribute>
-	<aura:attribute  name="payload" type="Map" default="{}"></aura:attribute>
-	<aura:attribute  name="passwordObj" type="Map" default="{}" ></aura:attribute>
+	<aura:attribute name="pageId" type="String" default="registration-step-2"></aura:attribute>
+	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
+	<aura:attribute name="inputsReceived" type="Integer" default="0" ></aura:attribute>
+	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
+
+	<!-- Step 2 -->
+    <aura:attribute name="username" type="String" />
+    <aura:attribute name="password" type="String" />
+    <aura:attribute name="confirmPassword" type="String" />
+    <aura:attribute name="email" type="String" />
+    <aura:attribute name="emailOptIn" type="Boolean" ></aura:attribute>
+    <aura:attribute name="mobilePhone" type="String" default=""/>
+    <aura:attribute name="securityQuestion1" type="String" ></aura:attribute>	
+    <aura:attribute name="answer1" type="String" ></aura:attribute>
+    <aura:attribute name="securityQuestion2" type="String" ></aura:attribute>	
+    <aura:attribute name="answer2" type="String" ></aura:attribute>
+    <aura:attribute name="securityQuestion3" type="String" ></aura:attribute>	
+    <aura:attribute name="answer3" type="String" ></aura:attribute>
 
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
@@ -45,8 +58,7 @@
                 
                 <!--FIELDS-->
                 <!-- USERNAME -->
-                <c:CP_Cmp_Input_Text 
-					id="username-input"
+                <c:CP_Cmp_Input_Text id="username-input"
 					form="registration-step-2-form" 
 					type="username"
 					label="Username" 
@@ -57,8 +69,7 @@
 					tooltip="Pick a username."/>
 
                 <!-- PASSWORD -->
-                <c:CP_Cmp_Input_Password 
-					id="password-input"
+                <c:CP_Cmp_Input_Password id="password-input"
 					form="registration-step-2-form"
 					type="password"
 					confirmPassword="true"
@@ -66,15 +77,36 @@
 					instructions="['Must be 8-32 letters or numbers', 'At least one uppercase letter', 'At least one number or special character']"
 					tooltip="Pick a password."/>
 
-              
-                
-               
+              	<!-- EMAIL -->	
+              	<c:CP_Cmp_Input_Text id="email-input"
+					form="registration-step-2-form"	
+					type="email"
+					label="Email" 
+					placeholder="" 
+					class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium"/>
+
+				<!-- NEWS OPT IN  -->
+				<!-- <c:CP_Cmp_Input_Checkbox 
+					id="news-offers-opt"		
+					form="registration-step-2-form"
+					class="slds-size_12-of-12 slds-large-size_9-of-12"
+					copy="I'd like to receive the latest news and offers from Investors Group to my email address (optional)"/> -->
+
+				<!-- PHONE -->
+				<c:CP_Cmp_Input_Text 
+					id="phone-input"
+					form="registration-step-2-form"
+					type="phone"
+					label="Phone" 
+					placeholder="" 
+					class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium"/>
+
+				<!-- SECURITY QUESTIONS -->	
+				<c:CP_Registration_Security_Questions />
                 
                 <div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
-                
-
-                <c:CP_Cmp_Form_Back_Next  
-	                	id="{!v.pageId}" 
+               
+                <c:CP_Cmp_Form_Back_Next id="{!v.pageId}" 
 	                	backLabel="Cancel" 
 	                	nextLabel="Next" 
 	                	nextType="submit" 

@@ -14,6 +14,10 @@
 				hlpr.validatePostalcode(params.payload, params.callBack, cmp, hlpr);
 			} else if(params.payload.type === "date") {
 				hlpr.validateDate(params.payload, params.callBack, cmp, hlpr);
+			} else if(params.payload.type === "email") {
+				hlpr.validateEmail(params.payload, params.callBack, cmp, hlpr);
+			} else if(params.payload.type === "phone") {
+				hlpr.validatePhone(params.payload, params.callBack, cmp, hlpr);
 			}
 		}
 	}

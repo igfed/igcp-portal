@@ -7,6 +7,10 @@
 		if(cmp.get("v.form") === "default") {
 			console.error("CP_Cmp_Input_Checkbox: Input needs to be associated with a 'form'.")
 		}
+
+			
+
+		console.log(cmp.find("checkbox-input"));
 	},
 	onGetValue: function(cmp, evt, hlpr) {
 
@@ -20,22 +24,11 @@
 			events.fire("CP_Evt_Send_Input_Value", {
 				"id": cmp.get("v.id"),
 				"type": cmp.get("v.type"),
-				"value": cmp.get("v.inputValue")
+				"checked": false
 			});
 		}
 	},
-	onValid: function(cmp, evt, hlpr) {
-
-		if (cmp.get("v.id") === evt.getParam("payload").id) {
-			//var field = cmp.find("text-input");
-			//field.set("v.errors", []);
-		}
-	},
-	onError: function(cmp, evt, hlpr) {
-
-		if (cmp.get("v.id") === evt.getParam("payload").id) {
-			//var field = cmp.find("text-input");
-			//field.set("v.errors", [{ message: cmp.get("v.errorText") }]);
-		}
+	onCheck: function(cmp, evt, hlpr) {
+		console.log('ONDANOASDONASDON');
 	}
 })

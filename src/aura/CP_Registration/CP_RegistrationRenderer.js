@@ -1,10 +1,10 @@
 ({
 	render: function(cmp, hlpr) {
 		var ret = this.superRender();
-		console.log('RENDER!')	
+		console.log('Registration was rendered.')	
 		return ret;
 	},
 	rerender: function(cmp, hlpr) {
-		console.log('RE-RENDER!');
+		console.log('Registration was re-rendered');
 	}
 })

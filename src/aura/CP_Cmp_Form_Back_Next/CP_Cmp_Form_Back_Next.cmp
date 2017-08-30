@@ -4,7 +4,7 @@
 	<c:CP_Events aura:id="CP_Events" />
     
     <!-- ATTRS -->
-    <aura:attribute  name="id" type="String" default="default" ></aura:attribute>
+    <aura:attribute name="id" type="String" default="default" ></aura:attribute>
     <aura:attribute name="form" type="String" default="default"></aura:attribute>
     <aura:attribute name="nextType" type="String" default="default"></aura:attribute>
     <aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-grid slds-wrap slds-grid--align-center slds-p-bottom--x-large slds-m-top--x-large"/>

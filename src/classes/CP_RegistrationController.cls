@@ -1,22 +1,91 @@
 public class CP_RegistrationController {
     
+    public static CP_RegistrationClass.RegistrationForm objForm {get; set;}
+
+    private static CP_RegistrationClass Registration = new CP_RegistrationClass();
+
+
     @AuraEnabled
     public static string StepOne(String payload)
     {
-    	system.debug(payload);
-        return '';
+        objForm = new CP_RegistrationClass.RegistrationForm();
+        try
+        {
+            System.debug('JSON String');
+            System.debug(payload);
+
+            // Deserialize the passed JSON into User Identity Object     
+            objForm.Identity = (CP_RegistrationClass.UserIdentity) JSON.deserialize(payload, CP_RegistrationClass.UserIdentity.class);
+            
+            // Call the Registration class's verification method by passing in the Deserialized User Identity object and get a result Object in return
+            objForm.State = Registration.verifyIdentity(objForm.Identity);
+        }
+        catch(exception e)
+        {
+            objForm.State = new CP_RegistrationClass.Result();
+            objForm.State.IsValid = false;
+            objForm.State.Messages.add(e.getMessage());
+        }
+
+        // Serialize the result object and return as string
+        return JSON.serialize(objForm);
     }
     
     @AuraEnabled
-	public static string  StepTwo(String UserName, String Password, String Email, Boolean OptIn, String MobilePhone, String SecQue1, String Ans1, String SecQue2, String Ans2, String SecQue3, String Ans3)
+	public static string  StepTwo(String payload)
     {
-        return '';
+        objForm = new CP_RegistrationClass.RegistrationForm();
+        try
+        {
+            objForm.Profile = (CP_RegistrationClass.UserProfile) JSON.deserialize(payload, CP_RegistrationClass.UserProfile.class);
+
+            // Call the Registration class's verification method by passing in the Deserialized User profile object and get a result Object in return
+            objForm.State = Registration.verifyProfile(objForm.Profile);
+
+        }
+        catch(exception e)
+        {
+            objForm.State = new CP_RegistrationClass.Result();
+            objForm.State.IsValid = false;
+            objForm.State.Messages.add(e.getMessage());
+        }
+
+        // Serialize the result object and return as string
+        return JSON.serialize(objForm);
     }
     
 	@AuraEnabled
 	public static string  StepThree()
     {
-        return '';
+        try
+        {
+            // Call the Registration class's verification method by passing in the Deserialized User profile object and get a result Object in return
+            objForm.State = Registration.reValidateAll(objForm);
+
+            if(objForm.State.IsValid)
+            {
+                // Make the ISAM call and get the new User ID  
+
+
+                // Update the New User ID into Salesforce 
+
+
+                // Return Success and Redirect to Login Page 
+
+            }
+        }
+        catch(exception e)
+        {
+            objForm.State.IsValid = false;
+            objForm.State.Messages.add(e.getMessage());
+        }
+
+        // Serialize the result object and return as string
+        return JSON.serialize(objForm);
     }
     
+
+
+
+
 }

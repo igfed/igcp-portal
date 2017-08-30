@@ -12,8 +12,14 @@
         <aura:attribute name="parent" type="Aura.component[]"></aura:attribute>
     </aura:method>
 
-    <aura:method  name="convertToYMD" action="{!c.convertToYMD}" >
-    	<aura:attribute  name="date" type="String"></aura:attribute>
+    <aura:method name="convertToYMD" action="{!c.convertToYMD}" >
+    	<aura:attribute name="date" type="String"></aura:attribute>
+    	<aura:attribute name="callback" type="function" default="" />
+    </aura:method>
+
+    <aura:method name="deleteAt" action="{!c.onDeleteAt}" >
+    	<aura:attribute name="array" type="String[]"></aura:attribute>
+    	<aura:attribute name="index" type="Integer"></aura:attribute>
     	<aura:attribute name="callback" type="function" default="" />
     </aura:method>
 

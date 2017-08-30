@@ -1,14 +1,15 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_RegistrationController" >
 
 	<!-- ATTRS -->	
-	<aura:attribute  name="pageId" type="String" default="registration-step-1"></aura:attribute>
-	<aura:attribute  name="inputErrors" type="Boolean" default="false"></aura:attribute>
-	<aura:attribute  name="inputsReceived" type="Integer" default="0" ></aura:attribute>
-	<aura:attribute  name="payload" type="Map" default="{}"></aura:attribute>
+	<aura:attribute name="pageId" type="String" default="registration-step-1"></aura:attribute>
+	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
+	<aura:attribute name="inputsReceived" type="Integer" default="0" ></aura:attribute>
+	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 
-	<aura:attribute  name="clientNum" type="String" default=""></aura:attribute>
-	<aura:attribute  name="postalCode" type="String" default=""></aura:attribute>
-	<aura:attribute  name="dob" type="String" default=""></aura:attribute>
+    <!-- Step 1 --> 
+	<aura:attribute name="clientNum" type="String" ></aura:attribute>
+	<aura:attribute name="postalCode" type="String" ></aura:attribute>
+	<aura:attribute name="dob" type="String" ></aura:attribute>
 
 	<!-- INCLUDES -->	
 	<c:CP_Events aura:id="CP_Events" />
@@ -42,8 +43,7 @@
 				<form aura:id="registration-step-1-form" id="registration-step-1-form" method="get" action="" class="slds-grid slds-wrap">
 
 					<!-- CLIENT NUMBER -->
-					<c:CP_Cmp_Input_Text 
-					id="client-number" 
+					<c:CP_Cmp_Input_Text id="client-number" 
 					maxLength="13"
 					type="client-number"
 					form="registration-step-1-form"
@@ -52,8 +52,7 @@
 	                class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 
 	                <!-- POSTAL CODE -->
-	                <c:CP_Cmp_Input_Text 
-	                id="postal-code" 
+	                <c:CP_Cmp_Input_Text id="postal-code" 
 	                maxLength="7"
 	                type="postal"
 	                label="Postal Code" 
@@ -64,8 +63,7 @@
 	                <div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 	                
 	                <!-- DATE OF BIRTH -->
-	                <c:CP_Cmp_Input_Date 
-	                id="dob" 
+	                <c:CP_Cmp_Input_Date id="dob" 
 	                label="Date of Birth" 
 	                form="registration-step-1-form"
 	                type="date"
@@ -74,8 +72,7 @@
 	                
 	                <div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 
-	                <c:CP_Cmp_Form_Back_Next  
-	                	id="{!v.pageId}" 
+	                <c:CP_Cmp_Form_Back_Next id="{!v.pageId}" 
 	                	backLabel="Cancel" 
 	                	nextLabel="Next" 
 	                	nextType="submit" 
