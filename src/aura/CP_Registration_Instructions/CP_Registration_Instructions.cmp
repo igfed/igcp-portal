@@ -41,7 +41,8 @@
                           <a href="#" class="igcp-link"><span class="igcp-utils__font--semibold">More On Our Guarantee</span><lightning:icon iconName="utility:chevronright" class="igcp-link__glyph--after" size="x-small" alternativeText="View Document" /></a>
                       </div>
                       
-                      <c:CP_Cmp_Form_Back_Next id="{!v.pageId}"
+                      <c:CP_Cmp_Form_Back_Next 
+                      	id="{!v.pageId}"
                       	backLabel="Cancel" 
                       	nextLabel="Start" />
                   </div>

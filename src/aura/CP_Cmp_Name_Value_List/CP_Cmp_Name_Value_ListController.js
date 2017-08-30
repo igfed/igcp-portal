@@ -1,5 +1,5 @@
 ({
-	doInit: function(cmp, evt, hlpr) {
+	onInit: function(cmp, evt, hlpr) {
 
 		var 
 			values = cmp.get("v.values")['values'],
@@ -13,6 +13,9 @@
 		} else {
 			console.warn('CP_Cmp_Name_Value_List: variant ' + variant + ' unrecognized');
 		}
+
+		console.log("NAME VALUES");	
+		console.log(values);
 
 		values.forEach(function(item, i) {
 

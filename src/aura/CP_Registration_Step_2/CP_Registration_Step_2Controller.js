@@ -70,7 +70,7 @@
 				"password": cmp.get("v.password"),
 				"confirmPassword": cmp.get("v.confirmPassword"),
 				"email": cmp.get("v.email"),
-				"emailOptIn": cmp.get("v.optIn"),
+				"emailOptIn": cmp.get("v.emailOptIn"),
 				"mobilePhone": cmp.get("v.mobilePhone"),
 				"securityQuestion1": cmp.get("v.securityQuestion1"),
 				"answer1": cmp.get("v.answer1"),
@@ -91,12 +91,8 @@
 	},
 	submitForm: function(cmp, evt, hlpr) {
 
-		console.log('SUBMIT');
-
 		var action = cmp.get("c.StepTwo");
 		action.setParams({ payload: JSON.stringify(cmp.get("v.payload")) });
-
-		console.log('Submit after');
 
 		// Create a callback that is executed after 
 		// the server-side action returns
@@ -106,7 +102,8 @@
 			if (state === "SUCCESS") {
 				// Alert the user with the value returned 
 				// from the server
-				alert("Submit Response: " + response.getReturnValue());
+				//alert("Submit Response: " + response.getReturnValue());
+				console.log("STEP 2");
 				console.log(response.getReturnValue());
 
 				res = JSON.parse(response.getReturnValue());

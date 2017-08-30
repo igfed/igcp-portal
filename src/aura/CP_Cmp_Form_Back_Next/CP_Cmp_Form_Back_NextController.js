@@ -13,7 +13,21 @@
 		}	
 
 	},
+	onButtonClick: function(cmp, evt, hlpr) {
+		console.log('onButtonClick')
+
+		var payload = evt.getParam("payload");
+
+		console.log(payload);
+
+		if(payload.id === "next_step_button") {
+			cmp.onNextStep();
+		}
+	},
 	onNext : function(cmp, evt, hlpr) {
+
+		console.log("onNextStep")	
+
 		var event = cmp.find("CP_Events");
 		event.fire("CP_Evt_Next_Step", {
 			"id" : cmp.get("v.id")

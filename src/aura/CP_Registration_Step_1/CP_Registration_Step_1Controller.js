@@ -88,7 +88,9 @@
             if (state === "SUCCESS") {
                 // Alert the user with the value returned 
                 // from the server
-                alert("Submit Response: " + response.getReturnValue());
+                //alert("Submit Response: " + response.getReturnValue());
+                console.log("STEP 1: ");
+                console.log(response.getReturnValue());
 
                 res = JSON.parse(response.getReturnValue());
                 isValid = res["State"]["IsValid"];

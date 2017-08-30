@@ -1,11 +1,13 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
 	<!-- ATTRS -->
-	<aura:attribute name="currentStep" type="Integer" default="2" ></aura:attribute>
+	<aura:attribute name="currentStep" type="Integer" default="1" ></aura:attribute>
+
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default=""/>
     <aura:attribute name="postalCode" type="String" default=""/>
     <aura:attribute name="dob" type="String" default=""/>
+
     <!-- Step 2 -->
     <aura:attribute name="username" type="String" default=""/>
     <aura:attribute name="password" type="String" default=""/>
@@ -19,6 +21,9 @@
     <aura:attribute name="answer2" type="String" default="Toronto"></aura:attribute>
     <aura:attribute name="securityQuestion3" type="String" default="What's you mother's maiden name?"></aura:attribute>	
     <aura:attribute name="answer3" type="String" default="Smith"></aura:attribute>
+    
+    <!-- Step 3 -->
+    <aura:attribute  name="acceptTOS" type="Boolean" default="false" ></aura:attribute>
 
 
 	<!-- INCLUDES -->	
@@ -50,7 +55,7 @@
     			password="{!v.password}"
     			confirmPassword="{!v.confirmPassword}"
     			email="{!v.email}"
-    			optIn="{!v.optIn}"
+    			emailOptIn="{!v.emailOptIn}"
     			mobilePhone="{!v.mobilePhone}"
     			securityQuestion1="{!v.securityQuestion1}"
     			answer1="{!v.answer1}"
@@ -69,14 +74,15 @@
     			password="{!v.password}"
     			confirmPassword="{!v.confirmPassword}"
     			email="{!v.email}"
-    			optIn="{!v.optIn}"
+    			emailOptIn="{!v.emailOptIn}"
     			mobilePhone="{!v.mobilePhone}"
     			securityQuestion1="{!v.securityQuestion1}"
     			answer1="{!v.answer1}"
     			securityQuestion2="{!v.securityQuestion2}"
     			answer2="{!v.answer2}"
     			securityQuestion3="{!v.securityQuestion3}"
-    			answer3="{!v.answer3}"/>
+    			answer3="{!v.answer3}"
+    			acceptTOS="{!v.acceptTOS}"/>
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 4}"  >

@@ -14,6 +14,16 @@
 
     <!-- HANDLERS -->
     <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:handler event="c:CP_Evt_Click" action="{!c.onButtonClick}" />
+
+    <!-- METHODS -->
+    <aura:method name="onNextStep" action="{!c.onNext}" description="Go to next step">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
+
+	 <aura:method name="onBackStep" action="{!c.onBack}" description="Go to previous step">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
     
     <!-- MARKUP -->
     <div class="{!v.class}">
@@ -28,12 +38,12 @@
         <div class="igcp-utils__order--1 igcp-medium-utils__order--3 slds-m-horizontal--medium slds-medium-m-horizontal--zero slds-size_12-of-12 slds-medium-size_5-of-12">
 
             <aura:if isTrue="{!v.nextType == 'default'}">
-    			 <button data-open="{!v.modalID}" class="igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-button slds-button--brand slds-p-vertical--xx-small slds-float_right" onclick="{!c.onNext}">{!v.nextLabel}</button>	
+    			 <c:CP_Cmp_Button id="next_step_button" label="{!v.nextLabel}" class="igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-button slds-button--brand slds-float_right"/>	
             </aura:if>
 
-            <aura:if isTrue="{!v.nextType == 'submit'}"  >
+            <aura:if isTrue="{!v.nextType == 'submit'}">
             	<c:CP_Cmp_Submit id="form_submit" for="{!v.form}" label="{!v.nextLabel}" class="igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-button slds-button--brand slds-float_right"/>
-            </aura:if>           
+            </aura:if>   
         </div>
     </div>
 </aura:component>

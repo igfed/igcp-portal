@@ -1,6 +1,9 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_RegistrationController">
 
 	<!-- ATTRS -->
+	<aura:attribute name="pageId" type="String" default="registration-step-3"></aura:attribute>
+	<aura:attribute  name="reviewObj" type="Map" default="{ values : [] }"></aura:attribute>
+	<aura:attribute  name="payload" type="Map" default="{}"></aura:attribute>
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default=""/>
     <aura:attribute name="postalCode" type="String" default=""/>
@@ -18,6 +21,20 @@
     <aura:attribute name="answer2" type="String" default=""></aura:attribute>
     <aura:attribute name="securityQuestion3" type="String" default=""></aura:attribute>	
     <aura:attribute name="answer3" type="String" default=""></aura:attribute>
+    <!--  Step 3 -->
+    <aura:attribute  name="acceptTOS" type="Boolean" default="false" ></aura:attribute>
+
+    <!-- INCLUDES -->	
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
+
+    <!-- HANDLER -->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:handler event="c:CP_Evt_Click" action="{!c.submitToISAM}" />
+
+    <aura:method name="onNextStep" action="{!c.gotoNextStep}" description="Called when ready to proceed to next step">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
 
 	<!-- MARKUP -->
     <div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
@@ -40,51 +57,15 @@
 	                <!--NAME VALUE LIST-->
 	                <c:CP_Cmp_Name_Value_List class="slds-size_12-of-12 slds-m-vertical--medium"
 	                    variant="a"
-	                    values="{ 
-	                    values: [
-	                        {   label: 'Username',
-	                        	detail: 'Rami5990'
-	                        },
-	                        { 
-	                        	label: 'Email',
-	                        	detail: 'remi.sedenco@mail.com'
-	                        },
-	                        { 
-	                        	label: 'notification',
-	                        	detail: 'Opted In'
-	                        },
-	                        { 
-	                        	label: 'Question 1',
-	                        	detail: 'What is the name of your favourite sports team?'
-	                        },
-	                        { 
-	                        	label: 'Answer 1',
-	                        	detail: 'Montreal Canadians'
-	                        },
-	                        { 
-	                        	label: 'Question 2',
-	                        	detail: 'What is the name of your favourite superhero?'
-	                        },
-	                        { 
-	                        	label: 'Answer 2',
-	                        	detail: 'Batman'
-	                        },
-	                        { 
-	                        	label: 'Question 3',
-	                        	detail: 'What was your first job?'
-	                        },
-	                        { 
-	                        	label: 'Answer',
-	                        	detail: 'Paper Boy'
-	                        }
-	                        ]}"/>
+	                    values="{!v.reviewObj}"/>
 	                
 	                <div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 	                
 	                <!--CTAS-->
-	                <c:CP_Cmp_Form_Back_Next backLabel="Edit Profile"
-	                    nextLabel="Next"
-	                    modalID="igcp-modal"/>
+	                <c:CP_Cmp_Form_Back_Next 
+	                	id="{!v.pageId}"
+	                	backLabel="Edit Profile"
+	                    nextLabel="Next"/>
 	            </div>
 	        </div>
         <div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
