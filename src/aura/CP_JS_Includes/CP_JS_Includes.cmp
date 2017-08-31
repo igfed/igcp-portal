@@ -2,7 +2,6 @@
 	<ltng:require scripts="{!join(',', 
     	$Resource.igcpresources + '/igcp-resources/scripts/jquery.js',
     	$Resource.igcpresources + '/igcp-resources/scripts/what-input.js',
-    	$Resource.igcpresources + '/igcp-resources/scripts/foundation.js',
-    	$Resource.igcpresources + '/igcp-resources/scripts/jquery-validation/jquery.validate.min.js')}" 
+    	$Resource.igcpresources + '/igcp-resources/scripts/foundation.js')}" 
 	afterScriptsLoaded="{!c.scriptsLoaded}"/>
 </aura:component>

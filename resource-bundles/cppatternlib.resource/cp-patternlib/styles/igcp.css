@@ -1971,23 +1971,6 @@ label {
   -ms-transform: translateX(0);
   transform: translateX(0); }
 
-.igcp-registration {
-  overflow: hidden; }
-  .igcp-registration .igcp-registration__pfa h1 {
-    font-size: 24px;
-    line-height: 34px; }
-  .igcp-registration .igcp-registration__pfa--step p {
-    min-height: 48px; }
-  .igcp-registration .igcp-registration__pfa--monitor {
-    position: relative;
-    top: 0;
-    width: 280px;
-    height: 141px;
-    overflow: hidden;
-    margin: 0 auto; }
-    .igcp-registration .igcp-registration__pfa--monitor img {
-      width: 100%; }
-
 .igcp-footer {
   padding-top: 0;
   padding-bottom: 32px;
@@ -2687,6 +2670,10 @@ label {
   max-width: 1280px;
   margin: 0 auto; }
 
+.igcp-wrapper--1024 {
+  max-width: 1024px;
+  margin: 0 auto; }
+
 .igcp-percentage--large {
   font-size: 45%; }
 
@@ -2889,17 +2876,25 @@ label {
   .igcp-button__chat svg {
     fill: #fff; }
 
-.igcp-modal .igcp-modal__button--close {
-  position: relative;
-  float: right; }
-
-.igcp-modal__accept-agree {
+.igcp-modal {
+  display: none;
+  background-color: #fff;
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
-  width: 100%;
-  height: 72px;
-  background-color: #e6e9eb; }
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  overflow-y: scroll; }
+  .igcp-modal.igcp-modal--show {
+    display: inline-block; }
+  .igcp-modal .igcp-modal__wrapper {
+    max-width: 1024px;
+    margin: 0 auto;
+    position: absolute; }
+  .igcp-modal .igcp-modal__button--close {
+    position: relative;
+    float: right; }
 
 .igcp-tooltip {
   display: inline-block; }

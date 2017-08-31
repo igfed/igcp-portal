@@ -18,6 +18,7 @@ global class CP_RegistrationClass {
     public class RegistrationForm
     {
         public Result State {get; set;}
+        public Boolean acceptTOS {get; set;}
         public UserIdentity Identity {get; set; }
         public UserProfile Profile {get; set;}
 
@@ -36,21 +37,22 @@ global class CP_RegistrationClass {
         
         CP_RegistrationClass.Result result = new CP_RegistrationClass.Result();
         
-        System.debug('Inside Reg class - IGUser:'+ IGUser);
+       // System.debug('Inside Reg class - IGUser:'+ IGUser);
 
         if(String.isBlank(IGUser.clientNum))
         {
             // Client Number is empty
             result.IsValid = false;
             result.Fields.add('clientNum');
-            result.Messages.add(System.Label.CP_Registration_Client_Number_Not_Found);
+            result.Messages.add(System.Label.CP_Registration_Client_Number_Is_Empty);
             return result;
         }
 
         // Search Contact by Business Partner number
         Contact objContact = IGUser.getContactByBusinessPartnerID();
         
-        System.debug('Contact Object returned ');
+
+        System.debug('Returned Contact object');
         System.debug(objContact);
 
         // check if Contact exists
@@ -66,7 +68,7 @@ global class CP_RegistrationClass {
         else
         {
             // Check if the returned Contact has Registered flag set and also has value in ISAM ID field
-            if(objContact.Portal_User_Is_Registered__c == true && objContact.Portal_User_ID__c != null)
+            if(objContact.Portal_User_Is_Registered__c == true)
             {
                 // User already Registered
                	result.IsValid = false;
@@ -78,7 +80,7 @@ global class CP_RegistrationClass {
             else
             {
                 // Validate Contact Postal code and Date of birth with values entered by user
-
+                System.debug('step 1- client num is valid');
                 if(String.isBlank(IGUser.postalCode))
                 {
                     // Postatcode is empty 
@@ -93,6 +95,7 @@ global class CP_RegistrationClass {
                     result.Fields.add('postalCode');
                     result.Messages.add(System.Label.CP_Registration_Postalcode_Not_Matched);
                 }
+                System.debug('step 2 postal code is valid');
                 
                 if(String.isBlank(IGUser.dob))
                 {
@@ -109,6 +112,7 @@ global class CP_RegistrationClass {
                     result.Messages.add(System.Label.CP_Registration_DOB_Not_Matched);
                 }
                 
+                System.debug('step 3 dob is valid ');
                 // If the result.isValid is still null then it means all validations passed
                 if(result.IsValid == null)
                 {
@@ -171,7 +175,22 @@ global class CP_RegistrationClass {
             result.Fields.add('email');
             result.Messages.add(System.Label.CP_Registration_Email_Is_Invalid);   
         }
-        
+        /*
+        if(String.isBlank(IGUserProfile.mobilePhone))
+        {
+            // Email is Empty
+            result.IsValid = false;
+            result.Fields.add('mobilePhone');
+            result.Messages.add(System.Label.CP_Registration_Phone_Number_Is_Empty);   
+        }
+        else if (!IGUserProfile.IsValidPhoneNumber())
+        {
+            // Email is not valid 
+            result.IsValid = false;
+            result.Fields.add('mobilePhone');
+            result.Messages.add(System.Label.CP_Registration_Phone_Number_Is_Invalid);   
+        }
+        */
 
         // If the result.isValid is still null then it means all validations passed
         if(result.IsValid == null)
@@ -187,8 +206,29 @@ global class CP_RegistrationClass {
 
     public CP_RegistrationClass.Result reValidateAll(RegistrationForm regForm)
     {
-        CP_RegistrationClass.Result result = new CP_RegistrationClass.Result();
+        System.debug('In Revalidate function');
+        System.debug(regForm);
 
+        CP_RegistrationClass.Result result = new CP_RegistrationClass.Result();
+        if(regForm.acceptTOS)
+        {
+            System.debug(regForm.Identity);
+
+            result = this.verifyIdentity(regForm.Identity);
+            System.debug('Identity is valid ');
+
+            if(result.IsValid)
+            {
+                result = verifyProfile(regForm.Profile);
+                System.debug('Profile is valid');
+            }
+        }
+        else
+        {
+            result.IsValid = false;
+            result.Fields.add('acceptTOS');
+            result.Messages.add(System.Label.CP_Registration_Terms_Of_Service_Not_Accepted);
+        }
 
         return result;
     }
@@ -204,10 +244,10 @@ global class CP_RegistrationClass {
         // Search Contact by Business Partner ID
         public Contact getContactByBusinessPartnerID()
         {
-            List<contact> contactList = [select ID, Portal_User_Is_Registered__c, Portal_User_ID__c, 
+            List<Contact> contactList = [select ID, Portal_User_Is_Registered__c, Portal_User_ID__c, 
                 Portal_User_Name__c, MailingPostalCode, Birthdate, Business_Partner_ID__c 
                 from Contact 
-                where Business_Partner_ID__c = : String.escapeSingleQuotes(this.clientNum) limit 1];
+                where Business_Partner_ID__c = : String.escapeSingleQuotes(this.clientNum)];
 
             System.debug(contactList);
 
@@ -261,6 +301,21 @@ global class CP_RegistrationClass {
             else
                 return false;
         }
+
+        public Boolean IsValidPhoneNumber()
+        {
+            //String emailRegex = '(/\\(?([0-9]{3})\\)?([ .-]?)([0-9]{3})\\2([0-9]{4})/)';
+            String phoneRegex = '(/^(\\+?1-?)?(\\([2-9]([02-9]\\d|1[02-9])\\)|[2-9]([02-9]\\d|1[02-9]))-?[2-9]([02-9]\\d|1[02-9])-?\\d{4}$/)';
+            Pattern MyPattern = Pattern.compile(phoneRegex);
+            Matcher MyMatcher = MyPattern.matcher(this.mobilePhone);
+
+            if(MyMatcher.matches())
+                return true;
+            else
+                return false;   
+        }
+
+        
 
     }
     

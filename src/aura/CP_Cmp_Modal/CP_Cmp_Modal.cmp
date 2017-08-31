@@ -1,0 +1,19 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+
+	<!-- ATTTRS -->
+	<aura:attribute name="id" type="String" default="default" ></aura:attribute>
+	<aura:attribute  name="class" type="String" default="igcp-modal slds-grid slds-wrap slds-p-around--xx-large" ></aura:attribute>
+
+	<!-- HANDLERS -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="c:CP_Evt_Modal_Show" action="{!c.onShow}" />
+	<aura:handler event="c:CP_Evt_Modal_Hide" action="{!c.onHide}" />
+	
+	<!-- MARKUP -->	
+	<div class="{!v.class}">
+		<div class="slds-size_12-of-12">
+			<button class="igcp-modal__button--close close-button" type="button"></button>
+		</div>
+		<c:CP_Registration_TOS />
+	</div>
+</aura:component>

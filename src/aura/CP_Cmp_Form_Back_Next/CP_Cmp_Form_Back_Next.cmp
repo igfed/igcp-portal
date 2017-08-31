@@ -10,7 +10,7 @@
     <aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-grid slds-wrap slds-grid--align-center slds-p-bottom--x-large slds-m-top--x-large"/>
     <aura:attribute name="backLabel" type="String" default="Back" />
     <aura:attribute name="nextLabel" type="String" default="Next" />
-    <aura:attribute name="modalID" type="String" default=""/>
+    <aura:attribute name="modalID" type="String" default="igcp-modal"/>
 
     <!-- HANDLERS -->
     <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
@@ -47,6 +47,10 @@
 
             <aura:if isTrue="{!v.nextType == 'start'}">
     			 <c:CP_Cmp_Button id="start_button" label="{!v.nextLabel}" class="igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-button slds-button--brand slds-float_right"/>	
+            </aura:if>
+
+             <aura:if isTrue="{!v.nextType == 'modal'}">
+    			 <button data-open="{!v.modalID}" class="igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-button slds-button--brand slds-p-vertical--xx-small slds-float_right">{!v.nextLabel}</button>
             </aura:if>
 
             <aura:if isTrue="{!v.nextType == 'complete'}">

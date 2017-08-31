@@ -1,10 +1,12 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 	
+	<aura:attribute name="id" type="String" default="default" ></aura:attribute>
 	<aura:attribute name="class" type="String" default=""></aura:attribute>
 	<aura:attribute name="values" type="Map" ></aura:attribute>
 	<aura:attribute name="variant" type="String" default="b" ></aura:attribute>
 
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="c:CP_Evt_Set_List" action="{!c.onSetList}" />
 	
 	<div class="{!'igcp-list ' + v.class}">
 		<dl class="slds-list_horizontal slds-wrap">

@@ -2,8 +2,7 @@
 
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="registration-step-3"></aura:attribute>
-	<aura:attribute  name="reviewObj" type="Map" default="{ values : [] }"></aura:attribute>
-	<aura:attribute  name="payload" type="Map" default="{}"></aura:attribute>
+	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default=""/>
     <aura:attribute name="postalCode" type="String" default=""/>
@@ -22,7 +21,7 @@
     <aura:attribute name="securityQuestion3" type="String" default=""></aura:attribute>	
     <aura:attribute name="answer3" type="String" default=""></aura:attribute>
     <!--  Step 3 -->
-    <aura:attribute  name="acceptTOS" type="Boolean" default="false" ></aura:attribute>
+    <aura:attribute name="acceptTOS" type="Boolean" default="false" ></aura:attribute>
 
     <!-- INCLUDES -->	
 	<c:CP_Events aura:id="CP_Events" />
@@ -37,6 +36,10 @@
 	</aura:method>
 
 	<aura:method name="onNextStep" action="{!c.gotoNextStep}" description="Called when ready to proceed to next step">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
+
+	<aura:method name="showTOS" action="{!c.onShowTOS}" description="Chow TOS overlay">
 		<aura:attribute name="payload" type="Map"></aura:attribute>
 	</aura:method>
 
@@ -59,18 +62,18 @@
 	            <div class="slds-grid slds-wrap">
 	                
 	                <!--NAME VALUE LIST-->
-	                <c:CP_Cmp_Name_Value_List class="slds-size_12-of-12 slds-m-vertical--medium"
-	                    variant="a"
-	                    values="{!v.reviewObj}"/>
+	                <c:CP_Cmp_Name_Value_List id="{!v.pageId}"	
+	                	class="slds-size_12-of-12 slds-m-vertical--medium"
+	                    variant="a" />
 	                
 	                <div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 	                
 	                <!--CTAS-->
-	                <c:CP_Cmp_Form_Back_Next 
-	                	id="{!v.pageId}"
+	                <c:CP_Cmp_Form_Back_Next id="{!v.pageId}"
 	                	backLabel="Edit Profile"
 	                    nextLabel="Next"
-	                    nextType="complete"/>
+	                    nextType="complete"
+	                    modalID="igcp-modal"/>
 	            </div>
 	        </div>
         <div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>

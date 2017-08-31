@@ -2,9 +2,9 @@
 	onInit : function(cmp, evt, hlpr) {
 		var 
 			logArray = [],
-			itemsObj = { "values" : [] },
-			reviewArr = cmp.get("v.reviewObj"),
+			itemsArr = [],
 			utils = cmp.find("CP_Utils"),
+			events = cmp.find("CP_Events"),
 			formattedDob = "";
 
 
@@ -55,7 +55,7 @@
 		});
 
 
-		itemsObj = { "values" : [
+		itemsArr = [
 			{
 				"label" : "Username",
 				"detail" : cmp.get("v.username")
@@ -92,23 +92,32 @@
 				"label" : "Answer 3",
 				"detail" : cmp.get("v.answer3")
 			}
-		]};
+		];
 
-		//cmp.set("v.reviewObj", itemsObj);
-
-		//console.log(cmp.get("v.reviewObj"));
-
-		// console.log("FINAL VALUES");	
-		// logArray.forEach(function(item, i){
-		// 	console.log(item);	
-		// });	
+		events.fire("CP_Evt_Set_List", {
+			"id" : cmp.get("v.pageId"),
+			"values" : itemsArr
+		});
 	},
 	onRegistrationComplete: function(cmp, evt, hlpr) {
 
 		console.log('REGISTRATION COMPLETE!!!!!');
 
-		cmp.submitToISAM();
+		//cmp.submitToISAM();
 
+		cmp.showTOS();
+
+	},
+	onShowTOS: function(cmp, evt, hlpr) {
+		console.log('onShowTOS');
+
+		var events = cmp.find("CP_Events");
+
+		events.fire("CP_Evt_Modal_Show", {
+			"id" : "registration-tos"
+		});
+
+		
 	},
 	onSubmitToISAM: function(cmp, evt, hlpr) {
 

@@ -1,7 +1,7 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
 	<!-- ATTRS -->
-	<aura:attribute name="currentStep" type="Integer" default="0" ></aura:attribute>
+	<aura:attribute name="currentStep" type="Integer" default="3" ></aura:attribute>
 
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default=""/>
@@ -23,11 +23,12 @@
     <aura:attribute name="answer3" type="String" default="Smith"></aura:attribute>
     
     <!-- Step 3 -->
-    <aura:attribute  name="acceptTOS" type="Boolean" default="false" ></aura:attribute>
+    <aura:attribute name="acceptTOS" type="Boolean" default="false" ></aura:attribute>
 
 
 	<!-- INCLUDES -->	
     <c:CP_CSS_Includes />
+    
     <c:CP_Utils aura:id="CP_Utils"/>
 
     <!-- HANDLERS -->
@@ -45,15 +46,13 @@
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 1}"  >
-    		<c:CP_Registration_Step_1 
-    			clientNum="{!v.clientNum}" 
+    		<c:CP_Registration_Step_1 clientNum="{!v.clientNum}" 
     			postalCode="{!v.postalCode}" 
     			dob="{!v.dob}" />
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 2}"  >
-    		<c:CP_Registration_Step_2 
-    			username="{!v.username}"
+    		<c:CP_Registration_Step_2 username="{!v.username}"
     			password="{!v.password}"
     			confirmPassword="{!v.confirmPassword}"
     			email="{!v.email}"
@@ -68,8 +67,7 @@
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 3}"  >
-    		<c:CP_Registration_Step_3 
-    			clientNum="{!v.clientNum}" 
+    		<c:CP_Registration_Step_3 clientNum="{!v.clientNum}" 
     			postalCode="{!v.postalCode}" 
     			dob="{!v.dob}"
     			username="{!v.username}"
@@ -90,6 +88,8 @@
     	<aura:if isTrue="{!v.currentStep == 4}"  >
     		<c:CP_Registration_Thank_You />
     	</aura:if>
+
+    	<c:CP_Cmp_Modal id="registration-tos"/>
 
     	<!-- FOOTER -->	
 		<c:CP_Cmp_Footer />

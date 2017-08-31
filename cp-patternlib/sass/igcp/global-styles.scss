@@ -18,6 +18,11 @@
     margin: 0 auto;
 }
 
+.#{$namespace}-wrapper--1024 {
+	max-width: $ig-large;
+    margin: 0 auto;
+}
+
 .#{$namespace}-percentage--large {
     font-size: 45%;
 }
@@ -324,19 +329,31 @@
 
 //MODAL
 .#{$namespace}-modal {
+
+	display: none;	
+	background-color: $ig-white;
+	position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    overflow-y: scroll;
+
+    &.#{$namespace}-modal--show {
+    	display: inline-block;
+    }
+
+    .#{$namespace}-modal__wrapper {
+    	max-width: $ig-large;
+    	margin: 0 auto;
+    	position: absolute;
+    }
+
     .#{$namespace}-modal__button--close {
         position: relative;
         float: right;
     }
-}
-
-.#{$namespace}-modal__accept-agree {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 72px;
-    background-color: $ig-grey;
 }
 
 //TOOLTIP

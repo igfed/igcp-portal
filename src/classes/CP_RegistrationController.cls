@@ -2,12 +2,14 @@ public class CP_RegistrationController {
     
     public static CP_RegistrationClass.RegistrationForm objForm {get; set;}
 
+    
     private static CP_RegistrationClass Registration = new CP_RegistrationClass();
 
 
     @AuraEnabled
     public static string StepOne(String payload)
     {
+        System.debug('I am in Step Two');
         objForm = new CP_RegistrationClass.RegistrationForm();
         try
         {
@@ -55,11 +57,17 @@ public class CP_RegistrationController {
     }
     
 	@AuraEnabled
-	public static string  StepThree()
+	public static string  StepThree(String payload)
     {
+        System.debug('I am in Step Three');
+        objForm = new CP_RegistrationClass.RegistrationForm();
+        objForm.State = new CP_RegistrationClass.Result();
         try
         {
-            // Call the Registration class's verification method by passing in the Deserialized User profile object and get a result Object in return
+            // Deserialize the passed JSON into Registration Form Object     
+            objForm = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(payload, CP_RegistrationClass.RegistrationForm.class);
+
+            // Call the Registration class's verification method by passing in the Deserialized Registration Form object and get a result Object in return
             objForm.State = Registration.reValidateAll(objForm);
 
             if(objForm.State.IsValid)
@@ -71,7 +79,6 @@ public class CP_RegistrationController {
 
 
                 // Return Success and Redirect to Login Page 
-
             }
         }
         catch(exception e)
@@ -81,6 +88,8 @@ public class CP_RegistrationController {
         }
 
         // Serialize the result object and return as string
+        System.debug('Return object from Controller');
+        System.debug(objForm);
         return JSON.serialize(objForm);
     }
     

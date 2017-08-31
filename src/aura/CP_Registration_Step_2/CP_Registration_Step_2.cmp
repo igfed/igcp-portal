@@ -93,8 +93,7 @@
 					copy="I'd like to receive the latest news and offers from Investors Group to my email address (optional)"/> -->
 
 				<!-- PHONE -->
-				<c:CP_Cmp_Input_Text 
-					id="phone-input"
+				<c:CP_Cmp_Input_Text id="phone-input"
 					form="registration-step-2-form"
 					type="phone"
 					label="Phone" 
