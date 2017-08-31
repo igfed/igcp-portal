@@ -1,7 +1,7 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
 	<!-- ATTRS -->
-	<aura:attribute name="currentStep" type="Integer" default="1" ></aura:attribute>
+	<aura:attribute name="currentStep" type="Integer" default="0" ></aura:attribute>
 
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default=""/>
@@ -32,8 +32,10 @@
 
     <!-- HANDLERS -->
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="c:CP_Evt_Start" action="{!c.onStartRegistration}"></aura:handler>
     <aura:handler event="c:CP_Evt_Next_Step" action="{!c.onNextStep}"></aura:handler>
     <aura:handler event="c:CP_Evt_Back_Step" action="{!c.onBackStep}"></aura:handler>
+    <aura:handler event="c:CP_Evt_Complete" action="{!c.onCompleteRegistration}"></aura:handler>
 
     <!-- COMPONENTS -->
     <div class="igcp-utils__overflow--hidden">

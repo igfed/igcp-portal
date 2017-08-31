@@ -5,6 +5,15 @@
 	doneRendering: function(cmp, evt, hlpr) {
     		console.log('Registration Render Complete');
   	},
+  	onStartRegistration: function(cmp, evt, hlpr) {
+
+  		console.log("Registration: Start");	
+
+  		var 
+  			currentStep = cmp.get("v.currentStep");
+  			nextStep = currentStep += 1;
+  		cmp.set("v.currentStep", nextStep);	
+  	},
   	onNextStep: function(cmp, evt, hlpr){
   		console.log('Registration: onNextStep');
 
@@ -26,5 +35,8 @@
 
   		cmp.set("v.currentStep", backStep);
 
+  	},
+  	onCompleteRegistration:  function(cmp, evt, hlpr) {
+  		console.log("Registration: onCompleteRegistration");	
   	}
 })

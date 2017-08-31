@@ -30,9 +30,13 @@
 
     <!-- HANDLER -->
     <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
-    <aura:handler event="c:CP_Evt_Click" action="{!c.submitToISAM}" />
+    <aura:handler event="c:CP_Evt_Complete" action="{!c.onRegistrationComplete}" />
 
-    <aura:method name="onNextStep" action="{!c.gotoNextStep}" description="Called when ready to proceed to next step">
+	 <aura:method name="submitToISAM" action="{!c.onSubmitToISAM}" description="Called when ready to submit data to ISAM">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
+
+	<aura:method name="onNextStep" action="{!c.gotoNextStep}" description="Called when ready to proceed to next step">
 		<aura:attribute name="payload" type="Map"></aura:attribute>
 	</aura:method>
 
@@ -65,7 +69,8 @@
 	                <c:CP_Cmp_Form_Back_Next 
 	                	id="{!v.pageId}"
 	                	backLabel="Edit Profile"
-	                    nextLabel="Next"/>
+	                    nextLabel="Next"
+	                    nextType="complete"/>
 	            </div>
 	        </div>
         <div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>

@@ -18,15 +18,23 @@
 
 		var payload = evt.getParam("payload");
 
-		console.log(payload);
-
-		if(payload.id === "next_step_button") {
-			cmp.onNextStep();
+		if(payload.id === "start_button") {
+			cmp.onStart();
+		} else if (payload.id === "complete_button") {
+			cmp.onComplete();
 		}
+	},
+	onStart: function(cmp, evt, hlpr) {
+		console.log("CP_Cmp_Form_Back_Next: onStart");
+
+		var event = cmp.find("CP_Events");
+		event.fire("CP_Evt_Start", {
+			"id" : cmp.get("v.id")
+		});
 	},
 	onNext : function(cmp, evt, hlpr) {
 
-		console.log("onNextStep")	
+		console.log("CP_Cmp_Form_Back_Next: onNextStep")	
 
 		var event = cmp.find("CP_Events");
 		event.fire("CP_Evt_Next_Step", {
@@ -34,6 +42,15 @@
 		});	
 	},
 	onBack: function(cmp, evt, hlpr) {
-		console.log("BACK_NEXT: onBack")
-	}
+		console.log("CP_Cmp_Form_Back_Next: onBack")
+	},
+	onComplete: function(cmp, evt, hlpr) {
+		console.log("CP_Cmp_Form_Back_Next: onComplete");
+
+		var event = cmp.find("CP_Events");
+		event.fire("CP_Evt_Complete", {
+			"id" : cmp.get("v.id")
+		});
+
+	},
 })

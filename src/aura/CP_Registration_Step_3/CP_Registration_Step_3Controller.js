@@ -96,8 +96,6 @@
 
 		//cmp.set("v.reviewObj", itemsObj);
 
-			
-
 		//console.log(cmp.get("v.reviewObj"));
 
 		// console.log("FINAL VALUES");	
@@ -105,11 +103,17 @@
 		// 	console.log(item);	
 		// });	
 	},
-	submitToISAM: function(cmp, evt, hlpr) {
+	onRegistrationComplete: function(cmp, evt, hlpr) {
+
+		console.log('REGISTRATION COMPLETE!!!!!');
+
+		cmp.submitToISAM();
+
+	},
+	onSubmitToISAM: function(cmp, evt, hlpr) {
 
 		console.log("Submit to ISAM")	
 		console.log(JSON.stringify(cmp.get("v.payload")));	
-		debugger;
 
 		var action = cmp.get("c.StepThree");
         action.setParams({ payload : JSON.stringify(cmp.get("v.payload"))});
@@ -120,10 +124,6 @@
         	
             var state = response.getState(),
             	res, isValid;
-
-            	///console.log('RESPONSE');
-            	///console.log(response);	
-            	debugger;	
 
             if (state === "SUCCESS") {
                 // Alert the user with the value returned 
@@ -137,7 +137,7 @@
                 isValid = res["State"]["IsValid"];
 
                 if(isValid === true) {
-                	//cmp.onNextStep();
+                	cmp.onNextStep();
                 } else {
                 	console.warn("Submission error: ");
                 	console.warn(response.getReturnValue());
@@ -175,9 +175,9 @@
         $A.enqueueAction(action);
 	},
 	gotoNextStep: function(cmp, evt, hlpr) {
-		// var event = cmp.find("CP_Events");
-		// event.fire("CP_Evt_Next_Step", {
-		// 	"id": cmp.get("v.pageId")
-		// });
+		var event = cmp.find("CP_Events");
+		event.fire("CP_Evt_Next_Step", {
+			"id" : cmp.get("v.pageId")
+		});				
 	}
 })

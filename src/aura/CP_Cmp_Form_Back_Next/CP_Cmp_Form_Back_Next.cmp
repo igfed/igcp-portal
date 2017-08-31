@@ -6,7 +6,7 @@
     <!-- ATTRS -->
     <aura:attribute name="id" type="String" default="default" ></aura:attribute>
     <aura:attribute name="form" type="String" default="default"></aura:attribute>
-    <aura:attribute name="nextType" type="String" default="default"></aura:attribute>
+    <aura:attribute name="nextType" type="String" default="start"></aura:attribute>
     <aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-grid slds-wrap slds-grid--align-center slds-p-bottom--x-large slds-m-top--x-large"/>
     <aura:attribute name="backLabel" type="String" default="Back" />
     <aura:attribute name="nextLabel" type="String" default="Next" />
@@ -24,6 +24,14 @@
 	 <aura:method name="onBackStep" action="{!c.onBack}" description="Go to previous step">
 		<aura:attribute name="payload" type="Map"></aura:attribute>
 	</aura:method>
+
+	<aura:method name="onStart" action="{!c.onStart}" description="Start">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
+
+	<aura:method name="onComplete" action="{!c.onComplete}" description="Complete">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
     
     <!-- MARKUP -->
     <div class="{!v.class}">
@@ -37,8 +45,12 @@
         
         <div class="igcp-utils__order--1 igcp-medium-utils__order--3 slds-m-horizontal--medium slds-medium-m-horizontal--zero slds-size_12-of-12 slds-medium-size_5-of-12">
 
-            <aura:if isTrue="{!v.nextType == 'default'}">
-    			 <c:CP_Cmp_Button id="next_step_button" label="{!v.nextLabel}" class="igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-button slds-button--brand slds-float_right"/>	
+            <aura:if isTrue="{!v.nextType == 'start'}">
+    			 <c:CP_Cmp_Button id="start_button" label="{!v.nextLabel}" class="igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-button slds-button--brand slds-float_right"/>	
+            </aura:if>
+
+            <aura:if isTrue="{!v.nextType == 'complete'}">
+    			 <c:CP_Cmp_Button id="complete_button" label="{!v.nextLabel}" class="igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-button slds-button--brand slds-float_right"/>	
             </aura:if>
 
             <aura:if isTrue="{!v.nextType == 'submit'}">
