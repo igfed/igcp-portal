@@ -28,7 +28,12 @@
     p {
       text-align: center;
       font-size: 13px;
+      color: $ig-black;
     }
+  }
+
+  .slds-checkbox--faux {
+    border: 1px solid $ig-black;
   }
 
   .igcp-login__register-link {
@@ -101,7 +106,7 @@
     }
 
     .igcp-input {
-      border: 1px solid #000 !important;
+      border: 1px solid $ig-black !important;
       height: 40px;
     }
 
@@ -126,9 +131,7 @@
 
   @media (min-width: 768px) and (max-width: 1023px) {
     .igcp-login--col1 {
-      .top-bar-right {
-        right: 10px;
-      }
+
     }
   }
 
@@ -146,11 +149,12 @@
   @media (min-width: 768px) {
     .igcp-login--col1 {
       .top-bar-right {
-        position: absolute;
-        top: 10px;
+        float: right;
+        margin: 10px 10px -20px 0;
       }
 
       .igcp-nav__logo {
+        clear: both;
         a {
           text-align: center;
           display: block;

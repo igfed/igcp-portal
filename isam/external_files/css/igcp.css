@@ -2002,7 +2002,10 @@ label {
   margin-top: 85px; }
   .igcp-login .igcp-login__legal p {
     text-align: center;
-    font-size: 13px; }
+    font-size: 13px;
+    color: #282828; }
+.igcp-login .slds-checkbox--faux {
+  border: 1px solid #282828; }
 .igcp-login .igcp-login__register-link a {
   font-size: 14px; }
 .igcp-login .igcp-login__footer {
@@ -2045,7 +2048,7 @@ label {
 .igcp-login .igcp-login--col1 .igcp-input__help-link {
   margin-top: -63px; }
 .igcp-login .igcp-login--col1 .igcp-input {
-  border: 1px solid #000 !important;
+  border: 1px solid #282828 !important;
   height: 40px; }
 .igcp-login .igcp-login--col1 .igcp-login__username-checkbox {
   color: #282828;
@@ -2056,9 +2059,6 @@ label {
   @media (max-width: 380px) {
     .igcp-login .igcp-login--col1 .igcp-login__sidebar-wrapper {
       width: 280px; } }
-@media (min-width: 768px) and (max-width: 1023px) {
-  .igcp-login .igcp-login--col1 .top-bar-right {
-    right: 10px; } }
 @media (max-width: 767px) {
   .igcp-login .igcp-login--col1 .top-bar-right {
     display: none; }
@@ -2066,14 +2066,16 @@ label {
     display: none; } }
 @media (min-width: 768px) {
   .igcp-login .igcp-login--col1 .top-bar-right {
-    position: absolute;
-    top: 10px; }
-  .igcp-login .igcp-login--col1 .igcp-nav__logo a {
-    text-align: center;
-    display: block; }
-    .igcp-login .igcp-login--col1 .igcp-nav__logo a img {
-      width: 148px;
-      margin-top: 75px; } }
+    float: right;
+    margin: 10px 10px -20px 0; }
+  .igcp-login .igcp-login--col1 .igcp-nav__logo {
+    clear: both; }
+    .igcp-login .igcp-login--col1 .igcp-nav__logo a {
+      text-align: center;
+      display: block; }
+      .igcp-login .igcp-login--col1 .igcp-nav__logo a img {
+        width: 148px;
+        margin-top: 75px; } }
 @media (max-width: 1023px) {
   .igcp-login .igcp-login__ad--mobile {
     margin: 50px auto;

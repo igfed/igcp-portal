@@ -1798,7 +1798,7 @@ label {
 .igcp-hamburger {
   width: 60px;
   height: 60px;
-  background-color: #024370;
+  background-color: #004171;
   float: left;
   padding-top: 16px;
   text-align: center; }
@@ -1832,7 +1832,7 @@ label {
   .igcp-mobile-nav.is-transition-overlap {
     z-index: 10; }
   .igcp-mobile-nav.is-transition-overlap.is-open {
-    box-shadow: 0 0 10px rgba(2, 67, 112, 0.7); }
+    box-shadow: 0 0 10px rgba(0, 65, 113, 0.7); }
   .igcp-mobile-nav.is-transition-overlap.is-open ~ .off-canvas-content {
     -webkit-transform: none;
     -ms-transform: none;
@@ -1847,7 +1847,7 @@ label {
     right: 0;
     height: 100%;
     width: 1px;
-    box-shadow: 0 0 10px rgba(2, 67, 112, 0.7);
+    box-shadow: 0 0 10px rgba(0, 65, 113, 0.7);
     content: " "; }
 
 [data-whatinput='mouse'] .igcp-mobile-nav {
@@ -1881,7 +1881,7 @@ label {
 .igcp-mobile-nav__menu > li > a {
   display: block;
   line-height: 1;
-  border-bottom: 1px solid rgba(2, 67, 112, 0.25); }
+  border-bottom: 1px solid rgba(0, 65, 113, 0.25); }
 
 .igcp-mobile-nav__menu input,
 .igcp-mobile-nav__menu select,
@@ -1987,6 +1987,163 @@ label {
     margin: 0 auto; }
     .igcp-registration .igcp-registration__pfa--monitor img {
       width: 100%; }
+
+.igcp-login a {
+  color: #0e75d5;
+  text-decoration: none; }
+  .igcp-login a:hover {
+    text-decoration: underline; }
+.igcp-login .top-bar-left {
+  margin-top: 0; }
+.igcp-login .arrow {
+  padding-left: 4px;
+  color: #fff; }
+.igcp-login .igcp-login__legal {
+  margin-top: 85px; }
+  .igcp-login .igcp-login__legal p {
+    text-align: center;
+    font-size: 13px;
+    color: #282828; }
+.igcp-login .slds-checkbox--faux {
+  border: 1px solid #282828; }
+.igcp-login .igcp-login__register-link a {
+  font-size: 14px; }
+.igcp-login .igcp-login__footer {
+  width: 450px;
+  margin: 40px auto 0; }
+  @media (max-width: 480px) {
+    .igcp-login .igcp-login__footer {
+      width: 300px; } }
+  .igcp-login .igcp-login__footer .igcp-login__footer-menu {
+    height: 30px; }
+    .igcp-login .igcp-login__footer .igcp-login__footer-menu li {
+      float: left;
+      padding: 0 13px; }
+  .igcp-login .igcp-login__footer .igcp-login__footer-copyright {
+    clear: both;
+    margin-bottom: 40px; }
+    .igcp-login .igcp-login__footer .igcp-login__footer-copyright li {
+      margin: 0 auto;
+      text-align: center; }
+.igcp-login .igcp-login--col1 h3 {
+  font-family: 'WhitneyLight', Arial, sans-serif;
+  letter-spacing: 0.3px;
+  text-align: center;
+  font-size: 22px;
+  margin: 35px 0 35px;
+  color: #004171; }
+  @media (min-width: 1024px) {
+    .igcp-login .igcp-login--col1 h3 {
+      margin: 20px 0 50px; } }
+.igcp-login .igcp-login--col1 .slds-button {
+  padding-left: 80px;
+  padding-right: 80px;
+  margin: 0 auto;
+  display: block;
+  background-color: #004171; }
+.igcp-login .igcp-login--col1 .slds-form-element__label {
+  color: #004171; }
+.igcp-login .igcp-login--col1 .igcp-nav__link:hover, .igcp-login .igcp-login--col1 .igcp-nav__link.igcp-nav__link--selected {
+  border-bottom: none; }
+.igcp-login .igcp-login--col1 .igcp-input__help-link {
+  margin-top: -63px; }
+.igcp-login .igcp-login--col1 .igcp-input {
+  border: 1px solid #282828 !important;
+  height: 40px; }
+.igcp-login .igcp-login--col1 .igcp-login__username-checkbox {
+  color: #282828;
+  font-size: 13px; }
+.igcp-login .igcp-login--col1 .igcp-login__sidebar-wrapper {
+  width: 310px;
+  margin: 0 auto; }
+  @media (max-width: 380px) {
+    .igcp-login .igcp-login--col1 .igcp-login__sidebar-wrapper {
+      width: 280px; } }
+@media (max-width: 767px) {
+  .igcp-login .igcp-login--col1 .top-bar-right {
+    display: none; }
+  .igcp-login .igcp-login--col1 .igcp-nav__logo {
+    display: none; } }
+@media (min-width: 768px) {
+  .igcp-login .igcp-login--col1 .top-bar-right {
+    float: right;
+    margin: 10px 10px -20px 0; }
+  .igcp-login .igcp-login--col1 .igcp-nav__logo {
+    clear: both; }
+    .igcp-login .igcp-login--col1 .igcp-nav__logo a {
+      text-align: center;
+      display: block; }
+      .igcp-login .igcp-login--col1 .igcp-nav__logo a img {
+        width: 148px;
+        margin-top: 75px; } }
+@media (max-width: 1023px) {
+  .igcp-login .igcp-login__ad--mobile {
+    margin: 50px auto;
+    padding: 0 20px;
+    max-width: 768px; }
+  .igcp-login .igcp-login--col2 {
+    background-image: none !important;
+    background-color: inherit !important; }
+    .igcp-login .igcp-login--col2 .igcp-login__ad--desktop {
+      display: none; } }
+@media (min-width: 1024px) {
+  .igcp-login .slds-grid {
+    width: 100%; }
+  .igcp-login .igcp-login--col1 {
+    width: 33.33333%;
+    min-width: 512px; }
+    .igcp-login .igcp-login--col1 .top-bar-right {
+      left: 455px; }
+    .igcp-login .igcp-login--col1 .igcp-login__ad--mobile {
+      display: none; }
+  .igcp-login .igcp-login--col2 {
+    width: 100%;
+    background-repeat: no-repeat;
+    height: 100vh;
+    min-height: 730px; }
+    .igcp-login .igcp-login--col2.background-left-bottom {
+      background-position: left bottom; }
+    .igcp-login .igcp-login--col2.background-left-top {
+      background-position: left top; }
+  .igcp-login .igcp-login__ad {
+    margin: 90px 0 0 50px;
+    width: 462px; } }
+  @media (min-width: 1024px) and (max-width: 1080px) {
+    .igcp-login .igcp-login__ad {
+      margin: 85px 0 0 25px; } }
+@media (min-width: 1024px) {
+  .igcp-login .igcp-login__ad-heading {
+    color: #fff;
+    margin-bottom: 15px;
+    line-height: 1.15; }
+  .igcp-login .igcp-login__ad-copy {
+    color: #fff;
+    font-family: 'WhitneyLight', Arial, sans-serif;
+    font-size: 21px;
+    margin-bottom: 18px;
+    line-height: 1.3; }
+  .igcp-login .igcp-login__ad-link {
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 0.1em; } }
+
+.igcp-login-header {
+  height: 50px;
+  padding: 10px 10px 10px 20px; }
+  .igcp-login-header .top-bar-left {
+    margin-top: 0;
+    float: left; }
+  .igcp-login-header .top-bar-right {
+    float: right;
+    margin-top: 0; }
+    .igcp-login-header .top-bar-right .igcp-nav__link {
+      display: block;
+      padding: 6px 0; }
+
+@media (min-width: 1024px) {
+  .igcp-login.slds-wrap {
+    flex-wrap: nowrap;
+    align-items: normal; } }
 
 .igcp-footer {
   padding-top: 0;
