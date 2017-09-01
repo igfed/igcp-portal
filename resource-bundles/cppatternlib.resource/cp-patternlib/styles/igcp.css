@@ -2169,7 +2169,10 @@ label {
     overflow: scroll; }
 
   .igcp-utils__overflow--auto {
-    overflow: auto; } }
+    overflow: auto; }
+
+  .igcp-utils__height--zero {
+    height: 0; } }
 @media (min-width: 480px) {
   .igcp-small-utils__font--light {
     font-family: 'WhitneyLight', Arial, sans-serif; }
@@ -2332,7 +2335,10 @@ label {
     overflow: scroll; }
 
   .igcp-small-utils__overflow--auto {
-    overflow: auto; } }
+    overflow: auto; }
+
+  .igcp-small-utils__height--zero {
+    height: 0; } }
 @media (min-width: 768px) {
   .igcp-medium-utils__font--light {
     font-family: 'WhitneyLight', Arial, sans-serif; }
@@ -2495,7 +2501,10 @@ label {
     overflow: scroll; }
 
   .igcp-medium-utils__overflow--auto {
-    overflow: auto; } }
+    overflow: auto; }
+
+  .igcp-medium-utils__height--zero {
+    height: 0; } }
 @media (min-width: 1024px) {
   .igcp-large-utils__font--light {
     font-family: 'WhitneyLight', Arial, sans-serif; }
@@ -2658,7 +2667,10 @@ label {
     overflow: scroll; }
 
   .igcp-large-utils__overflow--auto {
-    overflow: auto; } }
+    overflow: auto; }
+
+  .igcp-large-utils__height--zero {
+    height: 0; } }
 .igcp-background {
   background-image: url("../images/bg-tile.jpg");
   background-repeat: repeat; }

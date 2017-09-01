@@ -211,5 +211,9 @@
         .#{getNamespace($value)}-utils__overflow--auto {
         	overflow: auto;
         }
+
+        .#{getNamespace($value)}-utils__height--zero {
+        	height: 0;
+        }
     }
 }

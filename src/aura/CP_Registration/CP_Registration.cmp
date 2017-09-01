@@ -1,7 +1,7 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
 	<!-- ATTRS -->
-	<aura:attribute name="currentStep" type="Integer" default="3" ></aura:attribute>
+	<aura:attribute name="currentStep" type="Integer" default="0" ></aura:attribute>
 
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default=""/>

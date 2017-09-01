@@ -4,11 +4,12 @@
 	<c:CP_Events aura:id="CP_Events" />
 
     <!-- ATTRS -->
-    <aura:attribute name="id" Type="String" default="default"/>
+    <aura:attribute name="id" type="String" default="default"/>
     <aura:attribute name="label" type="String" default="default" />
     <aura:attribute name="buttonType" type="String" default="default"></aura:attribute>
-    <aura:attribute name="icon" Type="String" />
-    <aura:attribute name="iconSize" Type="String" default="small"/>
+    <aura:attribute name="icon" type="String" />
+    <aura:attribute name="iconSize" type="String" default="small"/>
+    <aura:attribute  name="disabled" type="Boolean" default="false"></aura:attribute>
     <aura:attribute name="class" type="String" />
     <aura:attribute name="buttonClass" type="String" default="" ></aura:attribute>
 
@@ -16,7 +17,7 @@
     <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
     
     <div id="{!v.id}" aura:id="{!v.id}" class="{!v.class}">
-        <lightning:button label="{!v.label}" variant="brand" class="{!'igcp-utils__width--100 slds-p-vertical--xx-small ' + v.buttonClass}" onclick="{!c.onClick}">
+        <lightning:button label="{!v.label}" variant="brand" class="{!'igcp-utils__width--100 slds-p-vertical--xx-small ' + v.buttonClass}" onclick="{!c.onClick}" disabled="{!v.disabled}">
         	
         </lightning:button>
     </div>

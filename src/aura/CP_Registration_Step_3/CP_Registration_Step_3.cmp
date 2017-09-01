@@ -3,6 +3,7 @@
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="registration-step-3"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
+	<aura:attribute  name="class" type="String" default="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large"></aura:attribute>
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default=""/>
     <aura:attribute name="postalCode" type="String" default=""/>
@@ -30,6 +31,11 @@
     <!-- HANDLER -->
     <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
     <aura:handler event="c:CP_Evt_Complete" action="{!c.onRegistrationComplete}" />
+    <aura:handler event="c:CP_Evt_Modal_Show" action="{!c.onModalShow}" />
+    <aura:handler event="c:CP_Evt_Modal_Close" action="{!c.onModalClose}" />
+    <aura:handler event="c:CP_Evt_Click" action="{!c.onAgreeTOS}"></aura:handler>
+    <aura:handler event="c:CP_Evt_Input_Checkbox_Checked" action="{!c.onAgreeChecked}" />
+	<aura:handler event="c:CP_Evt_Input_Checkbox_Unchecked" action="{!c.onAgreeChecked}" />
 
 	 <aura:method name="submitToISAM" action="{!c.onSubmitToISAM}" description="Called when ready to submit data to ISAM">
 		<aura:attribute name="payload" type="Map"></aura:attribute>
@@ -39,12 +45,20 @@
 		<aura:attribute name="payload" type="Map"></aura:attribute>
 	</aura:method>
 
-	<aura:method name="showTOS" action="{!c.onShowTOS}" description="Chow TOS overlay">
+	<aura:method name="showTOS" action="{!c.onShowTOS}" description="Show TOS overlay">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
+
+	<aura:method name="updateISAMPayload" action="{!c.updateISAMPayload}" description="Update ISAM payload">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
+
+	<aura:method name="logPayloadVars" action="{!c.logPayloadVars}" description="A debugging method">
 		<aura:attribute name="payload" type="Map"></aura:attribute>
 	</aura:method>
 
 	<!-- MARKUP -->
-    <div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
+    <div class="{!v.class}">
         
         <div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
 	        <div class="slds-p-around--small slds-medium-p-around--zero slds-size_12-of-12 slds-medium-size_6-of-12">
