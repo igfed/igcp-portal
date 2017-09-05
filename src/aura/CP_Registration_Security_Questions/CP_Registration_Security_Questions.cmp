@@ -4,33 +4,51 @@
 	
 	<!-- MARKUP -->
 	<!-- QUESTION ONE -->	
-	<c:CP_Cmp_Input_Selector id="security-1-selector" 
+	<c:CP_Cmp_Input_Selector 
+		id="security-1-selector" 
 		form="registration-step-2-form" 
 		class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" 
 		label="Security Question 1 of 3" 
 		placeholder="Select a security question" 
 		defaultOptions="{!v.options}" />
 
-	<c:CP_Cmp_Input_Text id="security-1-answer" form="registration-step-2-form" type="text" label="Answer 1" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+	<c:CP_Cmp_Input_Text 
+		id="security-1-answer" 
+		form="registration-step-2-form" 
+		label="Answer 1" 
+		placeholder="" 
+		class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 
 	<!-- QUESTION 2 -->
-	<c:CP_Cmp_Input_Selector id="security-2-selector" 
+	<c:CP_Cmp_Input_Selector 
+		id="security-2-selector" 
 		form="registration-step-2-form" 
 		class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" 
 		label="Security Question 2 of 3" 
 		placeholder="Select a security question" 
 		defaultOptions="{!v.options}" />
 
-	<c:CP_Cmp_Input_Text id="security-2-answer" form="registration-step-2-form" type="text" label="Answer 2" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+	<c:CP_Cmp_Input_Text 
+		id="security-2-answer" 
+		form="registration-step-2-form" 
+		label="Answer 2" 
+		placeholder="" 
+		class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 
 	<!-- QUESTION 3 -->
-	<c:CP_Cmp_Input_Selector id="security-3-selector" 
+	<c:CP_Cmp_Input_Selector 
+		id="security-3-selector" 
 		form="registration-step-2-form" 
 		class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" 
 		label="Security Question 3 of 3" 
 		placeholder="Select a security question" 
 		defaultOptions="{!v.options}" />
 
-	<c:CP_Cmp_Input_Text id="security-3-answer" form="registration-step-2-form" type="text" label="Answer 3" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+	<c:CP_Cmp_Input_Text 
+		id="security-3-answer" 
+		form="registration-step-2-form" 
+		label="Answer 3" 
+		placeholder="" 
+		class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 
 </aura:component>

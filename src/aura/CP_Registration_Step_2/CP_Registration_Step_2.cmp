@@ -23,6 +23,7 @@
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
+	<aura:handler  event="c:CP_Evt_Input_Selector_Change" action="{!c.onInputSelectorReceived}"/>
 
 	<!-- INCLUDES -->	
 	<c:CP_Events aura:id="CP_Events" />
@@ -86,11 +87,11 @@
 					class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium"/>
 
 				<!-- NEWS OPT IN  -->
-				<!-- <c:CP_Cmp_Input_Checkbox 
+				<c:CP_Cmp_Input_Checkbox 
 					id="news-offers-opt"		
 					form="registration-step-2-form"
 					class="slds-size_12-of-12 slds-large-size_9-of-12"
-					copy="I'd like to receive the latest news and offers from Investors Group to my email address (optional)"/> -->
+					copy="I'd like to receive the latest news and offers from Investors Group to my email address (optional)"/>
 
 				<!-- PHONE -->
 				<c:CP_Cmp_Input_Text id="phone-input"

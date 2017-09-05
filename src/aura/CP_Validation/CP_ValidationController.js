@@ -18,6 +18,8 @@
 				hlpr.validateEmail(params.payload, params.callBack, cmp, hlpr);
 			} else if(params.payload.type === "phone") {
 				hlpr.validatePhone(params.payload, params.callBack, cmp, hlpr);
+			} else if(params.payload.type === "text") {
+				hlpr.validateText(params.payload, params.callBack, cmp, hlpr);
 			}
 		}
 	}

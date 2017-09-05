@@ -16,11 +16,11 @@
     <aura:attribute name="emailOptIn" type="Boolean" default="true" ></aura:attribute>
     <aura:attribute name="mobilePhone" type="String" default=""/>
     <aura:attribute name="securityQuestion1" type="String" default="What's your dog's name?"></aura:attribute>	
-    <aura:attribute name="answer1" type="String" default="Doggy"></aura:attribute>
+    <aura:attribute name="answer1" type="String"></aura:attribute>
     <aura:attribute name="securityQuestion2" type="String" default="Where were you born?"></aura:attribute>	
-    <aura:attribute name="answer2" type="String" default="Toronto"></aura:attribute>
+    <aura:attribute name="answer2" type="String"></aura:attribute>
     <aura:attribute name="securityQuestion3" type="String" default="What's you mother's maiden name?"></aura:attribute>	
-    <aura:attribute name="answer3" type="String" default="Smith"></aura:attribute>
+    <aura:attribute name="answer3" type="String"></aura:attribute>
     
     <!-- Step 3 -->
     <aura:attribute name="acceptTOS" type="Boolean" default="false" ></aura:attribute>

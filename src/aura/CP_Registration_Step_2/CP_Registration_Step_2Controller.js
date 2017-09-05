@@ -12,6 +12,19 @@
 		var events = cmp.find('CP_Events');
 		events.fire("CP_Evt_Get_Input_Value", { 'formId': 'registration-step-2-form' });
 	},
+	onInputSelectorReceived: function(cmp, evt, hlpr) {
+		var 
+			inputId = evt.getParam("payload").id,
+			inputValue = evt.getParam("payload").selected;
+
+		if(inputId === "security-1-selector") {
+			cmp.set("v.securityQuestion1", inputValue);
+		} else if (inputId === "security-2-selector") {
+			cmp.set("v.securityQuestion2", inputValue);
+		} else if (inputId === "security-3-selector") {
+			cmp.set("v.securityQuestion3", inputValue);
+		}
+	},
 	onInputValueReceived: function(cmp, evt, hlpr) {
 
 		console.log('CP_Registration_Step_2: onInputValueReceived');
@@ -42,6 +55,9 @@
 					inputId = evt.getParam("payload").id,
 					inputValue = evt.getParam("payload").value;
 
+				console.log('INPUT ID: ' + inputId);
+				console.log("inputValue: " + inputValue);
+
 				if (inputId === "username-input") {
 					cmp.set("v.username", inputValue);
 				} else if (inputId === "password-input") {
@@ -51,6 +67,12 @@
 					cmp.set("v.email", inputValue);
 				} else if (inputId === "phone-input") {
 					cmp.set("v.mobilePhone", inputValue);
+				} else if(inputId === "security-1-answer") {
+					cmp.set("v.answer1", inputValue);	
+				} else if(inputId === "security-2-answer") {
+					cmp.set("v.answer2", inputValue);	
+				} else if(inputId === "security-3-answer") {
+					cmp.set("v.answer3", inputValue);	
 				}
 
 				events.fire("CP_Evt_Input_Valid", {
@@ -63,7 +85,7 @@
 
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
-		if (cmp.get("v.inputsReceived") === 4 && cmp.get("v.inputErrors") === false) {
+		if (cmp.get("v.inputsReceived") === 8 && cmp.get("v.inputErrors") === false) {
 
 			cmp.set("v.payload", {
 				"username": cmp.get("v.username"),

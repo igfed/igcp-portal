@@ -9,6 +9,8 @@
 	<aura:attribute name="clientMinLength" type="Integer" default="7"></aura:attribute>
 	<aura:attribute name="clientMaxLength" type="Integer" default="13" ></aura:attribute>
 
+	<aura:attribute  name="textMinLength" type="Integer" default="3" ></aura:attribute>
+
 	<!-- METHODS -->
     <aura:method name="validate" action="{!c.onValidateForm}" > 
         <aura:attribute name="payload" type="String" default="" />

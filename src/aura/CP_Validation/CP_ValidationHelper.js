@@ -317,5 +317,32 @@
 
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+	},
+	validateText: function (params, callBack, cmp, hlpr){
+		var
+			value = params.value,
+			id = params.id,
+			errors = [],
+			errorCheckObj = {},
+			isEmpty = value.length === 0 ? true : false,
+			minLength = hlpr.min(value.length, cmp.get("v.textMinLength"));
+
+		if (isEmpty === true) {
+			errorCheckObj["isEmpty"] = isEmpty;
+		} else {
+			errorCheckObj["minLength"] = minLength;	
+		}
+
+		errors = hlpr.checkForErrors(errorCheckObj);
+
+		errors.forEach(function(item, i) {
+			if (item.type === "isEmpty") {
+				item["msg"] = "Text field is empty";
+			} else if (item.type === "minLength") {
+				item["msg"] = "The text is less than " + cmp.get("v.textMinLength") + " characters.";
+			}
+		});
+
+		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });	
 	}
 })
