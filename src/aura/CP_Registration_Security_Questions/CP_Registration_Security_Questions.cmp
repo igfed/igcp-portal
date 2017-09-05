@@ -1,6 +1,6 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 	<!-- ATTRS -->
-	<aura:attribute name="options" type="String[]" default="['Whats your dogs name?', 'Where were you born?', 'Whats your mothers maiden name?']"></aura:attribute>
+	<aura:attribute name="options" type="String[]" default="['Whats your dog\'s name?', 'Where were you born?', 'Whats your mother\'s maiden name?']"></aura:attribute>
 	
 	<!-- MARKUP -->
 	<!-- QUESTION ONE -->	

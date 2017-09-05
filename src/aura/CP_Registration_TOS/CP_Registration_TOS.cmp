@@ -13,21 +13,18 @@
 
 		<form aura:id="registration-tos-desktop-form" id="registration-tos-desktop-form" method="get" action="" class="slds-grid slds-wrap">
 			
-			<c:CP_Cmp_Input_Checkbox 
-				id="read_and_agree_checkbox" 
+			<c:CP_Cmp_Input_Checkbox id="read_and_agree_checkbox" 
 				form="registration-tos-desktop-form" 
 				class="igcp-utils__display--none igcp-large-utils__display--block slds-size_12-of-12 slds-m-bottom--large" copy="I have read and agree to the above Terms and Conditions" />
 			
 			<aura:if isTrue="{!v.userAgrees == true}"  >
-				<c:CP_Cmp_Button 
-				id="tos_agree_button" 
+				<c:CP_Cmp_Button id="tos_agree_button" 
 				label="Agree" 
 				class="igcp-utils__display--none igcp-large-utils__display--block slds-size_3-of-12" />
 			</aura:if>
 			
 			<aura:if isTrue="{!v.userAgrees == false}"  >
-				<c:CP_Cmp_Button
-				id="tos_agree_button" 
+				<c:CP_Cmp_Button id="tos_agree_button" 
 				disabled="true"
 				label="Agree" 
 				class="igcp-utils__display--none igcp-large-utils__display--block slds-size_3-of-12" />

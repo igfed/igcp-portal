@@ -16,3 +16,9 @@
 @import "sass/igcp/utils";
 @import "sass/igcp/global-styles";
 @import "sass/igcp/breakpoints";
+
+//Temporarily hide Napili header
+
+#header {
+    display: none;
+}

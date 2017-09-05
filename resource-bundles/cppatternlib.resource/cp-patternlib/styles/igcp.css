@@ -2982,5 +2982,7 @@ label {
         border-right: none; }
     .igcp-footer .footer-navigation .columns {
       text-align: left; } }
+#header {
+  display: none; }
 
 /*# sourceMappingURL=igcp.css.map */

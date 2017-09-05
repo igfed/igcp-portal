@@ -2,7 +2,7 @@
 
 	<!-- ATTTRS -->
 	<aura:attribute name="id" type="String" default="default" ></aura:attribute>
-	<aura:attribute  name="class" type="String" default="igcp-modal slds-grid slds-wrap slds-p-around--xx-large" ></aura:attribute>
+	<aura:attribute name="class" type="String" default="igcp-modal slds-grid slds-wrap slds-p-around--xx-large" ></aura:attribute>
 
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />

@@ -23,4 +23,10 @@
     	<aura:attribute name="callback" type="function" default="" />
     </aura:method>
 
+    <aura:method name="arrayContains" action="{!c.onArrayContains}" >
+    	<aura:attribute name="array" type="String[]"></aura:attribute>
+    	<aura:attribute name="value" type="String"></aura:attribute>
+    	<aura:attribute name="callback" type="function" default="" />
+    </aura:method>
+
 </aura:component>

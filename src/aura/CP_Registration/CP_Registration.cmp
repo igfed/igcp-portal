@@ -1,7 +1,7 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
 	<!-- ATTRS -->
-	<aura:attribute name="currentStep" type="Integer" default="0" ></aura:attribute>
+	<aura:attribute name="currentStep" type="Integer" default="2" ></aura:attribute>
 
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default=""/>
@@ -92,6 +92,6 @@
     	<c:CP_Cmp_Modal id="registration-tos"/>
 
     	<!-- FOOTER -->	
-		<c:CP_Cmp_Footer />
+		<!-- <c:CP_Cmp_Footer /> -->
 	</div>
 </aura:component>

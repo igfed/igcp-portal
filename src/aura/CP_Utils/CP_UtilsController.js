@@ -67,5 +67,20 @@
 
 			params.callback(newArr);			
 		}
+	},
+	onArrayContains: function(cmp, evt, hlpr){
+		var params = evt.getParam('arguments');
+		if (params) {
+			var 
+				array = params.array,
+				value = params.value,
+				hasValue = false;
+
+			if(array.indexOf(value) != -1) {
+				hasValue = true;
+			}
+
+			params.callback(hasValue);
+		}
 	}
 })

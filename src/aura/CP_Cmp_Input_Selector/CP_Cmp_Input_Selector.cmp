@@ -1,42 +1,41 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
-    
-    <!-- ATTRS -->
-    <aura:attribute name="id" type="String" />
-    <aura:attribute name="form" type="String"></aura:attribute>
-    <aura:attribute name="selectedValue" type="String" default=""></aura:attribute>
-    <aura:attribute name="currentSelectedValue" type="String"></aura:attribute>
-    <aura:attribute name="label" type="String" />
-    <aura:attribute name="placeholder" type="String" />
-    <aura:attribute name="defaultOptions" type="String[]" />
-    <aura:attribute name="options" type="String[]" ></aura:attribute>
-    <aura:attribute name="class" type="String" />
-    <aura:attribute name="tooltip" type="String" />
+	
+	<!-- ATTRS -->
+	<aura:attribute name="id" type="String" />
+	<aura:attribute name="form" type="String"></aura:attribute>
+	<aura:attribute name="selectedValue" type="String" default=""></aura:attribute>
+	<aura:attribute name="currentSelectedValue" type="String"></aura:attribute>
+	<aura:attribute name="label" type="String" />
+	<aura:attribute name="placeholder" type="String" />
+	<aura:attribute name="class" type="String" />
+	<aura:attribute name="tooltip" type="String" />
+	<aura:attribute name="defaultOptions" type="String[]" />
+	<aura:attribute name="options" type="String[]"></aura:attribute>
+	<aura:attribute name="selectedArr" type="String[]" default="[]"></aura:attribute>
 
-    <!-- INCLUDES -->
-     <c:CP_Utils aura:id="CP_Utils" />
-     <c:CP_Events aura:id="CP_Events" />
+	<!-- INCLUDES -->
+	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Events aura:id="CP_Events" />
 
-    <!-- HANDLERS -->
-    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
-    <aura:handler event="c:CP_Evt_Input_Selector_Change" action="{!c.onChangeReceived}"></aura:handler>
+	<!-- HANDLERS -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="c:CP_Evt_Input_Selector_Change" action="{!c.onChangeReceived}"></aura:handler>
 
-    <!-- MARKUP -->
-    <div class="{!v.class}">
-        <div class="slds-form-element">
-            <label class="slds-form-element__label input-label" for="{!v.id}">{!v.label}</label>
-            
-            <aura:renderIf isTrue="{!v.tooltip}">
-                tooltip coming soon...
-            </aura:renderIf>
-        
-            <div class="slds-form-element__control">
-                <ui:inputSelect aura:id="selector-input" class="igcp-input igcp-input__selector" change="{!c.onChange}" value="{!v.selectedValue}">
-                    <ui:inputSelectOption text="default" label="{!v.placeholder}" disabled="true" value="true" />
-                    <aura:iteration items="{!v.options}" var="opt" indexVar="index">
-                         <ui:inputSelectOption text="{!'value-' + index}" label="{!opt}"/>
-                    </aura:iteration>
-                </ui:inputSelect>
-            </div>
-        </div>
-    </div>
+	<!-- MARKUP -->
+	<div class="{!v.class}">
+		<div class="slds-form-element">
+			<label class="slds-form-element__label input-label" for="{!v.id}">{!v.label}</label>
+			<aura:renderIf isTrue="{!v.tooltip}">
+				tooltip coming soon...
+			</aura:renderIf>
+			<div class="slds-form-element__control">
+				<ui:inputSelect aura:id="selector-input" class="igcp-input igcp-input__selector" change="{!c.onChange}" value="{!v.selectedValue}">
+					<ui:inputSelectOption text="default" label="{!v.placeholder}" disabled="true" value="true" />
+					<aura:iteration items="{!v.options}" var="opt" indexVar="index">
+						<ui:inputSelectOption text="{!opt}" label="{!opt}" />
+					</aura:iteration>
+				</ui:inputSelect>
+			</div>
+		</div>
+	</div>
 </aura:component>

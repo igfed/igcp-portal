@@ -1,71 +1,55 @@
 ({
-	onInit: function(cmp, evt, hlpr){
+	onInit: function(cmp, evt, hlpr) {
 		cmp.set("v.options", cmp.get("v.defaultOptions"));
 	},
-	onChange : function(cmp, evt, hlpr) {
-		console.log("CHANGE");
-
-		var options = cmp.get("v.options"),
-			newOptions,
+	onChange: function(cmp, evt, hlpr) {
+		var
+			events = cmp.find("CP_Events"),
 			selected = cmp.get("v.selectedValue");
 
-		selected = selected.replace("value-", "");
+		cmp.set("v.currentSelectedValue", selected);
 
-		newOptions = options.filter(function(value, index, array){
-
-			var item;
-
-				if(selected != index) {
-					item = value;
-				}
-
-
-			return item;	
-
-			
-		});		
-
-		console.log(newOptions)
-
-		cmp.set("v.options", newOptions);
-
-		// var 
-		// 	events = cmp.find("CP_Events"),
-		// 	selected = cmp.get("v.selectedValue");
-
-		// cmp.set("v.currentSelectedValue", selected);
-
-		// selected = selected.replace("value-", "");
-
-		// events.fire("CP_Evt_Input_Selector_Change", {
-		// 	"id" : cmp.get("v.id"),
-		// 	"selected" : selected
-		// });
+		events.fire("CP_Evt_Input_Selector_Change", {
+			"id": cmp.get("v.id"),
+			"selected": selected
+		});
 	},
 	onChangeReceived: function(cmp, evt, hlpr) {
-
-		//Remove selected option from this selector	
-
-		// console.log('ON CHANGE RECEIVED');
-		// console.log(evt.getParam("payload"));
-
-		// var 
-		// 	payload = evt.getParam("payload"),	
-		// 	utils = cmp.find("CP_Utils"),
-		// 	options = cmp.get("v.options");
-	
-		//  console.log("id: " + cmp.get("v.id"));
-		//  console.log(cmp.get("v.selectedValue"));
+		var
+			utils = cmp.find("CP_Utils"),
+			selectedArr = cmp.get("v.selectedArr"),
+			payload = evt.getParam("payload"),
+			selected = payload.selected,
+			defaultOptions = cmp.get("v.defaultOptions"),
+			newOptions = [];
 
 
-		// console.log("payload id: " + payload.id);	
+		//If this isn't the same selector that iniated the event
+		//remove option from selector		
+		if (payload.id !== cmp.get("v.id")) {
+			
+			//check if selected is already in selectedArr, and if not push it
+			utils.arrayContains(selectedArr, selected, function(hasValue) {
+				if (hasValue === false) {
+					selectedArr.push(selected);
+				}
+			});
+			cmp.set("v.selectedArr", selectedArr);
 
-		// if(payload.id != cmp.get("v.id") && cmp.get("v.selectedValue") === "default") {
-		// 	utils.deleteAt(options, payload.selected, function(newArr){
-		// 		cmp.set("v.options", newArr);
-		// 		console.log("id: " + cmp.get("v.id"));	
-		// 		console.log(newArr)
-		// 	});
-		// }
+			//Loop through all options in defaultOptions array and 
+			//create a new options array with selected omitted
+			defaultOptions.forEach(function(item, i) {
+
+				utils.arrayContains(selectedArr, item, function(hasValue) {
+					if (hasValue === false) {
+						newOptions.push(item);
+					}
+				});
+
+			});
+
+			cmp.set("v.options", newOptions);
+		}
+
 	}
 })
