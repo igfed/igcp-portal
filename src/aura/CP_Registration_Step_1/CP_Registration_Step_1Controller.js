@@ -6,7 +6,7 @@
 		cmp.set("v.inputsReceived", 0);
 
 		var events = cmp.find('CP_Events');
-		events.fire("CP_Evt_Get_Input_Value", { 'formId': 'registration-step-1-form' });
+		events.fire("CP_Evt_Get_Input_Value", { 'formId': cmp.get("v.pageId") });
 	},
 	onInputValueReceived: function(cmp, evt, hlpr) {
 
@@ -22,6 +22,9 @@
 			if (obj.isValid === false) {
 
 				cmp.set("v.inputErrors", true);
+
+				console.error("Input Errors: " + obj.id);
+				console.error(obj.errors);
 
 				events.fire("CP_Evt_Input_Error", {
 					"id": obj.id,

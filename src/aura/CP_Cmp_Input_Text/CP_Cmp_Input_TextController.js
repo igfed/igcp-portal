@@ -1,10 +1,10 @@
 ({
 	onInit: function(cmp, evt, hlpr) {
-		if(cmp.get("v.id") === "default") {
+		if (cmp.get("v.id") === "default") {
 			console.error("CP_Cmp_Input_Text: A unique 'id' is required.");
 		}
 
-		if(cmp.get("v.form") === "default") {
+		if (cmp.get("v.form") === "default") {
 			console.error("CP_Cmp_Input_Text: Input needs to be associated with a 'form'.")
 		}
 	},
@@ -13,7 +13,7 @@
 		var
 			events = cmp.find('CP_Events'),
 			formId = evt.getParam('payload').formId,
-			form = cmp.get('v.form');				
+			form = cmp.get('v.form');
 
 		if (formId === form) {
 			events.fire("CP_Evt_Send_Input_Value", {
@@ -32,9 +32,26 @@
 	},
 	onError: function(cmp, evt, hlpr) {
 
-		if (cmp.get("v.id") === evt.getParam("payload").id) {
+		var
+			payload = evt.getParam("payload"),
+			errors = payload.errors,
+			errorArr = [];
+
+		if (cmp.get("v.id") === payload.id) {
+
+			if (errors.length > 0) {
+				errors.forEach(function(item, i) {
+					errorArr.push({ message: item.msg });
+				});
+			}
+
 			var field = cmp.find("text-input");
-			field.set("v.errors", [{ message: cmp.get("v.errorText") }]);
+			field.set("v.errors", errorArr);
 		}
+	},
+	onHandleKey: function(cmp, evt, hlpr) {
+		//Needed to override default behaviour
+		evt.preventDefault();
+		//debugger;
 	}
 })

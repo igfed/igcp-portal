@@ -161,20 +161,28 @@
 		var
 			value = params.value,
 			id = params.id,
+			errors = [],
+			errorCheckObj = {},
+			isEmpty = value.length === 0 ? true : false,
 			minLength = hlpr.min(value.length, cmp.get("v.clientMinLength")),
-			hasNumberOnly = hlpr.hasNumberOnly(value),
-			errors = [];
+			hasNumberOnly = hlpr.hasNumberOnly(value);
 
-		errors = hlpr.checkForErrors({
-			"minLength": minLength,
-			"hasNumberOnly": hasNumberOnly
-		});
+		if (isEmpty === true) {
+			errorCheckObj["isEmpty"] = isEmpty;
+		} else {
+			errorCheckObj["minLength"] = minLength;
+			errorCheckObj["hasNumberOnly"] = hasNumberOnly;
+		}
+
+		errors = hlpr.checkForErrors(errorCheckObj);
 
 		errors.forEach(function(item, i) {
 			if (item.type === "minLength") {
 				item["msg"] = "The client number is less than " + cmp.get("v.clientMinLength") + " characters";
 			} else if (item.type === "hasNumberOnly") {
-				item["msg"] = "The client number must only be numbers."
+				item["msg"] = "The client number must only be numbers"
+			} else if(item.type === "isEmpty") {
+				item["msg"] = "This field is empty"
 			}
 		});
 

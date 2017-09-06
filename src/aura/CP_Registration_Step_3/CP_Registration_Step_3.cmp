@@ -4,10 +4,12 @@
 	<aura:attribute name="pageId" type="String" default="registration-step-3"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large"></aura:attribute>
+
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default=""/>
     <aura:attribute name="postalCode" type="String" default=""/>
     <aura:attribute name="dob" type="String" default=""/>
+
     <!-- Step 2 -->
     <aura:attribute name="username" type="String" default=""/>
     <aura:attribute name="password" type="String" default=""/>
@@ -21,6 +23,7 @@
     <aura:attribute name="answer2" type="String" default=""></aura:attribute>
     <aura:attribute name="securityQuestion3" type="String" default=""></aura:attribute>	
     <aura:attribute name="answer3" type="String" default=""></aura:attribute>
+    
     <!--  Step 3 -->
     <aura:attribute name="acceptTOS" type="Boolean" default="false" ></aura:attribute>
 

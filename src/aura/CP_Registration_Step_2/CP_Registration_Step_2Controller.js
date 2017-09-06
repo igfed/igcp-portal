@@ -5,7 +5,7 @@
 		cmp.set("v.inputsReceived", 0);
 
 		var events = cmp.find('CP_Events');
-		events.fire("CP_Evt_Get_Input_Value", { 'formId': 'registration-step-2-form' });
+		events.fire("CP_Evt_Get_Input_Value", { 'formId': cmp.get("v.pageId") });
 	},
 	onInputSelectorReceived: function(cmp, evt, hlpr) {
 		var

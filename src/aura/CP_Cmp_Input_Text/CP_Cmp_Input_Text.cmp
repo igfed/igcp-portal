@@ -2,6 +2,7 @@
     
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
 
     <!-- ATTRS -->
     <aura:attribute name="id" type="String" default="default"></aura:attribute>
@@ -52,7 +53,7 @@
         
         <div class="slds-form-element__control">
 
-            <ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}"/>
+            <ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" keypress="{!c.onHandleKey}" keydown="{!c.onHandleKey}" keyup="{!c.onHandleKey}"/>
         </div>
         
         <aura:renderIf isTrue="{!v.helpText}">

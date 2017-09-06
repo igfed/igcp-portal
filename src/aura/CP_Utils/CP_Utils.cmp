@@ -1,32 +1,45 @@
-<aura:component >
+<aura:component>
 
-    <aura:method name="createComponent" action="{!c.onCreateComponent}" > 
-        <aura:attribute name="cmpId" type="String" />
-        <aura:attribute name="params" type="Map" default="{}" />
-        <aura:attribute name="container" type="Aura.component[]" />
-        <aura:attribute name="callback" type="function" default="" />
-    </aura:method>
+	<!-- CREATE COMPONENT -->
+	<!-- Creates a component dynamically -->
+	<aura:method name="createComponent" action="{!c.onCreateComponent}">
+		<aura:attribute name="cmpId" type="String" />
+		<aura:attribute name="params" type="Map" default="{}" />
+		<aura:attribute name="container" type="Aura.component[]" />
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
 
-    <aura:method name="destroyComponent" action="{!c.onDestroyComponent}" > 
-        <aura:attribute name="child" type="Aura.component[]" />
-        <aura:attribute name="parent" type="Aura.component[]"></aura:attribute>
-    </aura:method>
+	<!-- DESTROY COMPONENT -->
+	<!-- Destroys component dynamically WARNING: not working yet -->
+	<aura:method name="destroyComponent" action="{!c.onDestroyComponent}">
+		<aura:attribute name="child" type="Aura.component[]" />
+		<aura:attribute name="parent" type="Aura.component[]"></aura:attribute>
+	</aura:method>
 
-    <aura:method name="convertToYMD" action="{!c.convertToYMD}" >
-    	<aura:attribute name="date" type="String"></aura:attribute>
-    	<aura:attribute name="callback" type="function" default="" />
-    </aura:method>
+	<!-- CONVERT TO YMD -->
+	<!-- Converts a date to the format required by the backend controller 
+	ex. 06/06/1969 becomes 1969-06-06 -->
+	<aura:method name="convertToYMD" action="{!c.convertToYMD}">
+		<aura:attribute name="date" type="String"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
 
-    <aura:method name="deleteAt" action="{!c.onDeleteAt}" >
-    	<aura:attribute name="array" type="String[]"></aura:attribute>
-    	<aura:attribute name="index" type="Integer"></aura:attribute>
-    	<aura:attribute name="callback" type="function" default="" />
-    </aura:method>
+	<!-- DELETE AT -->
+	<!-- Deletes an item in an array based on its index position
+	returns a new array minus the deleted item -->
+	<aura:method name="deleteAt" action="{!c.onDeleteAt}">
+		<aura:attribute name="array" type="String[]"></aura:attribute>
+		<aura:attribute name="index" type="Integer"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
 
-    <aura:method name="arrayContains" action="{!c.onArrayContains}" >
-    	<aura:attribute name="array" type="String[]"></aura:attribute>
-    	<aura:attribute name="value" type="String"></aura:attribute>
-    	<aura:attribute name="callback" type="function" default="" />
-    </aura:method>
-
+	<!-- ARRAY CONTAINS -->
+	<!-- Checks if an array contains a particular value
+	Returns a boolean -->
+	<aura:method name="arrayContains" action="{!c.onArrayContains}">
+		<aura:attribute name="array" type="String[]"></aura:attribute>
+		<aura:attribute name="value" type="String"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+	
 </aura:component>
