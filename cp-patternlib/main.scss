@@ -12,13 +12,13 @@
 
 @import "sass/igcp/header";
 @import "sass/igcp/mobile-nav";
+@import "sass/igcp/login";
 @import "sass/igcp/footer";
 @import "sass/igcp/utils";
 @import "sass/igcp/global-styles";
 @import "sass/igcp/breakpoints";
 
 //Temporarily hide Napili header
-
 #header {
     display: none;
 }
