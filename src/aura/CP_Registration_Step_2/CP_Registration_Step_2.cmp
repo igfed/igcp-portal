@@ -24,6 +24,8 @@
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 	<aura:handler  event="c:CP_Evt_Input_Selector_Change" action="{!c.onInputSelectorReceived}"/>
+	<aura:handler event="c:CP_Evt_Input_Checkbox_Checked" action="{!c.onOptClicked}" />
+	<aura:handler event="c:CP_Evt_Input_Checkbox_Unchecked" action="{!c.onOptClicked}" />
 
 	<!-- INCLUDES -->	
 	<c:CP_Events aura:id="CP_Events" />

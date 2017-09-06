@@ -1,7 +1,7 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
 	<!-- ATTRS -->
-	<aura:attribute name="currentStep" type="Integer" default="2" ></aura:attribute>
+	<aura:attribute name="currentStep" type="Integer" default="0" ></aura:attribute>
 
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default=""/>
@@ -13,7 +13,7 @@
     <aura:attribute name="password" type="String" default=""/>
     <aura:attribute name="confirmPassword" type="String" default=""/>
     <aura:attribute name="email" type="String" default=""/>
-    <aura:attribute name="emailOptIn" type="Boolean" default="true" ></aura:attribute>
+    <aura:attribute name="emailOptIn" type="Boolean" default="false" ></aura:attribute>
     <aura:attribute name="mobilePhone" type="String" default=""/>
     <aura:attribute name="securityQuestion1" type="String" default="What's your dog's name?"></aura:attribute>	
     <aura:attribute name="answer1" type="String"></aura:attribute>
