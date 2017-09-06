@@ -1,8 +1,4 @@
 ({
-	onInit: function(cmp, evt, hlpr) {
-		//Place anything that needs to be 
-		//set on initialization here	
-	},
 	onSubmit: function(cmp, evt, hlpr) {
 		//Reset input errors	
 		cmp.set("v.inputErrors", false);
@@ -98,9 +94,6 @@
 			cmp.onSubmitForm();
 		}
 	},
-	onBackNext: function(cmp, evt, hlpr) {
-		console.log('CP_Registration_Step_2: onBackNext!!!');
-	},
 	submitForm: function(cmp, evt, hlpr) {
 
 		var action = cmp.get("c.StepTwo");
@@ -163,12 +156,11 @@
 			"id": cmp.get("v.pageId")
 		});
 	},
-	onOptClicked: function(cmp, evt, hlpr){
+	onOptClicked: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
 
-		if(payload.id === "news-offers-opt") {
-			console.log(payload.checked);
-			cmp.set("v.emailOptIn", payload.checked);			
-		}	
+		if (payload.id === "news-offers-opt") {
+			cmp.set("v.emailOptIn", payload.checked);
+		}
 	}
 })

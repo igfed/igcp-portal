@@ -4,7 +4,7 @@
 			itemsArr = [],
 			events = cmp.find("CP_Events");
 
-		cmp.updateISAMPayload();		
+		cmp.updateISAMPayload();
 
 		itemsArr = [{
 				"label": "Username",
@@ -61,13 +61,13 @@
 		});
 	},
 	onAgreeTOS: function(cmp, evt, hlpr) {
-		var 
+		var
 			payload = evt.getParam("payload"),
 			events = cmp.find("CP_Events");
 
-		if(payload.id === "tos_agree_button") {
-			
-			if(cmp.get("v.acceptTOS") === true) {
+		if (payload.id === "tos_agree_button") {
+
+			if (cmp.get("v.acceptTOS") === true) {
 
 				events.fire("CP_Evt_Modal_Close", {
 					"id": "registration-tos"
@@ -76,24 +76,21 @@
 				//Update acceptTOS
 				cmp.updateISAMPayload();
 
-				cmp.submitToISAM();	
+				cmp.submitToISAM();
 			} else {
 				console.warn("User has not accepted agreement!");
 			}
-		}	
+		}
 	},
-	onAgreeChecked : function(cmp, evt, hlpr) {
+	onAgreeChecked: function(cmp, evt, hlpr) {
 
 		var payload = evt.getParam("payload");
 
-		if(payload.id === "read_and_agree_checkbox") {
-			cmp.set("v.acceptTOS", payload.checked);			
+		if (payload.id === "read_and_agree_checkbox") {
+			cmp.set("v.acceptTOS", payload.checked);
 		}
 	},
 	onSubmitToISAM: function(cmp, evt, hlpr) {
-
-		console.log("Submit to ISAM");
-		console.log(JSON.stringify(cmp.get("v.payload")));
 
 		var action = cmp.get("c.StepThree");
 		action.setParams({ payload: JSON.stringify(cmp.get("v.payload")) });
@@ -157,12 +154,10 @@
 		});
 	},
 	onModalShow: function(cmp, evt, hlpr) {
-		console.log("Registration Step 3: onModalSHow");
 		var newClass = "igcp-wrapper igcp-utils__height--zero slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large";
 		cmp.set("v.class", newClass);
 	},
 	onModalClose: function(cmp, evt, hlpr) {
-		console.log("Registration Step 3: onModalClose");
 		cmp.set("v.class", "igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large");
 	},
 	updateISAMPayload: function(cmp, evt, hlpr) {
@@ -200,7 +195,7 @@
 		});
 	},
 	logPayloadVars: function(cmp, evt, hlpr) {
-			var logArray = [
+		var logArray = [
 			cmp.get("v.clientNum"),
 			cmp.get("v.postalCode"),
 			cmp.get("v.dob"),
@@ -218,8 +213,8 @@
 			cmp.get("v.answer3")
 		];
 
-		console.log("LOG PAYLOAD VARS");	
-		logArray.forEach(function(item, i){
+		console.log("Registration Step 3: logPayloadVars");
+		logArray.forEach(function(item, i) {
 			console.log(item);
 		});
 	}
