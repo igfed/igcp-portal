@@ -4,216 +4,268 @@
 //Utils - contains generic classes that can used on any element, generally should contain only one property, before adding new classes here, ensure that the SLDS(https://lightningdesignsystem.com/) does not already have the class you need. 
 @each $value in $ig-breakpoints {
 
-    @media (min-width: nth($value, 2)) {
+	@media (min-width: nth($value, 2)) {
 
-        .#{getNamespace($value)}-utils__font--light {
-            font-family: $ig-whitney-light;
-        }
+		//Fonts
+		.#{getNamespace($value)}-utils__font--light {
+			font-family: $ig-whitney-light;
+		}
 
-        .#{getNamespace($value)}-utils__font--semibold {
-            font-family: $ig-whitney-semibold;
-        }
+		.#{getNamespace($value)}-utils__font--semibold {
+			font-family: $ig-whitney-semibold;
+		}
 
-        .#{getNamespace($value)}-utils__font--book {
-            font-family: $ig-whitney-book;
-        }
+		.#{getNamespace($value)}-utils__font--book {
+			font-family: $ig-whitney-book;
+		}
 
-        .#{getNamespace($value)}-utils__font-size--small {
-            font-size: $ig-font-size--base;
-        }
 
-        .#{getNamespace($value)}-utils__font-size--x-small {
-            font-size: $ig-font-size--x-mini;
-        }
+		//Font Sizes
+		.#{getNamespace($value)}-utils__font-size--x-small,
+		.#{getNamespace($value)}-utils__font-size--x-mini {
+			font-size: $ig-font-size--x-mini;
+			line-height: $ig-line-height--x-mini;
+		}
 
-        .#{getNamespace($value)}-utils__line-height--regular {
-            line-height: $ig-line-height--base;
-        }
+		.#{getNamespace($value)}-utils__font-size--mini {
+			font-size: $ig-font-size--mini;
+			line-height: $ig-line-height--mini;
+		}
 
-        .#{getNamespace($value)}-utils__text--default {
-            text-transform: none;
-        }
+		.#{getNamespace($value)}-utils__font-size--small,
+		.#{getNamespace($value)}-utils__font-size--base {
+			font-size: $ig-font-size--base;
+			line-height: $ig-line-height--base;
+		}
 
-        .#{getNamespace($value)}-utils__text--uppercase {
-            text-transform: uppercase;
-        }
+		.#{getNamespace($value)}-utils__font-size--medium {
+			font-size: $ig-font-size--medium;
+			line-height: $ig-line-height--medium;
+		}
 
-        .#{getNamespace($value)}-utils__text--lowercase {
-            text-transform: lowercase;
-        }
+		.#{getNamespace($value)}-utils__font-size--medium-plus {
+			font-size: $ig-font-size--medium-plus;
+			line-height: $ig-line-height--medium-plus;
+		}
 
-        .#{getNamespace($value)}-utils__text--capitalize {
-            text-transform: capitalize;
-        }
+		.#{getNamespace($value)}-utils__font-size--large {
+			font-size: $ig-font-size--large;
+			line-height: $ig-line-height--large;
+		}
 
-        .#{getNamespace($value)}-utils__text--underline {
-            text-decoration: underline;
-        }
+		.#{getNamespace($value)}-utils__font-size--x-large {
+			font-size: $ig-font-size--x-large;
+			line-height: $ig-line-height--x-large;
+		}
 
-        .#{getNamespace($value)}-utils__text--no-underline {
-            text-decoration: none;
-        }
+		.#{getNamespace($value)}-utils__font-size--xx-large {
+			font-size: $ig-font-size--xx-large;
+			line-height: $ig-line-height--xx-large;
+		}
 
-        .#{getNamespace($value)}-utils__text-align--center {
-            text-align: center;
-        }
 
-        .#{getNamespace($value)}-utils__text-align--right {
-            text-align: right;
-        }
+		//Line Height
+		.#{getNamespace($value)}-utils__line-height--regular {
+			line-height: $ig-line-height--base;
+		}
 
-        .#{getNamespace($value)}-utils__text-align--left {
-            text-align: left;
-        }
+		//Text
+		.#{getNamespace($value)}-utils__text--default {
+			text-transform: none;
+		}
 
-        .#{getNamespace($value)}-utils__width--25 {
-            width: 25%;
-        }
+		.#{getNamespace($value)}-utils__text--uppercase {
+			text-transform: uppercase;
+		}
 
-        .#{getNamespace($value)}-utils__width--50 {
-            width: 50%;
-        }
+		.#{getNamespace($value)}-utils__text--lowercase {
+			text-transform: lowercase;
+		}
 
-        .#{getNamespace($value)}-utils__width--75 {
-            width: 75%;
-        }
+		.#{getNamespace($value)}-utils__text--capitalize {
+			text-transform: capitalize;
+		}
 
-        .#{getNamespace($value)}-utils__width--full,
-        .#{getNamespace($value)}-utils__width--100 {
-            width: 100%;
-        }
+		.#{getNamespace($value)}-utils__text--underline {
+			text-decoration: underline;
+		}
 
-        .#{getNamespace($value)}-utils__width--auto {
-            width: auto;
-        }
+		.#{getNamespace($value)}-utils__text--no-underline {
+			text-decoration: none;
+		}
 
-        .#{getNamespace($value)}-utils__max-width--large {
-            max-width: $ig-large;
-        }
+		.#{getNamespace($value)}-utils__text-align--center {
+			text-align: center;
+		}
 
-        .#{getNamespace($value)}-utils__max-width--medium {
-            max-width: $ig-medium;
-        }
+		.#{getNamespace($value)}-utils__text-align--right {
+			text-align: right;
+		}
 
-        .#{getNamespace($value)}-utils__max-width--small {
-            max-width: $ig-small;
-        }
+		.#{getNamespace($value)}-utils__text-align--left {
+			text-align: left;
+		}
 
-        .#{getNamespace($value)}-utils__max-width--none {
-            max-width: none;
-        }
 
-        .#{getNamespace($value)}-utils__display--none,
-        .#{getNamespace($value)}-utils__hide {
-            display: none;
-        }
+		//Width
+		.#{getNamespace($value)}-utils__width--25 {
+			width: 25%;
+		}
 
-        .#{getNamespace($value)}-utils__display--inline,
-        .#{getNamespace($value)}-utils__show--inline {
-            display: inline;
-        }
+		.#{getNamespace($value)}-utils__width--50 {
+			width: 50%;
+		}
 
-        .#{getNamespace($value)}-utils__display--block,
-        .#{getNamespace($value)}-utils__show--block {
-            display: block;
-        }
+		.#{getNamespace($value)}-utils__width--75 {
+			width: 75%;
+		}
 
-        .#{getNamespace($value)}-utils__display--inline-block,
-        .#{getNamespace($value)}-utils__show--inline-block {
-            display: inline-block;
-        }
+		.#{getNamespace($value)}-utils__width--full,
+		.#{getNamespace($value)}-utils__width--100 {
+			width: 100%;
+		}
 
-        .#{getNamespace($value)}-utils__display--table-cell,
-        .#{getNamespace($value)}-utils__show--table-cell {
-            display: table-cell;
-        }
+		.#{getNamespace($value)}-utils__width--auto {
+			width: auto;
+		}
 
-        .#{getNamespace($value)}-utils__display--flex,
-        .#{getNamespace($value)}-utils__show--flex {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-        }
 
-        .#{getNamespace($value)}-utils__bullets--disc {
-            list-style: disc;
-        }
+		//Max-width
+		.#{getNamespace($value)}-utils__max-width--large {
+			max-width: $ig-large;
+		}
 
-        .#{getNamespace($value)}-utils__fade--in {
-            @include fadeTo();
-        }
+		.#{getNamespace($value)}-utils__max-width--medium {
+			max-width: $ig-medium;
+		}
 
-        .#{getNamespace($value)}-utils__fade--out {
-            @include fadeTo(0);
-        }
+		.#{getNamespace($value)}-utils__max-width--small {
+			max-width: $ig-small;
+		}
 
-        .#{getNamespace($value)}-utils__opacity--0 {
-            opacity: 0;
-        }
+		.#{getNamespace($value)}-utils__max-width--none {
+			max-width: none;
+		}
 
-        .#{getNamespace($value)}-utils__opacity--25 {
-            opacity: 0.25;
-        }
+		//Display
+		.#{getNamespace($value)}-utils__display--none,
+		.#{getNamespace($value)}-utils__hide {
+			display: none;
+		}
 
-        .#{getNamespace($value)}-utils__opacity--50 {
-            opacity: 0.5;
-        }
+		.#{getNamespace($value)}-utils__display--inline,
+		.#{getNamespace($value)}-utils__show--inline {
+			display: inline;
+		}
 
-        .#{getNamespace($value)}-utils__opacity--75 {
-            opacity: 0.75;
-        }
+		.#{getNamespace($value)}-utils__display--block,
+		.#{getNamespace($value)}-utils__show--block {
+			display: block;
+		}
 
-        .#{getNamespace($value)}-utils__opacity--100 {
-            opacity: 1;
-        }
+		.#{getNamespace($value)}-utils__display--inline-block,
+		.#{getNamespace($value)}-utils__show--inline-block {
+			display: inline-block;
+		}
 
-        .#{getNamespace($value)}-utils__margin--zero-auto {
-            margin: 0 auto;
-        }
+		.#{getNamespace($value)}-utils__display--table-cell,
+		.#{getNamespace($value)}-utils__show--table-cell {
+			display: table-cell;
+		}
 
-        .#{getNamespace($value)}-utils__margin--zero-auto {
-            margin: 0 auto;
-        }
+		.#{getNamespace($value)}-utils__display--flex,
+		.#{getNamespace($value)}-utils__show--flex {
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: -ms-flexbox;
+			display: flex;
+		}
 
-        .#{getNamespace($value)}-utils__order--1 {
-            order: 1
-        }
+		//Bullets
+		.#{getNamespace($value)}-utils__bullets--disc {
+			list-style: disc;
+		}
 
-        .#{getNamespace($value)}-utils__order--2 {
-            order: 2
-        }
+		//Animations
+		.#{getNamespace($value)}-utils__fade--in {
+			@include fadeTo();
+		}
 
-        .#{getNamespace($value)}-utils__order--3 {
-            order: 3
-        }
+		.#{getNamespace($value)}-utils__fade--out {
+			@include fadeTo(0);
+		}
 
-        .#{getNamespace($value)}-utils__order--4 {
-            order: 4
-        }
+		//Opacity
+		.#{getNamespace($value)}-utils__opacity--0 {
+			opacity: 0;
+		}
 
-        .#{getNamespace($value)}-utils__order--5 {
-            order: 5
-        }
+		.#{getNamespace($value)}-utils__opacity--25 {
+			opacity: 0.25;
+		}
 
-        .#{getNamespace($value)}-utils__overflow--visible {
-        	overflow: visible;
-        }
+		.#{getNamespace($value)}-utils__opacity--50 {
+			opacity: 0.5;
+		}
 
-        .#{getNamespace($value)}-utils__overflow--hidden {
-        	overflow: hidden;
-        }
+		.#{getNamespace($value)}-utils__opacity--75 {
+			opacity: 0.75;
+		}
 
-        .#{getNamespace($value)}-utils__overflow--scroll {
-        	overflow: scroll;
-        }
+		.#{getNamespace($value)}-utils__opacity--100 {
+			opacity: 1;
+		}
 
-        .#{getNamespace($value)}-utils__overflow--auto {
-        	overflow: auto;
-        }
+		//Margin
+		.#{getNamespace($value)}-utils__margin--zero-auto {
+			margin: 0 auto;
+		}
 
-        .#{getNamespace($value)}-utils__height--zero {
-        	height: 0;
-        }
-    }
+		.#{getNamespace($value)}-utils__margin--zero-auto {
+			margin: 0 auto;
+		}
+
+		//Order
+		.#{getNamespace($value)}-utils__order--1 {
+			order: 1
+		}
+
+		.#{getNamespace($value)}-utils__order--2 {
+			order: 2
+		}
+
+		.#{getNamespace($value)}-utils__order--3 {
+			order: 3
+		}
+
+		.#{getNamespace($value)}-utils__order--4 {
+			order: 4
+		}
+
+		.#{getNamespace($value)}-utils__order--5 {
+			order: 5
+		}
+
+		//Overflow
+		.#{getNamespace($value)}-utils__overflow--visible {
+			overflow: visible;
+		}
+
+		.#{getNamespace($value)}-utils__overflow--hidden {
+			overflow: hidden;
+		}
+
+		.#{getNamespace($value)}-utils__overflow--scroll {
+			overflow: scroll;
+		}
+
+		.#{getNamespace($value)}-utils__overflow--auto {
+			overflow: auto;
+		}
+
+		//Height
+		.#{getNamespace($value)}-utils__height--zero {
+			height: 0;
+		}
+	}
 }

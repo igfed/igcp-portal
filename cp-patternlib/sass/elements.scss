@@ -3,66 +3,70 @@ h1,
 h2,
 h3,
 h4 {
-    color: $ig-blue;
+	color: $ig-blue;
 }
 
 h1 {
-    font-family: $ig-whitney-book;
-    font-size: $ig-font-size--medium-plus;
-    line-height: $ig-line-height--medium-plus;
-    letter-spacing: $ig-letter-spacing;
+	font-family: $ig-whitney-book;
+	font-size: $ig-font-size--medium-plus;
+	line-height: $ig-line-height--medium-plus;
+	letter-spacing: $ig-letter-spacing;
+	text-transform: inherit;
+	text-transform: initial;
 }
 
 h2 {
-    font-family: $ig-whitney-book;
-    font-size: $ig-font-size--medium-plus;
-    line-height: $ig-line-height--medium-plus;
-    text-transform: inherit;
-    text-transform: initial;
-    letter-spacing: $ig-letter-spacing;
+	font-family: $ig-whitney-book;
+	font-size: $ig-font-size--medium;
+	line-height: $ig-line-height--medium;
+	text-transform: inherit;
+	text-transform: initial;
+	letter-spacing: $ig-letter-spacing;
 }
 
 h3 {
-    font-family: $ig-whitney-book;
-    font-size: $ig-font-size--medium;
-    line-height: $ig-line-height--medium;
-    text-transform: inherit;
-    text-transform: initial;
+	font-family: $ig-whitney-book;
+	font-size: $ig-font-size--base;
+	line-height: $ig-line-height--base;
+	color: $ig-black;
+	text-transform: inherit;
+	text-transform: initial;
 }
 
 h4 {
-    font-family: $ig-whitney-book;
-    font-size: $ig-font-size--base;
-    line-height: $ig-line-height--base;
-    text-transform: inherit;
-    text-transform: initial;
+	font-family: $ig-whitney-book;
+	font-size: $ig-font-size--base;
+	line-height: $ig-line-height--base;
+	text-transform: inherit;
+	text-transform: initial;
 }
 
 p {
-    font-family: $ig-whitney-book;
-    font-size: $ig-font-size--base;
-    letter-spacing: $ig-letter-spacing;
+	font-family: $ig-whitney-book;
+	font-size: $ig-font-size--base;
+	letter-spacing: $ig-letter-spacing;
 }
 
 body {
 	font-family: $ig-whitney-book;
 	background-image: url('../images/bg-tile.jpg');
-    background-repeat: repeat;
-    color: $ig-black;
+	background-repeat: repeat;
+	color: $ig-black;
 }
 
 a {
 	color: $ig-link-blue;
-    text-decoration: none;
+	text-decoration: none;
 }
 
 label {
-    border: none;
+	border: none;
 }
 
-[type=button], [type=submit] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border-radius: 0.25rem;
+[type=button],
+[type=submit] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border-radius: 0.25rem;
 }

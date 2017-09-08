@@ -23,11 +23,13 @@ h1 {
   font-family: "WhitneyBook", Arial, sans-serif;
   font-size: 24px;
   line-height: 32px;
-  letter-spacing: 0.8px; }
+  letter-spacing: 0.8px;
+  text-transform: inherit;
+  text-transform: initial; }
 
 h2 {
   font-family: "WhitneyBook", Arial, sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 32px;
   text-transform: inherit;
   text-transform: initial;
@@ -35,8 +37,9 @@ h2 {
 
 h3 {
   font-family: "WhitneyBook", Arial, sans-serif;
-  font-size: 20px;
-  line-height: 32px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #282828;
   text-transform: inherit;
   text-transform: initial; }
 
@@ -65,7 +68,8 @@ a {
 label {
   border: none; }
 
-[type=button], [type=submit] {
+[type=button],
+[type=submit] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -80,9 +84,14 @@ label {
     text-transform: initial; }
 
   h2 {
-    font-family: "WhitneyLight", Arial, sans-serif;
+    font-family: "WhitneyBook", Arial, sans-serif;
     font-size: 24px;
-    line-height: 32px; } }
+    line-height: 32px; }
+
+  h3 {
+    font-size: 20px;
+    line-height: 32px;
+    color: #004171; } }
 .slds-icon_container {
   top: -3px;
   position: relative; }
@@ -2158,11 +2167,39 @@ label {
   .igcp-utils__font--book {
     font-family: "WhitneyBook", Arial, sans-serif; }
 
-  .igcp-utils__font-size--small {
-    font-size: 16px; }
+  .igcp-utils__font-size--x-small,
+  .igcp-utils__font-size--x-mini {
+    font-size: 12px;
+    line-height: 16px; }
 
-  .igcp-utils__font-size--x-small {
-    font-size: 12px; }
+  .igcp-utils__font-size--mini {
+    font-size: 14px;
+    line-height: 24px; }
+
+  .igcp-utils__font-size--small,
+  .igcp-utils__font-size--base {
+    font-size: 16px;
+    line-height: 24px; }
+
+  .igcp-utils__font-size--medium {
+    font-size: 20px;
+    line-height: 32px; }
+
+  .igcp-utils__font-size--medium-plus {
+    font-size: 24px;
+    line-height: 32px; }
+
+  .igcp-utils__font-size--large {
+    font-size: 32px;
+    line-height: 40px; }
+
+  .igcp-utils__font-size--x-large {
+    font-size: 48px;
+    line-height: 56px; }
+
+  .igcp-utils__font-size--xx-large {
+    font-size: 72px;
+    line-height: 88px; }
 
   .igcp-utils__line-height--regular {
     line-height: 24px; }
@@ -2324,11 +2361,39 @@ label {
   .igcp-small-utils__font--book {
     font-family: "WhitneyBook", Arial, sans-serif; }
 
-  .igcp-small-utils__font-size--small {
-    font-size: 16px; }
+  .igcp-small-utils__font-size--x-small,
+  .igcp-small-utils__font-size--x-mini {
+    font-size: 12px;
+    line-height: 16px; }
 
-  .igcp-small-utils__font-size--x-small {
-    font-size: 12px; }
+  .igcp-small-utils__font-size--mini {
+    font-size: 14px;
+    line-height: 24px; }
+
+  .igcp-small-utils__font-size--small,
+  .igcp-small-utils__font-size--base {
+    font-size: 16px;
+    line-height: 24px; }
+
+  .igcp-small-utils__font-size--medium {
+    font-size: 20px;
+    line-height: 32px; }
+
+  .igcp-small-utils__font-size--medium-plus {
+    font-size: 24px;
+    line-height: 32px; }
+
+  .igcp-small-utils__font-size--large {
+    font-size: 32px;
+    line-height: 40px; }
+
+  .igcp-small-utils__font-size--x-large {
+    font-size: 48px;
+    line-height: 56px; }
+
+  .igcp-small-utils__font-size--xx-large {
+    font-size: 72px;
+    line-height: 88px; }
 
   .igcp-small-utils__line-height--regular {
     line-height: 24px; }
@@ -2490,11 +2555,39 @@ label {
   .igcp-medium-utils__font--book {
     font-family: "WhitneyBook", Arial, sans-serif; }
 
-  .igcp-medium-utils__font-size--small {
-    font-size: 16px; }
+  .igcp-medium-utils__font-size--x-small,
+  .igcp-medium-utils__font-size--x-mini {
+    font-size: 12px;
+    line-height: 16px; }
 
-  .igcp-medium-utils__font-size--x-small {
-    font-size: 12px; }
+  .igcp-medium-utils__font-size--mini {
+    font-size: 14px;
+    line-height: 24px; }
+
+  .igcp-medium-utils__font-size--small,
+  .igcp-medium-utils__font-size--base {
+    font-size: 16px;
+    line-height: 24px; }
+
+  .igcp-medium-utils__font-size--medium {
+    font-size: 20px;
+    line-height: 32px; }
+
+  .igcp-medium-utils__font-size--medium-plus {
+    font-size: 24px;
+    line-height: 32px; }
+
+  .igcp-medium-utils__font-size--large {
+    font-size: 32px;
+    line-height: 40px; }
+
+  .igcp-medium-utils__font-size--x-large {
+    font-size: 48px;
+    line-height: 56px; }
+
+  .igcp-medium-utils__font-size--xx-large {
+    font-size: 72px;
+    line-height: 88px; }
 
   .igcp-medium-utils__line-height--regular {
     line-height: 24px; }
@@ -2656,11 +2749,39 @@ label {
   .igcp-large-utils__font--book {
     font-family: "WhitneyBook", Arial, sans-serif; }
 
-  .igcp-large-utils__font-size--small {
-    font-size: 16px; }
+  .igcp-large-utils__font-size--x-small,
+  .igcp-large-utils__font-size--x-mini {
+    font-size: 12px;
+    line-height: 16px; }
 
-  .igcp-large-utils__font-size--x-small {
-    font-size: 12px; }
+  .igcp-large-utils__font-size--mini {
+    font-size: 14px;
+    line-height: 24px; }
+
+  .igcp-large-utils__font-size--small,
+  .igcp-large-utils__font-size--base {
+    font-size: 16px;
+    line-height: 24px; }
+
+  .igcp-large-utils__font-size--medium {
+    font-size: 20px;
+    line-height: 32px; }
+
+  .igcp-large-utils__font-size--medium-plus {
+    font-size: 24px;
+    line-height: 32px; }
+
+  .igcp-large-utils__font-size--large {
+    font-size: 32px;
+    line-height: 40px; }
+
+  .igcp-large-utils__font-size--x-large {
+    font-size: 48px;
+    line-height: 56px; }
+
+  .igcp-large-utils__font-size--xx-large {
+    font-size: 72px;
+    line-height: 88px; }
 
   .igcp-large-utils__line-height--regular {
     line-height: 24px; }
@@ -2901,7 +3022,7 @@ label {
   top: -3px; }
 
 .igcp-underline {
-  border-bottom: 1px solid #e6e9eb; }
+  border-bottom: 2px solid #e6e9eb; }
 
 .igcp-underline--thick-blue {
   border-bottom: 8px solid #0d263c;
@@ -3070,6 +3191,13 @@ label {
   color: #fff;
   background-color: #0d263c; }
 
+.igcp-figure .igcp-figure__image {
+  margin: 0 auto;
+  text-align: center;
+  width: 35%; }
+.igcp-figure .igcp-figure__caption {
+  margin: 0; }
+
 @media (min-width: 768px) {
   .igcp-registration .igcp-registration__pfa h1 {
     font-size: 24px;
@@ -3081,7 +3209,16 @@ label {
     float: left; }
 
   .igcp-card__image {
-    width: 75%; } }
+    width: 75%; }
+
+  .igcp-figure .igcp-figure__image {
+    float: left;
+    width: 35%; }
+  .igcp-figure .igcp-figure__caption {
+    float: left;
+    width: 65%; }
+    .igcp-figure .igcp-figure__caption h3, .igcp-figure .igcp-figure__caption p {
+      text-align: left; } }
 @media (min-width: 1024px) {
   .igcp-button__chat {
     float: none;

@@ -1,0 +1,20 @@
+<aura:component>
+	<!-- ATTRS -->
+	<aura:attribute name="class" type="String" default=""></aura:attribute>
+	<aura:attribute name="imageFile" type="String" default="safe.png"></aura:attribute>
+	<aura:attribute name="imageAlt" type="String" default="Default alt."></aura:attribute>
+	<aura:attribute name="title" type="String" default="Default Title"></aura:attribute>
+	<aura:attribute name="description" type="String" default="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."></aura:attribute>
+	<!-- MARKUP -->
+	<div class="{!'igcp-figure ' + v.class}">
+		<figure>
+			<div class="igcp-figure__image">
+				<img class="slds-medium-m-horizontal--medium" src="{!$Resource.igcpresources + '/igcp-resources/images/badges/' + v.imageFile}" alt="{!v.imageAlt}" />
+			</div>
+			<figcaption class="igcp-figure__caption">
+				<h3 class="slds-m-vertical--xx-small slds-medium-m-top--zero slds-medium-m-bottom--zero">{!v.title}</h3>
+				<p class="igcp-utils__display--none igcp-medium-utils__display--block">{!v.description}</p>
+			</figcaption>
+		</figure>
+	</div>
+</aura:component>

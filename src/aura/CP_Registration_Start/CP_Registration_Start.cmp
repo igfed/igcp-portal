@@ -7,6 +7,6 @@
 	<!-- MARKUP -->
 	<div aura:id="registration-start">	
 		<c:CP_Registration_PFA />
-		<!-- <c:CP_Registration_Instructions /> -->
+		<c:CP_Registration_Instructions />
 	</div>
 </aura:component>

@@ -19,7 +19,7 @@
 			
 			<div class="igcp-utils__text-align--center igcp-large-utils__text-align--left slds-size_12-of-12 slds-medium-size_5-of-12 slds-large-size_7-of-12 slds-m-top--large slds-large-m-top--zero">
 				<div>
-					<img class="igcp-medium-utils__max-width--none" src="{!$Resource.igcpresources + '/igcp-resources/images/registration/registration-hero.png'}" />
+					<img class="igcp-medium-utils__max-width--none" src="{!$Resource.igcpresources + '/igcp-resources/images/registration/registration-hero.png'}" alt="A picture of a various computers and mobile devices"/>
 				</div>
 			</div>
 

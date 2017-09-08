@@ -127,7 +127,7 @@
 
 //UNDERLINE
 .#{$namespace}-underline {
-	border-bottom: 1px solid $ig-grey;
+	border-bottom: 2px solid $ig-grey;
 }
 
 .#{$namespace}-underline--thick-blue {
@@ -380,4 +380,16 @@
 	font-size: 80%;
 	color: $ig-white;
 	background-color: $ig-dark-blue;
+}
+
+.#{$namespace}-figure {
+	.#{$namespace}-figure__image {
+		margin: 0 auto;
+		text-align: center;
+		width: 35%;
+	}
+
+	.#{$namespace}-figure__caption {
+		margin: 0;
+	}
 }

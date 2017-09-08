@@ -11,9 +11,15 @@
 	}
 
 	h2 {
-		font-family: $ig-whitney-light;
+		font-family: $ig-whitney-book;
 		font-size: $ig-font-size--medium-plus;
 		line-height: $ig-line-height--medium-plus;
+	}
+
+	h3 {
+		font-size: $ig-font-size--medium;
+		line-height: $ig-line-height--medium;
+		color: $ig-blue;
 	}
 }
 

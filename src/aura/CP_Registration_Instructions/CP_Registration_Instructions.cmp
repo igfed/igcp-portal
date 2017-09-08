@@ -1,53 +1,36 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
-
 	<!-- ATTRS -->
-	<aura:attribute name="pageId" type="String" default="registration-instructions" ></aura:attribute>
+	<aura:attribute name="pageId" type="String" default="registration-instructions"></aura:attribute>
+	<!-- MARKUP -->
+	<div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center">
+		
+		<div class="slds-size_12-of-12 slds-m-top--large slds-m-bottom--small slds-text-align_center">
+			<h2>Key Benefits</h2>
+		</div>
 
-	<!-- MARKUP -->	
-	<div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded">
-        
-        <div class="slds-size_12-of-12">
-            <div class="slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-m-top--x-large">
-                
-                <div class="slds-size_1-of-12 slds-large-size_2-of-12"></div>
-                
-                <div class="slds-size_10-of-12 slds-medium-size_9-of-12 slds-large-size_8-of-12 slds-p-bottom--x-small slds-medium-p-bottom--medium igcp-underline--thick-white">
-                    <h3>Here's what you need</h3>
-                    <ul data-reactroot="" class="igcp-utils__bullets--disc igcp-utils__display--block igcp-medium-utils__display--flex slds-m-top--small">
-                        <li class="igcp-utils__font-size--small">Your Investors Group Client Number</li>
-                        <li class="igcp-utils__font-size--small slds-medium-m-left--xx-large">Personal contact information</li>
-                    </ul>
-                </div>
-                
-                <div class="slds-size_1-of-12 slds-large-size_2-of-12"></div>
-            </div>
-        </div>
-        
-        <div class="slds-size_12-of-12">
-            
-            <div class="slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-m-top--x-large slds-medium-m-top--x-small slds-m-bottom--x-large">
-                
-                <div class="slds-size_1-of-12 slds-large-size_2-of-12"></div>
-                
-                <div class="slds-size_9-of-12 slds-large-size_8-of-12">
-                  
-                  <div class="slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded">
-                      <div class="slds-size_2-of-12">
-                          <img src="{!$Resource.igcpresources + '/igcp-resources/images/security-badge.png'}"/>
-                      </div>
-                      <div class="slds-size_10-of-12 slds-p-left--medium slds-p-right--xx-large">
-                          <h3>Security Guaranteed</h3>
-                          <p class="igcp-utils__display--none igcp-medium-utils__display--block">Investors Group Online Access ensures online safety and security for your account and financial information.</p>
-                          <a href="#" class="igcp-link"><span class="igcp-utils__font--semibold">More On Our Guarantee</span><lightning:icon iconName="utility:chevronright" class="igcp-link__glyph--after" size="x-small" alternativeText="View Document" /></a>
-                      </div>
-                      
-                      <c:CP_Cmp_Form_Back_Next id="{!v.pageId}"
-                      	backLabel="Cancel" 
-                      	nextLabel="Start" />
-                  </div>
-                </div>
-                <div class="slds-size_1-of-12 slds-large-size_2-of-12"></div>
-            </div>
-        </div>
-    </div>
+		<c:CP_Cmp_Figure 
+			class="slds-size_6-of-12 slds-text-align_center" 
+			imageFile="safe.png"
+			imageAlt="An illustrated image of a safe."
+			title="Safe and Secure"
+			description="Securely view investment performance, mortgage, and insurance." />
+
+		<c:CP_Cmp_Figure 
+			class="slds-size_6-of-12 slds-text-align_center" 
+			imageFile="smartphone.png"
+			imageAlt="An illustrated image of a smartphone."
+			title="Convenience"
+			description="View, download or print statements going back as far as seven years." />	
+
+		<div class="igcp-underline slds-size_12-of-12 slds-m-horizontal--medium slds-medium-m-horizontal--xx-large slds-p-top--medium slds-medium-p-top--large"></div>
+
+		<div class="slds-size_12-of-12 slds-m-top--large slds-m-bottom--small slds-text-align_center">
+			
+			<h2 class="igcp-medium-utils__font-size--medium igcp-large-utils__font-size--medium-plus slds-m-bottom--zero">Here's what you need to get started</h2>
+			
+			<p class="slds-p-horizontal--medium slds-m-top--x-small">Your client number, loan number, or policy number that appears on your statements. View Sample</p>
+			
+			<c:CP_Cmp_Button id="get-started-pfa-2" label="Get Started" class="slds-m-top--medium slds-p-horizontal--xx-large" />
+		</div>
+	</div>
 </aura:component>

@@ -11,7 +11,7 @@
 				font-size: $ig-font-size--medium-plus;
 				line-height: $ig-line-height--medium-plus;
 			}
-	}
+		}
 
 		.#{$namespace}-registration__pfa--monitor {
 			width: 360px;
@@ -27,74 +27,90 @@
 	.#{$namespace}-card__image {
 		width: 75%;
 	}
+
+	.#{$namespace}-figure {
+		.#{$namespace}-figure__image {
+			float: left;
+			width: 35%;
+		}
+
+		.#{$namespace}-figure__caption {
+			float: left;
+			width: 65%;
+
+			h3, p {
+				text-align: left;
+			}
+		}
+	}
 }
 
 //Large
 @media (min-width: $ig-large) {
 
-    .#{$namespace}-button__chat {
-        float: none;
-        position: fixed;
-        right: 40px;
-        bottom: 40px;
-    }
+	.#{$namespace}-button__chat {
+		float: none;
+		position: fixed;
+		right: 40px;
+		bottom: 40px;
+	}
 
-    .#{$namespace}-button__chat--sticky {
-        position: absolute;
-        right: -200px;
-        top: -160px;
-    }
+	.#{$namespace}-button__chat--sticky {
+		position: absolute;
+		right: -200px;
+		top: -160px;
+	}
 
-    .#{$namespace}-registration {
-        .#{$namespace}-registration__pfa--monitor {
-            top: 23px;
-            height: 282px;
-            overflow: visible;
-        }
-    }
+	.#{$namespace}-registration {
+		.#{$namespace}-registration__pfa--monitor {
+			top: 23px;
+			height: 282px;
+			overflow: visible;
+		}
+	}
 
-    .#{$namespace}-value--large {
-        font-size: $ig-font-size--medium-plus;
-    }
+	.#{$namespace}-value--large {
+		font-size: $ig-font-size--medium-plus;
+	}
 
-    .#{$namespace}-value--medium {
-        line-height: $ig-line-height--base;
-        font-size: $ig-font-size--medium-plus;
-    }
+	.#{$namespace}-value--medium {
+		line-height: $ig-line-height--base;
+		font-size: $ig-font-size--medium-plus;
+	}
 
-    .#{$namespace}-value--small {
-        line-height: $ig-line-height--base;
-        font-size: $ig-font-size--medium;
-    }
+	.#{$namespace}-value--small {
+		line-height: $ig-line-height--base;
+		font-size: $ig-font-size--medium;
+	}
 
-    .#{$namespace}-value--x-small {
-        line-height: $ig-line-height--base;
-        font-size: $ig-font-size--base;
-    }
+	.#{$namespace}-value--x-small {
+		line-height: $ig-line-height--base;
+		font-size: $ig-font-size--base;
+	}
 
-    .#{$namespace}-separator--large {
-        height: $ig-space--x-small;
-    }
+	.#{$namespace}-separator--large {
+		height: $ig-space--x-small;
+	}
 
-    .#{$namespace}-card__image {
-        width: 100%;
-    }
+	.#{$namespace}-card__image {
+		width: 100%;
+	}
 
-    .#{$namespace}-footer {
-        padding-top: 0;
+	.#{$namespace}-footer {
+		padding-top: 0;
 
-        .footer-copyright {
-            .footer-copyright-border-top .row {
-                border-top: none;
+		.footer-copyright {
+			.footer-copyright-border-top .row {
+				border-top: none;
 
-                .columns ul li {
-                    border-right: none;
-                }
-            }
-        }
+				.columns ul li {
+					border-right: none;
+				}
+			}
+		}
 
-        .footer-navigation .columns {
-            text-align: left;
-        }
-    }
+		.footer-navigation .columns {
+			text-align: left;
+		}
+	}
 }
