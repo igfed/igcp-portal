@@ -22,9 +22,9 @@
     }
     
     .footer-link a {
-      font-family: 'WhitneySemiBold', Arial, sans-serif;
+      font-family: $ig-whitney-semibold;
       letter-spacing: $ig-letter-spacing;
-      font-size: $ig-label-small;
+      font-size: $ig-font-size--base;
       text-decoration: none;
       text-transform: uppercase;
     }

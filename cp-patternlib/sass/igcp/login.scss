@@ -73,7 +73,7 @@
   .igcp-login--col1 {
 
     h3 {
-      font-family: 'WhitneyLight', Arial, sans-serif;
+      font-family: $ig-whitney-light;
       letter-spacing: 0.3px;
       text-align: center;
       font-size: 22px;
@@ -240,7 +240,7 @@
 
     .igcp-login__ad-copy {
       color: #fff;
-      font-family: 'WhitneyLight', Arial, sans-serif;
+      font-family: $ig-whitney-light;
       font-size: 21px;
       margin-bottom: 18px;
       line-height: 1.3;

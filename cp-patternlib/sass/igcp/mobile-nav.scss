@@ -101,8 +101,8 @@
 }
 
 .#{$namespace}-mobile-nav__menu>li>a {
-    font-family: 'WhitneySemiBold', Arial, sans-serif;
-    font-size: $ig-label-small;
+    font-family: $ig-whitney-semibold;
+    font-size: $ig-font-size--base;
     text-transform: uppercase;
 
     padding: $ig-space--small 0;
@@ -129,8 +129,8 @@
 
 .#{$namespace}-mobile-nav__close {
     color: $ig-white;
-    font-family: 'WhitneySemiBold', Arial, sans-serif;
-    font-size: $ig-label-small;
+    font-family: $ig-whitney-semibold;
+    font-size: $ig-font-size--base;
     text-transform: uppercase;
     width: 50px;
     height: 50px;
@@ -152,7 +152,7 @@
 
 .#{$namespace}-mobile-nav__profile {
     color: $ig-white;
-    font-family: 'WhitneyBook', Arial, sans-serif;
+    font-family: $ig-whitney-book;
     height: 50px;
     padding-top: $ig-space--xx-small;
 

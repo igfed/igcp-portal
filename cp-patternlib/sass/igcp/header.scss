@@ -48,7 +48,7 @@
       }
       
       .#{$namespace}-nav__username {
-        font-family: 'WhitneyBook', Arial, sans-serif;
+        font-family: $ig-whitney-book;
         position: relative;
         top: 4px;
       }
@@ -57,9 +57,9 @@
 }
 
 .#{$namespace}-nav__link {
-  font-family: 'WhitneySemiBold', Arial, sans-serif;
+  font-family: $ig-whitney-semibold;
   letter-spacing: $ig-letter-spacing;
-  font-size: $ig-label-small;
+  font-size: $ig-font-size--base;
   text-decoration: none;
   height: 40px;
   padding: $ig-space--xx-small 0;

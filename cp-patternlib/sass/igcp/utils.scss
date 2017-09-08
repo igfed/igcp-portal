@@ -7,27 +7,27 @@
     @media (min-width: nth($value, 2)) {
 
         .#{getNamespace($value)}-utils__font--light {
-            font-family: 'WhitneyLight', Arial, sans-serif;
+            font-family: $ig-whitney-light;
         }
 
         .#{getNamespace($value)}-utils__font--semibold {
-            font-family: 'WhitneySemiBold', Arial, sans-serif;
+            font-family: $ig-whitney-semibold;
         }
 
         .#{getNamespace($value)}-utils__font--book {
-            font-family: 'WhitneyBook', Arial, sans-serif;
+            font-family: $ig-whitney-book;
         }
 
         .#{getNamespace($value)}-utils__font-size--small {
-            font-size: $ig-p;
+            font-size: $ig-font-size--base;
         }
 
         .#{getNamespace($value)}-utils__font-size--x-small {
-            font-size: $ig-p-small;
+            font-size: $ig-font-size--x-mini;
         }
 
         .#{getNamespace($value)}-utils__line-height--regular {
-            line-height: $ig-line-height-text;
+            line-height: $ig-line-height--base;
         }
 
         .#{getNamespace($value)}-utils__text--default {

@@ -5,10 +5,14 @@
 }
 
 .slds-button {
-    font-family: 'WhitneySemiBold', Arial, sans-serif;
-    font-size: $ig-label-small;
+    font-family: $ig-whitney-book;
+    font-size: $ig-font-size--base;
     letter-spacing: $ig-letter-spacing;
     text-transform: capitalize;
+}
+
+.slds-button--brand {
+	background-color: $ig-blue;
 }
 
 .slds-button--neutral {
@@ -16,14 +20,14 @@
 }
 
 .slds-form-element__label {
-    font-family: 'WhitneySemiBold', Arial, sans-serif;
-    font-size: $ig-label-small;
+    font-family: $ig-whitney-semibold;
+    font-size: $ig-font-size--base;
     letter-spacing: $ig-letter-spacing;
 
     &.input-label {
         position: relative;
         top: 3px;
-        font-size: $ig-label-small;
+        font-size: $ig-font-size--base;
         margin-right: $ig-space--xxx-small;
     }
 }
@@ -31,9 +35,9 @@
 .slds-checkbox {
 
     .slds-form-element__label.input-label {
-        font-family: 'WhitneyBook', Arial, sans-serif;
-        font-size: $ig-p;
-        line-height: $ig-line-height-text;
+        font-family: $ig-whitney-book;
+        font-size: $ig-font-size--base;
+        line-height: $ig-line-height--base;
         top: 0;
     }
 }

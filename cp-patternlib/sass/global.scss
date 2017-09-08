@@ -1,5 +1,4 @@
 //Global vars - all SASS vars should be placed here, check SLDS design token for pre-existing token before adding an new vars here.
-
 $namespace: 'igcp';
 
 //Colours
@@ -23,6 +22,12 @@ $ig-light-grey: #f7f8f9;
 $ig-white: #fff;
 $ig-black: #282828;
 
+//System
+$ig-system-success: #00855F;
+$ig-system-ok: #00855F;
+$ig-system-error: #D42F1A;
+$ig-system-alert: #D42F1A;
+$ig-system-informational: #0E75D5;
 
 //Breakpoints
 $ig-x-small: 375px;
@@ -65,43 +70,36 @@ $ig-whitney-book: 'WhitneyBook', Arial, sans-serif;
 $ig-whitney-semibold: 'WhitneySemibold', Arial, sans-serif;
 $ig-whitney-light: 'WhitneyLight', Arial, sans-serif;
 
-//Desktop
-$ig-h1: 36px;
-$ig-h1-line-height: 46px;
+//IGDS - Font Sizing and Line Height
+//X-MINI
+$ig-font-size--x-mini: 12px;
+$ig-line-height--x-mini: 16px;
+//MINI
+$ig-font-size--mini: 14px;
+$ig-line-height--mini: 24px;
+//BASE
+$ig-font-size--base: 16px;
+$ig-line-height--base: 24px;
+//MEDIUM
+$ig-font-size--medium: 20px;
+$ig-line-height--medium: 32px;
+///MEDIUM-PLUS
+$ig-font-size--medium-plus: 24px;
+$ig-line-height--medium-plus: 32px;
+//LARGE
+$ig-font-size--large: 32px;
+$ig-line-height--large: 40px;
+//X-LARGE
+$ig-font-size--x-large: 48px;
+$ig-line-height--x-large: 56px;
+//XX-LARGE
+$ig-font-size--xx-large: 72px;
+$ig-line-height--xx-large: 88px;
+//SUPER
+$ig-font-size--super: 144px;
+$ig-line-height--super: 144px;
 
-$ig-h2: 28px;
-$ig-h2-line-height: 38px;
-
-$ig-h3: 20px;
-$ig-h3-line-height: 28px;
-
-$ig-h4: 16px;
-
-$ig-p: 16px;
-$ig-p-small: 12px;
-
-$ig-label: 16px;
-$ig-label-small: 12px;
-
-//Mobile
-$ig-m-h1: 28px;
-$ig-m-h1-line-height: 38px;
-
-$ig-m-h2: 24px;
-$ig-m-h2-line-height: 34px;
-
-$ig-m-h3: 20px;
-$ig-m-h3-line-height: 28px;
-
-$ig-m-h4: 16px;
-
-$ig-m-p: 18px;
-$ig-m-p-small: 12px;
-
-$ig-m-label: 16px;
-$ig-m-label-small: 12px;
-
-$ig-line-height-text: 26px;
+$ig-line-height--base: $ig-line-height--base;
 $ig-letter-spacing: 0.8px;
 
 //Mobile nav

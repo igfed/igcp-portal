@@ -8,8 +8,8 @@
 	.#{$namespace}-registration {
 		.#{$namespace}-registration__pfa {
 			h1 {
-				font-size: $ig-h1;
-				line-height: $ig-h1-line-height;
+				font-size: $ig-font-size--medium-plus;
+				line-height: $ig-line-height--medium-plus;
 			}
 	}
 
@@ -54,22 +54,22 @@
     }
 
     .#{$namespace}-value--large {
-        font-size: $ig-h1;
+        font-size: $ig-font-size--medium-plus;
     }
 
     .#{$namespace}-value--medium {
-        line-height: $ig-line-height-text;
-        font-size: $ig-h2;
+        line-height: $ig-line-height--base;
+        font-size: $ig-font-size--medium-plus;
     }
 
     .#{$namespace}-value--small {
-        line-height: $ig-line-height-text;
-        font-size: $ig-h3;
+        line-height: $ig-line-height--base;
+        font-size: $ig-font-size--medium;
     }
 
     .#{$namespace}-value--x-small {
-        line-height: $ig-line-height-text;
-        font-size: $ig-h4;
+        line-height: $ig-line-height--base;
+        font-size: $ig-font-size--base;
     }
 
     .#{$namespace}-separator--large {
