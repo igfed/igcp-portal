@@ -3,7 +3,7 @@
 @media (min-width: $ig-medium) {
 
 	h1 {
-		font-family: $ig-whitney-book;
+		font-family: $ig-whitney-light;
 		font-size: $ig-font-size--large;
 		line-height: $ig-line-height--large;
 		text-transform: inherit;
@@ -11,12 +11,13 @@
 	}
 
 	h2 {
-		font-family: $ig-whitney-book;
+		font-family: $ig-whitney-light;
 		font-size: $ig-font-size--medium-plus;
 		line-height: $ig-line-height--medium-plus;
 	}
 
 	h3 {
+		font-family: $ig-whitney-light;
 		font-size: $ig-font-size--medium;
 		line-height: $ig-line-height--medium;
 		color: $ig-blue;

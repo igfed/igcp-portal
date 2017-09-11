@@ -90,6 +90,7 @@
     	</aura:if>
 
     	<c:CP_Cmp_Modal id="registration-tos"/>
+    	<c:CP_Cmp_Modal id="view-sample"/>
 
     	<!-- FOOTER -->	
 		<!-- <c:CP_Cmp_Footer /> -->

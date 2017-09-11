@@ -1,36 +1,26 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="registration-instructions"></aura:attribute>
+	<!-- IMPORTS -->
+	<c:CP_Events aura:id="CP_Events" />
+	<!-- HANDLERS -->
+	<aura:handler event="c:CP_Evt_Click" action="{!c.onStart}"></aura:handler>
 	<!-- MARKUP -->
-	<div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center">
-		
-		<div class="slds-size_12-of-12 slds-m-top--large slds-m-bottom--small slds-text-align_center">
-			<h2>Key Benefits</h2>
-		</div>
-
-		<c:CP_Cmp_Figure 
-			class="slds-size_6-of-12 slds-text-align_center" 
-			imageFile="safe.png"
-			imageAlt="An illustrated image of a safe."
-			title="Safe and Secure"
-			description="Securely view investment performance, mortgage, and insurance." />
-
-		<c:CP_Cmp_Figure 
-			class="slds-size_6-of-12 slds-text-align_center" 
-			imageFile="smartphone.png"
-			imageAlt="An illustrated image of a smartphone."
-			title="Convenience"
-			description="View, download or print statements going back as far as seven years." />	
-
-		<div class="igcp-underline slds-size_12-of-12 slds-m-horizontal--medium slds-medium-m-horizontal--xx-large slds-p-top--medium slds-medium-p-top--large"></div>
-
-		<div class="slds-size_12-of-12 slds-m-top--large slds-m-bottom--small slds-text-align_center">
-			
-			<h2 class="igcp-medium-utils__font-size--medium igcp-large-utils__font-size--medium-plus slds-m-bottom--zero">Here's what you need to get started</h2>
-			
-			<p class="slds-p-horizontal--medium slds-m-top--x-small">Your client number, loan number, or policy number that appears on your statements. View Sample</p>
-			
-			<c:CP_Cmp_Button id="get-started-pfa-2" label="Get Started" class="slds-m-top--medium slds-p-horizontal--xx-large" />
+	<div class="igcp-background">
+		<div class="igcp-utils__max-width--large igcp-utils__margin--zero-auto slds-grid slds-wrap slds-grid--align-center">
+			<div class="slds-size_12-of-12 slds-m-top--large slds-m-bottom--small slds-text-align_center">
+				<h2>Key Benefits</h2>
+			</div>
+			<div class="slds-grid slds-wrap slds-size_10-of-12">
+				<c:CP_Cmp_Figure class="slds-size_6-of-12 slds-text-align_center" imageFile="safe.png" imageAlt="An illustrated image of a safe." title="Safe and Secure" description="Securely view investment performance, mortgage, and insurance." />
+				<c:CP_Cmp_Figure class="slds-size_6-of-12 slds-text-align_center" imageFile="smartphone.png" imageAlt="An illustrated image of a smartphone." title="Convenience" description="View, download or print statements going back as far as seven years." />
+			</div>
+			<div class="igcp-underline slds-size_10-of-12 slds-p-top--medium slds-medium-p-top--large"></div>
+			<div class="slds-size_12-of-12 slds-medium-size_7-of-12 slds-large-size_6-of-12 slds-m-top--large slds-m-bottom--small slds-text-align_center">
+				<h2 class="igcp-medium-utils__font-size--medium igcp-large-utils__font-size--medium-plus slds-m-bottom--zero">Here's what you need to get started</h2>
+				<p class="slds-p-horizontal--medium slds-m-top--x-small">Your client number, loan number, or policy number that appears on your statements. <c:CP_Cmp_Link label="View Sample"/></p>
+				<c:CP_Cmp_Button id="get-started-pfa-2" label="Get Started" class="slds-m-top--medium slds-p-horizontal--xx-large" buttonClass="igcp-medium-utils__width--50" />
+			</div>
 		</div>
 	</div>
 </aura:component>

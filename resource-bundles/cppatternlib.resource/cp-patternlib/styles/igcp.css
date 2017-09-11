@@ -23,7 +23,7 @@ h1 {
   font-family: "WhitneyBook", Arial, sans-serif;
   font-size: 24px;
   line-height: 32px;
-  letter-spacing: 0.8px;
+  letter-spacing: 0px;
   text-transform: inherit;
   text-transform: initial; }
 
@@ -33,7 +33,7 @@ h2 {
   line-height: 32px;
   text-transform: inherit;
   text-transform: initial;
-  letter-spacing: 0.8px; }
+  letter-spacing: 0px; }
 
 h3 {
   font-family: "WhitneyBook", Arial, sans-serif;
@@ -53,7 +53,7 @@ h4 {
 p {
   font-family: "WhitneyBook", Arial, sans-serif;
   font-size: 16px;
-  letter-spacing: 0.8px; }
+  letter-spacing: 0px; }
 
 body {
   font-family: "WhitneyBook", Arial, sans-serif;
@@ -77,18 +77,19 @@ label {
 
 @media (min-width: 768px) {
   h1 {
-    font-family: "WhitneyBook", Arial, sans-serif;
+    font-family: "WhitneyLight", Arial, sans-serif;
     font-size: 32px;
     line-height: 40px;
     text-transform: inherit;
     text-transform: initial; }
 
   h2 {
-    font-family: "WhitneyBook", Arial, sans-serif;
+    font-family: "WhitneyLight", Arial, sans-serif;
     font-size: 24px;
     line-height: 32px; }
 
   h3 {
+    font-family: "WhitneyLight", Arial, sans-serif;
     font-size: 20px;
     line-height: 32px;
     color: #004171; } }
@@ -99,7 +100,7 @@ label {
 .slds-button {
   font-family: "WhitneyBook", Arial, sans-serif;
   font-size: 16px;
-  letter-spacing: 0.8px;
+  letter-spacing: 0px;
   text-transform: capitalize; }
 
 .slds-button--brand {
@@ -111,7 +112,7 @@ label {
 .slds-form-element__label {
   font-family: "WhitneySemibold", Arial, sans-serif;
   font-size: 16px;
-  letter-spacing: 0.8px; }
+  letter-spacing: 0px; }
   .slds-form-element__label.input-label {
     position: relative;
     top: 3px;
@@ -1777,7 +1778,7 @@ label {
 
 .igcp-nav__link {
   font-family: "WhitneySemibold", Arial, sans-serif;
-  letter-spacing: 0.8px;
+  letter-spacing: 0px;
   font-size: 16px;
   text-decoration: none;
   height: 40px;
@@ -2135,7 +2136,7 @@ label {
     padding-bottom: 4px; }
   .igcp-footer .footer-link a {
     font-family: "WhitneySemibold", Arial, sans-serif;
-    letter-spacing: 0.8px;
+    letter-spacing: 0px;
     font-size: 16px;
     text-decoration: none;
     text-transform: uppercase; }
@@ -2237,8 +2238,20 @@ label {
   .igcp-utils__width--50 {
     width: 50%; }
 
+  .igcp-utils__width--60 {
+    width: 60%; }
+
+  .igcp-utils__width--70 {
+    width: 70%; }
+
   .igcp-utils__width--75 {
     width: 75%; }
+
+  .igcp-utils__width--80 {
+    width: 80%; }
+
+  .igcp-utils__width--90 {
+    width: 90%; }
 
   .igcp-utils__width--full,
   .igcp-utils__width--100 {
@@ -2247,13 +2260,16 @@ label {
   .igcp-utils__width--auto {
     width: auto; }
 
-  .igcp-utils__max-width--large {
+  .igcp-utils__max-width--large,
+  .igcp-utils__max-width--1024px {
     max-width: 1024px; }
 
-  .igcp-utils__max-width--medium {
+  .igcp-utils__max-width--medium,
+  .igcp-utils__max-width--768px {
     max-width: 768px; }
 
-  .igcp-utils__max-width--small {
+  .igcp-utils__max-width--small,
+  .igcp-utils__max-width--480px {
     max-width: 480px; }
 
   .igcp-utils__max-width--none {
@@ -2315,9 +2331,6 @@ label {
 
   .igcp-utils__opacity--100 {
     opacity: 1; }
-
-  .igcp-utils__margin--zero-auto {
-    margin: 0 auto; }
 
   .igcp-utils__margin--zero-auto {
     margin: 0 auto; }
@@ -2431,8 +2444,20 @@ label {
   .igcp-small-utils__width--50 {
     width: 50%; }
 
+  .igcp-small-utils__width--60 {
+    width: 60%; }
+
+  .igcp-small-utils__width--70 {
+    width: 70%; }
+
   .igcp-small-utils__width--75 {
     width: 75%; }
+
+  .igcp-small-utils__width--80 {
+    width: 80%; }
+
+  .igcp-small-utils__width--90 {
+    width: 90%; }
 
   .igcp-small-utils__width--full,
   .igcp-small-utils__width--100 {
@@ -2441,13 +2466,16 @@ label {
   .igcp-small-utils__width--auto {
     width: auto; }
 
-  .igcp-small-utils__max-width--large {
+  .igcp-small-utils__max-width--large,
+  .igcp-small-utils__max-width--1024px {
     max-width: 1024px; }
 
-  .igcp-small-utils__max-width--medium {
+  .igcp-small-utils__max-width--medium,
+  .igcp-small-utils__max-width--768px {
     max-width: 768px; }
 
-  .igcp-small-utils__max-width--small {
+  .igcp-small-utils__max-width--small,
+  .igcp-small-utils__max-width--480px {
     max-width: 480px; }
 
   .igcp-small-utils__max-width--none {
@@ -2509,9 +2537,6 @@ label {
 
   .igcp-small-utils__opacity--100 {
     opacity: 1; }
-
-  .igcp-small-utils__margin--zero-auto {
-    margin: 0 auto; }
 
   .igcp-small-utils__margin--zero-auto {
     margin: 0 auto; }
@@ -2625,8 +2650,20 @@ label {
   .igcp-medium-utils__width--50 {
     width: 50%; }
 
+  .igcp-medium-utils__width--60 {
+    width: 60%; }
+
+  .igcp-medium-utils__width--70 {
+    width: 70%; }
+
   .igcp-medium-utils__width--75 {
     width: 75%; }
+
+  .igcp-medium-utils__width--80 {
+    width: 80%; }
+
+  .igcp-medium-utils__width--90 {
+    width: 90%; }
 
   .igcp-medium-utils__width--full,
   .igcp-medium-utils__width--100 {
@@ -2635,13 +2672,16 @@ label {
   .igcp-medium-utils__width--auto {
     width: auto; }
 
-  .igcp-medium-utils__max-width--large {
+  .igcp-medium-utils__max-width--large,
+  .igcp-medium-utils__max-width--1024px {
     max-width: 1024px; }
 
-  .igcp-medium-utils__max-width--medium {
+  .igcp-medium-utils__max-width--medium,
+  .igcp-medium-utils__max-width--768px {
     max-width: 768px; }
 
-  .igcp-medium-utils__max-width--small {
+  .igcp-medium-utils__max-width--small,
+  .igcp-medium-utils__max-width--480px {
     max-width: 480px; }
 
   .igcp-medium-utils__max-width--none {
@@ -2703,9 +2743,6 @@ label {
 
   .igcp-medium-utils__opacity--100 {
     opacity: 1; }
-
-  .igcp-medium-utils__margin--zero-auto {
-    margin: 0 auto; }
 
   .igcp-medium-utils__margin--zero-auto {
     margin: 0 auto; }
@@ -2819,8 +2856,20 @@ label {
   .igcp-large-utils__width--50 {
     width: 50%; }
 
+  .igcp-large-utils__width--60 {
+    width: 60%; }
+
+  .igcp-large-utils__width--70 {
+    width: 70%; }
+
   .igcp-large-utils__width--75 {
     width: 75%; }
+
+  .igcp-large-utils__width--80 {
+    width: 80%; }
+
+  .igcp-large-utils__width--90 {
+    width: 90%; }
 
   .igcp-large-utils__width--full,
   .igcp-large-utils__width--100 {
@@ -2829,13 +2878,16 @@ label {
   .igcp-large-utils__width--auto {
     width: auto; }
 
-  .igcp-large-utils__max-width--large {
+  .igcp-large-utils__max-width--large,
+  .igcp-large-utils__max-width--1024px {
     max-width: 1024px; }
 
-  .igcp-large-utils__max-width--medium {
+  .igcp-large-utils__max-width--medium,
+  .igcp-large-utils__max-width--768px {
     max-width: 768px; }
 
-  .igcp-large-utils__max-width--small {
+  .igcp-large-utils__max-width--small,
+  .igcp-large-utils__max-width--480px {
     max-width: 480px; }
 
   .igcp-large-utils__max-width--none {
@@ -2901,9 +2953,6 @@ label {
   .igcp-large-utils__margin--zero-auto {
     margin: 0 auto; }
 
-  .igcp-large-utils__margin--zero-auto {
-    margin: 0 auto; }
-
   .igcp-large-utils__order--1 {
     order: 1; }
 
@@ -2943,11 +2992,11 @@ label {
 .igcp-container {
   background-color: #fff; }
 
-.igcp-wrapper {
+.igcp-wrapper-x-large {
   max-width: 1280px;
   margin: 0 auto; }
 
-.igcp-wrapper--1024 {
+.igcp-wrapper {
   max-width: 1024px;
   margin: 0 auto; }
 
@@ -2993,7 +3042,7 @@ label {
 
 .igcp-input__help-link {
   font-family: "WhitneyBook", Arial, sans-serif;
-  letter-spacing: 0.8px;
+  letter-spacing: 0px;
   font-size: 16px; }
 
 .igcp-input__password .slds-icon-utility-info {
@@ -3005,12 +3054,12 @@ label {
 .igcp-link {
   font-family: "WhitneyBook", Arial, sans-serif;
   font-size: 12px;
-  letter-spacing: 0.8px; }
+  letter-spacing: 0px; }
 
 .igcp-link__variant--a {
   font-family: "WhitneySemibold", Arial, sans-serif;
   font-size: 12px;
-  letter-spacing: 0.8px; }
+  letter-spacing: 0px; }
 
 .igcp-link__glyph--after {
   position: relative;
@@ -3073,13 +3122,13 @@ label {
 .igcp-label {
   font-family: "WhitneySemibold", Arial, sans-serif;
   font-size: 16px;
-  letter-spacing: 0.8px;
+  letter-spacing: 0px;
   text-transform: uppercase; }
 
 .igcp-label--small {
   font-family: "WhitneySemibold", Arial, sans-serif;
   font-size: 12px;
-  letter-spacing: 0.8px;
+  letter-spacing: 0px;
   text-transform: uppercase; }
 
 .igcp-account-arrow--right {
@@ -3191,10 +3240,6 @@ label {
   color: #fff;
   background-color: #0d263c; }
 
-.igcp-figure .igcp-figure__image {
-  margin: 0 auto;
-  text-align: center;
-  width: 35%; }
 .igcp-figure .igcp-figure__caption {
   margin: 0; }
 
@@ -3211,14 +3256,8 @@ label {
   .igcp-card__image {
     width: 75%; }
 
-  .igcp-figure .igcp-figure__image {
-    float: left;
-    width: 35%; }
-  .igcp-figure .igcp-figure__caption {
-    float: left;
-    width: 65%; }
-    .igcp-figure .igcp-figure__caption h3, .igcp-figure .igcp-figure__caption p {
-      text-align: left; } }
+  .igcp-figure .igcp-figure__caption h3, .igcp-figure .igcp-figure__caption p {
+    text-align: left; } }
 @media (min-width: 1024px) {
   .igcp-button__chat {
     float: none;

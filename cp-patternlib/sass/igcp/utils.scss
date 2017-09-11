@@ -116,8 +116,24 @@
 			width: 50%;
 		}
 
+		.#{getNamespace($value)}-utils__width--60 {
+			width: 60%;
+		}
+
+		.#{getNamespace($value)}-utils__width--70 {
+			width: 70%;
+		}
+
 		.#{getNamespace($value)}-utils__width--75 {
 			width: 75%;
+		}
+
+		.#{getNamespace($value)}-utils__width--80 {
+			width: 80%;
+		}
+
+		.#{getNamespace($value)}-utils__width--90 {
+			width: 90%;
 		}
 
 		.#{getNamespace($value)}-utils__width--full,
@@ -131,15 +147,18 @@
 
 
 		//Max-width
-		.#{getNamespace($value)}-utils__max-width--large {
+		.#{getNamespace($value)}-utils__max-width--large,
+		.#{getNamespace($value)}-utils__max-width--#{$ig-large} {
 			max-width: $ig-large;
 		}
 
-		.#{getNamespace($value)}-utils__max-width--medium {
+		.#{getNamespace($value)}-utils__max-width--medium,
+		.#{getNamespace($value)}-utils__max-width--#{$ig-medium} {
 			max-width: $ig-medium;
 		}
 
-		.#{getNamespace($value)}-utils__max-width--small {
+		.#{getNamespace($value)}-utils__max-width--small,
+		.#{getNamespace($value)}-utils__max-width--#{$ig-small} {
 			max-width: $ig-small;
 		}
 
@@ -217,10 +236,6 @@
 		}
 
 		//Margin
-		.#{getNamespace($value)}-utils__margin--zero-auto {
-			margin: 0 auto;
-		}
-
 		.#{getNamespace($value)}-utils__margin--zero-auto {
 			margin: 0 auto;
 		}

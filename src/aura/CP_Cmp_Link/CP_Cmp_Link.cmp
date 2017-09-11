@@ -1,0 +1,19 @@
+<aura:component >
+	<!-- ATTRS -->
+	<aura:attribute  name="id" type="String" default="" ></aura:attribute>
+	<aura:attribute  name="class" type="String" default=""></aura:attribute>
+	<aura:attribute  name="href" type="String" default=""></aura:attribute>
+	<aura:attribute  name="label" type="String" default="Default"></aura:attribute>
+	<aura:attribute  name="modalID" type="String" default="none"></aura:attribute>
+
+	<!-- IMPORTS -->
+	<c:CP_Events aura:id="CP_Events" />
+
+	<!-- HANDLERS -->	
+	<aura:handler  name="init" value="{!this}" action="{!c.onInit}"></aura:handler>
+
+	<!-- MARKUP -->
+	<div class="{!v.class}">
+		<a id="{!v.id}" href="{!v.href}" onclick="{!c.onClick}">{!v.label}</a>
+	</div>
+</aura:component>

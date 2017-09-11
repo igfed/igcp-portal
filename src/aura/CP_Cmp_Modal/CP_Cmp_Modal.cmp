@@ -1,24 +1,21 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
 	<!-- ATTTRS -->
-	<aura:attribute name="id" type="String" default="default" ></aura:attribute>
+	<aura:attribute name="id" type="String" default="tos" ></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-modal slds-grid slds-wrap slds-p-around--xx-large" ></aura:attribute>
+	<aura:attribute  name="modalType" type="String" default="takeover"></aura:attribute>
 
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
 
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
-	<aura:handler event="c:CP_Evt_Modal_Show" action="{!c.onShow}" />
-	<aura:handler event="c:CP_Evt_Modal_Hide" action="{!c.onHide}" />
+	<aura:handler event="c:CP_Evt_Modal_Open" action="{!c.onOpen}" />
+	<aura:handler event="c:CP_Evt_Modal_Close" action="{!c.onClose}" />
 	<aura:handler event="c:CP_Evt_Click" action="{!c.onClick}" />
 
 	<!-- METHODS -->
-	<aura:method name="onHide" action="{!c.onHide}" description="Called to hide modal">
-		<aura:attribute name="payload" type="Map"></aura:attribute>
-	</aura:method>
-
-	<aura:method name="onClose" action="{!c.onClose}" description="Called to close modal">
+	<aura:method name="onHide" action="{!c.onHide}" description="Called to hide modal after a close event has been triggered">
 		<aura:attribute name="payload" type="Map"></aura:attribute>
 	</aura:method>
 	
@@ -28,6 +25,17 @@
 		<div class="slds-size_12-of-12">
 			<button class="igcp-modal__button--close close-button" type="button" onclick="{!c.onClose}"></button>
 		</div>
-		<c:CP_Registration_TOS />
+
+		<aura:if isTrue="{!v.modalType == 'takeover'}"  >
+			<aura:if isTrue="{!v.id == 'tos'}"  >
+				<c:CP_Registration_TOS />		
+			</aura:if>
+		</aura:if>
+
+		<aura:if isTrue="{!v.modalType == 'base'}"  >
+			<aura:if isTrue="{!v.id == 'view-sample'}"  >
+				
+			</aura:if>
+		</aura:if>
 	</div>
 </aura:component>

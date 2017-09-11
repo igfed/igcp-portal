@@ -14,8 +14,8 @@
 
 		cmp.onHide();
 	},
-	onShow: function(cmp, evt, hlpr) {
-		console.log("CP_Cmp_Modal: onShow");
+	onOpen: function(cmp, evt, hlpr) {
+		console.log("CP_Cmp_Modal: onOpen");
 
 		var modalClass = cmp.get("v.class") + " igcp-modal--show";
 		cmp.set("v.class", modalClass);

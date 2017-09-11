@@ -20,12 +20,12 @@
 	background-color: #fff;
 }
 
-.#{$namespace}-wrapper {
+.#{$namespace}-wrapper-x-large {
 	max-width: $ig-x-large;
 	margin: 0 auto;
 }
 
-.#{$namespace}-wrapper--1024 {
+.#{$namespace}-wrapper {
 	max-width: $ig-large;
 	margin: 0 auto;
 }
@@ -384,9 +384,9 @@
 
 .#{$namespace}-figure {
 	.#{$namespace}-figure__image {
-		margin: 0 auto;
-		text-align: center;
-		width: 35%;
+		// margin: 0 auto;
+		// text-align: center;
+		// width: 35%;
 	}
 
 	.#{$namespace}-figure__caption {

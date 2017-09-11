@@ -1,4 +1,11 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+
+	<!-- IMPORTS -->
+	<c:CP_Events aura:id="CP_Events"/>
+
+	<!-- HANDLERS -->
+	<aura:handler event="c:CP_Evt_Click" action="{!c.onStart}"></aura:handler>
+
 	<!-- MARKUP -->
 	<div class="igcp-background__gradient">
 		
