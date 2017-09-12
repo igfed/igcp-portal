@@ -6,28 +6,25 @@
 		}
 	},
 	onClose: function(cmp, evt, hlpr) {
-		var events = cmp.find("CP_Events");
+		var payload = evt.getParam("payload");
 
-		events.fire("CP_Evt_Modal_Close", {
-			"id" : cmp.get("v.id")
-		});	
-
-		cmp.onHide();
+		if(payload.id === cmp.get("v.id")) {
+			cmp.set("v.class", "igcp-modal slds-grid slds-wrap slds-p-around--xx-large");	
+		}
 	},
 	onOpen: function(cmp, evt, hlpr) {
-		console.log("CP_Cmp_Modal: onOpen");
+		var payload = evt.getParam("payload");
 
-		var modalClass = cmp.get("v.class") + " igcp-modal--show";
-		cmp.set("v.class", modalClass);
-	},
-	onHide: function(cmp, evt, hlpr) {
-		console.log("CP_Cmp_Modal: onHide");
-		cmp.set("v.class", "igcp-modal slds-grid slds-wrap slds-p-around--xx-large");
+		if (payload.id === cmp.get("v.id")) {
+
+			var modalClass = cmp.get("v.class") + " igcp-modal--show";
+			cmp.set("v.class", modalClass);
+		}
 	},
 	onClick: function(cmp, evt, hlpr) {
-		var payload = evt.getParam("payload");	
+		var payload = evt.getParam("payload");
 
-		if(payload.id === "tos_agree_button") {
+		if (payload.id === "tos_agree_button") {
 			cmp.onClose();
 		}
 	}

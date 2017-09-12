@@ -47,11 +47,16 @@
 }
 
 .#{$namespace}-background__gradient {
-	background: #fafafd; /* Old browsers */
-	background: -moz-linear-gradient(top, #fafafd 0%, #fefefe 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, #fafafd 0%,#fefefe 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, #fafafd 0%,#fefefe 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafd', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */
+	background: #fafafd;
+	/* Old browsers */
+	background: -moz-linear-gradient(top, #fafafd 0%, #fefefe 100%);
+	/* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #fafafd 0%, #fefefe 100%);
+	/* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #fafafd 0%, #fefefe 100%);
+	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafd', endColorstr='#fefefe', GradientType=0);
+	/* IE6-9 */
 }
 
 //INPUT
@@ -335,14 +340,13 @@
 .#{$namespace}-modal {
 
 	display: none;
-	background-color: $ig-white;
 	position: fixed;
+	z-index: 100;
+	overflow-y: scroll;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	z-index: 100;
-	overflow-y: scroll;
 
 	&.#{$namespace}-modal--show {
 		display: inline-block;
@@ -357,6 +361,25 @@
 	.#{$namespace}-modal__button--close {
 		position: relative;
 		float: right;
+	}
+
+	&.#{$namespace}-modal__full {
+		background-color: $ig-white;
+	}
+
+	&.#{$namespace}-modal__small {
+		background-color: $ig-dark-blue--90;
+
+		.#{$namespace}-modal__small--inner {
+			position: fixed;
+			background-color: $ig-white;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			border: 10px solid $ig-grey;
+			overflow-y: scroll;
+		}
 	}
 }
 

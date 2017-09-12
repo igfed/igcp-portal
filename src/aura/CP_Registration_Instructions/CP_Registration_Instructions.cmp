@@ -18,7 +18,7 @@
 			<div class="igcp-underline slds-size_10-of-12 slds-p-top--medium slds-medium-p-top--large"></div>
 			<div class="slds-size_12-of-12 slds-medium-size_7-of-12 slds-large-size_6-of-12 slds-m-top--large slds-m-bottom--small slds-text-align_center">
 				<h2 class="igcp-medium-utils__font-size--medium igcp-large-utils__font-size--medium-plus slds-m-bottom--zero">Here's what you need to get started</h2>
-				<p class="slds-p-horizontal--medium slds-m-top--x-small">Your client number, loan number, or policy number that appears on your statements. <c:CP_Cmp_Link label="View Sample"/></p>
+				<p class="slds-p-horizontal--medium slds-m-top--x-small">Your client number, loan number, or policy number that appears on your statements. <c:CP_Cmp_Link modalID="view-sample" label="View Sample"/></p>
 				<c:CP_Cmp_Button id="get-started-pfa-2" label="Get Started" class="slds-m-top--medium slds-p-horizontal--xx-large" buttonClass="igcp-medium-utils__width--50" />
 			</div>
 		</div>

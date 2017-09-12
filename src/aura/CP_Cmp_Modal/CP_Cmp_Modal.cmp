@@ -1,41 +1,31 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
-
 	<!-- ATTTRS -->
-	<aura:attribute name="id" type="String" default="tos" ></aura:attribute>
-	<aura:attribute name="class" type="String" default="igcp-modal slds-grid slds-wrap slds-p-around--xx-large" ></aura:attribute>
-	<aura:attribute  name="modalType" type="String" default="takeover"></aura:attribute>
-
+	<aura:attribute name="id" type="String" default="default"></aura:attribute>
+	<aura:attribute name="class" type="String" default=""></aura:attribute>
+	<aura:attribute name="modalType" type="String" default="full"></aura:attribute>
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
-
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="c:CP_Evt_Modal_Open" action="{!c.onOpen}" />
 	<aura:handler event="c:CP_Evt_Modal_Close" action="{!c.onClose}" />
 	<aura:handler event="c:CP_Evt_Click" action="{!c.onClick}" />
-
-	<!-- METHODS -->
-	<aura:method name="onHide" action="{!c.onHide}" description="Called to hide modal after a close event has been triggered">
-		<aura:attribute name="payload" type="Map"></aura:attribute>
-	</aura:method>
 	
-	
-	<!-- MARKUP -->	
-	<div class="{!v.class}">
-		<div class="slds-size_12-of-12">
-			<button class="igcp-modal__button--close close-button" type="button" onclick="{!c.onClose}"></button>
+	<!-- MARKUP -->
+	<!-- full -->
+	<aura:if isTrue="{!v.modalType == 'full'}">
+		<div class="{!'igcp-modal igcp-modal__full slds-grid slds-wrap slds-p-around--xx-large ' + v.class}">
+			<aura:if isTrue="{!v.id == 'registration-tos'}">
+				<c:CP_Registration_TOS id="registration-tos"/>
+			</aura:if>
 		</div>
-
-		<aura:if isTrue="{!v.modalType == 'takeover'}"  >
-			<aura:if isTrue="{!v.id == 'tos'}"  >
-				<c:CP_Registration_TOS />		
+	</aura:if>
+	<!-- small -->
+	<aura:if isTrue="{!v.modalType == 'small'}">
+		<div class="{!'igcp-modal igcp-modal__small slds-grid slds-wrap slds-p-around--xx-large ' + v.class}">
+			<aura:if isTrue="{!v.id == 'view-sample'}">
+				<c:CP_Registration_View_Sample />
 			</aura:if>
-		</aura:if>
-
-		<aura:if isTrue="{!v.modalType == 'base'}"  >
-			<aura:if isTrue="{!v.id == 'view-sample'}"  >
-				
-			</aura:if>
-		</aura:if>
-	</div>
+		</div>
+	</aura:if>
 </aura:component>

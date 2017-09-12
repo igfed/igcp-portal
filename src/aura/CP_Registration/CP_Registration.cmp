@@ -1,6 +1,7 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
 	<!-- ATTRS -->
+	<aura:attribute name="class" type="String" default="igcp-utils__overflow--hidden"></aura:attribute>
 	<aura:attribute name="currentStep" type="Integer" default="0" ></aura:attribute>
 
 	<!-- Step 1 -->
@@ -36,7 +37,7 @@
     <aura:handler event="c:CP_Evt_Back_Step" action="{!c.onBackStep}"></aura:handler>
 
     <!-- COMPONENTS -->
-    <div class="igcp-utils__overflow--hidden">
+    <div class="{!v.class}">
 
     	<aura:if isTrue="{!v.currentStep == 0}"  >
     		<c:CP_Registration_Start />
@@ -90,7 +91,7 @@
     	</aura:if>
 
     	<c:CP_Cmp_Modal id="registration-tos"/>
-    	<c:CP_Cmp_Modal id="view-sample"/>
+    	<c:CP_Cmp_Modal id="view-sample" modalType="small"/>
 
     	<!-- FOOTER -->	
 		<!-- <c:CP_Cmp_Footer /> -->

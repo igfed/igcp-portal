@@ -29,16 +29,10 @@
 	}
 
 	.#{$namespace}-figure {
-		.#{$namespace}-figure__image {
-			//float: left;
-			//width: 35%;
-		}
 
 		.#{$namespace}-figure__caption {
-			//float: left;
-			//width: 65%;
-
-			h3, p {
+			h3,
+			p {
 				text-align: left;
 			}
 		}
@@ -111,6 +105,21 @@
 
 		.footer-navigation .columns {
 			text-align: left;
+		}
+	} 
+
+	//Modal
+	.#{$namespace}-modal {
+
+		&.#{$namespace}-modal__small {
+
+			.#{$namespace}-modal__small--inner {
+				@include roundCorner();
+				top: 25%;
+				left: 25%;
+				right: 25%;
+				bottom: 25%;
+			}
 		}
 	}
 }

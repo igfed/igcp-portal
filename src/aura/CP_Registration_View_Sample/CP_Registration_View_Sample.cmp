@@ -1,1 +1,19 @@
-<aura:component ></aura:component>
+<aura:component>
+
+	<!-- ATTRS -->
+	<aura:attribute  name="id" type="String" default="view-sample" ></aura:attribute>
+
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events"/>
+
+	<!-- MARKUP -->
+	<div class="igcp-modal__small--inner">
+		<div class="slds-size_12-of-12">
+			<button class="igcp-modal__button--close close-button" type="button" onclick="{!c.onClose}"></button>
+			<h3 class="slds-p-left--small slds-p-top--large">Investment Statement</h3>
+			<div class="slds-text-align_center">
+				Carousel coming soon!
+			</div>
+		</div>
+	</div>
+</aura:component>

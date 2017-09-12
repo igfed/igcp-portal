@@ -56,7 +56,7 @@
 
 		var events = cmp.find("CP_Events");
 
-		events.fire("CP_Evt_Modal_Show", {
+		events.fire("CP_Evt_Modal_Open", {
 			"id": "registration-tos"
 		});
 	},
@@ -153,11 +153,13 @@
 			"id": cmp.get("v.pageId")
 		});
 	},
-	onModalShow: function(cmp, evt, hlpr) {
+	onModalOpen: function(cmp, evt, hlpr) {
+
 		var newClass = "igcp-wrapper igcp-utils__height--zero slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large";
 		cmp.set("v.class", newClass);
 	},
 	onModalClose: function(cmp, evt, hlpr) {
+		
 		cmp.set("v.class", "igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large");
 	},
 	updateISAMPayload: function(cmp, evt, hlpr) {

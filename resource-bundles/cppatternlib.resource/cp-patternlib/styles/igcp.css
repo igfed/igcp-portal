@@ -3022,7 +3022,7 @@ label {
   /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom, #fafafd 0%, #fefefe 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafd', endColorstr='#fefefe',GradientType=0 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafd', endColorstr='#fefefe', GradientType=0);
   /* IE6-9 */ }
 
 .igcp-input {
@@ -3206,14 +3206,13 @@ label {
 
 .igcp-modal {
   display: none;
-  background-color: #fff;
   position: fixed;
+  z-index: 100;
+  overflow-y: scroll;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  z-index: 100;
-  overflow-y: scroll; }
+  bottom: 0; }
   .igcp-modal.igcp-modal--show {
     display: inline-block; }
   .igcp-modal .igcp-modal__wrapper {
@@ -3223,6 +3222,19 @@ label {
   .igcp-modal .igcp-modal__button--close {
     position: relative;
     float: right; }
+  .igcp-modal.igcp-modal__full {
+    background-color: #fff; }
+  .igcp-modal.igcp-modal__small {
+    background-color: rgba(13, 38, 60, 0.9); }
+    .igcp-modal.igcp-modal__small .igcp-modal__small--inner {
+      position: fixed;
+      background-color: #fff;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 10px solid #e6e9eb;
+      overflow-y: scroll; }
 
 .igcp-tooltip {
   display: inline-block; }
@@ -3256,7 +3268,8 @@ label {
   .igcp-card__image {
     width: 75%; }
 
-  .igcp-figure .igcp-figure__caption h3, .igcp-figure .igcp-figure__caption p {
+  .igcp-figure .igcp-figure__caption h3,
+  .igcp-figure .igcp-figure__caption p {
     text-align: left; } }
 @media (min-width: 1024px) {
   .igcp-button__chat {
@@ -3303,7 +3316,18 @@ label {
       .igcp-footer .footer-copyright .footer-copyright-border-top .row .columns ul li {
         border-right: none; }
     .igcp-footer .footer-navigation .columns {
-      text-align: left; } }
+      text-align: left; }
+
+  .igcp-modal.igcp-modal__small .igcp-modal__small--inner {
+    border-radius: 3px;
+    /* Android 2.1+, Chrome, Firefox 4+, IE 9+, iOS 4+, Opera 10.50+, Safari 5+ */
+    /* useful if you don't want a bg color from leaking outside the border: */
+    background-clip: padding-box;
+    /* Android 2.2+, Chrome, Firefox 4+, IE 9+, iOS 4+, Opera 10.50+, Safari 4+ */
+    top: 25%;
+    left: 25%;
+    right: 25%;
+    bottom: 25%; } }
 #header {
   display: none; }
 

@@ -5,6 +5,7 @@ $namespace: 'igcp';
 //Brand
 $ig-blue: #004171;
 $ig-dark-blue: #0d263c;
+$ig-dark-blue--90: rgba(red($ig-dark-blue), green($ig-dark-blue), blue($ig-dark-blue), 0.9);
 $ig-green: #0ed59a;
 $ig-teal: #7ec4b9;
 $ig-light-teal: #f1f7f7;
