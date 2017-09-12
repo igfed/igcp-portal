@@ -1,0 +1,11 @@
+<aura:component >
+
+	<!-- METHODS -->
+    <aura:method name="submitForm" action="{!c.onSubmitForm}" > 
+        <aura:attribute name="serviceName" type="String" default="default" />
+        <aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+        <aura:attribute name="validCB" type="function" default="" />
+        <aura:attribute name="errorCB" type="function" default="" />
+    </aura:method>
+
+</aura:component>

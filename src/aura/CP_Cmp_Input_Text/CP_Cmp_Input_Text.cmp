@@ -28,7 +28,7 @@
 		<aura:renderIf isTrue="{!v.icon}">
 			<lightning:icon iconName="{!v.icon}" size="small" class="slds-m-right--xx-small" alternativeText="{!v.label}" />
 		</aura:renderIf>
-		<label class="slds-form-element__label input-label igcp-utils__text--uppercase" for="text-input">{!v.label}
+		<label class="slds-form-element__label input-label" for="text-input">{!v.label}
 		</label>
 		<aura:renderIf isTrue="{!v.tooltip}">
 			<c:CP_Cmp_Tooltip />
@@ -41,7 +41,7 @@
 			</ul>
 		</aura:renderIf>
 		<div class="slds-form-element__control">
-			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" keypress="{!c.onHandleKey}" keydown="{!c.onHandleKey}" keyup="{!c.onHandleKey}" />
+			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" keypress="{!c.onHandleKey}" keydown="{!c.onHandleKey}" keyup="{!c.onHandleKey}" blur="{!c.onBlur}"/>
 		</div>
 		<aura:renderIf isTrue="{!v.helpText}">
 			<div class="igcp-input__help-link slds-float--right">

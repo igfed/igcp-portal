@@ -249,9 +249,16 @@
 			dayValid = hlpr.lessThanOrEqual(splitValues[1], 31);
 			yearValid = hlpr.lessThanOrEqual(splitValues[2], (new Date()).getFullYear());
 
-			errorCheckObj["monthValid"] = monthValid;
-			errorCheckObj["dayValid"] = dayValid;
-			errorCheckObj["yearValid"] = yearValid;
+			if(splitValues[1] === "") {
+				errorCheckObj["hasDay"] = false;
+				errorCheckObj["hasYear"] = false;
+			} else if(splitValues[2] === "") {
+				errorCheckObj["hasYear"] = false;
+			} else {
+				errorCheckObj["monthValid"] = monthValid;
+				errorCheckObj["dayValid"] = dayValid;
+				errorCheckObj["yearValid"] = yearValid;
+			}
 		}
 
 		errors = hlpr.checkForErrors(errorCheckObj);
@@ -263,6 +270,12 @@
 				item["msg"] = "Day must be 1 - 31";
 			} else if (item.type === "yearValid") {
 				item["msg"] = "Year must be less than current year";
+			} else if(item.type === "hasDay") {
+				item["msg"] = "Please enter a valid day";
+			} else if(item.type === "hasYear") {
+				item["msg"] = "Please enter a valid year";
+			} else if(item.type === "isEmpty") {
+				item["msg"] = "Please enter a valid date";
 			}
 		});
 

@@ -33,9 +33,21 @@
 	},
 	onError: function(cmp, evt, hlpr) {
 
-		if (cmp.get("v.id") === evt.getParam("payload").id) {
+		var
+			payload = evt.getParam("payload"),
+			errors = payload.errors,
+			errorArr = [];
+
+		if (cmp.get("v.id") === payload.id) {
+
+			if (errors.length > 0) {
+				errors.forEach(function(item, i) {
+					errorArr.push({ message: item.msg });
+				});
+			}
+
 			var field = cmp.find("date-input");
-			field.set("v.errors", [{ message: cmp.get("v.errorText") }]);
+			field.set("v.errors", errorArr);
 		}
 	},
 	onType: function(cmp, evt, hlpr) {
@@ -74,5 +86,13 @@
 			}	
 
 			cmp.set("v.inputValue", newInputValue);		
+	},
+	onBlur: function(cmp, evt, hlpr) {
+		var events = cmp.find("CP_Events");
+		events.fire("CP_Evt_Input_Blur", {
+			"id": cmp.get("v.id"),
+			"type": cmp.get("v.type"),
+			"value": cmp.get("v.inputValue")
+		});
 	}
 })

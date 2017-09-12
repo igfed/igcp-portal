@@ -52,6 +52,13 @@
 	onHandleKey: function(cmp, evt, hlpr) {
 		//Needed to override default behaviour
 		evt.preventDefault();
-		//debugger;
+	},
+	onBlur: function(cmp, evt, hlpr) {
+		var events = cmp.find("CP_Events");
+		events.fire("CP_Evt_Input_Blur", {
+			"id": cmp.get("v.id"),
+			"type": cmp.get("v.type"),
+			"value": cmp.get("v.inputValue")
+		});
 	}
 })
