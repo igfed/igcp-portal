@@ -150,7 +150,9 @@
 			} else if (item.type === "hasSpecialChar") {
 				item["msg"] = "The password must have at least one special character";
 			} else if (item.type === "passwordsMatch") {
-				item["msg"] = "The passwords do not match."
+				item["msg"] = "The passwords do not match.";
+			} else if (item.type === "isEmpty") {
+				item["msg"] = "This field cannot be empty";
 			}
 		});
 
@@ -180,9 +182,9 @@
 			if (item.type === "minLength") {
 				item["msg"] = "The client number is less than " + cmp.get("v.clientMinLength") + " characters";
 			} else if (item.type === "hasNumberOnly") {
-				item["msg"] = "The client number must only be numbers"
+				item["msg"] = "The client number must only be numbers";
 			} else if(item.type === "isEmpty") {
-				item["msg"] = "This field is empty"
+				item["msg"] = "This field cannot be empty";
 			}
 		});
 

@@ -1,13 +1,11 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
-	
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
-	
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="default"></aura:attribute>
 	<aura:attribute name="form" type="String" default="default"></aura:attribute>
-	<aura:attribute name="type" type="String" default="text"></aura:attribute>
+	<aura:attribute name="type" type="String" default="username"></aura:attribute>
 	<aura:attribute name="label" type="String" />
 	<aura:attribute name="icon" type="String" />
 	<aura:attribute name="placeholder" type="String" default="" />
@@ -17,35 +15,30 @@
 	<aura:attribute name="required" type="Boolean" default="false" />
 	<aura:attribute name="class" type="String" default="slds-form-element slds-clearfix" />
 	<aura:attribute name="tooltip" type="String" />
-	<aura:attribute name="instructions" type="List" />
 	<aura:attribute name="inputValue" type="String" default=""></aura:attribute>
 	<aura:attribute name="maxLength" type="Integer" default="100"></aura:attribute>
-	
+	<aura:attribute name="limitClass" type="String" default="igcp-utils__font-size--x-small"></aura:attribute>
+	<aura:attribute name="charClass" type="String" default="igcp-utils__font-size--x-small"></aura:attribute>
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}" />
 	<aura:handler event="c:CP_Evt_Input_Valid" action="{!c.onValid}" />
 	<aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}" />
-	
 	<!-- MARKUP -->
 	<div class="{!v.class}">
 		<aura:renderIf isTrue="{!v.icon}">
 			<lightning:icon iconName="{!v.icon}" size="small" class="slds-m-right--xx-small" alternativeText="{!v.label}" />
 		</aura:renderIf>
-		<label class="slds-form-element__label input-label" for="text-input">{!v.label}
-		</label>
+		<label class="slds-form-element__label input-label" for="text-input">{!v.label}</label>
 		<aura:renderIf isTrue="{!v.tooltip}">
 			<c:CP_Cmp_Tooltip />
 		</aura:renderIf>
-		<aura:renderIf isTrue="{!v.instructions}">
-			<ul class="igcp-utils__bullets--disc slds-m-bottom--xx-small">
-				<aura:iteration items="{!v.instructions}" var="item">
-					<li class="igcp-utils__font-size--x-small">{!item}</li>
-				</aura:iteration>
-			</ul>
-		</aura:renderIf>
+		<ul class="igcp-utils__bullets--disc slds-m-bottom--xx-small">
+			<li class="{!v.limitClass}">Must be 6-32 characters</li>
+			<li class="{!v.charClass}">Must not contain any special characters</li>
+		</ul>
 		<div class="slds-form-element__control">
-			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" keypress="{!c.onHandleKey}" keydown="{!c.onHandleKey}" keyup="{!c.onHandleKey}" blur="{!c.onBlur}"/>
+			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" keyup="{!c.onHandleKey}" updateOn="keyup" blur="{!c.onBlur}" />
 		</div>
 		<aura:renderIf isTrue="{!v.helpText}">
 			<div class="igcp-input__help-link slds-float--right">

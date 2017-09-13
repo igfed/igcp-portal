@@ -32,8 +32,8 @@
 
 			if (obj.isValid === false) {
 
-				console.error("Input Errors: ");
-				console.error(obj.errors);
+				//console.error("Input Errors: ");
+				//console.error(obj.errors);
 
 				cmp.set("v.inputErrors", true);
 
@@ -93,6 +93,9 @@
 
 			cmp.onSubmitForm();
 		}
+	},
+	onInputBlur: function(cmp, evt, hlpr) {
+		hlpr.validateInput(cmp, evt.getParam("payload"));
 	},
 	submitForm: function(cmp, evt, hlpr) {
 
@@ -161,6 +164,13 @@
 
 		if (payload.id === "news-offers-opt") {
 			cmp.set("v.emailOptIn", payload.checked);
+		}
+	},
+	onKey: function(cmp, evt, hlpr) {
+		var payload = evt.getParam("payload");
+
+		if(payload.id === "username-input") {
+			hlpr.validateUsername(cmp, payload);
 		}
 	}
 })

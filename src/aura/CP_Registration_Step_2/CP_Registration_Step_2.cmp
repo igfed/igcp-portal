@@ -1,9 +1,11 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_RegistrationController">
+	
 	<!-- ATTRS	 -->
 	<aura:attribute name="pageId" type="String" default="registration-step-2"></aura:attribute>
 	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="inputsReceived" type="Integer" default="0"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
+	
 	<!-- Step 2 -->
 	<aura:attribute name="username" type="String" />
 	<aura:attribute name="password" type="String" />
@@ -17,23 +19,32 @@
 	<aura:attribute name="answer2" type="String"></aura:attribute>
 	<aura:attribute name="securityQuestion3" type="String"></aura:attribute>
 	<aura:attribute name="answer3" type="String"></aura:attribute>
+	
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Selector_Change" action="{!c.onInputSelectorReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Checkbox_Checked" action="{!c.onOptClicked}" />
 	<aura:handler event="c:CP_Evt_Input_Checkbox_Unchecked" action="{!c.onOptClicked}" />
+	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
+	<aura:handler event="c:CP_Evt_Key" action="{!c.onKey}" />
+
+	
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
 	<c:CP_Validation aura:id="CP_Validation" />
+	<c:CP_Services aura:id="CP_Services" />
+	
 	<!-- METHODS-->
 	<aura:method name="onSubmitForm" action="{!c.submitForm}" description="Call submit form">
 		<aura:attribute name="payload" type="Map"></aura:attribute>
 	</aura:method>
+	
 	<aura:method name="onNextStep" action="{!c.gotoNextStep}" description="Called when ready to proceed to next step">
 		<aura:attribute name="payload" type="Map"></aura:attribute>
 	</aura:method>
+	
 	<!-- MARKUP -->
 	<div class="igcp-background">
 		<div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
@@ -44,20 +55,28 @@
 				<div class="igcp-label--small">Step 2</div>
 				<h2>Create Your Online Profile</h2>
 				<p class="igcp-utils__width--100 igcp-large-utils__width--75">You'll use your online profile to securely access your account online.</p>
+				
 				<!--FIELDS-->
 				<!-- USERNAME -->
-				<c:CP_Cmp_Input_Text id="username-input" form="{!v.pageId}" type="username" label="Username" maxLength="32" placeholder="" instructions="['Must be 6-32 characters', 'Must not contain any special characters']" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="Pick a username." />
+				<c:CP_Cmp_Input_Username id="username-input" form="{!v.pageId}" label="Username" maxLength="32" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="Pick a username." />
+				
 				<!-- PASSWORD -->
 				<c:CP_Cmp_Input_Password id="password-input" form="{!v.pageId}" type="password" confirmPassword="true" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" instructions="['Must be 8-32 letters or numbers', 'At least one uppercase letter', 'At least one number or special character']" tooltip="Pick a password." />
+				
 				<!-- EMAIL -->
 				<c:CP_Cmp_Input_Text id="email-input" form="{!v.pageId}" type="email" label="Email" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+				
 				<!-- NEWS OPT IN  -->
 				<c:CP_Cmp_Input_Checkbox id="news-offers-opt" form="{!v.pageId}" class="slds-size_12-of-12 slds-large-size_9-of-12" copy="I'd like to receive the latest news and offers from Investors Group to my email address (optional)" />
+				
 				<!-- PHONE -->
 				<c:CP_Cmp_Input_Text id="phone-input" form="{!v.pageId}" type="phone" label="Phone" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+				
 				<!-- SECURITY QUESTIONS -->
 				<c:CP_Registration_Security_Questions form="{!v.pageId}" />
+				
 				<div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
+				
 				<c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="Cancel" nextLabel="Next" nextType="submit" form="{!v.pageId}" />
 			</div>
 			<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>

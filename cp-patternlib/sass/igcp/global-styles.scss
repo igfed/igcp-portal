@@ -416,3 +416,18 @@
 		margin: 0;
 	}
 }
+
+//STATUS
+.#{$namespace}-text__success,
+.#{$namespace}-text__ok {
+	color: $ig-system-success;
+}
+
+.#{$namespace}-text__error,
+.#{$namespace}-text__alert {
+	color: $ig-system-error;
+}
+
+.#{$namespace}-text__informational {
+	color: $ig-system-informational;
+}

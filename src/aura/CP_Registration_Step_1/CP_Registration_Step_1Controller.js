@@ -39,7 +39,6 @@
 	},
 	onInputBlur: function(cmp, evt, hlpr) {
 		hlpr.validateInput(cmp, evt.getParam("payload"));
-
 	},
 	submitForm: function(cmp, evt, hlpr) {
 

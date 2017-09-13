@@ -3255,6 +3255,17 @@ label {
 .igcp-figure .igcp-figure__caption {
   margin: 0; }
 
+.igcp-text__success,
+.igcp-text__ok {
+  color: #00855F; }
+
+.igcp-text__error,
+.igcp-text__alert {
+  color: #D42F1A; }
+
+.igcp-text__informational {
+  color: #0E75D5; }
+
 @media (min-width: 768px) {
   .igcp-registration .igcp-registration__pfa h1 {
     font-size: 24px;
