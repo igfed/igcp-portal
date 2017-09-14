@@ -10,6 +10,10 @@
 	<aura:handler event="c:CP_Evt_Modal_Open" action="{!c.onOpen}" />
 	<aura:handler event="c:CP_Evt_Modal_Close" action="{!c.onClose}" />
 	<aura:handler event="c:CP_Evt_Click" action="{!c.onClick}" />
+
+	<aura:method name="onClose" action="{!c.onClose}" description="Called when ready to submit data to ISAM">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
 	
 	<!-- MARKUP -->
 	<!-- full -->

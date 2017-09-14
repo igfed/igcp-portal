@@ -98,7 +98,7 @@ label {
   position: relative; }
 
 .slds-button {
-  font-family: "WhitneyBook", Arial, sans-serif;
+  font-family: "WhitneySemibold", Arial, sans-serif;
   font-size: 16px;
   letter-spacing: 0px;
   text-transform: capitalize; }
@@ -116,8 +116,12 @@ label {
   .slds-form-element__label.input-label {
     position: relative;
     top: 3px;
-    font-size: 16px;
+    font-size: 14px;
     margin-right: 4px; }
+    .slds-form-element__label.input-label span {
+      font-family: "WhitneyBook", Arial, sans-serif;
+      color: #282828;
+      margin-left: 8px; }
 
 .slds-checkbox .slds-form-element__label.input-label {
   font-family: "WhitneyBook", Arial, sans-serif;
@@ -2086,7 +2090,7 @@ label {
   @media (max-width: 380px) {
     .igcp-login .igcp-login--col1 .igcp-login__sidebar-wrapper {
       width: 280px; } }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .igcp-login .igcp-login--col1 .top-bar-right {
     display: none; }
   .igcp-login .igcp-login--col1 .igcp-nav__logo {
@@ -3090,19 +3094,13 @@ label {
   /* IE6-9 */ }
 
 .igcp-input {
-  border-top: none;
-  border-left: none;
-  border-right: none;
   border-radius: 0;
   margin-bottom: 0;
-  border-bottom: 1px solid #cfd4d8; }
+  border: 1px solid #282828; }
   .igcp-input.input, .igcp-input.uiInput--input.input, .igcp-input.uiInput--select.select {
-    border-top: none;
-    border-left: none;
-    border-right: none;
     border-radius: 0;
     margin-bottom: 0;
-    border-bottom: 1px solid #cfd4d8; }
+    border: 1px solid #282828; }
 
 .igcp-input__help-link {
   font-family: "WhitneyBook", Arial, sans-serif;
@@ -3186,14 +3184,13 @@ label {
 .igcp-label {
   font-family: "WhitneySemibold", Arial, sans-serif;
   font-size: 16px;
-  letter-spacing: 0px;
-  text-transform: uppercase; }
+  letter-spacing: 0px; }
 
 .igcp-label--small {
   font-family: "WhitneySemibold", Arial, sans-serif;
   font-size: 12px;
   letter-spacing: 0px;
-  text-transform: uppercase; }
+  color: #004171; }
 
 .igcp-account-arrow--right {
   position: relative;
@@ -3231,7 +3228,9 @@ label {
   top: 50%;
   left: 50%;
   margin-top: -15px;
-  margin-left: -3px; }
+  margin-left: -3px;
+  font-family: "WhitneySemibold", Arial, sans-serif;
+  font-size: 14px; }
 .igcp-progress-indicator .igcp-progress-indicator__step--complete {
   margin-top: -16px;
   margin-left: -10px; }
@@ -3403,7 +3402,5 @@ label {
     left: 25%;
     right: 25%;
     bottom: 25%; } }
-#header {
-  display: none; }
 
 /*# sourceMappingURL=igcp.css.map */

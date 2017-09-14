@@ -15,15 +15,14 @@
 		</div>
 		<h1 class="slds-size_12-of-12 slds-m-bottom--x-small">Accept Terms and Conditions</h1>
 		<c:CP_Cmp_Link_Print />
-		<form aura:id="registration-tos-desktop-form" id="registration-tos-desktop-form" method="get" action="" class="slds-grid slds-wrap">
 			<c:CP_Cmp_Input_Checkbox id="read_and_agree_checkbox" form="registration-tos-desktop-form" class="igcp-utils__display--none igcp-large-utils__display--block slds-size_12-of-12 slds-m-bottom--large" copy="I have read and agree to the above Terms and Conditions" />
+
 			<aura:if isTrue="{!v.userAgrees == true}">
 				<c:CP_Cmp_Button id="tos_agree_button" label="Agree" class="igcp-utils__display--none igcp-large-utils__display--block slds-size_3-of-12" />
 			</aura:if>
 			<aura:if isTrue="{!v.userAgrees == false}">
-				<c:CP_Cmp_Button id="tos_agree_button" disabled="true" label="Agree" class="igcp-utils__display--none igcp-large-utils__display--block slds-size_3-of-12" />
+				<c:CP_Cmp_Button id="tos_agree_button-disabled" disabled="true" label="Agree" class="igcp-utils__display--none igcp-large-utils__display--block slds-size_3-of-12" />
 			</aura:if>
-		</form>
 		<div class="slds-size_9-of-12"></div>
 		<p class="slds-size_12-of-12 slds-m-bottom--large">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae turpis et velit semper convallis. Integer dictum mi in ligula mollis rutrum. Etiam sed malesuada nibh. Vestibulum aliquet in diam non fermentum. Duis consequat, ante a imperdiet venenatis, turpis urna feugiat ex, blandit vehicula ante sapien at erat. Cras finibus finibus fermentum. Ut id vestibulum nibh. Duis non tempor metus. Morbi lobortis quis augue sed sodales. Nullam laoreet nunc a condimentum pulvinar. Vestibulum tempor ipsum a lacus sodales, a rhoncus orci porta. Cras tincidunt neque sit amet lacus blandit vulputate. Pellentesque nibh justo, rutrum et mi nec, pretium eleifend massa.</p>
 		<p class="slds-size_12-of-12 slds-m-bottom--large">Fusce tincidunt sem in erat tristique aliquet vel sit amet metus. Cras accumsan dignissim massa vehicula aliquam. Praesent sodales porta pellentesque. Sed nec ante et dui auctor facilisis sed non nisi. Suspendisse potenti. Vestibulum ut tellus gravida, pharetra leo fermentum, viverra sapien. Donec sed nunc in velit ornare laoreet a mattis turpis. Mauris id mattis nisl. Nulla sodales accumsan enim aliquam vehicula. Nunc at gravida sapien.</p>

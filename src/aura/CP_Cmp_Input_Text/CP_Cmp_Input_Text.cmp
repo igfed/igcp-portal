@@ -20,6 +20,7 @@
 	<aura:attribute name="instructions" type="List" />
 	<aura:attribute name="inputValue" type="String" default=""></aura:attribute>
 	<aura:attribute name="maxLength" type="Integer" default="100"></aura:attribute>
+	<aura:attribute name="example" type="String" default=""></aura:attribute>
 	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
@@ -32,8 +33,7 @@
 		<aura:renderIf isTrue="{!v.icon}">
 			<lightning:icon iconName="{!v.icon}" size="small" class="slds-m-right--xx-small" alternativeText="{!v.label}" />
 		</aura:renderIf>
-		<label class="slds-form-element__label input-label" for="text-input">{!v.label}
-		</label>
+		<label class="slds-form-element__label input-label" for="text-input">{!v.label}<span>{!v.example}</span></label>
 		<aura:renderIf isTrue="{!v.tooltip}">
 			<c:CP_Cmp_Tooltip />
 		</aura:renderIf>

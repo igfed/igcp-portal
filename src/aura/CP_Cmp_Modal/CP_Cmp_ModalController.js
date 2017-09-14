@@ -8,9 +8,11 @@
 	onClose: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
 
-		if(payload.id === cmp.get("v.id")) {
-			cmp.set("v.class", "igcp-modal slds-grid slds-wrap slds-p-around--xx-large");	
-		}
+		console.log(payload)
+
+		// if(payload.id === cmp.get("v.id")) {
+		// 	cmp.set("v.class", "igcp-modal slds-grid slds-wrap slds-p-around--xx-large");	
+		// }
 	},
 	onOpen: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
@@ -25,6 +27,7 @@
 		var payload = evt.getParam("payload");
 
 		if (payload.id === "tos_agree_button") {
+
 			cmp.onClose();
 		}
 	}
