@@ -2,15 +2,34 @@
 //[namespace]-[block]__[element]--[modifier]
 //See https://seesparkbox.com/foundry/bem_by_example for details
 //Registration - any styling related to the registration process
+
 .#{$namespace}-login {
 
   a {
     color: $ig-link-blue;
     text-decoration: none;
-
+    display: block;
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  .slds-checkbox {
+    margin-top: 10px;
+    border: none;
+    display: block;
+  }
+
+  a.igcp-nav__link {
+    margin-top: 0;
+    margin-right: 12px;
+    color: $ig-link-blue;
+    font-size: 13px;
+    display: block;
+  }
+
+  .slds-form-element__label {
+    font-size: 12px;
   }
 
   .top-bar-left {
@@ -25,12 +44,39 @@
   .igcp-login__legal {
     margin-top: 85px;
 
+    a {
+      display: inline;
+    }
+
     p {
       text-align: center;
       font-size: 13px;
       color: $ig-black;
     }
   }
+
+  .slds-notify_toast {
+    width: 100%;
+  }
+
+  .slds-icon-utility-lock {
+    float: left;
+    width: 16px;
+    height: 16px;
+    background: url(../icons/lock_60.png) no-repeat top left;
+    background-size: 100%;
+    margin: 3px 5px 0 0;
+  }
+
+  .slds-icon-utility-user {
+    float: left;
+    width: 16px;
+    height: 16px;
+    background: url(../icons/user_60.png) no-repeat top left;
+    background-size: 100%;
+    margin: 3px 5px 0 0;
+  }
+
 
   .slds-checkbox--faux {
     border: 1px solid $ig-black;
@@ -47,11 +93,29 @@
     margin: 40px auto 0;
 
     @media (max-width: 480px) {
-      width: 300px;
+      width: auto;
+
+      .igcp-login__footer-menu {
+        height: auto;
+      }
+
+      ul {
+        margin-bottom: 20px;
+      }
+
+      li {
+        display: block;
+        text-align: center;
+        width: 100%;
+      }
+
+      .igcp-login__footer-copyright {
+        margin-top: 80px;
+      }
     }
 
     .igcp-login__footer-menu {
-      height: 30px;
+      height: 40px;
 
       li {
         float: left;
@@ -161,7 +225,7 @@
 
           img {
             width: 148px;
-            margin-top: 75px;
+            margin-top: 50px;
           }
         }
       }
@@ -174,9 +238,9 @@
     }
 
     .igcp-login__ad--mobile {
-      margin: 50px auto;
-      padding: 0 20px;
-      max-width: 768px;
+      width: 80%;
+      margin: 50px auto 20px;
+      text-align: center;
     }
 
     .igcp-login--col2 {
@@ -211,7 +275,7 @@
       width: 100%;
       background-repeat: no-repeat;
       height: 100vh;
-      min-height: 730px;
+      min-height: 760px;
 
       // Some options here for an Author depending on the type of image
       &.background-left-bottom {
@@ -250,6 +314,7 @@
       color: #fff;
       font-weight: bold;
       letter-spacing: 0.1em;
+      display: inline;
     }
 
   }
@@ -269,10 +334,14 @@
     float: right;
     margin-top: 0;
 
-    .igcp-nav__link {
+    a.igcp-nav__link {
+      margin-top: 0;
+      margin-right: 12px;
+      color: $ig-link-blue;
+      font-size: 13px;
       display: block;
-      padding: 6px 0;
     }
+
   }
 }
 

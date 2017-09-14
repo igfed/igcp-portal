@@ -1967,9 +1967,22 @@ label {
 
 .igcp-login a {
   color: #0e75d5;
-  text-decoration: none; }
+  text-decoration: none;
+  display: block; }
   .igcp-login a:hover {
     text-decoration: underline; }
+.igcp-login .slds-checkbox {
+  margin-top: 10px;
+  border: none;
+  display: block; }
+.igcp-login a.igcp-nav__link {
+  margin-top: 0;
+  margin-right: 12px;
+  color: #0e75d5;
+  font-size: 13px;
+  display: block; }
+.igcp-login .slds-form-element__label {
+  font-size: 12px; }
 .igcp-login .top-bar-left {
   margin-top: 0; }
 .igcp-login .arrow {
@@ -1977,10 +1990,26 @@ label {
   color: #fff; }
 .igcp-login .igcp-login__legal {
   margin-top: 85px; }
+  .igcp-login .igcp-login__legal a {
+    display: inline; }
   .igcp-login .igcp-login__legal p {
     text-align: center;
     font-size: 13px;
     color: #282828; }
+.igcp-login .slds-icon-utility-lock {
+  float: left;
+  width: 16px;
+  height: 16px;
+  background: url(../icons/lock_60.png) no-repeat top left;
+  background-size: 100%;
+  margin: 3px 5px 0 0; }
+.igcp-login .slds-icon-utility-user {
+  float: left;
+  width: 16px;
+  height: 16px;
+  background: url(../icons/user_60.png) no-repeat top left;
+  background-size: 100%;
+  margin: 3px 5px 0 0; }
 .igcp-login .slds-checkbox--faux {
   border: 1px solid #282828; }
 .igcp-login .igcp-login__register-link a {
@@ -1990,9 +2019,19 @@ label {
   margin: 40px auto 0; }
   @media (max-width: 480px) {
     .igcp-login .igcp-login__footer {
-      width: 300px; } }
+      width: auto; }
+      .igcp-login .igcp-login__footer .igcp-login__footer-menu {
+        height: auto; }
+      .igcp-login .igcp-login__footer ul {
+        margin-bottom: 20px; }
+      .igcp-login .igcp-login__footer li {
+        display: block;
+        text-align: center;
+        width: 100%; }
+      .igcp-login .igcp-login__footer .igcp-login__footer-copyright {
+        margin-top: 80px; } }
   .igcp-login .igcp-login__footer .igcp-login__footer-menu {
-    height: 30px; }
+    height: 40px; }
     .igcp-login .igcp-login__footer .igcp-login__footer-menu li {
       float: left;
       padding: 0 13px; }
@@ -2052,12 +2091,12 @@ label {
       display: block; }
       .igcp-login .igcp-login--col1 .igcp-nav__logo a img {
         width: 148px;
-        margin-top: 75px; } }
+        margin-top: 50px; } }
 @media (max-width: 1023px) {
   .igcp-login .igcp-login__ad--mobile {
-    margin: 50px auto;
-    padding: 0 20px;
-    max-width: 768px; }
+    width: 80%;
+    margin: 50px auto 20px;
+    text-align: center; }
   .igcp-login .igcp-login--col2 {
     background-image: none !important;
     background-color: inherit !important; }
@@ -2077,7 +2116,7 @@ label {
     width: 100%;
     background-repeat: no-repeat;
     height: 100vh;
-    min-height: 730px; }
+    min-height: 760px; }
     .igcp-login .igcp-login--col2.background-left-bottom {
       background-position: left bottom; }
     .igcp-login .igcp-login--col2.background-left-top {
@@ -2102,7 +2141,8 @@ label {
   .igcp-login .igcp-login__ad-link {
     color: #fff;
     font-weight: bold;
-    letter-spacing: 0.1em; } }
+    letter-spacing: 0.1em;
+    display: inline; } }
 
 .igcp-login-header {
   height: 50px;
@@ -2113,9 +2153,12 @@ label {
   .igcp-login-header .top-bar-right {
     float: right;
     margin-top: 0; }
-    .igcp-login-header .top-bar-right .igcp-nav__link {
-      display: block;
-      padding: 6px 0; }
+    .igcp-login-header .top-bar-right a.igcp-nav__link {
+      margin-top: 0;
+      margin-right: 12px;
+      color: #0e75d5;
+      font-size: 13px;
+      display: block; }
 
 @media (min-width: 1024px) {
   .igcp-login.slds-wrap {
