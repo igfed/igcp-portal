@@ -1996,6 +1996,8 @@ label {
     text-align: center;
     font-size: 13px;
     color: #282828; }
+.igcp-login .slds-notify_toast {
+  width: 100%; }
 .igcp-login .slds-icon-utility-lock {
   float: left;
   width: 16px;
@@ -2059,7 +2061,8 @@ label {
   background-color: #004171; }
 .igcp-login .igcp-login--col1 .slds-form-element__label {
   color: #004171; }
-.igcp-login .igcp-login--col1 .igcp-nav__link:hover, .igcp-login .igcp-login--col1 .igcp-nav__link.igcp-nav__link--selected {
+.igcp-login .igcp-login--col1 .igcp-nav__link:hover,
+.igcp-login .igcp-login--col1 .igcp-nav__link.igcp-nav__link--selected {
   border-bottom: none; }
 .igcp-login .igcp-login--col1 .igcp-input__help-link {
   margin-top: -63px; }
@@ -2165,7 +2168,16 @@ label {
     flex-wrap: nowrap;
     align-items: normal; } }
 
+.igcp-lock-screen h1 {
+  padding-right: 70px; }
+
+@media (min-width: 768px) {
+  .igcp-lock-screen h1 {
+    padding-right: 150px; } }
 .igcp-footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
   padding-top: 0;
   padding-bottom: 32px;
   background-color: #0d263c; }

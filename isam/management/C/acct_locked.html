@@ -11,6 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>IBM Security Access Manager</title>
     <!-- EXTERNAL INCLUDES-->
+    <link href="../../external_files/css/foundation.css" type="text/css" rel="stylesheet"/>
+    <link href="../../external_files/css/main.css" type="text/css" rel="stylesheet"/>
     <link href="../../external_files/css/salesforce-lightning-design-system.min.css" type="text/css" rel="stylesheet"/>
     <link href="../../external_files/css/igcp.css" type="text/css" rel="stylesheet"/>
     <script type="text/javascript">
@@ -90,69 +92,82 @@
     <!-- END Cookie check block -->
 
     <!-- MOBILE HEADER START -->
-    <header role="banner" class="igcp-header igcp-login-header igcp-medium-utils__display--none">
-        <nav class="igcp-nav">
-            <div class="top-bar centered">
-                <div class="top-bar-left">
-                    <div class="igcp-nav__logo">
-                        <a class="home-link" href="/">
-                            <img src="../../external_files/images/IG_EN.svg" alt=""/>
-                        </a>
-                    </div>
+    <header role="banner" class="igcp-header">
+         <nav class="igcp-nav">
+        	<div class="top-bar centered">
+              <div class="top-bar-left">
+                <div class="igcp-nav__logo">
+                    <a class="home-link" href="/">
+                       <img src="../../external_files/images/IG_EN.svg" alt=""/>
+                    </a>
                 </div>
+              </div>
+              <div class="top-bar-right">
+                <ul class="dropdown menu" data-dropdown-menu="">
+                  <!-- <li><a class="igcp-nav__link slds-float_right" href="#">Francais</a></li> -->
+                </ul>
+              </div>
             </div>
         </nav>
     </header>
     <!-- MOBILE HEADER END -->
 
     <!-- LOGIN START -->
-    <div class="igcp-lock-screen slds-grid slds-grid–vertical-align-center slds-wrap">
-        <!-- SIGN IN -->
-        <div class="slds-col slds-size--12-of-12">
+    <div class="igcp-wrapper igcp-lock-screen slds-grid slds-grid--align-center slds-wrap">
 
-            <div class="igcp-nav__logo">
-                <a class="home-link" href="/">
-                    <img src="../../external_files/images/IG_EN_logo.png" alt="">
-                </a>
-            </div>
-        </div>
-
-        <div class="slds-col slds-size--12-of-12">
-            <div class="main-content">
-                <h1>Error</h1>
-            </div>
-        </div>
-
-        <div class="slds-col slds-size--12-of-12">
-            <div class="igcp-login__footer" role="contentinfo">
-
-                <ul class="igcp-login__footer-menu">
-                    <li class="igcp-login__footer-link">
-                        <a href="#">Support</a>
-                    </li>
-                    <li class="igcp-login__footer-link">
-                        <a href="#">Privacy</a>
-                    </li>
-                    <li class="igcp-login__footer-link">
-                        <a href="#">User Agreement</a>
-                    </li>
-                    <li class="igcp-login__footer-link">
-                        <a href="#">Investor Performance</a>
-                    </li>
-                    <li class="igcp-login__footer-link">
-                        <a href="#">Help</a>
-                    </li>
-                </ul>
-
-                <div class="igcp-login__footer-copyright">
-                    <ul class="menu">
-                        <li>&copy; 2017 IGM Financial Inc. All rights Reserved</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="slds-m-vertical--medium slds-medium-m-vertical--xx-large slds-m-horizontal--small slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12">
+           <h1>Your online access has been locked.</h1>
+           <p class="slds-medium-p-right--large slds-m-vertical--medium">For security safety, this online access has been locked and you can no longer use your login credentials. To reset access, please contact our support at <b>1-800-555-5555.</b></p>
+           <div class="slds-m-horizontal--large slds-medium-m-horizontal--zero">
+           	<button class="igcp-utils__width--100 igcp-medium-utils__width--auto slds-button slds-button--brand slds-p-vertical--xxx-small slds-p-horizontal--small slds-medium-p-horizontal--xx-large" onclick="">Return to Login</button>
+           </div>
         </div>
 
     </div>
+    <footer id="igcp-footer" class="igcp-footer site-footer" role="contentinfo">
+        
+        <div class="row footer-navigation">
+            
+            <li class="igcp-horizontal-rule"></li>
+            
+            <ul class="menu vertical float-left " data-responsive-menu="medium">
+                <li class="footer-link">
+                    <a href="#">Contact</a>
+                </li>
+                <li class="footer-link">
+                    <a href="#">Privacy</a>
+                </li>
+                <li class="footer-link">
+                    <a href="#">User Agreement</a>
+                </li>
+                <li class="footer-link">
+                    <a href="#">Investor Performance</a>
+                </li>
+                <li class="footer-link">
+                    <a href="#">Faq</a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="row footer-back-to-top-button">
+            <div class="columns">
+                <a class="float-right" href="#top">top</a>
+            </div>
+        </div>
+        
+        
+        <div class="row footer-copyright">
+            <div class="columns footer-copyright-border-top">
+                <div class="row">
+                    <div class="small-12 medium-12 large-3 columns float-left">
+                        <ul class="menu">
+                            <li>© 2017 Investors Group Inc. All rights Reserved</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     <!-- LOGIN END -->
 
 </div>

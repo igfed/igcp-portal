@@ -1,0 +1,357 @@
+//BEM convention
+//[namespace]-[block]__[element]--[modifier]
+//See https://seesparkbox.com/foundry/bem_by_example for details
+//Login - any styling related to the login
+.#{$namespace}-login {
+
+	a {
+		color: $ig-link-blue;
+		text-decoration: none;
+		display: block;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.slds-checkbox {
+		margin-top: 10px;
+		border: none;
+		display: block;
+	}
+
+	a.igcp-nav__link {
+		margin-top: 0;
+		margin-right: 12px;
+		color: $ig-link-blue;
+		font-size: 13px;
+		display: block;
+	}
+
+	.slds-form-element__label {
+		font-size: 12px;
+	}
+
+	.top-bar-left {
+		margin-top: 0;
+	}
+
+	.arrow {
+		padding-left: 4px;
+		color: #fff;
+	}
+
+	.igcp-login__legal {
+		margin-top: 85px;
+
+		a {
+			display: inline;
+		}
+
+		p {
+			text-align: center;
+			font-size: 13px;
+			color: $ig-black;
+		}
+	}
+
+	.slds-notify_toast {
+		width: 100%;
+	}
+
+	.slds-icon-utility-lock {
+		float: left;
+		width: 16px;
+		height: 16px;
+		background: url(../icons/lock_60.png) no-repeat top left;
+		background-size: 100%;
+		margin: 3px 5px 0 0;
+	}
+
+	.slds-icon-utility-user {
+		float: left;
+		width: 16px;
+		height: 16px;
+		background: url(../icons/user_60.png) no-repeat top left;
+		background-size: 100%;
+		margin: 3px 5px 0 0;
+	}
+
+
+	.slds-checkbox--faux {
+		border: 1px solid $ig-black;
+	}
+
+	.igcp-login__register-link {
+		a {
+			font-size: 14px;
+		}
+	}
+
+	.igcp-login__footer {
+		width: 450px;
+		margin: 40px auto 0;
+
+		@media (max-width: 480px) {
+			width: auto;
+
+			.igcp-login__footer-menu {
+				height: auto;
+			}
+
+			ul {
+				margin-bottom: 20px;
+			}
+
+			li {
+				display: block;
+				text-align: center;
+				width: 100%;
+			}
+
+			.igcp-login__footer-copyright {
+				margin-top: 80px;
+			}
+		}
+
+		.igcp-login__footer-menu {
+			height: 40px;
+
+			li {
+				float: left;
+				padding: 0 13px;
+			}
+		}
+
+		.igcp-login__footer-copyright {
+			clear: both;
+			margin-bottom: 40px;
+
+			li {
+				margin: 0 auto;
+				text-align: center;
+			}
+		}
+	}
+
+	.igcp-login--col1 {
+
+		h3 {
+			font-family: $ig-whitney-light;
+			letter-spacing: 0.3px;
+			text-align: center;
+			font-size: 22px;
+			margin: 35px 0 35px;
+			color: $ig-blue;
+
+			@media (min-width: 1024px) {
+				margin: 20px 0 50px;
+			}
+		}
+
+		.slds-button {
+			padding-left: 80px;
+			padding-right: 80px;
+			margin: 0 auto;
+			display: block;
+			background-color: $ig-blue;
+		}
+
+		.slds-form-element__label {
+			color: $ig-blue;
+		}
+
+		.igcp-nav__link:hover,
+		.igcp-nav__link.igcp-nav__link--selected {
+			border-bottom: none;
+		}
+
+		.igcp-input__help-link {
+			margin-top: -63px;
+		}
+
+		.igcp-input {
+			border: 1px solid $ig-black !important;
+			height: 40px;
+		}
+
+		.igcp-login__username-checkbox {
+			color: #282828;
+			font-size: 13px;
+		}
+
+		.igcp-login__sidebar-wrapper {
+			width: 310px;
+			margin: 0 auto;
+
+			@media (max-width: 380px) {
+				width: 280px;
+			}
+		}
+	}
+
+	.igcp-login--col2 {}
+
+	@media (min-width: 768px) and (max-width: 1023px) {
+		.igcp-login--col1 {}
+	}
+
+	@media (max-width: 767px) {
+		.igcp-login--col1 {
+			.top-bar-right {
+				display: none;
+			}
+			.igcp-nav__logo {
+				display: none;
+			}
+		}
+	}
+
+	@media (min-width: 768px) {
+		.igcp-login--col1 {
+			.top-bar-right {
+				float: right;
+				margin: 10px 10px -20px 0;
+			}
+
+			.igcp-nav__logo {
+				clear: both;
+				a {
+					text-align: center;
+					display: block;
+
+					img {
+						width: 148px;
+						margin-top: 50px;
+					}
+				}
+			}
+		}
+	}
+
+	@media (max-width: 1023px) {
+		.igcp-login--col1 {}
+
+		.igcp-login__ad--mobile {
+			width: 80%;
+			margin: 50px auto 20px;
+			text-align: center;
+		}
+
+		.igcp-login--col2 {
+			background-image: none !important;
+			background-color: inherit !important;
+
+			.igcp-login__ad--desktop {
+				display: none;
+			}
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.slds-grid {
+			width: 100%;
+		}
+
+		.igcp-login--col1 {
+			width: 33.33333%;
+			min-width: 512px;
+
+			.top-bar-right {
+				left: 455px;
+			}
+
+			.igcp-login__ad--mobile {
+				display: none;
+			}
+		}
+
+		.igcp-login--col2 {
+			width: 100%;
+			background-repeat: no-repeat;
+			height: 100vh;
+			min-height: 760px; // Some options here for an Author depending on the type of image
+			&.background-left-bottom {
+				background-position: left bottom;
+			}
+
+			&.background-left-top {
+				background-position: left top;
+			}
+		}
+
+		.igcp-login__ad {
+			margin: 90px 0 0 50px;
+			width: 462px;
+
+			@media (max-width: 1080px) {
+				margin: 85px 0 0 25px;
+			}
+		}
+
+		.igcp-login__ad-heading {
+			color: #fff;
+			margin-bottom: 15px;
+			line-height: 1.15;
+		}
+
+		.igcp-login__ad-copy {
+			color: #fff;
+			font-family: $ig-whitney-light;
+			font-size: 21px;
+			margin-bottom: 18px;
+			line-height: 1.3;
+		}
+
+		.igcp-login__ad-link {
+			color: #fff;
+			font-weight: bold;
+			letter-spacing: 0.1em;
+			display: inline;
+		}
+	}
+}
+
+.igcp-login-header {
+	height: 50px;
+	padding: 10px 10px 10px 20px;
+
+	.top-bar-left {
+		margin-top: 0;
+		float: left;
+	}
+
+	.top-bar-right {
+		float: right;
+		margin-top: 0;
+
+		a.igcp-nav__link {
+			margin-top: 0;
+			margin-right: 12px;
+			color: $ig-link-blue;
+			font-size: 13px;
+			display: block;
+		}
+	}
+}
+
+.igcp-login.slds-wrap {
+	@media (min-width: 1024px) {
+		flex-wrap: nowrap;
+		align-items: normal;
+	}
+}
+
+
+.igcp-lock-screen {
+	h1 {
+		padding-right: 70px;
+	}
+}
+
+@media (min-width: $ig-medium) {
+	.igcp-lock-screen {
+		h1 {
+			padding-right: 150px;
+		}
+	}
+}
