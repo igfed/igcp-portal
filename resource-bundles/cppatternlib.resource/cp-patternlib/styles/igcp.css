@@ -3061,7 +3061,8 @@ label {
 
 .igcp-wrapper {
   max-width: 1024px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  min-height: calc(100vh - 234px); }
 
 .igcp-percentage--large {
   font-size: 45%; }

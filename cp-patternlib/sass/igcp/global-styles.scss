@@ -28,6 +28,8 @@
 .#{$namespace}-wrapper {
 	max-width: $ig-large;
 	margin: 0 auto;
+	//234 is the height of the footer
+	min-height: calc(100vh - 234px);
 }
 
 .#{$namespace}-percentage--large {
