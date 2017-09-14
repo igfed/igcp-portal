@@ -1996,6 +1996,10 @@ label {
     text-align: center;
     font-size: 13px;
     color: #282828; }
+.igcp-login .slds-notify_toast {
+  width: 100%;
+  min-width: inherit;
+  margin: -10px 0 30px; }
 .igcp-login .slds-icon-utility-lock {
   float: left;
   width: 16px;
@@ -2010,6 +2014,13 @@ label {
   background: url(../icons/user_60.png) no-repeat top left;
   background-size: 100%;
   margin: 3px 5px 0 0; }
+.igcp-login .slds-icon-utility-info {
+  float: left;
+  width: 16px;
+  height: 16px;
+  background: url(../icons/info_60.png) no-repeat top left;
+  background-size: 100%;
+  margin: 6px 10px 0 -8px; }
 .igcp-login .slds-checkbox--faux {
   border: 1px solid #282828; }
 .igcp-login .igcp-login__register-link a {
