@@ -129,6 +129,21 @@
 
             <div class="igcp-login__sidebar-wrapper">
                 <h3 class="slds-m-bottom--large">Sign in to Online Access</h3>
+
+                <div class="igcp-login__error">
+                    <div class="slds-notify_container slds-is-relative">
+                        <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
+                            <span class="slds-assistive-text">info</span>
+                            <span class="slds-icon_container slds-icon-utility-info slds-m-right_small slds-no-flex slds-align-top"
+                                  title="An error has occurred">
+                            </span>
+                            <div class="slds-notify__content">
+                                <p id="errId" class="slds-text-heading_small">%ERROR%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!--LOGIN FORM-->
                 <form id="login-form" class="slds-form slds-form_stacked" method="POST" action="/pkmslogin.form">
                     <!--USERNAME-->
