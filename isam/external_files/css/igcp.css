@@ -1997,7 +1997,9 @@ label {
     font-size: 13px;
     color: #282828; }
 .igcp-login .slds-notify_toast {
-  width: 100%; }
+  width: 100%;
+  min-width: inherit;
+  margin: -10px 0 30px; }
 .igcp-login .slds-icon-utility-lock {
   float: left;
   width: 16px;
@@ -2012,6 +2014,13 @@ label {
   background: url(../icons/user_60.png) no-repeat top left;
   background-size: 100%;
   margin: 3px 5px 0 0; }
+.igcp-login .slds-icon-utility-info {
+  float: left;
+  width: 16px;
+  height: 16px;
+  background: url(../icons/info_60.png) no-repeat top left;
+  background-size: 100%;
+  margin: 6px 10px 0 -8px; }
 .igcp-login .slds-checkbox--faux {
   border: 1px solid #282828; }
 .igcp-login .igcp-login__register-link a {
@@ -2061,8 +2070,7 @@ label {
   background-color: #004171; }
 .igcp-login .igcp-login--col1 .slds-form-element__label {
   color: #004171; }
-.igcp-login .igcp-login--col1 .igcp-nav__link:hover,
-.igcp-login .igcp-login--col1 .igcp-nav__link.igcp-nav__link--selected {
+.igcp-login .igcp-login--col1 .igcp-nav__link:hover, .igcp-login .igcp-login--col1 .igcp-nav__link.igcp-nav__link--selected {
   border-bottom: none; }
 .igcp-login .igcp-login--col1 .igcp-input__help-link {
   margin-top: -63px; }
