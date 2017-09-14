@@ -2086,7 +2086,7 @@ label {
   @media (max-width: 380px) {
     .igcp-login .igcp-login--col1 .igcp-login__sidebar-wrapper {
       width: 280px; } }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .igcp-login .igcp-login--col1 .top-bar-right {
     display: none; }
   .igcp-login .igcp-login--col1 .igcp-nav__logo {
