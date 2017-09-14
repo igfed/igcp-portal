@@ -32,9 +32,6 @@
 
 			if (obj.isValid === false) {
 
-				//console.error("Input Errors: ");
-				//console.error(obj.errors);
-
 				cmp.set("v.inputErrors", true);
 
 				events.fire("CP_Evt_Input_Error", {

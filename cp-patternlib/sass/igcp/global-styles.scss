@@ -63,22 +63,16 @@
 
 //INPUT
 .#{$namespace}-input {
-	border-top: none;
-	border-left: none;
-	border-right: none;
 	border-radius: 0;
 	margin-bottom: 0;
-	border-bottom: 1px solid $ig-dark-grey;
+	border: 1px solid $ig-black;
 
 	&.input,
 	&.uiInput--input.input,
 	&.uiInput--select.select {
-		border-top: none;
-		border-left: none;
-		border-right: none;
 		border-radius: 0;
 		margin-bottom: 0;
-		border-bottom: 1px solid $ig-dark-grey;
+		border: 1px solid $ig-black;
 	}
 }
 
@@ -204,14 +198,13 @@
 	font-family: $ig-whitney-semibold;
 	font-size: $ig-space--small;
 	letter-spacing: $ig-letter-spacing;
-	text-transform: uppercase;
 }
 
 .#{$namespace}-label--small {
 	font-family: $ig-whitney-semibold;
 	font-size: $ig-space--x-small;
 	letter-spacing: $ig-letter-spacing;
-	text-transform: uppercase;
+	color: $ig-blue;
 }
 
 
@@ -277,6 +270,8 @@
 		left: 50%;
 		margin-top: -15px;
 		margin-left: -3px;
+		font-family: $ig-whitney-semibold;
+		font-size: $ig-font-size--mini;
 	}
 
 	.#{$namespace}-progress-indicator__step--complete {
