@@ -9,23 +9,24 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <title>IBM Security Access Manager</title>
     <!-- EXTERNAL INCLUDES-->
     <link href="../../external_files/css/salesforce-lightning-design-system.min.css" type="text/css" rel="stylesheet"/>
     <link href="../../external_files/css/igcp.css" type="text/css" rel="stylesheet"/>
     <script type="text/javascript">
       function onLoadPage() {
-        //showError();
-        //setFocus();
+        showError();
+        setFocus();
       }
 
       function showError() {
         var elem = document.getElementById("error-box");
-        // if ("%ERROR%" == "") {
-        // 	elem.setAttribute("class", "error-box");
-        // } else {
-        // 	elem.setAttribute("class", "error-box active");
-        // }
+        if ("%ERROR%" == "") {
+        	elem.setAttribute("class", "error-box");
+        } else {
+        	elem.setAttribute("class", "error-box active");
+        }
       }
 
       function setFocus() {
@@ -37,6 +38,15 @@
         console.log('Submitting Form');
       }
     </script>
+    <style>
+    	.error-box {
+    		display: none;
+    	}
+
+    	.error-box.active {
+    		display: block;
+    	}
+    </style>
     <!-- ClickJack projection from:
          https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet
       -->
@@ -96,7 +106,7 @@
                 <div class="top-bar-left">
                     <div class="igcp-nav__logo">
                         <a class="home-link" href="/">
-                            <img src="../../external_files/images/IG_EN.svg" alt=""/>
+                            <img src="../../external_files/images/IG_EN.png" alt=""/>
                         </a>
                     </div>
                 </div>
@@ -130,7 +140,7 @@
             <div class="igcp-login__sidebar-wrapper">
                 <h3 class="slds-m-bottom--large">Sign in to Online Access</h3>
 
-                <div class="igcp-login__error">
+                <div id="error-box"class="igcp-login__error error-box">
                     <div class="slds-notify_container slds-is-relative">
                         <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
                             <span class="slds-assistive-text">info</span>

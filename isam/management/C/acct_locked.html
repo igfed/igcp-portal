@@ -9,6 +9,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<title>IBM Security Access Manager</title>
 	<!-- EXTERNAL INCLUDES-->
 	<link href="../../external_files/css/foundation.css" type="text/css" rel="stylesheet" />
@@ -37,6 +38,10 @@
 	function submitForm() {
 		document.getElementById("login-form").submit();
 		console.log('Submitting Form');
+	}
+
+	function gotoLogin() {
+		window.location.href = "./login.html";
 	}
 	</script>
 	<!-- ClickJack projection from:
@@ -117,7 +122,7 @@
 					<h1>Your online access has been locked.</h1>
 					<p class="slds-medium-p-right--large slds-m-vertical--medium">For security safety, this online access has been locked and you can no longer use your login credentials. To reset access, please contact our support at <b>1-800-555-5555.</b></p>
 					<div class="slds-m-horizontal--large slds-medium-m-horizontal--zero">
-						<button class="igcp-utils__width--100 igcp-medium-utils__width--auto slds-button slds-button--brand slds-p-vertical--xxx-small slds-p-horizontal--small slds-medium-p-horizontal--xx-large" onclick="">Return to Login</button>
+						<button class="igcp-utils__width--100 igcp-medium-utils__width--auto slds-button slds-button--brand slds-p-vertical--xxx-small slds-p-horizontal--small slds-medium-p-horizontal--xx-large" onclick="gotoLogin()">Return to Login</button>
 					</div>
 				</div>
 			</div>
