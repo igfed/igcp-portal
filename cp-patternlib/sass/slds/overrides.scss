@@ -5,7 +5,7 @@
 }
 
 .slds-button {
-    font-family: $ig-whitney-book;
+    font-family: $ig-whitney-semibold;
     font-size: $ig-font-size--base;
     letter-spacing: $ig-letter-spacing;
     text-transform: capitalize;
@@ -27,8 +27,14 @@
     &.input-label {
         position: relative;
         top: 3px;
-        font-size: $ig-font-size--base;
+        font-size: $ig-font-size--mini;
         margin-right: $ig-space--xxx-small;
+
+        span {
+        	font-family: $ig-whitney-book;
+        	color: $ig-black;
+        	margin-left: $ig-space--xx-small;
+        }
     }
 }
 

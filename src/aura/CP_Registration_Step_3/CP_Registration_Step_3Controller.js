@@ -54,6 +54,8 @@
 	},
 	onShowTOS: function(cmp, evt, hlpr) {
 
+		console.log("onShowTOS");
+
 		var events = cmp.find("CP_Events");
 
 		events.fire("CP_Evt_Modal_Open", {
@@ -65,7 +67,12 @@
 			payload = evt.getParam("payload"),
 			events = cmp.find("CP_Events");
 
+		console.log("Registration Step 3");
+		console.log(payload);
+
 		if (payload.id === "tos_agree_button") {
+
+			console.log("HELLO");
 
 			if (cmp.get("v.acceptTOS") === true) {
 
@@ -84,7 +91,11 @@
 	},
 	onAgreeChecked: function(cmp, evt, hlpr) {
 
+		console.log("onAgreeChecked");
+
 		var payload = evt.getParam("payload");
+
+		console.log(payload);
 
 		if (payload.id === "read_and_agree_checkbox") {
 			cmp.set("v.acceptTOS", payload.checked);
@@ -159,7 +170,7 @@
 		cmp.set("v.class", newClass);
 	},
 	onModalClose: function(cmp, evt, hlpr) {
-		
+
 		cmp.set("v.class", "igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large");
 	},
 	updateISAMPayload: function(cmp, evt, hlpr) {
