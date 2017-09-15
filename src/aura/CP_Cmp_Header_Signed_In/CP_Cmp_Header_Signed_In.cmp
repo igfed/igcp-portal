@@ -34,7 +34,7 @@
             
             <li class="igcp-utils__hide igcp-medium-utils__show--table-cell"><a class="igcp-nav__link" href="#"><lightning:icon iconName="utility:notification" size="x-small" alternativeText="Notifications" /></a></li>
             
-            <li class="igcp-utils__hide igcp-medium-utils__show--table-cell"><a class="igcp-nav__link" href="#"><lightning:icon iconName="utility:user" size="x-small" alternativeText="User" /><span class="igcp-nav__username">Jasper</span></a></li>
+            <li class="igcp-utils__hide igcp-medium-utils__show--table-cell"><a class="igcp-nav__link" href="/customers/secur/logout.jsp"><lightning:icon iconName="utility:user" size="x-small" alternativeText="User" /><span class="igcp-nav__username">Sign out</span></a></li>
             
             <li class="igcp-medium-utils__hide" data-toggle="igcp-mobile-nav--right"><a class="igcp-nav__link" href="#"><lightning:icon iconName="utility:user" size="small" alternativeText="User" /></a></li>
           </ul>

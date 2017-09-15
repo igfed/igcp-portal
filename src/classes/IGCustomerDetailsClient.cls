@@ -1,136 +1,61 @@
-public class IGClient {
-    public class IGClientException extends Exception {}
-
-    private static string HTTP_HEADER_CORR  = 'correlationid';
-    private static string HTTP_HEADER_ACPT  = 'Accept';
-    private static string HTTP_QUERY_LANG   = 'lang';
-    private static String kHexChars = '0123456789abcdefABCDEF';
-
-    public enum Language {ENGLISH, FRENCH}
-
-    private string namedCredentialsName;
-    private string langQueryString;
-
-    public IGClient(string namedCredentialsName){
-        this(namedCredentialsName, Language.ENGLISH);
+public class IGCustomerDetailsClient extends IGRestClient {
+	public String bpid 			{ get; set; }
+	public String resourceName 	{ get; set; }
+	
+	public IGCustomerDetailsClient(String namedCredentialsName, IGRestClient.Language lang, 
+			String bpid, String resourceName) {
+		super(namedCredentialsName, lang);
+		this.bpid = bpid;
+		this.resourceName = resourceName;
+	}
+	
+	public IGCustomerDetailsClient(String namedCredentialsName, String bpid, String resourceName) {
+		this(namedCredentialsName, null, bpid, resourceName);
+	}
+	
+	public IGCustomerDetailsClient(String namedCredentialsName, IGRestClient.Language lang) {
+		super(namedCredentialsName, lang);
+	}
+	
+	public IGCustomerDetailsClient(String namedCredentialsName) {
+		this(namedCredentialsName, null);
+	}
+	
+    public override String getHttpEndPoint() {
+    	return 'callout:' + this.namedCredentialsName + '/clients/' + bpid.trim() + '/' + resourceName.trim() + 
+    			'/details?' + + this.langQueryString;
     }
 
-    public IGClient(string namedCredentialsName, Language lang){
-        this.namedCredentialsName = namedCredentialsName;
-        if(Language.FRENCH==lang){
-            this.langQueryString = HTTP_QUERY_LANG + '=fr';
+	public override Response parseResponse(String responseBody) {
+		ClientData rv = (ClientData)JSON.deserialize(responseBody, ClientData.class);
+		return rv;
+	}
+    
+    public class ClientData extends IGRestClient.Response {
+    	public Mortgages mortgages 		{get; set;}
+        public Accounts accounts 		{get; set;}
+        public Insurances insurances 	{get; set;}
+    	
+        public ClientData() {
+        	success = true;
+        	code = 200;
+        	accounts = new Accounts();
+        	mortgages = new Mortgages();
+        	insurances = new Insurances();
         }
-        else {
-            this.langQueryString = HTTP_QUERY_LANG + '=en';
-        }
-    }
-
-    public Response getCustomerAccountDetails(String bpid){
-        return getCustomerDetails(bpid, 'accounts');
-    }
-
-    public Response getCustomerMortgageDetails(String bpid){
-        return getCustomerDetails(bpid, 'mortgages');
-    }
-
-    public Response getCustomerInsuranceDetails(String bpid){
-        return getCustomerDetails(bpid, 'insurances');
-    }
-
-    public Response getCustomerAllDetails(String bpid){
-        return getCustomerDetails(bpid, 'all');
-    }
-
-    /**
-        private methods
-    */
-    public Response getCustomerDetails(String bpid, String resourceName){
-        if(String.isBlank(bpid)) throw new IGClientException('Business Partner Id cannot be null/empty');
-        if(String.isBlank(resourceName)) throw new IGClientException('Resource name cannot be null/empty');
-
-        HttpRequest req = new HttpRequest();
-        req.setEndpoint('callout:' + this.namedCredentialsName + '/clients/' + bpid.trim() + '/' + resourceName.trim() + '/details?' + this.langQueryString);
-        //req.setEndpoint('callout:' + this.namedCredentialsName + '/clients/' + bpid.trim() + '/' + resourceName.trim());
-        req.setMethod('GET');
-        req.setHeader(HTTP_HEADER_CORR, generateGUID());
-        req.setHeader(HTTP_HEADER_ACPT, 'application/json');
-        req.setTimeout(120000);
-        Http http = new Http();
-        HTTPResponse res = http.send(req);
-
-        system.debug('RAW: ' + res.getBody());
-
-        Response ret;
-        Integer resStatusCode = res.getStatusCode();
-        if(200!=resStatusCode){
-            Error err;
-            try{
-                ret = (Error)JSON.deserialize(res.getBody(), Error.class);               
-             }catch(Exception e){
-                 err = new Error();
-                 err.error = res.getBody();
-                 ret = err;    
-             }
-             err = (Error)ret;
-             err.success = false;
-        }else{
-            ret = (Data)JSON.deserialize(res.getBody(), Data.class);
-            Data dat = (Data)ret;
-            dat.success = true; 
-        }
-        ret.code = resStatusCode;
-        return ret;
     }
     
-    private static String generateGUID() {
-          String returnValue = '';
-          Integer nextByte = 0;
-          for (Integer i = 0; i<32; i++) {
-           if (i == 8 || i == 12 || i == 16 || i == 20) {
-            returnValue += '-';
-           }
-           nextByte = (Math.round(Math.random() * 255) - 128) & 255;
-           //System.debug('\n\n'+(nextByte & 15));
-           if (i == 6) {
-            nextByte = nextByte & 15;
-           }
-           returnValue += kHexChars.charAt(nextByte & 15);
-          }
-          return returnValue;
-    }
-
-    /**
-        Schema classes
-    */
-    public abstract class Response {
-        public boolean success {get; set;}
-        public Integer code {get; set;}
-    }
-    public class Error extends Response {
-        public Error(){success=false;}
-        public string error {get; set;}
-    }
-    public class Data extends Response {
-        public Data(){success=true;code=200;accounts=new Accounts();mortgages=new Mortgages();insurances=new Insurances();}
-        public Mortgages mortgages {get; set;}
-        public Accounts accounts {get; set;}
-        public Insurances insurances {get; set;}
-    }
-
-    public abstract class Entities{
-        public string status {get; set;}
-    }
-    public class Accounts extends Entities {
+    public class Accounts extends IGRestClient.Entities {
         public Accounts(){data=new list<Account>();}
         public Account[] data {get; set;}
     }
 
-    public class Mortgages extends Entities {
+    public class Mortgages extends IGRestClient.Entities {
         public Mortgages(){data=new list<Mortgage>();}
         public Mortgage[] data {get; set;}
     }
 
-    public class Insurances extends Entities {
+    public class Insurances extends IGRestClient.Entities {
         public Insurances(){data=new list<Insurance>();}
         public Insurance[] data {get; set;}
     }

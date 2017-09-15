@@ -43,7 +43,6 @@ public class CP_RegistrationController {
 
             // Call the Registration class's verification method by passing in the Deserialized User profile object and get a result Object in return
             objForm.State = Registration.verifyProfile(objForm.Profile);
-
         }
         catch(exception e)
         {
@@ -59,42 +58,56 @@ public class CP_RegistrationController {
 	@AuraEnabled
 	public static string  StepThree(String payload)
     {
-        System.debug('I am in Step Three');
+        //System.debug('I am in Step Three');
         objForm = new CP_RegistrationClass.RegistrationForm();
-        objForm.State = new CP_RegistrationClass.Result();
+        CP_RegistrationClass.Result result = new CP_RegistrationClass.Result();
         try
         {
             // Deserialize the passed JSON into Registration Form Object     
             objForm = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(payload, CP_RegistrationClass.RegistrationForm.class);
 
             // Call the Registration class's verification method by passing in the Deserialized Registration Form object and get a result Object in return
-            objForm.State = Registration.reValidateAll(objForm);
+            result = Registration.reValidateAll(objForm);
 
-            if(objForm.State.IsValid)
+            if(result.IsValid)
             {
-                // Make the ISAM call and get the new User ID  
+                // Make the ISAM call and get the new User ID
 
 
                 // Update the New User ID into Salesforce 
-
-
+                result = Registration.SaveInfoInSalesforce(objForm);
+                
                 // Return Success and Redirect to Login Page 
             }
         }
         catch(exception e)
         {
-            objForm.State.IsValid = false;
-            objForm.State.Messages.add(e.getMessage());
+            result.IsValid = false;
+            result.Messages.add(e.getMessage());
         }
 
         // Serialize the result object and return as string
-        System.debug('Return object from Controller');
-        System.debug(objForm);
-        return JSON.serialize(objForm);
+        //System.debug('Return object from Controller');
+        //System.debug(objForm);
+        return JSON.serialize(result);
     }
     
 
-
+    @AuraEnabled
+    public static string getSecurityQuestions()
+    {
+        CP_RegistrationClass.SecurityQuestions securityQuestions = new CP_RegistrationClass.SecurityQuestions();
+        try{
+            securityQuestions.loadQuestionsFromISAM();
+            securityQuestions.State.IsValid = true;
+        }
+        catch(exception e)
+        {
+            securityQuestions.State.IsValid = false;
+            securityQuestions.State.Messages.add(e.getMessage());
+        }
+        return JSON.serialize(securityQuestions);
+    }
 
 
 }

@@ -1,6 +1,0 @@
-<design:component label="Taxonomy Breadcrumb">
-    <design:attribute name="tagPath" label="Starting Category Path" description="Enter the full path of the taxonomy category where this breadcrumb will start. eg ‘/Taxonomy Name/Category/Category’" />
-    <design:attribute name="taxonomyInstanceName" label="Taxonomy Menu ID" description="Enter a unique ID value to link this taxonomy breadcrumb to a taxonomy menu or a taxonomy loader on this page. ID can contain alphanumerics and spaces." />
-    <design:attribute name="showFirstLevel" label="Display Root Node Name" description="Displays the taxonomy root node name when the user navigates to the top of the taxonomy. The name is not a link." />
-    <design:attribute name="allowEditSubscriptions" label="Show Subscription Button" description="Allows users to subscribe directly to the current path, without visiting their profile page." />
-</design:component>

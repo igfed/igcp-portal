@@ -1,4 +1,4 @@
-<aura:component>
+<aura:component >
 	<!-- ATTRS -->
 	<aura:attribute name="class" type="String" default=""></aura:attribute>
 	<aura:attribute name="imageFile" type="String" default="safe.png"></aura:attribute>

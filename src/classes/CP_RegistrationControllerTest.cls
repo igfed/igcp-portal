@@ -117,6 +117,18 @@ public  class CP_RegistrationControllerTest {
 
 	@isTest static void test_StepOne_ContactInvalidPostalCode() {
 		
+		String jsonObj = '{ "clientNum" : "1234567890000002", "postalCode" : "123456", "dob" : "1947-08-15" }';
+
+		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
+
+		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+
+		System.assertEquals(false, result.State.IsValid);
+		System.assertEquals(System.Label.CP_Registration_Postalcode_Is_Invalid, result.State.Messages[0]);
+	}
+
+	@isTest static void test_StepOne_ContactPostalCodeNotMatched() {
+		
 		String jsonObj = '{ "clientNum" : "1234567890000002", "postalCode" : "M4H 1K2", "dob" : "1947-08-15" }';
 
 		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
@@ -175,6 +187,24 @@ public  class CP_RegistrationControllerTest {
 		System.assertEquals(emptyList, result.State.Messages);
 	}
 
+
+	// 				Security Questions Tests
+	/////////////////////////////////////////////////////////////////
+
+
+
+	@isTest static void test_GetSecurityQuestions()
+	{
+		String jsonResult = CP_RegistrationController.getSecurityQuestions();
+		
+		//System.debug(jsonResult);
+
+		CP_RegistrationClass.SecurityQuestions result = (CP_RegistrationClass.SecurityQuestions) JSON.deserialize(jsonResult, CP_RegistrationClass.SecurityQuestions.class);
+		
+
+		System.assertEquals(true, result.State.IsValid);
+		System.assertEquals(3, result.Questions.Size());
+	}
 
 
 
@@ -293,5 +323,9 @@ public  class CP_RegistrationControllerTest {
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_Email_Is_Invalid, result.State.Messages[0]);
 	}
+
+
+
+
 
 }

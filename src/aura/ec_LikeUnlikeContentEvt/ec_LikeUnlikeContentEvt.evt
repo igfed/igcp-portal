@@ -1,4 +1,0 @@
-<aura:event type="APPLICATION" description="Notify that content has been liked or unliked">
-    <aura:attribute name="id" type="String" />
-    <aura:attribute name="message" type="String" />
-</aura:event>

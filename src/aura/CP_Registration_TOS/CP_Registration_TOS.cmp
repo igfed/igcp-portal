@@ -1,6 +1,6 @@
-<aura:component>
+<aura:component >
 	<!-- ATTRS -->
-	<aura:attribute  name="id" type="String" default="default" ></aura:attribute>
+	<aura:attribute name="id" type="String" default="default" ></aura:attribute>
 	<aura:attribute name="userAgrees" type="Boolean" default="false"></aura:attribute>
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
