@@ -1,3 +1,0 @@
-<aura:event type="APPLICATION" description="ec_ChangeSubscriptionsEvt">
-    <aura:attribute name="tagPaths" type="String[]" />
-</aura:event>

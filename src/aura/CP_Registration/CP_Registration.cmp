@@ -44,15 +44,13 @@
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 1}"  >
-    		<c:CP_Registration_Step_1 
-    			clientNum="{!v.clientNum}" 
+    		<c:CP_Registration_Step_1 clientNum="{!v.clientNum}" 
     			postalCode="{!v.postalCode}" 
     			dob="{!v.dob}" />
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 2}"  >
-    		<c:CP_Registration_Step_2 
-    			username="{!v.username}"
+    		<c:CP_Registration_Step_2 username="{!v.username}"
     			password="{!v.password}"
     			confirmPassword="{!v.confirmPassword}"
     			email="{!v.email}"
@@ -67,8 +65,7 @@
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 3}"  >
-    		<c:CP_Registration_Step_3 
-    			clientNum="{!v.clientNum}" 
+    		<c:CP_Registration_Step_3 clientNum="{!v.clientNum}" 
     			postalCode="{!v.postalCode}" 
     			dob="{!v.dob}"
     			username="{!v.username}"

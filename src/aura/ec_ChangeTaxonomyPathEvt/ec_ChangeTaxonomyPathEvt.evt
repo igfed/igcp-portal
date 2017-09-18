@@ -1,6 +1,0 @@
-<aura:event type="APPLICATION" description="Tell taxonomy loaders to change their path">
-    <aura:attribute name="tagPath" type="String"/>
-    <aura:attribute name="eventElement" type="String"/>
-    <aura:attribute name="taxonomyInstanceName" type="String"/>
-    <aura:attribute name="scrollIntoView" type="Boolean"/>
-</aura:event>

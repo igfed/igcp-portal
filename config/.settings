@@ -1,0 +1,17 @@
+{
+    "projectName": "igcp-portal",
+    "username": "dennis.erny@investorsgroup.com.portaldev_3",
+    "id": "582c1e70-9a5a-11e7-93d3-63c1c122a7bd",
+    "namespace": "",
+    "orgType": "developer",
+    "loginUrl": "https://login.salesforce.com/",
+    "instanceUrl": "https://cs70.salesforce.com",
+    "workspace": "C:\\Users\\ernyd\\Projects\\mm_projects",
+    "subscription": [
+        "ApexClass",
+        "ApexComponent",
+        "ApexPage",
+        "ApexTrigger",
+        "StaticResource"
+    ]
+}

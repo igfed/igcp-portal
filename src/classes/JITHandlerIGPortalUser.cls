@@ -71,7 +71,7 @@ Internal methods
         						JIT_User_Type__c, Preferred_Language__c, Portal_User_Is_Registered__c
         					FROM Contact
         						WHERE
-        							Portal_User_ID__c = :federationIdentifier
+        							Portal_User_Name__c = :federationIdentifier
         					];
 
         // if no contact is found, user should not have access.
@@ -121,15 +121,19 @@ Internal methods
         User_Provisioning_Setting__mdt jitSetting = jitSettings.get(0);
 
         // populate the user record
+        String userName = this.getUserName(federationIdentifier, c, jitSetting);
+        String userAlias = this.getUserAlias(federationIdentifier, c, jitSetting);
+        String profileId = this.getProfileId(federationIdentifier, c, jitSetting);
         u.ContactId = c.Id;
         u.FirstName = c.FirstName;
         u.LastName = c.LastName;
         u.Email = c.Email;
         u.MobilePhone = c.MobilePhone;
         u.FederationIdentifier = federationIdentifier;
-        u.UserName = this.getUserName(federationIdentifier, c, jitSetting);
-        u.Alias = this.getUserAlias(federationIdentifier, c, jitSetting);
-        u.ProfileId = this.getProfileId(federationIdentifier, c, jitSetting);
+        u.UserName = userName;
+        u.CommunityNickname = federationIdentifier;
+        u.Alias = userAlias;
+        u.ProfileId = profileId;
         u.PortalRole = jitSetting.User_Role_Name__c;
         u.LocaleSidKey = jitSetting.Default_LocaleSidKey__c;
         u.EmailEncodingKey = jitSetting.Default_EmailEncodingKey__c;
@@ -140,17 +144,27 @@ Internal methods
     }
 
     private String getUserName(String federationIdentifier, Contact c, User_Provisioning_Setting__mdt jitSetting){
-    	if(String.isBlank(jitSetting.User_Name_Suffix__c)){
+    	String userNameSuffix = jitSetting.User_Name_Suffix__c;
+        String userName = federationIdentifier;
+        if(String.isBlank(userNameSuffix)){
     		System.debug('getUserName - No user name suffix configured for JIT configuration custom meta data record [' + jitSetting.Label + ']'); 
     		throw new JITSystemException('Bad configuration. No user name suffix configured for JIT configuration [' + jitSetting.Label + ']');
     	}
-    	return federationIdentifier + jitSetting.User_Name_Suffix__c;
+        if(federationIdentifier.contains('@')){
+            userName += '.' + userNameSuffix;
+        }else{
+            userName += '@' + userNameSuffix;
+        }
+    	return userName;
     }
 
     private String getUserAlias(String federationIdentifier, Contact c, User_Provisioning_Setting__mdt jitSetting){
-    	String alias = federationIdentifier;
-		if(alias.length() > 5)
-			alias = alias.substring(0, 5);
+    	String firstName = c.FirstName;
+        String lastName = c.LastName;
+        String alias = firstName;
+		if(alias.length() > 7)
+			alias = alias.substring(0, 7);
+        alias += lastName.charAt(0);
 		return alias;
     }
 

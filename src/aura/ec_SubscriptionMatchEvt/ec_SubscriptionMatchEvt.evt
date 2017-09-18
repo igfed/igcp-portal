@@ -1,3 +1,0 @@
-<aura:event type="APPLICATION" description="ec_SubscriptionMatchEvt">
-    <aura:attribute name="tagPath" type="String" />
-</aura:event>

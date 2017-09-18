@@ -28,7 +28,25 @@ global class CP_RegistrationClass {
         }
     }
 
+    public class SecurityQuestions
+    {
+        public Result State {get; set;}
+        public List<String> Questions {get; set;}
+        public SecurityQuestions()
+        {
+            Questions = new List<String>();
+            State = new Result();
+        }
 
+        public void loadQuestionsFromISAM()
+        {
+            // Have to replace following code with actual ISAM call 
+
+            this.Questions.add('What\'s your dog\'s name?' );
+            this.Questions.add('Where were you born?');
+            this.Questions.add('What\'s your mother\'s maiden name?');
+        }
+    }
     
 
     
@@ -80,22 +98,29 @@ global class CP_RegistrationClass {
             else
             {
                 // Validate Contact Postal code and Date of birth with values entered by user
-                System.debug('step 1- client num is valid');
+                //System.debug('step 1- client num is valid');
                 if(String.isBlank(IGUser.postalCode))
                 {
                     // Postatcode is empty 
                     result.IsValid = false;
                     result.Fields.add('postalCode');
                     result.Messages.add(System.Label.CP_Registration_Postalcode_Is_Empty);
+                }                
+                else if(!IGUser.IsValidPostalCode())
+                {
+                    // Postatcode is empty 
+                    result.IsValid = false;
+                    result.Fields.add('postalCode');
+                    result.Messages.add(System.Label.CP_Registration_Postalcode_Is_Invalid);   
                 }
-                else if(IGUser.postalCode != objContact.MailingPostalCode)
+                else if(!IGUser.PostalCodeMatched(objContact.MailingPostalCode))
                 {
                     // Postatcode did not match the stored info in Salesforce.
                     result.IsValid = false;
                     result.Fields.add('postalCode');
                     result.Messages.add(System.Label.CP_Registration_Postalcode_Not_Matched);
                 }
-                System.debug('step 2 postal code is valid');
+                //System.debug('step 2 postal code is valid');
                 
                 if(String.isBlank(IGUser.dob))
                 {
@@ -175,20 +200,17 @@ global class CP_RegistrationClass {
             result.Fields.add('email');
             result.Messages.add(System.Label.CP_Registration_Email_Is_Invalid);   
         }
+        
         /*
-        if(String.isBlank(IGUserProfile.mobilePhone))
+        if(!String.isBlank(IGUserProfile.mobilePhone))
         {
-            // Email is Empty
-            result.IsValid = false;
-            result.Fields.add('mobilePhone');
-            result.Messages.add(System.Label.CP_Registration_Phone_Number_Is_Empty);   
-        }
-        else if (!IGUserProfile.IsValidPhoneNumber())
-        {
-            // Email is not valid 
-            result.IsValid = false;
-            result.Fields.add('mobilePhone');
-            result.Messages.add(System.Label.CP_Registration_Phone_Number_Is_Invalid);   
+            if (!IGUserProfile.IsValidPhoneNumber())
+            {
+                // Email is not valid 
+                result.IsValid = false;
+                result.Fields.add('mobilePhone');
+                result.Messages.add(System.Label.CP_Registration_Phone_Number_Is_Invalid);   
+            }
         }
         */
 
@@ -200,8 +222,6 @@ global class CP_RegistrationClass {
         }
         return result;
     }
-
-
 
 
     public CP_RegistrationClass.Result reValidateAll(RegistrationForm regForm)
@@ -234,6 +254,39 @@ global class CP_RegistrationClass {
     }
 
 
+    public CP_RegistrationClass.Result SaveInfoInSalesforce(RegistrationForm regForm)
+    {
+        CP_RegistrationClass.Result result = new CP_RegistrationClass.Result();
+        try
+        {
+            Contact objContact = regForm.Identity.getContactByBusinessPartnerID();
+            if(objContact == null)
+            {
+                result.IsValid = false;
+                result.Fields.add('clientNum');
+                result.Messages.add(System.Label.CP_Registration_Client_Number_Not_Found);
+            }
+            else
+            {
+                objContact.Portal_User_Is_Registered__c = true;
+                objContact.Portal_User_Name__c = regForm.Profile.userName;
+                objContact.Portal_User_ID__c = '';
+                objContact.Email = regForm.Profile.email;
+                objContact.Marketing_Email_Optout__c = regForm.Profile.emailOptIn;
+                objContact.Preferred_Language__c = 'English';
+
+                update objContact;
+
+                result.IsValid = true;
+            }
+        }
+        catch(exception e)
+        {
+            result.IsValid = false;
+            result.Messages.add(e.getMessage());
+        }
+        return result;
+    }
 
     public class UserIdentity
     {
@@ -245,7 +298,7 @@ global class CP_RegistrationClass {
         public Contact getContactByBusinessPartnerID()
         {
             List<Contact> contactList = [select ID, Portal_User_Is_Registered__c, Portal_User_ID__c, 
-                Portal_User_Name__c, MailingPostalCode, Birthdate, Business_Partner_ID__c 
+                Portal_User_Name__c, MailingPostalCode, Birthdate, Business_Partner_ID__c, Preferred_Language__c 
                 from Contact 
                 where Business_Partner_ID__c = : String.escapeSingleQuotes(this.clientNum)];
 
@@ -255,6 +308,35 @@ global class CP_RegistrationClass {
                 return null;
             else
                 return contactList[0];
+        }
+
+        public Boolean IsValidPostalCode()
+        {
+            String postalCodeRegex_1 = '[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]';
+            String postalCodeRegex_2 = '[a-zA-Z][0-9][a-zA-Z](-| |)[0-9][a-zA-Z][0-9]';
+        
+            System.debug(this.postalCode);
+
+            Pattern MyPattern1 = Pattern.compile(postalCodeRegex_1);
+            Matcher MyMatcher1 = MyPattern1.matcher(this.postalCode);
+
+            Pattern MyPattern2 = Pattern.compile(postalCodeRegex_2);
+            Matcher MyMatcher2 = MyPattern2.matcher(this.postalCode);
+
+            if(MyMatcher1.matches() || MyMatcher2.matches())
+                return true;
+            else
+                return false;
+        }
+
+        public Boolean PostalCodeMatched(String code)
+        {
+            String inputCode = this.postalCode.remove(' ').remove('-').toUpperCase();
+            String sfCode = code.remove(' ').remove('-').toUpperCase();
+            if(inputCode == sfCode)
+                return true;
+            else
+                return false;
         }
         
     }
@@ -304,17 +386,20 @@ global class CP_RegistrationClass {
 
         public Boolean IsValidPhoneNumber()
         {
-            //String emailRegex = '(/\\(?([0-9]{3})\\)?([ .-]?)([0-9]{3})\\2([0-9]{4})/)';
-            String phoneRegex = '(/^(\\+?1-?)?(\\([2-9]([02-9]\\d|1[02-9])\\)|[2-9]([02-9]\\d|1[02-9]))-?[2-9]([02-9]\\d|1[02-9])-?\\d{4}$/)';
-            Pattern MyPattern = Pattern.compile(phoneRegex);
-            Matcher MyMatcher = MyPattern.matcher(this.mobilePhone);
+            String thisPhoneNumber = this.mobilePhone.replace(' ','');
+            System.debug('this.mobilePhone:'+ this.mobilePhone);
+            System.debug('thisPhoneNumber:'+ thisPhoneNumber);
 
-            if(MyMatcher.matches())
-                return true;
-            else
-                return false;   
+            String MyRegex = '\\+?1?[ .-]?\\(?([0-9]{3})\\)?([ .-]?)([0-9]{3})([ .-]?)([0-9]{4})';
+
+            //String phoneRegex = '(/^(\\+?1-?)?(\\([2-9]([02-9]\\d|1[02-9])\\)|[2-9]([02-9]\\d|1[02-9]))-?[2-9]([02-9]\\d|1[02-9])-?\\d{4}$/)';
+            
+            //String phoneRegex = '^((\\+1)?\\s?\\(\\d{3}\\)\\s?\\d{3}\\-\\d{4})?$';
+
+            Pattern MyPattern = Pattern.compile(MyRegex);
+            Matcher MyMatcher = MyPattern.matcher(thisPhoneNumber);
+            return MyMatcher.matches();
         }
-
         
 
     }

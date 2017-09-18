@@ -1,7 +1,7 @@
-<aura:component>
+<aura:component >
 
 	<!-- ATTRS -->
-	<aura:attribute  name="id" type="String" default="view-sample" ></aura:attribute>
+	<aura:attribute name="id" type="String" default="view-sample" ></aura:attribute>
 
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events"/>
