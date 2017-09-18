@@ -182,6 +182,8 @@
 			},
 			"acceptTOS": cmp.get("v.acceptTOS")
 		});
+
+		console.log(cmp.get("v.payload"));
 	},
 	logPayloadVars: function(cmp, evt, hlpr) {
 		var logArray = [

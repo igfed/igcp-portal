@@ -45,22 +45,40 @@
 
 			if (errors.length > 0) {
 
-				if(errors[0].type === "isEmpty") {
-					cmp.set("v.limitClass", "igcp-utils__font-size--x-small");
-					cmp.set("v.charClass", "igcp-utils__font-size--x-small");
-				}
+				errors.forEach(function(err, i) {
+					console.log("Errors")
+					console.log(err);
 
-				if(errors[0].type === "minLength") {
-					cmp.set("v.limitClass", "igcp-text__error igcp-utils__font-size--x-small");
-				} else {
-					cmp.set("v.limitClass", "igcp-text__success igcp-utils__font-size--x-small");
-				}
+					if (err.type === "isEmpty") {
+						cmp.set("v.limitClass", "igcp-utils__font-size--x-small");
+						cmp.set("v.charClass", "igcp-utils__font-size--x-small");
+					}
 
-				if(errors[0].type === "isAlphanumeric" || errors[1].type === "isAlphanumeric") {
-					cmp.set("v.charClass", "igcp-text__error igcp-utils__font-size--x-small");
-				} else {
-					cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");
-				}
+					if (err.type === "minLength") {
+						cmp.set("v.limitClass", "igcp-text__error igcp-utils__font-size--x-small");
+					}
+
+					if (err.type === "isAlphanumeric" || errors[1].type === "isAlphanumeric") {
+						cmp.set("v.charClass", "igcp-text__error igcp-utils__font-size--x-small");
+					}
+				});
+
+				// if(errors[0].type === "isEmpty") {
+				// 	cmp.set("v.limitClass", "igcp-utils__font-size--x-small");
+				// 	cmp.set("v.charClass", "igcp-utils__font-size--x-small");
+				// }
+
+				// if(errors[0].type === "minLength") {
+				// 	cmp.set("v.limitClass", "igcp-text__error igcp-utils__font-size--x-small");
+				// } else {
+				// 	cmp.set("v.limitClass", "igcp-text__success igcp-utils__font-size--x-small");
+				// }
+
+				// if(errors[0].type === "isAlphanumeric" || errors[1].type === "isAlphanumeric") {
+				// 	cmp.set("v.charClass", "igcp-text__error igcp-utils__font-size--x-small");
+				// } else {
+				// 	cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");
+				// }
 			}
 		}
 	},
@@ -68,7 +86,7 @@
 
 		var events = cmp.find("CP_Events");
 		events.fire("CP_Evt_Key", {
-			"id" : cmp.get("v.id"),
+			"id": cmp.get("v.id"),
 			"type": cmp.get("v.type"),
 			"value": cmp.get("v.inputValue")
 		});

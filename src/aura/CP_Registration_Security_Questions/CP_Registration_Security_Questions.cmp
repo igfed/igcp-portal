@@ -1,49 +1,15 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_RegistrationController">
 	<!-- ATTRS -->
-	<aura:attribute name="form" type="String" default="default" ></aura:attribute>
+	<aura:attribute name="form" type="String" default="default"></aura:attribute>
 	<aura:attribute name="options" type="String[]" default="['Whats your dog\'s name?', 'Where were you born?', 'Whats your mother\'s maiden name?']"></aura:attribute>
-	
+	<!-- INCLUDES -->
+	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Services aura:id="CP_Services" />
+	<!-- HANDLERS -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<!-- MARKUP -->
-	<!-- QUESTION ONE -->	
-	<c:CP_Cmp_Input_Selector id="security-1-selector" 
-		form="{!v.form}" 
-		class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" 
-		label="Security Question 1 of 3" 
-		placeholder="Select a security question" 
-		defaultOptions="{!v.options}" />
-
-	<c:CP_Cmp_Input_Text id="security-1-answer" 
-		form="{!v.form}"  
-		label="Answer 1" 
-		placeholder="" 
-		class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
-
-	<!-- QUESTION 2 -->
-	<c:CP_Cmp_Input_Selector id="security-2-selector" 
-		form="{!v.form}"  
-		class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" 
-		label="Security Question 2 of 3" 
-		placeholder="Select a security question" 
-		defaultOptions="{!v.options}" />
-
-	<c:CP_Cmp_Input_Text id="security-2-answer" 
-		form="{!v.form}"  
-		label="Answer 2" 
-		placeholder="" 
-		class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
-
-	<!-- QUESTION 3 -->
-	<c:CP_Cmp_Input_Selector id="security-3-selector" 
-		form="{!v.form}"  
-		class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" 
-		label="Security Question 3 of 3" 
-		placeholder="Select a security question" 
-		defaultOptions="{!v.options}" />
-
-	<c:CP_Cmp_Input_Text id="security-3-answer" 
-		form="{!v.form}"  
-		label="Answer 3" 
-		placeholder="" 
-		class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
-
+	<div aura:id="security-questions-container">
+		{!body}
+	</div>
 </aura:component>
