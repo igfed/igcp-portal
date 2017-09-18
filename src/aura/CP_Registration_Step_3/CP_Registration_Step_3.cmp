@@ -30,6 +30,7 @@
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Services aura:id="CP_Services" />
 	
 	<!-- HANDLER -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />

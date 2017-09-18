@@ -12,11 +12,5 @@
 		if(payload.id === "read_and_agree_checkbox") {
 			cmp.set("v.userAgrees", payload.checked);			
 		}
-	},
-	onClose: function(cmp, evt, hlpr) {
-		var events = cmp.find("CP_Events");
-		events.fire("CP_Evt_Modal_Close", {
-			"id" : cmp.get("v.id")
-		});
 	}
 })

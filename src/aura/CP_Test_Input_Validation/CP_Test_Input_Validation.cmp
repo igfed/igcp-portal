@@ -11,7 +11,7 @@
 	<div class="igcp-overview igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-around--xx-small slds-large-p-around--medium">
 		<h1 class="slds-size_12-of-12 slds-text-align_center">Input and Form Validation Test Page</h1>
 		<div class="slds-size_4-of-12">
-			ITS WORKING
+			ITS WORKIN
 			<form aura:id="testForm" id="testForm" method="get" action="">
 				
 				<c:CP_Cmp_Input_Text id="username_input" type="username" form="testForm" label="Username" placeholder="Please enter name" maxLength="32" errorText="Please enter a username"/>

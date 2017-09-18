@@ -93,4 +93,5 @@
     	<!-- FOOTER -->	
 		<!-- <c:CP_Cmp_Footer /> -->
 	</div>
+    
 </aura:component>

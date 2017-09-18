@@ -10,9 +10,16 @@
 			
 			action.setParams({ payload: JSON.stringify(component.get("v.payload")) });
 
+			console.log("CP_Services: onSubmitForm");
+			console.log(component.get("v.payload"));
+
 			// Create a callback that is executed after 
 			// the server-side action returns
 			action.setCallback(this, function(response) {
+
+				console.log("setCallback");
+				console.log(response);
+
 				var state = response.getState(),
 					res, isValid;
 				if (state === "SUCCESS") {
