@@ -14,23 +14,7 @@ public class IGMortgageClient extends IGRestClient {
 	public override String getHttpEndPoint() {
     	return 'callout:' + this.namedCredentialsName + '/clients/' + bpid.trim() + '/' + RESOURCE_NAME;
     }
-    /*
-    public override Response getServiceData() {
-    	MortgageData rv =null;
-    	Response res = super.callRESTService();
-    	if (res.success) {
-    		try {
-    			rv = (MortgageData)System.JSON.deserializeStrict(res.responseBody, MortgageData.class);
-				rv.success = true;
-    		} catch (JSONException e) {
-				rv = new MortgageData(false, -1, e.getMessage());
-			}
-    	} else {
-			return res;
-		}
-    	return rv;
-    }
-    */
+
     public override Response parseResponse(String responseBody) {
     	MortgageData rv = (MortgageData)System.JSON.deserializeStrict(responseBody, MortgageData.class);
     	return rv;

@@ -119,16 +119,18 @@
 			},
 			function(error) {
 
-				var
-					fields = error.payload.State.Fields,
-					messages = error.payload.State.Messages;
+				console.error(error);
 
-				fields.forEach(function(errorType, i) {
-					var msgArr = [];
+				// var
+				// 	fields = error.payload.State.Fields,
+				// 	messages = error.payload.State.Messages;
 
-					console.log('Step three: error');
-					console.log(errorType);
-				});
+				// fields.forEach(function(errorType, i) {
+				// 	var msgArr = [];
+
+				// 	console.log('Step three: error');
+				// 	console.log(errorType);
+				// });
 			}
 		);
 	},

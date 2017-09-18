@@ -58,7 +58,7 @@ public class CP_RegistrationController {
 	@AuraEnabled
 	public static string  StepThree(String payload)
     {
-        //System.debug('I am in Step Three');
+        System.debug('I am in Step Three');
         objForm = new CP_RegistrationClass.RegistrationForm();
         CP_RegistrationClass.Result result = new CP_RegistrationClass.Result();
         try
@@ -68,6 +68,9 @@ public class CP_RegistrationController {
 
             // Call the Registration class's verification method by passing in the Deserialized Registration Form object and get a result Object in return
             result = Registration.reValidateAll(objForm);
+
+            System.debug('Result object retuned by revalidate: ');
+            System.debug(result);
 
             if(result.IsValid)
             {
@@ -87,8 +90,8 @@ public class CP_RegistrationController {
         }
 
         // Serialize the result object and return as string
-        //System.debug('Return object from Controller');
-        //System.debug(objForm);
+        System.debug('Return object from Controller');
+        System.debug(result);
         return JSON.serialize(result);
     }
     

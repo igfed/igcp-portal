@@ -28,6 +28,7 @@
 
 	<!-- INCLUDES -->	
     <c:CP_CSS_Includes />
+    <c:CP_JS_Includes />
     
     <c:CP_Utils aura:id="CP_Utils"/>
 

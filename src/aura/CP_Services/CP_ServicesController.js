@@ -10,26 +10,20 @@
 			
 			action.setParams({ payload: JSON.stringify(component.get("v.payload")) });
 
-			console.log("CP_Services: onSubmitForm");
-			console.log(component.get("v.payload"));
-
 			// Create a callback that is executed after 
 			// the server-side action returns
 			action.setCallback(this, function(response) {
 
-				console.log("setCallback");
-				console.log(response);
-
 				var state = response.getState(),
-					res, isValid;
+					res, valid;
 				if (state === "SUCCESS") {
 					// Alert the user with the value returned 
 					// from the server
 
 					res = JSON.parse(response.getReturnValue());
-					isValid = res["State"]["IsValid"];
+					valid = res["State"]["IsValid"];
 
-					if (isValid === true) {
+					if (valid === true) {
 						params.validCB({
 							"payload": res,
 							"type": "success"
@@ -53,6 +47,7 @@
 					});
 				} else if (state === "ERROR") {
 					var errors = response.getError();
+					
 					if (errors) {
 						if (errors[0] && errors[0].message) {
 							console.error("Error message: " +

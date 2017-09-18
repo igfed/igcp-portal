@@ -147,60 +147,6 @@
 				});
 			}
 		);
-
-		// var action = cmp.get("c.StepTwo");
-		// action.setParams({ payload: JSON.stringify(cmp.get("v.payload")) });
-
-		// // Create a callback that is executed after 
-		// // the server-side action returns
-		// action.setCallback(this, function(response) {
-		// 	var state = response.getState(),
-		// 		res, isValid;
-		// 	if (state === "SUCCESS") {
-		// 		// Alert the user with the value returned 
-		// 		// from the server
-		// 		//alert("Submit Response: " + response.getReturnValue());
-		// 		console.log("STEP 2");
-		// 		console.log(response.getReturnValue());
-
-		// 		res = JSON.parse(response.getReturnValue());
-		// 		isValid = res["State"]["IsValid"];
-
-		// 		if (isValid === true) {
-		// 			cmp.onNextStep();
-		// 		} else {
-		// 			console.warn("Submission error: ");
-		// 			console.warn(res["Messages"]);
-		// 		}
-
-		// 		// You would typically fire a event here to trigger 
-		// 		// client-side notification that the server-side 
-		// 		// action is complete
-
-		// 	} else if (state === "INCOMPLETE") {
-		// 		// do something
-		// 	} else if (state === "ERROR") {
-		// 		var errors = response.getError();
-		// 		if (errors) {
-		// 			if (errors[0] && errors[0].message) {
-		// 				console.error("Error message: " +
-		// 					errors[0].message);
-
-
-		// 			}
-		// 		} else {
-		// 			console.error("Unknown error");
-		// 		}
-		// 	}
-		// });
-
-		// // optionally set storable, abortable, background flag here
-
-		// // A client-side action could cause multiple events, 
-		// // which could trigger other events and 
-		// // other server-side action calls.
-		// // $A.enqueueAction adds the server-side action to the queue.
-		// $A.enqueueAction(action);
 	},
 	gotoNextStep: function(cmp, evt, hlpr) {
 		var event = cmp.find("CP_Events");
