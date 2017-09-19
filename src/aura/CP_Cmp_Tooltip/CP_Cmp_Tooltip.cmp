@@ -8,7 +8,7 @@
         
         <div class="igcp-tooltip-container"></div>
        
-        <span id="test-tooltip" data-tooltip="" aria-haspopup="true" class="igcp-tooltip__tip has-tip top" data-disable-hover="false" tabindex="{!v.tabIndex}" title="{!v.tooltip}" data-template-classes="igcp-tooltip__opened">
+        <span id="igcp-tooltip" data-tooltip="" aria-haspopup="true" class="igcp-tooltip__tip has-tip top" data-disable-hover="false" tabindex="{!v.tabIndex}" title="{!v.tooltip}" data-template-classes="igcp-tooltip__opened" data-alignment="center">
             
             <lightning:icon iconName="utility:info" size="small" alternativeText="Click to open tooltip" />
         

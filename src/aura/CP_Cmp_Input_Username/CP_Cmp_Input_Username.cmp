@@ -26,20 +26,26 @@
 	<aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}" />
 	<!-- MARKUP -->
 	<div class="{!v.class}">
+		<!-- ICON -->
 		<aura:renderIf isTrue="{!v.icon}">
 			<lightning:icon iconName="{!v.icon}" size="small" class="slds-m-right--xx-small" alternativeText="{!v.label}" />
 		</aura:renderIf>
+		<!-- LABEL -->
 		<label class="slds-form-element__label input-label" for="text-input">{!v.label}</label>
+		<!-- TOOLTIP -->
 		<aura:renderIf isTrue="{!v.tooltip}">
-			<c:CP_Cmp_Tooltip />
+			<c:CP_Cmp_Tooltip tooltip="{!v.tooltip}"/>
 		</aura:renderIf>
+		<!-- INSTRUCTIONS -->
 		<ul class="igcp-utils__bullets--disc slds-m-bottom--xx-small">
 			<li class="{!v.limitClass}">Must be 6-32 characters</li>
 			<li class="{!v.charClass}">Must not contain any special characters</li>
 		</ul>
+		<!-- INPUT -->
 		<div class="slds-form-element__control">
 			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" keyup="{!c.onHandleKey}" updateOn="keyup" blur="{!c.onBlur}" />
 		</div>
+		<!-- HELP TEXT -->
 		<aura:renderIf isTrue="{!v.helpText}">
 			<div class="igcp-input__help-link slds-float--right">
 				<a class="igcp-link__variant--a igcp-underline" href="{!v.helpLink}">{!v.helpText}</a>
