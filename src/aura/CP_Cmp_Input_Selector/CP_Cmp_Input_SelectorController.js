@@ -32,20 +32,27 @@
 			utils = cmp.find("CP_Utils"),
 			payload = evt.getParam("payload"),
 			newOptions = [];
-
-		// //If this isn't the same selector that iniated the event
-		// //remove option from selector		
+		
 		if (payload.id !== cmp.get("v.id")) {
 
-			// if(cmp.get("v.currentSelectedValue") !== "none") {
-			// 	newOptions.push(cmp.get("v.currentSelectedValue"));
+			//if a value has not been selected on 
+			//this selector
+			//populate with remaining options
+			if(cmp.get("v.currentSelectedValue") === "none") {
+				payload.options.forEach(function(opt, i){
+					newOptions.push(opt);
+				});
+			} else {
+				//if this selector does have a value
+				//push that value first to newOptions
+				//then push the left over options
+				newOptions.push(cmp.get("v.currentSelectedValue"));
+				payload.options.forEach(function(opt, i){
+					newOptions.push(opt);
+				});
+			}
 
-			// 	payload.options.forEach(function(opt, i){
-			// 		newOptions.push(opt);
-			// 	});
-			// }
-
-			// cmp.set("v.options", newOptions);
+			cmp.set("v.options", newOptions);
 		} 
 	},
 	onOptionsReceived: function(cmp, evt, hlpr) {
