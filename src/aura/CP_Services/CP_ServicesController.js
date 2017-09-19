@@ -84,7 +84,6 @@
 	onGetSecurityQuestions: function(cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
-			console.log(params.component);
 
 			var
 				component = params.component,

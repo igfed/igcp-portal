@@ -10,8 +10,6 @@
 			cmp,
 			function(res) {
 
-				console.log(res);
-
 				events.fire('CP_Evt_Selector_Send_Options', {
 					"id" : cmp.get("v.form"),
 					"options" : res.payload

@@ -53,8 +53,6 @@
 					errorTypeArr.push(err.type);
 				});
 
-				console.log(errorTypeArr);
-
 				//isEmpty
 				utils.arrayContains(errorTypeArr, "isEmpty", function(hasValue) {
 					isEmpty = hasValue;
@@ -81,26 +79,12 @@
 						cmp.set("v.limitClass", "igcp-text__success igcp-utils__font-size--x-small");
 					}
 
-					if(isAlphanumeric === true) {
+					if (isAlphanumeric === true) {
 						cmp.set("v.charClass", "igcp-text__error igcp-utils__font-size--x-small");
 					} else {
-						cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");	
+						cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");
 					}
 				}
-
-
-
-				// errors.forEach(function(err, i) {
-
-				// 	// if (err.type === "isEmpty" || err.type === "minLength") {
-				// 	// 	cmp.set("v.limitClass", "igcp-text__error igcp-utils__font-size--x-small");
-				// 	// 	cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");
-				// 	// }
-
-				// 	// if (err.type === "isAlphanumeric") {
-				// 	// 	cmp.set("v.charClass", "igcp-text__error igcp-utils__font-size--x-small");
-				// 	// }
-				// });
 			}
 		}
 	},
