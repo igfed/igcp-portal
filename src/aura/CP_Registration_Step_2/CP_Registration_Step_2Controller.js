@@ -166,6 +166,8 @@
 
 		if(payload.id === "username-input") {
 			hlpr.validateUsername(cmp, payload);
+		} else if(payload.id === "password-input") {
+			hlpr.validatePassword(cmp, payload);
 		}
 	}
 })

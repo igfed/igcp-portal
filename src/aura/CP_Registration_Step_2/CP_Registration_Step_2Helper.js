@@ -5,6 +5,9 @@
 			validator = cmp.find('CP_Validation'),
 			events = cmp.find('CP_Events');
 
+		console.log("validateInput");
+		console.log(payload);
+
 
 		validator.validate(payload, function(obj) {
 
@@ -51,6 +54,27 @@
 		});
 	},
 	validateUsername: function(cmp, payload){
+		var
+			validator = cmp.find('CP_Validation'),
+			events = cmp.find('CP_Events');
+
+		validator.validate(payload, function(obj) {
+
+			if (obj.isValid === false) {
+				events.fire("CP_Evt_Input_Error", {
+					"id": obj.id,
+					"errors": obj.errors
+				});
+
+			} else {
+				events.fire("CP_Evt_Input_Valid", {
+					"id": obj.id
+				});
+
+			}
+		});
+	},
+	validatePassword: function(cmp, payload){
 		var
 			validator = cmp.find('CP_Validation'),
 			events = cmp.find('CP_Events');

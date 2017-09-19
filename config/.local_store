@@ -4954,5 +4954,19 @@
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
+    },
+    "CP_Evt_Selector_Send_Options/CP_Evt_Selector_Send_Options.evt.undefined": {
+        "createdById": "0053D000000JkROQA0",
+        "createdByName": "Dave Boyle",
+        "createdDate": "2017-09-19T14:20:44.000Z",
+        "fileName": "unpackaged/aura/CP_Evt_Selector_Send_Options/CP_Evt_Selector_Send_Options.evt",
+        "fullName": "CP_Evt_Selector_Send_Options/CP_Evt_Selector_Send_Options.evt",
+        "id": "0Ad3D0000009mG2SAI",
+        "lastModifiedById": "0053D000000JkROQA0",
+        "lastModifiedByName": "Dave Boyle",
+        "lastModifiedDate": "2017-09-19T14:20:44.000Z",
+        "manageableState": "unmanaged",
+        "type": "AuraDefinitionBundle",
+        "mmState": "clean"
     }
 }

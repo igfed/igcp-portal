@@ -5132,5 +5132,22 @@
         },
         "DefType": "HELPER",
         "Format": "JS"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v36.0/tooling/sobjects/AuraDefinition/0Ad3D0000009mG2SAI"
+        },
+        "Id": "0Ad3D0000009mG2SAI",
+        "AuraDefinitionBundleId": "0Ab3D0000008tzASAQ",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v36.0/tooling/sobjects/AuraDefinitionBundle/0Ab3D0000008tzASAQ"
+            },
+            "DeveloperName": "CP_Evt_Selector_Send_Options"
+        },
+        "DefType": "EVENT",
+        "Format": "XML"
     }
 ]

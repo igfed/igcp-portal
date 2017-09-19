@@ -2,6 +2,7 @@
 	onInit: function(cmp, evt, hlpr) {
 
 		var
+			events = cmp.find("CP_Events"),
 			services = cmp.find("CP_Services"),
 			utils = cmp.find("CP_Utils");
 
@@ -9,40 +10,11 @@
 			cmp,
 			function(res) {
 
-				var questions = res.payload;
+				console.log(res);
 
-				questions.forEach(function(item, i) {
-
-					utils.createComponent(
-						"CP_Cmp_Input_Selector", {
-							"id": ("security-" + (i + 1) + "-selector"),
-							"form":  cmp.get("v.form"),
-							"class": "slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium",
-							"label": ("Security Question " + (i + 1) + " of " + questions.length),
-							"placeholder": "Select a security question",
-							"defaultOptions": questions
-						},
-						cmp.find("security-questions-container"),
-						function(res) {
-							console.log(res.component.type);
-						}
-					);
-
-					utils.createComponent(
-						"CP_Cmp_Input_Text", {
-							"id": ("security-" + (i + 1) + "-answer"),
-							"form": cmp.get("v.form"),
-							"class": "slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium",
-							"label": ("Answer " + (i + 1)),
-							"placeholder": ""
-						},
-						cmp.find("security-questions-container"),
-						function(res) {
-							console.log(res.component.type);
-						}
-					);
-
-
+				events.fire('CP_Evt_Selector_Send_Options', {
+					"id" : cmp.get("v.form"),
+					"options" : res.payload
 				});
 			},
 			function(error) {
