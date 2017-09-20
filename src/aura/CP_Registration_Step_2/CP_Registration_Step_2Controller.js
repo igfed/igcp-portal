@@ -34,8 +34,6 @@
 
 				cmp.set("v.inputErrors", true);
 
-				console.log(obj.errors)
-
 				events.fire("CP_Evt_Input_Error", {
 					"id": obj.id,
 					"errors": obj.errors

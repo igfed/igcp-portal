@@ -43,7 +43,7 @@
 		<!-- INSTRUCTIONS -->
 		<ul class="igcp-utils__bullets--disc slds-m-vertical--xx-small">
 			<li class="{!v.limitClass}">Must be 6-32 characters</li>
-			<li class="{!v.charClass}">Must not contain any special characters</li>
+			<li class="{!v.charClass}">Can only contain the following special characters: - @ _ .</li>
 		</ul>
 		<!-- HELP TEXT -->
 		<aura:renderIf isTrue="{!v.helpText}">

@@ -32,6 +32,9 @@
 	alphanumeric: function(value) {
 		return /^\w+$/i.test(value);
 	},
+	alphanumericSpecial: function(value) {
+		return /^[-@./+\w\s]*$/i.test(value);
+	},
 	hasUppercase: function(value) {
 		return /[A-Z]/.test(value);
 	},
@@ -88,7 +91,7 @@
 			isEmpty = value.length === 0 ? true : false,
 			id = params.id,
 			minLength = hlpr.min(value.length, cmp.get("v.userMinLength")),
-			isAlphanumeric = hlpr.alphanumeric(value);
+			isAlphanumeric = hlpr.alphanumericSpecial(value);
 
 		if (isEmpty === true) {
 			errorCheckObj["isEmpty"] = isEmpty;
@@ -103,7 +106,7 @@
 			if (item.type === "minLength") {
 				item["msg"] = "The username is less than " + cmp.get("v.userMinLength") + " characters";
 			} else if (item.type === "isAlphanumeric") {
-				item["msg"] = "The username must not have any special characters";
+				item["msg"] = "The username can only contain the following characters: - _ @ .";
 			} else if (item.type === "isEmpty") {
 				item["msg"] = "The username must not be empty";
 			}
