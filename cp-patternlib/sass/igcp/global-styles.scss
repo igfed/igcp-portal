@@ -28,6 +28,8 @@
 .#{$namespace}-wrapper {
 	max-width: $ig-large;
 	margin: 0 auto;
+	//234 is the height of the footer
+	min-height: calc(100vh - 234px);
 }
 
 .#{$namespace}-percentage--large {
@@ -200,7 +202,7 @@
 
 .#{$namespace}-label--small {
 	font-family: $ig-whitney-semibold;
-	font-size: $ig-space--x-small;
+	font-size: $ig-font-size--mini;
 	letter-spacing: $ig-letter-spacing;
 	color: $ig-blue;
 }

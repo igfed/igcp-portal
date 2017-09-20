@@ -9,23 +9,24 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <title>IBM Security Access Manager</title>
     <!-- EXTERNAL INCLUDES-->
     <link href="../../external_files/css/salesforce-lightning-design-system.min.css" type="text/css" rel="stylesheet"/>
     <link href="../../external_files/css/igcp.css" type="text/css" rel="stylesheet"/>
     <script type="text/javascript">
       function onLoadPage() {
-        //showError();
-        //setFocus();
+        showError();
+        setFocus();
       }
 
       function showError() {
         var elem = document.getElementById("error-box");
-        // if ("%ERROR%" == "") {
-        // 	elem.setAttribute("class", "error-box");
-        // } else {
-        // 	elem.setAttribute("class", "error-box active");
-        // }
+        if ("%ERROR%" == "") {
+        	elem.setAttribute("class", "error-box");
+        } else {
+        	elem.setAttribute("class", "error-box active");
+        }
       }
 
       function setFocus() {
@@ -37,6 +38,15 @@
         console.log('Submitting Form');
       }
     </script>
+    <style>
+    	.error-box {
+    		display: none;
+    	}
+
+    	.error-box.active {
+    		display: block;
+    	}
+    </style>
     <!-- ClickJack projection from:
          https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet
       -->
@@ -96,7 +106,7 @@
                 <div class="top-bar-left">
                     <div class="igcp-nav__logo">
                         <a class="home-link" href="/">
-                            <img src="../../external_files/images/IG_EN.svg" alt=""/>
+                            <img src="../../external_files/images/IG_EN_logo.png" alt=""/>
                         </a>
                     </div>
                 </div>
@@ -117,7 +127,7 @@
 
             <div class="top-bar-right">
                 <ul class="dropdown menu" data-dropdown-menu="">
-                    <li><a class="igcp-underline" href="#">Français</a></li>
+                    <li><a class="igcp-nav__link" href="#">Français</a></li>
                 </ul>
             </div>
 
@@ -129,26 +139,37 @@
 
             <div class="igcp-login__sidebar-wrapper">
                 <h3 class="slds-m-bottom--large">Sign in to Online Access</h3>
+
+                <div id="error-box"class="igcp-login__error error-box">
+                    <div class="slds-notify_container slds-is-relative">
+                        <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
+                            <span class="slds-assistive-text">info</span>
+                            <span class="slds-icon_container slds-icon-utility-info slds-m-right_small slds-no-flex slds-align-top"
+                                  title="An error has occurred">
+                            </span>
+                            <div class="slds-notify__content">
+                                <p id="errId" class="slds-text-heading_small">%ERROR%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!--LOGIN FORM-->
                 <form id="login-form" class="slds-form slds-form_stacked" method="POST" action="/pkmslogin.form">
                     <!--USERNAME-->
                     <div class="slds-form-element slds-m-bottom--x-large">
                         <label class="slds-form-element__label" for="username">
 								<span class="slds-icon_container slds-icon-utility-user" title="Description of icon when needed">
-							  <svg class="slds-icon slds-icon-text-default slds-icon_xx-small" aria-hidden="true">
-							    <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                     xlink:href="../../external_files/icons/symbols.svg#user"></use>
-							  </svg>
 							  <span class="slds-assistive-text">Username Icon</span>
 								</span>
                             Username
                         </label>
                         <div class="slds-form-element__control">
                             <input type="text" id="username" class="slds-input igcp-input input uiInput uiInputText uiInput--default uiInput--input"
-                                   placeholder="Placeholder Text" required="true" name="username">
+                                   required="true" name="username">
                         </div>
                         <div class="igcp-input__help-link slds-float--right">
-                            <a href="" class="igcp-link__variant--a igcp-underline">Forgot username</a>
+                            <a href="" class="igcp-link__variant--a">Forgot username</a>
                         </div>
 
                         <!--REMEMBER USERNAME -->
@@ -169,10 +190,6 @@
                     <div class="igcp-input__password slds-form-element slds-clearfix slds-m-top--large slds-m-bottom--x-large">
                         <label class="slds-form-element__label" for="password">
 								<span class="slds-icon_container slds-icon-utility-lock" title="Password Icon">
-							  <svg class="slds-icon slds-icon-text-default slds-icon_xx-small" aria-hidden="true">
-							    <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                     xlink:href="../../external_files/icons/symbols.svg#lock"></use>
-							  </svg>
 							  <span class="slds-assistive-text">Password Icon</span>
 								</span>
                             Password
@@ -181,7 +198,7 @@
                             <input type="password" id="password" class="igcp-input slds-input" name="password" autocomplete="off">
                         </div>
                         <div class="igcp-input__help-link slds-text-align--right">
-                            <a href="" class="igcp-link__variant--a igcp-underline">Forgot password</a>
+                            <a href="" class="igcp-link__variant--a">Forgot password</a>
                         </div>
                     </div>
                     <!-- LEGAL -->
@@ -204,7 +221,7 @@
                 </form>
 
                 <div class="igcp-login__register-link slds-text-align--center">
-                    <a href="" class="igcp-link__variant--a igcp-underline">Register for Online Access</a>
+                    <a href="" class="igcp-link__variant--a">Register for Online Access</a>
                 </div>
 
             </div>

@@ -1,61 +1,283 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<!DOCTYPE html>
+<!-- Copyright (C) 2015 IBM Corporation -->
 <!-- Copyright (C) 2000 Tivoli Systems, Inc. -->
 <!-- Copyright (C) 1999 IBM Corporation -->
 <!-- Copyright (C) 1998 Dascom, Inc. -->
 <!-- All Rights Reserved. -->
-<!--
-     This is a WebSEAL error message template file.  It is used
-     by the WebSEAL server to build a response when a particular
-     error occurs.  This file can be modified as appropriate.
-
-     Error details:     
-
-     * Code: %ERROR_CODE%
-     * Text: %ERROR_TEXT%
-     
--->
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content= "text/html; charset=UTF-8">
-<!-- Enter Page Title -->
-<title>Could not Sign User On</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IBM Security Access Manager</title>
+    <!-- EXTERNAL INCLUDES-->
+    <link href="../../external_files/css/salesforce-lightning-design-system.min.css" type="text/css" rel="stylesheet"/>
+    <link href="../../external_files/css/igcp.css" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript">
+      function onLoadPage() {
+        //showError();
+        //setFocus();
+      }
+
+      function showError() {
+        var elem = document.getElementById("error-box");
+        // if ("%ERROR%" == "") {
+        // 	elem.setAttribute("class", "error-box");
+        // } else {
+        // 	elem.setAttribute("class", "error-box active");
+        // }
+      }
+
+      function setFocus() {
+        document.getElementById("username").focus();
+      }
+
+      function submitForm() {
+        document.getElementById("login-form").submit();
+        console.log('Submitting Form');
+      }
+    </script>
+    <!-- ClickJack projection from:
+         https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet
+      -->
+    <style id="antiClickjack">
+        body {
+            display: none !important;
+        }
+    </style>
+    <script type="text/javascript">
+      if (self === top) {
+        var antiClickjack = document.getElementById("antiClickjack");
+        antiClickjack.parentNode.removeChild(antiClickjack);
+      } else {
+        top.location = self.location;
+      }
+    </script>
 </head>
-<body bgcolor="#FFFFFF">
 
-<img src="/pics/amlogo.gif" 
-     width=100% 
-     height="75" 
-     border="0"
-     alt= "Access Manager for Web Home">
+<body onload="onLoadPage()">
+<div class="content igcp-utils__overflow--hidden">
+    <!-- DO NOT TRANSLATE OR MODIFY any part of the hidden parameter(s) -->
+    <!--
+    The following block of code provides users with a warning message
+    if they do not have cookies configured on their browsers.
+    If this environment does not use cookies to maintain login sessions,
+    simply remove or comment out the block below.
+  -->
+    <!-- BEGIN Cookie check block -->
+    <!--
+  DO NOT TRANSLATE anything inside the SCRIPT tag except the quoted
+  string warningString and the first line of the JavaScript redirection
+  instruction beginning with "// Uncomment the following ..."
 
-<!-- Enter Message Header -->
-<h1><font color="#FF0000">Could not Sign User On</font></h1>
+  i.e.	var warningString = "Translate this string";
+  -->
+    <script type="text/javascript">
+      //var warningString = "%ERROR%";
+      //document.cookie = 'acceptsCookies=yes';
+      //if (document.cookie == '') {
+      //	document.write(warningString);
+      //} else {
+      ///	document.cookie = 'acceptsCookies=yes; expires=Fri, 13-Apr-1970 00:00:00 GMT';
+      // Uncomment the following line for JavaScript redirection
+      // document.cookie = 'ISAMOriginalURL=' + encodeURIComponent(window.location) + "; Path=/;";
+      //}
+    </script>
+    <noscript>
+        <b>WARNING:</b> To maintain your login session, make sure that
+        <br/> your browser is configured to accept Cookies.
+    </noscript>
+    <!-- END Cookie check block -->
 
-<p><!-- Enter Error Message -->
-Access Manager WebSEAL could not determine your sign-on information for the
-resource you have requested.
+    <!-- MOBILE HEADER START -->
+    <header role="banner" class="igcp-header igcp-login-header igcp-medium-utils__display--none">
+        <nav class="igcp-nav">
+            <div class="top-bar centered">
+                <div class="top-bar-left">
+                    <div class="igcp-nav__logo">
+                        <a class="home-link" href="/">
+                            <img src="../../external_files/images/IG_EN_logo.png" alt=""/>
+                        </a>
+                    </div>
+                </div>
+                <div class="top-bar-right">
+                    <ul class="dropdown menu" data-dropdown-menu="">
+                        <li><a class="igcp-nav__link" href="#">Français</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- MOBILE HEADER END -->
 
-<BR><BR><BR>
+    <!-- LOGIN START -->
+    <div class="igcp-login slds-grid slds-wrap">
+        <!-- SIGN IN -->
+        <div class="igcp-login--col1 slds-size--12-of-12 slds-large-size--4-of-12">
 
-<!-- Provide Error Explanation -->
-<H4>Explanation</H4>
-<P>The resource you have requested requires Access Manager WebSEAL server to sign you on to another Web server.  However, a problem occurred while WebSEAL was
-attempting to fetch the information.
-</P>
+            <div class="top-bar-right">
+                <ul class="dropdown menu" data-dropdown-menu="">
+                    <li><a class="igcp-nav__link" href="#">Français</a></li>
+                </ul>
+            </div>
 
-<BR><BR><BR>
+            <div class="igcp-nav__logo">
+                <a class="home-link" href="/">
+                    <img src="../../external_files/images/IG_EN_logo.png" alt="">
+                </a>
+            </div>
 
-<!-- Provide Possible Solution -->
-<H4>Solutions</H4>
-<P>
-Check the existence and accuracy of the single sign on information provided.
-</P>
+            <div class="igcp-login__sidebar-wrapper">
+                <h3 class="slds-m-bottom--large">Sign in to Online Access</h3>
 
-<br>
-<br>
-<br>
-<!-- Enter Link -->
-<a href="%BACK_URL%">[%BACK_NAME% BUTTON]</a></p>
+
+                <div class="demo-only">
+                    <div class="slds-notify_container slds-is-relative">
+                        <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
+                            <span class="slds-assistive-text">info</span>
+                            <span class="slds-icon_container slds-icon-utility-info slds-m-right_small slds-no-flex slds-align-top"
+                                  title="An error has occurred">
+                            </span>
+                            <div class="slds-notify__content">
+                                <p class="slds-text-heading_small">Could Not Sign User On<br>
+                                    (HTTP 500)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--LOGIN FORM-->
+                <form id="login-form" class="slds-form slds-form_stacked" method="POST" action="/pkmslogin.form">
+                    <!--USERNAME-->
+                    <div class="slds-form-element slds-m-bottom--x-large">
+                        <label class="slds-form-element__label" for="username">
+								<span class="slds-icon_container slds-icon-utility-user" title="Description of icon when needed">
+							  <span class="slds-assistive-text">Username Icon</span>
+								</span>
+                            Username
+                        </label>
+                        <div class="slds-form-element__control">
+                            <input type="text" id="username" class="slds-input igcp-input input uiInput uiInputText uiInput--default uiInput--input"
+                                   required="true" name="username">
+                        </div>
+                        <div class="igcp-input__help-link slds-float--right">
+                            <a href="" class="igcp-link__variant--a">Forgot username</a>
+                        </div>
+
+                        <!--REMEMBER USERNAME -->
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+							<span class="slds-checkbox">
+                    <input type="checkbox" name="options" id="checkbox-644"/>
+                    <label class="slds-checkbox__label" for="checkbox-644">
+                      <span class="slds-checkbox--faux"></span>
+							<span class="slds-form-element__label igcp-login__username-checkbox input-label">Remember username</span>
+							</label>
+							</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--PASSWORD-->
+                    <div class="igcp-input__password slds-form-element slds-clearfix slds-m-top--large slds-m-bottom--x-large">
+                        <label class="slds-form-element__label" for="password">
+								<span class="slds-icon_container slds-icon-utility-lock" title="Password Icon">
+							  <span class="slds-assistive-text">Password Icon</span>
+								</span>
+                            Password
+                        </label>
+                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+                            <input type="password" id="password" class="igcp-input slds-input" name="password" autocomplete="off">
+                        </div>
+                        <div class="igcp-input__help-link slds-text-align--right">
+                            <a href="" class="igcp-link__variant--a">Forgot password</a>
+                        </div>
+                    </div>
+                    <!-- LEGAL -->
+                    <div class="igcp-login__legal">
+                        <p>I have read and agree to be bound by the  <a href="#">User Agreement</a> as of August 2017.</p>
+                    </div>
+
+                    <!--SIGN IN-->
+                    <div class="slds-form-element slds-m-top--large slds-m-bottom--medium">
+                        <button class="slds-button slds-button--brand slds-p-vertical--xxx-small slds-p-horizontal--xx-large" onclick="submitForm()">Sign In
+                        </button>
+                    </div>
+
+                    <input TYPE="hidden" NAME="login-form-type" VALUE="pwd">
+                    <input TYPE="hidden" NAME="token" VALUE="%CREDATTR{tagvalue_session_index}%">
+                    <!-- <div class="error-box" id="error-box">
+                        <img style="float:left" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAWCAMAAADpVnyHAAAAb1BMVEUAAADcAADeAADaAADdAADaAADMAADdAADeAADeAADcAADeAADdAADeAADdAADdAADcAADdAADeAADeAADdAADdAADdAADdAADKAADdAADeAADeAADcAADdAADcAADaAADdAADeAADdAADbAADeAAB3WaKjAAAAJHRSTlMAUPopZBQF6dhxDsWtqEo+MePQurWbiH8J8O3Ok41XIh5rW1b9BCPkAAAAxElEQVQoz3WR2RKDMAhFMcZ917rVte39/29sYurYaLwPwHAyQID+1Tp0I5vVd+gB5GaSwkdkJK7P7BizCQUYaWFFdyVO/3SIGrRXVCMQNvTYeiY5fFd6juSMIqRkVSJdItPJjIrohYIow6CRrmA20QeliGNwbXkYt36xsAvzwoOsTA5OIRoSajAdKEGweY+T+oC9k+w3OHXKcTx2NCBVC0neKlHKhHpUqcBCdJTRS7t87xGr5hMi66wAvSOvDqNqefUb5V/3/RGXZ5OWvQAAAABJRU5ErkJggg==" />
+                        <div id="errId">%ERROR%</div>
+                    </div> -->
+                </form>
+
+                <div class="igcp-login__register-link slds-text-align--center">
+                    <a href="" class="igcp-link__variant--a">Register for Online Access</a>
+                </div>
+
+            </div>
+
+            <!--MOBILE AD-->
+            <!-- Image will be authorable at some point -->
+            <div class="igcp-login__ad igcp-login__ad--mobile">
+
+                <a href="#"><img src="../../external_files/images/login-banner-mobile.png" alt=""/></a>
+
+            </div>
+            <!--END MOBILE AD-->
+
+            <div class="igcp-login__footer" role="contentinfo">
+
+                <ul class="igcp-login__footer-menu">
+                    <li class="igcp-login__footer-link">
+                        <a href="#">Support</a>
+                    </li>
+                    <li class="igcp-login__footer-link">
+                        <a href="#">Privacy</a>
+                    </li>
+                    <li class="igcp-login__footer-link">
+                        <a href="#">User Agreement</a>
+                    </li>
+                    <li class="igcp-login__footer-link">
+                        <a href="#">Investor Performance</a>
+                    </li>
+                    <li class="igcp-login__footer-link">
+                        <a href="#">Help</a>
+                    </li>
+                </ul>
+
+                <div class="igcp-login__footer-copyright">
+                    <ul class="menu">
+                        <li>&copy; 2017 IGM Financial Inc. All rights Reserved</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- DESKTOP AD-->
+        <!-- Background image and color need to be inline as we may eventually make these authorable -->
+        <div style="background-image: url('../../external_files/images/login-image-ad-bg.jpg'); background-color:#11517d"
+             class="igcp-login--col2 slds-size--12-of-12 slds-large-size--8-of-12 background-left-bottom">
+
+            <div class="igcp-login__ad igcp-login__ad--desktop">
+
+                <h1 class="igcp-login__ad-heading">When it comes to RRSPs, the word “contribution” is key.</h1>
+
+                <p class="igcp-login__ad-copy">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                    laborum.</p>
+
+                <a class="igcp-login__ad-link" href="#">Learn More</a><span class="arrow">&gt;</span>
+
+            </div>
+
+        </div>
+        <!-- DESKTOP AD END -->
+    </div>
+    <!-- LOGIN END -->
+
+</div>
 </body>
-</html>
 
+</html>

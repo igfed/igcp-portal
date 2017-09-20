@@ -13,10 +13,21 @@
 
 .slds-button--brand {
 	background-color: $ig-blue;
+
+    &:hover {
+        background-color: transparent;
+        color: $ig-blue;
+        
+    }
 }
 
 .slds-button--neutral {
     background-color: transparent;
+
+    &:hover {
+        background-color: $ig-blue;
+        color: $ig-white;
+    }
 }
 
 .slds-form-element__label {
