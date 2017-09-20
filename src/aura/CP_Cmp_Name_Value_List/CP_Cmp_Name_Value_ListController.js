@@ -28,7 +28,8 @@
 				$A.createComponent(
 					componentName, {
 						"label": item.label,
-						"description": item.detail
+						"description": item.detail,
+						"type": item.type
 					},
 					function(nameValueItem, status, errorMessage) {
 						if (status === "SUCCESS") {

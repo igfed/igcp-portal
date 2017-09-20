@@ -8,39 +8,48 @@
 
 		itemsArr = [{
 				"label": "Username",
-				"detail": cmp.get("v.username")
+				"detail": cmp.get("v.username"),
+				"type": "single"
 			},
 			{
 				"label": "Email",
-				"detail": cmp.get("v.email")
+				"detail": cmp.get("v.email"),
+				"type": "single"
 			},
 			{
 				"label": "Notification",
-				"detail": cmp.get("v.emailOptIn")
+				"detail": cmp.get("v.emailOptIn"),
+				"type": ""
 			},
 			{
 				"label": "Question 1",
-				"detail": cmp.get("v.securityQuestion1")
+				"detail": cmp.get("v.securityQuestion1"),
+				"type": "question"
 			},
 			{
 				"label": "Answer 1",
-				"detail": cmp.get("v.answer1")
+				"detail": cmp.get("v.answer1"),
+				"type": "answer"
 			},
 			{
 				"label": "Question 2",
-				"detail": cmp.get("v.securityQuestion2")
+				"detail": cmp.get("v.securityQuestion2"),
+				"type": "question"
 			},
 			{
 				"label": "Answer 2",
-				"detail": cmp.get("v.answer2")
+				"detail": cmp.get("v.answer2"),
+				"type": "answer"
 			},
 			{
 				"label": "Question 3",
-				"detail": cmp.get("v.securityQuestion3")
+				"detail": cmp.get("v.securityQuestion3"),
+				"type": "question"
 			},
 			{
 				"label": "Answer 3",
-				"detail": cmp.get("v.answer3")
+				"detail": cmp.get("v.answer3"),
+				"type": "answer"
 			}
 		];
 

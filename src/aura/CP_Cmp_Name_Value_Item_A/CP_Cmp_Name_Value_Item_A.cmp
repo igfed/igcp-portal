@@ -2,8 +2,9 @@
 	
 	<aura:attribute name="label" type="String" ></aura:attribute>
 	<aura:attribute name="description" type="String" ></aura:attribute>
-	
-	<dt class="igcp-label--small igcp-list__item-label--a slds-item_label slds-m-vertical--small" title="{!v.label}">{!v.label}</dt>
-	<dd class="slds-item_detail slds-p-left--small slds-medium-p-left--zero slds-m-vertical--small" title="{!v.description}">{!v.description}</dd>
+	<aura:attribute name="type" type="String" ></aura:attribute>
+
+	<dt class="{!v.type == 'question' ? 'igcp-label--small igcp-list__item-label--a slds-item_label slds-m-vertical--small' : 'igcp-label--small igcp-list__item-label--a slds-item_label slds-m-bottom--small'}" title="{!v.label}">{!v.label}</dt>
+	<dd class="{!v.type == 'question' ? 'slds-item_detail slds-p-left--small slds-medium-p-left--zero slds-m-top--small' : 'slds-item_detail slds-p-left--small slds-medium-p-left--zero slds-m-bottom--small'}" title="{!v.description}">{!v.description}</dd>
 
 </aura:component>

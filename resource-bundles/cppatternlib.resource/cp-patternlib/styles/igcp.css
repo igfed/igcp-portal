@@ -3242,7 +3242,7 @@ label {
   margin-left: -10px; }
 
 .igcp-list .igcp-list__item-label--a {
-  padding-top: 5px; }
+  padding-top: 0; }
 .igcp-list .igcp-list__item-label--b {
   font-family: "WhitneyBook", Arial, sans-serif;
   font-weight: normal;
