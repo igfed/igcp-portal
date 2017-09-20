@@ -8,6 +8,8 @@
 				hlpr.validateUsername(params.payload, params.callBack, cmp, hlpr);
 			} else if (params.payload.type === "password") {
 				hlpr.validatePassword(params.payload, params.callBack, cmp, hlpr);
+			} else if (params.payload.type === "password-confirm") {
+				hlpr.validatePasswordConfirm(params.payload, params.callBack, cmp, hlpr);
 			} else if (params.payload.type === "client-number") {
 				hlpr.validateClientnumber(params.payload, params.callBack, cmp, hlpr);
 			} else if (params.payload.type === "postal") {

@@ -36,15 +36,15 @@
 		<aura:renderIf isTrue="{!v.tooltip}">
 			<c:CP_Cmp_Tooltip tooltip="{!v.tooltip}"/>
 		</aura:renderIf>
-		<!-- INSTRUCTIONS -->
-		<ul class="igcp-utils__bullets--disc slds-m-bottom--xx-small">
-			<li class="{!v.limitClass}">Must be 6-32 characters</li>
-			<li class="{!v.charClass}">Must not contain any special characters</li>
-		</ul>
 		<!-- INPUT -->
 		<div class="slds-form-element__control">
 			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" keyup="{!c.onHandleKey}" updateOn="keyup" blur="{!c.onBlur}" />
 		</div>
+		<!-- INSTRUCTIONS -->
+		<ul class="igcp-utils__bullets--disc slds-m-vertical--xx-small">
+			<li class="{!v.limitClass}">Must be 6-32 characters</li>
+			<li class="{!v.charClass}">Must not contain any special characters</li>
+		</ul>
 		<!-- HELP TEXT -->
 		<aura:renderIf isTrue="{!v.helpText}">
 			<div class="igcp-input__help-link slds-float--right">

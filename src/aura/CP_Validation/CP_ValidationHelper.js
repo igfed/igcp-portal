@@ -158,6 +158,26 @@
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
+	validatePasswordConfirm: function(params, callBack, cmp, hlpr) {
+
+		var
+			value = params.value,
+			id = params.id,
+			errors = [],
+			errorCheckObj = {};
+
+		errorCheckObj["passwordsMatch"] = hlpr.isSame(params.value, params.confirmValue);
+
+		errors = hlpr.checkForErrors(errorCheckObj);
+
+		errors.forEach(function(item, i) {
+			if (item.type === "passwordsMatch") {
+				item["msg"] = "The passwords do not match.";
+			}
+		});
+
+		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+	},
 	validateClientnumber: function(params, callBack, cmp, hlpr) {
 
 		var

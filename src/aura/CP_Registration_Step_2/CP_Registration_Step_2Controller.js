@@ -32,10 +32,9 @@
 
 			if (obj.isValid === false) {
 
-				//console.error("Input Errors: ");
-				//console.error(obj.errors);
-
 				cmp.set("v.inputErrors", true);
+
+				console.log(obj.errors)
 
 				events.fire("CP_Evt_Input_Error", {
 					"id": obj.id,
@@ -95,6 +94,10 @@
 		}
 	},
 	onInputBlur: function(cmp, evt, hlpr) {
+
+		console.log("Step 2: onInputBlur");
+		console.log(evt.getParam("payload"));
+
 		hlpr.validateInput(cmp, evt.getParam("payload"));
 	},
 	submitForm: function(cmp, evt, hlpr) {
@@ -118,9 +121,9 @@
 				fields.forEach(function(errorType, i) {
 					var msgArr = [];
 
-					console.log('Step three:');
-					console.log(errorType);
-					
+					console.error('StepTwo:');
+					console.error(errorType);
+
 					// if (errorType === "clientNum") {
 					// 	msgArr.push({"msg" : messages[i]});
 					// 	events.fire("CP_Evt_Input_Error", {
@@ -164,9 +167,9 @@
 	onKey: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
 
-		if(payload.id === "username-input") {
+		if (payload.id === "username-input") {
 			hlpr.validateUsername(cmp, payload);
-		} else if(payload.id === "password-input") {
+		} else if (payload.id === "password-input") {
 			hlpr.validatePassword(cmp, payload);
 		}
 	}

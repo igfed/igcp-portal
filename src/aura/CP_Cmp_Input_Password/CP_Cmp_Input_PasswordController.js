@@ -46,13 +46,15 @@
 		var
 			utils = cmp.find("CP_Utils"),
 			payload = evt.getParam("payload"),
+			confirmPasswordInput = cmp.find("confirm-password-input"),
 			errors = payload.errors,
 			errorTypeArr = [],
 			isEmpty = false,
 			minLength = false,
 			hasUppercase = false,
 			hasNumber = false,
-			hasSpecialChar = false;
+			hasSpecialChar = false,
+			passwordsMatch = false;
 
 		if (cmp.get("v.id") === payload.id) {
 
@@ -93,6 +95,13 @@
 					}
 				});
 
+				//passwordsMatch
+				utils.arrayContains(errorTypeArr, "passwordsMatch", function(hasValue) {
+					if (hasValue === false) {
+						passwordsMatch = true;
+					}
+				});
+
 
 				if (isEmpty === true) {
 					cmp.set("v.limitClass", "igcp-text__error igcp-utils__font-size--x-small");
@@ -118,6 +127,12 @@
 					} else {
 						cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");
 					}
+
+					if (passwordsMatch === false) {
+						confirmPasswordInput.set("v.errors", [{ "message" : errors[0].msg}]);
+					} else {
+						confirmPasswordInput.set("v.errors", []);
+					}
 				}
 			}
 		}
@@ -139,12 +154,14 @@
 			"value": cmp.get("v.passcode")
 		});
 	},
-	onConfirmBlur: function(cmp, evt, hlpr) {
+	onConfirmationBlur: function(cmp, evt, hlpr) {
+
 		var events = cmp.find("CP_Events");
 		events.fire("CP_Evt_Input_Blur", {
 			"id": cmp.get("v.id"),
-			"type": "pass-confirm",
-			"value": cmp.get("v.passcodeConfirm")
+			"type": "password-confirm",
+			"value": cmp.get("v.passcode"),
+			"confirmValue": cmp.get("v.passcodeConfirm")
 		});
 	}
 })
