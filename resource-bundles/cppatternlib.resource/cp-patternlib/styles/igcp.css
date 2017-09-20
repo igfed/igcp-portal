@@ -170,6 +170,9 @@ label {
 .slds-card .slds-icon_container.slds-icon-standard-person-account {
   left: -10px; }
 
+.igcp-label--small {
+  font-size: 14px !important; }
+
 .slds-m-around--xx-large {
   margin: 60px; }
 
