@@ -21,9 +21,11 @@
 	<aura:attribute name="inputValue" type="String" default=""></aura:attribute>
 	<aura:attribute name="maxLength" type="Integer" default="100"></aura:attribute>
 	<aura:attribute name="example" type="String" default=""></aura:attribute>
+	<aura:attribute name="hasFocus" type="Boolean" default="false" />
 	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 	<aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}" />
 	<aura:handler event="c:CP_Evt_Input_Valid" action="{!c.onValid}" />
 	<aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}" />

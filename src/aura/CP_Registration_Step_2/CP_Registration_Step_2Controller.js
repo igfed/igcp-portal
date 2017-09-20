@@ -1,6 +1,18 @@
 ({
+	onInit: function(cmp, evt, hlpr) {
+
+		var events = cmp.find("CP_Events");
+
+		if(cmp.get("v.username") !== "") {
+			events.fire("CP_Evt_Set_Input_Value", {
+				"id" : "username-input",
+				"formId" : cmp.get("v.pageId"),
+				"value" : cmp.get("v.username")
+			});
+		}
+	},
 	onSubmit: function(cmp, evt, hlpr) {
-		//Reset input errors	
+		//Reset input errorshttps://sitepreview.cs70.force.com/customers/s/registration	
 		cmp.set("v.inputErrors", false);
 		cmp.set("v.inputsReceived", 0);
 
@@ -92,9 +104,6 @@
 		}
 	},
 	onInputBlur: function(cmp, evt, hlpr) {
-
-		console.log("Step 2: onInputBlur");
-		console.log(evt.getParam("payload"));
 
 		hlpr.validateInput(cmp, evt.getParam("payload"));
 	},
