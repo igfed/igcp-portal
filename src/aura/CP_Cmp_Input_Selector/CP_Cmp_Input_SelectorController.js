@@ -3,53 +3,69 @@
 		cmp.set("v.options", cmp.get("v.defaultOptions"));
 	},
 	onChange: function(cmp, evt, hlpr) {
-		var
-			events = cmp.find("CP_Events"),
-			selected = cmp.get("v.selectedValue");
 
-		cmp.set("v.currentSelectedValue", selected);
+		var
+		    utils = cmp.find("CP_Utils"),
+			events = cmp.find("CP_Events"),
+			options = cmp.get("v.options"),
+			newOptions = [];
+
+		cmp.set("v.currentSelectedValue", cmp.get("v.selectedValue"));
+
+		//Remove selected from options
+		options.forEach(function(opt, i){
+			//if the currenSelectedValue is not an option
+			//and if array does not already contain value
+			if(cmp.get("v.currentSelectedValue") !== opt) {
+				newOptions.push(opt);
+			}
+		});
 
 		events.fire("CP_Evt_Input_Selector_Change", {
 			"id": cmp.get("v.id"),
-			"selected": selected
+			"options" : newOptions
 		});
 	},
 	onChangeReceived: function(cmp, evt, hlpr) {
+
 		var
 			utils = cmp.find("CP_Utils"),
-			selectedArr = cmp.get("v.selectedArr"),
 			payload = evt.getParam("payload"),
-			selected = payload.selected,
-			defaultOptions = cmp.get("v.defaultOptions"),
 			newOptions = [];
-
-
-		//If this isn't the same selector that iniated the event
-		//remove option from selector		
+		
 		if (payload.id !== cmp.get("v.id")) {
-			
-			//check if selected is already in selectedArr, and if not push it
-			utils.arrayContains(selectedArr, selected, function(hasValue) {
-				if (hasValue === false) {
-					selectedArr.push(selected);
-				}
-			});
-			cmp.set("v.selectedArr", selectedArr);
 
-			//Loop through all options in defaultOptions array and 
-			//create a new options array with selected omitted
-			defaultOptions.forEach(function(item, i) {
-
-				utils.arrayContains(selectedArr, item, function(hasValue) {
-					if (hasValue === false) {
-						newOptions.push(item);
-					}
+			//if a value has not been selected on 
+			//this selector
+			//populate with remaining options
+			if(cmp.get("v.currentSelectedValue") === "none") {
+				payload.options.forEach(function(opt, i){
+					newOptions.push(opt);
 				});
-
-			});
+			} else {
+				//if this selector does have a value
+				//push that value first to newOptions
+				//then push the left over options
+				newOptions.push(cmp.get("v.currentSelectedValue"));
+				payload.options.forEach(function(opt, i){
+					newOptions.push(opt);
+				});
+			}
 
 			cmp.set("v.options", newOptions);
-		}
+		} 
+	},
+	onOptionsReceived: function(cmp, evt, hlpr) {
 
+		if(evt.getParam("payload")) {
+			var payload = evt.getParam("payload");
+
+			if(cmp.get("v.form") === payload.id) {
+				cmp.set("v.defaultOptions", payload.options);
+				cmp.set("v.options", cmp.get("v.defaultOptions"));
+			}
+		} else {
+			console.warn("CP_Cmp_Input_Selector: onOptionsReceived: no payload");
+		}
 	}
 })

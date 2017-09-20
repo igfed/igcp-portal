@@ -1,9 +1,17 @@
 <aura:component >
-	<aura:attribute name="class" type="String" default=""/>
-	<div class="{!v.class}">
-		<button class="slds-button slds-button_icon slds-button slds-button_icon" aria-describedby="info" title="Info Tooltip">
-			<lightning:icon iconName="utility:info" size="small" alternativeText="Click to open tooltip" />
-			<span class="slds-assistive-text">Info tooltip</span>
-		</button>
-	</div>
+    
+    <aura:attribute name="class" type="String" />
+    <aura:attribute name="tooltip" type="String" />
+    <aura:attribute name="tabIndex" type="Integer" default="2" />
+    
+    <div class="{!'igcp-tooltip ' + v.class}">
+        
+        <div class="igcp-tooltip-container"></div>
+       
+        <span id="igcp-tooltip" data-tooltip="" aria-haspopup="true" class="igcp-tooltip__tip has-tip top" data-disable-hover="false" tabindex="{!v.tabIndex}" title="{!v.tooltip}" data-template-classes="igcp-tooltip__opened" data-alignment="center">
+            
+            <lightning:icon iconName="utility:info" size="small" alternativeText="Click to open tooltip" />
+        
+        </span>
+    </div>
 </aura:component>

@@ -3312,7 +3312,6 @@ label {
 
 .igcp-tooltip__opened {
   position: absolute;
-  top: calc(100% + .6495rem);
   z-index: 1200;
   max-width: 10rem;
   padding: .75rem;

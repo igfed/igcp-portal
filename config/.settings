@@ -1,17 +1,18 @@
 {
     "projectName": "igcp-portal",
-    "username": "dennis.erny@investorsgroup.com.portaldev_3",
-    "id": "582c1e70-9a5a-11e7-93d3-63c1c122a7bd",
+    "username": "dave.boyle@investorsgroup.com.portaldev3",
+    "id": "d600d320-9a57-11e7-9d83-3350974400c3",
     "namespace": "",
     "orgType": "developer",
     "loginUrl": "https://login.salesforce.com/",
     "instanceUrl": "https://cs70.salesforce.com",
-    "workspace": "C:\\Users\\ernyd\\Projects\\mm_projects",
+    "workspace": "/Users/spektraldevelopment/Workspace/work/IG/mm_workspace",
     "subscription": [
         "ApexClass",
         "ApexComponent",
         "ApexPage",
         "ApexTrigger",
+        "AuraDefinitionBundle",
         "StaticResource"
     ]
 }

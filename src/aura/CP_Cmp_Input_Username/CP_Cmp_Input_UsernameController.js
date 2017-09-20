@@ -37,29 +37,53 @@
 	onError: function(cmp, evt, hlpr) {
 
 		var
+			utils = cmp.find("CP_Utils"),
 			payload = evt.getParam("payload"),
 			errors = payload.errors,
-			errorArr = [];
+			errorTypeArr = [],
+			isEmpty = false,
+			minLength = false,
+			isAlphanumeric = false;
 
 		if (cmp.get("v.id") === payload.id) {
 
 			if (errors.length > 0) {
 
-				if(errors[0].type === "isEmpty") {
-					cmp.set("v.limitClass", "igcp-utils__font-size--x-small");
-					cmp.set("v.charClass", "igcp-utils__font-size--x-small");
-				}
+				errors.forEach(function(err, i) {
+					errorTypeArr.push(err.type);
+				});
 
-				if(errors[0].type === "minLength") {
+				//isEmpty
+				utils.arrayContains(errorTypeArr, "isEmpty", function(hasValue) {
+					isEmpty = hasValue;
+				});
+
+				//minLength
+				utils.arrayContains(errorTypeArr, "minLength", function(hasValue) {
+					minLength = hasValue;
+				});
+
+				//mhasSpecialChar
+				utils.arrayContains(errorTypeArr, "isAlphanumeric", function(hasValue) {
+					isAlphanumeric = hasValue;
+				});
+
+
+				if (isEmpty === true) {
 					cmp.set("v.limitClass", "igcp-text__error igcp-utils__font-size--x-small");
+					cmp.set("v.charClass", "igcp-utils__font-size--x-small");
 				} else {
-					cmp.set("v.limitClass", "igcp-text__success igcp-utils__font-size--x-small");
-				}
+					if (minLength === true) {
+						cmp.set("v.limitClass", "igcp-text__error igcp-utils__font-size--x-small");
+					} else {
+						cmp.set("v.limitClass", "igcp-text__success igcp-utils__font-size--x-small");
+					}
 
-				if(errors[0].type === "isAlphanumeric" || errors[1].type === "isAlphanumeric") {
-					cmp.set("v.charClass", "igcp-text__error igcp-utils__font-size--x-small");
-				} else {
-					cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");
+					if (isAlphanumeric === true) {
+						cmp.set("v.charClass", "igcp-text__error igcp-utils__font-size--x-small");
+					} else {
+						cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");
+					}
 				}
 			}
 		}
@@ -68,7 +92,7 @@
 
 		var events = cmp.find("CP_Events");
 		events.fire("CP_Evt_Key", {
-			"id" : cmp.get("v.id"),
+			"id": cmp.get("v.id"),
 			"type": cmp.get("v.type"),
 			"value": cmp.get("v.inputValue")
 		});

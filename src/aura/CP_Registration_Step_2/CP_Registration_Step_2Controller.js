@@ -99,59 +99,54 @@
 	},
 	submitForm: function(cmp, evt, hlpr) {
 
-		var action = cmp.get("c.StepTwo");
-		action.setParams({ payload: JSON.stringify(cmp.get("v.payload")) });
+		var
+			events = cmp.find("CP_Events"),
+			services = cmp.find("CP_Services");
 
-		// Create a callback that is executed after 
-		// the server-side action returns
-		action.setCallback(this, function(response) {
-			var state = response.getState(),
-				res, isValid;
-			if (state === "SUCCESS") {
-				// Alert the user with the value returned 
-				// from the server
-				//alert("Submit Response: " + response.getReturnValue());
-				console.log("STEP 2");
-				console.log(response.getReturnValue());
+		services.submitForm(
+			"StepTwo",
+			cmp,
+			function(evt) {
+				cmp.onNextStep();
+			},
+			function(error) {
 
-				res = JSON.parse(response.getReturnValue());
-				isValid = res["State"]["IsValid"];
+				var
+					fields = error.payload.State.Fields,
+					messages = error.payload.State.Messages;
 
-				if (isValid === true) {
-					cmp.onNextStep();
-				} else {
-					console.warn("Submission error: ");
-					console.warn(res["Messages"]);
-				}
+				fields.forEach(function(errorType, i) {
+					var msgArr = [];
 
-				// You would typically fire a event here to trigger 
-				// client-side notification that the server-side 
-				// action is complete
+					console.log('Step three:');
+					console.log(errorType);
+					
+					// if (errorType === "clientNum") {
+					// 	msgArr.push({"msg" : messages[i]});
+					// 	events.fire("CP_Evt_Input_Error", {
+					// 		"id": "client-number",
+					// 		"errors": msgArr
+					// 	});
+					// }
 
-			} else if (state === "INCOMPLETE") {
-				// do something
-			} else if (state === "ERROR") {
-				var errors = response.getError();
-				if (errors) {
-					if (errors[0] && errors[0].message) {
-						console.error("Error message: " +
-							errors[0].message);
+					// if (errorType === "postalCode") {
+					// 	msgArr.push({"msg" : messages[i]});
+					// 	events.fire("CP_Evt_Input_Error", {
+					// 		"id": "postal-code",
+					// 		"errors": msgArr
+					// 	});
+					// }
 
-
-					}
-				} else {
-					console.error("Unknown error");
-				}
+					// if (errorType === "dob") {
+					// 	msgArr.push({"msg" : messages[i]});
+					// 	events.fire("CP_Evt_Input_Error", {
+					// 		"id": "dob",
+					// 		"errors": msgArr
+					// 	});
+					// }
+				});
 			}
-		});
-
-		// optionally set storable, abortable, background flag here
-
-		// A client-side action could cause multiple events, 
-		// which could trigger other events and 
-		// other server-side action calls.
-		// $A.enqueueAction adds the server-side action to the queue.
-		$A.enqueueAction(action);
+		);
 	},
 	gotoNextStep: function(cmp, evt, hlpr) {
 		var event = cmp.find("CP_Events");
@@ -171,6 +166,8 @@
 
 		if(payload.id === "username-input") {
 			hlpr.validateUsername(cmp, payload);
+		} else if(payload.id === "password-input") {
+			hlpr.validatePassword(cmp, payload);
 		}
 	}
 })

@@ -50,6 +50,7 @@
 		});
 	},
 	onRegistrationComplete: function(cmp, evt, hlpr) {
+		console.log("onRegistrationComplete");
 		cmp.showTOS();
 	},
 	onShowTOS: function(cmp, evt, hlpr) {
@@ -67,12 +68,12 @@
 			payload = evt.getParam("payload"),
 			events = cmp.find("CP_Events");
 
+		console.log('onAgreeTOS')	
 		console.log("Registration Step 3");
 		console.log(payload);
+		console.log('ready to submit to ISAM');
 
 		if (payload.id === "tos_agree_button") {
-
-			console.log("HELLO");
 
 			if (cmp.get("v.acceptTOS") === true) {
 
@@ -103,60 +104,35 @@
 	},
 	onSubmitToISAM: function(cmp, evt, hlpr) {
 
-		var action = cmp.get("c.StepThree");
-		action.setParams({ payload: JSON.stringify(cmp.get("v.payload")) });
+		var
+			events = cmp.find("CP_Events"),
+			services = cmp.find("CP_Services");
 
-		// Create a callback that is executed after 
-		// the server-side action returns
-		action.setCallback(this, function(response) {
+		services.submitForm(
+			"StepThree",
+			cmp,
+			function(evt) {
 
-			var state = response.getState(),
-				res, isValid;
+				console.log("NEXT STEP!!!!");
 
-			if (state === "SUCCESS") {
-				// Alert the user with the value returned 
-				// from the server
-				//alert("Submit Response: " + response.getReturnValue());
-				console.log("STEP 3");
+				cmp.onNextStep();
+			},
+			function(error) {
 
-				res = JSON.parse(response.getReturnValue());
+				console.error(error);
 
-				console.log(res);
-				isValid = res["State"]["IsValid"];
+				// var
+				// 	fields = error.payload.State.Fields,
+				// 	messages = error.payload.State.Messages;
 
-				if (isValid === true) {
-					cmp.onNextStep();
-				} else {
-					console.warn("Submission error: ");
-					console.warn(response.getReturnValue());
-				}
+				// fields.forEach(function(errorType, i) {
+				// 	var msgArr = [];
 
-				// You would typically fire a event here to trigger 
-				// client-side notification that the server-side 
-				// action is complete
-
-			} else if (state === "INCOMPLETE") {
-				// do something
-			} else if (state === "ERROR") {
-				var errors = response.getError();
-				if (errors) {
-					if (errors[0] && errors[0].message) {
-						console.error("Error message: " +
-							errors[0].message);
-					}
-				} else {
-					console.error("Unknown error");
-				}
+				// 	console.log('Step three: error');
+				// 	console.log(errorType);
+				// });
 			}
-		});
-
-		// optionally set storable, abortable, background flag here
-
-		// A client-side action could cause multiple events, 
-		// which could trigger other events and 
-		// other server-side action calls.
-		// $A.enqueueAction adds the server-side action to the queue.
-		$A.enqueueAction(action);
+		);
 	},
 	gotoNextStep: function(cmp, evt, hlpr) {
 		var event = cmp.find("CP_Events");
@@ -206,6 +182,8 @@
 			},
 			"acceptTOS": cmp.get("v.acceptTOS")
 		});
+
+		console.log(cmp.get("v.payload"));
 	},
 	logPayloadVars: function(cmp, evt, hlpr) {
 		var logArray = [

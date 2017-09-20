@@ -256,6 +256,7 @@ global class CP_RegistrationClass {
 
     public CP_RegistrationClass.Result SaveInfoInSalesforce(RegistrationForm regForm)
     {
+        System.debug('i m in saveInfo');
         CP_RegistrationClass.Result result = new CP_RegistrationClass.Result();
         try
         {
@@ -276,12 +277,14 @@ global class CP_RegistrationClass {
                 objContact.Preferred_Language__c = 'English';
 
                 update objContact;
+                System.debug('info saved! ');
 
                 result.IsValid = true;
             }
         }
         catch(exception e)
         {
+            System.debug('there was something wrong.'+ e.getMessage());
             result.IsValid = false;
             result.Messages.add(e.getMessage());
         }

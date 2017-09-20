@@ -58,8 +58,9 @@ public class CP_RegistrationController {
 	@AuraEnabled
 	public static string  StepThree(String payload)
     {
-        //System.debug('I am in Step Three');
+        System.debug('I am in Step Three');
         objForm = new CP_RegistrationClass.RegistrationForm();
+        objForm.State = new CP_RegistrationClass.Result();
         CP_RegistrationClass.Result result = new CP_RegistrationClass.Result();
         try
         {
@@ -69,27 +70,28 @@ public class CP_RegistrationController {
             // Call the Registration class's verification method by passing in the Deserialized Registration Form object and get a result Object in return
             result = Registration.reValidateAll(objForm);
 
+            System.debug('Result object retuned by revalidate: ');
+            System.debug(result);
+
             if(result.IsValid)
             {
                 // Make the ISAM call and get the new User ID
 
-
                 // Update the New User ID into Salesforce 
-                result = Registration.SaveInfoInSalesforce(objForm);
-                
-                // Return Success and Redirect to Login Page 
+                objForm.State = Registration.SaveInfoInSalesforce(objForm);
             }
         }
         catch(exception e)
         {
-            result.IsValid = false;
-            result.Messages.add(e.getMessage());
+           objForm.State = new CP_RegistrationClass.Result();
+           objForm.State.IsValid = false;
+           objForm.State.Messages.add(e.getMessage());
         }
 
         // Serialize the result object and return as string
-        //System.debug('Return object from Controller');
-        //System.debug(objForm);
-        return JSON.serialize(result);
+        System.debug('Return object from Controller');
+        System.debug(objForm);
+        return JSON.serialize(objForm);
     }
     
 

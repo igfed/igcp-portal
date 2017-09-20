@@ -2,7 +2,7 @@
 
 	<!-- ATTRS -->
 	<aura:attribute name="class" type="String" default="igcp-utils__overflow--hidden"></aura:attribute>
-	<aura:attribute name="currentStep" type="Integer" default="1" ></aura:attribute>
+	<aura:attribute name="currentStep" type="Integer" default="2" ></aura:attribute>
 
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default=""/>
@@ -28,6 +28,7 @@
 
 	<!-- INCLUDES -->	
     <c:CP_CSS_Includes />
+    <c:CP_JS_Includes />
     
     <c:CP_Utils aura:id="CP_Utils"/>
 
@@ -93,4 +94,5 @@
     	<!-- FOOTER -->	
 		<!-- <c:CP_Cmp_Footer /> -->
 	</div>
+    
 </aura:component>
