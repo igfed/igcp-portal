@@ -48,15 +48,9 @@
         "fileName": "unpackaged/staticresources/cppatternlib.resource",
         "fullName": "cppatternlib",
         "id": "0813D00000095OXQAY",
-<<<<<<< HEAD
         "lastModifiedById": "0053D000000JkkgQAC",
         "lastModifiedByName": "Dennis Erny",
         "lastModifiedDate": "2017-09-20T15:37:35.000Z",
-=======
-        "lastModifiedById": "0053D000000JkROQA0",
-        "lastModifiedByName": "Dave Boyle",
-        "lastModifiedDate": "2017-09-19T21:08:04.000Z",
->>>>>>> master
         "manageableState": "unmanaged",
         "type": "StaticResource",
         "mmState": "clean"
