@@ -26,40 +26,47 @@
 			}
 		},
 		{
-			"file": ".gitignore",
+			"file": "src/aura/CP_Registration_Step_1/CP_Registration_Step_1.cmp",
 			"settings":
 			{
-				"buffer_size": 522,
+				"buffer_size": 3287,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "Searching 2165 files for \"step 1\"\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\resource-bundles\\igcpresources.resource\\igcp-resources\\scripts\\jquery-validation\\additional-methods.js:\n  301  \t}\n  302  \n  303: \t// Step 1 - using first Check Number:\n  304  \tfor ( i = 1; i <= 9; i++ ) {\n  305  \t\tsum = sum + parseInt( value.substring( i - 1, i ), 10 ) * ( 11 - i );\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\slds\\ui\\components\\progress-indicator\\base\\example.jsx:\n   53    <div className=\"demo-only\" style={{ padding: '1rem' }}>\n   54      <Progress value=\"0\">\n   55:       <Step active>Step 1</Step>\n   56        <Step>Step 2</Step>\n   57        <Step>Step 3</Step>\n   ..\n   69        <div className=\"demo-only\" style={{ padding: '1rem' }}>\n   70          <Progress value=\"25\">\n   71:           <Step done>Step 1</Step>\n   72            <Step active>Step 2</Step>\n   73            <Step>Step 3</Step>\n   ..\n   83        <div className=\"demo-only\" style={{ padding: '1rem' }}>\n   84          <Progress value=\"25\">\n   85:           <Step done>Step 1</Step>\n   86            <Step error>Step 2</Step>\n   87            <Step>Step 3</Step>\n   ..\n   97        <div className=\"demo-only\" style={{ padding: '3rem 1rem 0' }}>\n   98          <Progress value=\"50\">\n   99:           <Step done>Step 1</Step>\n  100            <Step done>Step 2</Step>\n  101            <Step active aria-describedby=\"step-3-tooltip\">Step 3</Step>\n  ...\n  124            <button className=\"slds-button slds-button_neutral\">Cancel</button>\n  125            <Progress className=\"slds-progress_shade\" value=\"25\">\n  126:             <Step done>Step 1</Step>\n  127              <Step active>Step 2</Step>\n  128              <Step>Step 3</Step>\n  ...\n  142        <div className=\"demo-only\" style={{ background: '#f4f6f9', padding: '1rem' }}>\n  143          <Progress className=\"slds-progress_shade\" value=\"25\">\n  144:           <Step done>Step 1</Step>\n  145            <Step active>Step 2</Step>\n  146            <Step>Step 3</Step>\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\slds\\ui\\components\\progress-indicator\\modal\\example.jsx:\n   20          <button className=\"slds-button slds-button_neutral\">Cancel</button>\n   21          <Progress className=\"slds-progress_shade\" value=\"25\">\n   22:           <Step done>Step 1</Step>\n   23            <Step active>Step 2</Step>\n   24            <Step>Step 3</Step>\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\slds\\ui\\components\\progress-indicator\\themes\\example.jsx:\n   16      <div className=\"demo-only\" style={{ padding: '1rem' }}>\n   17        <Progress value=\"25\">\n   18:         <Step done>Step 1</Step>\n   19          <Step active>Step 2</Step>\n   20          <Step>Step 3</Step>\n   ..\n   30        <div className=\"demo-only\" style={{ background: '#f4f6f9', padding: '1rem' }}>\n   31          <Progress className=\"slds-progress_shade\" value=\"25\">\n   32:           <Step done>Step 1</Step>\n   33            <Step active>Step 2</Step>\n   34            <Step>Step 3</Step>\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\src\\aura\\CP_Cmp_Progress_Indicator\\CP_Cmp_Progress_Indicator.cmp:\n   17  \t\t\t\t\t\t<button class=\"slds-button slds-progress__marker\">\n   18  \t\t\t\t\t\t\t<span class=\"igcp-progress-indicator__step igcp-progress-indicator__step--complete\"><lightning:icon iconName=\"utility:success\" alternativeText=\"Step Complete\" /></span>\n   19: \t\t\t\t\t\t\t<span class=\"slds-assistive-text\">Step 1 - Active</span>\n   20  \t\t\t\t\t\t</button>\n   21  \t\t\t\t\t</li>\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\src\\aura\\CP_Registration\\CP_Registration.cmp:\n    5  \t<aura:attribute name=\"currentStep\" type=\"Integer\" default=\"1\" ></aura:attribute>\n    6  \n    7: \t<!-- Step 1 -->\n    8  \t<aura:attribute name=\"clientNum\" type=\"String\" default=\"\"/>\n    9      <aura:attribute name=\"postalCode\" type=\"String\" default=\"\"/>\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\src\\aura\\CP_Registration_Step_1\\CP_Registration_Step_1.cmp:\n    7  \t<aura:attribute name=\"payload\" type=\"Map\" default=\"{}\"></aura:attribute>\n    8  \t\n    9: \t<!-- Step 1 -->\n   10  \t<aura:attribute name=\"clientNum\" type=\"String\"></aura:attribute>\n   11  \t<aura:attribute name=\"postalCode\" type=\"String\"></aura:attribute>\n   ..\n   42  \t\t\t\t\t<c:CP_Cmp_Progress_Indicator currentStep=\"1\" totalSteps=\"3\" />\n   43  \t\t\t\t\t\n   44: \t\t\t\t\t<div class=\"igcp-label--small\">Step 1</div>\n   45  \t\t\t\t\t\n   46  \t\t\t\t\t<h2>Link Your Account</h2>\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\src\\aura\\CP_Registration_Step_1\\CP_Registration_Step_1.cmp-meta.xml:\n    2  <AuraDefinitionBundle xmlns=\"http://soap.sforce.com/2006/04/metadata\">\n    3      <apiVersion>36.0</apiVersion>\n    4:     <description>Step 1 of the registration process</description>\n    5  </AuraDefinitionBundle>\n    6  \n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\src\\aura\\CP_Registration_Step_1\\CP_Registration_Step_1Controller.js:\n   54  \t\t\t},\n   55  \t\t\tfunction(error) {\n   56: \t\t\t\t// console.error(\"Step 1: Error\");\n   57  \t\t\t\t// console.error(error);\n   58  \n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\src\\aura\\CP_Registration_Step_3\\CP_Registration_Step_3.cmp:\n    6  \t<aura:attribute name=\"class\" type=\"String\" default=\"igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large\"></aura:attribute>\n    7  \t\n    8: \t<!-- Step 1 -->\n    9  \t<aura:attribute name=\"clientNum\" type=\"String\" default=\"\" />\n   10  \t<aura:attribute name=\"postalCode\" type=\"String\" default=\"\" />\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\src\\classes\\CP_RegistrationClass.cls:\n   99              {\n  100                  // Validate Contact Postal code and Date of birth with values entered by user\n  101:                 //System.debug('step 1- client num is valid');\n  102                  if(String.isBlank(IGUser.postalCode))\n  103                  {\n\n18 matches across 11 files\n\n\nSearching 2165 files for \"igcp-label--small\"\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\isam\\external_files\\css\\igcp.css:\n 3190    text-transform: uppercase; }\n 3191  \n 3192: .igcp-label--small {\n 3193    font-family: \"WhitneySemibold\", Arial, sans-serif;\n 3194    font-size: 12px;\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\resource-bundles\\cppatternlib.resource\\cp-patternlib\\styles\\igcp.css:\n 3187    letter-spacing: 0px; }\n 3188  \n 3189: .igcp-label--small {\n 3190    font-family: \"WhitneySemibold\", Arial, sans-serif;\n 3191    font-size: 12px;\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\src\\aura\\CP_Cmp_Gain_Loss\\CP_Cmp_Gain_Loss.cmp:\n   12      <div class=\"{v.class}\">\n   13           \n   14:          <h3 class=\"igcp-label--small slds-m-bottom--none slds-large-m-bottom--x-small\">{!v.label}\n   15           \t\n   16           \t<span class=\"igcp-utils__font--book igcp-utils__font-size--x-small igcp-utils__text--default slds-m-left--xxx-small\">{!v.description}</span>\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\src\\aura\\CP_Cmp_Link_Print\\CP_Cmp_Link_Print.cmp:\n    1  <aura:component >\n    2:     <a class=\"igcp-link__print igcp-label--small slds-size_12-of-12 slds-m-bottom--x-small\"><lightning:icon iconName=\"utility:record\" size=\"small\" class=\"igcp-link__print--icon slds-m-right--xxx-small\"/>Print</a>\n    3  </aura:component>\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\src\\aura\\CP_Cmp_Name_Value_Item_A\\CP_Cmp_Name_Value_Item_A.cmp:\n    4  \t<aura:attribute name=\"description\" type=\"String\" ></aura:attribute>\n    5  \t\n    6: \t<dt class=\"igcp-label--small igcp-list__item-label--a slds-item_label slds-m-vertical--small\" title=\"{!v.label}\">{!v.label}</dt>\n    7  \t<dd class=\"slds-item_detail slds-p-left--small slds-medium-p-left--zero slds-m-vertical--small\" title=\"{!v.description}\">{!v.description}</dd>\n    8  \n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\src\\aura\\CP_Cmp_Total_Value\\CP_Cmp_Total_Value.cmp:\n    8  \n    9      <div class=\"{!v.class}\">\n   10:          <h3 class=\"igcp-label--small slds-m-bottom--none slds-large-m-bottom--x-small\">{!v.label}</h3>\n   11           <div class=\"igcp-value--large slds-m-bottom--small slds-large-m-bottom--none\"><sup>$</sup>{!v.value}</div>\n   12      </div>\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\src\\aura\\CP_Overview_Account_Heading\\CP_Overview_Account_Heading.cmp:\n    6      \n    7      <div class=\"igcp-underline slds-grid slds-p-bottom--xx-small slds-large-p-bottom--x-small\">\n    8:         <div class=\"igcp-label--small slds-size_6-of-12\">{!v.accountType}</div>\n    9:         <div class=\"igcp-label--small slds-show_large slds-text-align_right slds-size_3-of-12\">{!v.col1Name}</div>\n   10:         <div class=\"igcp-label--small slds-p-right--large slds-show_large slds-text-align_right slds-size_3-of-12\">{!v.col2Name}</div>\n   11      </div>\n   12  </aura:component>\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\src\\aura\\CP_Overview_Alert_Item\\CP_Overview_Alert_Item.cmp:\n    7      \n    8      <div class=\"igcp-alert--item slds-p-bottom--medium slds-m-bottom--medium\">\n    9:         <div class=\"igcp-label--small\">{!v.date}</div>\n   10          <p>{!v.message}</p>\n   11          <a href=\"{!v.ctaLink}\" class=\"igcp-link\"><span class=\"igcp-underline igcp-utils__font--semibold\">{!v.cta}</span><lightning:icon iconName=\"utility:chevronright\" class=\"igcp-link__glyph--after\" size=\"x-small\" alternativeText=\"View Document\" /></a>\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\src\\aura\\CP_Registration_Step_1\\CP_Registration_Step_1.cmp:\n   42  \t\t\t\t\t<c:CP_Cmp_Progress_Indicator currentStep=\"1\" totalSteps=\"3\" />\n   43  \t\t\t\t\t\n   44: \t\t\t\t\t<div class=\"igcp-label--small\">Step 1</div>\n   45  \t\t\t\t\t\n   46  \t\t\t\t\t<h2>Link Your Account</h2>\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\src\\aura\\CP_Registration_Step_2\\CP_Registration_Step_2.cmp:\n   53  \t\t\t\t<h1>Register for Online Access</h1>\n   54  \t\t\t\t<c:CP_Cmp_Progress_Indicator currentStep=\"2\" totalSteps=\"3\" />\n   55: \t\t\t\t<div class=\"igcp-label--small\">Step 2</div>\n   56  \t\t\t\t<h2>Create Your Online Profile</h2>\n   57  \t\t\t\t<p class=\"igcp-utils__width--100 igcp-large-utils__width--75\">You'll use your online profile to securely access your account online.</p>\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\src\\aura\\CP_Registration_Step_3\\CP_Registration_Step_3.cmp:\n   66  \t\t\t\t<h1>Register for Online Access</h1>\n   67  \t\t\t\t<c:CP_Cmp_Progress_Indicator currentStep=\"3\" totalSteps=\"3\" />\n   68: \t\t\t\t<div class=\"igcp-label--small\">Step 3</div>\n   69  \t\t\t\t<h2>Review and Accept</h2>\n   70  \t\t\t\t<p class=\"igcp-utils__width--100 igcp-large-utils__width--75\">You’re almost finished! Please ensure your online profile information listed below is correct.</p>\n\n13 matches across 11 files\n\n\nSearching 17 files for \"igcp-label--small\"\n\n0 matches\n\nSearching 17 files for \"igcp-label--small\"\n\n0 matches",
+			"file": "src/aura/CP_Cmp_Form_Back_Next/CP_Cmp_Form_Back_Next.cmp",
 			"settings":
 			{
-				"buffer_size": 10746,
+				"buffer_size": 3648,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 17 files for \".igcp-label--small\"\n\n0 matches\n\nSearching 37 files for \".igcp-label--small\"\n\nC:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\cp-patternlib\\.sass-cache\\3a138c90623a2e20c7883c4e9cbcd1434818df81\\overrides.scssc:\n    <binary>\n\n2 matches in 1 file\n",
+			"settings":
+			{
+				"buffer_size": 267,
 				"line_ending": "Windows",
 				"name": "Find Results",
 				"scratch": true
 			}
 		},
 		{
-			"file": "cp-patternlib/sass/slds/overrides.scss",
+			"file": "cp-patternlib/sass/igcp/global-styles.scss",
 			"settings":
 			{
-				"buffer_size": 2849,
+				"buffer_size": 7672,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "# Standalone IGCP Pattern Library\n\nThis is the standalone version of the IGCP Pattern Library, the primary difference being that the .THIS class has been commented out. The .THIS was originally required for getting the CSS to render in the Lightning App container in the dev instance of Salesforce.\n\n## Compiling the library\n\n1) Install Sass CLI: http://sass-lang.com/install\n2) Terminal into cp-patternlib\n3) Run: sass --watch main.scss:../resource-bundles/cppatternlib.resource/cp-patternlib/styles/igcp.css",
-			"file": "cp-patternlib/README.md",
-			"file_size": 517,
-			"file_write_time": 131499836500547461,
+			"file": "cp-patternlib/sass/global.scss",
 			"settings":
 			{
-				"buffer_size": 509,
+				"buffer_size": 2547,
 				"line_ending": "Windows"
 			}
 		}
@@ -96,7 +103,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 500.0
+		"width": 569.0
 	},
 	"console":
 	{
@@ -118,26 +125,35 @@
 	[
 		"/C/Users/ernyd/Projects/mm_projects/igcp-portal",
 		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/cp-patternlib",
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/cp-patternlib/.sass-cache",
 		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/cp-patternlib/sass",
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/cp-patternlib/sass/igcp",
 		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/cp-patternlib/sass/slds",
 		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/resource-bundles",
-		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src"
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src",
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src/aura",
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src/aura/CP_Cmp_Form_Back_Next",
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src/aura/CP_Registration",
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src/aura/CP_Registration_Step_1"
 	],
 	"file_history":
 	[
-		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/isam/external_files/css/salesforce-lightning-design-system.css",
 		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/cp-patternlib/README.md",
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/.gitignore",
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/cp-patternlib/sass/slds/overrides.scss",
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/isam/external_files/css/salesforce-lightning-design-system.css",
 		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src/aura/CP_Evt_Get_Input_Value/CP_Evt_Get_Input_Value.evt"
 	],
 	"find":
 	{
-		"height": 30.0
+		"height": 51.0
 	},
 	"find_in_files":
 	{
 		"height": 143.0,
 		"where_history":
 		[
+			"C:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\cp-patternlib\\",
 			"C:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\cp-patternlib\\sass",
 			""
 		]
@@ -147,6 +163,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			".igcp-label--small",
+			"m-top-x",
+			"x-large",
 			"igcp-label--small",
 			"step 1"
 		],
@@ -166,7 +185,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -195,7 +214,7 @@
 						"translation.y": 360.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -211,8 +230,67 @@
 						"selection":
 						[
 							[
-								852,
-								852
+								2637,
+								2637
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 420.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/aura/CP_Registration_Step_1/CP_Registration_Step_1.cmp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3287,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1774,
+								1774
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 120.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/aura/CP_Cmp_Form_Back_Next/CP_Cmp_Form_Back_Next.cmp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3648,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1285,
+								1285
 							]
 						],
 						"settings":
@@ -225,190 +303,30 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": ".gitignore",
+					"buffer": 4,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 522,
+						"buffer_size": 267,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								288,
-								288
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10746,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										216,
-										222
-									],
-									[
-										595,
-										601
-									],
-									[
-										815,
-										821
-									],
-									[
-										1050,
-										1056
-									],
-									[
-										1291,
-										1297
-									],
-									[
-										1617,
-										1623
-									],
-									[
-										1911,
-										1917
-									],
-									[
-										2292,
-										2298
-									],
-									[
-										2622,
-										2628
-									],
-									[
-										2908,
-										2914
-									],
-									[
-										3413,
-										3419
-									],
-									[
-										3682,
-										3688
-									],
-									[
-										4045,
-										4051
-									],
-									[
-										4340,
-										4346
-									],
-									[
-										4666,
-										4672
-									],
-									[
-										4942,
-										4948
-									],
-									[
-										5338,
-										5344
-									],
-									[
-										5736,
-										5742
-									],
-									[
-										6065,
-										6082
-									],
-									[
-										6338,
-										6355
-									],
-									[
-										6620,
-										6637
-									],
-									[
-										7037,
-										7054
-									],
-									[
-										7461,
-										7478
-									],
-									[
-										7910,
-										7927
-									],
-									[
-										8396,
-										8413
-									],
-									[
-										8483,
-										8500
-									],
-									[
-										8605,
-										8622
-									],
-									[
-										8997,
-										9014
-									],
-									[
-										9549,
-										9566
-									],
-									[
-										9886,
-										9903
-									],
-									[
-										10366,
-										10383
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								10693,
-								10693
+								258,
+								258
 							]
 						],
 						"settings":
 						{
 							"detect_indentation": false,
 							"line_numbers": false,
-							"output_tag": 4,
+							"output_tag": 2,
 							"result_base_dir": "",
 							"result_file_regex": "^([^ \t].*):$",
 							"result_line_regex": "^ +([0-9]+):",
@@ -416,27 +334,56 @@
 							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 4360.0,
+						"translation.y": 60.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "cp-patternlib/sass/slds/overrides.scss",
+					"buffer": 5,
+					"file": "cp-patternlib/sass/igcp/global-styles.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2849,
+						"buffer_size": 7672,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2572,
-								2572
+								3798,
+								3798
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3320.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "cp-patternlib/sass/global.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2547,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								1508
 							]
 						],
 						"settings":
@@ -446,38 +393,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1983.0,
+						"translation.y": 1020.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "cp-patternlib/README.md",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 509,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								509,
-								415
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -564,7 +483,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 365.0,
+	"side_bar_width": 363.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

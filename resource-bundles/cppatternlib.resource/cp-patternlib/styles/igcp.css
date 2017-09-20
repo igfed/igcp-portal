@@ -105,9 +105,15 @@ label {
 
 .slds-button--brand {
   background-color: #004171; }
+  .slds-button--brand:hover {
+    background-color: transparent;
+    color: #004171; }
 
 .slds-button--neutral {
   background-color: transparent; }
+  .slds-button--neutral:hover {
+    background-color: #004171;
+    color: #fff; }
 
 .slds-form-element__label {
   font-family: "WhitneySemibold", Arial, sans-serif;
@@ -169,9 +175,6 @@ label {
 
 .slds-card .slds-icon_container.slds-icon-standard-person-account {
   left: -10px; }
-
-.igcp-label--small {
-  font-size: 14px !important; }
 
 .slds-m-around--xx-large {
   margin: 60px; }
@@ -3191,7 +3194,7 @@ label {
 
 .igcp-label--small {
   font-family: "WhitneySemibold", Arial, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0px;
   color: #004171; }
 
