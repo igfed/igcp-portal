@@ -200,6 +200,13 @@ global class CP_RegistrationClass {
             result.Fields.add('email');
             result.Messages.add(System.Label.CP_Registration_Email_Is_Invalid);   
         }
+        else if(IGUserProfile.EmailAlreadyRegistered())
+        {
+            // Email Is Already Registered
+            result.IsValid = false;
+            result.Fields.add('email');
+            result.Messages.add(System.Label.CP_Registration_Email_Is_Already_Registered);
+        }
         
         /*
         if(!String.isBlank(IGUserProfile.mobilePhone))
@@ -300,7 +307,7 @@ global class CP_RegistrationClass {
         // Search Contact by Business Partner ID
         public Contact getContactByBusinessPartnerID()
         {
-            List<Contact> contactList = [select ID, Portal_User_Is_Registered__c, Portal_User_ID__c, 
+            List<Contact> contactList = [select ID, Portal_User_Is_Registered__c, Email, Portal_User_ID__c, 
                 Portal_User_Name__c, MailingPostalCode, Birthdate, Business_Partner_ID__c, Preferred_Language__c 
                 from Contact 
                 where Business_Partner_ID__c = : String.escapeSingleQuotes(this.clientNum)];
@@ -362,7 +369,7 @@ global class CP_RegistrationClass {
 
         public Boolean UserNameAlreadyExist()
         {
-            List<contact> contactList = [select ID, Portal_User_Is_Registered__c, Portal_User_ID__c, 
+            List<contact> contactList = [select ID, Portal_User_Is_Registered__c, Email, Portal_User_ID__c, 
                 Portal_User_Name__c, MailingPostalCode, Birthdate, Business_Partner_ID__c 
                 from Contact 
                 where Portal_User_Name__c = : String.escapeSingleQuotes(this.userName) limit 1];
@@ -373,6 +380,19 @@ global class CP_RegistrationClass {
 
         }
 
+        //CP_Registration_Email_Is_Already_Registered
+        public Boolean EmailAlreadyRegistered()
+        {
+            List<contact> contactList = [select ID, Portal_User_Is_Registered__c, Email, Portal_User_ID__c, 
+                Portal_User_Name__c, MailingPostalCode, Birthdate, Business_Partner_ID__c 
+                from Contact 
+                where Email = : String.escapeSingleQuotes(this.email) limit 1];
+            if(contactList.isEmpty())
+                return false;
+            else
+                return true;
+
+        }
         
         public Boolean IsValidEmail()
         {

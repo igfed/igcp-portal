@@ -31,6 +31,18 @@
 			});
 		}
 
+		console.log("STEP 2: init");
+		console.log(cmp.get("v.securityQuestion1"));
+
+		//Question 1
+		if(cmp.get("v.securityQuestion1") !== "") {
+			events.fire("CP_Evt_Set_Input_Value", {
+				"id" : "security-1-selector",
+				"formId" : cmp.get("v.pageId"),
+				"selected" : cmp.get("v.securityQuestion1")
+			});
+		}
+
 	},
 	onSubmit: function(cmp, evt, hlpr) {
 		//Reset input errorshttps://sitepreview.cs70.force.com/customers/s/registration	
@@ -44,6 +56,9 @@
 		var
 			inputId = evt.getParam("payload").id,
 			inputValue = evt.getParam("payload").selected;
+
+		console.log("onInputSelectorReceived");
+		console.log(evt.getParam("payload"));
 
 		if (inputId === "security-1-selector") {
 			cmp.set("v.securityQuestion1", inputValue);

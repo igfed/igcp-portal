@@ -1,0 +1,40 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+
+	<!-- ATTRS -->
+	<aura:attribute name="class" type="String" default="igcp-utils__overflow--hidden"></aura:attribute>
+	<aura:attribute name="currentStep" type="Integer" default="0" ></aura:attribute>
+
+	<!-- STEP 1 -->
+	<aura:attribute name="clientNum" type="String"></aura:attribute>
+	<aura:attribute name="email" type="String" ></aura:attribute>
+
+	<!-- STEP 2 -->
+	<aura:attribute name="question" type="String"></aura:attribute>
+	<aura:attribute name="answer" type="String"></aura:attribute>
+	
+	<!-- INCLUDES -->	
+    <c:CP_CSS_Includes />
+    <c:CP_JS_Includes />
+
+    <!-- HANDLER -->
+    <aura:handler event="c:CP_Evt_Next_Step" action="{!c.onNextStep}"></aura:handler>
+    <aura:handler event="c:CP_Evt_Back_Step" action="{!c.onBackStep}"></aura:handler>
+
+    <!-- COMPONENTS -->
+    <div class="{!v.class}">
+
+    	<aura:if isTrue="{!v.currentStep == 0}"  >
+    		<c:CP_Forgot_User_Step_1 />
+    	</aura:if>
+
+    	<aura:if isTrue="{!v.currentStep == 1}"  >
+    		<c:CP_Forgot_User_Step_2 />
+    	</aura:if>
+
+    	<aura:if isTrue="{!v.currentStep == 2}"  >
+    		<c:CP_Forgot_User_Thank_You />
+    	</aura:if>
+    	
+    </div>
+
+</aura:component>
