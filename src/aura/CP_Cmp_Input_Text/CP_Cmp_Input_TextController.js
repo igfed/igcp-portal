@@ -8,6 +8,15 @@
 			console.error("CP_Cmp_Input_Text: Input needs to be associated with a 'form'.")
 		}
 	},
+	doneRendering: function(cmp, evt, hlpr){
+
+		//we need access to the DOM for this
+		//wait until component is rendered
+		// if (cmp.get("v.hasFocus") === true) {
+		// 	cmp.find("text-input").getElement().focus();
+		// }
+		
+	},
 	onGetValue: function(cmp, evt, hlpr) {
 
 		var
@@ -22,6 +31,17 @@
 				"value": cmp.get("v.inputValue")
 			});
 		}
+	},
+	onSetValue: function(cmp, evt, hlpr) {
+
+		var 
+			formId = evt.getParam('payload').formId,
+			form = cmp.get('v.form');
+
+		if (formId === form) {
+			cmp.set("v.inputValue", evt.getParam('payload').value);
+		}
+
 	},
 	onValid: function(cmp, evt, hlpr) {
 

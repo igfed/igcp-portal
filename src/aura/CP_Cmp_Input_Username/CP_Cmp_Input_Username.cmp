@@ -19,9 +19,12 @@
 	<aura:attribute name="maxLength" type="Integer" default="100"></aura:attribute>
 	<aura:attribute name="limitClass" type="String" default="igcp-utils__font-size--x-small"></aura:attribute>
 	<aura:attribute name="charClass" type="String" default="igcp-utils__font-size--x-small"></aura:attribute>
+	<aura:attribute name="hasFocus" type="Boolean" default="false" />
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 	<aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}" />
+	<aura:handler event="c:CP_Evt_Set_Input_Value" action="{!c.onSetValue}" />
 	<aura:handler event="c:CP_Evt_Input_Valid" action="{!c.onValid}" />
 	<aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}" />
 	<!-- MARKUP -->
@@ -36,15 +39,15 @@
 		<aura:renderIf isTrue="{!v.tooltip}">
 			<c:CP_Cmp_Tooltip tooltip="{!v.tooltip}"/>
 		</aura:renderIf>
-		<!-- INSTRUCTIONS -->
-		<ul class="igcp-utils__bullets--disc slds-m-bottom--xx-small">
-			<li class="{!v.limitClass}">Must be 6-32 characters</li>
-			<li class="{!v.charClass}">Must not contain any special characters</li>
-		</ul>
 		<!-- INPUT -->
 		<div class="slds-form-element__control">
 			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" keyup="{!c.onHandleKey}" updateOn="keyup" blur="{!c.onBlur}" />
 		</div>
+		<!-- INSTRUCTIONS -->
+		<ul class="igcp-utils__bullets--disc slds-m-vertical--xx-small">
+			<li class="{!v.limitClass}">Must be 6-32 characters</li>
+			<li class="{!v.charClass}">Can only contain the following special characters: - @ _ .</li>
+		</ul>
 		<!-- HELP TEXT -->
 		<aura:renderIf isTrue="{!v.helpText}">
 			<div class="igcp-input__help-link slds-float--right">

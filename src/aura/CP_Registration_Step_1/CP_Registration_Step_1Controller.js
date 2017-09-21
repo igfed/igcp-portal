@@ -1,4 +1,7 @@
 ({
+	onInit: function(cmp, evt, hlpr) {
+		
+	},
 	onSubmit: function(cmp, evt, hlpr) {
 
 		//Reset input errors	

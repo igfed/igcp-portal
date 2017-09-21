@@ -8,6 +8,15 @@
 			console.error("CP_Cmp_Input_Text: Input needs to be associated with a 'form'.")
 		}
 	},
+	doneRendering: function(cmp, evt, hlpr){
+
+		//we need access to the DOM for this
+		//wait until component is rendered
+		// if (cmp.get("v.hasFocus") === true) {
+		// 	cmp.find("text-input").getElement().focus();
+		// }
+		
+	},
 	onGetValue: function(cmp, evt, hlpr) {
 
 		var
@@ -22,6 +31,17 @@
 				"value": cmp.get("v.inputValue")
 			});
 		}
+	},
+	onSetValue: function(cmp, evt, hlpr) {
+
+		var 
+			formId = evt.getParam('payload').formId,
+			form = cmp.get('v.form');
+
+		if (formId === form) {
+			cmp.set("v.inputValue", evt.getParam('payload').value);
+		}
+
 	},
 	onValid: function(cmp, evt, hlpr) {
 
@@ -39,8 +59,10 @@
 		var
 			utils = cmp.find("CP_Utils"),
 			payload = evt.getParam("payload"),
+			userNameInput = cmp.find("text-input"),
 			errors = payload.errors,
 			errorTypeArr = [],
+			errorArr = [],
 			isEmpty = false,
 			minLength = false,
 			isAlphanumeric = false;
@@ -84,6 +106,12 @@
 					} else {
 						cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");
 					}
+				}
+				
+				if(payload.type === "userName") {
+					userNameInput.set("v.errors", [{ "message" : errors[0].msg}]);
+				} else {
+					userNameInput.set("v.errors", []);
 				}
 			}
 		}
