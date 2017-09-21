@@ -12,9 +12,9 @@
 
 		//we need access to the DOM for this
 		//wait until component is rendered
-		if (cmp.get("v.hasFocus") === true) {
-			cmp.find("text-input").getElement().focus();
-		}
+		// if (cmp.get("v.hasFocus") === true) {
+		// 	cmp.find("text-input").getElement().focus();
+		// }
 		
 	},
 	onGetValue: function(cmp, evt, hlpr) {
@@ -33,9 +33,6 @@
 		}
 	},
 	onSetValue: function(cmp, evt, hlpr) {
-
-		console.log('username: SET value');
-		console.log(evt.getParam('payload'));
 
 		var 
 			formId = evt.getParam('payload').formId,
@@ -62,8 +59,10 @@
 		var
 			utils = cmp.find("CP_Utils"),
 			payload = evt.getParam("payload"),
+			userNameInput = cmp.find("text-input"),
 			errors = payload.errors,
 			errorTypeArr = [],
+			errorArr = [],
 			isEmpty = false,
 			minLength = false,
 			isAlphanumeric = false;
@@ -107,6 +106,12 @@
 					} else {
 						cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");
 					}
+				}
+				
+				if(payload.type === "userName") {
+					userNameInput.set("v.errors", [{ "message" : errors[0].msg}]);
+				} else {
+					userNameInput.set("v.errors", []);
 				}
 			}
 		}
