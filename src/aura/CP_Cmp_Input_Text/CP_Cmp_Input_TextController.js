@@ -12,9 +12,9 @@
 
 		//we need access to the DOM for this
 		//wait until component is rendered
-		if (cmp.get("v.hasFocus") === true) {
-			cmp.find("text-input").getElement().focus();
-		}
+		// if (cmp.get("v.hasFocus") === true) {
+		// 	cmp.find("text-input").getElement().focus();
+		// }
 		
 	},
 	onGetValue: function(cmp, evt, hlpr) {
@@ -31,6 +31,17 @@
 				"value": cmp.get("v.inputValue")
 			});
 		}
+	},
+	onSetValue: function(cmp, evt, hlpr) {
+
+		var 
+			formId = evt.getParam('payload').formId,
+			form = cmp.get('v.form');
+
+		if (formId === form) {
+			cmp.set("v.inputValue", evt.getParam('payload').value);
+		}
+
 	},
 	onValid: function(cmp, evt, hlpr) {
 

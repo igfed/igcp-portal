@@ -3,6 +3,8 @@
 
 		var events = cmp.find("CP_Events");
 
+		//auto populate input if value already exists
+		//Username
 		if(cmp.get("v.username") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
 				"id" : "username-input",
@@ -10,6 +12,25 @@
 				"value" : cmp.get("v.username")
 			});
 		}
+
+		//E-mail
+		if(cmp.get("v.email") !== "") {
+			events.fire("CP_Evt_Set_Input_Value", {
+				"id" : "email-input",
+				"formId" : cmp.get("v.pageId"),
+				"value" : cmp.get("v.email")
+			});
+		}
+
+		//Phone
+		if(cmp.get("v.mobilePhone") !== "") {
+			events.fire("CP_Evt_Set_Input_Value", {
+				"id" : "phone-input",
+				"formId" : cmp.get("v.pageId"),
+				"value" : cmp.get("v.mobilePhone")
+			});
+		}
+
 	},
 	onSubmit: function(cmp, evt, hlpr) {
 		//Reset input errorshttps://sitepreview.cs70.force.com/customers/s/registration	
@@ -131,29 +152,23 @@
 					console.error('StepTwo:');
 					console.error(errorType);
 
-					// if (errorType === "clientNum") {
-					// 	msgArr.push({"msg" : messages[i]});
-					// 	events.fire("CP_Evt_Input_Error", {
-					// 		"id": "client-number",
-					// 		"errors": msgArr
-					// 	});
-					// }
+					if (errorType === "userName") {
+						msgArr.push({"msg" : messages[i]});
+						events.fire("CP_Evt_Input_Error", {
+							"id": "username-input",
+							"type" : errorType,
+							"errors": msgArr
+						});
+					}
 
-					// if (errorType === "postalCode") {
-					// 	msgArr.push({"msg" : messages[i]});
-					// 	events.fire("CP_Evt_Input_Error", {
-					// 		"id": "postal-code",
-					// 		"errors": msgArr
-					// 	});
-					// }
-
-					// if (errorType === "dob") {
-					// 	msgArr.push({"msg" : messages[i]});
-					// 	events.fire("CP_Evt_Input_Error", {
-					// 		"id": "dob",
-					// 		"errors": msgArr
-					// 	});
-					// }
+					if (errorType === "email") {
+						msgArr.push({"msg" : messages[i]});
+						events.fire("CP_Evt_Input_Error", {
+							"id": "email-input",
+							"type" : errorType,
+							"errors": msgArr
+						});
+					}
 				});
 			}
 		);
