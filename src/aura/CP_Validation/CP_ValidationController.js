@@ -4,9 +4,6 @@
 		var params = evt.getParam('arguments');
 		if (params) {
 
-			console.log("VALIDATION");
-			console.log(params.payload.type);
-
 			if(params.payload.type === "username") {
 				hlpr.validateUsername(params.payload, params.callBack, cmp, hlpr);
 			} else if (params.payload.type === "password") {

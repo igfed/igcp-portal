@@ -11,6 +11,7 @@
 	<aura:attribute name="tooltip" type="String" />
 	<aura:attribute name="defaultOptions" type="String[]" />
 	<aura:attribute name="options" type="String[]"></aura:attribute>
+	<aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
 
 	<!-- INCLUDES -->
 	<c:CP_Utils aura:id="CP_Utils" />
@@ -18,6 +19,7 @@
 
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 	<aura:handler event="c:CP_Evt_Input_Selector_Change" action="{!c.onChangeReceived}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Selector_Send_Options" action="{!c.onOptionsReceived}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Set_Input_Value" action="{!c.onSetValue}"></aura:handler>

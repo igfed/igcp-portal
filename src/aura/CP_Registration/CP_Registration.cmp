@@ -88,6 +88,14 @@
     		<c:CP_Registration_Thank_You />
     	</aura:if>
 
+    	<aura:if isTrue="{!v.currentStep == 5}"  >
+    		<c:CP_Registration_Locked_Out />
+    	</aura:if>
+
+    	<aura:if isTrue="{!v.currentStep == 6}"  >
+    		<c:CP_Registration_Not_Completed />
+    	</aura:if>
+
     	<c:CP_Cmp_Modal id="registration-tos"/>
     	<c:CP_Cmp_Modal id="view-sample" modalType="small"/>
 

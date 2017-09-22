@@ -74,7 +74,11 @@
 				<c:CP_Cmp_Input_Text id="phone-input" form="{!v.pageId}" type="phone" label="Phone" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 				
 				<!-- SECURITY QUESTIONS -->
-				<c:CP_Registration_Security_Questions form="{!v.pageId}" />
+				<c:CP_Registration_Security_Questions 
+					securityQuestion1="{!v.securityQuestion1}" 
+					securityQuestion2="{!v.securityQuestion2}" 
+					securityQuestion3="{!v.securityQuestion3}" 
+					form="{!v.pageId}" />
 				
 				<div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 				

@@ -84,5 +84,18 @@
 
 			params.callback(hasValue);
 		}
+	},
+	onWaitFor: function(cmp, evt, hlpr) {
+		var params = evt.getParam("arguments");
+		if (params) {
+			var
+				component = params.component,
+				timer = setInterval(function() {
+					if (component.get(params.attr) === true) {
+						params.callback();
+						clearInterval(timer);
+					}
+				}, 500);
+		}
 	}
 })

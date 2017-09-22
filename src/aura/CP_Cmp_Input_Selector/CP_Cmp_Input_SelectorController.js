@@ -2,41 +2,51 @@
 	onInit: function(cmp, evt, hlpr) {
 		cmp.set("v.options", cmp.get("v.defaultOptions"));
 	},
+	doneRendering: function(cmp, evt, hlpr) {
+		cmp.set("v.renderComplete", true);
+	},
 	onSetValue: function(cmp, evt, hlpr) {
 
-		var payload = evt.getParam("payload");
+		var
+			payload = evt.getParam("payload"),
+			utils = cmp.find("CP_Utils"),
+			events = cmp.find("CP_Events"),
+			options,
+			newOptions = [];
 
 		if (cmp.get("v.id") === payload.id) {
 
-			console.log("Selector: onSetValue");
-			console.log(evt.getParam("payload"));
+			utils.waitFor(
+				cmp,
+				"v.renderComplete",
+				function() {
+					cmp.set("v.selectedValue", payload.selected);
+					cmp.set("v.currentSelectedValue", cmp.get("v.selectedValue"));
 
-			console.log("input id:  " + cmp.get("v.id"))
+					options = cmp.get("v.options");
 
-			var
-				utils = cmp.find("CP_Utils"),
-				events = cmp.find("CP_Events"),
-				options = cmp.get("v.defaultOptions"),
-				newOptions = [];
+					//Remove selected from options
+					options.forEach(function(opt, i) {
+						//if the currenSelectedValue is not an option
+						//and if array does not already contain value
+						if (cmp.get("v.currentSelectedValue") !== opt) {
+							newOptions.push(opt);
+						}
+					});
 
-			//Remove selected from options
-			options.forEach(function(opt, i) {
-				//if the currenSelectedValue is not an option
-				//and if array does not already contain value
-				if (cmp.get("v.currentSelectedValue") !== opt) {
-					newOptions.push(opt);
+					events.fire("CP_Evt_Input_Selector_Change", {
+						"id": cmp.get("v.id"),
+						"selected": cmp.get("v.currentSelectedValue"),
+						"options": newOptions
+					});
 				}
-			});
+			)
 
-			cmp.set("v.selectedValue", payload.selected);
-			cmp.set("v.currentSelectedValue", cmp.get("v.selectedValue"));
-
-			cmp.set("v.options", newOptions);
-
-			
 		}
 	},
 	onChange: function(cmp, evt, hlpr) {
+
+		console.log("CP_Cmp_Input_Selector: onChange");
 
 		var
 			utils = cmp.find("CP_Utils"),
@@ -69,6 +79,8 @@
 			newOptions = [];
 
 		if (payload.id !== cmp.get("v.id")) {
+
+			console.log("CP_Cmp_Input_Selector: onChangeReceived");
 
 			//if a value has not been selected on 
 			//this selector

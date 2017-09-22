@@ -2,6 +2,15 @@
 	<!-- ATTRS -->
 	<aura:attribute name="form" type="String" default="default"></aura:attribute>
 	<aura:attribute name="options" type="String[]" default=""></aura:attribute>
+
+	<aura:attribute name="securityQuestion1" type="String"></aura:attribute>
+	<aura:attribute name="securityQuestion2" type="String"></aura:attribute>
+	<aura:attribute name="securityQuestion3" type="String"></aura:attribute>
+
+	<!-- HANDLERS -->
+	<aura:handler event="c:CP_Evt_Set_Input_Value" action="{!c.onSetValue}" />
+
+
 	<!-- INCLUDES -->
 	<c:CP_Utils aura:id="CP_Utils" />
 	<c:CP_Events aura:id="CP_Events" />
