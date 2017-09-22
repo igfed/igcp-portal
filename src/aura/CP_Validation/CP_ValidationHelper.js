@@ -390,5 +390,26 @@
 		});
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });	
-	}
+	},
+	validateQuestion: function(params, callBack, cmp, hlpr) {
+
+		var
+			value = params.value,
+			id = params.id,
+			errors = [],
+			isEmpty = value.length === 0 ? true : false,
+			errorCheckObj = {};
+
+		errorCheckObj["isEmpty"] = isEmpty;
+
+		errors = hlpr.checkForErrors(errorCheckObj);
+
+		errors.forEach(function(item, i) {
+			if (item.type === "isEmpty") {
+				item["msg"] = "Please select a question.";
+			}
+		});
+
+		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+	},
 })

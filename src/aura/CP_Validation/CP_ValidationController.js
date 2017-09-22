@@ -22,6 +22,8 @@
 				hlpr.validatePhone(params.payload, params.callBack, cmp, hlpr);
 			} else if(params.payload.type === "text") {
 				hlpr.validateText(params.payload, params.callBack, cmp, hlpr);
+			} else if(params.payload.type === "question") {
+				hlpr.validateQuestion(params.payload, params.callBack, cmp, hlpr);
 			}
 		}
 	}

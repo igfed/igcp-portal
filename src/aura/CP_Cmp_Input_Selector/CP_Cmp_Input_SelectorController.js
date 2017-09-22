@@ -85,7 +85,7 @@
 			//if a value has not been selected on 
 			//this selector
 			//populate with remaining options
-			if (cmp.get("v.currentSelectedValue") === "none") {
+			if (cmp.get("v.currentSelectedValue") === "") {
 				payload.options.forEach(function(opt, i) {
 					newOptions.push(opt);
 				});
@@ -114,5 +114,13 @@
 		} else {
 			console.warn("CP_Cmp_Input_Selector: onOptionsReceived: no payload");
 		}
+	},
+	onBlur: function(cmp, evt, hlpr) {
+		var events = cmp.find("CP_Events");
+		events.fire("CP_Evt_Input_Blur", {
+			"id": cmp.get("v.id"),
+			"type": cmp.get("v.type"),
+			"value": cmp.get("v.currentSelectedValue")
+		});
 	}
 })

@@ -12,9 +12,6 @@
 
 		var events = cmp.find('CP_Events');
 
-		console.log('ON CLICK');
-		console.log(cmp.get("v.id"));
-
 		events.fire("CP_Evt_Click", 
 			{
 				"id" : cmp.get("v.id"),

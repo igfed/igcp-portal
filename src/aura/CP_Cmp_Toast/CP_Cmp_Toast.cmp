@@ -1,17 +1,29 @@
 <aura:component>
 
 	<!-- ATTRS -->
-	<aura:attribute  name="message" type="String"></aura:attribute>
+	<aura:attribute name="id" type="String" default="toast"></aura:attribute>
+	<aura:attribute name="class" type="String" default=""></aura:attribute>
+	<aura:attribute name="show" type="String" default="igcp-utils__display--none"></aura:attribute>
+	<aura:attribute name="type" type="String" default="base"></aura:attribute>
+	<aura:attribute name="message" type="String"></aura:attribute>
+	<aura:attribute name="notifyTheme" type="String" default="slds-theme_info"></aura:attribute>
+
+	<!-- HANDLER -->
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
+	<aura:handler event="c:CP_Evt_Toast_Success" action="{!c.onSuccess}" />
+	<aura:handler event="c:CP_Evt_Toast_Warning" action="{!c.onWarning}" />
+	<aura:handler event="c:CP_Evt_Toast_Error" action="{!c.onError}" />
 
 	<!-- MARKUP -->
-	<div class="igcp-toast">
-		<div class="slds-notify_container slds-is-relative">
-			<div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
+	<div class="{!'igcp-toast ' + v.class + ' ' + v.show}">
+		<div class="igcp-utils__text-align--left slds-notify_container slds-is-relative">
+			<div class="{!'slds-notify slds-notify_toast ' + v.notifyTheme}" role="alert">
 				<span class="slds-assistive-text">info</span>
-				<span class="slds-icon_container slds-icon-utility-info slds-m-right_small slds-no-flex slds-align-top" title="An error has occurred">
-                            </span>
+				<span class="slds-icon_container slds-m-right_small slds-no-flex slds-align-top" title="An error has occurred">
+					<lightning:icon iconName="utility:info" size="small" class="igcp-toast__icon slds-m-right--xx-small" alternativeText="Info" />
+                </span>
 				<div class="slds-notify__content">
-					<p id="errId" class="slds-text-heading_small">{!v.message}</p>
+					<p id="errId" class="igcp-toast__message slds-text-heading_small">{!v.message}</p>
 				</div>
 			</div>
 		</div>

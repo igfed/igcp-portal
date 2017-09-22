@@ -179,6 +179,9 @@
 	},
 	onInputBlur: function(cmp, evt, hlpr) {
 
+		console.log('INPUT BLUR');
+		console.log(evt.getParam("payload"));
+
 		hlpr.validateInput(cmp, evt.getParam("payload"));
 	},
 	submitForm: function(cmp, evt, hlpr) {

@@ -42,6 +42,12 @@
             <p class="igcp-utils__width--100 igcp-large-utils__width--75">Enter your profile credentials to verify your identity.</p>
             <div class="slds-grid slds-wrap">
                 <div class="slds-form slds-size_12-of-12">
+                	<!-- TOAST ERROR -->
+                	<c:CP_Cmp_Toast 
+                		id="error-box"
+                		message="Something went wrong" 
+                		type="error"
+                		class="slds-m-top--x-small slds-m-bottom--xxx-small"/>
                     <!--FIELDS-->
                     <!-- CLIENT NUMBER -->
                     <c:CP_Cmp_Input_Text id="client-number" maxLength="13" type="client-number" form="{!v.pageId}" label="Client Number" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" hasFocus="true"/>

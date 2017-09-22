@@ -27,8 +27,7 @@
 
 .#{$namespace}-wrapper {
 	max-width: $ig-large;
-	margin: 0 auto;
-	//234 is the height of the footer
+	margin: 0 auto; //234 is the height of the footer
 	min-height: calc(100vh - 234px);
 }
 
@@ -391,8 +390,7 @@
 }
 
 .#{$namespace}-tooltip__opened {
-	position: absolute;
-	//top: calc(100% + .6495rem);
+	position: absolute; //top: calc(100% + .6495rem);
 	z-index: 1200;
 	max-width: 10rem;
 	padding: .75rem;
@@ -427,4 +425,21 @@
 
 .#{$namespace}-text__informational {
 	color: $ig-system-informational;
+}
+
+//TOAST
+.#{$namespace}-toast {
+
+	.#{$namespace}-toast__icon {
+		position: relative;
+		top: 1px;
+		svg {
+			fill: $ig-white;
+		}
+	}
+
+
+	.#{$namespace}-toast__message {
+		color: $ig-white;
+	}
 }
