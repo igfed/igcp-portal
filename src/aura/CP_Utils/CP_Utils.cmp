@@ -41,5 +41,13 @@
 		<aura:attribute name="value" type="String"></aura:attribute>
 		<aura:attribute name="callback" type="function" default="" />
 	</aura:method>
+
+	<!-- DELETE IN ARRAY -->
+	<!-- Deletes a specified element from an array -->
+	<aura:method name="deleteInArray" action="{!c.onDeleteInArray}">
+		<aura:attribute name="array" type="String[]"></aura:attribute>
+		<aura:attribute name="value" type="String"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
 	
 </aura:component>

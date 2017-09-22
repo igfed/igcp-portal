@@ -59,7 +59,7 @@
 				
 				<!--FIELDS-->
 				<!-- USERNAME -->
-				<c:CP_Cmp_Input_Username id="username-input" form="{!v.pageId}" label="Username" maxLength="32" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="Pick a username." hasFocus="true"/>
+				<c:CP_Cmp_Input_Username id="username-input" form="{!v.pageId}" label="Username" maxLength="32" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="Pick a username." />
 				
 				<!-- PASSWORD -->
 				<c:CP_Cmp_Input_Password id="password-input" form="{!v.pageId}" type="password" confirmPassword="true" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" instructions="['Must be 8-32 letters or numbers', 'At least one uppercase letter', 'At least one number or special character']" tooltip="Pick a password." />

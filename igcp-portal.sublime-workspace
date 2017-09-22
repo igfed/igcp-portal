@@ -8,11 +8,18 @@
 	"buffers":
 	[
 		{
-			"file": "src/aura/CP_Test_Input_Validation/CP_Test_Input_Validation.cmp",
+			"file": "src/aura/CP_Registration_Step_3/CP_Registration_Step_3Controller.js",
 			"settings":
 			{
-				"buffer_size": 1368,
-				"encoding": "UTF-8",
+				"buffer_size": 5049,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/aura/CP_Cmp_Name_Value_List/CP_Cmp_Name_Value_ListController.js",
+			"settings":
+			{
+				"buffer_size": 1349,
 				"line_ending": "Windows"
 			}
 		},
@@ -20,43 +27,41 @@
 			"file": "src/aura/CP_Registration/CP_Registration.cmp",
 			"settings":
 			{
-				"buffer_size": 3817,
+				"buffer_size": 3742,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/aura/CP_Registration_Step_1/CP_Registration_Step_1.cmp",
+			"file": ".idea/misc.xml",
 			"settings":
 			{
-				"buffer_size": 3287,
+				"buffer_size": 480,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/aura/CP_Registration_Step_3/CP_Registration_Step_3.cmp",
+			"settings":
+			{
+				"buffer_size": 4560,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/aura/CP_Cmp_Form_Back_Next/CP_Cmp_Form_Back_Next.cmp",
+			"file": "src/aura/CP_Cmp_Name_Value_List/CP_Cmp_Name_Value_List.cmp",
 			"settings":
 			{
-				"buffer_size": 3648,
-				"encoding": "UTF-8",
+				"buffer_size": 648,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "cp-patternlib/sass/global.scss",
+			"file": "src/aura/CP_Cmp_Name_Value_Item_A/CP_Cmp_Name_Value_Item_A.cmp",
 			"settings":
 			{
-				"buffer_size": 2548,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "cp-patternlib/sass/igcp/global-styles.scss",
-			"settings":
-			{
-				"buffer_size": 7674,
-				"encoding": "UTF-8",
+				"buffer_size": 796,
 				"line_ending": "Windows"
 			}
 		}
@@ -69,9 +74,13 @@
 	"command_palette":
 	{
 		"height": 500.0,
-		"last_filter": "mavens",
+		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"",
+				"MavensMate: Deploy Resource Bundle..."
+			],
 			[
 				"mavens",
 				"MavensMate: Deploy Resource Bundle..."
@@ -111,16 +120,19 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/C/Users/ernyd/Projects/mm_projects/igcp-portal",
-		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src"
-	],
 	"file_history":
 	[
-		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/config/.local_store",
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/cp-patternlib/sass/igcp/global-styles.scss",
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/isam/management/C/acct_locked.html",
 		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/cp-patternlib/sass/slds/overrides.scss",
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/isam/management/C/login.html",
 		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/cp-patternlib/sass/global.scss",
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src/aura/CP_Evt_Set_List/CP_Evt_Set_List.evt",
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src/aura/CP_Registration/CP_Registration.cmp",
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src/aura/CP_Cmp_Form_Back_Next/CP_Cmp_Form_Back_Next.cmp",
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src/aura/CP_Registration_Step_1/CP_Registration_Step_1.cmp",
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src/aura/CP_Test_Input_Validation/CP_Test_Input_Validation.cmp",
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/config/.local_store",
 		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/cp-patternlib/README.md",
 		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/.gitignore",
 		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/isam/external_files/css/salesforce-lightning-design-system.css",
@@ -128,13 +140,14 @@
 	],
 	"find":
 	{
-		"height": 51.0
+		"height": 30.0
 	},
 	"find_in_files":
 	{
 		"height": 143.0,
 		"where_history":
 		[
+			"C:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\cp-patternlib\\sass",
 			"C:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\",
 			"C:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\cp-patternlib\\",
 			"C:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\cp-patternlib\\sass",
@@ -146,6 +159,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"<<<",
+			"impor",
+			"igcp-list",
+			"slds-m-top--small",
+			"onSetList",
+			"itemsArr",
+			"name=\"description\"",
+			"description",
+			"CP_Evt_Set_List",
+			"detail",
+			"aura:method",
+			"CP_Events",
 			"<<<",
 			"button-brand",
 			"button--neutral",
@@ -173,16 +198,104 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/aura/CP_Test_Input_Validation/CP_Test_Input_Validation.cmp",
+					"file": "src/aura/CP_Registration_Step_3/CP_Registration_Step_3Controller.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1368,
+						"buffer_size": 5049,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								392,
+								392
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/aura/CP_Cmp_Name_Value_List/CP_Cmp_Name_Value_ListController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1349,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								291,
+								291
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/aura/CP_Registration/CP_Registration.cmp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3742,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								252,
+								252
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": ".idea/misc.xml",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 480,
 						"regions":
 						{
 						},
@@ -195,162 +308,101 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/XML/XML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 360.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/aura/CP_Registration/CP_Registration.cmp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3817,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2637,
-								2637
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 420.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/aura/CP_Registration_Step_1/CP_Registration_Step_1.cmp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3287,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1774,
-								1774
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 120.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/aura/CP_Cmp_Form_Back_Next/CP_Cmp_Form_Back_Next.cmp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3648,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								649,
-								649
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 660.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "cp-patternlib/sass/global.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2548,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								613,
-								613
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 4,
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "cp-patternlib/sass/igcp/global-styles.scss",
+					"buffer": 4,
+					"file": "src/aura/CP_Registration_Step_3/CP_Registration_Step_3.cmp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7674,
+						"buffer_size": 4560,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3798,
-								3798
+								3048,
+								3048
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"syntax": "Packages/XML/XML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3320.0,
+						"translation.y": 540.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/aura/CP_Cmp_Name_Value_List/CP_Cmp_Name_Value_List.cmp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 648,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								486,
+								486
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/aura/CP_Cmp_Name_Value_Item_A/CP_Cmp_Name_Value_Item_A.cmp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 796,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -434,10 +486,10 @@
 	{
 	},
 	"show_minimap": true,
-	"show_open_files": false,
+	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 363.0,
+	"side_bar_width": 292.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

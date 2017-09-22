@@ -1,0 +1,19 @@
+<aura:component>
+
+	<!-- ATTRS -->
+	<aura:attribute  name="message" type="String"></aura:attribute>
+
+	<!-- MARKUP -->
+	<div class="igcp-toast">
+		<div class="slds-notify_container slds-is-relative">
+			<div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
+				<span class="slds-assistive-text">info</span>
+				<span class="slds-icon_container slds-icon-utility-info slds-m-right_small slds-no-flex slds-align-top" title="An error has occurred">
+                            </span>
+				<div class="slds-notify__content">
+					<p id="errId" class="slds-text-heading_small">{!v.message}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</aura:component>

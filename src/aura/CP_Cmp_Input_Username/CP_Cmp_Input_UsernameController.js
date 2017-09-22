@@ -34,12 +34,10 @@
 	},
 	onSetValue: function(cmp, evt, hlpr) {
 
-		var 
-			formId = evt.getParam('payload').formId,
-			form = cmp.get('v.form');
+		var payload = evt.getParam("payload");
 
-		if (formId === form) {
-			cmp.set("v.inputValue", evt.getParam('payload').value);
+		if (cmp.get("v.id") === payload.id && payload.formId === cmp.get("v.form")) {
+			cmp.set("v.inputValue", payload.value);
 		}
 
 	},
