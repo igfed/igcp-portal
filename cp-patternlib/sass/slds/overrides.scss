@@ -57,6 +57,10 @@
         line-height: $ig-line-height--base;
         top: 0;
     }
+
+    .slds-checkbox--faux {
+    border: 1px solid $ig-black;
+}
 }
 
 .slds-checkbox [type=checkbox]:checked+.slds-checkbox_faux:after,
