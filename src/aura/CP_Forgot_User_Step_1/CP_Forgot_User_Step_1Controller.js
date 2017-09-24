@@ -44,7 +44,7 @@
 				cmp.onNextStep();
 			},
 			function(error) {
-				console.error("Step 1: Error");
+				console.error("Forgot User: Step 1: Error");
 				console.error(error);
 
 				var

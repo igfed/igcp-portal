@@ -1,4 +1,8 @@
 ({
+	doneRendering: function(cmp, evt, hlpr) {
+		//call to get security question
+		cmp.set("v.question", "What's your dogs name?")
+	},
 	onSubmit: function(cmp, evt, hlpr) {
 
 		//Reset input errors	
@@ -16,20 +20,32 @@
 
 		cmp.set("v.inputsReceived", (inputs += 1));
 
+		console.log("Inputs Received: " + cmp.get("v.inputsReceived"));
+		console.log("inputErrors: " + cmp.get("v.inputErrors"));
+
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
-		if (cmp.get("v.inputsReceived") === 2 && cmp.get("v.inputErrors") === false) {
+		if (cmp.get("v.inputsReceived") === 1 && cmp.get("v.inputErrors") === false) {
 
-			// cmp.set("v.payload", {
-			// 	"clientNum": cmp.get("v.clientNum"),
-			// 	"postalCode": cmp.get("v.postalCode"),
-			// 	"dob": formattedDob
-			// });
+			cmp.set("v.payload", {
+				"clientNum": cmp.get("v.clientNum"),
+				"email" : cmp.get("v.email"),
+				"question": cmp.get("v.question"),
+				"answer": cmp.get("v.answer")
+			});
+
+			console.log("PAYLOAD");
+			console.log(cmp.get("v.payload"));
+
+			cmp.gotoNextStep();
+
+			// console.log("AHAHAHAHHAH");
 
 			//cmp.onSubmitForm();
 		}
 	},
 	onInputBlur: function(cmp, evt, hlpr) {
+
 		hlpr.validateInput(cmp, evt.getParam("payload"));
 	},
 	submitForm: function(cmp, evt, hlpr) {
@@ -45,8 +61,8 @@
 				cmp.onNextStep();
 			},
 			function(error) {
-				// console.error("Step 1: Error");
-				// console.error(error);
+				console.error("Forgot User: Step 2: Error");
+				console.error(error);
 
 				var
 					fields = error.payload.State.Fields,
@@ -55,34 +71,20 @@
 				fields.forEach(function(errorType, i) {
 					var msgArr = [];
 					
-					// if (errorType === "clientNum") {
-					// 	msgArr.push({"msg" : messages[i]});
-					// 	events.fire("CP_Evt_Input_Error", {
-					// 		"id": "client-number",
-					// 		"errors": msgArr
-					// 	});
-					// }
-
-					// if (errorType === "postalCode") {
-					// 	msgArr.push({"msg" : messages[i]});
-					// 	events.fire("CP_Evt_Input_Error", {
-					// 		"id": "postal-code",
-					// 		"errors": msgArr
-					// 	});
-					// }
-
-					// if (errorType === "dob") {
-					// 	msgArr.push({"msg" : messages[i]});
-					// 	events.fire("CP_Evt_Input_Error", {
-					// 		"id": "dob",
-					// 		"errors": msgArr
-					// 	});
-					// }
+					if (errorType === "answer") {
+						msgArr.push({"msg" : messages[i]});
+						events.fire("CP_Evt_Input_Error", {
+							"id": "text-input",
+							"errors": msgArr
+						});
+					}
 				});
 			}
 		);
 	},
-	gotoNextStep: function(cmp, evt, hlpr) {
+	onNextStep: function(cmp, evt, hlpr) {
+
+		console.log("NEXT STEP");
 		var event = cmp.find("CP_Events");
 		event.fire("CP_Evt_Next_Step", {
 			"id": cmp.get("v.pageId")
