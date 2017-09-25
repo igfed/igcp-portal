@@ -24,8 +24,9 @@
 		if (cmp.get("v.inputsReceived") === 2 && cmp.get("v.inputErrors") === false) {
 
 			cmp.set("v.payload", {
-				// "clientNum": cmp.get("v.clientNum"),
-				// "email" : cmp.get("v.email")
+				"username": cmp.get("v.username"),
+                "postalCode": cmp.get("v.postalCode"),
+				"dob" : cmp.get("v.dob")
 			});
 
 			cmp.onSubmitForm();
@@ -57,18 +58,26 @@
 				fields.forEach(function(errorType, i) {
 					var msgArr = [];
 					
-					if (errorType === "clientNum") {
+					if (errorType === "username") {
 						msgArr.push({"msg" : messages[i]});
 						events.fire("CP_Evt_Input_Error", {
-							"id": "client-number",
+							"id": "username",
 							"errors": msgArr
 						});
 					}
 
-					if (errorType === "email") {
+					if (errorType === "postal-code") {
 						msgArr.push({"msg" : messages[i]});
 						events.fire("CP_Evt_Input_Error", {
-							"id": "email-input",
+							"id": "postal-code",
+							"errors": msgArr
+						});
+					}
+
+					if (errorType === "dob") {
+						msgArr.push({"msg" : messages[i]});
+						events.fire("CP_Evt_Input_Error", {
+							"id": "dob",
 							"errors": msgArr
 						});
 					}
