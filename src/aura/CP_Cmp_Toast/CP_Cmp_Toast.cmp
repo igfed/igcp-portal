@@ -5,7 +5,7 @@
 	<aura:attribute name="class" type="String" default=""></aura:attribute>
 	<aura:attribute name="show" type="String" default="igcp-utils__display--none"></aura:attribute>
 	<aura:attribute name="type" type="String" default="base"></aura:attribute>
-	<aura:attribute name="message" type="String"></aura:attribute>
+	<aura:attribute name="message" type="String" default=""></aura:attribute>
 	<aura:attribute name="notifyTheme" type="String" default="slds-theme_info"></aura:attribute>
 
 	<!-- HANDLER -->

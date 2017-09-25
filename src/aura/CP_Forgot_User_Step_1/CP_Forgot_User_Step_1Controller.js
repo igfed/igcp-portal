@@ -22,7 +22,7 @@
 
 			cmp.set("v.payload", {
 				"clientNum": cmp.get("v.clientNum"),
-				"email" : cmp.get("v.email")
+				"email": cmp.get("v.email")
 			});
 
 			cmp.onSubmitForm();
@@ -54,9 +54,9 @@
 				//Leaving this in in case the individual fields have errors for some reason
 				fields.forEach(function(errorType, i) {
 					var msgArr = [];
-	
+
 					if (errorType === "clientNum") {
-						msgArr.push({"msg" : messages[i]});
+						msgArr.push({ "msg": messages[i] });
 						events.fire("CP_Evt_Input_Error", {
 							"id": "client-number",
 							"errors": msgArr
@@ -64,7 +64,7 @@
 					}
 
 					if (errorType === "email") {
-						msgArr.push({"msg" : messages[i]});
+						msgArr.push({ "msg": messages[i] });
 						events.fire("CP_Evt_Input_Error", {
 							"id": "email-input",
 							"errors": msgArr
@@ -72,11 +72,18 @@
 					}
 				});
 
-				//Display toast
-				events.fire("CP_Evt_Toast_Error", {
+				if (error.type === "server-side-error") {
+					events.fire("CP_Evt_Toast_Error", {
 					"id" : "error-box",
-					"message" : messages[0]
+					"message" : $A.get("$Label.namespace.CP_Error_Server_Side_Generic")
 				});
+				} else {
+					//Display toast
+					events.fire("CP_Evt_Toast_Error", {
+						"id": "error-box",
+						"message": messages[0]
+					});
+				}
 
 			}
 		);
