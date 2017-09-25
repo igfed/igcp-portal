@@ -130,10 +130,6 @@
 					inputId = evt.getParam("payload").id,
 					inputValue = evt.getParam("payload").value;
 
-				console.log("ON INPUT RECEIVED");	
-				console.log(inputId);
-				console.log(inputValue);
-
 				if (inputId === "username-input") {
 					cmp.set("v.username", inputValue);
 				} else if (inputId === "password-input") {
@@ -200,14 +196,26 @@
 			function(error) {
 
 				var
+					events = cmp.find("CP_Events"),
 					fields = error.payload.State.Fields,
-					messages = error.payload.State.Messages;
+					messages = error.payload.State.Messages,
+					isLocked = error.payload.State.IsLocked,
+					serviceUnavailable = error.payload.State.ServiceNotAvailable;
+
+				if (isLocked) {
+					events.fire("CP_Evt_Error_Locked_Out", {
+						"id": cmp.get("v.pageId")
+					});
+				}
+
+				if (serviceUnavailable) {
+					events.fire("CP_Evt_Error_Registration_Not_Completed", {
+						"id": cmp.get("v.pageId")
+					});
+				}
 
 				fields.forEach(function(errorType, i) {
 					var msgArr = [];
-
-					console.error('Error: StepTwo:');
-					console.error(errorType);
 
 					if (errorType === "userName") {
 						msgArr.push({"msg" : messages[i]});

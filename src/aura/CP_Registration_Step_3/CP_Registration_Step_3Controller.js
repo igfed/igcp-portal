@@ -77,11 +77,6 @@
 			payload = evt.getParam("payload"),
 			events = cmp.find("CP_Events");
 
-		console.log('onAgreeTOS')	
-		console.log("Registration Step 3");
-		console.log(payload);
-		console.log('ready to submit to ISAM');
-
 		if (payload.id === "tos_agree_button") {
 
 			if (cmp.get("v.acceptTOS") === true) {
@@ -100,8 +95,6 @@
 		}
 	},
 	onAgreeChecked: function(cmp, evt, hlpr) {
-
-		console.log("onAgreeChecked");
 
 		var payload = evt.getParam("payload");
 
@@ -122,24 +115,30 @@
 			cmp,
 			function(evt) {
 
-				console.log("NEXT STEP!!!!");
-
 				cmp.onNextStep();
 			},
 			function(error) {
 
 				console.error(error);
 
-				// var
-				// 	fields = error.payload.State.Fields,
-				// 	messages = error.payload.State.Messages;
+				var
+					events = cmp.find("CP_Events"),
+					fields = error.payload.State.Fields,
+					messages = error.payload.State.Messages,
+					isLocked = error.payload.State.IsLocked,
+					serviceUnavailable = error.payload.State.ServiceNotAvailable;
 
-				// fields.forEach(function(errorType, i) {
-				// 	var msgArr = [];
+				if (isLocked) {
+					events.fire("CP_Evt_Error_Locked_Out", {
+						"id": cmp.get("v.pageId")
+					});
+				}
 
-				// 	console.log('Step three: error');
-				// 	console.log(errorType);
-				// });
+				if (serviceUnavailable) {
+					events.fire("CP_Evt_Error_Registration_Not_Completed", {
+						"id": cmp.get("v.pageId")
+					});
+				}
 			}
 		);
 	},
@@ -191,8 +190,6 @@
 			},
 			"acceptTOS": cmp.get("v.acceptTOS")
 		});
-
-		console.log(cmp.get("v.payload"));
 	},
 	logPayloadVars: function(cmp, evt, hlpr) {
 		var logArray = [

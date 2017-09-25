@@ -29,7 +29,7 @@ public with sharing class IGAccountSummaryClient extends IGRestClient {
     }
     
     public class Client extends IGRestClient.Entities {
-		public List<AccountSummary> AccountSummary;
+		public List<AccountSummary> AccountSummaries;
 	}
     
     public class AccountSummary {

@@ -103,13 +103,15 @@
 		errors = hlpr.checkForErrors(errorCheckObj);
 
 		errors.forEach(function(item, i) {
-			if (item.type === "minLength") {
-				item["msg"] = "The username is less than " + cmp.get("v.userMinLength") + " characters";
-			} else if (item.type === "isAlphanumeric") {
-				item["msg"] = "The username can only contain the following characters: - _ @ .";
-			} else if (item.type === "isEmpty") {
-				item["msg"] = "The username must not be empty";
-			}
+			//These messages are no longer in use, will leave for now just in case
+
+			// if (item.type === "minLength") {
+			// 	item["msg"] = "The username is less than " + cmp.get("v.userMinLength") + " characters";
+			// } else if (item.type === "isAlphanumeric") {
+			// 	item["msg"] = "The username can only contain the following characters: - _ @ .";
+			// } else if (item.type === "isEmpty") {
+			// 	item["msg"] = "The username must not be empty";
+			// }
 		});
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
@@ -144,19 +146,21 @@
 		errors = hlpr.checkForErrors(errorCheckObj);
 
 		errors.forEach(function(item, i) {
-			if (item.type === "minLength") {
-				item["msg"] = "The password is less than " + cmp.get("v.passMinLength") + " characters";
-			} else if (item.type === "hasUppercase") {
-				item["msg"] = "The password must have at least one uppercase character";
-			} else if (item.type === "hasNumber") {
-				item["msg"] = "The password must have at least one number";
-			} else if (item.type === "hasSpecialChar") {
-				item["msg"] = "The password must have at least one special character";
-			} else if (item.type === "passwordsMatch") {
-				item["msg"] = "The passwords do not match.";
-			} else if (item.type === "isEmpty") {
-				item["msg"] = "This field cannot be empty";
-			}
+			//These messages are no longer in use, will leave for now just in case
+
+			// if (item.type === "minLength") {
+			// 	item["msg"] = "The password is less than " + cmp.get("v.passMinLength") + " characters";
+			// } else if (item.type === "hasUppercase") {
+			// 	item["msg"] = "The password must have at least one uppercase character";
+			// } else if (item.type === "hasNumber") {
+			// 	item["msg"] = "The password must have at least one number";
+			// } else if (item.type === "hasSpecialChar") {
+			// 	item["msg"] = "The password must have at least one special character";
+			// } else if (item.type === "passwordsMatch") {
+			// 	item["msg"] = "The passwords do not match.";
+			// } else if (item.type === "isEmpty") {
+			// 	item["msg"] = "This field cannot be empty";
+			// }
 		});
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
@@ -175,7 +179,7 @@
 
 		errors.forEach(function(item, i) {
 			if (item.type === "passwordsMatch") {
-				item["msg"] = "The passwords do not match.";
+				item["msg"] = $A.get("$Label.namespace.CP_Error_Passwords_Match");
 			}
 		});
 
@@ -372,10 +376,6 @@
 			errorCheckObj = {},
 			isEmpty = value.length === 0 ? true : false,
 			minLength = hlpr.min(value.length, cmp.get("v.textMinLength"));
-
-			console.warn("Validate text");
-		console.log(value);
-		console.log(value.length);
 
 		if (isEmpty === true) {
 			errorCheckObj["isEmpty"] = isEmpty;

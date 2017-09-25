@@ -1,6 +1,6 @@
 ({
 	onInit: function(cmp, evt, hlpr) {
-		
+
 	},
 	onSubmit: function(cmp, evt, hlpr) {
 
@@ -56,40 +56,32 @@
 				cmp.onNextStep();
 			},
 			function(error) {
-				// console.error("Step 1: Error");
-				// console.error(error);
 
 				var
+					events = cmp.find("CP_Events"),
 					fields = error.payload.State.Fields,
-					messages = error.payload.State.Messages;
+					isLocked = error.payload.State.IsLocked,
+					serviceUnavailable = error.payload.State.ServiceNotAvailable;
 
-				fields.forEach(function(errorType, i) {
-					var msgArr = [];
-					
-					if (errorType === "clientNum") {
-						msgArr.push({"msg" : messages[i]});
-						events.fire("CP_Evt_Input_Error", {
-							"id": "client-number",
-							"errors": msgArr
-						});
-					}
+				if (isLocked) {
+					events.fire("CP_Evt_Error_Locked_Out", {
+						"id": cmp.get("v.pageId")
+					});
+				}
 
-					if (errorType === "postalCode") {
-						msgArr.push({"msg" : messages[i]});
-						events.fire("CP_Evt_Input_Error", {
-							"id": "postal-code",
-							"errors": msgArr
-						});
-					}
+				if (serviceUnavailable) {
+					events.fire("CP_Evt_Error_Registration_Not_Completed", {
+						"id": cmp.get("v.pageId")
+					});
+				}
 
-					if (errorType === "dob") {
-						msgArr.push({"msg" : messages[i]});
-						events.fire("CP_Evt_Input_Error", {
-							"id": "dob",
-							"errors": msgArr
-						});
-					}
-				});
+				if (fields.length > 0) {
+					events.fire("CP_Evt_Toast_Error", {
+						"id": "registration-step-1-toast-error",
+						"message": $A.get("$Label.c.CP_Error_Registration_Step_1")
+					});
+				}
+
 			}
 		);
 	},

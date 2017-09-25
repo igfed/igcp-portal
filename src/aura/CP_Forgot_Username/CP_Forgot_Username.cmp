@@ -24,8 +24,7 @@
     <div class="{!v.class}">
 
     	<aura:if isTrue="{!v.currentStep == 0}"  >
-    		<c:CP_Forgot_User_Step_1 
-    			clientNum="{!v.clientNum}" 
+    		<c:CP_Forgot_User_Step_1 clientNum="{!v.clientNum}" 
     			email="{!v.email}"/>
     	</aura:if>
 

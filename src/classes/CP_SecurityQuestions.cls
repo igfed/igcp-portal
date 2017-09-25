@@ -23,7 +23,7 @@ public with sharing class CP_SecurityQuestions {
     }
 
     public class Question {
-    	public String Question{get; set;}
+    	public String Question {get; set;}
     	public String Answer {get; set;}
 
     	public Question(String q)

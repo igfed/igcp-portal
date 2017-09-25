@@ -10,29 +10,33 @@
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Set_Input_Value" action="{!c.onSetValue}" />
 
-
 	<!-- INCLUDES -->
 	<c:CP_Utils aura:id="CP_Utils" />
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Services aura:id="CP_Services" />
+
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	
 	<!-- MARKUP -->
 	<div aura:id="security-questions-container">
 		<!-- MARKUP -->
 		<!-- QUESTION ONE -->
-		<c:CP_Cmp_Input_Selector id="security-1-selector" form="{!v.form}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" label="Security Question 1 of 3" placeholder="Select a security question" defaultOptions="{!v.options}" type="question"/>
+		<c:CP_Cmp_Input_Selector id="security-1-selector" form="{!v.form}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" label="{!$Label.c.CP_Registration_Step_2_Security_Question_1}" placeholder="{!$Label.c.CP_Registration_Step_2_Security_Question_Placeholder}" defaultOptions="{!v.options}" type="question"/>
 
-		<c:CP_Cmp_Input_Text id="security-1-answer" type="text" form="{!v.form}" label="Answer 1" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+		<!-- ANSWER 1 -->
+		<c:CP_Cmp_Input_Text id="security-1-answer" type="text" form="{!v.form}" label="{!$Label.c.CP_Registration_Step_2_Security_Answer_1}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 
 		<!-- QUESTION 2 -->
-		<c:CP_Cmp_Input_Selector id="security-2-selector" form="{!v.form}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" label="Security Question 2 of 3" placeholder="Select a security question" defaultOptions="{!v.options}" type="question"/>
+		<c:CP_Cmp_Input_Selector id="security-2-selector" form="{!v.form}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" label="{!$Label.c.CP_Registration_Step_2_Security_Question_2}" placeholder="{!$Label.c.CP_Registration_Step_2_Security_Question_Placeholder}" defaultOptions="{!v.options}" type="question"/>
 
-		<c:CP_Cmp_Input_Text id="security-2-answer" type="text" form="{!v.form}" label="Answer 2" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+		<!-- ANSWER 2 -->
+		<c:CP_Cmp_Input_Text id="security-2-answer" type="text" form="{!v.form}" label="{!$Label.c.CP_Registration_Step_2_Security_Answer_2}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 
 		<!-- QUESTION 3 -->
-		<c:CP_Cmp_Input_Selector id="security-3-selector" form="{!v.form}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" label="Security Question 3 of 3" placeholder="Select a security question" defaultOptions="{!v.options}" type="question"/>
+		<c:CP_Cmp_Input_Selector id="security-3-selector" form="{!v.form}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" label="{!$Label.c.CP_Registration_Step_2_Security_Question_3}" placeholder="{!$Label.c.CP_Registration_Step_2_Security_Question_Placeholder}" defaultOptions="{!v.options}" type="question"/>
 
-		<c:CP_Cmp_Input_Text id="security-3-answer" type="text" form="{!v.form}" label="Answer 3" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+		<!-- ANSWER 3 -->
+		<c:CP_Cmp_Input_Text id="security-3-answer" type="text" form="{!v.form}" label="{!$Label.c.CP_Registration_Step_2_Security_Answer_3}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 	</div>
 </aura:component>

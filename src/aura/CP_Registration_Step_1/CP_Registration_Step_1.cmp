@@ -37,28 +37,34 @@
 		<div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
 			<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
 				<div class="slds-p-around--small slds-medium-p-around--zero slds-size_12-of-12 slds-medium-size_6-of-12">
-					<h1>Register for Online Access</h1>
+					<h1>{!$Label.c.CP_Registration_Step_1_h1}</h1>
 
 					<!-- PROGRESS INDICATOR -->
 					<c:CP_Cmp_Progress_Indicator currentStep="1" totalSteps="3" />
 					
-					<div class="igcp-label--small">Step 1</div>
+					<div class="igcp-label--small">{!$Label.c.CP_Generic_Step_1}</div>
 					
-					<h2>Link Your Account</h2>
+					<h2>{!$Label.c.CP_Registration_Step_1_h2}</h2>
 					
-					<p class="igcp-utils__width--100 igcp-large-utils__width--75">Enter your Investors Group information to link your account to your online profile.</p>
+					<p class="igcp-utils__width--100 igcp-large-utils__width--75">{!$Label.c.CP_Registration_Step_1_Instructions}</p>
+
+					<!-- TOAST ERROR -->
+                	<c:CP_Cmp_Toast 
+                		id="registration-step-1-toast-error"
+                		type="error"
+                		class="slds-m-top--x-small slds-m-bottom--xxx-small"/>
 					
 					<!-- CLIENT NUMBER -->
-					<c:CP_Cmp_Input_Text id="client-number" maxLength="13" type="client-number" form="{!v.pageId}" label="Client Number" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" hasFocus="true"/>
+					<c:CP_Cmp_Input_Text id="client-number" maxLength="13" type="client-number" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Client_Number}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" hasFocus="true"/>
 					
 					<!-- POSTAL CODE -->
-					<c:CP_Cmp_Input_Text id="postal-code" maxLength="7" type="postal" label="Postal Code/Zip Code" form="{!v.pageId}" class="slds-size_12-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
+					<c:CP_Cmp_Input_Text id="postal-code" maxLength="7" type="postal" label="{!$Label.c.CP_Generic_Label_Postal_Zip_Code}" form="{!v.pageId}" class="slds-size_12-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
 					
 					<!-- DATE OF BIRTH -->
-					<c:CP_Cmp_Input_Date id="dob" label="Date of Birth" form="{!v.pageId}" type="date" example="(MM/DD/YYYY)" class="slds-size_12-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
+					<c:CP_Cmp_Input_Date id="dob" label="{!$Label.c.CP_Generic_Label_Date_of_Birth}" form="{!v.pageId}" type="date" example="{!$Label.c.CP_Generic_Label_DOB_Example}" class="slds-size_12-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
 					
 					<!-- FORM BACK NEXT -->
-					<c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="Cancel" nextLabel="Next" nextType="submit" form="{!v.pageId}" />
+					<c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" form="{!v.pageId}" />
 				</div>
 			<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
 		</div>

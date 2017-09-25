@@ -55,8 +55,6 @@
 			errors = payload.errors,
 			errorArr = [];
 
-			console.log(payload);
-
 		if (cmp.get("v.id") === payload.id) {
 
 			if (errors.length > 0) {

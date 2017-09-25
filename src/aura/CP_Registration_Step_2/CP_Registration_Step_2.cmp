@@ -51,38 +51,37 @@
 		<div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
 			<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
 			<div class="slds-p-around--small slds-medium-p-around--zero slds-size_12-of-12 slds-medium-size_6-of-12">
-				<h1>Register for Online Access</h1>
+				<h1>{!$Label.c.CP_Registration_Step_2_h1}</h1>
 				<c:CP_Cmp_Progress_Indicator currentStep="2" totalSteps="3" />
-				<div class="igcp-label--small">Step 2</div>
-				<h2>Create Your Online Profile</h2>
-				<p class="igcp-utils__width--100 igcp-large-utils__width--75">You'll use your online profile to securely access your account online.</p>
+				<div class="igcp-label--small">{!$Label.c.CP_Generic_Step_2}</div>
+				<h2>{!$Label.c.CP_Registration_Step_2_h2}</h2>
+				<p class="igcp-utils__width--100 igcp-large-utils__width--75">{!$Label.c.CP_Registration_Step_2_Instructions}</p>
 				
 				<!--FIELDS-->
 				<!-- USERNAME -->
-				<c:CP_Cmp_Input_Username id="username-input" form="{!v.pageId}" label="Username" maxLength="32" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="Pick a username." />
+				<c:CP_Cmp_Input_Username id="username-input" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Username}" maxLength="32" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Username}" />
 				
 				<!-- PASSWORD -->
-				<c:CP_Cmp_Input_Password id="password-input" form="{!v.pageId}" type="password" confirmPassword="true" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" instructions="['Must be 8-32 letters or numbers', 'At least one uppercase letter', 'At least one number or special character']" tooltip="Pick a password." />
+				<c:CP_Cmp_Input_Password id="password-input" form="{!v.pageId}" type="password" confirmPassword="true" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Password}" />
 				
 				<!-- EMAIL -->
-				<c:CP_Cmp_Input_Text id="email-input" form="{!v.pageId}" type="email" label="Email" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+				<c:CP_Cmp_Input_Text id="email-input" form="{!v.pageId}" type="email" label="{!$Label.c.CP_Generic_Label_Email}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 				
 				<!-- NEWS OPT IN  -->
-				<c:CP_Cmp_Input_Checkbox id="news-offers-opt" form="{!v.pageId}" class="slds-size_12-of-12 slds-large-size_9-of-12" copy="I'd like to receive the latest news and offers from Investors Group to my email address (optional)" />
+				<c:CP_Cmp_Input_Checkbox id="news-offers-opt" form="{!v.pageId}" class="slds-size_12-of-12 slds-large-size_9-of-12" copy="{!$Label.c.CP_Registration_Step_2_Opt_In}" />
 				
 				<!-- PHONE -->
-				<c:CP_Cmp_Input_Text id="phone-input" form="{!v.pageId}" type="phone" label="Phone" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+				<c:CP_Cmp_Input_Text id="phone-input" form="{!v.pageId}" type="phone" label="{!$Label.c.CP_Generic_Label_Phone}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 				
 				<!-- SECURITY QUESTIONS -->
-				<c:CP_Registration_Security_Questions 
-					securityQuestion1="{!v.securityQuestion1}" 
+				<c:CP_Registration_Security_Questions securityQuestion1="{!v.securityQuestion1}" 
 					securityQuestion2="{!v.securityQuestion2}" 
 					securityQuestion3="{!v.securityQuestion3}" 
 					form="{!v.pageId}" />
 				
 				<div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 				
-				<c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="Cancel" nextLabel="Next" nextType="submit" form="{!v.pageId}" />
+				<c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" form="{!v.pageId}" />
 			</div>
 			<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
 		</div>
