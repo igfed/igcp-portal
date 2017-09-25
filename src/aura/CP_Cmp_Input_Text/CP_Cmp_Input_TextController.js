@@ -28,7 +28,7 @@
 			events.fire("CP_Evt_Send_Input_Value", {
 				"id": cmp.get("v.id"),
 				"type": cmp.get("v.type"),
-				"value": cmp.get("v.inputValue")
+				"value": cmp.get("v.inputValue") === undefined ? "" : cmp.get("v.inputValue")
 			});
 		}
 	},
@@ -55,6 +55,8 @@
 			errors = payload.errors,
 			errorArr = [];
 
+			console.log(payload);
+
 		if (cmp.get("v.id") === payload.id) {
 
 			if (errors.length > 0) {
@@ -76,7 +78,7 @@
 		events.fire("CP_Evt_Input_Blur", {
 			"id": cmp.get("v.id"),
 			"type": cmp.get("v.type"),
-			"value": cmp.get("v.inputValue")
+			"value": cmp.get("v.inputValue") === undefined ? "" : cmp.get("v.inputValue")
 		});
 	}
 })

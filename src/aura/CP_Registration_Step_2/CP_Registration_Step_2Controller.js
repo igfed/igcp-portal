@@ -130,6 +130,10 @@
 					inputId = evt.getParam("payload").id,
 					inputValue = evt.getParam("payload").value;
 
+				console.log("ON INPUT RECEIVED");	
+				console.log(inputId);
+				console.log(inputValue);
+
 				if (inputId === "username-input") {
 					cmp.set("v.username", inputValue);
 				} else if (inputId === "password-input") {
@@ -178,9 +182,6 @@
 		}
 	},
 	onInputBlur: function(cmp, evt, hlpr) {
-
-		console.log('INPUT BLUR');
-		console.log(evt.getParam("payload"));
 
 		hlpr.validateInput(cmp, evt.getParam("payload"));
 	},

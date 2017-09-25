@@ -24,6 +24,8 @@
 	<aura:handler event="c:CP_Evt_Input_Selector_Change" action="{!c.onChangeReceived}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Selector_Send_Options" action="{!c.onOptionsReceived}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Set_Input_Value" action="{!c.onSetValue}"></aura:handler>
+	<aura:handler event="c:CP_Evt_Input_Valid" action="{!c.onValid}" />
+	<aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}" />
 
 	<!-- MARKUP -->
 	<div class="{!v.class}">

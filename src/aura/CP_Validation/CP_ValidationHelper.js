@@ -373,6 +373,10 @@
 			isEmpty = value.length === 0 ? true : false,
 			minLength = hlpr.min(value.length, cmp.get("v.textMinLength"));
 
+			console.warn("Validate text");
+		console.log(value);
+		console.log(value.length);
+
 		if (isEmpty === true) {
 			errorCheckObj["isEmpty"] = isEmpty;
 		} else {
@@ -400,7 +404,9 @@
 			isEmpty = value.length === 0 ? true : false,
 			errorCheckObj = {};
 
-		errorCheckObj["isEmpty"] = isEmpty;
+		if (isEmpty === true) {
+			errorCheckObj["isEmpty"] = isEmpty;
+		}
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 

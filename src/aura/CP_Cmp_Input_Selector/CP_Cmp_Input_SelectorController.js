@@ -122,5 +122,32 @@
 			"type": cmp.get("v.type"),
 			"value": cmp.get("v.currentSelectedValue")
 		});
+	},
+	onValid: function(cmp, evt, hlpr) {
+
+		if (cmp.get("v.id") === evt.getParam("payload").id) {
+			var field = cmp.find("selector-input");
+			field.set("v.errors", []);
+		}
+
+	},
+	onError: function(cmp, evt, hlpr) {
+		var
+			payload = evt.getParam("payload"),
+			errors = payload.errors,
+			errorArr = [];
+
+		if (cmp.get("v.id") === payload.id) {
+
+			if (errors.length > 0) {
+				errors.forEach(function(item, i) {
+					errorArr.push({ message: item.msg });
+				});
+			}
+
+			var field = cmp.find("selector-input");
+			field.set("v.errors", errorArr);
+		}
+
 	}
 })
