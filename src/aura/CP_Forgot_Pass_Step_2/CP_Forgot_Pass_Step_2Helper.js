@@ -27,7 +27,7 @@
 					inputValue = payload.value;
 
 				//Capture values
-				if (inputId === "answer") {
+				if (inputId === "answer-input") {
 					cmp.set("v.answer", inputValue);
 				} 
 

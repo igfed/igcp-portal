@@ -11,8 +11,8 @@
 			<div class="slds-grid slds-wrap">
 				<div class="slds-form slds-size_12-of-12">
 					<!--FIELDS-->
-					<c:CP_Cmp_Input_Password id="password1" name="password1" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" instructions="['Must be 8-32 letters or numbers', 'At least one uppercase letter', 'At least one number or special character']" tooltip="Pick a password." />
-					<c:CP_Cmp_Input_Password id="password2" name="password2" label="Confirm password" revealPassword="false" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+					<c:CP_Cmp_Input_Password id="password1-input" name="password1" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" instructions="['Must be 8-32 letters or numbers', 'At least one uppercase letter', 'At least one number or special character']" tooltip="Pick a password." />
+					<c:CP_Cmp_Input_Password id="password2-input" name="password2" label="Confirm password" revealPassword="false" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 					<div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 				</div>
 				<!--CTAS-->
