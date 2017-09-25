@@ -115,9 +115,13 @@
 			cmp,
 			function(evt) {
 
+				console.log("SUCCEESSSSS")
+
 				cmp.onNextStep();
 			},
 			function(error) {
+
+				console.log("ERRROROROROOROR")
 
 				console.error(error);
 

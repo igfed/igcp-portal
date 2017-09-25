@@ -102,18 +102,6 @@
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 
-		errors.forEach(function(item, i) {
-			//These messages are no longer in use, will leave for now just in case
-
-			// if (item.type === "minLength") {
-			// 	item["msg"] = "The username is less than " + cmp.get("v.userMinLength") + " characters";
-			// } else if (item.type === "isAlphanumeric") {
-			// 	item["msg"] = "The username can only contain the following characters: - _ @ .";
-			// } else if (item.type === "isEmpty") {
-			// 	item["msg"] = "The username must not be empty";
-			// }
-		});
-
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
 	validatePassword: function(params, callBack, cmp, hlpr) {
@@ -138,30 +126,7 @@
 			errorCheckObj["hasSpecialChar"] = hasSpecialChar;
 		}
 
-		if (params.confirmValue && isEmpty === false) {
-
-			errorCheckObj["passwordsMatch"] = hlpr.isSame(params.value, params.confirmValue);
-		}
-
 		errors = hlpr.checkForErrors(errorCheckObj);
-
-		errors.forEach(function(item, i) {
-			//These messages are no longer in use, will leave for now just in case
-
-			// if (item.type === "minLength") {
-			// 	item["msg"] = "The password is less than " + cmp.get("v.passMinLength") + " characters";
-			// } else if (item.type === "hasUppercase") {
-			// 	item["msg"] = "The password must have at least one uppercase character";
-			// } else if (item.type === "hasNumber") {
-			// 	item["msg"] = "The password must have at least one number";
-			// } else if (item.type === "hasSpecialChar") {
-			// 	item["msg"] = "The password must have at least one special character";
-			// } else if (item.type === "passwordsMatch") {
-			// 	item["msg"] = "The passwords do not match.";
-			// } else if (item.type === "isEmpty") {
-			// 	item["msg"] = "This field cannot be empty";
-			// }
-		});
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
@@ -179,7 +144,7 @@
 
 		errors.forEach(function(item, i) {
 			if (item.type === "passwordsMatch") {
-				item["msg"] = $A.get("$Label.namespace.CP_Error_Passwords_Match");
+				item["msg"] = $A.get("$Label.c.CP_Error_Passwords_Match");
 			}
 		});
 
@@ -207,11 +172,11 @@
 
 		errors.forEach(function(item, i) {
 			if (item.type === "minLength") {
-				item["msg"] = "The client number is less than " + cmp.get("v.clientMinLength") + " characters";
+				item["msg"] = $A.get("$Label.c.CP_Error_Client_Number_Too_Short_1") + " " + cmp.get("v.clientMinLength") + " " + $A.get("$Label.c.CP_Error_Client_Number_Too_Short_2");
 			} else if (item.type === "hasNumberOnly") {
-				item["msg"] = "The client number must only be numbers";
+				item["msg"] = $A.get("$Label.c.CP_Error_Client_Number_Numbers_Only");
 			} else if(item.type === "isEmpty") {
-				item["msg"] = "This field cannot be empty";
+				item["msg"] = $A.get("$Label.c.CP_Error_Empty_Field");
 			}
 		});
 
@@ -247,11 +212,11 @@
 
 		errors.forEach(function(item, i) {
 			if (item.type === "minLength") {
-				item["msg"] = "The postal/zip code must have at least 5 characters.";
+				item["msg"] = $A.get("$Label.c.CP_Error_Postal_Too_Short");
 			} else if (item.type === "hasValidZipcode") {
-				item["msg"] = "Not a valid zip code format. Must be numeric only.";
+				item["msg"] = $A.get("$Label.c.CP_Error_Zip_Invalid");
 			} else if (item.type === "hasValidPostalCode") {
-				item["msg"] = "Not a valid postal code format."
+				item["msg"] = $A.get("$Label.c.CP_Error_Postal_Invalid");
 			}
 		});
 
@@ -294,17 +259,17 @@
 
 		errors.forEach(function(item, i) {
 			if (item.type === "monthValid") {
-				item["msg"] = "Month must be 1 - 12";
+				item["msg"] = $A.get("$Label.c.CP_Error_Month_Invalid");
 			} else if (item.type === "dayValid") {
-				item["msg"] = "Day must be 1 - 31";
+				item["msg"] = $A.get("$Label.c.CP_Error_Day_Invalid");
 			} else if (item.type === "yearValid") {
-				item["msg"] = "Year must be less than current year";
+				item["msg"] = $A.get("$Label.c.CP_Error_Year_Invalid");
 			} else if(item.type === "hasDay") {
-				item["msg"] = "Please enter a valid day";
+				item["msg"] = $A.get("$Label.c.CP_Error_Date_No_Day");
 			} else if(item.type === "hasYear") {
-				item["msg"] = "Please enter a valid year";
+				item["msg"] = $A.get("$Label.c.CP_Error_Date_No_Year");
 			} else if(item.type === "isEmpty") {
-				item["msg"] = "Please enter a valid date";
+				item["msg"] = $A.get("$Label.c.CP_Error_Date_Empty");
 			}
 		});
 
@@ -330,9 +295,9 @@
 
 		errors.forEach(function(item, i) {
 			if (item.type === "isEmpty") {
-				item["msg"] = "E-mail field is empty"
+				item["msg"] = $A.get("$Label.c.CP_Error_Email_Empty");
 			} else if (item.type === "isEmail") {
-				item["msg"] = "E-mail format is invalid"
+				item["msg"] = $A.get("$Label.c.CP_Error_Email_Invalid");
 			}
 		});
 
@@ -359,9 +324,9 @@
 
 		errors.forEach(function(item, i) {
 			if (item.type === "isEmpty") {
-				item["msg"] = "Phone field is empty"
+				item["msg"] = $A.get("$Label.c.CP_Error_Phone_Empty");
 			} else if (item.type === "isPhone") {
-				item["msg"] = "Phone number invalid"
+				item["msg"] = $A.get("$Label.c.CP_Error_Phone_Invalid");
 			}
 		});
 
@@ -387,9 +352,9 @@
 
 		errors.forEach(function(item, i) {
 			if (item.type === "isEmpty") {
-				item["msg"] = "Text field is empty";
+				item["msg"] = $A.get("$Label.c.CP_Error_Empty_Field");
 			} else if (item.type === "minLength") {
-				item["msg"] = "The text is less than " + cmp.get("v.textMinLength") + " characters.";
+				item["msg"] = $A.get("$Label.c.CP_Error_Text_Too_Short_1") + " " + cmp.get("v.textMinLength") + " " + $A.get("$Label.c.CP_Error_Text_Too_Short_2");
 			}
 		});
 
@@ -412,7 +377,7 @@
 
 		errors.forEach(function(item, i) {
 			if (item.type === "isEmpty") {
-				item["msg"] = "Please select a question.";
+				item["msg"] = $A.get("$Label.c.CP_Error_Question_Empty");
 			}
 		});
 
