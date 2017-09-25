@@ -21,7 +21,7 @@
 		console.warn("onInputValueReceived");
 		console.warn(cmp.get("v.inputsReceived"));
 		console.warn(cmp.get("v.inputErrors"));
-		if (cmp.get("v.inputsReceived") === 2 && cmp.get("v.inputErrors") === false) {
+		if (cmp.get("v.inputsReceived") === 3 && cmp.get("v.inputErrors") === false) {
 
 			cmp.set("v.payload", {
 				"username": cmp.get("v.username"),
@@ -81,7 +81,6 @@
 							"errors": msgArr
 						});
 					}
-
 
 				});
 			}
