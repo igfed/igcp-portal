@@ -31,9 +31,6 @@
 			});
 		}
 
-		console.log("STEP 2: init");
-		console.log(cmp.get("v.securityQuestion1"));
-
 		//Question 1
 		if(cmp.get("v.securityQuestion1") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
@@ -43,9 +40,53 @@
 			});
 		}
 
+		//Answer 1
+		if(cmp.get("v.answer1") !== "") {
+			events.fire("CP_Evt_Set_Input_Value", {
+				"id" : "security-1-answer",
+				"formId" : cmp.get("v.pageId"),
+				"value" : cmp.get("v.answer1")
+			});
+		}
+
+		//Question 2
+		if(cmp.get("v.securityQuestion2") !== "") {
+			events.fire("CP_Evt_Set_Input_Value", {
+				"id" : "security-2-selector",
+				"formId" : cmp.get("v.pageId"),
+				"selected" : cmp.get("v.securityQuestion2")
+			});
+		}
+
+		//Answer 2
+		if(cmp.get("v.answer2") !== "") {
+			events.fire("CP_Evt_Set_Input_Value", {
+				"id" : "security-2-answer",
+				"formId" : cmp.get("v.pageId"),
+				"value" : cmp.get("v.answer2")
+			});
+		}
+
+		//Question 3
+		if(cmp.get("v.securityQuestion3") !== "") {
+			events.fire("CP_Evt_Set_Input_Value", {
+				"id" : "security-3-selector",
+				"formId" : cmp.get("v.pageId"),
+				"selected" : cmp.get("v.securityQuestion3")
+			});
+		}
+
+		//Answer
+		if(cmp.get("v.answer3") !== "") {
+			events.fire("CP_Evt_Set_Input_Value", {
+				"id" : "security-3-answer",
+				"formId" : cmp.get("v.pageId"),
+				"value" : cmp.get("v.answer3")
+			});
+		}
 	},
 	onSubmit: function(cmp, evt, hlpr) {
-		//Reset input errorshttps://sitepreview.cs70.force.com/customers/s/registration	
+		//Reset input errors
 		cmp.set("v.inputErrors", false);
 		cmp.set("v.inputsReceived", 0);
 
@@ -56,9 +97,6 @@
 		var
 			inputId = evt.getParam("payload").id,
 			inputValue = evt.getParam("payload").selected;
-
-		console.log("onInputSelectorReceived");
-		console.log(evt.getParam("payload"));
 
 		if (inputId === "security-1-selector") {
 			cmp.set("v.securityQuestion1", inputValue);
@@ -91,6 +129,10 @@
 				var
 					inputId = evt.getParam("payload").id,
 					inputValue = evt.getParam("payload").value;
+
+				console.log("ON INPUT RECEIVED");	
+				console.log(inputId);
+				console.log(inputValue);
 
 				if (inputId === "username-input") {
 					cmp.set("v.username", inputValue);
@@ -164,7 +206,7 @@
 				fields.forEach(function(errorType, i) {
 					var msgArr = [];
 
-					console.error('StepTwo:');
+					console.error('Error: StepTwo:');
 					console.error(errorType);
 
 					if (errorType === "userName") {
@@ -196,14 +238,12 @@
 	},
 	onOptClicked: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
-
 		if (payload.id === "news-offers-opt") {
 			cmp.set("v.emailOptIn", payload.checked);
 		}
 	},
 	onKey: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
-
 		if (payload.id === "username-input") {
 			hlpr.validateUsername(cmp, payload);
 		} else if (payload.id === "password-input") {

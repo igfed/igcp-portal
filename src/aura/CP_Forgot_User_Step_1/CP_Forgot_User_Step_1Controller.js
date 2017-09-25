@@ -18,14 +18,11 @@
 
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
-		console.warn("onInputValueReceived");
-		console.warn(cmp.get("v.inputsReceived"));
-		console.warn(cmp.get("v.inputErrors"));
 		if (cmp.get("v.inputsReceived") === 2 && cmp.get("v.inputErrors") === false) {
 
 			cmp.set("v.payload", {
 				"clientNum": cmp.get("v.clientNum"),
-				"email" : cmp.get("v.email")
+				"email": cmp.get("v.email")
 			});
 
 			cmp.onSubmitForm();
@@ -47,18 +44,19 @@
 				cmp.onNextStep();
 			},
 			function(error) {
-				console.error("Step 1: Error");
+				console.error("Forgot User: Step 1: Error");
 				console.error(error);
 
 				var
 					fields = error.payload.State.Fields,
 					messages = error.payload.State.Messages;
 
+				//Leaving this in in case the individual fields have errors for some reason
 				fields.forEach(function(errorType, i) {
 					var msgArr = [];
-					
+
 					if (errorType === "clientNum") {
-						msgArr.push({"msg" : messages[i]});
+						msgArr.push({ "msg": messages[i] });
 						events.fire("CP_Evt_Input_Error", {
 							"id": "client-number",
 							"errors": msgArr
@@ -66,15 +64,27 @@
 					}
 
 					if (errorType === "email") {
-						msgArr.push({"msg" : messages[i]});
+						msgArr.push({ "msg": messages[i] });
 						events.fire("CP_Evt_Input_Error", {
 							"id": "email-input",
 							"errors": msgArr
 						});
 					}
-
-
 				});
+
+				if (error.type === "server-side-error") {
+					events.fire("CP_Evt_Toast_Error", {
+					"id" : "error-box",
+					"message" : $A.get("$Label.namespace.CP_Error_Server_Side_Generic")
+				});
+				} else {
+					//Display toast
+					events.fire("CP_Evt_Toast_Error", {
+						"id": "error-box",
+						"message": messages[0]
+					});
+				}
+
 			}
 		);
 	},

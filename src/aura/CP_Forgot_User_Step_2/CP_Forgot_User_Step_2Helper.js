@@ -27,13 +27,9 @@
 					inputValue = payload.value;
 
 				//Capture values
-				// if (inputId === "client-number") {
-				// 	cmp.set("v.clientNum", inputValue);
-				// } else if (inputId === "postal-code") {
-				// 	cmp.set("v.postalCode", inputValue);
-				// } else if (inputId === "dob") {
-				// 	cmp.set("v.dob", inputValue);
-				// }
+				if (inputId === "answer-input") {
+					cmp.set("v.answer", inputValue);
+				}
 
 				//Fire valid evt	
 				events.fire("CP_Evt_Input_Valid", {

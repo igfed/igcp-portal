@@ -373,6 +373,10 @@
 			isEmpty = value.length === 0 ? true : false,
 			minLength = hlpr.min(value.length, cmp.get("v.textMinLength"));
 
+			console.warn("Validate text");
+		console.log(value);
+		console.log(value.length);
+
 		if (isEmpty === true) {
 			errorCheckObj["isEmpty"] = isEmpty;
 		} else {
@@ -390,5 +394,28 @@
 		});
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });	
-	}
+	},
+	validateQuestion: function(params, callBack, cmp, hlpr) {
+
+		var
+			value = params.value,
+			id = params.id,
+			errors = [],
+			isEmpty = value.length === 0 ? true : false,
+			errorCheckObj = {};
+
+		if (isEmpty === true) {
+			errorCheckObj["isEmpty"] = isEmpty;
+		}
+
+		errors = hlpr.checkForErrors(errorCheckObj);
+
+		errors.forEach(function(item, i) {
+			if (item.type === "isEmpty") {
+				item["msg"] = "Please select a question.";
+			}
+		});
+
+		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+	},
 })

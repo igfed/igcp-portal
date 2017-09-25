@@ -1,0 +1,16 @@
+<aura:component >
+	<!-- HANDLER -->
+	<aura:handler event="c:CP_Evt_Click" action="{!c.gotoLogin}" />
+	<!-- MARKUP -->
+	<div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
+		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
+		<div class="slds-p-around--small slds-medium-p-around--zero slds-size_12-of-12 slds-medium-size_6-of-12">
+			<h1>Registration is blocked for security purposes</h1>
+			<p class="igcp-utils__width--100 igcp-large-utils__width--75">For security purposes, you have been temporarily locked out from registering online. To continue registration, please contact our support at 1-800-555-5555.</p>
+			<div class="slds-grid slds-wrap">
+				<c:CP_Cmp_Button class="slds-size_12-of-12 slds-large-size_4-of-12 slds-grid slds-p-bottom--x-large slds-m-top--x-large" label="Ok" />
+			</div>
+		</div>
+		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
+	</div>
+</aura:component>

@@ -178,6 +178,10 @@ label {
 .slds-card .slds-icon_container.slds-icon-standard-person-account {
   left: -10px; }
 
+.slds-notify_toast {
+  margin: 0;
+  min-width: 100%; }
+
 .slds-m-around--xx-large {
   margin: 60px; }
 
@@ -3335,6 +3339,14 @@ label {
 
 .igcp-text__informational {
   color: #0E75D5; }
+
+.igcp-toast .igcp-toast__icon {
+  position: relative;
+  top: 1px; }
+  .igcp-toast .igcp-toast__icon svg {
+    fill: #fff; }
+.igcp-toast .igcp-toast__message {
+  color: #fff; }
 
 @media (min-width: 768px) {
   .igcp-registration .igcp-registration__pfa h1 {

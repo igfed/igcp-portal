@@ -5,18 +5,12 @@
 			validator = cmp.find('CP_Validation'),
 			events = cmp.find('CP_Events');
 
-		console.log("validateInput");
-		console.log(payload);
-
 
 		validator.validate(payload, function(obj) {
 
 			if (obj.isValid === false) {
 
 				cmp.set("v.inputErrors", true);
-
-				console.error("Input Errors: " + obj.id);
-				console.error(obj.errors);
 
 				events.fire("CP_Evt_Input_Error", {
 					"id": obj.id,

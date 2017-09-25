@@ -49,5 +49,13 @@
 		<aura:attribute name="value" type="String"></aura:attribute>
 		<aura:attribute name="callback" type="function" default="" />
 	</aura:method>
+
+	<!-- WAIT FOR -->
+	<!-- Waits for a boolean to return true before calling back -->
+	<aura:method name="waitFor" action="{!c.onWaitFor}">
+		<aura:attribute name="component" type="Aura.component[]" />
+		<aura:attribute name="attr" type="String" ></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
 	
 </aura:component>

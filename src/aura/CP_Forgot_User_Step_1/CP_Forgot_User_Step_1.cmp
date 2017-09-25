@@ -36,22 +36,27 @@
         <div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
         
         <div class="slds-p-around--small slds-medium-p-around--zero slds-size_12-of-12 slds-medium-size_6-of-12">
-            <h1>Forgot your username</h1>
+            <h1>{!$Label.c.CP_Forgot_User_Name_Step_1_h1}</h1>
             <c:CP_Cmp_Progress_Indicator currentStep="1" totalSteps="2" />
-            <div class="igcp-label--small">Step 1</div>
-            <h2>Verify your identity</h2>
-            <p class="igcp-utils__width--100 igcp-large-utils__width--75">Enter your profile credentials to verify your identity.</p>
+            <div class="igcp-label--small">{!$Label.c.CP_Generic_Step_1}</div>
+            <h2>{!$Label.c.CP_Forgot_User_Name_Step_1_h2}</h2>
+            <p class="igcp-utils__width--100 igcp-large-utils__width--75">{!$Label.c.CP_Forgot_User_Name_Step_1_Instructions}</p>
             <div class="slds-grid slds-wrap">
                 <div class="slds-form slds-size_12-of-12">
+                	<!-- TOAST ERROR -->
+                	<c:CP_Cmp_Toast 
+                		id="error-box"
+                		type="error"
+                		class="slds-m-top--x-small slds-m-bottom--xxx-small"/>
                     <!--FIELDS-->
                     <!-- CLIENT NUMBER -->
-                    <c:CP_Cmp_Input_Text id="client-number" maxLength="13" type="client-number" form="{!v.pageId}" label="Client Number" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" hasFocus="true"/>
+                    <c:CP_Cmp_Input_Text id="client-number" maxLength="13" type="client-number" form="{!v.pageId}" label="{!$Label.c.CP_Forgot_User_Name_Step_1_Label_Client_Number}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" hasFocus="true"/>
 
                     <!-- EMAIL ADDRESS -->
-                    <c:CP_Cmp_Input_Text id="email-input" form="{!v.pageId}" type="email" label="Email" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+                    <c:CP_Cmp_Input_Text id="email-input" form="{!v.pageId}" type="email" label="{!$Label.c.CP_Forgot_User_Name_Step_1_Label_Email}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
                 </div>
                 <!--CTAS-->
-                <c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="Cancel" nextLabel="Next" nextType="submit" form="{!v.pageId}" />
+                <c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" form="{!v.pageId}" />
             </div>
         </div>    
         <div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>

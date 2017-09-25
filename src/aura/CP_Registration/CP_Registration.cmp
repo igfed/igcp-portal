@@ -2,7 +2,7 @@
 
 	<!-- ATTRS -->
 	<aura:attribute name="class" type="String" default="igcp-utils__overflow--hidden"></aura:attribute>
-	<aura:attribute name="currentStep" type="Integer" default="3" ></aura:attribute>
+	<aura:attribute name="currentStep" type="Integer" default="1" ></aura:attribute>
 
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default=""/>
@@ -86,6 +86,14 @@
 
     	<aura:if isTrue="{!v.currentStep == 4}"  >
     		<c:CP_Registration_Thank_You />
+    	</aura:if>
+
+    	<aura:if isTrue="{!v.currentStep == 5}"  >
+    		<c:CP_Registration_Locked_Out />
+    	</aura:if>
+
+    	<aura:if isTrue="{!v.currentStep == 6}"  >
+    		<c:CP_Registration_Not_Completed />
     	</aura:if>
 
     	<c:CP_Cmp_Modal id="registration-tos"/>
