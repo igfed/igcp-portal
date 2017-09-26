@@ -30,7 +30,7 @@
         </div>
         
         <footer class="slds-card__footer slds-size_12-of-12 slds-text-align_left slds-m-top--zero slds-large-m-top--x-small slds-p-horizontal--none">
-            <button class="slds-show_large slds-button slds-button--brand slds-container--fluid slds-p-vertical--xx-small">{!v.buttonCopy}</button>
+            <button class="slds-show_large slds-button slds-button--igcp-brand slds-container--fluid slds-p-vertical--xx-small">{!v.buttonCopy}</button>
         </footer>
     </article>
         
