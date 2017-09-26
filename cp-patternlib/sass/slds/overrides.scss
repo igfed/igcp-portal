@@ -11,8 +11,9 @@
     text-transform: capitalize;
 }
 
-.slds-button--brand {
+.slds-button--igcp-brand {
 	background-color: $ig-blue;
+    color: #fff;
 
     &:hover {
         background-color: transparent;

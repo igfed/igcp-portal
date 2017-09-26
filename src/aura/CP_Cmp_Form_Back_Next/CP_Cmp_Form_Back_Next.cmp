@@ -46,19 +46,19 @@
         <div class="igcp-utils__order--1 igcp-medium-utils__order--3 slds-m-horizontal--medium slds-medium-m-horizontal--zero slds-size_12-of-12 slds-medium-size_5-of-12">
 
             <aura:if isTrue="{!v.nextType == 'start'}">
-    			 <c:CP_Cmp_Button id="start_button" label="{!v.nextLabel}" class="igcp-utils__width--100 slds-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-button slds-button--brand slds-float_right"/>	
+    			 <c:CP_Cmp_Button id="start_button" label="{!v.nextLabel}" class="igcp-utils__width--100 slds-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-button slds-button--igcp-brand slds-float_right"/>	
             </aura:if>
 
              <aura:if isTrue="{!v.nextType == 'modal'}">
-    			 <button id="modal-button" data-open="{!v.modalID}" class="igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-p-horizontal--zero slds-button slds-button--brand slds-p-vertical--xxx-small slds-float_right">{!v.nextLabel}</button>
+    			 <button id="modal-button" data-open="{!v.modalID}" class="igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-p-horizontal--zero slds-button slds-button--igcp-brand slds-p-vertical--xxx-small slds-float_right">{!v.nextLabel}</button>
             </aura:if>
 
             <aura:if isTrue="{!v.nextType == 'complete'}">
-    			 <c:CP_Cmp_Button id="complete_button" label="{!v.nextLabel}" class="igcp-utils__width--100 slds-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-button slds-button--brand slds-float_right"/>	
+    			 <c:CP_Cmp_Button id="complete_button" label="{!v.nextLabel}" class="igcp-utils__width--100 slds-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-button slds-button--igcp-brand slds-float_right"/>	
             </aura:if>
 
             <aura:if isTrue="{!v.nextType == 'submit'}">
-            	<c:CP_Cmp_Submit id="form_submit" for="{!v.form}" label="{!v.nextLabel}" class="igcp-utils__width--100 slds-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-button slds-button--brand slds-float_right"/>
+            	<c:CP_Cmp_Submit id="form_submit" for="{!v.form}" label="{!v.nextLabel}" class="igcp-utils__width--100 slds-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-button slds-button--igcp-brand slds-float_right"/>
             </aura:if>   
         </div>
     </div>

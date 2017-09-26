@@ -103,9 +103,10 @@ label {
   letter-spacing: 0px;
   text-transform: capitalize; }
 
-.slds-button--brand {
-  background-color: #004171; }
-  .slds-button--brand:hover {
+.slds-button--igcp-brand {
+  background-color: #004171;
+  color: #fff; }
+  .slds-button--igcp-brand:hover {
     background-color: transparent;
     color: #004171; }
 
@@ -2043,25 +2044,26 @@ label {
   font-size: 14px; }
 .igcp-login .igcp-login__footer {
   width: 450px;
-  margin: 40px auto 0; }
+  margin: 40px auto 0;
+  text-align: center; }
   @media (max-width: 480px) {
     .igcp-login .igcp-login__footer {
-      width: auto; }
+      width: 300px !important;
+      text-align: center; }
       .igcp-login .igcp-login__footer .igcp-login__footer-menu {
         height: auto; }
       .igcp-login .igcp-login__footer ul {
         margin-bottom: 20px; }
       .igcp-login .igcp-login__footer li {
-        display: block;
-        text-align: center;
-        width: 100%; }
+        text-align: center; }
       .igcp-login .igcp-login__footer .igcp-login__footer-copyright {
-        margin-top: 80px; } }
+        margin-top: 30px; } }
   .igcp-login .igcp-login__footer .igcp-login__footer-menu {
     height: 40px; }
     .igcp-login .igcp-login__footer .igcp-login__footer-menu li {
-      float: left;
-      padding: 0 13px; }
+      display: inline-block;
+      padding: 0 8px;
+      text-align: center; }
   .igcp-login .igcp-login__footer .igcp-login__footer-copyright {
     clear: both;
     margin-bottom: 40px; }
@@ -2191,6 +2193,15 @@ label {
   .igcp-login.slds-wrap {
     flex-wrap: nowrap;
     align-items: normal; } }
+
+.igcp-new-device__heading {
+  margin-bottom: 15px; }
+.igcp-new-device__link {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 16px; }
+.igcp-new-device label.slds-checkbox__label {
+  margin: 0; }
 
 .igcp-lock-screen h1 {
   padding-right: 70px; }

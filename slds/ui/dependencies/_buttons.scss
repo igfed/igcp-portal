@@ -30,7 +30,6 @@
 
 @mixin button-brand {
   background-color: $color-background-button-brand;
-  border: $border-width-thin solid $color-border-button-brand;
   color: $color-text-button-brand;
 
   &:link,

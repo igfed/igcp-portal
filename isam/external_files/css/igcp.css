@@ -98,16 +98,22 @@ label {
   position: relative; }
 
 .slds-button {
-  font-family: "WhitneyBook", Arial, sans-serif;
+  font-family: "WhitneySemibold", Arial, sans-serif;
   font-size: 16px;
   letter-spacing: 0px;
   text-transform: capitalize; }
 
 .slds-button--brand {
   background-color: #004171; }
+  .slds-button--brand:hover {
+    background-color: transparent;
+    color: #004171; }
 
 .slds-button--neutral {
   background-color: transparent; }
+  .slds-button--neutral:hover {
+    background-color: #004171;
+    color: #fff; }
 
 .slds-form-element__label {
   font-family: "WhitneySemibold", Arial, sans-serif;
@@ -116,14 +122,20 @@ label {
   .slds-form-element__label.input-label {
     position: relative;
     top: 3px;
-    font-size: 16px;
+    font-size: 14px;
     margin-right: 4px; }
+    .slds-form-element__label.input-label span {
+      font-family: "WhitneyBook", Arial, sans-serif;
+      color: #282828;
+      margin-left: 8px; }
 
 .slds-checkbox .slds-form-element__label.input-label {
   font-family: "WhitneyBook", Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
   top: 0; }
+.slds-checkbox .slds-checkbox--faux {
+  border: 1px solid #282828; }
 
 .slds-checkbox [type=checkbox]:checked + .slds-checkbox_faux:after,
 .slds-checkbox [type=checkbox]:checked + .slds-checkbox--faux:after,
@@ -165,6 +177,10 @@ label {
 
 .slds-card .slds-icon_container.slds-icon-standard-person-account {
   left: -10px; }
+
+.slds-notify_toast {
+  margin: 0;
+  min-width: 100%; }
 
 .slds-m-around--xx-large {
   margin: 60px; }
@@ -2027,25 +2043,26 @@ label {
   font-size: 14px; }
 .igcp-login .igcp-login__footer {
   width: 450px;
-  margin: 40px auto 0; }
+  margin: 40px auto 0;
+  text-align: center; }
   @media (max-width: 480px) {
     .igcp-login .igcp-login__footer {
-      width: auto; }
+      width: 300px !important;
+      text-align: center; }
       .igcp-login .igcp-login__footer .igcp-login__footer-menu {
         height: auto; }
       .igcp-login .igcp-login__footer ul {
         margin-bottom: 20px; }
       .igcp-login .igcp-login__footer li {
-        display: block;
-        text-align: center;
-        width: 100%; }
+        text-align: center; }
       .igcp-login .igcp-login__footer .igcp-login__footer-copyright {
-        margin-top: 80px; } }
+        margin-top: 30px; } }
   .igcp-login .igcp-login__footer .igcp-login__footer-menu {
     height: 40px; }
     .igcp-login .igcp-login__footer .igcp-login__footer-menu li {
-      float: left;
-      padding: 0 13px; }
+      display: inline-block;
+      padding: 0 8px;
+      text-align: center; }
   .igcp-login .igcp-login__footer .igcp-login__footer-copyright {
     clear: both;
     margin-bottom: 40px; }
@@ -2175,6 +2192,15 @@ label {
   .igcp-login.slds-wrap {
     flex-wrap: nowrap;
     align-items: normal; } }
+
+.igcp-new-device__heading {
+  margin-bottom: 15px; }
+.igcp-new-device__link {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 16px; }
+.igcp-new-device label.slds-checkbox__label {
+  margin: 0; }
 
 .igcp-lock-screen h1 {
   padding-right: 70px; }
@@ -3090,19 +3116,13 @@ label {
   /* IE6-9 */ }
 
 .igcp-input {
-  border-top: none;
-  border-left: none;
-  border-right: none;
   border-radius: 0;
   margin-bottom: 0;
-  border-bottom: 1px solid #cfd4d8; }
+  border: 1px solid #282828; }
   .igcp-input.input, .igcp-input.uiInput--input.input, .igcp-input.uiInput--select.select {
-    border-top: none;
-    border-left: none;
-    border-right: none;
     border-radius: 0;
     margin-bottom: 0;
-    border-bottom: 1px solid #cfd4d8; }
+    border: 1px solid #282828; }
 
 .igcp-input__help-link {
   font-family: "WhitneyBook", Arial, sans-serif;
@@ -3186,14 +3206,13 @@ label {
 .igcp-label {
   font-family: "WhitneySemibold", Arial, sans-serif;
   font-size: 16px;
-  letter-spacing: 0px;
-  text-transform: uppercase; }
+  letter-spacing: 0px; }
 
 .igcp-label--small {
   font-family: "WhitneySemibold", Arial, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0px;
-  text-transform: uppercase; }
+  color: #004171; }
 
 .igcp-account-arrow--right {
   position: relative;
@@ -3231,13 +3250,15 @@ label {
   top: 50%;
   left: 50%;
   margin-top: -15px;
-  margin-left: -3px; }
+  margin-left: -3px;
+  font-family: "WhitneySemibold", Arial, sans-serif;
+  font-size: 14px; }
 .igcp-progress-indicator .igcp-progress-indicator__step--complete {
   margin-top: -16px;
   margin-left: -10px; }
 
 .igcp-list .igcp-list__item-label--a {
-  padding-top: 5px; }
+  padding-top: 0; }
 .igcp-list .igcp-list__item-label--b {
   font-family: "WhitneyBook", Arial, sans-serif;
   font-weight: normal;
@@ -3307,7 +3328,6 @@ label {
 
 .igcp-tooltip__opened {
   position: absolute;
-  top: calc(100% + .6495rem);
   z-index: 1200;
   max-width: 10rem;
   padding: .75rem;
@@ -3329,6 +3349,14 @@ label {
 
 .igcp-text__informational {
   color: #0E75D5; }
+
+.igcp-toast .igcp-toast__icon {
+  position: relative;
+  top: 1px; }
+  .igcp-toast .igcp-toast__icon svg {
+    fill: #fff; }
+.igcp-toast .igcp-toast__message {
+  color: #fff; }
 
 @media (min-width: 768px) {
   .igcp-registration .igcp-registration__pfa h1 {
@@ -3403,7 +3431,5 @@ label {
     left: 25%;
     right: 25%;
     bottom: 25%; } }
-#header {
-  display: none; }
 
 /*# sourceMappingURL=igcp.css.map */
