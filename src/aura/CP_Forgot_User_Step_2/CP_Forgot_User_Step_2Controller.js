@@ -34,12 +34,7 @@
 				"answer": cmp.get("v.answer")
 			});
 
-			console.log("PAYLOAD");
-			console.log(cmp.get("v.payload"));
-
 			cmp.gotoNextStep();
-
-			// console.log("AHAHAHAHHAH");
 
 			//cmp.onSubmitForm();
 		}
@@ -55,7 +50,7 @@
 			services = cmp.find("CP_Services");
 
 		services.submitForm(
-			"StepOne",
+			"StepTwo",
 			cmp,
 			function(evt) {
 				cmp.onNextStep();
@@ -65,8 +60,16 @@
 				console.error(error);
 
 				var
+					events = cmp.find("CP_Events"),
 					fields = error.payload.State.Fields,
-					messages = error.payload.State.Messages;
+					messages = error.payload.State.Messages,
+					serviceUnavailable = error.payload.State.ServiceNotAvailable;
+
+				if (serviceUnavailable) {
+					events.fire("CP_Evt_Error_Not_Completed", {
+						"id": "forgot-username"
+					});
+				}
 
 				fields.forEach(function(errorType, i) {
 					var msgArr = [];

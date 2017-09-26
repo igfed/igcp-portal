@@ -5,8 +5,8 @@
 	<aura:attribute name="inputsReceived" type="Integer" default="0"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 	<!-- STEP 1 -->
-	<aura:attribute  name="clientNum" type="String"></aura:attribute>
-	<aura:attribute  name="email" type="String"></aura:attribute>
+	<aura:attribute name="clientNum" type="String"></aura:attribute>
+	<aura:attribute name="email" type="String"></aura:attribute>
 	<!-- STEP 2 -->
 	<aura:attribute name="question" type="String"></aura:attribute>
 	<aura:attribute name="answer" type="String"></aura:attribute>
@@ -36,7 +36,7 @@
 			<div class="igcp-label--small">{!$Label.c.CP_Generic_Step_2}</div>
 			<h2>{!$Label.c.CP_Forgot_User_Name_Step_2_h2}</h2>
 			<div>
-				<div class="igcp-label--small slds-m-top--medium slds-m-bottom--xx-small slds-m-right--xx-small"><span class="slds-p-right--xx-small">{!$Label.c.CP_Forgot_User_Name_Label_Security_Question}</span>
+				<div class="igcp-label--small slds-m-top--medium slds-m-bottom--xx-small slds-m-right--xx-small"><span class="slds-p-right--xx-small">{!$Label.c.CP_Generic_Label_Security_Question}</span>
 					<c:CP_Cmp_Tooltip tooltip="Hey Derek" />
 				</div>
 			</div>
@@ -44,7 +44,7 @@
 			<div class="slds-grid slds-wrap">
 				<div class="slds-form slds-size_12-of-12">
 					<!--FIELDS-->
-					<c:CP_Cmp_Input_Text id="answer-input" type="text" form="{!v.pageId}" label="{!$Label.c.CP_Forgot_User_Name_Label_Answer}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" hasFocus="true" />
+					<c:CP_Cmp_Input_Text id="answer-input" type="text" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Answer}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" hasFocus="true" />
 					<div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 				</div>
 				<!--CTAS-->

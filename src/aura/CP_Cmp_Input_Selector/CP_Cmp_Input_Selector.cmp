@@ -12,7 +12,7 @@
 	<aura:attribute name="defaultOptions" type="String[]" />
 	<aura:attribute name="options" type="String[]"></aura:attribute>
 	<aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
-	<aura:attribute  name="type" type="String" default="selector"></aura:attribute>
+	<aura:attribute name="type" type="String" default="selector"></aura:attribute>
 
 	<!-- INCLUDES -->
 	<c:CP_Utils aura:id="CP_Utils" />

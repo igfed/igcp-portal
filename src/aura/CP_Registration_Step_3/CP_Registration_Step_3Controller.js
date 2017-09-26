@@ -7,47 +7,47 @@
 		cmp.updateISAMPayload();
 
 		itemsArr = [{
-				"label": "Username",
+				"label": $A.get("$Label.c.CP_Generic_Label_Username"),
 				"detail": cmp.get("v.username"),
 				"type": "single"
 			},
 			{
-				"label": "Email",
+				"label": $A.get("$Label.c.CP_Generic_Label_Email"),
 				"detail": cmp.get("v.email"),
 				"type": "single"
 			},
 			{
-				"label": "Notification",
+				"label": $A.get("$Label.c.CP_Generic_Label_Notification"),
 				"detail": cmp.get("v.emailOptIn"),
 				"type": ""
 			},
 			{
-				"label": "Question 1",
+				"label": $A.get("$Label.c.CP_Generic_Label_Question_1"),
 				"detail": cmp.get("v.securityQuestion1"),
 				"type": "question"
 			},
 			{
-				"label": "Answer 1",
+				"label": $A.get("$Label.c.CP_Generic_Label_Answer_1"),
 				"detail": cmp.get("v.answer1"),
 				"type": "answer"
 			},
 			{
-				"label": "Question 2",
+				"label": $A.get("$Label.c.CP_Generic_Label_Question_2"),
 				"detail": cmp.get("v.securityQuestion2"),
 				"type": "question"
 			},
 			{
-				"label": "Answer 2",
+				"label": $A.get("$Label.c.CP_Generic_Label_Answer_1"),
 				"detail": cmp.get("v.answer2"),
 				"type": "answer"
 			},
 			{
-				"label": "Question 3",
+				"label": $A.get("$Label.c.CP_Generic_Label_Question_3"),
 				"detail": cmp.get("v.securityQuestion3"),
 				"type": "question"
 			},
 			{
-				"label": "Answer 3",
+				"label": $A.get("$Label.c.CP_Generic_Label_Answer_1"),
 				"detail": cmp.get("v.answer3"),
 				"type": "answer"
 			}
@@ -59,12 +59,9 @@
 		});
 	},
 	onRegistrationComplete: function(cmp, evt, hlpr) {
-		console.log("onRegistrationComplete");
 		cmp.showTOS();
 	},
 	onShowTOS: function(cmp, evt, hlpr) {
-
-		console.log("onShowTOS");
 
 		var events = cmp.find("CP_Events");
 
@@ -76,11 +73,6 @@
 		var
 			payload = evt.getParam("payload"),
 			events = cmp.find("CP_Events");
-
-		console.log('onAgreeTOS')	
-		console.log("Registration Step 3");
-		console.log(payload);
-		console.log('ready to submit to ISAM');
 
 		if (payload.id === "tos_agree_button") {
 
@@ -101,8 +93,6 @@
 	},
 	onAgreeChecked: function(cmp, evt, hlpr) {
 
-		console.log("onAgreeChecked");
-
 		var payload = evt.getParam("payload");
 
 		console.log(payload);
@@ -121,25 +111,28 @@
 			"StepThree",
 			cmp,
 			function(evt) {
-
-				console.log("NEXT STEP!!!!");
-
 				cmp.onNextStep();
 			},
 			function(error) {
 
-				console.error(error);
+				var
+					events = cmp.find("CP_Events"),
+					fields = error.payload.State.Fields,
+					messages = error.payload.State.Messages,
+					isLocked = error.payload.State.IsLocked,
+					serviceUnavailable = error.payload.State.ServiceNotAvailable;
 
-				// var
-				// 	fields = error.payload.State.Fields,
-				// 	messages = error.payload.State.Messages;
+				if (isLocked) {
+					events.fire("CP_Evt_Error_Locked_Out", {
+						"id": cmp.get("v.pageId")
+					});
+				}
 
-				// fields.forEach(function(errorType, i) {
-				// 	var msgArr = [];
-
-				// 	console.log('Step three: error');
-				// 	console.log(errorType);
-				// });
+				if (serviceUnavailable) {
+					events.fire("CP_Evt_Error_Registration_Not_Completed", {
+						"id": cmp.get("v.pageId")
+					});
+				}
 			}
 		);
 	},
@@ -191,8 +184,6 @@
 			},
 			"acceptTOS": cmp.get("v.acceptTOS")
 		});
-
-		console.log(cmp.get("v.payload"));
 	},
 	logPayloadVars: function(cmp, evt, hlpr) {
 		var logArray = [

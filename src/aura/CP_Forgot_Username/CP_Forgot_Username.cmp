@@ -1,6 +1,7 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
 	<!-- ATTRS -->
+	<aura:attribute name="id" type="String" default="forgot-username"></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-utils__overflow--hidden"></aura:attribute>
 	<aura:attribute name="currentStep" type="Integer" default="0" ></aura:attribute>
 
@@ -19,13 +20,13 @@
     <!-- HANDLER -->
     <aura:handler event="c:CP_Evt_Next_Step" action="{!c.onNextStep}"></aura:handler>
     <aura:handler event="c:CP_Evt_Back_Step" action="{!c.onBackStep}"></aura:handler>
+    <aura:handler event="c:CP_Evt_Error_Not_Completed" action="{!c.onNotCompleted}"></aura:handler>
 
     <!-- COMPONENTS -->
     <div class="{!v.class}">
 
     	<aura:if isTrue="{!v.currentStep == 0}"  >
-    		<c:CP_Forgot_User_Step_1 
-    			clientNum="{!v.clientNum}" 
+    		<c:CP_Forgot_User_Step_1 clientNum="{!v.clientNum}" 
     			email="{!v.email}"/>
     	</aura:if>
 
@@ -35,6 +36,10 @@
 
     	<aura:if isTrue="{!v.currentStep == 2}"  >
     		<c:CP_Forgot_User_Thank_You email="{!v.email}"/>
+    	</aura:if>
+
+    	<aura:if isTrue="{!v.currentStep == 3}"  >
+    		<c:CP_Forgot_User_Not_Completed />
     	</aura:if>
     	
     </div>

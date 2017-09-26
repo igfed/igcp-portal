@@ -9,7 +9,7 @@ public class CP_RegistrationController {
     @AuraEnabled
     public static string StepOne(String payload)
     {
-        System.debug('I am in Step Two');
+        System.debug('I am in Step One');
         objForm = new CP_RegistrationClass.RegistrationForm();
         try
         {
@@ -60,23 +60,30 @@ public class CP_RegistrationController {
     {
         System.debug('I am in Step Three');
         objForm = new CP_RegistrationClass.RegistrationForm();
-        objForm.State = new CP_RegistrationClass.Result();
-        CP_RegistrationClass.Result result = new CP_RegistrationClass.Result();
+        //objForm.State = new CP_RegistrationClass.Result();
+        //CP_RegistrationClass.Result result = new CP_RegistrationClass.Result();
         try
         {
             // Deserialize the passed JSON into Registration Form Object     
             objForm = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(payload, CP_RegistrationClass.RegistrationForm.class);
 
             // Call the Registration class's verification method by passing in the Deserialized Registration Form object and get a result Object in return
-            result = Registration.reValidateAll(objForm);
+            objForm.State = Registration.reValidateAll(objForm);
 
             System.debug('Result object retuned by revalidate: ');
-            System.debug(result);
+            System.debug(objForm.State);
 
-            if(result.IsValid)
+            if(objForm.State.IsValid)
             {
                 // Make the ISAM call and get the new User ID
+                CP_SCIMRestClient restClient = new CP_SCIMRestClient();
+                CP_SCIMRestClient.Response res = new CP_SCIMRestClient.Response();
+                String isamJSON = restClient.RetrieveUser('harishusc1');
+                System.debug('ISAM JSON');
+                System.debug(isamJSON);
 
+                res = (CP_SCIMRestClient.Response) JSON.deserialize(isamJSON, CP_SCIMRestClient.Response.class);
+               
                 // Update the New User ID into Salesforce 
                 objForm.State = Registration.SaveInfoInSalesforce(objForm);
             }

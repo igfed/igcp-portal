@@ -4,11 +4,15 @@ global class CP_RegistrationClass {
     {
         //public String Status {get; set; }
         public Boolean IsValid{get; set;}
+        public Boolean IsLocked{get; set;}
+        public Boolean ServiceNotAvailable{get; set;}
         public list<String> Fields {get; set; }
         public list<String> Messages {get; set; }
         
         public Result()
         {
+            this.IsLocked = false;
+            this.ServiceNotAvailable = false;
             this.Fields = new List<String>();
             this.Messages = new List<String>();
         }
@@ -47,9 +51,7 @@ global class CP_RegistrationClass {
             this.Questions.add('What\'s your mother\'s maiden name?');
         }
     }
-    
-
-    
+  
     public CP_RegistrationClass.Result verifyIdentity(CP_RegistrationClass.UserIdentity IGUser)
     {
         
@@ -67,7 +69,7 @@ global class CP_RegistrationClass {
         }
 
         // Search Contact by Business Partner number
-        Contact objContact = IGUser.getContactByBusinessPartnerID();
+        Financial_Asset__c objContact = IGUser.getClientInfo();
         
 
         System.debug('Returned Contact object');
@@ -85,67 +87,106 @@ global class CP_RegistrationClass {
         }
         else
         {
-            // Check if the returned Contact has Registered flag set and also has value in ISAM ID field
-            if(objContact.Portal_User_Is_Registered__c == true)
+            // Contact Found 
+            // Contact is Locked 
+            if(objContact.Customer__r.Portal_Registration_Is_Locked__c == true)
             {
-                // User already Registered
-               	result.IsValid = false;
-                //Provided Client number is already Registered.
-                result.Fields.add('clientNum');
-	            result.Messages.add(System.Label.CP_Registration_Client_Already_Registered);
+                result.IsValid = false;
+                result.IsLocked = true;
+
                 return result;
             }
-            else
+            else // Contact is not Locked, proceed with other checks
             {
-                // Validate Contact Postal code and Date of birth with values entered by user
-                //System.debug('step 1- client num is valid');
-                if(String.isBlank(IGUser.postalCode))
+                if(objContact.Asset_Type__c == 'Joint' && objContact.Is_Registration_Eligibile__c == false)
                 {
-                    // Postatcode is empty 
                     result.IsValid = false;
-                    result.Fields.add('postalCode');
-                    result.Messages.add(System.Label.CP_Registration_Postalcode_Is_Empty);
-                }                
-                else if(!IGUser.IsValidPostalCode())
+                    result.IsLocked = false;
+                    result.Fields.add('clientNum');
+                    result.Messages.add(System.Label.CP_Registration_Client_is_Joint_and_Not_allowed_to_Register);
+
+                    return result;
+                }
+                else if(objContact.Asset_Type__c == 'Company' && objContact.Is_Registration_Eligibile__c == false)
                 {
-                    // Postatcode is empty 
                     result.IsValid = false;
-                    result.Fields.add('postalCode');
-                    result.Messages.add(System.Label.CP_Registration_Postalcode_Is_Invalid);   
+                    result.IsLocked = false;
+                    result.Fields.add('clientNum');
+                    result.Messages.add(System.Label.CP_Registration_Client_is_Company_and_Not_allowed_to_Register);
+
+                    return result;
                 }
-                else if(!IGUser.PostalCodeMatched(objContact.MailingPostalCode))
+                else
                 {
-                    // Postatcode did not match the stored info in Salesforce.
-                    result.IsValid = false;
-                    result.Fields.add('postalCode');
-                    result.Messages.add(System.Label.CP_Registration_Postalcode_Not_Matched);
-                }
-                //System.debug('step 2 postal code is valid');
-                
-                if(String.isBlank(IGUser.dob))
-                {
-                    // Date of Birth is empty.
-                    result.IsValid = false;
-                    result.Fields.add('dob');
-                    result.Messages.add(System.Label.CP_Registration_DOB_Is_Empty);
-                }
-                else if(Date.valueOf(IGUser.dob) != objContact.Birthdate) 
-                {
-                    // Date of Birth did not match the stored info in Salesforce.
-                    result.IsValid = false;
-                    result.Fields.add('dob');
-                    result.Messages.add(System.Label.CP_Registration_DOB_Not_Matched);
-                }
-                
-                System.debug('step 3 dob is valid ');
-                // If the result.isValid is still null then it means all validations passed
-                if(result.IsValid == null)
-                {
-                    // user Identity varified and data validated
-                    result.IsValid = true;
-                }
-                return result;
+                    // Check if the returned Contact has Registered flag set and also has value in ISAM ID field
+                    if(objContact.Customer__r.Portal_User_Is_Registered__c == true)
+                    {
+                        // User already Registered
+                        result.IsValid = false;
+                        result.IsLocked = false;
+                        //Provided Client number is already Registered.
+                        result.Fields.add('clientNum');
+                        result.Messages.add(System.Label.CP_Registration_Client_Already_Registered);
+                        return result;
+                    }
+                    else
+                    {
+                        // Validate Contact Postal code and Date of birth with values entered by user
+                        //System.debug('step 1- client num is valid');
+                        if(String.isBlank(IGUser.postalCode))
+                        {
+                            // Postatcode is empty 
+                            result.IsValid = false;
+                            result.Fields.add('postalCode');
+                            result.Messages.add(System.Label.CP_Registration_Postalcode_Is_Empty);
+                        }                
+                        else if(!IGUser.IsValidPostalCode())
+                        {
+                            // Postatcode is empty 
+                            result.IsValid = false;
+                            result.Fields.add('postalCode');
+                            result.Messages.add(System.Label.CP_Registration_Postalcode_Is_Invalid);   
+                        }
+                        else if(!IGUser.PostalCodeMatched(objContact.Customer__r.MailingPostalCode))
+                        {
+                            // Postatcode did not match the stored info in Salesforce.
+                            result.IsValid = false;
+                            result.Fields.add('postalCode');
+                            result.Messages.add(System.Label.CP_Registration_Postalcode_Not_Matched);
+                        }
+                        //System.debug('step 2 postal code is valid');
+                        
+                        if(String.isBlank(IGUser.dob))
+                        {
+                            // Date of Birth is empty.
+                            result.IsValid = false;
+                            result.Fields.add('dob');
+                            result.Messages.add(System.Label.CP_Registration_DOB_Is_Empty);
+                        }
+                        else if(Date.valueOf(IGUser.dob) != objContact.Customer__r.Birthdate) 
+                        {
+                            // Date of Birth did not match the stored info in Salesforce.
+                            result.IsValid = false;
+                            result.Fields.add('dob');
+                            result.Messages.add(System.Label.CP_Registration_DOB_Not_Matched);
+                        }
+                        
+                        System.debug('step 3 dob is valid ');
+                        // If the result.isValid is still null then it means all validations passed
+                        if(result.IsValid == null)
+                        {
+                            // user Identity varified and data validated
+                            result.IsValid = true;
+                        }
+                        else
+                        {
+                            result.IsLocked = IGUser.recordFailedAttemptAndLock();
+                        }
+                        return result;
+                    }
+                }    
             }
+            
         }
     }
  
@@ -282,6 +323,8 @@ global class CP_RegistrationClass {
                 objContact.Email = regForm.Profile.email;
                 objContact.Marketing_Email_Optout__c = regForm.Profile.emailOptIn;
                 objContact.Preferred_Language__c = 'English';
+                objContact.Portal_User_Consent_Date__c = DateTime.now();
+                objContact.Portal_User_Consent_Obtained__c = true;
 
                 update objContact;
                 System.debug('info saved! ');
@@ -308,7 +351,9 @@ global class CP_RegistrationClass {
         public Contact getContactByBusinessPartnerID()
         {
             List<Contact> contactList = [select ID, Portal_User_Is_Registered__c, Email, Portal_User_ID__c, 
-                Portal_User_Name__c, MailingPostalCode, Birthdate, Business_Partner_ID__c, Preferred_Language__c 
+                Portal_User_Name__c, MailingPostalCode, Birthdate, Business_Partner_ID__c, Preferred_Language__c,
+                Portal_Registration_Failure_Count__c, Portal_Registration_Is_Locked__c,
+                Portal_User_Consent_Date__c, Portal_User_Consent_Obtained__c 
                 from Contact 
                 where Business_Partner_ID__c = : String.escapeSingleQuotes(this.clientNum)];
 
@@ -319,6 +364,59 @@ global class CP_RegistrationClass {
             else
                 return contactList[0];
         }
+
+
+        public Financial_Asset__c getClientInfo()
+        {
+            List<Financial_Asset__c> assetList = 
+                [ 
+                    SELECT 
+                           RecordType.Name, Asset_Type__c, Client__c, Customer__c,  
+                           Is_Registration_Eligibile__c,
+                           Policy_Number__c, Loan_Number__c, Client_Number__c, 
+                           Customer__r.Name, Customer__r.FirstName, Customer__r.LastName, 
+                           Customer__r.Birthdate , Customer__r.Business_Partner_ID__c, 
+                           Customer__r.Email, Customer__r.Marketing_Email_Optout__c, 
+                           Customer__r.Phone, Customer__r.Portal_User_ID__c, 
+                           Customer__r.Portal_User_Is_Registered__c, Customer__r.Portal_User_Name__c, 
+                           Customer__r.Preferred_Language__c, Customer__r.MailingPostalCode, 
+                           Customer__r.Portal_Registration_Failure_Count__c, Customer__r.Portal_Registration_Is_Locked__c,
+                           Customer__r.Portal_User_Consent_Date__c, Customer__r.Portal_User_Consent_Obtained__c
+                    FROM 
+                           Financial_Asset__c 
+                    WHERE 
+                                  (RecordType.DeveloperName = 'Investment_Asset'  AND Client_Number__c = : String.escapeSingleQuotes(this.clientNum))
+                                  OR (RecordType.DeveloperName = 'Loan_Asset'  AND Loan_Number__c = : String.escapeSingleQuotes(this.clientNum))
+                                  OR (RecordType.DeveloperName = 'Policy_Asset'  AND Policy_Number__c = : String.escapeSingleQuotes(this.clientNum))
+                    ]; 
+
+            System.debug(assetList);
+
+            if(assetList.isEmpty())
+                return null;
+            else
+                return assetList[0];
+        }
+
+
+        public boolean recordFailedAttemptAndLock()
+        {
+            Contact objCon = getContactByBusinessPartnerID();
+            if (objCon.Portal_Registration_Failure_Count__c > 3)
+            {
+                objCon.Portal_Registration_Failure_Count__c = 0;
+                objCon.Portal_Registration_Is_Locked__c = true;
+                update objCon;
+                return true;
+            }
+            else
+            {
+                objCon.Portal_Registration_Failure_Count__c++;
+                update objCon;
+                return false;
+            }
+        }
+
 
         public Boolean IsValidPostalCode()
         {
