@@ -104,9 +104,11 @@
   .igcp-login__footer {
     width: 450px;
     margin: 40px auto 0;
+    text-align: center;
 
     @media (max-width: 480px) {
-      width: auto;
+      width: 300px !important;
+      text-align: center;
 
       .igcp-login__footer-menu {
         height: auto;
@@ -117,13 +119,11 @@
       }
 
       li {
-        display: block;
         text-align: center;
-        width: 100%;
       }
 
       .igcp-login__footer-copyright {
-        margin-top: 80px;
+        margin-top: 30px;
       }
     }
 
@@ -131,8 +131,9 @@
       height: 40px;
 
       li {
-        float: left;
-        padding: 0 13px;
+        display: inline-block;
+        padding: 0 8px;
+        text-align: center;
       }
     }
 
@@ -366,23 +367,39 @@
 
 }
 
+.igcp-new-device {
+
+  &__heading {
+    margin-bottom: 15px;
+  }
+
+  &__link {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 16px;
+  }
+
+  label.slds-checkbox__label {
+    margin: 0;
+  }
+
+  button {
+
+  }
+}
 
 .igcp-lock-screen {
 
-
-
-	h1 {
-		padding-right: 70px;
-	}
+  h1 {
+    padding-right: 70px;
+  }
 }
 
 @media (min-width: $ig-medium) {
-	.igcp-lock-screen {
+  .igcp-lock-screen {
 
-
-
-		h1 {
-			padding-right: 150px;
-		}
-	}
+    h1 {
+      padding-right: 150px;
+    }
+  }
 }
