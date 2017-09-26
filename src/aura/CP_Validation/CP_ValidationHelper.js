@@ -118,12 +118,23 @@
 			hasSpecialChar = hlpr.hasSpecialChar(value);
 
 		if (isEmpty === true) {
+
 			errorCheckObj["isEmpty"] = isEmpty;
+			
 		} else {
+
 			errorCheckObj["minLength"] = minLength;
 			errorCheckObj["hasUppercase"] = hasUppercase;
-			errorCheckObj["hasNumber"] = hasNumber;
-			errorCheckObj["hasSpecialChar"] = hasSpecialChar;
+
+			if(hasNumber !== true) {
+				//check if pass has special char
+				errorCheckObj["hasSpecialChar"] = hasSpecialChar;
+			}
+
+			if(hasSpecialChar !== true) {
+				//Check if pass has number
+				errorCheckObj["hasNumber"] = hasNumber;
+			}
 		}
 
 		errors = hlpr.checkForErrors(errorCheckObj);
