@@ -29,7 +29,13 @@ public abstract class IGRestClient {
     
     protected Response callRESTService() {
     	HttpRequest req = new HttpRequest();
-        req.setEndpoint(getHttpEndPoint() + '?' + this.langQueryString);
+        String endPoint = getHttpEndPoint();
+        if (String.isNotBlank(endPoint) && endPoint.indexOf('?') == -1) {
+            req.setEndpoint(getHttpEndPoint() + '?' + this.langQueryString);
+        } else {
+            req.setEndpoint(getHttpEndPoint() + '&' + this.langQueryString);
+        }
+        //req.setEndpoint(getHttpEndPoint() + '?' + this.langQueryString);
         req.setMethod(REST_METHOD);
         req.setHeader(HTTP_HEADER_CORR, generateGUID());
         req.setHeader(HTTP_HEADER_ACPT, REST_CONTENT);

@@ -34,7 +34,7 @@ public class IGAccountDetailClient extends IGRestClient {
 	}
 
 	public class Client extends IGRestClient.Entities {
-		public List<AccountDetail> AccountDetail;
+		public List<AccountDetail> AccountDetails;
 	}			
 	
 	public class AccountDetail {

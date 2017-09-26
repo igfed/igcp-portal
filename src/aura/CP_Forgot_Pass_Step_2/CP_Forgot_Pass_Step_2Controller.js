@@ -1,4 +1,8 @@
 ({
+	doneRendering: function(cmp, evt, hlpr) {
+		//call to get security question
+		cmp.set("v.question", "What's your dogs name?")
+	},
 	onSubmit: function(cmp, evt, hlpr) {
 
 		//Reset input errors	
@@ -18,16 +22,24 @@
 
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
-		console.warn("onInputValueReceived");
-		console.warn(cmp.get("v.inputsReceived"));
-		console.warn(cmp.get("v.inputErrors"));
-		if (cmp.get("v.inputsReceived") === 2 && cmp.get("v.inputErrors") === false) {
+		if (cmp.get("v.inputsReceived") === 1 && cmp.get("v.inputErrors") === false) {
+
+			console.log("HHJKSHJKJKAHSHJK");
 
 			cmp.set("v.payload", {
+				"clientNum": cmp.get("v.clientNum"),
+				"postalCode": cmp.get("v.postalCode"),
+				"dob": cmp.get("v.dob"),
+				"question" : cmp.get("v.question"),
 				"answer": cmp.get("v.answer")
 			});
 
-			cmp.onSubmitForm();
+			console.log("PAYLOAD")
+			console.log(cmp.get("v.payload"))
+
+			cmp.gotoNextStep();
+
+			//cmp.onSubmitForm();
 		}
 	},
 	onInputBlur: function(cmp, evt, hlpr) {
@@ -46,12 +58,20 @@
 				cmp.onNextStep();
 			},
 			function(error) {
-				console.error("Step 2: Error");
+				console.error("Forgot Pass: Step 2: Error");
 				console.error(error);
 
 				var
+					events = cmp.find("CP_Events"),
 					fields = error.payload.State.Fields,
-					messages = error.payload.State.Messages;
+					messages = error.payload.State.Messages,
+					serviceUnavailable = error.payload.State.ServiceNotAvailable;
+
+				if (serviceUnavailable) {
+					events.fire("CP_Evt_Error_Not_Completed", {
+						"id": "forgot-password"
+					});
+				}
 
 				fields.forEach(function(errorType, i) {
 					var msgArr = [];
@@ -68,7 +88,8 @@
 			}
 		);
 	},
-	gotoNextStep: function(cmp, evt, hlpr) {
+	onNextStep: function(cmp, evt, hlpr) {
+		console.log('NEXT!!!!')
 		var event = cmp.find("CP_Events");
 		event.fire("CP_Evt_Next_Step", {
 			"id": cmp.get("v.pageId")

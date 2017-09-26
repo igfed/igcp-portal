@@ -1,7 +1,34 @@
 ({
 	doneRendering: function(cmp, evt, hlpr) {
+
+		var services = cmp.find("CP_Services");
+
+
 		//call to get security question
-		cmp.set("v.question", "What's your dogs name?")
+		//cmp.set("v.question", "What's your dogs name?")
+
+		console.log("doneRendering");
+
+		//set client num and attempts
+		cmp.set("v.payload", {
+			"clientNum": cmp.get("v.clientNum"),
+			"attempts" : cmp.get("v.attempts")
+		});
+
+		console.log(cmp.get("v.payload"));
+
+		services.getRandSecurityQuestion(
+			cmp, 
+			function(success){
+				console.log("SUCCESSS")
+				console.log(success);
+				cmp.set("v.question", "What's your dogs name?")
+			},
+			function(error) {
+				console.error("GET RANDOM QUESTION");
+				console.error(error);
+			}
+		);
 	},
 	onSubmit: function(cmp, evt, hlpr) {
 
@@ -19,9 +46,6 @@
 		hlpr.validateInput(cmp, evt.getParam("payload"));
 
 		cmp.set("v.inputsReceived", (inputs += 1));
-
-		console.log("Inputs Received: " + cmp.get("v.inputsReceived"));
-		console.log("inputErrors: " + cmp.get("v.inputErrors"));
 
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend

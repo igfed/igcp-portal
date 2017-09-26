@@ -30,7 +30,7 @@ public class IGInvestmentProfileClient extends IGRestClient {
 	}
 
 	public class Client extends IGRestClient.Entities {
-		public List<InvestmentProfile> InvestmentProfile;
+		public List<InvestmentProfile> InvestmentProfiles;
 	}
 	
 	public class InvestmentProfile {
@@ -42,6 +42,7 @@ public class IGInvestmentProfileClient extends IGRestClient {
 		public String INVESTMENT_OBJECTIVE;
 		public String RISK_TOLERANCE;
 		public String INVESTMENT_TIME_HORIZON;
+		public String ACCOUNT_STATUS_CODE;
 	}
 
 }

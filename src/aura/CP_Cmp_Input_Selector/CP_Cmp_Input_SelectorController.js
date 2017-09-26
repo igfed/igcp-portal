@@ -46,8 +46,6 @@
 	},
 	onChange: function(cmp, evt, hlpr) {
 
-		console.log("CP_Cmp_Input_Selector: onChange");
-
 		var
 			utils = cmp.find("CP_Utils"),
 			events = cmp.find("CP_Events"),
@@ -79,8 +77,6 @@
 			newOptions = [];
 
 		if (payload.id !== cmp.get("v.id")) {
-
-			console.log("CP_Cmp_Input_Selector: onChangeReceived");
 
 			//if a value has not been selected on 
 			//this selector

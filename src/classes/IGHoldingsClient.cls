@@ -1,7 +1,9 @@
 public class IGHoldingsClient extends IGRestClient {
-	private static final String RESOURCE_NAME 		= 'holdings';
+	private static final String RESOURCE_NAME 				= 'holdings';
+	private static final String QRY_PARAM_ACCOUNT_NUMBER 	= 'ACCOUNT_NUMBER';
 	
 	public String bpid 			{ get; set; }
+	public String accountNumber { get; set; }
 	
 	public IGHoldingsClient(String namedCredentialsName, IGRestClient.Language lang) {
 		super(namedCredentialsName, lang);
@@ -12,7 +14,8 @@ public class IGHoldingsClient extends IGRestClient {
 	}
 	
 	public override String getHttpEndPoint() {
-    	return 'callout:' + this.namedCredentialsName + '/clients/' + bpid.trim() + '/' + RESOURCE_NAME;
+    	return 'callout:' + this.namedCredentialsName + '/clients/' + bpid.trim() + '/' + RESOURCE_NAME + 
+    			(String.isNotBlank(accountNumber) ? ('?' + QRY_PARAM_ACCOUNT_NUMBER + '=' + accountNumber.trim()) : '');
     }    
 
     public override Response parseResponse(String responseBody) {
@@ -29,7 +32,7 @@ public class IGHoldingsClient extends IGRestClient {
 	}
 	
 	public class Client extends IGRestClient.Entities {
-		public List<Holding> Holding;
+		public List<Holding> Holdings;
 	}
 
 	public class Holding {

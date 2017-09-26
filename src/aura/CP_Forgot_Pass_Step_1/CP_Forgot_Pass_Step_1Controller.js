@@ -10,7 +10,10 @@
 	},
 	onInputValueReceived: function(cmp, evt, hlpr) {
 
-		var inputs = cmp.get("v.inputsReceived");
+		var
+			utils = cmp.find('CP_Utils'),
+			inputs = cmp.get("v.inputsReceived"),
+			formattedDob = "";
 
 		hlpr.validateInput(cmp, evt.getParam("payload"));
 
@@ -18,18 +21,23 @@
 
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
-		console.warn("onInputValueReceived");
-		console.warn(cmp.get("v.inputsReceived"));
-		console.warn(cmp.get("v.inputErrors"));
 		if (cmp.get("v.inputsReceived") === 3 && cmp.get("v.inputErrors") === false) {
 
-			cmp.set("v.payload", {
-				"username": cmp.get("v.username"),
-                "postalCode": cmp.get("v.postalCode"),
-				"dob" : cmp.get("v.dob")
+			utils.convertToYMD(cmp.get("v.dob"), function(value) {
+				formattedDob = value;
 			});
 
-			cmp.onSubmitForm();
+			cmp.set("v.payload", {
+				"clientNum": cmp.get("v.clientNum"),
+				"postalCode": cmp.get("v.postalCode"),
+				"dob": formattedDob
+			});
+
+			//The backend controller isn't ready yet
+			//cmp.onSubmitForm();
+
+			//Go here temporarily
+			cmp.gotoNextStep();
 		}
 	},
 	onInputBlur: function(cmp, evt, hlpr) {
@@ -81,16 +89,11 @@
 							"errors": msgArr
 						});
 					}
-
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/feature/POR-360
 				});
 			}
 		);
 	},
-	gotoNextStep: function(cmp, evt, hlpr) {
+	onNextStep: function(cmp, evt, hlpr) {
 		var event = cmp.find("CP_Events");
 		event.fire("CP_Evt_Next_Step", {
 			"id": cmp.get("v.pageId")

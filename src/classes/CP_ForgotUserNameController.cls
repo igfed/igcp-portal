@@ -36,15 +36,27 @@ public with sharing class CP_ForgotUserNameController {
 	            response.State.Fields.add('email');
 	            response.State.Messages.add(System.Label.CP_Registration_Email_Is_Invalid);   
 	        }
-	        else if(!response.validateClientNumberAndEmail())
-			{
-				response.State.IsValid = false;
-    	        response.State.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);
-			}
-			else
-			{
-				response.State.IsValid = true;
-			}
+            else
+            {
+                Contact objContact = response.getContactByClientNumberAndEmail();
+                if(objContact == null)
+                {
+                    response.State.IsValid = false;
+                    response.State.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);    
+                }
+                else
+                {
+                    if(objContact.Portal_Registration_Is_Locked__c == true)
+                    {
+                        response.State.IsValid = false;
+                        response.State.IsLocked = true;
+                    }
+                    else
+                    {
+                        response.State.IsValid = true;
+                    }
+                }
+            }
         }
         catch(exception e)
         {
@@ -61,6 +73,7 @@ public with sharing class CP_ForgotUserNameController {
     @AuraEnabled
     public static String getSecurityQuestion(string clientNumber, Integer failedAttempts)
     {
+    	System.debug('getSecurityQuestion');
     	ForgotUserNameResponse response = new ForgotUserNameResponse(clientNumber);
     	try
     	{
@@ -68,7 +81,28 @@ public with sharing class CP_ForgotUserNameController {
 
 	   		if(objContact != null)
 	   		{
+                if(objContact.Portal_Registration_Is_Locked__c == true)
+                {
+                    response.State.IsValid = false;
+                    response.State.IsLocked = true;
+                }
+                else
+                {
+                    CP_SCIMRestClient restClient = new CP_SCIMRestClient();
+                    CP_SCIMRestClient.IGUser thisUser; 
 
+                    if(!String.isBlank(objContact.Portal_User_Id__c))
+                    {
+                        thisUser = restClient.RetrieveUserByUserId(objContact.Portal_User_Id__c);
+                    }  
+                    else
+                    {
+                        thisUser = restClient.RetrieveUserByUserName(objContact.Portal_User_Name__c);
+                    }
+
+                    System.debug('IG User Returned from ISAM');
+                    System.debug(thisUser);
+                }
 	   		}
 	   		else
 	   		{
@@ -145,28 +179,32 @@ public with sharing class CP_ForgotUserNameController {
     	}
 
     	// Search Contact by Business Partner ID
-        public Boolean validateClientNumberAndEmail()
+        public Contact getContactByClientNumberAndEmail()
         {
-            List<Contact> contactList = [select ID, Portal_User_Is_Registered__c, Email, Portal_User_ID__c, 
-                Portal_User_Name__c, MailingPostalCode, Birthdate, Business_Partner_ID__c, Preferred_Language__c 
+            List<Contact> contactList = [select ID, Portal_User_Is_Registered__c, Email, 
+                Portal_User_ID__c, Portal_Registration_Is_Locked__c, Portal_User_Name__c, 
+                MailingPostalCode, Birthdate, Business_Partner_ID__c, Preferred_Language__c 
                 from Contact 
                 where Business_Partner_ID__c = : String.escapeSingleQuotes(this.clientNum) 
-                AND Email = : String.escapeSingleQuotes(this.email)];
-
-            System.debug(contactList);
+                AND Email = : String.escapeSingleQuotes(this.email) 
+                AND Portal_User_Is_Registered__c = true
+                AND Portal_User_Name__c != null AND Portal_User_Name__c != ''];
 
             if(contactList.isEmpty())
-                return false;
+                return null;
             else
-                return true;
+                return contactList[0];
         }
 
         public Contact getContactBYClientNumber()
         {
-            List<Contact> contactList = [select ID, Portal_User_Is_Registered__c, Email, Portal_User_ID__c, 
-                Portal_User_Name__c, MailingPostalCode, Birthdate, Business_Partner_ID__c, Preferred_Language__c 
+            List<Contact> contactList = [select ID, Portal_User_Is_Registered__c, Email, 
+                Portal_User_ID__c, Portal_Registration_Is_Locked__c, Portal_User_Name__c, 
+                MailingPostalCode, Birthdate, Business_Partner_ID__c, Preferred_Language__c
                 from Contact 
-                where Business_Partner_ID__c = : String.escapeSingleQuotes(this.clientNum)];
+                where Business_Partner_ID__c = : String.escapeSingleQuotes(this.clientNum) 
+                AND Portal_User_Is_Registered__c = true
+                AND Portal_User_Name__c != null AND Portal_User_Name__c != ''];
 
             System.debug(contactList);
 

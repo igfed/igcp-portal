@@ -1,7 +1,9 @@
 public class IGAccountPerformanceClient extends IGRestClient {
-    private static final String RESOURCE_NAME 		= 'accountPerformance';
+    private static final String RESOURCE_NAME 				= 'accountPerformance';
+    private static final String QRY_PARAM_ACCOUNT_NUMBER 	= 'ACCOUNT_NUMBER';
     
     public String bpid 			{ get; set; }
+    public String accountNumber { get; set; }
     
     public IGAccountPerformanceClient(String namedCredentialsName, IGRestClient.Language lang) {
 		super(namedCredentialsName, lang);
@@ -12,7 +14,8 @@ public class IGAccountPerformanceClient extends IGRestClient {
 	}
 	
 	public override String getHttpEndPoint() {
-    	return 'callout:' + this.namedCredentialsName + '/clients/' + bpid.trim() + '/' + RESOURCE_NAME;
+    	return 'callout:' + this.namedCredentialsName + '/clients/' + bpid.trim() + '/' + RESOURCE_NAME + 
+    			(String.isNotBlank(accountNumber) ? ('?' + QRY_PARAM_ACCOUNT_NUMBER + '=' + accountNumber.trim()) : '');
     }
 
     public override Response parseResponse(String responseBody) {
@@ -30,7 +33,7 @@ public class IGAccountPerformanceClient extends IGRestClient {
 	}
 
 	public class Client extends IGRestClient.Entities {
-		public List<AccountPerformance> AccountPerformance;
+		public List<AccountPerformance> AccountPerformances;
 	}
 
 	public class AccountPerformance {

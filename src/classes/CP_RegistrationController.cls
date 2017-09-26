@@ -78,20 +78,39 @@ public class CP_RegistrationController {
                 // Make the ISAM call and get the new User ID
                 CP_SCIMRestClient restClient = new CP_SCIMRestClient();
                 CP_SCIMRestClient.Response res = new CP_SCIMRestClient.Response();
-                String isamJSON = restClient.RetrieveUser('harishusc1');
-                System.debug('ISAM JSON');
-                System.debug(isamJSON);
+                
+                
+                Contact objContact = objForm.Identity.getContactByBusinessPartnerID();
 
-                res = (CP_SCIMRestClient.Response) JSON.deserialize(isamJSON, CP_SCIMRestClient.Response.class);
+                objForm.Profile.firstName = objContact.firstName; 
+                objForm.Profile.lastName = objContact.lastName; 
+
+                res = restClient.RegisterNewUser(objForm);
+
+                //res = (CP_SCIMRestClient.Response) JSON.deserialize(restClientJSON, CP_SCIMRestClient.Response.class);
+                
                
-                // Update the New User ID into Salesforce 
-                objForm.State = Registration.SaveInfoInSalesforce(objForm);
+                if(res.success)
+                {
+                    // Update the New User ID into Salesforce 
+                    objForm.Profile.userId = res.responseBody;
+                    objForm.State = Registration.SaveInfoInSalesforce(objForm);
+                }
+                else{
+                    objForm.State = new CP_RegistrationClass.Result();
+                    objForm.State.IsValid = false;
+                    objForm.State.ServiceNotAvailable = true;
+                    objForm.State.Messages.add(res.responseBody);
+                }
+
+               
             }
         }
         catch(exception e)
         {
            objForm.State = new CP_RegistrationClass.Result();
            objForm.State.IsValid = false;
+           objForm.State.ServiceNotAvailable = true;
            objForm.State.Messages.add(e.getMessage());
         }
 

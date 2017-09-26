@@ -1,5 +1,7 @@
 global class CP_RegistrationClass {
 
+    public class IGClientException extends Exception {}
+
     Public class Result
     {
         //public String Status {get; set; }
@@ -196,6 +198,8 @@ global class CP_RegistrationClass {
     {
         CP_RegistrationClass.Result result = new CP_RegistrationClass.Result();
         
+        result.IsValid = null;
+
         if(String.isBlank(IGUserProfile.userName))
         {
             // User name is empty
@@ -249,19 +253,6 @@ global class CP_RegistrationClass {
             result.Messages.add(System.Label.CP_Registration_Email_Is_Already_Registered);
         }
         
-        /*
-        if(!String.isBlank(IGUserProfile.mobilePhone))
-        {
-            if (!IGUserProfile.IsValidPhoneNumber())
-            {
-                // Email is not valid 
-                result.IsValid = false;
-                result.Fields.add('mobilePhone');
-                result.Messages.add(System.Label.CP_Registration_Phone_Number_Is_Invalid);   
-            }
-        }
-        */
-
         // If the result.isValid is still null then it means all validations passed
         if(result.IsValid == null)
         {
@@ -319,12 +310,13 @@ global class CP_RegistrationClass {
             {
                 objContact.Portal_User_Is_Registered__c = true;
                 objContact.Portal_User_Name__c = regForm.Profile.userName;
-                objContact.Portal_User_ID__c = '';
+                objContact.Portal_User_ID__c = regForm.Profile.userId;
                 objContact.Email = regForm.Profile.email;
                 objContact.Marketing_Email_Optout__c = regForm.Profile.emailOptIn;
-                objContact.Preferred_Language__c = 'English';
+                //objContact.Preferred_Language__c = 'English';
                 objContact.Portal_User_Consent_Date__c = DateTime.now();
                 objContact.Portal_User_Consent_Obtained__c = true;
+                objContact.Portal_Action_Failure_Count__c = 0;
 
                 update objContact;
                 System.debug('info saved! ');
@@ -350,9 +342,10 @@ global class CP_RegistrationClass {
         // Search Contact by Business Partner ID
         public Contact getContactByBusinessPartnerID()
         {
-            List<Contact> contactList = [select ID, Portal_User_Is_Registered__c, Email, Portal_User_ID__c, 
+            List<Contact> contactList = [select ID, FirstName, LastName, Portal_User_Is_Registered__c, Email, Portal_User_ID__c, 
                 Portal_User_Name__c, MailingPostalCode, Birthdate, Business_Partner_ID__c, Preferred_Language__c,
-                Portal_Registration_Failure_Count__c, Portal_Registration_Is_Locked__c,
+                Portal_Action_Failure_Count__c, 
+                Portal_Registration_Is_Locked__c,
                 Portal_User_Consent_Date__c, Portal_User_Consent_Obtained__c 
                 from Contact 
                 where Business_Partner_ID__c = : String.escapeSingleQuotes(this.clientNum)];
@@ -380,7 +373,8 @@ global class CP_RegistrationClass {
                            Customer__r.Phone, Customer__r.Portal_User_ID__c, 
                            Customer__r.Portal_User_Is_Registered__c, Customer__r.Portal_User_Name__c, 
                            Customer__r.Preferred_Language__c, Customer__r.MailingPostalCode, 
-                           Customer__r.Portal_Registration_Failure_Count__c, Customer__r.Portal_Registration_Is_Locked__c,
+                           Customer__r.Portal_Action_Failure_Count__c, 
+                           Customer__r.Portal_Registration_Is_Locked__c,
                            Customer__r.Portal_User_Consent_Date__c, Customer__r.Portal_User_Consent_Obtained__c
                     FROM 
                            Financial_Asset__c 
@@ -402,16 +396,16 @@ global class CP_RegistrationClass {
         public boolean recordFailedAttemptAndLock()
         {
             Contact objCon = getContactByBusinessPartnerID();
-            if (objCon.Portal_Registration_Failure_Count__c > 3)
+            if (objCon.Portal_Action_Failure_Count__c > 3)
             {
-                objCon.Portal_Registration_Failure_Count__c = 0;
+                objCon.Portal_Action_Failure_Count__c = 0;
                 objCon.Portal_Registration_Is_Locked__c = true;
                 update objCon;
                 return true;
             }
             else
             {
-                objCon.Portal_Registration_Failure_Count__c++;
+                objCon.Portal_Action_Failure_Count__c++;
                 update objCon;
                 return false;
             }
@@ -452,6 +446,9 @@ global class CP_RegistrationClass {
     
     public class UserProfile
     {
+        public String userId  {get; set;}
+        public String firstName  {get; set;}
+        public String lastName  {get; set;}
         public String username { get; set; }
         public String password { get; set; }
         public String confirmPassword { get; set; }
@@ -472,10 +469,14 @@ global class CP_RegistrationClass {
                 from Contact 
                 where Portal_User_Name__c = : String.escapeSingleQuotes(this.userName) limit 1];
             if(contactList.isEmpty())
-                return false;
+            {
+                CP_SCIMRestClient restClient = new CP_SCIMRestClient();
+                return restClient.UserNameExist(this.userName);
+            }
             else
+            {
                 return true;
-
+            }
         }
 
         //CP_Registration_Email_Is_Already_Registered

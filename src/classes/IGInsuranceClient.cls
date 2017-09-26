@@ -29,7 +29,7 @@ public class IGInsuranceClient extends IGRestClient {
 	}
 	
 	public class Client extends IGRestClient.Entities {
-		public List<Insurance> Insurance;
+		public List<Insurance> InsurancePolicies;
 	}
 
 	public class Insurance {

@@ -21,14 +21,14 @@ public class IGMortgageClient extends IGRestClient {
     }
     
     public class MortgageData extends IGRestClient.Response {
-		public Mortgage Mortgage;
+		public Client Client;
 		
 		public MortgageData(Boolean isSuccessful, Integer theCode, String theResponse) {
     		super(isSuccessful, theCode, theResponse);
     	}
 	}
 
-	public class Mortgage extends IGRestClient.Entities {
+	public class Client extends IGRestClient.Entities {
 		public List<Loans> Loans;
 	}
     
