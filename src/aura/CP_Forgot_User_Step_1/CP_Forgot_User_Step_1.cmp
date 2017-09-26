@@ -7,8 +7,9 @@
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 
 	<!-- STEP 1 -->
-	<aura:attribute name="clientNum" type="String"></aura:attribute>
-	<aura:attribute name="email" type="String" ></aura:attribute>
+	<aura:attribute name="username" type="String"></aura:attribute>
+	<aura:attribute name="postalCode" type="String" default=""/>
+    <aura:attribute name="dob" type="String" default=""/>
 
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
