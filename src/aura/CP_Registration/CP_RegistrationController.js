@@ -26,6 +26,9 @@
 		cmp.set("v.currentStep", 5);
 	},
 	onNotCompleted: function(cmp, evt, hlpr) {
-		cmp.set("v.currentStep", 6);
+
+		if(evt.getParam("payload").id === cmp.get("v.id")) {
+			cmp.set("v.currentStep", 6);
+		}
 	}
 })

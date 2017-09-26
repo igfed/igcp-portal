@@ -15,5 +15,10 @@
 		}
 
 		cmp.set("v.currentStep", backStep);
+	},
+	onNotCompleted: function(cmp, evt, hlpr) {
+		if(evt.getParam("payload").id === cmp.get("v.id")) {
+			cmp.set("v.currentStep", 3);
+		}
 	}
 })

@@ -191,6 +191,8 @@
 			"StepTwo",
 			cmp,
 			function(evt) {
+				console.log("SUBMIT FORM");
+				console.log("NEXT STEP!!!!!");
 				cmp.onNextStep();
 			},
 			function(error) {
@@ -202,6 +204,9 @@
 					isLocked = error.payload.State.IsLocked,
 					serviceUnavailable = error.payload.State.ServiceNotAvailable;
 
+				console.error("STEP 2 Submit Form Error");
+				console.error(error);
+
 				if (isLocked) {
 					events.fire("CP_Evt_Error_Locked_Out", {
 						"id": cmp.get("v.pageId")
@@ -209,8 +214,8 @@
 				}
 
 				if (serviceUnavailable) {
-					events.fire("CP_Evt_Error_Registration_Not_Completed", {
-						"id": cmp.get("v.pageId")
+					events.fire("CP_Evt_Error_Not_Completed", {
+						"id": "registration"
 					});
 				}
 

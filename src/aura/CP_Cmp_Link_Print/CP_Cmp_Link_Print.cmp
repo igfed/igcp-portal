@@ -1,3 +1,3 @@
 <aura:component >
-    <a class="igcp-link__print igcp-label--small slds-size_12-of-12 slds-m-bottom--x-small"><lightning:icon iconName="utility:record" size="small" class="igcp-link__print--icon slds-m-right--xxx-small"/>Print</a>
+    <a class="igcp-link__print igcp-label--small slds-size_12-of-12 slds-m-bottom--x-small"><lightning:icon iconName="utility:record" size="small" class="igcp-link__print--icon slds-m-right--xxx-small"/>{!$Label.c.CP_Generic_Label_Print}</a>
 </aura:component>
