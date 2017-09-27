@@ -18,14 +18,11 @@
 
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
-		console.warn("onInputValueReceived");
-		console.warn(cmp.get("v.inputsReceived"));
-		console.warn(cmp.get("v.inputErrors"));
 		if (cmp.get("v.inputsReceived") === 2 && cmp.get("v.inputErrors") === false) {
 
 			cmp.set("v.payload", {
-				"password1": cmp.get("v.password1"),
-				"password2": cmp.get("v.password2")
+				"password": cmp.get("v.password"),
+				"confirmPassword": cmp.get("v.confirmPassword")
 			});
 
 			cmp.onSubmitForm();

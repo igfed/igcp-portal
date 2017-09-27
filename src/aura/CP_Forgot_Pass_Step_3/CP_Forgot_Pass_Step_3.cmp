@@ -46,8 +46,8 @@
 			<h1>{!$Label.c.CP_Forgot_Pass_h1}</h1>
 			<c:CP_Cmp_Progress_Indicator currentStep="3" totalSteps="3" />
 			<div class="igcp-label--small">{!$Label.c.CP_Generic_Step_3}</div>
-			<h2>Create a new password</h2>
-			<p class="igcp-utils__width--100 igcp-large-utils__width--75">You can now reset your password below. Ensure your new password is difficult to guess.</p>
+			<h2>{!$Label.c.CP_Forgot_Pass_Step_3_h1}</h2>
+			<p class="igcp-utils__width--100 igcp-large-utils__width--75">{!$Label.c.CP_Forgot_Pass_Step_3_Instructions}</p>
 			<div class="slds-grid slds-wrap">
 				<div class="slds-form slds-size_12-of-12">
 					<!--FIELDS-->
