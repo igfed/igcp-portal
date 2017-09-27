@@ -130,6 +130,12 @@ label {
       color: #282828;
       margin-left: 8px; }
 
+.uiInput.has-error {
+  border: none; }
+
+.slds-input.igcp-input.has-error.uiInput.uiInputText.uiInput--input {
+  border: 1px solid red; }
+
 .slds-checkbox .slds-form-element__label.input-label {
   font-family: "WhitneyBook", Arial, sans-serif;
   font-size: 16px;
@@ -178,6 +184,18 @@ label {
 
 .slds-card .slds-icon_container.slds-icon-standard-person-account {
   left: -10px; }
+
+.has-error .slds-icon-text-default {
+  fill: red; }
+
+.slds-icon_container.has-error {
+  position: absolute; }
+
+.slds-error-icon {
+  display: none; }
+
+.slds-error-icon.has-error {
+  display: block; }
 
 .slds-notify_toast {
   margin: 0;

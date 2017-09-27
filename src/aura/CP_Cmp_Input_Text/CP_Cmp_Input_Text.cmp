@@ -48,6 +48,9 @@
 			</ul>
 		</aura:renderIf>
 		<div class="slds-form-element__control">
+						<span class="slds-icon_container slds-error-icon slds-m-right_small slds-no-flex slds-align-top has-error" title="An error has occurred">
+     					<lightning:icon iconName="utility:info" size="small" class="igcp-toast__icon slds-m-right--xx-small" alternativeText="Info" />
+                   </span>
 			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" keypress="{!c.onHandleKey}" keydown="{!c.onHandleKey}" keyup="{!c.onHandleKey}" blur="{!c.onBlur}"/>
 		</div>
 		<aura:renderIf isTrue="{!v.helpText}">

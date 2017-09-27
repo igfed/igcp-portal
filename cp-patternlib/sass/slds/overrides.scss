@@ -50,6 +50,15 @@
     }
 }
 
+
+.uiInput.has-error {
+    border: none;
+}
+
+.slds-input.igcp-input.has-error.uiInput.uiInputText.uiInput--input {
+    border: 1px solid red;
+}
+
 .slds-checkbox {
 
     .slds-form-element__label.input-label {
@@ -133,6 +142,22 @@
 			left: -10px;
 		}
 	}
+}
+
+.has-error .slds-icon-text-default {
+    fill: red;
+}
+
+.slds-icon_container.has-error {
+    position: absolute;
+}
+
+.slds-error-icon {
+    display: none;
+}
+
+.slds-error-icon.has-error {
+    display: block;
 }
 
 .slds-notify_toast {
