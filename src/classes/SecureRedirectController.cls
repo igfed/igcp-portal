@@ -3,7 +3,7 @@ public class SecureRedirectController {
   public PageReference redirectToIdP(){
       String lang = ApexPages.currentPage().getParameters().get('language');
       
-      PageReference pr = new PageReference('https://fitrp3-isam.investorsgroup.com/isam/sps/IGM-SAML20-SalesForce/saml20/login');
+      PageReference pr = new PageReference('https://luxortechnologydev-dev-ed.my.salesforce.com/idp/endpoint/HttpRedirect');
       Map<String, String> psold = ApexPages.currentPage().getParameters();
       Map<String, String> psnew = pr.getParameters();
       for(String pold : psold.keySet()){

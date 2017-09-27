@@ -86,6 +86,35 @@ public class IGClientService {
 		return rv;
 	}
 
+	public static List<DTO_MortgageDetail> getMortgageDetails(String clientBpid) {
+		List<DTO_MortgageDetail> rv = new List<DTO_MortgageDetail>();
+		if (String.isBlank(clientBpid)) {
+			throw new IGClientServiceException('The client bpid can\'t be null or empty');
+		}
+		IGRestClient client = IGRestClientFactory.getIGRestClient('Mortgage', 'IG_Client_Service');
+		if (client != null) {
+		    IGMortgageClient theClient = (IGMortgageClient)client;
+		    theClient.bpid = clientBpid;
+		    IGRestClient.Response res = theClient.getServiceData();
+		    System.debug('=====> getMortgageDetails.res: ' + res);
+		    if (res != null) {
+		        if (!res.success) {
+		            System.debug('=====> getMortgageDetails.ERROR: ' + res.success + ', ' + res.code + ', ' + res.error);
+		            throw new IGClientServiceException('Service call failed: ' + res.success + ', ' + res.code + ', ' + res.error);
+		        } else {
+		            IGMortgageClient.MortgageData data = (IGMortgageClient.MortgageData)res;
+		            System.debug('=====> getMortgageDetails.data: ' + data);
+		            if (data.Client != null && data.Client.Loans != null && !data.Client.Loans.isEmpty()) {
+		            	for (IGMortgageClient.Loans loan : data.Client.Loans) {
+		            		rv.add(new DTO_MortgageDetail(loan));
+		            	}
+		            }
+		        } 
+		    }
+		}
+		return rv;
+	}
+
 	public class IGClientServiceException extends Exception {
 
 	}

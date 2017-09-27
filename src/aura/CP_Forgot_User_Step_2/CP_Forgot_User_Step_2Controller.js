@@ -1,28 +1,18 @@
 ({
-	doneRendering: function(cmp, evt, hlpr) {
-
+	onInit: function(cmp, evt, hlpr) {
 		var services = cmp.find("CP_Services");
 
-
-		//call to get security question
-		//cmp.set("v.question", "What's your dogs name?")
-
-		console.log("doneRendering");
-
-		//set client num and attempts
+		//set client num
 		cmp.set("v.payload", {
-			"clientNum": cmp.get("v.clientNum"),
-			"attempts" : cmp.get("v.attempts")
+			"clientNum": cmp.get("v.clientNum")
 		});
 
-		console.log(cmp.get("v.payload"));
-
 		services.getRandSecurityQuestion(
-			cmp, 
-			function(success){
-				console.log("SUCCESSS")
-				console.log(success);
-				cmp.set("v.question", "What's your dogs name?")
+			cmp,
+			function(success) {
+				cmp.set("v.question", success["payload"][0]);
+				hlpr.addToCurrentPayload(cmp, "question", success["payload"][0]);
+				cmp.set("v.question", success["payload"][0].question);
 			},
 			function(error) {
 				console.error("GET RANDOM QUESTION");
@@ -51,16 +41,16 @@
 		//we are ready to submit to the backend
 		if (cmp.get("v.inputsReceived") === 1 && cmp.get("v.inputErrors") === false) {
 
-			cmp.set("v.payload", {
-				"clientNum": cmp.get("v.clientNum"),
-				"email" : cmp.get("v.email"),
-				"question": cmp.get("v.question"),
-				"answer": cmp.get("v.answer")
-			});
+			// cmp.set("v.payload", {
+			// 	"clientNum": cmp.get("v.clientNum"),
+			// 	"email" : cmp.get("v.email"),
+			// 	"question": cmp.get("v.question"),
+			// 	"answer": cmp.get("v.answer")
+			// });
 
-			cmp.gotoNextStep();
+			hlpr.addToCurrentPayload(cmp, "answer", cmp.get("v.answer"));
 
-			//cmp.onSubmitForm();
+			cmp.onSubmitForm();
 		}
 	},
 	onInputBlur: function(cmp, evt, hlpr) {
@@ -73,11 +63,14 @@
 			events = cmp.find("CP_Events"),
 			services = cmp.find("CP_Services");
 
+		console.log("submitForm");
+		console.log(cmp.get("v.payload"));
+
 		services.submitForm(
 			"StepTwo",
 			cmp,
 			function(evt) {
-				cmp.onNextStep();
+				cmp.gotoNextStep();
 			},
 			function(error) {
 				console.error("Forgot User: Step 2: Error");
@@ -97,24 +90,41 @@
 
 				fields.forEach(function(errorType, i) {
 					var msgArr = [];
-					
+
 					if (errorType === "answer") {
-						msgArr.push({"msg" : messages[i]});
+						msgArr.push({ "msg": messages[i] });
 						events.fire("CP_Evt_Input_Error", {
 							"id": "text-input",
 							"errors": msgArr
 						});
 					}
 				});
+
+				if (error.type === "server-side-error") {
+					events.fire("CP_Evt_Toast_Error", {
+						"id": "error-box",
+						"message": $A.get("$Label.namespace.CP_Error_Server_Side_Generic")
+					});
+				} else {
+					//Display toast
+					events.fire("CP_Evt_Toast_Error", {
+						"id": "error-box",
+						"message": messages[0]
+					});
+				}
 			}
 		);
 	},
 	onNextStep: function(cmp, evt, hlpr) {
-
-		console.log("NEXT STEP");
 		var event = cmp.find("CP_Events");
 		event.fire("CP_Evt_Next_Step", {
 			"id": cmp.get("v.pageId")
 		});
+	},
+	onKey: function(cmp, evt, hlpr) {
+		var payload = evt.getParam("payload");
+		if (payload.id === "password-input") {
+			hlpr.validatePassword(cmp, payload);
+		}
 	}
 })

@@ -1,9 +1,7 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
-	
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
-	
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="default"></aura:attribute>
 	<aura:attribute name="form" type="String" default="default"></aura:attribute>
@@ -22,15 +20,13 @@
 	<aura:attribute name="maxLength" type="Integer" default="100"></aura:attribute>
 	<aura:attribute name="example" type="String" default=""></aura:attribute>
 	<aura:attribute name="hasFocus" type="Boolean" default="false" />
-	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
-	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 	<aura:handler event="c:CP_Evt_Set_Input_Value" action="{!c.onSetValue}" />
 	<aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}" />
 	<aura:handler event="c:CP_Evt_Input_Valid" action="{!c.onValid}" />
 	<aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}" />
-	
 	<!-- MARKUP -->
 	<div class="{!v.class}">
 		<aura:renderIf isTrue="{!v.icon}">
@@ -48,7 +44,10 @@
 			</ul>
 		</aura:renderIf>
 		<div class="slds-form-element__control">
-			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" keypress="{!c.onHandleKey}" keydown="{!c.onHandleKey}" keyup="{!c.onHandleKey}" blur="{!c.onBlur}"/>
+			<span class="slds-icon_container slds-m-right_small slds-no-flex slds-align-top has-error" title="An error has occurred">
+     			<lightning:icon iconName="utility:info" size="small" class="igcp-toast__icon slds-m-right--xx-small" alternativeText="Info" />
+                </span>
+			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" keypress="{!c.onHandleKey}" keydown="{!c.onHandleKey}" keyup="{!c.onHandleKey}" blur="{!c.onBlur}" />
 		</div>
 		<aura:renderIf isTrue="{!v.helpText}">
 			<div class="igcp-input__help-link slds-float--right">

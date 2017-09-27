@@ -3,11 +3,8 @@
 
 		var
 			currentStep = cmp.get("v.currentStep");
-			console.log("BEFORE: " + cmp.get("v.currentStep"));
 		nextStep = currentStep += 1;
 		cmp.set("v.currentStep", nextStep);
-
-		console.log("After: " + cmp.get("v.currentStep"));
 	},
 	onBackStep: function(cmp, evt, hlpr) {
 		var

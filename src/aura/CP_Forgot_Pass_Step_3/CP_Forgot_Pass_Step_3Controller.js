@@ -82,5 +82,12 @@
 		event.fire("CP_Evt_Next_Step", {
 			"id": cmp.get("v.pageId")
 		});
+	},
+	onKey: function(cmp, evt, hlpr) {
+		var payload = evt.getParam("payload");
+		console.log(payload);
+		if (payload.id === "password-input") {
+			hlpr.validatePassword(cmp, payload);
+		}
 	}
 })
