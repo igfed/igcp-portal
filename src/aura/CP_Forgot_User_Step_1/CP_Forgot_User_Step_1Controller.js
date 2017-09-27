@@ -74,9 +74,9 @@
 
 				if (error.type === "server-side-error") {
 					events.fire("CP_Evt_Toast_Error", {
-					"id" : "error-box",
-					"message" : $A.get("$Label.namespace.CP_Error_Server_Side_Generic")
-				});
+						"id": "error-box",
+						"message": $A.get("$Label.namespace.CP_Error_Server_Side_Generic")
+					});
 				} else {
 					//Display toast
 					events.fire("CP_Evt_Toast_Error", {

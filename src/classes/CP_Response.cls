@@ -1,4 +1,4 @@
-public abstract class CP_Response {
+public virtual class CP_Response {
 
 	public Result State {get; set;}
 
@@ -7,7 +7,7 @@ public abstract class CP_Response {
 		State = new Result();
 	}
 
-	public virtual class Result
+	public class Result
     {
         public Boolean IsValid{get; set;}
         public Boolean IsLocked{get; set;}

@@ -13,7 +13,6 @@
 	<!-- STEP 2 -->
 	<aura:attribute name="question" type="String"></aura:attribute>
 	<aura:attribute name="answer" type="String"></aura:attribute>
-	<aura:attribute name="attempts" type="Integer" default="0"></aura:attribute>
 
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
@@ -22,7 +21,7 @@
 	<c:CP_Services aura:id="CP_Services" />
 
 	<!-- HANDLER -->
-	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
@@ -45,12 +44,16 @@
 			<h2>{!$Label.c.CP_Forgot_User_Name_Step_2_h2}</h2>
 			<div>
 				<div class="igcp-label--small slds-m-top--medium slds-m-bottom--xx-small slds-m-right--xx-small"><span class="slds-p-right--xx-small">{!$Label.c.CP_Generic_Label_Security_Question}</span>
-					<c:CP_Cmp_Tooltip tooltip="Hey Derek" />
+					<c:CP_Cmp_Tooltip tooltip="{!$Label.c.CP_Tooltip_Security_Question}" />
 				</div>
 			</div>
 			<p class="igcp-utils__width--100 igcp-large-utils__width--75">{!v.question}</p>
 			<div class="slds-grid slds-wrap">
 				<div class="slds-form slds-size_12-of-12">
+					<!-- TOAST ERROR -->
+                	<c:CP_Cmp_Toast id="error-box"
+                		type="error"
+                		class="slds-m-top--x-small slds-m-bottom--xxx-small"/>
 					<!--FIELDS-->
 					<c:CP_Cmp_Input_Text id="answer-input" type="text" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Answer}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" hasFocus="true" />
 					<div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>

@@ -207,7 +207,10 @@ public class CP_SCIMRestClient {
         return null;
     }
     
-   
+    
+
+
+
 
     public virtual class Response {
         public boolean success 		{ get; set; }
@@ -233,8 +236,7 @@ public class CP_SCIMRestClient {
     public class IGUser
     {
     	public List<String> schemas {get; set;}
-        public String id {get; set;}
-    	public NameClass name {get; set;}
+        public NameClass name {get; set;}
     	public String displayName {get; set;}
     	public String userName {get; set;}
     	public list<ContactClass> phoneNumbers {get; set;}

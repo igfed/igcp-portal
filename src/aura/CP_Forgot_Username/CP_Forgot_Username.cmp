@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
 
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="forgot-username"></aura:attribute>

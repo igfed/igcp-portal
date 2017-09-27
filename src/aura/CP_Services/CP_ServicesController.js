@@ -23,6 +23,8 @@
 						// from the server
 
 						res = JSON.parse(response.getReturnValue());
+
+						console.log(res);
 						valid = res["State"]["IsValid"];
 
 						if (valid === true) {
@@ -172,6 +174,7 @@
 				action;
 
 			try {
+				console.log("getRandSecurityQuestion")
 				action = component.get("c.getSecurityQuestion");
 				action.setParams({ payload: JSON.stringify(component.get("v.payload")) });
 
@@ -187,19 +190,21 @@
 
 						res = JSON.parse(response.getReturnValue());
 						console.log(res);
-						//var questions = res["Questions"];
 
-						// if (questions.length > 0) {
-						// 	params.validCB({
-						// 		"payload": res["Questions"],
-						// 		"type": "success"
-						// 	});
-						// } else {
-						// 	params.errorCB({
-						// 		"payload": res,
-						// 		"type": "error"
-						// 	});
-						// }
+						///params.validCB();
+						var questions = res["Questions"];
+
+						if (questions.length > 0) {
+							params.validCB({
+								"payload": res["Questions"],
+								"type": "success"
+							});
+						} else {
+							params.errorCB({
+								"payload": res,
+								"type": "error"
+							});
+						}
 
 						// You would typically fire a event here to trigger 
 						// client-side notification that the server-side 
