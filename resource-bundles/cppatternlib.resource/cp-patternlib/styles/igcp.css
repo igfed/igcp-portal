@@ -185,18 +185,6 @@ label {
 .slds-card .slds-icon_container.slds-icon-standard-person-account {
   left: -10px; }
 
-.has-error .slds-icon-text-default {
-  fill: red; }
-
-.slds-icon_container.has-error {
-  position: absolute; }
-
-.slds-error-icon {
-  display: none; }
-
-.slds-error-icon.has-error {
-  display: block; }
-
 .slds-notify_toast {
   margin: 0;
   min-width: 100%; }
@@ -584,6 +572,11 @@ label {
   border-radius: 0; }
   .slds-icon_container.slds-icon-standard-person-account use {
     fill: #0ed59a; }
+
+.slds-input__icon.slds-input__icon--error {
+  top: 21px; }
+  .slds-input__icon.slds-input__icon--error .slds-icon-text-default {
+    fill: #D42F1A; }
 
 @media (min-width: 480px) {
   .slds-small-float_left {

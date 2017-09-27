@@ -6,7 +6,7 @@
     
     <aura:attribute name="mortgages" type="List" default="[{ name : 'Fixed Rate', val1 : '3.5%', val2: '$18,899.45'}]" />
     
-    <div class="igcp-container slds-p-around--small slds-large-p-around--medium slds-m-bottom--x-small slds-large-m-bottom--medium">
+    <div class="igcp-container slds-p-around--small slds-large-p-around--medium slds-m-bottom--x-small slds-large-m-bottom--medium slds-large-m-right--medium">
         <h2 class="slds-m-top--small slds-m-bottom--medium">Mortgage</h2>
         <div class="slds-grid slds-wrap">
              
