@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!-- Copyright (C) 2015 IBM Corporation -->
+<!-- Copyright (C) 2000 Tivoli Systems, Inc. -->
+<!-- Copyright (C) 1999 IBM Corporation -->
+<!-- Copyright (C) 1998 Dascom, Inc. -->
+<!-- All Rights Reserved. -->
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>IBM Security Access Manager</title>
+	<!-- EXTERNAL INCLUDES-->
+	<link href="../../external_files/css/foundation.css" type="text/css" rel="stylesheet" />
+	<link href="../../external_files/css/main.css" type="text/css" rel="stylesheet" />
+	<link href="../../external_files/css/salesforce-lightning-design-system.min.css" type="text/css" rel="stylesheet" />
+	<link href="../../external_files/css/igcp.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript">
+	function onLoadPage() {
+		//showError();
+		//setFocus();
+	}
+
+	function showError() {
+		var elem = document.getElementById("error-box");
+		// if ("%ERROR%" == "") {
+		// 	elem.setAttribute("class", "error-box");
+		// } else {
+		// 	elem.setAttribute("class", "error-box active");
+		// }
+	}
+
+	function setFocus() {
+		document.getElementById("username").focus();
+	}
+
+	function submitForm() {
+		document.getElementById("login-form").submit();
+		console.log('Submitting Form');
+	}
+
+	function gotoLogin() {
+		window.location.href = "./login.html";
+	}
+	</script>
+	<!-- ClickJack projection from:
+         https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet
+      -->
+	<style id="antiClickjack">
+	body {
+		display: none !important;
+	}
+	</style>
+	<script type="text/javascript">
+	if (self === top) {
+		var antiClickjack = document.getElementById("antiClickjack");
+		antiClickjack.parentNode.removeChild(antiClickjack);
+	} else {
+		top.location = self.location;
+	}
+	</script>
+</head>
+
+<body onload="onLoadPage()" style="height: 100%">
+	<div class="content">
+		<!-- DO NOT TRANSLATE OR MODIFY any part of the hidden parameter(s) -->
+		<!--
+    The following block of code provides users with a warning message
+    if they do not have cookies configured on their browsers.
+    If this environment does not use cookies to maintain login sessions,
+    simply remove or comment out the block below.
+  -->
+		<!-- BEGIN Cookie check block -->
+		<!--
+  DO NOT TRANSLATE anything inside the SCRIPT tag except the quoted
+  string warningString and the first line of the JavaScript redirection
+  instruction beginning with "// Uncomment the following ..."
+
+  i.e.	var warningString = "Translate this string";
+  -->
+		<script type="text/javascript">
+		//var warningString = "%ERROR%";
+		//document.cookie = 'acceptsCookies=yes';
+		//if (document.cookie == '') {
+		//	document.write(warningString);
+		//} else {
+		///	document.cookie = 'acceptsCookies=yes; expires=Fri, 13-Apr-1970 00:00:00 GMT';
+		// Uncomment the following line for JavaScript redirection
+		// document.cookie = 'ISAMOriginalURL=' + encodeURIComponent(window.location) + "; Path=/;";
+		//}
+		</script>
+		<noscript>
+			<b>WARNING:</b> To maintain your login session, make sure that
+			<br/> your browser is configured to accept Cookies.
+		</noscript>
+		<!-- END Cookie check block -->
+		<!-- MOBILE HEADER START -->
+		<header role="banner" class="igcp-header">
+			<nav class="igcp-nav">
+				<div class="top-bar centered">
+					<div class="top-bar-left">
+						<div class="igcp-nav__logo">
+							<a class="home-link" href="/">
+                       <img src="../../external_files/images/IG_EN_logo.png" alt=""/>
+                    </a>
+						</div>
+					</div>
+					<div class="top-bar-right">
+						<ul class="dropdown menu" data-dropdown-menu="">
+							<!-- <li><a class="igcp-nav__link slds-float_right" href="#">Francais</a></li> -->
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<!-- MOBILE HEADER END -->
+		<!-- LOGIN START -->
+		<div class="igcp-wrapper">
+			<div class="igcp-lock-screen slds-grid slds-grid--align-center slds-wrap">
+				<div class="slds-m-vertical--medium slds-m-bottom--xx-large slds-medium-m-vertical--xx-large slds-m-horizontal--small slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12">
+					<h1>Your online access has been locked.</h1>
+					<p class="slds-medium-p-right--large slds-m-vertical--medium">For security safety, this online access has been locked and you can no longer use your login credentials. To reset access, please contact our support at <b>1-800-555-5555.</b></p>
+					<div class="slds-m-horizontal--large slds-medium-m-horizontal--zero">
+						<button class="igcp-utils__width--100 igcp-medium-utils__width--auto slds-button slds-button--brand slds-p-vertical--xxx-small slds-p-horizontal--small slds-medium-p-horizontal--xx-large" onclick="gotoLogin()">Return to Login</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer id="igcp-footer" class="igcp-footer site-footer" role="contentinfo">
+			<div class="row footer-navigation">
+				<li class="igcp-horizontal-rule"></li>
+				<ul class="menu vertical float-left " data-responsive-menu="medium">
+					<li class="footer-link">
+						<a href="#">Contact</a>
+					</li>
+					<li class="footer-link">
+						<a href="#">Privacy</a>
+					</li>
+					<li class="footer-link">
+						<a href="#">User Agreement</a>
+					</li>
+					<li class="footer-link">
+						<a href="#">Investor Performance</a>
+					</li>
+					<li class="footer-link">
+						<a href="#">Faq</a>
+					</li>
+				</ul>
+			</div>
+			<div class="row footer-back-to-top-button">
+				<div class="columns">
+					<a class="float-right" href="#top">top</a>
+				</div>
+			</div>
+			<div class="row footer-copyright">
+				<div class="columns footer-copyright-border-top">
+					<div class="row">
+						<div class="small-12 medium-12 large-3 columns float-left">
+							<ul class="menu">
+								<li>© 2017 Investors Group Inc. All rights Reserved</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- LOGIN END -->
+	</div>
+</body>
+
+</html>
