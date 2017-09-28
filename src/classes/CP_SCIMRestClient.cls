@@ -8,61 +8,152 @@ public class CP_SCIMRestClient {
     private static String REST_POST_METHOD	= 'POST';
     private static String NAMED_CREDENTAIL	= 'IG_SCIM_API_Named_Credential';
 
-   
-    private Response callGetRESTService(String param) {
-    	Response ret;
-    	try
-    	{
-    		HttpRequest req = new HttpRequest();
-	        req.setEndpoint('callout:' +  NAMED_CREDENTAIL + param);
-	        req.setMethod(REST_GET_METHOD);
-	        req.setHeader(HTTP_HEADER_ACPT, REST_CONTENT);
-	        req.setTimeout(120000);
-	
-	        Http http = new Http();
-	        HTTPResponse res = http.send(req);
-	        
-            System.debug('ISAM Response Object from GET');
-            System.debug(res);
 
-	        Integer resStatusCode = res.getStatusCode();
-	        ret = new Response((200 == resStatusCode), resStatusCode, res.getBody());
-    	}
-    	catch(exception e)
-    	{
-	    	ret = new Response(false, 500, e.getMessage());
-    	}
-    	return ret;
-    }
-    
-    private Response callPostRESTService(String body) {
-    	Response ret;
-    	try
-    	{
-	    	HttpRequest req = new HttpRequest();
-	        req.setEndpoint('callout:' +  NAMED_CREDENTAIL);
-	        req.setMethod(REST_POST_METHOD);
-	        req.setHeader(HTTP_HEADER_ACPT, REST_CONTENT);
-	        req.setTimeout(120000);
-	        req.setBody(body);
+    // Core Private Functions    
+        
+        // GET
+        private Response callGetRESTService(String param) {
+        	Response ret;
+        	try
+        	{
+        		HttpRequest req = new HttpRequest();
+    	        req.setEndpoint('callout:' +  NAMED_CREDENTAIL + param);
+    	        req.setMethod(REST_GET_METHOD);
+    	        req.setHeader(HTTP_HEADER_ACPT, REST_CONTENT);
+    	        req.setTimeout(120000);
+    	
+    	        Http http = new Http();
+    	        HTTPResponse res = http.send(req);
+    	        
+                System.debug('ISAM Response Object from GET');
+                System.debug(res);
 
-            System.debug('Data Sent to ISAM');
-            System.debug(body);
-
-	        Http http = new Http();
-	        HTTPResponse res = http.send(req);
-	    
-            System.debug('ISAM Response Object from POST');
-            System.debug(res);
-
-	        Integer resStatusCode = res.getStatusCode();
-	        ret = new Response((201 == resStatusCode), resStatusCode, res.getBody());
+    	        Integer resStatusCode = res.getStatusCode();
+    	        ret = new Response((200 == resStatusCode), resStatusCode, res.getBody());
+        	}
+        	catch(exception e)
+        	{
+    	    	ret = new Response(false, 500, e.getMessage());
+        	}
+        	return ret;
         }
-    	catch(exception e)
-    	{
-	    	ret = new Response(false, 500, e.getMessage());
-    	}
-    	return ret;
+        
+        //POST 
+        private Response callPostRESTService(String body) {
+        	Response ret;
+        	try
+        	{
+    	    	HttpRequest req = new HttpRequest();
+    	        req.setEndpoint('callout:' +  NAMED_CREDENTAIL);
+    	        req.setMethod(REST_POST_METHOD);
+    	        req.setHeader(HTTP_HEADER_ACPT, REST_CONTENT);
+    	        req.setTimeout(120000);
+    	        req.setBody(body);
+
+                System.debug('Data Sent to ISAM');
+                System.debug(body);
+
+    	        Http http = new Http();
+    	        HTTPResponse res = http.send(req);
+    	    
+                System.debug('ISAM Response Object from POST');
+                System.debug(res);
+
+    	        Integer resStatusCode = res.getStatusCode();
+    	        ret = new Response((201 == resStatusCode), resStatusCode, res.getBody());
+            }
+        	catch(exception e)
+        	{
+    	    	ret = new Response(false, 500, e.getMessage());
+        	}
+        	return ret;
+        }
+
+    // 
+
+    private IGUser prepareNewUserForSCIM(CP_RegistrationClass.RegistrationForm objForm)
+    {
+        IGUser newUser = new IGUser();
+
+        newUser.name.givenName = objForm.Profile.firstName;
+        newUser.name.familyName = objForm.Profile.lastName;
+        newUser.displayName = objForm.Profile.firstName + ' '+ objForm.Profile.lastName;
+        newUser.userName = objForm.Profile.username;
+
+        ContactClass phoneNumber = new ContactClass();
+        phoneNumber.type = 'mobile';
+        phoneNumber.value= objForm.Profile.mobilePhone;
+        phoneNumber.primary = false;
+        newUser.phoneNumbers.add(phoneNumber);
+        
+        ContactClass email = new ContactClass();
+        email.type = 'work';
+        email.value= objForm.Profile.email;
+        email.primary = false;
+        newUser.emails.add(email);
+        
+        newUser.password = objForm.Profile.password;
+        
+        QuestionClass q1 = new QuestionClass();
+        q1.id = '1';
+        q1.answer = objForm.Profile.answer1;
+        q1.question = objForm.Profile.securityQuestion1;
+        newUser.PlaceHolderForQuestionsListNode.questions.add(q1);
+
+        QuestionClass q2 = new QuestionClass();
+        q2.id = '2';
+        q2.answer = objForm.Profile.answer2;
+        q2.question = objForm.Profile.securityQuestion2;
+        newUser.PlaceHolderForQuestionsListNode.questions.add(q2);
+
+
+        QuestionClass q3 = new QuestionClass();
+        q3.id = '3';
+        q3.answer = objForm.Profile.answer3;
+        q3.question = objForm.Profile.securityQuestion3;
+        newUser.PlaceHolderForQuestionsListNode.questions.add(q3);
+
+        return newUser;
+    }
+
+    private String getNewUserIdFromReturnedJSON(String isamJSON)
+    {
+        String userId; 
+
+        JSONParser parser = JSON.createParser(isamJSON);
+        while (parser.nextToken() != null) {
+            if ((parser.getCurrentToken() == JSONToken.FIELD_NAME) && 
+                (parser.getText() == 'id')) {
+                // Get the value.
+                parser.nextToken();
+                userId = parser.getText();
+            }
+        }
+        if(String.isBlank(userId))
+            return null;
+        else
+            return userId;
+    }
+
+
+    private String getUserLocationFromReturnedJSON(String isamJSON)
+    {
+        String location;
+
+        JSONParser parser = JSON.createParser(isamJSON);
+        while (parser.nextToken() != null) {
+            if ((parser.getCurrentToken() == JSONToken.FIELD_NAME) && 
+                (parser.getText() == 'location')) {
+                // Get the value.
+                parser.nextToken();
+                location = parser.getText();
+            }
+        }
+
+        if(String.isBlank(location))
+            return null;
+        else 
+            return location;
     }
 
 
@@ -70,31 +161,24 @@ public class CP_SCIMRestClient {
 
     private Response getUserIdByUserName(String userName)
     {
-    	String location='';
+    	String location;
     	String param = '?filter=userName%20ew%20'+ userName +'&attributes=userName';
-    	Response res = this.callGetRESTService(param); 
+    	Response response = this.callGetRESTService(param); 
 
-    	if(res.success)
+    	if(response.success)
     	{
-    		JSONParser parser = JSON.createParser(res.responseBody);
-    		while (parser.nextToken() != null) {
-            	if ((parser.getCurrentToken() == JSONToken.FIELD_NAME) && 
-                	(parser.getText() == 'location')) {
-                	// Get the value.
-                	parser.nextToken();
-                	location = parser.getText();
-            	}
-        	}
+            location = this.getUserLocationFromReturnedJSON(response.responseBody);
+    		
             if(!String.isBlank(location))
             {
-                res.responseBody = location.substringAfterLast('/');
+                response.responseBody = location.substringAfterLast('/');
             }
             else
             {
-                res = new Response(false, res.code, 'User Not found');
+                response = new Response(false, response.code, 'User Not found');
             }
     	}
-    	return res;
+    	return response;
     }
 
     
@@ -108,78 +192,39 @@ public class CP_SCIMRestClient {
 
     public Response RegisterNewUser(CP_RegistrationClass.RegistrationForm objForm)
     {
-		IGUser newUser = new IGUser();
-
-		newUser.name.givenName = objForm.Profile.firstName;
-		newUser.name.familyName = objForm.Profile.lastName;
-		newUser.displayName = objForm.Profile.firstName + ' '+ objForm.Profile.lastName;
-		newUser.userName = objForm.Profile.username;
-
-		ContactClass phoneNumber = new ContactClass();
-		phoneNumber.type = 'mobile';
-		phoneNumber.value= objForm.Profile.mobilePhone;
-		phoneNumber.primary = false;
-		newUser.phoneNumbers.add(phoneNumber);
-		
-		ContactClass email = new ContactClass();
-		email.type = 'work';
-		email.value= objForm.Profile.email;
-		email.primary = false;
-		newUser.emails.add(email);
-		
-		newUser.password = objForm.Profile.password;
-		
-		QuestionClass q1 = new QuestionClass();
-		q1.id = '1';
-		q1.answer = objForm.Profile.answer1;
-		q1.question = objForm.Profile.securityQuestion1;
-		newUser.PlaceHolderForQuestionsListNode.questions.add(q1);
-
-		QuestionClass q2 = new QuestionClass();
-		q2.id = '2';
-		q2.answer = objForm.Profile.answer2;
-		q2.question = objForm.Profile.securityQuestion2;
-		newUser.PlaceHolderForQuestionsListNode.questions.add(q2);
-
-
-		QuestionClass q3 = new QuestionClass();
-		q3.id = '3';
-		q3.answer = objForm.Profile.answer3;
-		q3.question = objForm.Profile.securityQuestion3;
-		newUser.PlaceHolderForQuestionsListNode.questions.add(q3);
-
-		String userJSON;
-		userJSON = JSON.serialize(newUser); 
-
-		userJSON = userJSON.replace('PlaceHolderForQuestionsListNode','urn:ietf:params:scim:schemas:extension:isam:1.0:UserKnowledgeQuestions');
-
-		Response res = callPostRESTService(userJSON);
-
-        if(res.success)
+        Response response; 
+        try
         {
-            String userId; 
+            IGUser newUser = this.prepareNewUserForSCIM(objForm);
 
-            JSONParser parser = JSON.createParser(res.responseBody);
-            while (parser.nextToken() != null) {
-                if ((parser.getCurrentToken() == JSONToken.FIELD_NAME) && 
-                    (parser.getText() == 'id')) {
-                    // Get the value.
-                    parser.nextToken();
-                    userId = parser.getText();
+            String userJSON;
+            userJSON = JSON.serialize(newUser); 
+            userJSON = userJSON.replace('PlaceHolderForQuestionsListNode','urn:ietf:params:scim:schemas:extension:isam:1.0:UserKnowledgeQuestions');
+
+            response = callPostRESTService(userJSON);
+
+            if(response.success)
+            {
+                String userId; 
+                userId  = this.getNewUserIdFromReturnedJSON(response.responseBody);
+                
+                if(!String.isBlank(userId))
+                {
+                    response.responseBody = userId;
+                }
+                else
+                {
+                    response = new Response(false, response.code, 'Something went wrong');
                 }
             }
 
-            if(!String.isBlank(userId))
-            {
-                res.responseBody = userId;
-            }
-            else
-            {
-                res = new Response(false, res.code, 'Something went wrong');
-            }
+            return response;
         }
-
-    	return res;
+        catch(Exception e)
+        {
+            response = new Response(false, response.code, e.getMessage());
+        }
+        return response; 
     }
 
 

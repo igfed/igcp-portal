@@ -44,6 +44,10 @@
 	onValid: function(cmp, evt, hlpr) {
 
 		if (cmp.get("v.id") === evt.getParam("payload").id) {
+
+			//hide error icon
+			cmp.set("v.errorIconClass", "igcp-utils__display--none slds-input__icon slds-input__icon--error");
+
 			var field = cmp.find("text-input");
 
 			cmp.set("v.limitClass", "igcp-text__success igcp-utils__font-size--x-small");
@@ -66,6 +70,9 @@
 			isAlphanumeric = false;
 
 		if (cmp.get("v.id") === payload.id) {
+
+			//show error icon
+			cmp.set("v.errorIconClass", "igcp-utils__display--block slds-input__icon slds-input__icon--error");
 
 			if (errors.length > 0) {
 

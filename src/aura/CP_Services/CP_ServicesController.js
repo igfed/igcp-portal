@@ -251,5 +251,29 @@
 			}
 
 		}
+	},
+	onGetInvestmentsPreview: function(cmp, evt, hlpr) {
+		var params = evt.getParam("arguments");
+		if (params) {
+			console.log("getInvestmentsPreview");
+
+			var action;
+
+			try {
+
+				action = component.get("c.getSecurityQuestion");
+
+				action.setCallback(this, function(response) {
+					console.log("response");
+					console.log(response);
+				});
+
+
+			} catch(err) {
+				console.error("CP_Services: onGetInvestmentsPreview: controller not found, make sure it is attached to parent component.");
+				console.log(err);
+			}
+
+		}
 	}
 })

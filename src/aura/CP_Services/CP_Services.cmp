@@ -20,4 +20,10 @@
         <aura:attribute name="errorCB" type="function" default="" />
     </aura:method>
 
+    <!-- OVERVIEW -->
+    <aura:method name="getInvestmentsPreview" action="{!c.onGetInvestmentsPreview}" > 
+        <aura:attribute name="successCB" type="function" default="" />
+        <aura:attribute name="errorCB" type="function" default="" />
+    </aura:method>
+
 </aura:component>

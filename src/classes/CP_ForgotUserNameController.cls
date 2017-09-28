@@ -14,14 +14,36 @@ public with sharing class CP_ForgotUserNameController {
 
             // Deserialize the passed JSON into User Identity Object     
             objForm = (CP_ForgotUserNameClass) JSON.deserialize(payload, CP_ForgotUserNameClass.class);
-           	
-            response = objForm.verifyClient();
-            
+
+           	if(String.isBlank(objForm.clientNum))
+            {
+                // Client Number is empty
+                response.State.IsValid = false;
+                response.State.Fields.add('clientNum');
+                response.State.Messages.add(System.Label.CP_Registration_Client_Number_Is_Empty);
+            }
+            else if(String.isBlank(objForm.email))
+            {
+                // Client Number is empty
+                response.State.IsValid = false;
+                response.State.Fields.add('email');
+                response.State.Messages.add(System.Label.CP_Registration_Email_Is_empty);
+            }
+            else if (!response.IsValidEmail(objForm.email))
+            {
+                // Email is not valid 
+                response.State.IsValid = false;
+                response.State.Fields.add('email');
+                response.State.Messages.add(System.Label.CP_Registration_Email_Is_Invalid);   
+            }
+            else
+            {
+                response = objForm.verifyClient();
+            }
         }
         catch(exception e)
         {
-        	response.State = new CP_Response.Result();
-            response.State.IsValid = false;
+        	response.State.IsValid = false;
             response.State.Messages.add(e.getMessage());
         }
 
@@ -57,8 +79,7 @@ public with sharing class CP_ForgotUserNameController {
     	}
 	    catch (exception e)
 	    {
-	    	response.State = new CP_Response.Result();
-            response.State.IsValid = false;
+	    	response.State.IsValid = false;
             response.State.Messages.add(e.getMessage());
 	    }
 
@@ -105,8 +126,7 @@ public with sharing class CP_ForgotUserNameController {
     	}
     	catch(exception e)
     	{
-    		response.State = new CP_Response.Result();
-            response.State.IsValid = false;
+    		response.State.IsValid = false;
             response.State.Messages.add(e.getMessage());
     	}
         

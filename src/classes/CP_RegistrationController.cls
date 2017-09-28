@@ -126,7 +126,7 @@ public class CP_RegistrationController {
     {
         CP_RegistrationClass.SecurityQuestions securityQuestions = new CP_RegistrationClass.SecurityQuestions();
         try{
-            securityQuestions.loadQuestionsFromISAM();
+            securityQuestions.loadQuestions();
             securityQuestions.State.IsValid = true;
         }
         catch(exception e)

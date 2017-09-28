@@ -36,9 +36,18 @@
 			</aura:renderIf>
 			<div class="slds-form-element__control">
 				<ui:inputSelect aura:id="selector-input" class="igcp-input igcp-input__selector" change="{!c.onChange}" value="{!v.selectedValue}" blur="{!c.onBlur}">
-					<ui:inputSelectOption text="default" label="{!v.placeholder}" disabled="true" value="true" />
+
+					<aura:renderIf isTrue="{!v.currentSelectedValue == ''}"> 
+						<ui:inputSelectOption text="Select a security question" label="{!v.placeholder}" disabled="true" value="true" />
+					</aura:renderIf>
+
 					<aura:iteration items="{!v.options}" var="opt" indexVar="index">
-						<ui:inputSelectOption text="{!opt}" label="{!opt}" />
+						<aura:if isTrue="{!opt == 'v.currentSelectedValue'}"> 
+							<ui:inputSelectOption text="{!opt}" label="{!opt }" value="true"/>
+							<aura:set attribute="else">
+        						<ui:inputSelectOption text="{!opt}" label="{!opt }" value="false"/>
+    						</aura:set>
+						</aura:if>
 					</aura:iteration>
 				</ui:inputSelect>
 			</div>

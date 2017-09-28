@@ -4,6 +4,10 @@
 	},
 	doneRendering: function(cmp, evt, hlpr) {
 		cmp.set("v.renderComplete", true);
+
+		if(cmp.get("v.currentSelectedValue") !== "") {
+			cmp.set("v.selectedValue", cmp.get("v.currentSelectedValue"));
+		}
 	},
 	onSetValue: function(cmp, evt, hlpr) {
 
@@ -102,6 +106,8 @@
 
 		if (evt.getParam("payload")) {
 			var payload = evt.getParam("payload");
+
+			//hlpr.logger("onOptionsReceived", cmp, payload);
 
 			if (cmp.get("v.form") === payload.id) {
 				cmp.set("v.defaultOptions", payload.options);
