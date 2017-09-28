@@ -103,10 +103,10 @@ label {
   letter-spacing: 0px;
   text-transform: capitalize; }
 
-.slds-button--igcp-brand {
+.slds-button--brand {
   background-color: #004171;
   color: #fff; }
-  .slds-button--igcp-brand:hover {
+  .slds-button--brand:hover {
     background-color: transparent;
     color: #004171; }
 
