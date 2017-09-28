@@ -15,14 +15,6 @@
 		</div>
 		<h1 class="slds-size_12-of-12 slds-m-bottom--x-small">{!$Label.c.CP_Registration_TOS_h1}</h1>
 		<c:CP_Cmp_Link_Print />
-			<c:CP_Cmp_Input_Checkbox id="read_and_agree_checkbox" form="registration-tos-desktop-form" class="igcp-utils__display--none igcp-large-utils__display--block slds-size_12-of-12 slds-m-bottom--large" copy="{!$Label.c.CP_Registration_TOS_Agree}" />
-
-			<aura:if isTrue="{!v.userAgrees == true}">
-				<c:CP_Cmp_Button id="tos_agree_button" label="{!$Label.c.CP_Generic_Label_Agree}" class="igcp-utils__display--none igcp-large-utils__display--block slds-size_3-of-12" />
-			</aura:if>
-			<aura:if isTrue="{!v.userAgrees == false}">
-				<c:CP_Cmp_Button id="tos_agree_button-disabled" disabled="true" label="{!$Label.c.CP_Generic_Label_Agree}" class="igcp-utils__display--none igcp-large-utils__display--block slds-size_3-of-12" />
-			</aura:if>
 		<div class="slds-size_9-of-12"></div>
 		<p class="slds-size_12-of-12 slds-m-bottom--large">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae turpis et velit semper convallis. Integer dictum mi in ligula mollis rutrum. Etiam sed malesuada nibh. Vestibulum aliquet in diam non fermentum. Duis consequat, ante a imperdiet venenatis, turpis urna feugiat ex, blandit vehicula ante sapien at erat. Cras finibus finibus fermentum. Ut id vestibulum nibh. Duis non tempor metus. Morbi lobortis quis augue sed sodales. Nullam laoreet nunc a condimentum pulvinar. Vestibulum tempor ipsum a lacus sodales, a rhoncus orci porta. Cras tincidunt neque sit amet lacus blandit vulputate. Pellentesque nibh justo, rutrum et mi nec, pretium eleifend massa.</p>
 		<p class="slds-size_12-of-12 slds-m-bottom--large">Fusce tincidunt sem in erat tristique aliquet vel sit amet metus. Cras accumsan dignissim massa vehicula aliquam. Praesent sodales porta pellentesque. Sed nec ante et dui auctor facilisis sed non nisi. Suspendisse potenti. Vestibulum ut tellus gravida, pharetra leo fermentum, viverra sapien. Donec sed nunc in velit ornare laoreet a mattis turpis. Mauris id mattis nisl. Nulla sodales accumsan enim aliquam vehicula. Nunc at gravida sapien.</p>
@@ -36,4 +28,19 @@
 		<p class="slds-size_12-of-12 slds-m-bottom--large">Phasellus vitae efficitur neque, id commodo ligula. Praesent sodales odio justo, quis congue nibh tempus a. Donec lacinia pellentesque turpis et lobortis. Integer a dictum justo. Pellentesque sit amet feugiat tellus. Duis convallis ullamcorper est, et egestas ipsum euismod et. In a tortor vel est porttitor lobortis non et lacus. In at leo tincidunt, fermentum lacus quis, egestas neque. Quisque aliquet enim metus, at sodales neque laoreet eget. Donec rutrum lorem vitae semper pulvinar. Donec sapien tortor, ultrices quis molestie eu, euismod in nulla. Suspendisse potenti. Integer erat arcu, ornare sit amet faucibus id, finibus at purus. Nulla maximus ligula quis ligula posuere fringilla. Nulla ultricies nulla non luctus commodo.</p>
 		<div class="slds-size_9-of-12"></div>
 	</div>
+
+	<div class="igcp-modal__footer slds-size_12-of-12">
+		<div class="igcp-modal__footer-wrapper">
+		<c:CP_Cmp_Input_Checkbox id="read_and_agree_checkbox" form="registration-tos-desktop-form" class="igcp-utils__display--none igcp-large-utils__display--block slds-size_12-of-12 slds-m-bottom--large" copy="{!$Label.c.CP_Registration_TOS_Agree}" />
+
+			<aura:if isTrue="{!v.userAgrees == true}">
+				<c:CP_Cmp_Button id="tos_agree_button" label="{!$Label.c.CP_Generic_Label_Agree}" class="igcp-utils__display--none slds-float_left igcp-large-utils__display--block slds-m-right_medium slds-size_2-of-12" />
+			</aura:if>
+			<aura:if isTrue="{!v.userAgrees == false}">
+				<c:CP_Cmp_Button id="tos_agree_button-disabled" disabled="true" label="{!$Label.c.CP_Generic_Label_Agree}" class="igcp-utils__display--none igcp-large-utils__display--block  slds-m-right_medium slds-float_left igcp-large-utils__display--block slds-size_2-of-12" />
+			</aura:if>
+
+			<c:CP_Cmp_Button id="tos_agree_button-disabled" label="{!$Label.c.CP_Generic_Label_Cancel}" class="igcp-large-utils__display--block slds-m-right_medium slds-float_left slds-size_2-of-12" />
+		</div>
+		</div>
 </aura:component>
