@@ -1,7 +1,9 @@
-public class CP_ForgotUserNameClass {
+public class CP_ForgotPasswordClass {
 
-    	public String clientNum { get; set; }
-    	public String email { get; set; }
+    	public String username { get; set; }
+    	public String postalCode { get; set; }
+    	public String dob { get; set; }
+
     	public String questionId { get; set; }
     	public String securityQuestion { get; set; }
     	public String answer { get; set; }
@@ -9,7 +11,7 @@ public class CP_ForgotUserNameClass {
     	
     	private boolean recordFailedAttemptAndLock()
         {
-            Contact objCon = this.getContactByClientNumber();
+            Contact objCon = this.getContactByUserName();
             if(objCon != null)
             {
             	if (objCon.Portal_Action_Failure_Count__c > 3)
@@ -31,7 +33,7 @@ public class CP_ForgotUserNameClass {
 
         private boolean recordFailedSecurityAnswerAttemptAndLock()
         {
-            Contact objCon = this.getContactByClientNumber();
+            Contact objCon = this.getContactByUserName();
             if(objCon != null)
             {
             	if (objCon.Portal_Security_Answer_Failure_Count__c > 1)
@@ -53,7 +55,7 @@ public class CP_ForgotUserNameClass {
 
 
     	// Search Contact by Business Partner ID
-        private Contact getContactByClientNumber()
+        private Contact getContactByUserName()
         {
             List<Contact> contactList = [select ID, Portal_User_Is_Registered__c, Email, 
                 Portal_User_ID__c, Portal_User_Name__c, 
@@ -61,7 +63,7 @@ public class CP_ForgotUserNameClass {
                 Portal_Action_Failure_Count__c, Portal_Security_Answer_Failure_Count__c, 
                 Portal_User_Is_Locked__c
                 from Contact 
-                where Business_Partner_ID__c = : String.escapeSingleQuotes(this.clientNum) 
+                where Portal_User_Name__c = : String.escapeSingleQuotes(this.username)
                 AND Portal_User_Is_Registered__c = true
                 AND Portal_User_Name__c != null AND Portal_User_Name__c != ''];
 
@@ -73,24 +75,25 @@ public class CP_ForgotUserNameClass {
                 return contactList[0];
         }
 
-        private boolean sendEmail()
-        {
-        	return true;
-        }
-
+        
 
         public CP_Response verifyClient()
         {
         	CP_Response response = new CP_Response();
         	try
         	{
-                Contact objContact = this.getContactByClientNumber();
+                Contact objContact = this.getContactByUserName();
                 if(objContact == null)
                 {
                     response.State.IsValid = false;
                     response.State.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);    
                 }
-                else if(objContact.email != this.email)
+                else if(objContact.MailingPostalCode.remove(' ').remove('-').toUpperCase() != this.postalCode.remove(' ').remove('-').toUpperCase())
+                {   
+                    response.State.IsValid = false;
+                    response.State.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);
+                }
+                else if(objContact.Birthdate != Date.valueOf(this.dob))
                 {   
                     response.State.IsValid = false;
                     response.State.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);
@@ -122,7 +125,7 @@ public class CP_ForgotUserNameClass {
         	SecurityQuestions response = new SecurityQuestions();
         	try
         	{
-        		Contact objContact = this.getContactByClientNumber();
+        		Contact objContact = this.getContactByUserName();
                 System.debug('Contact Object');
                 System.debug(objContact);
 
@@ -140,7 +143,7 @@ public class CP_ForgotUserNameClass {
                         
                         response.State.IsValid = true; 
                         response.State.IsLocked = false; 
-                        response.Questions.add(new CP_ForgotUserNameClass.QuestionClass('1', 'this is a hard coded question'));
+                        response.Questions.add(new CP_ForgotPasswordClass.QuestionClass('1', 'this is a hard coded question'));
                         
                         /*
                         if(!String.isBlank(objContact.Portal_User_Id__c))
@@ -176,7 +179,7 @@ public class CP_ForgotUserNameClass {
         	CP_Response response = new CP_Response();
         	try
         	{
-        		Contact objContact = this.getContactByClientNumber();
+        		Contact objContact = this.getContactByUserName();
                 System.debug('Contact Object');
                 System.debug(objContact);
 

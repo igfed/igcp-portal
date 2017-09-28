@@ -28,6 +28,15 @@ public class IGClientService {
 		return rv;
 	}
 
+	public static DTO_InvestmentsPreview getInvestmentPreview(String clientBpid) {
+		DTO_InvestmentsPreview rv = new DTO_InvestmentsPreview();
+		List<DTO_AccountSummary> acctSummaryDTOList = IGClientService.getAccountSummaries(clientBpid);
+		for (DTO_AccountSummary summaryDTO : acctSummaryDTOList) {
+			
+		}
+		return rv;
+	}
+
 	public static List<DTO_AccountDetail> getAccountDetails(String clientBpid) {
 		List<DTO_AccountDetail> rv = new List<DTO_AccountDetail>();
 		if (String.isBlank(clientBpid)) {

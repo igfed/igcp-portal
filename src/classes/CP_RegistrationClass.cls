@@ -44,13 +44,17 @@ global class CP_RegistrationClass {
             State = new Result();
         }
 
-        public void loadQuestionsFromISAM()
+        public void loadQuestions()
         {
-            // Have to replace following code with actual ISAM call 
+            List<Security_Question__mdt> questionList = [SELECT 
+                                    Question_Eng__c,
+                                    Question_Fr__c
+                                    FROM Security_Question__mdt];
 
-            this.Questions.add('What\'s your dog\'s name?' );
-            this.Questions.add('Where were you born?');
-            this.Questions.add('What\'s your mother\'s maiden name?');
+            for(Security_Question__mdt Q : questionList)
+            {
+                this.Questions.add(Q.Question_Eng__c);  
+            }
         }
     }
   
