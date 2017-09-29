@@ -109,9 +109,8 @@
 
 		//fire disable button event
 		events.fire(
-			"CP_Evt_Button_Disable", 
-			{
-				"id" : "back_button"
+			"CP_Evt_Button_Disable", {
+				"id": "back_button"
 			}
 		);
 
@@ -127,44 +126,43 @@
 
 				var
 					events = cmp.find("CP_Events"),
-					messages = error.payload.State.Messages,
-					isLocked = error.payload.State.IsLocked,
-					serviceUnavailable = error.payload.State.ServiceNotAvailable;
+					errorObj = error.payload.State;
 
-					console.log(error.payload.State)
+				try {
 
-				console.log("Fields: " + fields);
+					if (errorObj.IsLocked === true) {
+						events.fire("CP_Evt_Error_Locked_Out", {
+							"id": cmp.get("v.pageId")
+						});
+					}
 
-				console.log("messages: " +  messages);
-
-				console.log("isLocked" + error.payload.State.IsLocked);
-
-				console.log("serviceUnavailable: " + error.payload.State.ServiceNotAvailable);
-
-				if (isLocked) {
-					events.fire("CP_Evt_Error_Locked_Out", {
-						"id": cmp.get("v.pageId")
-					});
+				} catch (err) {
+					console.error("Registration Step 3: Is Locked");
+					console.error(errorObj.IsLocked);
 				}
 
-				if (serviceUnavailable) {
-					events.fire("CP_Evt_Error_Registration_Not_Completed", {
-						"id": cmp.get("v.pageId")
-					});
-				}
+				try {
 
-				console.log(error.type);
+					if (errorObj.ServiceNotAvailable === true) {
+						events.fire("CP_Evt_Error_Not_Completed", {
+							"id": cmp.get("v.pageId")
+						});
+					}
+
+				} catch (err) {
+					console.error("Registration Step 3: ServiceNotAvailable");
+					console.error(errorObj.IsLocked);
+				}
 
 				//Generic error
 				if (error.type === "error") {
-					console.error("WE HAVE AN EEROR")
 					events.fire("CP_Evt_Toast_Error", {
 						"id": "registration-step-3-toast-error",
 						"message": $A.get("$Label.c.CP_Error_General")
 					});
 				}
 
-				
+
 			}
 		);
 	},

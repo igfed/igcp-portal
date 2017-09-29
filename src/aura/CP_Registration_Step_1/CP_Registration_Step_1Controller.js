@@ -70,7 +70,7 @@
 				}
 
 				if (serviceUnavailable) {
-					events.fire("CP_Evt_Error_Registration_Not_Completed", {
+					events.fire("CP_Evt_Error_Not_Completed", {
 						"id": cmp.get("v.pageId")
 					});
 				}
