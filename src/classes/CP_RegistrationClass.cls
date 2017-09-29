@@ -2,7 +2,7 @@ global class CP_RegistrationClass {
 
     public class IGClientException extends Exception {}
 
-    Public class Result
+    public class Result
     {
         //public String Status {get; set; }
         public Boolean IsValid{get; set;}
@@ -47,6 +47,7 @@ global class CP_RegistrationClass {
 
         public void loadQuestions(String lang)
         {
+            System.debug(lang);
             List<Security_Question__mdt> questionList = [SELECT 
                                     Question_Eng__c,
                                     Question_Fr__c
@@ -54,7 +55,7 @@ global class CP_RegistrationClass {
 
             for(Security_Question__mdt Q : questionList)
             {
-                if(lang == 'fr')
+                if(lang == 'fr_ca')
                     this.Questions.add(Q.Question_Fr__c);  
                 else
                     this.Questions.add(Q.Question_Eng__c);  
@@ -62,57 +63,6 @@ global class CP_RegistrationClass {
         }
     }
   
-
-    public Boolean sendEmail(Contact objContact)
-    {
-        Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-
-        List<String> toAddress = new List<String>();
-        toAddress.add(objContact.email);
-
-
-        EmailTemplate et;
-        if(objContact.Preferred_Language__c == 'French')
-        {
-            et = [SELECT Id FROM EmailTemplate WHERE DeveloperName = 'Welcome_New_Registration_French'];
-        }
-        else
-        {
-            et = [SELECT Id FROM EmailTemplate WHERE DeveloperName ='Welcome_New_Registration_English'];
-        }
-        
-
-        OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = 'noreply@investorsgroup.com'];
-        if ( owea.size() > 0 ) {
-            mail.setOrgWideEmailAddressId(owea.get(0).Id);
-        }
-
-        mail.setTemplateId(et.Id);
-        mail.setToAddresses(toAddress);
-        mail.setTargetObjectId(objContact.Id);
-        mail.setWhatId(objContact.Id);
-        mail.setSaveAsActivity(false);
-        mail.setUseSignature(false);
-
-        List<Messaging.SingleEmailMessage> allmsg = new List<Messaging.SingleEmailMessage>();
-        allmsg.add(mail);
-
-        try 
-        {
-            Messaging.sendEmail(allmsg,false);
-            
-            System.debug('email sent  ');
-
-            return true;
-        } 
-        catch (Exception e) 
-        {
-            System.debug(e.getMessage());
-            return false;
-        }
-    }
-
-
 
     public CP_RegistrationClass.Result verifyIdentity(CP_RegistrationClass.UserIdentity IGUser)
     {
@@ -334,12 +284,10 @@ global class CP_RegistrationClass {
             System.debug(regForm.Identity);
 
             result = this.verifyIdentity(regForm.Identity);
-            System.debug('Identity is valid ');
 
             if(result.IsValid)
             {
                 result = verifyProfile(regForm.Profile);
-                System.debug('Profile is valid');
             }
         }
         else
@@ -359,7 +307,7 @@ global class CP_RegistrationClass {
         CP_RegistrationClass.Result result = new CP_RegistrationClass.Result();
         try
         {
-            Contact objContact = regForm.Identity.getContactByBusinessPartnerID();
+            Contact objContact = regForm.Identity.getContactObject();
             if(objContact == null)
             {
                 result.IsValid = false;
@@ -381,8 +329,6 @@ global class CP_RegistrationClass {
                 update objContact;
                 System.debug('info saved! ');
 
-               // this.sendEmail(objContact);
-
                 result.IsValid = true;
             }
         }
@@ -402,6 +348,7 @@ global class CP_RegistrationClass {
         public String dob { get; set; }
         
         // Search Contact by Business Partner ID
+        /*
         public Contact getContactByBusinessPartnerID()
         {
             List<Contact> contactList = [select ID, FirstName, LastName, Portal_User_Is_Registered__c, Email, Portal_User_ID__c, 
@@ -419,7 +366,51 @@ global class CP_RegistrationClass {
             else
                 return contactList[0];
         }
+        */
+       
+        public Contact getContactObject()
+        {
+            List<Financial_Asset__c> assetList = [select Customer__r.ID, Customer__r.FirstName, Customer__r.LastName, 
+                                    Customer__r.Portal_User_Is_Registered__c, Customer__r.Email, Customer__r.Portal_User_ID__c, 
+                                Customer__r.Portal_User_Name__c, Customer__r.MailingPostalCode, Customer__r.Birthdate, 
+                                Customer__r.Business_Partner_ID__c, Customer__r.Preferred_Language__c,
+                                Customer__r.Portal_Action_Failure_Count__c, Customer__r.Portal_Registration_Is_Locked__c,
+                                Customer__r.Portal_User_Consent_Date__c, Customer__r.Portal_User_Consent_Obtained__c, 
+                                Customer__r.Portal_Registration_Eligible__c
+                FROM Financial_Asset__c
+                WHERE 
+                                 (RecordType.DeveloperName = 'Investment_Asset'  AND Client_Number__c = : String.escapeSingleQuotes(this.clientNum))
+                                  OR (RecordType.DeveloperName = 'Loan_Asset'  AND Loan_Number__c = : String.escapeSingleQuotes(this.clientNum))
+                                  OR (RecordType.DeveloperName = 'Policy_Asset'  AND Policy_Number__c = : String.escapeSingleQuotes(this.clientNum))
+                ];
 
+
+                System.debug(assetList);
+
+                if(assetList.isEmpty())
+                    return null;
+                else
+                {
+                    Contact objContact = new Contact();
+                    objContact.ID = assetList[0].Customer__r.ID;
+                    objContact.FirstName = assetList[0].Customer__r.FirstName;
+                    objContact.LastName = assetList[0].Customer__r.LastName;
+                    objContact.Portal_User_Is_Registered__c = assetList[0].Customer__r.Portal_User_Is_Registered__c;
+                    objContact.Email = assetList[0].Customer__r.Email;
+                    objContact.Portal_User_ID__c = assetList[0].Customer__r.Portal_User_ID__c;
+                    objContact.Portal_User_Name__c = assetList[0].Customer__r.Portal_User_Name__c;
+                    objContact.MailingPostalCode = assetList[0].Customer__r.MailingPostalCode;
+                    objContact.Birthdate = assetList[0].Customer__r.Birthdate;
+                    objContact.Business_Partner_ID__c = assetList[0].Customer__r.Business_Partner_ID__c;
+                    objContact.Preferred_Language__c = assetList[0].Customer__r.Preferred_Language__c;
+                    objContact.Portal_Action_Failure_Count__c = assetList[0].Customer__r.Portal_Action_Failure_Count__c;
+                    objContact.Portal_Registration_Is_Locked__c = assetList[0].Customer__r.Portal_Registration_Is_Locked__c;
+                    objContact.Portal_User_Consent_Date__c = assetList[0].Customer__r.Portal_User_Consent_Date__c;
+                    objContact.Portal_User_Consent_Obtained__c = assetList[0].Customer__r.Portal_User_Consent_Obtained__c;
+                    
+                    return objContact;
+                }
+        }
 
         public Financial_Asset__c getClientInfo()
         {
@@ -458,20 +449,24 @@ global class CP_RegistrationClass {
 
         public boolean recordFailedAttemptAndLock()
         {
-            Contact objCon = getContactByBusinessPartnerID();
-            if (objCon.Portal_Action_Failure_Count__c > 3)
+            Contact objCon = this.getContactObject();
+            if(objCon != null)
             {
-                objCon.Portal_Action_Failure_Count__c = 0;
-                objCon.Portal_Registration_Is_Locked__c = true;
-                update objCon;
-                return true;
+                    if (objCon.Portal_Action_Failure_Count__c > 3)
+                    {
+                        objCon.Portal_Action_Failure_Count__c = 0;
+                        objCon.Portal_Registration_Is_Locked__c = true;
+                        update objCon;
+                        return true;
+                    }
+                    else
+                    {
+                        objCon.Portal_Action_Failure_Count__c++;
+                        update objCon;
+                        return false;
+                    }
             }
-            else
-            {
-                objCon.Portal_Action_Failure_Count__c++;
-                update objCon;
-                return false;
-            }
+            return false;
         }
 
 

@@ -19,6 +19,7 @@
 	<aura:attribute name="answer2" type="String"></aura:attribute>
 	<aura:attribute name="securityQuestion3" type="String"></aura:attribute>
 	<aura:attribute name="answer3" type="String"></aura:attribute>
+	<aura:attribute name="lang" type="String"></aura:attribute>
 	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
@@ -79,7 +80,8 @@
 				<c:CP_Registration_Security_Questions securityQuestion1="{!v.securityQuestion1}" 
 					securityQuestion2="{!v.securityQuestion2}" 
 					securityQuestion3="{!v.securityQuestion3}" 
-					form="{!v.pageId}" />
+					form="{!v.pageId}" 
+					lang="{!v.lang}"/>
 				
 				<div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 				

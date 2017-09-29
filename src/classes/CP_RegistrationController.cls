@@ -1,8 +1,6 @@
 public class CP_RegistrationController {
     
     public static CP_RegistrationClass.RegistrationForm objForm {get; set;}
-
-    
     private static CP_RegistrationClass Registration = new CP_RegistrationClass();
 
 
@@ -79,10 +77,9 @@ public class CP_RegistrationController {
                 CP_SCIMRestClient restClient = new CP_SCIMRestClient();
                 CP_SCIMRestClient.Response res = new CP_SCIMRestClient.Response();
                 
-                
-                Contact objContact = objForm.Identity.getContactByBusinessPartnerID();
+                Contact objContact = objForm.Identity.getContactObject();
 
-                objForm.Profile.firstName = objContact.firstName; 
+                objForm.Profile.firstName = objContact.firstName;
                 objForm.Profile.lastName = objContact.lastName; 
 
                 res = restClient.RegisterNewUser(objForm);
@@ -126,16 +123,15 @@ public class CP_RegistrationController {
     {
         CP_RegistrationClass.SecurityQuestions securityQuestions = new CP_RegistrationClass.SecurityQuestions();
         
-        payload = String.isBlank(payload) ? '{ "lang": "en" }' : payload;
+        //payload = String.isBlank(payload) ? '{ "lang": "en" }' : payload;
 
         objForm = new CP_RegistrationClass.RegistrationForm();
 
         objForm = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(payload, CP_RegistrationClass.RegistrationForm.class);
         
-
         try{
             String language; 
-            language = String.isBlank(objForm.lang) ? 'en' : objForm.lang;
+            language = String.isBlank(objForm.lang) ? 'en_CA' : objForm.lang;
 
             securityQuestions.loadQuestions(language);
             securityQuestions.State.IsValid = true;

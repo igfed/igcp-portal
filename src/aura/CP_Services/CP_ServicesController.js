@@ -94,6 +94,9 @@
 			try {
 				action = component.get("c.getSecurityQuestions");
 				action.setParams({ payload: JSON.stringify(component.get("v.payload")) });
+				console.log("get getSecurityQuestions");
+
+				console.log(component.get("v.payload"));
 
 				// Create a callback that is executed after 
 				// the server-side action returns
