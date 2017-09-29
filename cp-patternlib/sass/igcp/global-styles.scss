@@ -351,12 +351,12 @@
 	.#{$namespace}-modal__wrapper {
 		max-width: $ig-large;
 		margin: 0 auto;
-		position: absolute;
 	}
 
 	.#{$namespace}-modal__button--close {
 		position: relative;
 		float: right;
+		border-radius: 50px;
 	}
 
 	&.#{$namespace}-modal__full {
@@ -377,6 +377,20 @@
 			overflow-y: scroll;
 		}
 	}
+}
+
+.#{$namespace}-modal__footer {
+	 background-color: #f8f8f8;
+    position: fixed;
+    height: 175px;
+    bottom: 0;
+    margin: 0 0 0 -60px;
+    padding-top: 32px;
+
+    .#{$namespace}-modal__footer-wrapper {
+		margin: 0 auto;
+		max-width: 1024px;
+    }
 }
 
 //TOOLTIP

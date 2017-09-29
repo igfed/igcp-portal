@@ -3315,11 +3315,11 @@ label {
     display: inline-block; }
   .igcp-modal .igcp-modal__wrapper {
     max-width: 1024px;
-    margin: 0 auto;
-    position: absolute; }
+    margin: 0 auto; }
   .igcp-modal .igcp-modal__button--close {
     position: relative;
-    float: right; }
+    float: right;
+    border-radius: 50px; }
   .igcp-modal.igcp-modal__full {
     background-color: #fff; }
   .igcp-modal.igcp-modal__small {
@@ -3333,6 +3333,17 @@ label {
       bottom: 0;
       border: 10px solid #e9ecee;
       overflow-y: scroll; }
+
+.igcp-modal__footer {
+  background-color: #f8f8f8;
+  position: fixed;
+  height: 175px;
+  bottom: 0;
+  margin: 0 0 0 -60px;
+  padding-top: 32px; }
+  .igcp-modal__footer .igcp-modal__footer-wrapper {
+    margin: 0 auto;
+    max-width: 1024px; }
 
 .igcp-tooltip {
   display: inline-block; }
