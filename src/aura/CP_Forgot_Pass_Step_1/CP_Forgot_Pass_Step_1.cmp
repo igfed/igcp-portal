@@ -8,7 +8,6 @@
 	<aura:attribute name="clientNum" type="String"></aura:attribute>
 	<aura:attribute name="postalCode" type="String"></aura:attribute>
 	<aura:attribute name="dob" type="String"></aura:attribute>
-	
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
@@ -34,6 +33,8 @@
 			<div class="igcp-label--small">{!$Label.c.CP_Generic_Step_1}</div>
 			<h2>{!$Label.c.CP_Forgot_Pass_h2}</h2>
 			<p class="igcp-utils__width--100 igcp-large-utils__width--75">{!$Label.c.CP_Forgot_Pass_Instructions}</p>
+			<!-- TOAST ERROR -->
+			<c:CP_Cmp_Toast id="forgot-pass-step-1-toast-error" type="error" class="slds-m-top--x-small slds-m-bottom--xxx-small" />
 			<div class="slds-grid slds-wrap">
 				<div class="slds-form slds-size_12-of-12">
 					<!--FIELDS-->

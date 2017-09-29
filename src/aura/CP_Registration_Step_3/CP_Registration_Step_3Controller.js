@@ -161,8 +161,6 @@
 						"message": $A.get("$Label.c.CP_Error_General")
 					});
 				}
-
-
 			}
 		);
 	},
@@ -210,7 +208,8 @@
 				"securityQuestion2": cmp.get("v.securityQuestion2"),
 				"answer2": cmp.get("v.answer2"),
 				"securityQuestion3	": cmp.get("v.securityQuestion3"),
-				"answer3": cmp.get("v.answer3")
+				"answer3": cmp.get("v.answer3"),
+				"lang" : cmp.get("v.lang")
 			},
 			"acceptTOS": cmp.get("v.acceptTOS")
 		});

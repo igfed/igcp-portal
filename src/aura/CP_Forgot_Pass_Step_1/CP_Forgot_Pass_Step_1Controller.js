@@ -90,6 +90,14 @@
 						});
 					}
 				});
+
+				//Generic error
+				if (error.type === "error") {
+					events.fire("CP_Evt_Toast_Error", {
+						"id": "forgot-pass-step-1-toast-error",
+						"message": $A.get("$Label.c.CP_Error_General")
+					});
+				}
 			}
 		);
 	},

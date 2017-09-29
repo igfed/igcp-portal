@@ -1,13 +1,14 @@
 ({
 	doneRendering: function(cmp, evt, hlpr) {
 
-		console.log("DONE RENDERING");
-
 		var utils = cmp.find("CP_Utils");
 
 		utils.getURLParams(function(urlParams){
-			console.log("PARAMS");
-			console.log(urlParams);
+			if(urlParams.language) {
+				cmp.set("v.lang", urlParams.language);
+			} else {
+				cmp.set("v.lang", "");
+			}
 		});
 	},
 	onStartRegistration: function(cmp, evt, hlpr) {
