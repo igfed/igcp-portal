@@ -7,7 +7,7 @@
     <aura:attribute name="id" type="String" default="default" ></aura:attribute>
     <aura:attribute name="form" type="String" default="default"></aura:attribute>
     <aura:attribute name="nextType" type="String" default="start"></aura:attribute>
-    <aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-grid slds-wrap slds-grid--align-center slds-p-bottom--x-large slds-m-top--large"/>
+    <aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-grid slds-wrap slds-grid--align-center slds-p-bottom--x-large slds-m-top--large slds-medium-m-top--xx-large"/>
     <aura:attribute name="backLabel" type="String" default="Back" />
     <aura:attribute name="nextLabel" type="String" default="Next" />
     <aura:attribute name="modalID" type="String" default="igcp-modal"/>
@@ -37,8 +37,8 @@
     <div class="{!v.class}">
         <!--CTAS-->
         <div class="igcp-utils__order--2 igcp-medium-utils__order--1 slds-m-horizontal--medium slds-medium-m-horizontal--zero slds-size_12-of-12 slds-medium-size_5-of-12">
-            
-            <button class="igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-button slds-button--neutral slds-p-vertical--xxx-small slds-float_left" onclick="{!c.onBack}">{!v.backLabel}</button>
+
+            <c:CP_Cmp_Button id="back_button" label="{!v.backLabel}" class="igcp-button--back igcp-utils__width--100 slds-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-float_left" buttonClass="slds-button slds-button--neutral"/>
         </div>
         
         <div class="igcp-utils__display--none igcp-medium-utils__display--flex igcp-utils__order--2 slds-size_2-of-12"></div>
@@ -47,10 +47,6 @@
 
             <aura:if isTrue="{!v.nextType == 'start'}">
     			 <c:CP_Cmp_Button id="start_button" label="{!v.nextLabel}" class="igcp-button--start igcp-utils__width--100 slds-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-float_right"/>	
-            </aura:if>
-
-             <aura:if isTrue="{!v.nextType == 'modal'}">
-    			 <button id="modal-button" data-open="{!v.modalID}" class="igcp-button--modal igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-p-horizontal--zero slds-p-vertical--xxx-small slds-float_right">{!v.nextLabel}</button>
             </aura:if>
 
             <aura:if isTrue="{!v.nextType == 'complete'}">

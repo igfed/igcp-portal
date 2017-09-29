@@ -1,4 +1,15 @@
 ({
+	doneRendering: function(cmp, evt, hlpr) {
+
+		console.log("DONE RENDERING");
+
+		var utils = cmp.find("CP_Utils");
+
+		utils.getURLParams(function(urlParams){
+			console.log("PARAMS");
+			console.log(urlParams);
+		});
+	},
 	onStartRegistration: function(cmp, evt, hlpr) {
 		var
 			currentStep = cmp.get("v.currentStep");

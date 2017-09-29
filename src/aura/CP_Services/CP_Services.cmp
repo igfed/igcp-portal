@@ -1,29 +1,27 @@
 <aura:component >
-
-	<!-- METHODS -->
-    <aura:method name="submitForm" action="{!c.onSubmitForm}" > 
-        <aura:attribute name="serviceName" type="String" default="default" />
-        <aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
-        <aura:attribute name="validCB" type="function" default="" />
-        <aura:attribute name="errorCB" type="function" default="" />
-    </aura:method>
-
-    <aura:method name="getSecurityQuestions" action="{!c.onGetSecurityQuestions}" > 
-        <aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
-        <aura:attribute name="validCB" type="function" default="" />
-        <aura:attribute name="errorCB" type="function" default="" />
-    </aura:method>
-
-    <aura:method name="getRandSecurityQuestion" action="{!c.onGetRandSecurityQuestion}" > 
-        <aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
-        <aura:attribute name="validCB" type="function" default="" />
-        <aura:attribute name="errorCB" type="function" default="" />
-    </aura:method>
-
-    <!-- OVERVIEW -->
-    <aura:method name="getInvestmentsPreview" action="{!c.onGetInvestmentsPreview}" > 
-        <aura:attribute name="successCB" type="function" default="" />
-        <aura:attribute name="errorCB" type="function" default="" />
-    </aura:method>
-
+	<!-- SUBMIT FORM -->
+	<aura:method name="submitForm" action="{!c.onSubmitForm}">
+		<aura:attribute name="serviceName" type="String" default="default" />
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="validCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+	<!-- GET SECURITY QUESTIONS -->
+	<aura:method name="getSecurityQuestions" action="{!c.onGetSecurityQuestions}">
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="validCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+	<!-- GET RAND SECURITY QUESTION -->
+	<aura:method name="getRandSecurityQuestion" action="{!c.onGetRandSecurityQuestion}">
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="validCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+	<!-- GET INVESTMENTS PREVIEW -->
+	<aura:method name="getInvestmentsPreview" action="{!c.onGetInvestmentsPreview}">
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
 </aura:component>

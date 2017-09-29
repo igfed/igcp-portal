@@ -122,11 +122,22 @@ public class CP_RegistrationController {
     
 
     @AuraEnabled
-    public static string getSecurityQuestions()
+    public static string getSecurityQuestions(String payload)
     {
         CP_RegistrationClass.SecurityQuestions securityQuestions = new CP_RegistrationClass.SecurityQuestions();
+        
+        payload = String.isBlank(payload) ? '{ "lang": "en" }' : payload;
+
+        objForm = new CP_RegistrationClass.RegistrationForm();
+
+        objForm = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(payload, CP_RegistrationClass.RegistrationForm.class);
+        
+
         try{
-            securityQuestions.loadQuestions();
+            String language; 
+            language = String.isBlank(objForm.lang) ? 'en' : objForm.lang;
+
+            securityQuestions.loadQuestions(language);
             securityQuestions.State.IsValid = true;
         }
         catch(exception e)

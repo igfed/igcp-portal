@@ -204,9 +204,6 @@
 					isLocked = error.payload.State.IsLocked,
 					serviceUnavailable = error.payload.State.ServiceNotAvailable;
 
-				console.error("STEP 2 Submit Form Error");
-				console.error(error);
-
 				if (isLocked) {
 					events.fire("CP_Evt_Error_Locked_Out", {
 						"id": cmp.get("v.pageId")
@@ -240,6 +237,16 @@
 						});
 					}
 				});
+
+				//Generic error
+				if (error.type === "error") {
+					events.fire("CP_Evt_Toast_Error", {
+						"id": "registration-step-2-toast-error",
+						"message": $A.get("$Label.c.CP_Error_General")
+					});
+				}
+
+				//hlpr.scrollToTop();
 			}
 		);
 	},

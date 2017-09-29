@@ -25,6 +25,7 @@ global class CP_RegistrationClass {
     {
         public Result State {get; set;}
         public Boolean acceptTOS {get; set;}
+        public String lang {get; set;}
         public UserIdentity Identity {get; set; }
         public UserProfile Profile {get; set;}
 
@@ -44,7 +45,7 @@ global class CP_RegistrationClass {
             State = new Result();
         }
 
-        public void loadQuestions()
+        public void loadQuestions(String lang)
         {
             List<Security_Question__mdt> questionList = [SELECT 
                                     Question_Eng__c,
@@ -53,11 +54,66 @@ global class CP_RegistrationClass {
 
             for(Security_Question__mdt Q : questionList)
             {
-                this.Questions.add(Q.Question_Eng__c);  
+                if(lang == 'fr')
+                    this.Questions.add(Q.Question_Fr__c);  
+                else
+                    this.Questions.add(Q.Question_Eng__c);  
             }
         }
     }
   
+
+    public Boolean sendEmail(Contact objContact)
+    {
+        Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+
+        List<String> toAddress = new List<String>();
+        toAddress.add(objContact.email);
+
+
+        EmailTemplate et;
+        if(objContact.Preferred_Language__c == 'French')
+        {
+            et = [SELECT Id FROM EmailTemplate WHERE DeveloperName = 'Welcome_New_Registration_French'];
+        }
+        else
+        {
+            et = [SELECT Id FROM EmailTemplate WHERE DeveloperName ='Welcome_New_Registration_English'];
+        }
+        
+
+        OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = 'noreply@investorsgroup.com'];
+        if ( owea.size() > 0 ) {
+            mail.setOrgWideEmailAddressId(owea.get(0).Id);
+        }
+
+        mail.setTemplateId(et.Id);
+        mail.setToAddresses(toAddress);
+        mail.setTargetObjectId(objContact.Id);
+        mail.setWhatId(objContact.Id);
+        mail.setSaveAsActivity(false);
+        mail.setUseSignature(false);
+
+        List<Messaging.SingleEmailMessage> allmsg = new List<Messaging.SingleEmailMessage>();
+        allmsg.add(mail);
+
+        try 
+        {
+            Messaging.sendEmail(allmsg,false);
+            
+            System.debug('email sent  ');
+
+            return true;
+        } 
+        catch (Exception e) 
+        {
+            System.debug(e.getMessage());
+            return false;
+        }
+    }
+
+
+
     public CP_RegistrationClass.Result verifyIdentity(CP_RegistrationClass.UserIdentity IGUser)
     {
         
@@ -317,13 +373,15 @@ global class CP_RegistrationClass {
                 objContact.Portal_User_ID__c = regForm.Profile.userId;
                 objContact.Email = regForm.Profile.email;
                 objContact.Marketing_Email_Optout__c = regForm.Profile.emailOptIn;
-                //objContact.Preferred_Language__c = 'English';
+                objContact.Preferred_Language__c = regForm.lang == 'fr' ? 'French' : 'English';
                 objContact.Portal_User_Consent_Date__c = DateTime.now();
                 objContact.Portal_User_Consent_Obtained__c = true;
                 objContact.Portal_Action_Failure_Count__c = 0;
 
                 update objContact;
                 System.debug('info saved! ');
+
+               // this.sendEmail(objContact);
 
                 result.IsValid = true;
             }
@@ -350,7 +408,7 @@ global class CP_RegistrationClass {
                 Portal_User_Name__c, MailingPostalCode, Birthdate, Business_Partner_ID__c, Preferred_Language__c,
                 Portal_Action_Failure_Count__c, 
                 Portal_Registration_Is_Locked__c,
-                Portal_User_Consent_Date__c, Portal_User_Consent_Obtained__c 
+                Portal_User_Consent_Date__c, Portal_User_Consent_Obtained__c, Portal_Registration_Eligible__c
                 from Contact 
                 where Business_Partner_ID__c = : String.escapeSingleQuotes(this.clientNum)];
 
@@ -379,7 +437,8 @@ global class CP_RegistrationClass {
                            Customer__r.Preferred_Language__c, Customer__r.MailingPostalCode, 
                            Customer__r.Portal_Action_Failure_Count__c, 
                            Customer__r.Portal_Registration_Is_Locked__c,
-                           Customer__r.Portal_User_Consent_Date__c, Customer__r.Portal_User_Consent_Obtained__c
+                           Customer__r.Portal_User_Consent_Date__c, Customer__r.Portal_User_Consent_Obtained__c,
+                           Customer__r.Portal_Registration_Eligible__c
                     FROM 
                            Financial_Asset__c 
                     WHERE 

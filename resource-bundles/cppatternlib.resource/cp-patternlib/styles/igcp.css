@@ -111,7 +111,8 @@ label {
     color: #004171; }
 
 .slds-button--neutral {
-  background-color: transparent; }
+  background-color: transparent;
+  color: #004171; }
   .slds-button--neutral:hover {
     background-color: #004171;
     color: #fff; }
@@ -171,9 +172,9 @@ label {
       width: 24px;
       height: 24px;
       border: none;
-      background: #cfd4d8; }
+      background: #d3d8dc; }
   .slds-progress .slds-progress-bar__value {
-    background: #cfd4d8; }
+    background: #d3d8dc; }
   .slds-progress .slds-icon-text-default {
     fill: #fff; }
   .slds-progress .slds-icon {
@@ -1775,7 +1776,7 @@ label {
 .igcp-header {
   background-color: #fff;
   background-image: none;
-  border-bottom: 1px solid #e6e9eb;
+  border-bottom: 1px solid #e9ecee;
   height: 60px; }
   .igcp-header .igcp-nav {
     max-width: 1280px;
@@ -3113,7 +3114,7 @@ label {
 .igcp-separator--large {
   width: 100%;
   height: 8px;
-  background-color: #f7f8f9; }
+  background-color: #f8f8f9; }
 
 .igcp-background__gradient {
   background: #fafafd;
@@ -3167,7 +3168,7 @@ label {
   top: -3px; }
 
 .igcp-underline {
-  border-bottom: 2px solid #e6e9eb; }
+  border-bottom: 2px solid #e9ecee; }
 
 .igcp-underline--thick-blue {
   border-bottom: 8px solid #0d263c;
@@ -3181,7 +3182,7 @@ label {
   border-bottom: 3px solid #fff; }
 
 .igcp-underline--thick-grey {
-  border-bottom: 3px solid #e6e9eb; }
+  border-bottom: 3px solid #e9ecee; }
 
 .igcp-value--large {
   font-family: "WhitneyLight", Arial, sans-serif;
@@ -3235,7 +3236,7 @@ label {
   border-bottom: 2px solid #0d263c; }
 
 .igcp-alert--item {
-  border-bottom: 1px solid #e6e9eb; }
+  border-bottom: 1px solid #e9ecee; }
   .igcp-alert--item:last-child {
     border-bottom: none;
     margin-bottom: 0 !important;
@@ -3330,7 +3331,7 @@ label {
       left: 0;
       right: 0;
       bottom: 0;
-      border: 10px solid #e6e9eb;
+      border: 10px solid #e9ecee;
       overflow-y: scroll; }
 
 .igcp-tooltip {

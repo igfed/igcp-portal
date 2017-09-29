@@ -15,6 +15,8 @@
 
     <!-- HANDLERS -->
     <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:handler event="c:CP_Evt_Button_Enable" action="{!c.onEnable}"></aura:handler>
+    <aura:handler event="c:CP_Evt_Button_Disable" action="{!c.onDisable}"></aura:handler>
     
     <div id="{!v.id}" aura:id="{!v.id}" class="{!v.class}">
         <lightning:button label="{!v.label}" variant="brand" class="{!'igcp-utils__width--100 slds-p-vertical--xxx-small ' + v.buttonClass}" onclick="{!c.onClick}" disabled="{!v.disabled}">

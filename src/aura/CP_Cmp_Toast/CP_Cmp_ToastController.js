@@ -1,5 +1,5 @@
 ({
-	doneRendering : function(cmp, evt, hlpr) {
+	onInit : function(cmp, evt, hlpr) {
 
 		var type = cmp.get("v.type");
 
@@ -37,6 +37,9 @@
 	},
 	onError: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
+
+		console.log("TOAST ON ERROR: ");
+		console.log(payload);
 
 		if(payload.id === cmp.get("v.id")) {
 			//Show Error

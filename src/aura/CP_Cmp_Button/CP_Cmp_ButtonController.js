@@ -17,5 +17,11 @@
 				"id" : cmp.get("v.id"),
 				"buttonType" : cmp.get("v.buttonType")
 			});
+	},
+	onEnable: function(cmp, evt, hlpr) {
+		cmp.set("v.disabled", false);
+	},
+	onDisable: function(cmp, evt, hlpr) {
+		cmp.set("v.disabled", true);
 	}
 })

@@ -97,5 +97,15 @@
 					}
 				}, 500);
 		}
+	},
+	getURLParams: function(cmp, evt, hlpr) {
+
+		var params = evt.getParam("arguments");
+		if (params) {
+			console.log("getURLParams");
+			console.log(params);
+			console.log(window.location.href)
+		}
+
 	}
 })

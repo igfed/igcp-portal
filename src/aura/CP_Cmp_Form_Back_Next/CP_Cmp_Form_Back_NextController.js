@@ -20,6 +20,8 @@
 			cmp.onStart();
 		} else if (payload.id === "complete_button") {
 			cmp.onComplete();
+		} else if(payload.id === "back_button") {
+			cmp.onBackStep();
 		}
 	},
 	onStart: function(cmp, evt, hlpr) {

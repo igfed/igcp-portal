@@ -56,6 +56,8 @@
 				<div class="igcp-label--small">{!$Label.c.CP_Generic_Step_2}</div>
 				<h2>{!$Label.c.CP_Registration_Step_2_h2}</h2>
 				<p class="igcp-utils__width--100 igcp-large-utils__width--75">{!$Label.c.CP_Registration_Step_2_Instructions}</p>
+				<!-- TOAST ERROR -->
+				<c:CP_Cmp_Toast id="registration-step-2-toast-error" type="error" class="slds-m-top--x-small slds-m-bottom--xxx-small" />
 				
 				<!--FIELDS-->
 				<!-- USERNAME -->

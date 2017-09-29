@@ -28,11 +28,35 @@ public class IGClientService {
 		return rv;
 	}
 
-	public static DTO_InvestmentsPreview getInvestmentPreview(String clientBpid) {
+	public static DTO_InvestmentsPreview getInvestmentsPreview(String clientBpid) {
 		DTO_InvestmentsPreview rv = new DTO_InvestmentsPreview();
 		List<DTO_AccountSummary> acctSummaryDTOList = IGClientService.getAccountSummaries(clientBpid);
 		for (DTO_AccountSummary summaryDTO : acctSummaryDTOList) {
-			
+			DTO_InvestmentsPreviewItem item = new DTO_InvestmentsPreviewItem(summaryDTO.accountNumber, summaryDTO.marketValueCad, 
+					summaryDTO.gainLossCad, summaryDTO.dealerName);
+			rv.addPreviewItem(item);
+		}
+		return rv;
+	}
+
+	public static DTO_InsurancePreview getInsurancePreview(String clientBpid) {
+		DTO_InsurancePreview rv = new DTO_InsurancePreview();
+		List<DTO_InsuranceDetail> insDetailDTOList = getInsuranceDetails(clientBpid);
+		for (DTO_InsuranceDetail insDTO : insDetailDTOList) {
+			DTO_InsurancePreviewItem item = new DTO_InsurancePreviewItem(insDTO.insuranceType, insDTO.policyType, insDTO.policyNumber, 
+					insDTO.company, Double.valueOf(insDTO.coverageAmount));
+			rv.addPreviewItem(item);
+		}
+		return rv;
+	}
+
+	public static DTO_MortgagePreview getMortgagePreview(String clientBpid) {
+		DTO_MortgagePreview rv = new DTO_MortgagePreview();
+		List<DTO_MortgageDetail> mtgDetailDTOList = getMortgageDetails(clientBpid);
+		for (DTO_MortgageDetail mtgDTO : mtgDetailDTOList) {
+			DTO_MortgagePreviewItem item = new DTO_MortgagePreviewItem(mtgDTO.product, mtgDTO.loanNum, mtgDTO.branchId, 
+					Double.valueOf(mtgDTO.interestRate), Double.valueOf(mtgDTO.loanBalance));
+			rv.addPreviewItem(item);
 		}
 		return rv;
 	}

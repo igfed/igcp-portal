@@ -3,12 +3,13 @@
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="registration"></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-utils__overflow--hidden"></aura:attribute>
-	<aura:attribute name="currentStep" type="Integer" default="1" ></aura:attribute>
+	<aura:attribute name="currentStep" type="Integer" default="0" ></aura:attribute>
 
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default=""/>
     <aura:attribute name="postalCode" type="String" default=""/>
     <aura:attribute name="dob" type="String" default=""/>
+    <aura:attribute name="lang" type="String"></aura:attribute>
 
     <!-- Step 2 -->
     <aura:attribute name="username" type="String" default=""/>
@@ -34,6 +35,7 @@
     <c:CP_Utils aura:id="CP_Utils"/>
 
     <!-- HANDLERS -->
+    <aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
     <aura:handler event="c:CP_Evt_Start" action="{!c.onStartRegistration}"></aura:handler>
     <aura:handler event="c:CP_Evt_Next_Step" action="{!c.onNextStep}"></aura:handler>
     <aura:handler event="c:CP_Evt_Back_Step" action="{!c.onBackStep}"></aura:handler>
@@ -48,7 +50,8 @@
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 1}"  >
-    		<c:CP_Registration_Step_1 clientNum="{!v.clientNum}" 
+    		<c:CP_Registration_Step_1 
+    			clientNum="{!v.clientNum}" 
     			postalCode="{!v.postalCode}" 
     			dob="{!v.dob}" />
     	</aura:if>
@@ -84,7 +87,8 @@
     			answer2="{!v.answer2}"
     			securityQuestion3="{!v.securityQuestion3}"
     			answer3="{!v.answer3}"
-    			acceptTOS="{!v.acceptTOS}"/>
+    			acceptTOS="{!v.acceptTOS}"
+    			lang="{!v.lang}"/>
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 4}"  >

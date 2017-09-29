@@ -256,20 +256,69 @@
 		var params = evt.getParam("arguments");
 		if (params) {
 			console.log("getInvestmentsPreview");
-
-			var action;
+			var
+				component = params.component,
+				action;
 
 			try {
 
-				action = component.get("c.getSecurityQuestion");
-
+				action = component.get("c.getInvestmentPreviewDTO");
 				action.setCallback(this, function(response) {
-					console.log("response");
-					console.log(response);
+					console.log("onGetInvestmentsPreview response");
+
+					var state = response.getState(),
+						res;
+
+					if (state === "SUCCESS") {
+						// Alert the user with the value returned 
+						// from the server
+
+						res = JSON.parse(response.getReturnValue());
+						console.log(res);
+
+						if (res !== null) {
+							params.successCB(res);
+						} else {
+							params.errorCB({
+								"payload": "No BPID was found in Salesforce",
+								"type": "no-record"
+							});
+						}
+
+						// You would typically fire a event here to trigger 
+						// client-side notification that the server-side 
+						// action is complete
+
+					} else if (state === "INCOMPLETE") {
+						// do something
+						params.errorCB({
+							"payload": "Incomplete",
+							"type": "server-side-error"
+						});
+					} else if (state === "ERROR") {
+						var errors = response.getError();
+
+						if (errors) {
+							if (errors[0] && errors[0].message) {
+								console.error("Error message: " +
+									errors[0].message);
+								params.errorCB({
+									"payload": errors[0].message,
+									"type": "server-side-error"
+								});
+							}
+						} else {
+							console.error("Unknown error");
+							params.errorCB({
+								"payload": "Unknown error",
+								"type": "server-side-error"
+							})
+						}
+					}
 				});
 
-
-			} catch(err) {
+				$A.enqueueAction(action);
+			} catch (err) {
 				console.error("CP_Services: onGetInvestmentsPreview: controller not found, make sure it is attached to parent component.");
 				console.log(err);
 			}

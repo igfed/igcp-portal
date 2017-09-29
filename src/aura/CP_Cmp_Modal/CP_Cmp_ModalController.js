@@ -7,6 +7,8 @@
 	},
 	onClose: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
+		console.log('CLOSE!!!!!!!!!');
+		console.log(payload);
 
 		if (payload) {
 			console.log("MODAL: onClose");

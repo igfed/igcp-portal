@@ -9,7 +9,7 @@
 	<aura:attribute name="notifyTheme" type="String" default="slds-theme_info"></aura:attribute>
 
 	<!-- HANDLER -->
-	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
 	<aura:handler event="c:CP_Evt_Toast_Success" action="{!c.onSuccess}" />
 	<aura:handler event="c:CP_Evt_Toast_Warning" action="{!c.onWarning}" />
 	<aura:handler event="c:CP_Evt_Toast_Error" action="{!c.onError}" />

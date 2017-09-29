@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"Submit",
+				"submitForm"
+			],
+			[
+				"curre",
+				"currentPayload"
+			],
+			[
+				"aura",
+				"aura:attribute\tTag"
+			],
+			[
+				"getSec",
+				"getRandSecurityQuestion"
+			],
+			[
 				"CP_Evt",
 				"CP_Evt_Toast_Error"
 			],
@@ -24,12 +40,85 @@
 	"buffers":
 	[
 		{
-			"file": "src/aura/CP_Registration_Step_3/CP_Registration_Step_3.cmp",
+			"file": "src/aura/CP_Services/CP_ServicesController.js",
 			"settings":
 			{
-				"buffer_size": 4627,
+				"buffer_size": 8650,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/aura/CP_Registration/CP_Registration.cmp",
+			"settings":
+			{
+				"buffer_size": 4400,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/aura/CP_Cmp_Button/CP_Cmp_Button.cmp",
+			"settings":
+			{
+				"buffer_size": 1304,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/aura/CP_Cmp_Button/CP_Cmp_ButtonController.js",
+			"settings":
+			{
+				"buffer_size": 615,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "({\n\tonInit: function(cmp, evt, hlpr) {\n\t\tvar\n\t\t\titemsArr = [],\n\t\t\tevents = cmp.find(\"CP_Events\");\n\n\t\tcmp.updateISAMPayload();\n\n\t\titemsArr = [{\n\t\t\t\t\"label\": $A.get(\"$Label.c.CP_Generic_Label_Username\"),\n\t\t\t\t\"detail\": cmp.get(\"v.username\"),\n\t\t\t\t\"type\": \"single\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": $A.get(\"$Label.c.CP_Generic_Label_Email\"),\n\t\t\t\t\"detail\": cmp.get(\"v.email\"),\n\t\t\t\t\"type\": \"single\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": $A.get(\"$Label.c.CP_Generic_Label_Notification\"),\n\t\t\t\t\"detail\": cmp.get(\"v.emailOptIn\"),\n\t\t\t\t\"type\": \"\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": $A.get(\"$Label.c.CP_Generic_Label_Question_1\"),\n\t\t\t\t\"detail\": cmp.get(\"v.securityQuestion1\"),\n\t\t\t\t\"type\": \"question\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": $A.get(\"$Label.c.CP_Generic_Label_Answer_1\"),\n\t\t\t\t\"detail\": cmp.get(\"v.answer1\"),\n\t\t\t\t\"type\": \"answer\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": $A.get(\"$Label.c.CP_Generic_Label_Question_2\"),\n\t\t\t\t\"detail\": cmp.get(\"v.securityQuestion2\"),\n\t\t\t\t\"type\": \"question\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": $A.get(\"$Label.c.CP_Generic_Label_Answer_1\"),\n\t\t\t\t\"detail\": cmp.get(\"v.answer2\"),\n\t\t\t\t\"type\": \"answer\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": $A.get(\"$Label.c.CP_Generic_Label_Question_3\"),\n\t\t\t\t\"detail\": cmp.get(\"v.securityQuestion3\"),\n\t\t\t\t\"type\": \"question\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": $A.get(\"$Label.c.CP_Generic_Label_Answer_1\"),\n\t\t\t\t\"detail\": cmp.get(\"v.answer3\"),\n\t\t\t\t\"type\": \"answer\"\n\t\t\t}\n\t\t];\n\n\t\tevents.fire(\"CP_Evt_Set_List\", {\n\t\t\t\"id\": cmp.get(\"v.pageId\"),\n\t\t\t\"values\": itemsArr\n\t\t});\n\t},\n\tonRegistrationComplete: function(cmp, evt, hlpr) {\n\t\tcmp.showTOS();\n\t},\n\tonShowTOS: function(cmp, evt, hlpr) {\n\n\t\tvar events = cmp.find(\"CP_Events\");\n\n\t\tevents.fire(\"CP_Evt_Modal_Open\", {\n\t\t\t\"id\": \"registration-tos\"\n\t\t});\n\t},\n\tonAgreeTOS: function(cmp, evt, hlpr) {\n\t\tvar\n\t\t\tpayload = evt.getParam(\"payload\"),\n\t\t\tevents = cmp.find(\"CP_Events\");\n\n\t\tif (payload.id === \"tos_agree_button\") {\n\n\t\t\tif (cmp.get(\"v.acceptTOS\") === true) {\n\n\t\t\t\tevents.fire(\"CP_Evt_Modal_Close\", {\n\t\t\t\t\t\"id\": \"registration-tos\"\n\t\t\t\t});\n\n\t\t\t\t//Update acceptTOS\n\t\t\t\tcmp.updateISAMPayload();\n\n\t\t\t\tcmp.submitToISAM();\n\t\t\t} else {\n\t\t\t\tconsole.warn(\"User has not accepted agreement!\");\n\t\t\t}\n\t\t}\n\t},\n\tonAgreeChecked: function(cmp, evt, hlpr) {\n\n\t\tvar payload = evt.getParam(\"payload\");\n\n\t\tconsole.log(payload);\n\n\t\tif (payload.id === \"read_and_agree_checkbox\") {\n\t\t\tcmp.set(\"v.acceptTOS\", payload.checked);\n\t\t}\n\t},\n\tonSubmitToISAM: function(cmp, evt, hlpr) {\n\n\t\tvar\n\t\t\tevents = cmp.find(\"CP_Events\"),\n\t\t\tservices = cmp.find(\"CP_Services\");\n\n\t\t//fire disable button event\n\t\tevents.fire(\n\t\t\t\"CP_Evt_Button_Disable\", \n\t\t\t{\n\t\t\t\t\"id\" : \"\"\n\t\t\t}\n\t\t);\n\n\t\tservices.submitForm(\n\t\t\t\"StepThree\",\n\t\t\tcmp,\n\t\t\tfunction(evt) {\n\t\t\t\tcmp.onNextStep();\n\t\t\t},\n\t\t\tfunction(error) {\n\n\t\t\t\tvar\n\t\t\t\t\tevents = cmp.find(\"CP_Events\"),\n\t\t\t\t\tfields = error.payload.State.Fields,\n\t\t\t\t\tmessages = error.payload.State.Messages,\n\t\t\t\t\tisLocked = error.payload.State.IsLocked,\n\t\t\t\t\tserviceUnavailable = error.payload.State.ServiceNotAvailable;\n\n\t\t\t\tif (isLocked) {\n\t\t\t\t\tevents.fire(\"CP_Evt_Error_Locked_Out\", {\n\t\t\t\t\t\t\"id\": cmp.get(\"v.pageId\")\n\t\t\t\t\t});\n\t\t\t\t}\n\n\t\t\t\tif (serviceUnavailable) {\n\t\t\t\t\tevents.fire(\"CP_Evt_Error_Registration_Not_Completed\", {\n\t\t\t\t\t\t\"id\": cmp.get(\"v.pageId\")\n\t\t\t\t\t});\n\t\t\t\t}\n\n\t\t\t\t\n\t\t\t}\n\t\t);\n\t},\n\tgotoNextStep: function(cmp, evt, hlpr) {\n\t\tvar event = cmp.find(\"CP_Events\");\n\t\tevent.fire(\"CP_Evt_Next_Step\", {\n\t\t\t\"id\": cmp.get(\"v.pageId\")\n\t\t});\n\t},\n\tonModalOpen: function(cmp, evt, hlpr) {\n\n\t\tvar newClass = \"igcp-wrapper igcp-utils__height--zero slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large\";\n\t\tcmp.set(\"v.class\", newClass);\n\t},\n\tonModalClose: function(cmp, evt, hlpr) {\n\n\t\tcmp.set(\"v.class\", \"igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large\");\n\t},\n\tupdateISAMPayload: function(cmp, evt, hlpr) {\n\t\tvar\n\t\t\tutils = cmp.find(\"CP_Utils\"),\n\t\t\tformattedDob = \"\";\n\n\n\t\tutils.convertToYMD(cmp.get(\"v.dob\"), function(value) {\n\t\t\tformattedDob = value;\n\t\t});\n\n\t\tcmp.set(\"v.payload\", {\n\t\t\t\"State\": null,\n\t\t\t\"Identity\": {\n\t\t\t\t\"clientNum\": cmp.get(\"v.clientNum\"),\n\t\t\t\t\"postalCode\": cmp.get(\"v.postalCode\"),\n\t\t\t\t\"dob\": formattedDob\n\t\t\t},\n\t\t\t\"Profile\": {\n\t\t\t\t\"username\": cmp.get(\"v.username\"),\n\t\t\t\t\"password\": cmp.get(\"v.password\"),\n\t\t\t\t\"confirmPassword\": cmp.get(\"v.confirmPassword\"),\n\t\t\t\t\"email\": cmp.get(\"v.email\"),\n\t\t\t\t\"emailOptIn\": cmp.get(\"v.emailOptIn\"),\n\t\t\t\t\"mobilePhone\": cmp.get(\"v.mobilePhone\"),\n\t\t\t\t\"securityQuestion1\": cmp.get(\"v.securityQuestion1\"),\n\t\t\t\t\"answer1\": cmp.get(\"v.answer1\"),\n\t\t\t\t\"securityQuestion2\": cmp.get(\"v.securityQuestion2\"),\n\t\t\t\t\"answer2\": cmp.get(\"v.answer2\"),\n\t\t\t\t\"securityQuestion3\t\": cmp.get(\"v.securityQuestion3\"),\n\t\t\t\t\"answer3\": cmp.get(\"v.answer3\")\n\t\t\t},\n\t\t\t\"acceptTOS\": cmp.get(\"v.acceptTOS\")\n\t\t});\n\t},\n\tlogPayloadVars: function(cmp, evt, hlpr) {\n\t\tvar logArray = [\n\t\t\tcmp.get(\"v.clientNum\"),\n\t\t\tcmp.get(\"v.postalCode\"),\n\t\t\tcmp.get(\"v.dob\"),\n\t\t\tcmp.get(\"v.username\"),\n\t\t\tcmp.get(\"v.password\"),\n\t\t\tcmp.get(\"v.confirmPassword\"),\n\t\t\tcmp.get(\"v.email\"),\n\t\t\tcmp.get(\"v.emailOptIn\"),\n\t\t\tcmp.get(\"v.mobilePhone\"),\n\t\t\tcmp.get(\"v.securityQuestion1\"),\n\t\t\tcmp.get(\"v.answer1\"),\n\t\t\tcmp.get(\"v.securityQuestion2\"),\n\t\t\tcmp.get(\"v.answer2\"),\n\t\t\tcmp.get(\"v.securityQuestion3\"),\n\t\t\tcmp.get(\"v.answer3\")\n\t\t];\n\n\t\tconsole.log(\"Registration Step 3: logPayloadVars\");\n\t\tlogArray.forEach(function(item, i) {\n\t\t\tconsole.log(item);\n\t\t});\n\t}\n})",
+			"file": "src/aura/CP_Registration_Step_3/CP_Registration_Step_3Controller.js",
+			"file_size": 5633,
+			"file_write_time": 131511823890000000,
+			"settings":
+			{
+				"buffer_size": 5362,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/aura/CP_Cmp_Form_Back_Next/CP_Cmp_Form_Back_Next.cmp",
+			"settings":
+			{
+				"buffer_size": 3286,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/aura/CP_Registration/CP_RegistrationController.js",
+			"settings":
+			{
+				"buffer_size": 980,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/aura/CP_Utils/CP_Utils.cmp",
+			"settings":
+			{
+				"buffer_size": 2785,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/aura/CP_Utils/CP_UtilsController.js",
+			"settings":
+			{
+				"buffer_size": 2680,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -40,10 +129,18 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 500.0,
-		"last_filter": "",
+		"height": 392.0,
+		"last_filter": "mavenm",
 		"selected_items":
 		[
+			[
+				"mavenm",
+				"MavensMate: Deploy Resource Bundle..."
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
 			[
 				"",
 				"MavensMate: Deploy Resource Bundle..."
@@ -69,7 +166,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 613.0
+		"width": 497.0
 	},
 	"console":
 	{
@@ -90,49 +187,78 @@
 	"expanded_folders":
 	[
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/cp-patternlib",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/cp-patternlib/sass",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Password",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Text",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Username",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Toast",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Evt_Error_Locked_Out",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_1",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Button",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Form_Back_Next",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Evt_Back_Step",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Evt_Button_Disable",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Evt_Button_Enable",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Locked_Out",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_3"
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_1",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_2",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_3",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Services",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Utils"
 	],
 	"file_history":
 	[
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/cp-patternlib/sass/global.scss",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Evt_Button_Disable/CP_Evt_Button_Disable.evt",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Evt_Button_Enable/CP_Evt_Button_Enable.evt",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Form_Back_Next/CP_Cmp_Form_Back_Next.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_1/CP_Registration_Step_1Controller.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_1/CP_Registration_Step_1.cmp",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_2/CP_Registration_Step_2.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Utils/CP_Utils.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_3/CP_Registration_Step_3.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Services/CP_Services.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_1/CP_Forgot_User_Step_1Controller.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration/CP_Registration.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/classes/CP_OverviewController.cls",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Services/CP_ServicesController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Investments/CP_Overview_InvestmentsController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Investments/CP_Overview_Investments.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_CTA/CP_Overview_CTA.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_TOS/CP_Registration_TOS.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_TOS/CP_Registration_TOS.cmp-meta.xml",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/classes/CP_RegistrationController.cls",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview/CP_Overview.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview/CP_OverviewController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Text/CP_Cmp_Input_Text.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Step_2/CP_Forgot_Pass_Step_2.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_2/CP_Forgot_User_Step_2.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Step_3/CP_Forgot_Pass_Step_3.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Thank_You/CP_Forgot_User_Thank_You.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_2/CP_Forgot_User_Step_2Controller.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Thank_You/CP_Forgot_Pass_Thank_You.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_2/CP_Forgot_User_Step_2Helper.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_1/CP_Forgot_User_Step_1.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Username/CP_Forgot_Username.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Step_3/CP_Forgot_Pass_Step_3Helper.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Step_3/CP_Forgot_Pass_Step_3Controller.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Text/CP_Cmp_Input_TextController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Text/CP_Cmp_Input_Text.cmp-meta.xml",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Step_2/CP_Forgot_Pass_Step_2Controller.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Password/CP_Forgot_Password.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Password/CP_Forgot_PasswordController.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_2/CP_Registration_Step_2Controller.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Validation/CP_ValidationHelper.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_3/CP_Registration_Step_3Controller.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_1/CP_Registration_Step_1Controller.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_1/CP_Registration_Step_1.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_3/CP_Registration_Step_3.cmp",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Toast/CP_Cmp_ToastController.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Toast/CP_Cmp_Toast.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/classes/CP_RegistrationController.cls",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration/CP_RegistrationController.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration/CP_Registration.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_1/CP_Forgot_User_Step_1.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_1/CP_Forgot_User_Step_1Controller.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Locked_Out/CP_Registration_Locked_OutController.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Evt_Error_Locked_Out/CP_Evt_Error_Locked_Out.evt",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Evt_Error_Registration_Not_Completed/CP_Evt_Error_Registration_Not_Completed.evt",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Security_Questions/CP_Registration_Security_Questions.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Text/CP_Cmp_Input_TextController.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Username/CP_Cmp_Input_Username.cmp",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Password/CP_Cmp_Input_Password.cmp",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Tooltip/CP_Cmp_Tooltip.cmp",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_JS_Includes/CP_JS_IncludesController.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_JS_Includes/CP_JS_Includes.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_2/CP_Forgot_User_Step_2.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Services/CP_ServicesController.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Thank_You/CP_Forgot_User_Thank_You.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Text/CP_Cmp_Input_Text.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Text/CP_Cmp_Input_Text.cmp-meta.xml",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Selector/CP_Cmp_Input_SelectorHelper.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_2/CP_Registration_Step_2Helper.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Security_Questions/CP_Registration_Security_QuestionsController.js",
@@ -179,6 +305,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"attempts",
 			"inputValue",
 			"{!v.form}",
 			"inputValue",
@@ -222,24 +349,80 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/aura/CP_Registration_Step_3/CP_Registration_Step_3.cmp",
+					"file": "src/aura/CP_Services/CP_ServicesController.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4627,
+						"buffer_size": 8650,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								706,
-								706
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 198.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/aura/CP_Registration/CP_Registration.cmp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4400,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1861,
+								1947
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 141.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/aura/CP_Cmp_Button/CP_Cmp_Button.cmp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1304,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								884,
+								884
 							]
 						],
 						"settings":
@@ -250,7 +433,175 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/aura/CP_Cmp_Button/CP_Cmp_ButtonController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 615,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								539,
+								539
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/aura/CP_Registration_Step_3/CP_Registration_Step_3Controller.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5362,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3156,
+								3156
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1997.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/aura/CP_Cmp_Form_Back_Next/CP_Cmp_Form_Back_Next.cmp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3286,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1795,
+								1795
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 503.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/aura/CP_Registration/CP_RegistrationController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 980,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								117,
+								117
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/aura/CP_Utils/CP_Utils.cmp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2785,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2593,
+								2593
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 418.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/aura/CP_Utils/CP_UtilsController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2680,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2046,
+								2046
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1149.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
 					"type": "text"
 				}
 			]

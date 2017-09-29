@@ -107,6 +107,14 @@
 			events = cmp.find("CP_Events"),
 			services = cmp.find("CP_Services");
 
+		//fire disable button event
+		events.fire(
+			"CP_Evt_Button_Disable", 
+			{
+				"id" : "back_button"
+			}
+		);
+
 		services.submitForm(
 			"StepThree",
 			cmp,
@@ -115,12 +123,23 @@
 			},
 			function(error) {
 
+				console.error(error);
+
 				var
 					events = cmp.find("CP_Events"),
-					fields = error.payload.State.Fields,
 					messages = error.payload.State.Messages,
 					isLocked = error.payload.State.IsLocked,
 					serviceUnavailable = error.payload.State.ServiceNotAvailable;
+
+					console.log(error.payload.State)
+
+				console.log("Fields: " + fields);
+
+				console.log("messages: " +  messages);
+
+				console.log("isLocked" + error.payload.State.IsLocked);
+
+				console.log("serviceUnavailable: " + error.payload.State.ServiceNotAvailable);
 
 				if (isLocked) {
 					events.fire("CP_Evt_Error_Locked_Out", {
@@ -133,6 +152,19 @@
 						"id": cmp.get("v.pageId")
 					});
 				}
+
+				console.log(error.type);
+
+				//Generic error
+				if (error.type === "error") {
+					console.error("WE HAVE AN EEROR")
+					events.fire("CP_Evt_Toast_Error", {
+						"id": "registration-step-3-toast-error",
+						"message": $A.get("$Label.c.CP_Error_General")
+					});
+				}
+
+				
 			}
 		);
 	},

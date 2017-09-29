@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="DTO_InvestmentsPreview">
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_OverviewController">
   
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
@@ -11,10 +11,8 @@
     <aura:attribute name="accountType" type="String" />
     <aura:attribute name="accountTotal" type="String" />
     
-    <aura:attribute name="investmentIGFS" type="List" default="[{ name : 'RRSP - 285920', val1 : '$1403.34', val2: '$18,899.45'},{ name : 'LIF - 285920', val1 : '$5000.00', val2: '$50,899.45'}]" />
-    
+    <aura:attribute name="investmentIGFS" type="List" default="[{ name : 'RRSP - 285920', val1 : '$1403.34', val2: '$18,899.45'},{ name : 'LIF - 285920', val1 : '$5000.00', val2: '$50,899.45'}]" />  
     <aura:attribute name="investmentIGFS_NR" type="List" default="[{ name : 'Non-Registered Investments - 1085529', val1 : '$1403.34', val2: '$18,078.34'}]" />
-    
     <aura:attribute name="investmentIGSI" type="List" default="[{ name : 'RIF (N) -16913022', val1 : '$1403.34', val2: '$18,078.34'}]" />
 
     <!-- HANDLERS -->
