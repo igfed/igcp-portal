@@ -208,10 +208,10 @@
 				"securityQuestion2": cmp.get("v.securityQuestion2"),
 				"answer2": cmp.get("v.answer2"),
 				"securityQuestion3	": cmp.get("v.securityQuestion3"),
-				"answer3": cmp.get("v.answer3"),
-				"lang" : cmp.get("v.lang")
+				"answer3": cmp.get("v.answer3")
 			},
-			"acceptTOS": cmp.get("v.acceptTOS")
+			"acceptTOS": cmp.get("v.acceptTOS"),
+			"lang" : cmp.get("v.lang")
 		});
 	},
 	logPayloadVars: function(cmp, evt, hlpr) {

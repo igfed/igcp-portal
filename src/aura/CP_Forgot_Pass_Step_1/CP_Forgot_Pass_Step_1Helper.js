@@ -27,8 +27,8 @@
 					inputValue = payload.value;
 
 				//Capture values
-				if (inputId === "client-number") {
-					cmp.set("v.clientNum", inputValue);
+				if (inputId === "username-input") {
+					cmp.set("v.username", inputValue);
 				} else if (inputId === "postal-code") {
 					cmp.set("v.postalCode", inputValue);
 				} else if (inputId === "dob") {

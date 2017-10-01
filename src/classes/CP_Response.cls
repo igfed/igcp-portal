@@ -17,7 +17,7 @@ public virtual class CP_Response {
         
         public Result()
         {
-            this.IsValid = false;
+            this.IsValid = true;
             this.IsLocked = false;
             this.ServiceNotAvailable = false;
             this.Fields = new List<String>();

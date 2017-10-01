@@ -1,11 +1,11 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_ForgotPasswordController">
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="forgot-password-step-1"></aura:attribute>
 	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="inputsReceived" type="Integer" default="1"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 	<!-- STEP 1 -->
-	<aura:attribute name="clientNum" type="String"></aura:attribute>
+	<aura:attribute name="username" type="String" ></aura:attribute>
 	<aura:attribute name="postalCode" type="String"></aura:attribute>
 	<aura:attribute name="dob" type="String"></aura:attribute>
 	<!-- INCLUDES -->
@@ -39,7 +39,7 @@
 				<div class="slds-form slds-size_12-of-12">
 					<!--FIELDS-->
 					<!-- CLIENT NUMBER -->
-					<c:CP_Cmp_Input_Text id="client-number" maxLength="13" type="client-number" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Client_Number}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" hasFocus="true" />
+					<c:CP_Cmp_Input_Text id="username-input" type="username" maxLength="32" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Username}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" hasFocus="true" />
 					<!-- POSTAL CODE -->
 					<c:CP_Cmp_Input_Text id="postal-code" maxLength="7" type="postal" label="{!$Label.c.CP_Generic_Label_Postal_Zip_Code}" form="{!v.pageId}" class="slds-size_12-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
 					<!-- DATE OF BIRTH -->

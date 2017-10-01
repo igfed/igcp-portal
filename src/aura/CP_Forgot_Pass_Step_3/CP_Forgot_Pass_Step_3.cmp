@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_ForgotPasswordController">
 	
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="forgot-user-step-3"></aura:attribute>
@@ -7,7 +7,7 @@
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 
 	<!-- STEP 1 -->
-	<aura:attribute name="clientNum" type="String" default=""></aura:attribute>
+	<aura:attribute name="username" type="String" default=""></aura:attribute>
 	<aura:attribute name="postalCode" type="String" default=""></aura:attribute>
     <aura:attribute name="dob" type="String" default=""></aura:attribute>
 

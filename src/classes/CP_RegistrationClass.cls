@@ -1,89 +1,14 @@
 global class CP_RegistrationClass {
 
-    public class IGClientException extends Exception {}
 
-    public class Result
+// Public Functions     
+    public CP_Response.Result verifyIdentity(CP_RegistrationClass.UserIdentity IGUser)
     {
-        //public String Status {get; set; }
-        public Boolean IsValid{get; set;}
-        public Boolean IsLocked{get; set;}
-        public Boolean ServiceNotAvailable{get; set;}
-        public list<String> Fields {get; set; }
-        public list<String> Messages {get; set; }
+        CP_Response.Result result = new CP_Response.Result();
         
-        public Result()
-        {
-            this.IsLocked = false;
-            this.ServiceNotAvailable = false;
-            this.Fields = new List<String>();
-            this.Messages = new List<String>();
-        }
-    }
-
-
-    public class RegistrationForm
-    {
-        public Result State {get; set;}
-        public Boolean acceptTOS {get; set;}
-        public String lang {get; set;}
-        public UserIdentity Identity {get; set; }
-        public UserProfile Profile {get; set;}
-
-        public RegistrationForm()
-        {
-            State = new Result();
-        }
-    }
-
-    public class SecurityQuestions
-    {
-        public Result State {get; set;}
-        public List<String> Questions {get; set;}
-        public SecurityQuestions()
-        {
-            Questions = new List<String>();
-            State = new Result();
-        }
-
-        public void loadQuestions(String lang)
-        {
-            System.debug(lang);
-            List<Security_Question__mdt> questionList = [SELECT 
-                                    Question_Eng__c,
-                                    Question_Fr__c
-                                    FROM Security_Question__mdt];
-
-            for(Security_Question__mdt Q : questionList)
-            {
-                if(lang == 'fr_ca')
-                    this.Questions.add(Q.Question_Fr__c);  
-                else
-                    this.Questions.add(Q.Question_Eng__c);  
-            }
-        }
-    }
-  
-
-    public CP_RegistrationClass.Result verifyIdentity(CP_RegistrationClass.UserIdentity IGUser)
-    {
-        
-        CP_RegistrationClass.Result result = new CP_RegistrationClass.Result();
-        
-       // System.debug('Inside Reg class - IGUser:'+ IGUser);
-
-        if(String.isBlank(IGUser.clientNum))
-        {
-            // Client Number is empty
-            result.IsValid = false;
-            result.Fields.add('clientNum');
-            result.Messages.add(System.Label.CP_Registration_Client_Number_Is_Empty);
-            return result;
-        }
-
-        // Search Contact by Business Partner number
+        // Search Contact by Client/Policy/Loan Number
         Financial_Asset__c objContact = IGUser.getClientInfo();
         
-
         System.debug('Returned Contact object');
         System.debug(objContact);
 
@@ -97,9 +22,8 @@ global class CP_RegistrationClass {
 
             return result;
         }
-        else
+        else // Contact Found Validate Client Status
         {
-            // Contact Found 
             // Contact is Locked 
             if(objContact.Customer__r.Portal_Registration_Is_Locked__c == true)
             {
@@ -110,33 +34,23 @@ global class CP_RegistrationClass {
             }
             else // Contact is not Locked, proceed with other checks
             {
-                if(objContact.Asset_Type__c == 'Joint' && objContact.Is_Registration_Eligibile__c == false)
+                // Check Client's Eligibility for Registration
+                if(objContact.Is_Registration_Eligibile__c == false)
                 {
+                    // Client is not Eligible
                     result.IsValid = false;
-                    result.IsLocked = false;
                     result.Fields.add('clientNum');
                     result.Messages.add(System.Label.CP_Registration_Client_is_Joint_and_Not_allowed_to_Register);
 
                     return result;
                 }
-                else if(objContact.Asset_Type__c == 'Company' && objContact.Is_Registration_Eligibile__c == false)
+                else // Client is Eligible, proceed with other checks
                 {
-                    result.IsValid = false;
-                    result.IsLocked = false;
-                    result.Fields.add('clientNum');
-                    result.Messages.add(System.Label.CP_Registration_Client_is_Company_and_Not_allowed_to_Register);
-
-                    return result;
-                }
-                else
-                {
-                    // Check if the returned Contact has Registered flag set and also has value in ISAM ID field
+                    // Check if the returned Contact has Registered flag set 
                     if(objContact.Customer__r.Portal_User_Is_Registered__c == true)
                     {
-                        // User already Registered
+                        // Client is already Registered
                         result.IsValid = false;
-                        result.IsLocked = false;
-                        //Provided Client number is already Registered.
                         result.Fields.add('clientNum');
                         result.Messages.add(System.Label.CP_Registration_Client_Already_Registered);
                         return result;
@@ -144,38 +58,16 @@ global class CP_RegistrationClass {
                     else
                     {
                         // Validate Contact Postal code and Date of birth with values entered by user
-                        //System.debug('step 1- client num is valid');
-                        if(String.isBlank(IGUser.postalCode))
-                        {
-                            // Postatcode is empty 
-                            result.IsValid = false;
-                            result.Fields.add('postalCode');
-                            result.Messages.add(System.Label.CP_Registration_Postalcode_Is_Empty);
-                        }                
-                        else if(!IGUser.IsValidPostalCode())
-                        {
-                            // Postatcode is empty 
-                            result.IsValid = false;
-                            result.Fields.add('postalCode');
-                            result.Messages.add(System.Label.CP_Registration_Postalcode_Is_Invalid);   
-                        }
-                        else if(!IGUser.PostalCodeMatched(objContact.Customer__r.MailingPostalCode))
+                        if(!IGUser.PostalCodeMatched(objContact.Customer__r.MailingPostalCode))
                         {
                             // Postatcode did not match the stored info in Salesforce.
                             result.IsValid = false;
                             result.Fields.add('postalCode');
                             result.Messages.add(System.Label.CP_Registration_Postalcode_Not_Matched);
                         }
-                        //System.debug('step 2 postal code is valid');
                         
-                        if(String.isBlank(IGUser.dob))
-                        {
-                            // Date of Birth is empty.
-                            result.IsValid = false;
-                            result.Fields.add('dob');
-                            result.Messages.add(System.Label.CP_Registration_DOB_Is_Empty);
-                        }
-                        else if(Date.valueOf(IGUser.dob) != objContact.Customer__r.Birthdate) 
+
+                        if(Date.valueOf(IGUser.dob) != objContact.Customer__r.Birthdate) 
                         {
                             // Date of Birth did not match the stored info in Salesforce.
                             result.IsValid = false;
@@ -183,14 +75,8 @@ global class CP_RegistrationClass {
                             result.Messages.add(System.Label.CP_Registration_DOB_Not_Matched);
                         }
                         
-                        System.debug('step 3 dob is valid ');
-                        // If the result.isValid is still null then it means all validations passed
-                        if(result.IsValid == null)
-                        {
-                            // user Identity varified and data validated
-                            result.IsValid = true;
-                        }
-                        else
+                        // If the result.isValid is false then record failed attempt
+                        if(result.IsValid == false)
                         {
                             result.IsLocked = IGUser.recordFailedAttemptAndLock();
                         }
@@ -198,26 +84,14 @@ global class CP_RegistrationClass {
                     }
                 }    
             }
-            
         }
     }
  
-
-
-    public CP_RegistrationClass.Result verifyProfile(CP_RegistrationClass.UserProfile IGUserProfile)
+    public CP_Response.Result verifyProfile(CP_RegistrationClass.UserProfile IGUserProfile)
     {
-        CP_RegistrationClass.Result result = new CP_RegistrationClass.Result();
+        CP_Response.Result result = new CP_Response.Result();
         
-        result.IsValid = null;
-
-        if(String.isBlank(IGUserProfile.userName))
-        {
-            // User name is empty
-            result.IsValid = false;
-            result.Fields.add('userName');
-            result.Messages.add(System.Label.CP_Registration_User_Name_Is_Empty);
-        }
-        else if(IGUserProfile.UserNameAlreadyExist())
+        if(IGUserProfile.UserNameAlreadyExist())
         {
             // User name already exists
             result.IsValid = false;
@@ -225,37 +99,7 @@ global class CP_RegistrationClass {
             result.Messages.add(System.Label.CP_Registration_User_Name_Already_Exist);
         }
         
-        if(String.isBlank(IGUserProfile.password))
-        {
-            // Confirm Password did not match
-            result.IsValid = false;
-            result.Fields.add('password');
-            result.Messages.add(System.Label.CP_Registration_Password_Is_Empty);   
-        }
-        else if(IGUserProfile.password != IGUserProfile.confirmPassword)
-        {
-            // Confirm Password did not match
-            result.IsValid = false;
-            result.Fields.add('confirmPassword');
-            result.Messages.add(System.Label.CP_Registration_Confirm_Password_Not_Matched);   
-        }
-
-
-        if(String.isBlank(IGUserProfile.email))
-        {
-            // Email is Empty
-            result.IsValid = false;
-            result.Fields.add('email');
-            result.Messages.add(System.Label.CP_Registration_Email_Is_empty);   
-        }
-        else if (!IGUserProfile.IsValidEmail())
-        {
-            // Email is not valid 
-            result.IsValid = false;
-            result.Fields.add('email');
-            result.Messages.add(System.Label.CP_Registration_Email_Is_Invalid);   
-        }
-        else if(IGUserProfile.EmailAlreadyRegistered())
+        if(IGUserProfile.EmailAlreadyRegistered())
         {
             // Email Is Already Registered
             result.IsValid = false;
@@ -263,32 +107,19 @@ global class CP_RegistrationClass {
             result.Messages.add(System.Label.CP_Registration_Email_Is_Already_Registered);
         }
         
-        // If the result.isValid is still null then it means all validations passed
-        if(result.IsValid == null)
-        {
-            // user Identity varified and data validated
-            result.IsValid = true;
-        }
         return result;
     }
 
 
-    public CP_RegistrationClass.Result reValidateAll(RegistrationForm regForm)
+    public CP_Response.Result reValidateAll(RegistrationForm regForm)
     {
-        System.debug('In Revalidate function');
-        System.debug(regForm);
+        CP_Response.Result result = new CP_Response.Result();
 
-        CP_RegistrationClass.Result result = new CP_RegistrationClass.Result();
         if(regForm.acceptTOS)
         {
-            System.debug(regForm.Identity);
-
             result = this.verifyIdentity(regForm.Identity);
-
             if(result.IsValid)
-            {
                 result = verifyProfile(regForm.Profile);
-            }
         }
         else
         {
@@ -300,11 +131,56 @@ global class CP_RegistrationClass {
         return result;
     }
 
-
-    public CP_RegistrationClass.Result SaveInfoInSalesforce(RegistrationForm regForm)
+    public CP_Response.Result RegisterClient(RegistrationForm regForm)
     {
-        System.debug('i m in saveInfo');
-        CP_RegistrationClass.Result result = new CP_RegistrationClass.Result();
+        CP_Response.Result result = new CP_Response.Result();
+
+        // Make the ISAM call and get the new User ID
+        CP_SCIMRestClient restClient = new CP_SCIMRestClient();
+        CP_SCIMRestClient.Response res = new CP_SCIMRestClient.Response();
+        
+        // Pull contact object from SalesForce        
+        Contact objContact = regForm.Identity.getContactObject();
+
+        // Update First and Last Name of regForm object from Contact object
+        regForm.Profile.firstName = objContact.firstName;
+        regForm.Profile.lastName = objContact.lastName; 
+
+        //  make the call to SCIM API to create the User in ISAM 
+        res = restClient.RegisterNewUser(regForm);
+        
+        if(res.success)
+        {
+            // Update the New User ID into Salesforce 
+            regForm.Profile.userId = res.responseBody;
+            result = SaveInfoInSalesforce(regForm);
+        }
+        else
+        {
+            result.IsValid = false;
+            result.ServiceNotAvailable = true;
+            result.Messages.add(res.responseBody);
+        }
+        return result;
+    }
+
+//
+
+
+
+
+
+
+
+
+
+// Privat Functions 
+    private static CP_Response.Result SaveInfoInSalesforce(RegistrationForm regForm)
+    {
+        System.debug('regForm');
+        System.debug(regForm);
+
+        CP_Response.Result result = new CP_Response.Result();
         try
         {
             Contact objContact = regForm.Identity.getContactObject();
@@ -320,16 +196,14 @@ global class CP_RegistrationClass {
                 objContact.Portal_User_Name__c = regForm.Profile.userName;
                 objContact.Portal_User_ID__c = regForm.Profile.userId;
                 objContact.Email = regForm.Profile.email;
-                objContact.Marketing_Email_Optout__c = regForm.Profile.emailOptIn;
-                objContact.Preferred_Language__c = regForm.lang == 'fr' ? 'French' : 'English';
+                objContact.Phone = regForm.Profile.mobilePhone;
+                objContact.Marketing_Email_Optout__c = regForm.Profile.emailOptIn == null ? false : true;
+                objContact.Preferred_Language__c = regForm.lang == null ? 'English' : regform.lang.toUpperCase() == 'FR_CA' ? 'French' : 'English';
                 objContact.Portal_User_Consent_Date__c = DateTime.now();
                 objContact.Portal_User_Consent_Obtained__c = true;
                 objContact.Portal_Action_Failure_Count__c = 0;
 
                 update objContact;
-                System.debug('info saved! ');
-
-                result.IsValid = true;
             }
         }
         catch(exception e)
@@ -341,39 +215,37 @@ global class CP_RegistrationClass {
         return result;
     }
 
+// 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Sub Classes
+
+    public class IGClientException extends Exception {}
+
+
     public class UserIdentity
     {
         public String clientNum { get; set; }
         public String postalCode { get; set; }
         public String dob { get; set; }
         
-        // Search Contact by Business Partner ID
-        /*
-        public Contact getContactByBusinessPartnerID()
-        {
-            List<Contact> contactList = [select ID, FirstName, LastName, Portal_User_Is_Registered__c, Email, Portal_User_ID__c, 
-                Portal_User_Name__c, MailingPostalCode, Birthdate, Business_Partner_ID__c, Preferred_Language__c,
-                Portal_Action_Failure_Count__c, 
-                Portal_Registration_Is_Locked__c,
-                Portal_User_Consent_Date__c, Portal_User_Consent_Obtained__c, Portal_Registration_Eligible__c
-                from Contact 
-                where Business_Partner_ID__c = : String.escapeSingleQuotes(this.clientNum)];
-
-            System.debug(contactList);
-
-            if(contactList.isEmpty())
-                return null;
-            else
-                return contactList[0];
-        }
-        */
-       
         public Contact getContactObject()
         {
             List<Financial_Asset__c> assetList = [select Customer__r.ID, Customer__r.FirstName, Customer__r.LastName, 
                                     Customer__r.Portal_User_Is_Registered__c, Customer__r.Email, Customer__r.Portal_User_ID__c, 
                                 Customer__r.Portal_User_Name__c, Customer__r.MailingPostalCode, Customer__r.Birthdate, 
-                                Customer__r.Business_Partner_ID__c, Customer__r.Preferred_Language__c,
+                                Customer__r.Business_Partner_ID__c, Customer__r.Preferred_Language__c, Customer__r.Phone, 
                                 Customer__r.Portal_Action_Failure_Count__c, Customer__r.Portal_Registration_Is_Locked__c,
                                 Customer__r.Portal_User_Consent_Date__c, Customer__r.Portal_User_Consent_Obtained__c, 
                                 Customer__r.Portal_Registration_Eligible__c
@@ -385,8 +257,6 @@ global class CP_RegistrationClass {
                 ];
 
 
-                System.debug(assetList);
-
                 if(assetList.isEmpty())
                     return null;
                 else
@@ -397,6 +267,7 @@ global class CP_RegistrationClass {
                     objContact.LastName = assetList[0].Customer__r.LastName;
                     objContact.Portal_User_Is_Registered__c = assetList[0].Customer__r.Portal_User_Is_Registered__c;
                     objContact.Email = assetList[0].Customer__r.Email;
+                    objContact.Phone = assetList[0].Customer__r.Phone;
                     objContact.Portal_User_ID__c = assetList[0].Customer__r.Portal_User_ID__c;
                     objContact.Portal_User_Name__c = assetList[0].Customer__r.Portal_User_Name__c;
                     objContact.MailingPostalCode = assetList[0].Customer__r.MailingPostalCode;
@@ -437,8 +308,6 @@ global class CP_RegistrationClass {
                                   OR (RecordType.DeveloperName = 'Loan_Asset'  AND Loan_Number__c = : String.escapeSingleQuotes(this.clientNum))
                                   OR (RecordType.DeveloperName = 'Policy_Asset'  AND Policy_Number__c = : String.escapeSingleQuotes(this.clientNum))
                     ]; 
-
-            System.debug(assetList);
 
             if(assetList.isEmpty())
                 return null;
@@ -522,10 +391,14 @@ global class CP_RegistrationClass {
 
         public Boolean UserNameAlreadyExist()
         {
+            // First check salesforce records to see if UserName exists
+            
             List<contact> contactList = [select ID, Portal_User_Is_Registered__c, Email, Portal_User_ID__c, 
                 Portal_User_Name__c, MailingPostalCode, Birthdate, Business_Partner_ID__c 
                 from Contact 
                 where Portal_User_Name__c = : String.escapeSingleQuotes(this.userName) limit 1];
+
+            // If UserName not found then check if it exists in ISAM
             if(contactList.isEmpty())
             {
                 CP_SCIMRestClient restClient = new CP_SCIMRestClient();
@@ -581,7 +454,61 @@ global class CP_RegistrationClass {
             return MyMatcher.matches();
         }
         
-
     }
     
+     public class RegistrationForm
+    {
+        public Boolean acceptTOS {get; set;}
+        public String lang {get; set;}
+        public UserIdentity Identity {get; set; }
+        public UserProfile Profile {get; set;}
+    }
+
+
+    public class SecurityQuestions extends CP_Response
+    {
+        public List<String> Questions {get; set;}
+        public SecurityQuestions()
+        {
+            super();
+            Questions = new List<String>();
+        }
+
+        public void loadQuestions(String lang)
+        {
+            try
+            {
+                System.debug(lang);
+                List<Security_Question__mdt> questionList = [SELECT 
+                                        Question_Eng__c,
+                                        Question_Fr__c
+                                        FROM Security_Question__mdt];
+                if(!questionList.isEmpty())
+                {
+
+                    for(Security_Question__mdt Q : questionList)
+                    {
+                        if(lang.toUpperCase() == 'FR_CA')
+                            this.Questions.add(Q.Question_Fr__c); 
+                        else
+                            this.Questions.add(Q.Question_Eng__c);
+                    }
+                }
+                else
+                {
+                    this.State.IsValid = false; 
+                    this.State.Messages.add(System.label.CP_Registration_Security_Questions_Not_Found);
+                }
+            }
+            catch(Exception e)
+            {
+                this.State.IsValid = false;
+                this.State.Messages.add(e.getMessage());
+            }
+        }
+
+    }
+
+//
+
 }
