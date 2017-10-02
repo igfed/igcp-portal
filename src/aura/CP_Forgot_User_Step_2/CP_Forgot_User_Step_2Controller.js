@@ -41,13 +41,6 @@
 		//we are ready to submit to the backend
 		if (cmp.get("v.inputsReceived") === 1 && cmp.get("v.inputErrors") === false) {
 
-			// cmp.set("v.payload", {
-			// 	"clientNum": cmp.get("v.clientNum"),
-			// 	"email" : cmp.get("v.email"),
-			// 	"question": cmp.get("v.question"),
-			// 	"answer": cmp.get("v.answer")
-			// });
-
 			hlpr.addToCurrentPayload(cmp, "answer", cmp.get("v.answer"));
 
 			cmp.onSubmitForm();

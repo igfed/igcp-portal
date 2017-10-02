@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_ForgotPasswordController">
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="forgot-user-step-2"></aura:attribute>
 	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
@@ -6,7 +6,7 @@
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 
 	<!-- STEP 1 -->
-	<aura:attribute name="clientNum" type="String"></aura:attribute>
+	<aura:attribute name="username" type="String"></aura:attribute>
 	<aura:attribute name="postalCode" type="String" default=""></aura:attribute>
     <aura:attribute name="dob" type="String" default=""></aura:attribute>
 
@@ -19,8 +19,9 @@
 	<c:CP_Utils aura:id="CP_Utils" />
 	<c:CP_Validation aura:id="CP_Validation" />
 	<c:CP_Services aura:id="CP_Services" />
+	
 	<!-- HANDLER -->
-	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
@@ -48,6 +49,10 @@
 			<p class="igcp-utils__width--100 igcp-large-utils__width--75">{!v.question}</p>
 			<div class="slds-grid slds-wrap">
 				<div class="slds-form slds-size_12-of-12">
+					<!-- TOAST ERROR -->
+                	<c:CP_Cmp_Toast id="error-box"
+                		type="error"
+                		class="slds-m-top--x-small slds-m-bottom--xxx-small"/>
 					<!--FIELDS-->
 					<c:CP_Cmp_Input_Text id="answer-input" type="text" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Answer}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" hasFocus="true" />
 					<div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>

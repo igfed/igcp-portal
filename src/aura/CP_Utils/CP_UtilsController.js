@@ -98,13 +98,28 @@
 				}, 500);
 		}
 	},
-	getURLParams: function(cmp, evt, hlpr) {
+	onGetURLParams: function(cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
-			console.log("getURLParams");
-			console.log(params);
-			console.log(window.location.href)
+
+			if(window.location.search) {
+
+				var 
+					queryPairs = location.search.slice(1).split('&'),
+					paramObj = {};
+
+				queryPairs.forEach(function(item, i) {
+					item = item.split('=');
+					paramObj[item[0]] = decodeURIComponent(item[1] || '');
+				});
+
+				params.callback(JSON.parse(JSON.stringify(paramObj)));
+
+			} else {
+				params.callback({});
+				console.warn("No query params detected.");
+			}
 		}
 
 	}

@@ -37,5 +37,10 @@
 				});
 			}
 		});
+	},
+	addToCurrentPayload: function(cmp, key, value) {
+		var currentPayload = cmp.get("v.payload");
+		currentPayload[key] = value;
+		cmp.set("v.payload", currentPayload);
 	}
 })

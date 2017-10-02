@@ -31,6 +31,7 @@ private class CP_RegistrationClassTest {
 			contactObj2.Portal_User_Is_Registered__c = false;
 			
 			contactList.add(contactObj2);
+			// some test 
 
 			insert contactList;
 	}

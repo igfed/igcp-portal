@@ -94,6 +94,9 @@
 			try {
 				action = component.get("c.getSecurityQuestions");
 				action.setParams({ payload: JSON.stringify(component.get("v.payload")) });
+				console.log("get getSecurityQuestions");
+
+				console.log(component.get("v.payload"));
 
 				// Create a callback that is executed after 
 				// the server-side action returns
@@ -255,6 +258,7 @@
 	onGetInvestmentsPreview: function(cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
+
 			console.log("getInvestmentsPreview");
 			var
 				component = params.component,
@@ -263,21 +267,21 @@
 			try {
 
 				action = component.get("c.getInvestmentPreviewDTO");
-				action.setCallback(this, function(response) {
-					console.log("onGetInvestmentsPreview response");
 
-					var state = response.getState(),
-						res;
+
+				action.setParams({ bpid: params.bpid });
+
+
+				action.setCallback(this, function(response) {
+
+					var state = response.getState();
 
 					if (state === "SUCCESS") {
 						// Alert the user with the value returned 
 						// from the server
 
-						res = JSON.parse(response.getReturnValue());
-						console.log(res);
-
-						if (res !== null) {
-							params.successCB(res);
+						if (response !== null) {
+							params.successCB(response.returnValue);
 						} else {
 							params.errorCB({
 								"payload": "No BPID was found in Salesforce",
@@ -299,16 +303,13 @@
 						var errors = response.getError();
 
 						if (errors) {
-							if (errors[0] && errors[0].message) {
-								console.error("Error message: " +
-									errors[0].message);
+							if (errors) {
 								params.errorCB({
-									"payload": errors[0].message,
+									"payload": errors,
 									"type": "server-side-error"
 								});
 							}
 						} else {
-							console.error("Unknown error");
 							params.errorCB({
 								"payload": "Unknown error",
 								"type": "server-side-error"

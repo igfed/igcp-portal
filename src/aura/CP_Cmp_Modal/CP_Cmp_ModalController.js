@@ -7,12 +7,8 @@
 	},
 	onClose: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
-		console.log('CLOSE!!!!!!!!!');
-		console.log(payload);
 
 		if (payload) {
-			console.log("MODAL: onClose");
-			console.log(payload);
 			
 			if (payload.id === cmp.get("v.id")) {
 				cmp.set("v.class", "igcp-modal slds-grid slds-wrap slds-p-around--xx-large");
@@ -23,8 +19,6 @@
 	},
 	onOpen: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
-
-		console.log("MODAL: onOpen: " + payload.id);
 
 		if (payload.id === cmp.get("v.id")) {
 

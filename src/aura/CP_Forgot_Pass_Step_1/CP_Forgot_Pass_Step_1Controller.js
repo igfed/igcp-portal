@@ -28,15 +28,12 @@
 			});
 
 			cmp.set("v.payload", {
-				"clientNum": cmp.get("v.clientNum"),
+				"username": cmp.get("v.username"),
 				"postalCode": cmp.get("v.postalCode"),
 				"dob": formattedDob
 			});
 
-			//The backend controller isn't ready yet
 			//cmp.onSubmitForm();
-
-			//Go here temporarily
 			cmp.gotoNextStep();
 		}
 	},
@@ -65,11 +62,12 @@
 
 				fields.forEach(function(errorType, i) {
 					var msgArr = [];
+
 					
-					if (errorType === "username") {
+					if (errorType === "username-input") {
 						msgArr.push({"msg" : messages[i]});
 						events.fire("CP_Evt_Input_Error", {
-							"id": "username",
+							"id": "username-input",
 							"errors": msgArr
 						});
 					}
@@ -90,6 +88,14 @@
 						});
 					}
 				});
+
+				//Generic error
+				if (error.type === "error") {
+					events.fire("CP_Evt_Toast_Error", {
+						"id": "forgot-pass-step-1-toast-error",
+						"message": $A.get("$Label.c.CP_Error_General")
+					});
+				}
 			}
 		);
 	},

@@ -36,6 +36,9 @@
 
 		var payload = evt.getParam("payload");
 
+		console.log("Payload");
+		console.log(payload);
+
 		if (cmp.get("v.id") === payload.id && payload.formId === cmp.get("v.form")) {
 			cmp.set("v.inputValue", payload.value);
 		}

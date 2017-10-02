@@ -6,6 +6,10 @@
 			services = cmp.find("CP_Services"),
 			utils = cmp.find("CP_Utils");
 
+		cmp.set("v.payload", {
+			"lang" : cmp.get("v.lang")
+		});
+
 		services.getSecurityQuestions(
 			cmp,
 			function(res) {

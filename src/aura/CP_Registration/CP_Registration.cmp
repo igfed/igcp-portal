@@ -50,8 +50,7 @@
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 1}"  >
-    		<c:CP_Registration_Step_1 
-    			clientNum="{!v.clientNum}" 
+    		<c:CP_Registration_Step_1 clientNum="{!v.clientNum}" 
     			postalCode="{!v.postalCode}" 
     			dob="{!v.dob}" />
     	</aura:if>
@@ -68,7 +67,8 @@
     			securityQuestion2="{!v.securityQuestion2}"
     			answer2="{!v.answer2}"
     			securityQuestion3="{!v.securityQuestion3}"
-    			answer3="{!v.answer3}"/>
+    			answer3="{!v.answer3}"
+    			lang="{!v.lang}"/>
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 3}"  >

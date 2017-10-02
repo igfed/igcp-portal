@@ -20,6 +20,7 @@
 	</aura:method>
 	<!-- GET INVESTMENTS PREVIEW -->
 	<aura:method name="getInvestmentsPreview" action="{!c.onGetInvestmentsPreview}">
+		<aura:attribute name="bpid" type="String"></aura:attribute>
 		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
 		<aura:attribute name="successCB" type="function" default="" />
 		<aura:attribute name="errorCB" type="function" default="" />

@@ -1,7 +1,27 @@
 ({
-	doneRendering: function(cmp, evt, hlpr) {
+	onInit: function(cmp, evt, hlpr) {
 		//call to get security question
-		cmp.set("v.question", "What's your dogs name?")
+		//cmp.set("v.question", "What's your dogs name?");
+
+		var services = cmp.find("CP_Services");
+
+		//set client num
+		cmp.set("v.payload", {
+			"username": cmp.get("v.username")
+		});
+
+		services.getRandSecurityQuestion(
+			cmp,
+			function(success) {
+				cmp.set("v.question", success["payload"][0]);
+				hlpr.addToCurrentPayload(cmp, "question", success["payload"][0]);
+				cmp.set("v.question", success["payload"][0].question);
+			},
+			function(error) {
+				console.error("GET RANDOM QUESTION");
+				console.error(error);
+			}
+		);
 	},
 	onSubmit: function(cmp, evt, hlpr) {
 
@@ -14,7 +34,10 @@
 	},
 	onInputValueReceived: function(cmp, evt, hlpr) {
 
-		var inputs = cmp.get("v.inputsReceived");
+		var 
+			utils = cmp.find("CP_Utils"),
+			inputs = cmp.get("v.inputsReceived"),
+			formattedDob = "";
 
 		hlpr.validateInput(cmp, evt.getParam("payload"));
 
@@ -24,18 +47,18 @@
 		//we are ready to submit to the backend
 		if (cmp.get("v.inputsReceived") === 1 && cmp.get("v.inputErrors") === false) {
 
-			console.log("HHJKSHJKJKAHSHJK");
+			utils.convertToYMD(cmp.get("v.dob"), function(value) {
+				formattedDob = value;
+			});
+
 
 			cmp.set("v.payload", {
-				"clientNum": cmp.get("v.clientNum"),
+				"username": cmp.get("v.username"),
 				"postalCode": cmp.get("v.postalCode"),
-				"dob": cmp.get("v.dob"),
+				"dob": formattedDob,
 				"question" : cmp.get("v.question"),
 				"answer": cmp.get("v.answer")
 			});
-
-			console.log("PAYLOAD")
-			console.log(cmp.get("v.payload"))
 
 			cmp.gotoNextStep();
 
@@ -69,22 +92,34 @@
 
 				if (serviceUnavailable) {
 					events.fire("CP_Evt_Error_Not_Completed", {
-						"id": "forgot-password"
+						"id": "forgot-username"
 					});
 				}
 
 				fields.forEach(function(errorType, i) {
 					var msgArr = [];
-					
+
 					if (errorType === "answer") {
-						msgArr.push({"msg" : messages[i]});
+						msgArr.push({ "msg": messages[i] });
 						events.fire("CP_Evt_Input_Error", {
-							"id": "answer",
+							"id": "text-input",
 							"errors": msgArr
 						});
 					}
-
 				});
+
+				if (error.type === "server-side-error") {
+					events.fire("CP_Evt_Toast_Error", {
+						"id": "error-box",
+						"message": $A.get("$Label.namespace.CP_Error_Server_Side_Generic")
+					});
+				} else {
+					//Display toast
+					events.fire("CP_Evt_Toast_Error", {
+						"id": "error-box",
+						"message": messages[0]
+					});
+				}
 			}
 		);
 	},

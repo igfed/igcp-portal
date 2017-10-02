@@ -31,7 +31,7 @@ public  class CP_RegistrationControllerTest {
 			contactObj2.Portal_User_Is_Registered__c = false;
 			
 			contactList.add(contactObj2);
-
+// some test
 			insert contactList;
 	}
 
@@ -49,7 +49,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_Client_Number_Is_Empty, result.State.Messages[0]);
@@ -61,7 +61,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_Client_Number_Is_Empty, result.State.Messages[0]);
@@ -73,7 +73,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_Client_Number_Not_Found, result.State.Messages[0]);
@@ -85,7 +85,7 @@ public  class CP_RegistrationControllerTest {
  
 		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_Client_Already_Registered, result.State.Messages[0]);
@@ -97,7 +97,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_Postalcode_Is_Empty, result.State.Messages[0]);
@@ -109,7 +109,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_Postalcode_Is_Empty, result.State.Messages[0]);
@@ -121,7 +121,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_Postalcode_Is_Invalid, result.State.Messages[0]);
@@ -133,7 +133,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_Postalcode_Not_Matched, result.State.Messages[0]);
@@ -145,7 +145,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_DOB_Is_Empty, result.State.Messages[0]);
@@ -157,7 +157,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_DOB_Is_Empty, result.State.Messages[0]);
@@ -168,7 +168,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_DOB_Not_Matched, result.State.Messages[0]);
@@ -180,7 +180,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 		List<String> emptyList = new List<String>();
 		System.assertEquals(true, result.State.IsValid);
 		System.assertEquals(emptyList, result.State.Fields);
@@ -195,7 +195,8 @@ public  class CP_RegistrationControllerTest {
 
 	@isTest static void test_GetSecurityQuestions()
 	{
-		String jsonResult = CP_RegistrationController.getSecurityQuestions();
+		String jsonObj = '{ "lang" : "fr_ca" }';
+		String jsonResult = CP_RegistrationController.getSecurityQuestions(jsonObj);
 		
 		//System.debug(jsonResult);
 
@@ -220,7 +221,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_User_Name_Is_Empty, result.State.Messages[0]);
@@ -232,7 +233,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_User_Name_Is_Empty, result.State.Messages[0]);
@@ -244,7 +245,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_User_Name_Already_Exist, result.State.Messages[0]);
@@ -256,7 +257,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_Password_Is_Empty, result.State.Messages[0]);
@@ -268,7 +269,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_Password_Is_Empty, result.State.Messages[0]);
@@ -280,7 +281,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_Confirm_Password_Not_Matched, result.State.Messages[0]);
@@ -293,7 +294,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_Email_Is_empty, result.State.Messages[0]);
@@ -306,7 +307,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_Email_Is_empty, result.State.Messages[0]);
@@ -318,7 +319,7 @@ public  class CP_RegistrationControllerTest {
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
-		CP_RegistrationClass.RegistrationForm result = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(jsonResult, CP_RegistrationClass.RegistrationForm.class);
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_Email_Is_Invalid, result.State.Messages[0]);
