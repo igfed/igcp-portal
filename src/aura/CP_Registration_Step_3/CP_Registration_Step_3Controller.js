@@ -207,7 +207,7 @@
 				"answer1": cmp.get("v.answer1"),
 				"securityQuestion2": cmp.get("v.securityQuestion2"),
 				"answer2": cmp.get("v.answer2"),
-				"securityQuestion3	": cmp.get("v.securityQuestion3"),
+				"securityQuestion3": cmp.get("v.securityQuestion3"),
 				"answer3": cmp.get("v.answer3")
 			},
 			"acceptTOS": cmp.get("v.acceptTOS"),

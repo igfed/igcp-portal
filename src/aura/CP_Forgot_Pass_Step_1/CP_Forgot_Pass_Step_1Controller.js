@@ -33,8 +33,7 @@
 				"dob": formattedDob
 			});
 
-			//cmp.onSubmitForm();
-			cmp.gotoNextStep();
+			cmp.onSubmitForm();
 		}
 	},
 	onInputBlur: function(cmp, evt, hlpr) {
@@ -50,7 +49,7 @@
 			"StepOne",
 			cmp,
 			function(evt) {
-				cmp.onNextStep();
+				cmp.gotoNextStep();
 			},
 			function(error) {
 				console.error("Step 1: Error");

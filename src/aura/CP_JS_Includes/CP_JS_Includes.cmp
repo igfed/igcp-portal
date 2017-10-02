@@ -1,6 +1,7 @@
 <aura:component >
 	<ltng:require scripts="{!join(',', 
     	$Resource.igcpresources + '/igcp-resources/scripts/jquery.js',
+    	$Resource.igcpresources + '/igcp-resources/scripts/dtm-controller.js',
     	$Resource.igcpresources + '/igcp-resources/scripts/what-input.js',
     	$Resource.igcpresources + '/igcp-resources/scripts/foundation.js')}" 
 	afterScriptsLoaded="{!c.scriptsLoaded}"/>

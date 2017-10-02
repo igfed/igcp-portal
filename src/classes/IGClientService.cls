@@ -148,6 +148,35 @@ public class IGClientService {
 		return rv;
 	}
 
+	public static List<DTO_AssetMixDetail> getAssetMixDetails(String clientBpid) {
+		List<DTO_AssetMixDetail> rv = new List<DTO_AssetMixDetail>();
+		if (String.isBlank(clientBpid)) {
+			throw new IGClientServiceException('The client bpid can\'t be null or empty');
+		}
+		IGRestClient client = IGRestClientFactory.getIGRestClient('AssetMix', 'IG_Client_Service');
+		if (client != null) {
+			IGAssetMixClient theClient = (IGAssetMixClient)client;
+			theClient.bpid = clientBpid;
+			IGRestClient.Response res = theClient.getServiceData();
+		    System.debug('=====> getAssetMixDetails.res: ' + res);
+		    if (res != null) {
+		    	if (!res.success) {
+		    		System.debug('=====> getMortgageDetails.ERROR: ' + res.success + ', ' + res.code + ', ' + res.error);
+		            throw new IGClientServiceException('Service call failed: ' + res.success + ', ' + res.code + ', ' + res.error);
+	            } else {
+	            	IGAssetMixClient.AssetMixData data = (IGAssetMixClient.AssetMixData)res;
+	            	System.debug('=====> getAssetMixDetails.data: ' + data);
+	            	if (data.Client != null && data.Client.AssetMixes != null && !data.Client.AssetMixes.isEmpty()) {
+	            		for (IGAssetMixClient.AssetMixes assetMix : data.Client.AssetMixes) {
+	            			rv.add(new DTO_AssetMixDetail(assetMix));
+	            		}
+	            	}
+	            }
+		    }
+		}
+		return rv;
+	}
+
 	public class IGClientServiceException extends Exception {
 
 	}

@@ -1,4 +1,5 @@
 ({
-	myAction : function(component, event, helper) {
+	onInit: function(cmp, evt, hlpr) {
+		
 	}
 })

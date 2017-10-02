@@ -1,8 +1,16 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
-    <aura:attribute name="accountName" type="String" />
-    <aura:attribute name="val1" type="String" />
-    <aura:attribute name="val2" type="String" />
-    
+
+	<!-- ATTRS -->
+    <aura:attribute name="accountName" type="String" default="Account Name"/>
+    <aura:attribute name="val1" type="String" default="123.45"/>
+    <aura:attribute name="val2" type="String" default="678.91"/>
+
+    <aura:attribute name="account" type="Map"></aura:attribute>
+
+    <!-- HANDLER -->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+
+    <!-- MARKUP -->
     <div class="igcp-underline slds-grid slds-wrap slds-p-bottom-x-small">
     
         <div class="slds-p-top--small slds-large-p-vertical--small slds-size_12-of-12 slds-large-size_6-of-12"><span class="igcp-underline">{!v.accountName}</span></div>

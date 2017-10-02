@@ -8,4 +8,5 @@
             {!v.body}
         </div>
     </div>
+
 </aura:component>

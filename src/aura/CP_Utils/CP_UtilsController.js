@@ -122,5 +122,22 @@
 			}
 		}
 
+	},
+	onForEach: function(cmp, evt, hlpr){
+		var params = evt.getParam("arguments");
+		if (params) {
+
+			if(typeof(params.obj) === "object") {
+				var key, obj;
+
+				obj = params.obj;
+
+				for(key in obj) {
+					params.callback(key, obj[key]);
+				}
+			} else {
+				console.error("CP_Utils: forEach: this method only accepts objects.");
+			}
+		}
 	}
 })

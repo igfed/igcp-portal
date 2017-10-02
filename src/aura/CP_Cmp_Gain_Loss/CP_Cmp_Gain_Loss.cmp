@@ -1,27 +1,31 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
-
+	<!-- ATTRS -->
 	<aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"></aura:attribute>
-
 	<aura:attribute name="label" type="String" default="Gain / Loss"></aura:attribute>
 	<aura:attribute name="description" type="String" default=""></aura:attribute>
-
-	<aura:attribute name="value" type="String" ></aura:attribute>
-
-	<aura:attribute name="percentage" type="String" ></aura:attribute>
-
-    <div class="{v.class}">
-         
-         <h3 class="igcp-label--small slds-m-bottom--none slds-large-m-bottom--x-small">{!v.label}
-         	
+	<aura:attribute name="value" type="String"></aura:attribute>
+	<aura:attribute name="percentage" type="String"></aura:attribute>
+	<aura:attribute name="gainLossType" type="String" default="neutral"></aura:attribute>
+	
+	<!-- MARKUP -->
+	<div class="{v.class}">
+		<h3 class="igcp-label--small slds-m-bottom--none slds-large-m-bottom--x-small">{!v.label}
          	<span class="igcp-utils__font--book igcp-utils__font-size--x-small igcp-utils__text--default slds-m-left--xxx-small">{!v.description}</span>
-
-         </h3>
-         
-         <div class="igcp-value--large slds-m-bottom--small slds-large-m-bottom--none"><sup>$</sup>{!v.value}<span class="igcp-percentage--large">
-         	<sup><lightning:icon iconName="utility:arrowup" size="x-small" class="igcp-value--gain" /></sup>
-         	{!v.percentage}%
-
-         </span>
-         </div>
-    </div>
+		</h3>
+		<div class="igcp-value--large slds-m-bottom--small slds-large-m-bottom--none">
+			<sup>$</sup> {!v.value}
+			<aura:if isTrue="{!v.gainLossType == 'positive'}">
+				<span class="igcp-percentage--large">
+         			<sup><lightning:icon iconName="utility:arrowup" size="x-small" class="igcp-value--gain" /></sup>
+         			{!v.percentage}%
+         		</span>
+			</aura:if>
+			<aura:if isTrue="{!v.gainLossType == 'negative'}">
+				<span class="igcp-percentage--large">
+         			<sup><lightning:icon iconName="utility:arrowdown" size="x-small" class="igcp-value--loss" /></sup>
+         			{!v.percentage}%
+         		</span>
+			</aura:if>
+		</div>
+	</div>
 </aura:component>

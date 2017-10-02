@@ -63,5 +63,13 @@
 	<aura:method name="getURLParams" action="{!c.onGetURLParams}">
 		<aura:attribute name="callback" type="function" default="" />
 	</aura:method>
+ 
+	<!-- FOR EACH -->
+	<!-- A Lodash style forEach loop -->
+	<aura:method name="forEach" action="{!c.onForEach}">
+		<aura:attribute name="obj" type="Map" ></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+
 	
 </aura:component>

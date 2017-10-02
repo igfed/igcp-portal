@@ -1,10 +1,13 @@
 public class CP_SCIMRestClient {
 	
     private static string HTTP_HEADER_ACPT  = 'Accept';
+    private static string CONTENT_TYPE      = 'Content-Type';
     private static String REST_CONTENT		= 'application/json';
+
     private static String REST_GET_METHOD	= 'GET';
     private static String REST_POST_METHOD	= 'POST';
-    private static String NAMED_CREDENTAIL	= 'IG_SCIM_API_Named_Credential';
+    private static String USER_API_NAMED_CREDENTAIL	= 'IG_SCIM_User_API';
+    private static String AUTH_API_NAMED_CREDENTAIL  = 'IG_SCIM_Auth_API';
 
 
 
@@ -29,7 +32,7 @@ public class CP_SCIMRestClient {
                 userJSON = JSON.serialize(newUser); 
                 userJSON = userJSON.replace('PlaceHolderForQuestionsListNode','urn:ietf:params:scim:schemas:extension:isam:1.0:UserKnowledgeQuestions');
 
-                response = callPostRESTService(userJSON);
+                response = callPostRESTService(USER_API_NAMED_CREDENTAIL, userJSON);
 
                 if(response.success)
                 {
@@ -68,7 +71,7 @@ public class CP_SCIMRestClient {
        
         public IGUser RetrieveUserByUserId(String userId)
         {
-            Response res = this.callGetRESTService('/'+ userId);
+            Response res = this.callGetRESTService(USER_API_NAMED_CREDENTAIL, '/'+ userId);
             if(res.success)
             {
                 res.responseBody = res.responseBody.replace('urn:ietf:params:scim:schemas:extension:isam:1.0:UserKnowledgeQuestions', 'PlaceHolderForQuestionsListNode');
@@ -80,6 +83,26 @@ public class CP_SCIMRestClient {
             return null;
         }
         
+  
+
+        public String getRandomSecurityQuestion(String userId)
+        {
+            QuestionClass randomQuestion = new QuestionClass();
+            IGUser thisUser = this.RetrieveUserByUserId(userId);
+            if(thisUser != null)
+            {
+                System.debug('IG User from ISAM');
+                System.debug(thisUser);
+
+                randomQuestion.id = '1';
+                randomQuestion.question = 'some question';
+                return JSON.serialize(randomQuestion);
+            }
+            return null;
+        }
+
+
+
     //
 
 
@@ -185,7 +208,7 @@ public class CP_SCIMRestClient {
         {
             String location;
             String param = '?filter=userName%20ew%20'+ userName +'&attributes=userName';
-            Response response = this.callGetRESTService(param); 
+            Response response = this.callGetRESTService(USER_API_NAMED_CREDENTAIL, param); 
 
             if(response.success)
             {
@@ -218,14 +241,16 @@ public class CP_SCIMRestClient {
     // Core Private Functions    
         
         // GET
-        private Response callGetRESTService(String param) {
+        private Response callGetRESTService(String namedCredential, String param) {
         	Response ret;
         	try
         	{
         		HttpRequest req = new HttpRequest();
-    	        req.setEndpoint('callout:' +  NAMED_CREDENTAIL + param);
+    	        req.setEndpoint('callout:' +  namedCredential + param);
     	        req.setMethod(REST_GET_METHOD);
     	        req.setHeader(HTTP_HEADER_ACPT, REST_CONTENT);
+                req.setHeader(CONTENT_TYPE, REST_CONTENT);
+                
     	        req.setTimeout(120000);
     	
     	        Http http = new Http();
@@ -245,14 +270,15 @@ public class CP_SCIMRestClient {
         }
         
         //POST 
-        private Response callPostRESTService(String body) {
+        private Response callPostRESTService(String namedCredential, String body, String param) {
         	Response ret;
         	try
         	{
     	    	HttpRequest req = new HttpRequest();
-    	        req.setEndpoint('callout:' +  NAMED_CREDENTAIL);
+    	        req.setEndpoint('callout:' +  namedCredential + param);
     	        req.setMethod(REST_POST_METHOD);
     	        req.setHeader(HTTP_HEADER_ACPT, REST_CONTENT);
+                req.setHeader(CONTENT_TYPE, REST_CONTENT);
     	        req.setTimeout(120000);
     	        req.setBody(body);
 
@@ -273,6 +299,36 @@ public class CP_SCIMRestClient {
     	    	ret = new Response(false, 500, e.getMessage());
         	}
         	return ret;
+        }
+
+        private Response callPostRESTService(String namedCredential, String body) {
+            Response ret;
+            try
+            {
+                HttpRequest req = new HttpRequest();
+                req.setEndpoint('callout:' +  namedCredential);
+                req.setMethod(REST_POST_METHOD);
+                req.setHeader(HTTP_HEADER_ACPT, REST_CONTENT);
+                req.setTimeout(120000);
+                req.setBody(body);
+
+                System.debug('Data Sent to ISAM');
+                System.debug(body);
+
+                Http http = new Http();
+                HTTPResponse res = http.send(req);
+            
+                System.debug('ISAM Response Object from POST');
+                System.debug(res);
+
+                Integer resStatusCode = res.getStatusCode();
+                ret = new Response((201 == resStatusCode), resStatusCode, res.getBody());
+            }
+            catch(exception e)
+            {
+                ret = new Response(false, 500, e.getMessage());
+            }
+            return ret;
         }
 
     // 

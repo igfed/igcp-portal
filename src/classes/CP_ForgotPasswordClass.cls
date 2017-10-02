@@ -57,15 +57,14 @@ public class CP_ForgotPasswordClass {
     	// Search Contact by Business Partner ID
         private Contact getContactByUserName()
         {
-            List<Contact> contactList = [select ID, Portal_User_Is_Registered__c, Email, 
-                Portal_User_ID__c, Portal_User_Name__c, 
+            List<Contact> contactList = [select ID, Portal_User_Is_Registered__c,
+                Portal_User_ID__c, Portal_User_Name__c, Email, Phone, 
                 MailingPostalCode, Birthdate, Business_Partner_ID__c, Preferred_Language__c, 
                 Portal_Action_Failure_Count__c, Portal_Security_Answer_Failure_Count__c, 
                 Portal_User_Is_Locked__c
                 from Contact 
                 where Portal_User_Name__c = : String.escapeSingleQuotes(this.username)
-                AND Portal_User_Is_Registered__c = true
-                AND Portal_User_Name__c != null AND Portal_User_Name__c != ''];
+                AND Portal_User_Is_Registered__c = true];
 
             System.debug(contactList);
 
@@ -75,48 +74,48 @@ public class CP_ForgotPasswordClass {
                 return contactList[0];
         }
 
-        
 
-        public CP_Response verifyClient()
+        public CP_Response.Result verifyClient()
         {
-        	CP_Response response = new CP_Response();
+        	CP_Response.Result state = new CP_Response.Result();
         	try
         	{
                 Contact objContact = this.getContactByUserName();
                 if(objContact == null)
                 {
-                    response.State.IsValid = false;
-                    response.State.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);    
-                }
-                else if(objContact.MailingPostalCode.remove(' ').remove('-').toUpperCase() != this.postalCode.remove(' ').remove('-').toUpperCase())
-                {   
-                    response.State.IsValid = false;
-                    response.State.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);
-                }
-                else if(objContact.Birthdate != Date.valueOf(this.dob))
-                {   
-                    response.State.IsValid = false;
-                    response.State.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);
+                    state.IsValid = false;
+                    state.Messages.add(System.Label.CP_Forgot_Pass_User_Name_Not_Found);
                 }
                 else
                 {
                     if(objContact.Portal_User_Is_Locked__c == true)
                     {
-                        response.State.IsValid = false;
-                        response.State.IsLocked = true;
+                            state.IsValid = false;
+                            state.IsLocked = true;
                     }
                     else
                     {
-                        response.State.IsValid = true;
+                        if(!CP_Utility.PostalCodeMatched(this.postalCode, objContact.MailingPostalCode))
+                        {   
+                            state.IsValid = false;
+                            state.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);
+                            state.IsLocked = this.recordFailedAttemptAndLock();
+                        }
+                        else if(objContact.Birthdate != Date.valueOf(this.dob))
+                        {   
+                            state.IsValid = false;
+                            state.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);
+                            state.IsLocked = this.recordFailedAttemptAndLock();
+                        }
                     }
                 }
         	}
         	catch(exception e)
         	{
-	            response.State.IsValid = false;
-	            response.State.Messages.add(e.getMessage());
+	            state.IsValid = false;
+	            state.Messages.add(e.getMessage());
         	}
-        	return response;
+        	return state;
         }
 
 
@@ -140,22 +139,10 @@ public class CP_ForgotPasswordClass {
                     {
                         CP_SCIMRestClient restClient = new CP_SCIMRestClient();
                         CP_SCIMRestClient.IGUser thisUser; 
-                        
-                        response.State.IsValid = true; 
-                        response.State.IsLocked = false; 
-                        response.Questions.add(new CP_ForgotPasswordClass.QuestionClass('1', 'this is a hard coded question'));
-                        
-                        /*
-                        if(!String.isBlank(objContact.Portal_User_Id__c))
-                        {
-                            //thisUser = restClient.RetrieveUserByUserId(objContact.Portal_User_Id__c);
-                        }  
-                        else
-                        {
-                            //thisUser = restClient.RetrieveUserByUserName(objContact.Portal_User_Name__c);
-                        }
-                        */
-                       
+
+                        response.Questions.add(new CP_ForgotPasswordClass.QuestionClass('1', 'this is a hard coded question number one'));
+                        response.Questions.add(new CP_ForgotPasswordClass.QuestionClass('2', 'this is a hard coded question number two'));
+
                         System.debug('IG User Returned from ISAM');
                         System.debug(response);
                     }

@@ -78,7 +78,7 @@
 			"StepTwo",
 			cmp,
 			function(evt) {
-				cmp.onNextStep();
+				cmp.gotoNextStep();
 			},
 			function(error) {
 				console.error("Forgot Pass: Step 2: Error");

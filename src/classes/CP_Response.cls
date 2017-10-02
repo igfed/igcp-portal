@@ -24,19 +24,4 @@ public virtual class CP_Response {
             this.Messages = new List<String>();
         }
     }
-
-
-    public Boolean IsValidEmail(String email)
-    {
-        String emailRegex = '([a-zA-Z0-9_\\-\\.]+)@((\\[a-z]{1,3}\\.[a-z]{1,3}\\.[a-z]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})';
-    
-        Pattern MyPattern = Pattern.compile(emailRegex);
-        Matcher MyMatcher = MyPattern.matcher(email);
-
-        if(MyMatcher.matches())
-            return true;
-        else
-            return false;
-    }
-
 }

@@ -41,7 +41,7 @@
 			"StepThree",
 			cmp,
 			function(evt) {
-				cmp.onNextStep();
+				cmp.gotoNextStep();
 			},
 			function(error) {
 				console.error("Step 3: Error");

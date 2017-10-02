@@ -14,31 +14,10 @@ public with sharing class CP_ForgotPasswordController {
             // Deserialize the passed JSON into User Identity Object     
             objForm = (CP_ForgotPasswordClass) JSON.deserialize(payload, CP_ForgotPasswordClass.class);
 
-           	if(String.isBlank(objForm.username))
-            {
-                // Client Number is empty
-                response.State.IsValid = false;
-                response.State.Fields.add('username');
-                response.State.Messages.add(System.Label.CP_Registration_User_Name_Is_Empty);
-            }
-            else if(String.isBlank(objForm.postalCode))
-            {
-                // Client Number is empty
-                response.State.IsValid = false;
-                response.State.Fields.add('postalCode');
-                response.State.Messages.add(System.Label.CP_Registration_Postalcode_Is_Empty);
-            }
-            else if (!response.IsValidEmail(objForm.dob))
-            {
-                // Email is not valid 
-                response.State.IsValid = false;
-                response.State.Fields.add('dob');
-                response.State.Messages.add(System.Label.CP_Registration_DOB_Is_Empty);   
-            }
-            else
-            {
-                response = objForm.verifyClient();
-            }
+            response.State = verifyStepOneInput(objForm);
+
+            if(response.State.IsValid)
+                response.State = objForm.verifyClient();
         }
         catch(exception e)
         {
@@ -58,23 +37,12 @@ public with sharing class CP_ForgotPasswordController {
         CP_ForgotPasswordClass.SecurityQuestions response = new CP_ForgotPasswordClass.SecurityQuestions();
     	try
     	{
-            System.debug('JSON String');
-            System.debug(payload);
-
             // Deserialize the passed JSON into User Identity Object     
             objForm = (CP_ForgotPasswordClass) JSON.deserialize(payload, CP_ForgotPasswordClass.class);
 
-            if(String.isBlank(objForm.username))
-            {
-                // Client Number is empty
-                response.State.IsValid = false;
-                response.State.Fields.add('username');
-                response.State.Messages.add(System.Label.CP_Registration_Client_Number_Is_Empty);
-            }
-            else
-            {
+            response.State = verifyStepOneInput(objForm);
+            if(response.State.IsValid)
                 response = objForm.getSecurityQuestion();
-            }
     	}
 	    catch (exception e)
 	    {
@@ -134,4 +102,50 @@ public with sharing class CP_ForgotPasswordController {
 
     	return JSON.serialize(response);
     }
+
+
+// Private function 
+
+    private static CP_Response.Result verifyStepOneInput(CP_ForgotPasswordClass objForm)
+    {
+        CP_Response.Result state = new CP_Response.Result();
+
+        if(String.isBlank(objForm.username))
+        {
+            // Client Number is empty
+            state.IsValid = false;
+            state.Fields.add('username');
+            state.Messages.add(System.Label.CP_Registration_User_Name_Is_Empty);
+        }
+        
+        if(String.isBlank(objForm.postalCode))
+        {
+            // Client Number is empty
+            state.IsValid = false;
+            state.Fields.add('postalCode');
+            state.Messages.add(System.Label.CP_Registration_Postalcode_Is_Empty);
+        }
+        else if (!CP_Utility.IsValidPostalCode(objForm.postalCode))
+        {
+            state.IsValid = false;
+            state.Fields.add('postalCode');
+            state.Messages.add(System.Label.CP_Registration_Postalcode_Is_Invalid);
+        }
+
+        if(String.isBlank(objForm.dob))
+        {
+            // Client Number is empty
+            state.IsValid = false;
+            state.Fields.add('dob');
+            state.Messages.add(System.Label.CP_Registration_DOB_Is_Empty);
+        }
+
+        return state;
+    }
+
+
+// 
+
+
+
 }

@@ -31,7 +31,7 @@ public class DTO_AccountDetail {
 	@AuraEnabled public String netTransfersOutInception;
 	@AuraEnabled public String beneficiaryNames;
 	@AuraEnabled public String iprofileModelNumber;
-	@AuraEnabled public String currencyX;
+	@AuraEnabled public String currencyCd;
 
 	public DTO_AccountDetail(IGAccountDetailClient.AccountDetail source) {
 		this.clientBpid 				= source.CLIENT_BPID;
@@ -66,6 +66,6 @@ public class DTO_AccountDetail {
 		this.netTransfersOutInception 	= source.NET_TRANSFERS_OUT_INCEPTION;
 		this.beneficiaryNames 			= source.BENEFICIARY_NAMES;
 		this.iprofileModelNumber 		= source.IPROFILE_MODEL_NUMBER;
-		this.currencyX 					= source.CURRENCY_X;		
+		this.currencyCd 				= source.CURRENCY_X;		
 	}
 }

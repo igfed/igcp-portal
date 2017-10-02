@@ -160,6 +160,14 @@ public class CP_RegistrationController {
             result.Messages.add(System.Label.CP_Registration_Postalcode_Is_Invalid);   
         }
 
+        if(String.isBlank(IGUser.dob))
+        {
+            // Postatcode is empty 
+            result.IsValid = false;
+            result.Fields.add('postalCode');
+            result.Messages.add(System.Label.CP_Registration_DOB_Is_Empty);
+        } 
+
         return result;
     }
 
