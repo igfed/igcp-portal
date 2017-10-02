@@ -1,6 +1,7 @@
 (function ($) {
   var event = {},
     $this,
+    adobeLoader,
     $component,
     $container;
   event.component = {};
@@ -8,6 +9,9 @@
   event.template = {};
 
   function init() {
+    // Only fire this in Salesforce
+    adobePageBottomLoader();
+
     // Analytics click event handler
     $('.aa-click').on('click', function (e) {
       e.preventDefault();
@@ -20,6 +24,15 @@
       event.type = 'hover';
       constructEventObj($(this));
     });
+  }
+
+  function adobePageBottomLoader() {
+    adobeLoader = setInterval(function () {
+        if (window._satellite) {
+          window._satellite.pageBottom();
+          clearInterval(adobeLoader);
+        }
+      }, 500);
   }
 
   function constructEventObj($this) {
