@@ -41,7 +41,7 @@
 
 				if (mortgageItemsArr.length > 0) {
 					utils.forEach(mortgageItemsArr, function(key, value) {
-						mortgageAccountsArr .push(value);
+						mortgageAccountsArr.push(value);
 					});
 
 					hlpr.addAccounts(mortgageAccountsArr , cmp);

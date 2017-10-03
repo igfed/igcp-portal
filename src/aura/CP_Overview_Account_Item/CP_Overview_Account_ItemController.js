@@ -44,5 +44,28 @@
 			}
 		}
 
+		//Insurance
+		if (cmp.get("v.itemType") === "insurance") {
+			console.log(account);
+
+			if (account.insuranceType) {
+				cmp.set("v.accountName", account.insuranceType);
+			} else {
+				cmp.set("v.accountName", $A.get("$Label.c.CP_Generic_Not_Available"));
+			}
+
+			if(account.companyCarrier) {
+				cmp.set("v.val1", account.companyCarrier);
+			} else {
+				cmp.set("v.val1", $A.get("$Label.c.CP_Generic_Not_Available"));
+			}
+
+			if(account.policyNumber) {
+				cmp.set("v.val2", account.policyNumber);
+			} else {
+				cmp.set("v.val2", $A.get("$Label.c.CP_Generic_Not_Available"));
+			}
+		}
+
 	}
 })
