@@ -6,6 +6,7 @@
 		var utils = cmp.find("CP_Utils");
 
 		accArr.forEach(function(item, i){
+			console.log("ADD ACCOUNTS")
 			console.log(item);
 
 			var accountName = "";
@@ -23,8 +24,8 @@
 					"CP_Overview_Account",
 					{
 						"accountTitle" : accountName,
-						"accountType" : "Registered",
-						"accountTotal" : "0.00",
+						"accountType" : $A.get("$Label.c.CP_Generic_Not_Available"),
+						"accountTotal" : item.totalValue,
 						"accounts" : item.previewItems
 					},
 					cmp,
@@ -34,7 +35,20 @@
 					}
 				);
 			} else {
-
+				utils.createComponent(
+					"CP_Overview_Account",
+					{
+						"accountTitle" : accountName,
+						"accountType" : $A.get("$Label.c.CP_Generic_Not_Available"),
+						"accountTotal" : item.totalValue,
+						"accounts" : item.previewItems
+					},
+					cmp,
+					function(evt){
+						console.log("CP OVER ACCOUNT");
+						console.log(evt);
+					}
+				);
 			}
 		});
 

@@ -6,11 +6,12 @@
 		// 0003173610
 		// 0003192111
 		// 0002505866
+		//0003497138
 
 		var 
 			services = cmp.find("CP_Services"),
 			utils = cmp.find("CP_Utils"),
-			bpid = "0003173610";
+			bpid = "0003497138";
 
 		services.getInvestmentsPreview(
 			bpid,

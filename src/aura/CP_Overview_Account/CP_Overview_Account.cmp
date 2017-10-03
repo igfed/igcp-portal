@@ -8,7 +8,7 @@
     <aura:attribute name="accounts" type="List" default="[]"/>
     <aura:attribute name="val1" type="String" />
     <aura:attribute name="val2" type="String" />
-    <aura:attribute name="col1Name" type="String" default="{!$Label.c.CP_Overview_Gain_Loss}"/>
+    <aura:attribute name="col1Name" type="String" default="{!$Label.c.CP_Overview_Change}"/>
     <aura:attribute name="col2Name" type="String" default="{!$Label.c.CP_Overview_Market_Value}"/>
     
     <!-- MARKUP -->

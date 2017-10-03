@@ -2,8 +2,8 @@
 
 	<!-- ATTRS -->
     <aura:attribute name="accountName" type="String" default="Account Name"/>
-    <aura:attribute name="val1" type="String" default="123.45"/>
-    <aura:attribute name="val2" type="String" default="678.91"/>
+    <aura:attribute name="val1" type="String" default=""/>
+    <aura:attribute name="val2" type="String" default=""/>
 
     <aura:attribute name="account" type="Map"></aura:attribute>
 
