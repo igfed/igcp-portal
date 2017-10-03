@@ -6,7 +6,7 @@
 		// 0003173610
 		// 0003192111
 		// 0002505866
-		//0003497138
+		// 0003497138
 
 		var 
 			services = cmp.find("CP_Services"),
@@ -17,13 +17,9 @@
 			bpid,
 			cmp, 
 			function(previewObj) {
-				console.log("GET INVESTMENT PREVIEW");
-
 				var 
 					accountPreviewsObj = previewObj.previewAggregatesByType,
 					accountTypeArr = [];
-
-				console.log(accountPreviewsObj);
 				
 				cmp.set("v.totalValue", previewObj.totalValue);
 				cmp.set("v.totalGainLoss", previewObj.totalGainLoss);

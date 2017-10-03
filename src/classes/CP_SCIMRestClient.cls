@@ -88,9 +88,26 @@ public class CP_SCIMRestClient {
         
   
 
-        public SecurityQuestion getRandomSecurityQuestion(String userName)
+        public RandomSecurityQuestion getRandomSecurityQuestion(String userName)
         {
-            return this.getSecurityQuestion(userName);
+           RandomSecurityQuestion response;
+            String param = '?PolicyId=urn:ibm:security:authentication:asf:username_context&username='+ userName.toLowerCase();
+            response = (RandomSecurityQuestion) this.callGetRESTService(AUTH_API_NAMED_CREDENTAIL, param);
+
+            if(response.success)
+            {
+                try
+                {
+                    response.Question.stateId = getSingleValueFromReturnedJSON(response.responseBody, 'stateId');
+                    response.Question.question = getSingleValueFromReturnedJSON(response.responseBody, 'knowledge.question.text');
+                    response.Question.id = getSingleValueFromReturnedJSON(response.responseBody, 'knowledge.question.unique.id');
+                }
+                catch(Exception e)
+                {
+                    response = new RandomSecurityQuestion(false, 500, e.getMessage());
+                }
+            }
+            return response;
         }
 
 
@@ -197,29 +214,7 @@ public class CP_SCIMRestClient {
             return response;
         }
 
-        private SecurityQuestion getSecurityQuestion(String userName)
-        {
-            SecurityQuestion response;
-            String param = '?PolicyId=urn:ibm:security:authentication:asf:username_context&username='+ userName.toLowerCase();
-            response = (SecurityQuestion) this.callGetRESTService(AUTH_API_NAMED_CREDENTAIL, param);
-
-            if(response.success)
-            {
-                try
-                {
-                    response.Question.stateId = getSingleValueFromReturnedJSON(response.responseBody, 'stateId');
-                    response.Question.question = getSingleValueFromReturnedJSON(response.responseBody, 'knowledge.question.text');
-                    response.Question.id = getSingleValueFromReturnedJSON(response.responseBody, 'knowledge.question.unique.id');
-                }
-                catch(Exception e)
-                {
-                    response = new SecurityQuestion(false, 500, e.getMessage());
-                }
-            }
-            return response;
-        }
-
-    
+        
     //
 
 
@@ -389,22 +384,22 @@ public class CP_SCIMRestClient {
 
         // Random Questions 
 
-        public class SecurityQuestion extends Response
+        public class RandomSecurityQuestion extends Response
         {
-            public Question question {get; set;}
+            public RandomQuestion question {get; set;}
 
-            public SecurityQuestion(){
+            public RandomSecurityQuestion(){
                 super();
-                this.question = new Question();
+                this.question = new RandomQuestion();
             }   
-            public SecurityQuestion(Boolean isSuccessful, Integer theCode, String theResponse)
+            public RandomSecurityQuestion(Boolean isSuccessful, Integer theCode, String theResponse)
             {
                 super(isSuccessful, theCode, theResponse);
-                this.question = new Question();
+                this.question = new RandomQuestion();
             }
         }
 
-        public class Question 
+        public class RandomQuestion 
         {
             public String stateId {get; set;}
             public String question {get; set;}

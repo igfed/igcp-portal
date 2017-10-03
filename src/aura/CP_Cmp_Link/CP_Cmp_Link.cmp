@@ -4,6 +4,7 @@
 	<aura:attribute name="class" type="String" default=""></aura:attribute>
 	<aura:attribute name="href" type="String" default=""></aura:attribute>
 	<aura:attribute name="label" type="String" default="Default"></aura:attribute>
+	<aura:attribute name="hasChevron" type="Boolean" default="true"></aura:attribute>
 	<aura:attribute name="modalID" type="String" default="none"></aura:attribute>
 
 	<!-- IMPORTS -->
@@ -13,7 +14,10 @@
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}"></aura:handler>
 
 	<!-- MARKUP -->
-	<div class="{!'igcp-utils__display--inline-block' + v.class}">
+	<div class="{!'igcp-link__cta igcp-utils__display--inline-block' + v.class}">
 		<a id="{!v.id}" href="{!v.href}" onclick="{!c.onClick}">{!v.label}</a>
+		<aura:if isTrue="{!v.hasChevron}">
+			<lightning:icon iconName="utility:chevronright" size="x-small" class="slds-p-left--xxx-small"/>
+		</aura:if>
 	</div>
 </aura:component>

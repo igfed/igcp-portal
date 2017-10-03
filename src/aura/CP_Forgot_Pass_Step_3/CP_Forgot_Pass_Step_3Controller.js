@@ -21,6 +21,7 @@
 		if (cmp.get("v.inputsReceived") === 2 && cmp.get("v.inputErrors") === false) {
 
 			cmp.set("v.payload", {
+				"username": cmp.get("v.username"),
 				"password": cmp.get("v.password"),
 				"confirmPassword": cmp.get("v.confirmPassword")
 			});

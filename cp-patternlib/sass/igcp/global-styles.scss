@@ -12,6 +12,10 @@
 }
 
 .#{$namespace}-background {
+	background-color: $ig-light-grey;
+}
+
+.#{$namespace}-background__tiled {
 	background-image: url('../images/bg-tile.jpg');
 	background-repeat: repeat;
 }
@@ -103,6 +107,16 @@
 	font-family: $ig-whitney-book;
 	font-size: $ig-space--x-small;
 	letter-spacing: $ig-letter-spacing;
+}
+
+.#{$namespace}-link__cta {
+	.slds-icon_container.slds-icon-utility-chevronright {
+		top: 0;
+
+		.slds-icon-text-default {
+			fill: $ig-link-blue;
+		}
+	}
 }
 
 .#{$namespace}-link__variant--a {

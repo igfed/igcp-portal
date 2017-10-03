@@ -12,10 +12,35 @@
 
 		services.getRandSecurityQuestion(
 			cmp,
-			function(success) {
-				cmp.set("v.question", success["payload"][0]);
-				hlpr.addToCurrentPayload(cmp, "question", success["payload"][0]);
-				cmp.set("v.question", success["payload"][0].question);
+			function(evt) {
+				console.log("Get rand question ");
+				console.log(evt);
+
+				var 
+					payload = evt.payload,
+					events = cmp.find("CP_Events"),
+					isValid = payload.State.IsValid;
+					questionObj = {};
+
+				if(isValid === true) {
+
+					questionObj = payload.question;
+
+					console.log(questionObj.question);
+
+					cmp.set("v.question", questionObj.question);
+					hlpr.addToCurrentPayload(cmp, "question", questionObj.question);
+
+					cmp.set("v.isamStateId", questionObj.stateId);
+					cmp.set("v.questionId", questionObj.id);
+
+				} else {
+					events.fire("CP_Evt_Toast_Error", {
+						"id": "error-box",
+						"message": $A.get("$Label.namespace.CP_Error_Server_Side_Generic")
+					});
+				}
+
 			},
 			function(error) {
 				console.error("GET RANDOM QUESTION");
@@ -57,12 +82,14 @@
 				"postalCode": cmp.get("v.postalCode"),
 				"dob": formattedDob,
 				"question" : cmp.get("v.question"),
-				"answer": cmp.get("v.answer")
+				"answer": cmp.get("v.answer"),
+				"stateId" : cmp.get("v.isamStateId"),
+				"id" : cmp.get("v.questionId")
 			});
 
-			cmp.gotoNextStep();
+			console.log(cmp.get("v.payload"));
 
-			//cmp.onSubmitForm();
+			cmp.onSubmitForm();
 		}
 	},
 	onInputBlur: function(cmp, evt, hlpr) {

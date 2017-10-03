@@ -14,6 +14,8 @@
 	<!-- STEP 2 -->
 	<aura:attribute name="question" type="String"></aura:attribute>
 	<aura:attribute name="answer" type="String"></aura:attribute>
+	<aura:attribute name="isamStateId" type="String"></aura:attribute>
+	<aura:attribute name="questionId" type="String"></aura:attribute>
 
 	<!-- STEP 3 -->
 	<aura:attribute name="password" type="String"></aura:attribute>

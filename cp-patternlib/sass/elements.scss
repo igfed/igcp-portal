@@ -49,8 +49,7 @@ p {
 
 body {
 	font-family: $ig-whitney-book;
-	background-image: url('../images/bg-tile.jpg');
-	background-repeat: repeat;
+	background-color: $ig-light-grey;
 	color: $ig-black;
 }
 
@@ -69,4 +68,8 @@ label {
 	-moz-appearance: none;
 	appearance: none;
 	border-radius: 0.25rem;
+}
+
+dl dt {
+    font-weight: 100
 }

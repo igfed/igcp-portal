@@ -1,9 +1,10 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
 	<!-- ATTRS -->
-    <aura:attribute name="accountName" type="String" default="Account Name"/>
+    <aura:attribute name="accountName" type="String" default=""/>
     <aura:attribute name="val1" type="String" default=""/>
     <aura:attribute name="val2" type="String" default=""/>
+    <aura:attribute name="itemType" type="String" default="investments"></aura:attribute>
 
     <aura:attribute name="account" type="Map"></aura:attribute>
 

@@ -12,8 +12,8 @@
 					//Add the new button to the body array
 					if (status === "SUCCESS") {
 
-						console.log("SUCCESS")
-						console.log(component)
+						//console.log("SUCCESS")
+						//console.log(component)
 
 						var body = container.get("v.body");
 						body.push(component);

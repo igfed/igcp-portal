@@ -25,6 +25,13 @@
 		<aura:attribute name="successCB" type="function" default="" />
 		<aura:attribute name="errorCB" type="function" default="" />
 	</aura:method>
+	<!-- GET MORTGAGE PREVIEW -->
+	<aura:method name="getMortgagePreview" action="{!c.onGetMortgagePreview}">
+		<aura:attribute name="bpid" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
 	<!-- GET CLIENT FIRST NAME -->
 	<aura:method name="getClientFirstName" action="{!c.onGetClientFirstName}">
 		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>

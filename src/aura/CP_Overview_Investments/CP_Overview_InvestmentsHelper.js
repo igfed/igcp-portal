@@ -1,13 +1,9 @@
 ({
 	addAccounts : function(accArr, cmp) {
 
-		console.log("addAccount");
-
 		var utils = cmp.find("CP_Utils");
 
 		accArr.forEach(function(item, i){
-			console.log("ADD ACCOUNTS")
-			console.log(item);
 
 			var accountName = "";
 
@@ -29,10 +25,7 @@
 						"accounts" : item.previewItems
 					},
 					cmp,
-					function(evt){
-						console.log("CP OVER ACCOUNT");
-						console.log(evt);
-					}
+					function(evt){}
 				);
 			} else {
 				utils.createComponent(
@@ -44,14 +37,9 @@
 						"accounts" : item.previewItems
 					},
 					cmp,
-					function(evt){
-						console.log("CP OVER ACCOUNT");
-						console.log(evt);
-					}
+					function(evt){}
 				);
 			}
 		});
-
-
 	}
 })

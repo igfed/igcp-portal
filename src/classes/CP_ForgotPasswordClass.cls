@@ -139,14 +139,21 @@ public class CP_ForgotPasswordClass {
                     else
                     {
                         CP_SCIMRestClient restClient = new CP_SCIMRestClient();
-                        CP_SCIMRestClient.IGUser thisUser; 
+                        CP_SCIMRestClient.RandomSecurityQuestion isamResponse; 
 
-                        response.Question.stateId= '123456789-987654321-147258369-963852741';
-                        response.Question.id = '1';
-                        response.Question.question = 'Hard coded question from Forgot passord Class';
+                        isamResponse = restClient.getRandomSecurityQuestion(this.username);
+                        System.debug('Response from rest client get random question');
+                        System.debug(isamResponse);
 
-                        System.debug('IG User Returned from ISAM');
-                        System.debug(response);
+                        if(isamResponse.success)
+                        {
+                            response.question = isamResponse.question;
+                        }
+                        else
+                        {
+                            response.State.IsValid = false;   
+                            response.State.Messages.add(isamResponse.error);
+                        }
                     }
                 }
                 else
@@ -216,19 +223,11 @@ public class CP_ForgotPasswordClass {
 
         public class SecurityQuestion extends CP_Response
         {
-            public RandomQuestion Question {get; set;}
+            public CP_SCIMRestClient.RandomQuestion question {get; set;}
             public SecurityQuestion()
         	{
         		super();
-                this.Question = new RandomQuestion();
+                this.question = new CP_SCIMRestClient.RandomQuestion();
 			}
         }
-
-        public class RandomQuestion
-        {
-            public String stateId {get; set;}
-            public String id {get; set;}
-            public String question {get; set;}
-        }
-
 }
