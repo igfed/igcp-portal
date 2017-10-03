@@ -32,12 +32,15 @@ public class CP_SCIMRestClient {
                 userJSON = JSON.serialize(newUser); 
                 userJSON = userJSON.replace('PlaceHolderForQuestionsListNode','urn:ietf:params:scim:schemas:extension:isam:1.0:UserKnowledgeQuestions');
 
+                System.debug('This is what i am sending to ISAM');
+                System.debug(userJSON);
+
                 response = callPostRESTService(USER_API_NAMED_CREDENTAIL, userJSON);
 
                 if(response.success)
                 {
                     String userId; 
-                    userId  = this.getNewUserIdFromReturnedJSON(response.responseBody);
+                    userId  = this.getSingleValueFromReturnedJSON(response.responseBody, 'id');
                     
                     if(!String.isBlank(userId))
                     {
@@ -85,20 +88,9 @@ public class CP_SCIMRestClient {
         
   
 
-        public String getRandomSecurityQuestion(String userId)
+        public SecurityQuestion getRandomSecurityQuestion(String userName)
         {
-            QuestionClass randomQuestion = new QuestionClass();
-            IGUser thisUser = this.RetrieveUserByUserId(userId);
-            if(thisUser != null)
-            {
-                System.debug('IG User from ISAM');
-                System.debug(thisUser);
-
-                randomQuestion.id = '1';
-                randomQuestion.question = 'some question';
-                return JSON.serialize(randomQuestion);
-            }
-            return null;
+            return this.getSecurityQuestion(userName);
         }
 
 
@@ -163,44 +155,23 @@ public class CP_SCIMRestClient {
             return newUser;
         }
 
-        private String getNewUserIdFromReturnedJSON(String isamJSON)
+        private String getSingleValueFromReturnedJSON(String isamJSON, String nodeName)
         {
-            String userId; 
+            String returnValue; 
 
             JSONParser parser = JSON.createParser(isamJSON);
             while (parser.nextToken() != null) {
                 if ((parser.getCurrentToken() == JSONToken.FIELD_NAME) && 
-                    (parser.getText() == 'id')) {
+                    (parser.getText() == nodeName)) {
                     // Get the value.
                     parser.nextToken();
-                    userId = parser.getText();
+                    returnValue = parser.getText();
                 }
             }
-            if(String.isBlank(userId))
+            if(String.isBlank(returnValue))
                 return null;
             else
-                return userId;
-        }
-
-
-        private String getUserLocationFromReturnedJSON(String isamJSON)
-        {
-            String location;
-
-            JSONParser parser = JSON.createParser(isamJSON);
-            while (parser.nextToken() != null) {
-                if ((parser.getCurrentToken() == JSONToken.FIELD_NAME) && 
-                    (parser.getText() == 'location')) {
-                    // Get the value.
-                    parser.nextToken();
-                    location = parser.getText();
-                }
-            }
-
-            if(String.isBlank(location))
-                return null;
-            else 
-                return location;
+                return returnValue;
         }
 
 
@@ -212,7 +183,7 @@ public class CP_SCIMRestClient {
 
             if(response.success)
             {
-                location = this.getUserLocationFromReturnedJSON(response.responseBody);
+                location = this.getSingleValueFromReturnedJSON(response.responseBody, 'location');
                 
                 if(!String.isBlank(location))
                 {
@@ -221,6 +192,28 @@ public class CP_SCIMRestClient {
                 else
                 {
                     response = new Response(false, response.code, 'User Not found');
+                }
+            }
+            return response;
+        }
+
+        private SecurityQuestion getSecurityQuestion(String userName)
+        {
+            SecurityQuestion response;
+            String param = '?PolicyId=urn:ibm:security:authentication:asf:username_context&username='+ userName.toLowerCase();
+            response = (SecurityQuestion) this.callGetRESTService(AUTH_API_NAMED_CREDENTAIL, param);
+
+            if(response.success)
+            {
+                try
+                {
+                    response.Question.stateId = getSingleValueFromReturnedJSON(response.responseBody, 'stateId');
+                    response.Question.question = getSingleValueFromReturnedJSON(response.responseBody, 'knowledge.question.text');
+                    response.Question.id = getSingleValueFromReturnedJSON(response.responseBody, 'knowledge.question.unique.id');
+                }
+                catch(Exception e)
+                {
+                    response = new SecurityQuestion(false, 500, e.getMessage());
                 }
             }
             return response;
@@ -302,33 +295,7 @@ public class CP_SCIMRestClient {
         }
 
         private Response callPostRESTService(String namedCredential, String body) {
-            Response ret;
-            try
-            {
-                HttpRequest req = new HttpRequest();
-                req.setEndpoint('callout:' +  namedCredential);
-                req.setMethod(REST_POST_METHOD);
-                req.setHeader(HTTP_HEADER_ACPT, REST_CONTENT);
-                req.setTimeout(120000);
-                req.setBody(body);
-
-                System.debug('Data Sent to ISAM');
-                System.debug(body);
-
-                Http http = new Http();
-                HTTPResponse res = http.send(req);
-            
-                System.debug('ISAM Response Object from POST');
-                System.debug(res);
-
-                Integer resStatusCode = res.getStatusCode();
-                ret = new Response((201 == resStatusCode), resStatusCode, res.getBody());
-            }
-            catch(exception e)
-            {
-                ret = new Response(false, 500, e.getMessage());
-            }
-            return ret;
+           return callPostRESTService(namedCredential, body, '');
         }
 
     // 
@@ -418,5 +385,30 @@ public class CP_SCIMRestClient {
         	public String question {get; set;}
         }
 
+
+
+        // Random Questions 
+
+        public class SecurityQuestion extends Response
+        {
+            public Question question {get; set;}
+
+            public SecurityQuestion(){
+                super();
+                this.question = new Question();
+            }   
+            public SecurityQuestion(Boolean isSuccessful, Integer theCode, String theResponse)
+            {
+                super(isSuccessful, theCode, theResponse);
+                this.question = new Question();
+            }
+        }
+
+        public class Question 
+        {
+            public String stateId {get; set;}
+            public String question {get; set;}
+            public String id {get; set;}
+        }
     // 
 }

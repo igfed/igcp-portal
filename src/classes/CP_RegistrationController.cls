@@ -72,8 +72,10 @@ public class CP_RegistrationController {
     {
         CP_Response response = new CP_Response();
         CP_RegistrationClass.RegistrationForm objForm = new CP_RegistrationClass.RegistrationForm();
-        System.debug('Final Payload');
+        
+        System.debug('This is what i am getting from UI ');
         System.debug(payload);
+
         try
         {
             // Deserialize the passed JSON into Registration Form Object     

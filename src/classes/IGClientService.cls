@@ -177,6 +177,24 @@ public class IGClientService {
 		return rv;
 	}
 
+	public static List<DTO_TransactionsDetail> getTransactionsDetails(String clientBpid) {
+		List<DTO_TransactionsDetail> rv = new List<DTO_TransactionsDetail>();
+		if (String.isBlank(clientBpid)) {
+			throw new IGClientServiceException('The client bpid can\'t be null or empty');
+		}
+		IGRestClient client = IGRestClientFactory.getIGRestClient('Transactions', 'IG_Client_Service');
+		if (client != null) {
+			IGTransactionsClient theClient = (IGTransactionsClient)client;
+			theClient.bpid = clientBpid;
+			IGRestClient.Response res = theClient.getServiceData();
+		    System.debug('=====> getTransactionsDetails.res: ' + res);
+		    if (res != null) {
+		    	
+		    }
+		}
+		return rv;
+	}
+
 	public class IGClientServiceException extends Exception {
 
 	}

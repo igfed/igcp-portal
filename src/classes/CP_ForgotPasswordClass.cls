@@ -4,6 +4,7 @@ public class CP_ForgotPasswordClass {
     	public String postalCode { get; set; }
     	public String dob { get; set; }
 
+        public String stateId {get; set;}
     	public String questionId { get; set; }
     	public String securityQuestion { get; set; }
     	public String answer { get; set; }
@@ -119,9 +120,9 @@ public class CP_ForgotPasswordClass {
         }
 
 
-        public SecurityQuestions getSecurityQuestion()
+        public SecurityQuestion getSecurityQuestion()
         {
-        	SecurityQuestions response = new SecurityQuestions();
+        	SecurityQuestion response = new SecurityQuestion();
         	try
         	{
         		Contact objContact = this.getContactByUserName();
@@ -140,8 +141,9 @@ public class CP_ForgotPasswordClass {
                         CP_SCIMRestClient restClient = new CP_SCIMRestClient();
                         CP_SCIMRestClient.IGUser thisUser; 
 
-                        response.Questions.add(new CP_ForgotPasswordClass.QuestionClass('1', 'this is a hard coded question number one'));
-                        response.Questions.add(new CP_ForgotPasswordClass.QuestionClass('2', 'this is a hard coded question number two'));
+                        response.Question.stateId= '123456789-987654321-147258369-963852741';
+                        response.Question.id = '1';
+                        response.Question.question = 'Hard coded question from Forgot passord Class';
 
                         System.debug('IG User Returned from ISAM');
                         System.debug(response);
@@ -212,31 +214,21 @@ public class CP_ForgotPasswordClass {
 
 
 
-        public class SecurityQuestions extends CP_Response
+        public class SecurityQuestion extends CP_Response
         {
-        	public List<QuestionClass> Questions {get; set;}
-        	
-        	public SecurityQuestions()
+            public RandomQuestion Question {get; set;}
+            public SecurityQuestion()
         	{
         		super();
-        		this.Questions = new List<QuestionClass>();
+                this.Question = new RandomQuestion();
 			}
         }
 
-        public class QuestionClass
+        public class RandomQuestion
         {
-        	public String id {get; set;}
-        	public String question {get; set;}
-
-        	public QuestionClass()
-        	{
-
-        	}	
-        	public QuestionClass(string i, string q)
-        	{
-        		this.id = i;
-        		this.question = q;
-        	}
+            public String stateId {get; set;}
+            public String id {get; set;}
+            public String question {get; set;}
         }
 
 }

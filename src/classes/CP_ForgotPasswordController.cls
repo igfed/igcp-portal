@@ -40,8 +40,8 @@ public with sharing class CP_ForgotPasswordController {
             // Deserialize the passed JSON into User Identity Object     
             objForm = (CP_ForgotPasswordClass) JSON.deserialize(payload, CP_ForgotPasswordClass.class);
 
-            response.State = verifyStepOneInput(objForm);
-            if(response.State.IsValid)
+            //response.State = verifyStepOneInput(objForm);
+            //if(response.State.IsValid)
                 response = objForm.getSecurityQuestion();
     	}
 	    catch (exception e)
