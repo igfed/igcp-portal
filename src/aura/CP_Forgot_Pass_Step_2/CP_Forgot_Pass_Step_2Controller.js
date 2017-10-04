@@ -36,7 +36,7 @@
 
 				} else {
 					events.fire("CP_Evt_Toast_Error", {
-						"id": "error-box",
+						"id": "forgot-pass-step-2-toast-error",
 						"message": $A.get("$Label.namespace.CP_Error_Server_Side_Generic")
 					});
 				}

@@ -25,7 +25,7 @@
 
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
-		if (cmp.get("v.inputsReceived") === 2 && cmp.get("v.inputErrors") === false) {
+		if (cmp.get("v.inputsReceived") === 1 && cmp.get("v.inputErrors") === false) {
 
 			cmp.set("v.payload", {
 				"username": cmp.get("v.username"),
@@ -59,26 +59,12 @@
 					fields = error.payload.State.Fields,
 					messages = error.payload.State.Messages;
 
-				fields.forEach(function(errorType, i) {
-					var msgArr = [];
-					
-					if (errorType === "password1") {
-						msgArr.push({"msg" : messages[i]});
-						events.fire("CP_Evt_Input_Error", {
-							"id": "password1",
-							"errors": msgArr
-						});
-					}
-
-					if (errorType === "password2") {
-						msgArr.push({"msg" : messages[i]});
-						events.fire("CP_Evt_Input_Error", {
-							"id": "password2",
-							"errors": msgArr
-						});
-					}
-
-				});
+				if (fields[0] === "confirmPassword" && error.type === "error") {
+					events.fire("CP_Evt_Toast_Error", {
+						"id": "forgot-pass-step-3-toast-error",
+						"message": $A.get("$Label.c.CP_Error_Confirm_Password_Match")
+					});
+				}
 			}
 		);
 	},
@@ -90,7 +76,6 @@
 	},
 	onKey: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
-		console.log(payload);
 		if (payload.id === "password-input") {
 			hlpr.validatePassword(cmp, payload);
 		}

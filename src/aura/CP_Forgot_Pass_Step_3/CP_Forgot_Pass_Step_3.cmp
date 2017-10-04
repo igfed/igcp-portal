@@ -44,6 +44,10 @@
 			<p class="igcp-utils__width--100 igcp-large-utils__width--75">{!$Label.c.CP_Forgot_Pass_Step_3_Instructions}</p>
 			<div class="slds-grid slds-wrap">
 				<div class="slds-form slds-size_12-of-12">
+					<!-- TOAST ERROR -->
+                	<c:CP_Cmp_Toast id="forgot-pass-step-3-toast-error"
+                		type="error"
+                		class="slds-m-top--x-small slds-m-bottom--xxx-small"/>
 					<!-- FIELDS -->
 					<!-- PASSWORD -->
 					<c:CP_Cmp_Input_Password id="password-input" form="{!v.pageId}" type="password" confirmPassword="true" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Password}" />

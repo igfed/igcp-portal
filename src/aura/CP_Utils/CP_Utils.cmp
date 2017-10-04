@@ -84,5 +84,12 @@
 		<aura:attribute name="target" type="String" ></aura:attribute>
 	</aura:method>
 
+	<!-- FORMAT CURRENCY -->
+	<!-- Takes a normal number string and returns it formatted -->
+	<aura:method name="formatToCurrency" action="{!c.onFormatToCurrency}">
+		<aura:attribute name="rawValue" type="String"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+		<aura:attribute name="lang" type="String" default="en"></aura:attribute>
+	</aura:method>
 	
 </aura:component>

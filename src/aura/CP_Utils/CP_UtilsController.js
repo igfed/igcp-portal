@@ -182,5 +182,20 @@
 			console.error("CP_Utils: navigateToURL: window not found.")
 			console.error(err);
 		}
+	},
+	onFormatToCurrency: function(cmp, evt, hlpr) {
+		var 
+			params = evt.getParam("arguments"),
+			lang, formattedValue;
+
+		if(params) {
+			lang = params.lang;
+
+			if(lang === "en") {
+				formattedValue = hlpr.formatCurrency(params.rawValue);
+			}
+
+			params.callback(formattedValue);
+		}
 	}
 })

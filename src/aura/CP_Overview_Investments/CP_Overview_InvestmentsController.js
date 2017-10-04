@@ -1,5 +1,5 @@
 ({
-	onInit : function(cmp, evt, hlpr) {
+	onInit: function(cmp, evt, hlpr) {
 
 		//Test BPIDs
 
@@ -8,32 +8,38 @@
 		// 0002505866
 		// 0003497138
 
-		var 
+		var
 			services = cmp.find("CP_Services"),
 			utils = cmp.find("CP_Utils"),
 			bpid = "0003497138";
 
 		services.getInvestmentsPreview(
 			bpid,
-			cmp, 
+			cmp,
 			function(previewObj) {
-				var 
+				var
 					accountPreviewsObj = previewObj.previewAggregatesByType,
 					accountTypeArr = [];
-				
-				cmp.set("v.totalValue", previewObj.totalValue);
+
+				utils.formatToCurrency(previewObj.totalValue, function(formattedValue) {
+					console.log("SUCCESS");
+					console.log(formattedValue);
+
+					cmp.set("v.totalValue", formattedValue);
+				});
+
 				cmp.set("v.totalGainLoss", previewObj.totalGainLoss);
 				cmp.set("v.totalGainLossPercentage", previewObj.percGainLoss);
 				cmp.set("v.gainLossType", previewObj.signGainLoss);
 
 				//cycle through account types
-				utils.forEach(accountPreviewsObj, function(key, value){
+				utils.forEach(accountPreviewsObj, function(key, value) {
 					accountTypeArr.push(value);
 				});
 
 				hlpr.addAccounts(accountTypeArr, cmp);
 
-			}, 
+			},
 			function(error) {
 				console.error("GET INVESTMENT PREVIEW");
 				console.error(error);
