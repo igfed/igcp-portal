@@ -3327,6 +3327,9 @@ dl dt {
   .igcp-modal .igcp-modal__wrapper {
     max-width: 1024px;
     margin: 0 auto; }
+  .igcp-modal .igcp-modal__wrapper--text {
+    max-width: 600px;
+    margin: 0 auto; }
   .igcp-modal .igcp-modal__button--close {
     position: relative;
     float: right;
@@ -3350,11 +3353,14 @@ dl dt {
   position: fixed;
   height: 175px;
   bottom: 0;
-  margin: 0 0 0 -60px;
-  padding-top: 32px; }
+  margin: 0 0 0 -24px;
+  padding: 16px; }
   .igcp-modal__footer .igcp-modal__footer-wrapper {
     margin: 0 auto;
     max-width: 1024px; }
+  .igcp-modal__footer .igcp-modal__footer-wrapper--text {
+    margin: 0 auto;
+    max-width: 600px; }
 
 .igcp-tooltip {
   display: inline-block; }
@@ -3408,7 +3414,14 @@ dl dt {
 
   .igcp-figure .igcp-figure__caption h3,
   .igcp-figure .igcp-figure__caption p {
-    text-align: left; } }
+    text-align: left; }
+
+  .igcp-modal__footer {
+    margin: 0 0 0 -60px;
+    padding-top: 32px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px; } }
 @media (min-width: 1024px) {
   .igcp-button__chat {
     float: none;

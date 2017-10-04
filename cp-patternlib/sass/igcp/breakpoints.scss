@@ -37,6 +37,14 @@
 			}
 		}
 	}
+
+	.#{$namespace}-modal__footer {
+		margin: 0 0 0 -#{$ig-space--xx-large};
+		padding-top: 32px;
+		padding-left: 0px;
+		padding-right: 0px;
+		padding-bottom: 0px;
+	}
 }
 
 //Large
@@ -106,9 +114,7 @@
 		.footer-navigation .columns {
 			text-align: left;
 		}
-	} 
-
-	//Modal
+	} //Modal
 	.#{$namespace}-modal {
 
 		&.#{$namespace}-modal__small {

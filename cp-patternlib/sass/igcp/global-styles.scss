@@ -367,6 +367,11 @@
 		margin: 0 auto;
 	}
 
+	.#{$namespace}-modal__wrapper--text {
+		max-width: $ig-modal-wrapper-text-width;
+		margin: 0 auto;
+	}
+
 	.#{$namespace}-modal__button--close {
 		position: relative;
 		float: right;
@@ -394,17 +399,22 @@
 }
 
 .#{$namespace}-modal__footer {
-	 background-color: #f8f8f8;
-    position: fixed;
-    height: 175px;
-    bottom: 0;
-    margin: 0 0 0 -60px;
-    padding-top: 32px;
+	background-color: #f8f8f8;
+	position: fixed;
+	height: 175px;
+	bottom: 0;
+	margin: 0 0 0 -#{$ig-space--medium};
+	padding: $ig-space--small;
 
-    .#{$namespace}-modal__footer-wrapper {
+	.#{$namespace}-modal__footer-wrapper {
 		margin: 0 auto;
-		max-width: 1024px;
-    }
+		max-width: $ig-large;
+	}
+
+	.#{$namespace}-modal__footer-wrapper--text {
+		margin: 0 auto;
+		max-width: $ig-modal-wrapper-text-width;
+	}
 }
 
 //TOOLTIP

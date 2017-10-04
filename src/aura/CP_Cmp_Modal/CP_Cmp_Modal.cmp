@@ -18,7 +18,7 @@
 	<!-- MARKUP -->
 	<!-- full -->
 	<aura:if isTrue="{!v.modalType == 'full'}">
-		<div class="{!'igcp-modal igcp-modal__full slds-grid slds-wrap slds-p-around--xx-large ' + v.class}">
+		<div class="{!'igcp-modal igcp-modal__full slds-grid slds-wrap slds-p-around--medium slds-medium-p-around--xx-large ' + v.class}">
 			<aura:if isTrue="{!v.id == 'registration-tos'}">
 				<c:CP_Registration_TOS id="registration-tos"/>
 			</aura:if>

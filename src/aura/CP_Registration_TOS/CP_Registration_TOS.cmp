@@ -9,7 +9,7 @@
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
 	<!-- MARKUP -->
-	<div class="igcp-modal__wrapper">
+	<div class="igcp-modal__wrapper--text">
 		<div class="slds-size_12-of-12">
 			<button class="igcp-modal__button--close close-button" type="button" onclick="{!c.onClose}"></button>
 		</div>
@@ -30,7 +30,7 @@
 	</div>
 
 	<div class="igcp-modal__footer slds-size_12-of-12">
-		<div class="igcp-modal__footer-wrapper">
+		<div class="igcp-modal__footer-wrapper--text">
 		<c:CP_Cmp_Input_Checkbox id="read_and_agree_checkbox" form="registration-tos-desktop-form" class="slds-size_12-of-12 slds-m-bottom--large" copy="{!$Label.c.CP_Registration_TOS_Agree}" />
 
 			<aura:if isTrue="{!v.userAgrees == true}">
