@@ -3109,9 +3109,6 @@ dl dt {
   margin: 0 auto;
   min-height: calc(100vh - 234px); }
 
-.igcp-percentage--large {
-  font-size: 45%; }
-
 .igcp-horizontal-rule {
   border-bottom: 1px solid #fff;
   width: 100%;
@@ -3202,6 +3199,9 @@ dl dt {
   .igcp-value--large sup {
     font-size: 70%;
     top: -0.25em; }
+  .igcp-value--large sub {
+    font-size: 50%;
+    bottom: 0; }
 
 .igcp-value--medium {
   line-height: 24px;
@@ -3216,12 +3216,14 @@ dl dt {
   font-size: 16px; }
 
 .igcp-value--gain {
+  top: 0;
   color: #008a2a; }
 
 .igcp-value--gain use {
   fill: #008a2a; }
 
 .igcp-value--loss {
+  top: 0;
   color: #ea051c; }
 
 .igcp-value--loss use {
@@ -3440,7 +3442,7 @@ dl dt {
     overflow: visible; }
 
   .igcp-value--large {
-    font-size: 24px; }
+    font-size: 32px; }
 
   .igcp-value--medium {
     line-height: 24px;

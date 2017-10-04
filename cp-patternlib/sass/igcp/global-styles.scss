@@ -35,10 +35,6 @@
 	min-height: calc(100vh - 234px);
 }
 
-.#{$namespace}-percentage--large {
-	font-size: 45%;
-}
-
 .#{$namespace}-horizontal-rule {
 	border-bottom: 1px solid #fff;
 	width: 100%;
@@ -172,6 +168,11 @@
 		font-size: 70%;
 		top: -0.25em;
 	}
+
+	sub {
+		font-size: 50%;
+		bottom: 0;
+	}
 }
 
 .#{$namespace}-value--medium {
@@ -190,6 +191,7 @@
 }
 
 .#{$namespace}-value--gain {
+	top: 0;
 	color: $ig-dark-green;
 }
 
@@ -198,6 +200,7 @@
 }
 
 .#{$namespace}-value--loss {
+	top: 0;
 	color: $ig-red;
 }
 

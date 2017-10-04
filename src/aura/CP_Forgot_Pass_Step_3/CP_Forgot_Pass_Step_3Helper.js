@@ -29,7 +29,7 @@
 				//Capture values
 				if (inputId === "password-input") {
 					cmp.set("v.password", inputValue);
-					cmp.set("v.confirmPassword", evt.getParam("payload").confirmValue);
+					cmp.set("v.confirmPassword", payload.confirmValue);
 				}
 
 				//Fire valid evt	
