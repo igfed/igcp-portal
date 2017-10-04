@@ -393,8 +393,6 @@
 
 				action.setCallback(this, function(response) {
 
-					console.log("Get investment preview");
-
 					var state = response.getState();
 
 					if (state === "SUCCESS") {

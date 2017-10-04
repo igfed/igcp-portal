@@ -31,9 +31,6 @@
 			cmp,
 			function(previewObj) {
 
-				console.log("Succcess");
-				console.log(previewObj);
-
 				var
 					insuranceItemsArr = previewObj.previewItemsList,
 					insuranceAccountsArr = [];

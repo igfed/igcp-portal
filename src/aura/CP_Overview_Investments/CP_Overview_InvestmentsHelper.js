@@ -5,7 +5,13 @@
 
 		accArr.forEach(function(item, i){
 
-			var accountName = "";
+			var 
+				accountName = "",
+				totalValue = "";
+
+			utils.formatToCurrency(item.totalValue, function(formattedValue){
+				totalValue = formattedValue;
+			}, cmp.get("v.lang"));
 
 			//For now this is how we will be translating the dealer name
 			//to the full name we have in custom labels
@@ -21,8 +27,9 @@
 					{
 						"accountTitle" : accountName,
 						"accountType" : $A.get("$Label.c.CP_Generic_Not_Available"),
-						"accountTotal" : item.totalValue,
-						"accounts" : item.previewItems
+						"accountTotal" : ("$" + totalValue),
+						"accounts" : item.previewItems,
+						"lang" : cmp.get("v.lang")
 					},
 					cmp,
 					function(evt){}
@@ -33,8 +40,9 @@
 					{
 						"accountTitle" : accountName,
 						"accountType" : $A.get("$Label.c.CP_Generic_Not_Available"),
-						"accountTotal" : item.totalValue,
-						"accounts" : item.previewItems
+						"accountTotal" : ("$" + totalValue),
+						"accounts" : item.previewItems,
+						"lang" : cmp.get("v.lang")
 					},
 					cmp,
 					function(evt){}

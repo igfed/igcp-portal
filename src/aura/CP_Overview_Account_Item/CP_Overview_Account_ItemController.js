@@ -1,23 +1,30 @@
 ({
 	onInit: function(cmp, evt, hlpr) {
-		var account = cmp.get("v.account");
+		var 
+			account = cmp.get("v.account"),
+			utils = cmp.find("CP_Utils");
 
 		//Investments
 		if (cmp.get("v.itemType") === "investments") {
+
 			if (account.dealerName && account.accountName) {
 				cmp.set("v.accountName", (account.dealerName + " - " + account.accountName));
 			} else {
 				cmp.set("v.accountName", $A.get("$Label.c.CP_Generic_Not_Available"));
 			}
 
-			if (account.gainLoss) {
-				cmp.set("v.val1", account.gainLoss);
+			if (account.percGainLoss) {
+				cmp.set("v.val1", (account.percGainLoss + "%"));
 			} else {
 				cmp.set("v.val1", $A.get("$Label.c.CP_Generic_Not_Available"));
 			}
 
 			if (account.marketValue) {
-				cmp.set("v.val2", account.marketValue);
+				var marketValue = "";
+				utils.formatToCurrency(account.marketValue, function(formattedValue){
+					marketValue = "$" + formattedValue;
+				}, cmp.get("v.lang"));
+				cmp.set("v.val2", marketValue);
 			} else {
 				cmp.set("v.val2", $A.get("$Label.c.CP_Generic_Not_Available"));
 			}
@@ -32,13 +39,20 @@
 			}
 
 			if (account.interestRate) {
-				cmp.set("v.val1", account.interestRate);
+				cmp.set("v.val1", (account.interestRate + "%"));
 			} else {
 				cmp.set("v.val1", $A.get("$Label.c.CP_Generic_Not_Available"));
 			}
 
 			if (account.loanBalance) {
-				cmp.set("v.val2", account.loanBalance);
+
+				var loanBalance = "";
+
+				utils.formatToCurrency(account.loanBalance, function(formattedValue){
+					loanBalance = "$" + formattedValue;
+				}, cmp.get("v.lang"));
+
+				cmp.set("v.val2", loanBalance);
 			} else {
 				cmp.set("v.val2", $A.get("$Label.c.CP_Generic_Not_Available"));
 			}
@@ -46,7 +60,6 @@
 
 		//Insurance
 		if (cmp.get("v.itemType") === "insurance") {
-			console.log(account);
 
 			if (account.insuranceType) {
 				cmp.set("v.accountName", account.insuranceType);

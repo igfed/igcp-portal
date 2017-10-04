@@ -2,7 +2,14 @@
 	onInit : function(cmp, evt, hlpr) {
 	
 		var 
-			services = cmp.find("CP_Services");
+			services = cmp.find("CP_Services"),
+			utils = cmp.find("CP_Utils");
+
+		utils.getURLParams(function(params){
+			if(params.language) {
+				cmp.set("v.lang", params.language);
+			}
+		});
 
 		services.getClientFirstName(
 			cmp,

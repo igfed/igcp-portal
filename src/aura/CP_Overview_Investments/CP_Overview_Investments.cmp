@@ -7,6 +7,7 @@
 	<c:CP_Services aura:id="CP_Services" />
 	
 	<!-- ATTRS -->
+	<aura:attribute name="lang" type="String"></aura:attribute>
 	<aura:attribute name="accountTitle" type="String" />
 	<aura:attribute name="accountType" type="String" />
 	<aura:attribute name="accountTotal" type="String" />

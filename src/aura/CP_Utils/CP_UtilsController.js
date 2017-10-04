@@ -191,9 +191,9 @@
 		if(params) {
 			lang = params.lang;
 
-			if(lang === "en") {
+			if(lang === "en_CA" || lang === "en_US") {
 				formattedValue = hlpr.formatCurrency(params.rawValue);
-			} else if(lang === "fr") {
+			} else if(lang === "fr_CA") {
 				formattedValue = hlpr.formatCurrency(params.rawValue, 2, 3, ' ', ',');
 			} else {
 				console.warn("CP_Utils: formatToCurrency: language unrecognized.");

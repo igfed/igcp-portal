@@ -8,10 +8,20 @@
 		 * @param mixed   commaDelimeter: sections delimiter
 		 * @param mixed   decimalDelimiter: decimal delimiter
 		 */
-		var re = '\\d(?=(\\d{' + (commaPos || 3) + '})+' + (decimalPos > 0 ? '\\D' : '$') + ')',
-			num = rawVal.toFixed(Math.max(0, ~~decimalPos));
+		var 
+			re = '\\d(?=(\\d{' + (commaPos || 3) + '})+' + (decimalPos > 0 ? '\\D' : '$') + ')',
+			num = rawVal.toFixed(Math.max(0, ~~decimalPos)),
+			formattedValue;
 
-		return (decimalDelimiter ? num.replace('.', decimalDelimiter) : num).replace(new RegExp(re, 'g'), '$&' + (commaDelimeter || ','));
+		formattedValue = (decimalDelimiter ? num.replace('.', decimalDelimiter) : num).replace(new RegExp(re, 'g'), '$&' + (commaDelimeter || ','));
+
+		if(formattedValue.indexOf('.') === -1) {
+			formattedValue += ".00";
+		} else {
+			formattedValue = formattedValue;
+		}
+
+		return formattedValue;
 
 		//Examples
 		//12345678.9.formatCurrency(2, 3, '.', ','); // "12.345.678,90"

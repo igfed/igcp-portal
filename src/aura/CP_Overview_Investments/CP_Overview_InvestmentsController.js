@@ -22,13 +22,13 @@
 					accountTypeArr = [];
 
 				utils.formatToCurrency(previewObj.totalValue, function(formattedValue) {
-					console.log("SUCCESS");
-					console.log(formattedValue);
-
 					cmp.set("v.totalValue", formattedValue);
-				}, "fr");
+				}, cmp.get("v.lang"));
 
-				cmp.set("v.totalGainLoss", previewObj.totalGainLoss);
+				utils.formatToCurrency(previewObj.totalGainLoss, function(formattedValue) {
+					cmp.set("v.totalGainLoss", formattedValue);
+				}, cmp.get("v.lang"));
+
 				cmp.set("v.totalGainLossPercentage", previewObj.percGainLoss);
 				cmp.set("v.gainLossType", previewObj.signGainLoss);
 

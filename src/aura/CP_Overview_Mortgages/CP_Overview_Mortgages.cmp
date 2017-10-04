@@ -5,6 +5,7 @@
 	<c:CP_Validation aura:id="CP_Validation" />
 	<c:CP_Services aura:id="CP_Services" />
 	<!-- ATTRS -->
+	<aura:attribute name="lang" type="String"></aura:attribute>
 	<aura:attribute name="totalLoanAmount" type="String" default=""></aura:attribute>
 	<aura:attribute name="showMarketing" type="Boolean" default="false"></aura:attribute>
 	<!-- HANDLERS -->
