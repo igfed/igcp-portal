@@ -44,7 +44,7 @@ private class CP_RegistrationClassTest {
 		
 		CP_RegistrationClass.UserIdentity uid = New CP_RegistrationClass.UserIdentity();
 		uid.postalCode = 'M4H1K2';
-		Boolean result = uid.IsValidPostalCode();
+		Boolean result = CP_Utility.IsValidPostalCode(uid.postalCode);
 
 		System.assertEquals(true, result);
 	}
@@ -53,7 +53,7 @@ private class CP_RegistrationClassTest {
 		
 		CP_RegistrationClass.UserIdentity uid = New CP_RegistrationClass.UserIdentity();
 		uid.postalCode = 'M4H 1K2';
-		Boolean result = uid.IsValidPostalCode();
+		Boolean result = CP_Utility.IsValidPostalCode(uid.postalCode);
 
 		System.assertEquals(true, result);
 	}
@@ -62,7 +62,7 @@ private class CP_RegistrationClassTest {
 		
 		CP_RegistrationClass.UserIdentity uid = New CP_RegistrationClass.UserIdentity();
 		uid.postalCode = 'M4H-1K2';
-		Boolean result = uid.IsValidPostalCode();
+		Boolean result = CP_Utility.IsValidPostalCode(uid.postalCode);
 
 		System.assertEquals(true, result);
 	}
@@ -75,7 +75,7 @@ private class CP_RegistrationClassTest {
 		
 		CP_RegistrationClass.UserIdentity uid = New CP_RegistrationClass.UserIdentity();
 		uid.postalCode = 'M4HK2';
-		Boolean result = uid.IsValidPostalCode();
+		Boolean result = CP_Utility.IsValidPostalCode(uid.postalCode);
 
 		System.assertEquals(false, result);
 	}
@@ -85,7 +85,7 @@ private class CP_RegistrationClassTest {
 		
 		CP_RegistrationClass.UserIdentity uid = New CP_RegistrationClass.UserIdentity();
 		uid.postalCode = 'M4BH 1K2';
-		Boolean result = uid.IsValidPostalCode();
+		Boolean result = CP_Utility.IsValidPostalCode(uid.postalCode);
 
 		System.assertEquals(false, result);
 	}
@@ -95,7 +95,7 @@ private class CP_RegistrationClassTest {
 		
 		CP_RegistrationClass.UserIdentity uid = New CP_RegistrationClass.UserIdentity();
 		uid.postalCode = 'M4H 1$2';
-		Boolean result = uid.IsValidPostalCode();
+		Boolean result = CP_Utility.IsValidPostalCode(uid.postalCode);
 
 		System.assertEquals(false, result);
 	}
@@ -111,27 +111,27 @@ private class CP_RegistrationClassTest {
 		@isTest static void VerifyPhoneNumberInValidFormat_1() {
 			CP_RegistrationClass.UserProfile uProfile = New CP_RegistrationClass.UserProfile();
 			uProfile.mobilePhone = '16478845299';
-			System.assertEquals(false, uProfile.IsValidPhoneNumber());
+			System.assertEquals(false, CP_Utility.IsValidPhoneNumber(uProfile.mobilePhone));
 		}
 		@isTest static void VerifyPhoneNumberInValidFormat_2() {
 			CP_RegistrationClass.UserProfile uProfile = New CP_RegistrationClass.UserProfile();
 			uProfile.mobilePhone = '+1 647 884 5299';
-			System.assertEquals(false, uProfile.IsValidPhoneNumber());
+			System.assertEquals(false, CP_Utility.IsValidPhoneNumber(uProfile.mobilePhone));
 		}
 		@isTest static void VerifyPhoneNumberInValidFormat_3() {
 			CP_RegistrationClass.UserProfile uProfile = New CP_RegistrationClass.UserProfile();
 			uProfile.mobilePhone = '6478845299';
-			System.assertEquals(false, uProfile.IsValidPhoneNumber());
+			System.assertEquals(false, CP_Utility.IsValidPhoneNumber(uProfile.mobilePhone));
 		}
 		@isTest static void VerifyPhoneNumberInValidFormat_4() {
 			CP_RegistrationClass.UserProfile uProfile = New CP_RegistrationClass.UserProfile();
 			uProfile.mobilePhone = '1 647 884 5299';
-			System.assertEquals(false, uProfile.IsValidPhoneNumber());
+			System.assertEquals(false, CP_Utility.IsValidPhoneNumber(uProfile.mobilePhone));
 		}
 		@isTest static void VerifyPhoneNumberInValidFormat_5() {
 			CP_RegistrationClass.UserProfile uProfile = New CP_RegistrationClass.UserProfile();
 			uProfile.mobilePhone = '1-647-884-5299';
-			System.assertEquals(false, uProfile.IsValidPhoneNumber());
+			System.assertEquals(false, CP_Utility.IsValidPhoneNumber(uProfile.mobilePhone));
 		}
 
 
@@ -139,25 +139,25 @@ private class CP_RegistrationClassTest {
 		@isTest static void VerifyPhoneNumberValidFormat_1() {
 			CP_RegistrationClass.UserProfile uProfile = New CP_RegistrationClass.UserProfile();
 			uProfile.mobilePhone = '1(647)-884-5299';
-			System.assertEquals(true, uProfile.IsValidPhoneNumber());
+			System.assertEquals(true, CP_Utility.IsValidPhoneNumber(uProfile.mobilePhone));
 		}
 
 		@isTest static void VerifyPhoneNumberValidFormat_2() {
 			CP_RegistrationClass.UserProfile uProfile = New CP_RegistrationClass.UserProfile();
 			uProfile.mobilePhone = '647-884-5299';
-			System.assertEquals(true, uProfile.IsValidPhoneNumber());
+			System.assertEquals(true, CP_Utility.IsValidPhoneNumber(uProfile.mobilePhone));
 		}
 
 		@isTest static void VerifyPhoneNumberValidFormat_3() {
 			CP_RegistrationClass.UserProfile uProfile = New CP_RegistrationClass.UserProfile();
 			uProfile.mobilePhone = '647 884 5299';
-			System.assertEquals(true, uProfile.IsValidPhoneNumber());
+			System.assertEquals(true, CP_Utility.IsValidPhoneNumber(uProfile.mobilePhone));
 		}
 
 		@isTest static void VerifyPhoneNumberValidFormat_4() {
 			CP_RegistrationClass.UserProfile uProfile = New CP_RegistrationClass.UserProfile();
 			uProfile.mobilePhone = '(647) 884-5299';
-			System.assertEquals(true, uProfile.IsValidPhoneNumber());
+			System.assertEquals(true, CP_Utility.IsValidPhoneNumber(uProfile.mobilePhone));
 		}
 //
 

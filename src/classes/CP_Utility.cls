@@ -58,4 +58,13 @@ global class CP_Utility {
             return false;
     }
 
+    public static Boolean ReEnteredPasswordMatched(String password, String rePassword)
+    {
+        if(password == rePassword)
+            return true;
+        else
+            return false;
+    }
+
+
 }

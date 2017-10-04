@@ -58,7 +58,7 @@ global class CP_RegistrationClass {
                     else
                     {
                         // Validate Contact Postal code and Date of birth with values entered by user
-                        if(!IGUser.PostalCodeMatched(objContact.Customer__r.MailingPostalCode))
+                        if(!CP_Utility.PostalCodeMatched(IGUser.postalCode, objContact.Customer__r.MailingPostalCode))
                         {
                             // Postatcode did not match the stored info in Salesforce.
                             result.IsValid = false;
@@ -80,11 +80,12 @@ global class CP_RegistrationClass {
                         {
                             result.IsLocked = IGUser.recordFailedAttemptAndLock();
                         }
-                        return result;
                     }
                 }    
             }
         }
+
+        return result;
     }
  
     public CP_Response.Result verifyProfile(CP_RegistrationClass.UserProfile IGUserProfile)
@@ -338,7 +339,7 @@ global class CP_RegistrationClass {
             return false;
         }
 
-
+        /*
         public Boolean IsValidPostalCode()
         {
             String postalCodeRegex_1 = '[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]';
@@ -367,7 +368,7 @@ global class CP_RegistrationClass {
             else
                 return false;
         }
-        
+        */
     }
 
     
@@ -424,6 +425,7 @@ global class CP_RegistrationClass {
 
         }
         
+        /*
         public Boolean IsValidEmail()
         {
             String emailRegex = '([a-zA-Z0-9_\\-\\.]+)@((\\[a-z]{1,3}\\.[a-z]{1,3}\\.[a-z]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})';
@@ -453,7 +455,7 @@ global class CP_RegistrationClass {
             Matcher MyMatcher = MyPattern.matcher(thisPhoneNumber);
             return MyMatcher.matches();
         }
-        
+        */
     }
     
      public class RegistrationForm

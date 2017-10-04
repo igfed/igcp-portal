@@ -71,5 +71,18 @@
 		<aura:attribute name="callback" type="function" default="" />
 	</aura:method>
 
+	<!-- GO TO LOGIN -->
+	<!-- NAVIGATES TO LOGIN URL -->
+	<aura:method name="gotoLogin" action="{!c.onGoToLogin}">
+		<aura:attribute name="lang" type="String" ></aura:attribute>
+	</aura:method>
+
+	<!-- NAVIGATE TO URL -->
+	<!-- NAVIGATES TO URL ;) -->
+	<aura:method name="navigateToURL" action="{!c.onNavigateToURL}">
+		<aura:attribute name="url" type="String" ></aura:attribute>
+		<aura:attribute name="target" type="String" ></aura:attribute>
+	</aura:method>
+
 	
 </aura:component>

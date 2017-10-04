@@ -1,38 +1,31 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_ForgotPasswordController">
-	
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="forgot-user-step-3"></aura:attribute>
 	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="inputsReceived" type="Integer" default="0"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
-
 	<!-- STEP 1 -->
 	<aura:attribute name="username" type="String" default=""></aura:attribute>
 	<aura:attribute name="postalCode" type="String" default=""></aura:attribute>
-    <aura:attribute name="dob" type="String" default=""></aura:attribute>
-
+	<aura:attribute name="dob" type="String" default=""></aura:attribute>
 	<!-- STEP 2 -->
 	<aura:attribute name="question" type="String"></aura:attribute>
 	<aura:attribute name="answer" type="String"></aura:attribute>
 	<aura:attribute name="isamStateId" type="String"></aura:attribute>
 	<aura:attribute name="questionId" type="String"></aura:attribute>
-
 	<!-- STEP 3 -->
 	<aura:attribute name="password" type="String"></aura:attribute>
 	<aura:attribute name="confirmPassword" type="String"></aura:attribute>
-	
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
 	<c:CP_Validation aura:id="CP_Validation" />
 	<c:CP_Services aura:id="CP_Services" />
-	
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
 	<aura:handler event="c:CP_Evt_Key" action="{!c.onKey}" />
-	
 	<!-- METHODS-->
 	<aura:method name="onSubmitForm" action="{!c.submitForm}" description="Call submit form">
 		<aura:attribute name="payload" type="Map"></aura:attribute>
@@ -40,7 +33,6 @@
 	<aura:method name="gotoNextStep" action="{!c.onNextStep}" description="Called when ready to proceed to next step">
 		<aura:attribute name="payload" type="Map"></aura:attribute>
 	</aura:method>
-	
 	<!-- MARKUP -->
 	<div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
 		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
@@ -52,11 +44,11 @@
 			<p class="igcp-utils__width--100 igcp-large-utils__width--75">{!$Label.c.CP_Forgot_Pass_Step_3_Instructions}</p>
 			<div class="slds-grid slds-wrap">
 				<div class="slds-form slds-size_12-of-12">
-					<!--FIELDS-->
+					<!-- FIELDS -->
 					<!-- PASSWORD -->
 					<c:CP_Cmp_Input_Password id="password-input" form="{!v.pageId}" type="password" confirmPassword="true" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Password}" />
 				</div>
-				<!--CTAS-->
+				<!-- CTAS -->
 				<c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Update}" nextType="submit" form="{!v.pageId}" />
 			</div>
 		</div>

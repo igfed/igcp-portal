@@ -3,8 +3,8 @@
 
 		var utils = cmp.find("CP_Utils");
 
-		utils.getURLParams(function(urlParams){
-			if(urlParams.language) {
+		utils.getURLParams(function(urlParams) {
+			if (urlParams.language) {
 				cmp.set("v.lang", urlParams.language);
 			} else {
 				cmp.set("v.lang", "");
@@ -24,22 +24,32 @@
 		cmp.set("v.currentStep", nextStep);
 	},
 	onBackStep: function(cmp, evt, hlpr) {
+
 		var
+			utils = cmp.find("CP_Utils"),
+			payload = evt.getParam("payload"),
 			currentStep = cmp.get("v.currentStep");
-		backStep = currentStep -= 1;
 
-		if (backStep < 0) {
-			backStep = 0;
+		if (payload.id === "registration-step-1" || payload.id === "registration-step-2") {
+			utils.gotoLogin();
+		} else {
+
+			backStep = currentStep -= 1;
+
+			if (backStep < 0) {
+				backStep = 0;
+			}
+
+			cmp.set("v.currentStep", backStep);
+
 		}
-
-		cmp.set("v.currentStep", backStep);
 	},
 	onLockedOut: function(cmp, evt, hlpr) {
 		cmp.set("v.currentStep", 5);
 	},
 	onNotCompleted: function(cmp, evt, hlpr) {
 
-		if(evt.getParam("payload").id === cmp.get("v.id")) {
+		if (evt.getParam("payload").id === cmp.get("v.id")) {
 			cmp.set("v.currentStep", 6);
 		}
 	}

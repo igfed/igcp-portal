@@ -12,9 +12,6 @@
 					//Add the new button to the body array
 					if (status === "SUCCESS") {
 
-						//console.log("SUCCESS")
-						//console.log(component)
-
 						var body = container.get("v.body");
 						body.push(component);
 						container.set("v.body", body);
@@ -138,6 +135,52 @@
 			} else {
 				console.error("CP_Utils: forEach: this method only accepts objects.");
 			}
+		}
+	},
+	onGoToLogin: function(cmp, evt, hlpr) {
+		try {
+
+			var 
+				params = evt.getParam("arguments"),
+				lang = "en";
+			if (params) {
+				//Capturing lang here
+				//so far not sure how login
+				//will handle language
+				//just keeping this here for the future
+				if(params.lang) {
+					lang = params.lang;
+				}
+			}
+
+			window.open("https://fitrp3-isam.investorsgroup.com/", "_self");
+		} catch(err) {
+			console.error("CP_Utils: gotoLogin: window not found.")
+			console.error(err);
+		}
+	},
+	onNavigateToURL: function(cmp, evt, hlpr) {
+		try {
+			var 
+				params = evt.getParam("arguments"),
+				target = "_self";
+
+			if(params) {
+				if(params.target) {
+					target = params.target;
+				}
+
+				if(params.url) {
+					window.open(params.url, target);
+				} else {
+					console.warn("CP_Utils: navigateToURL was called but no url was passed.");
+				}
+			}
+
+
+		} catch(err) {
+			console.error("CP_Utils: navigateToURL: window not found.")
+			console.error(err);
 		}
 	}
 })

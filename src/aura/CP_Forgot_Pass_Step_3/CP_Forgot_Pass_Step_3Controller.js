@@ -10,11 +10,18 @@
 	},
 	onInputValueReceived: function(cmp, evt, hlpr) {
 
+		console.log("onInputValueReceived");
+		console.log(evt.getParam("payload"));
+
 		var inputs = cmp.get("v.inputsReceived");
 
-		hlpr.validateInput(cmp, evt.getParam("payload"));
+		console.log(cmp.get("v.inputsReceived"));
+
+		hlpr.validatePassword(cmp, evt.getParam("payload"));
 
 		cmp.set("v.inputsReceived", (inputs += 1));
+
+		console.log(cmp.get("v.inputsReceived"));
 
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
