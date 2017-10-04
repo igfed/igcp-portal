@@ -12,6 +12,8 @@
 	<!-- STEP 2 -->
 	<aura:attribute name="question" type="String"></aura:attribute>
 	<aura:attribute name="answer" type="String"></aura:attribute>
+	<aura:attribute name="isamStateId" type="String"></aura:attribute>
+	<aura:attribute name="questionId" type="String"></aura:attribute>
 	
 	<!-- INCLUDES -->	
     <c:CP_CSS_Includes />
@@ -31,7 +33,13 @@
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 1}"  >
-    		<c:CP_Forgot_User_Step_2 clientNum="{!v.clientNum}" email="{!v.email}" question="{!v.question}" answer="{!v.answer}"/>
+    		<c:CP_Forgot_User_Step_2 
+    			clientNum="{!v.clientNum}" 
+    			email="{!v.email}" 
+    			question="{!v.question}" 
+    			answer="{!v.answer}"
+    			isamStateId="{!v.isamStateId}"
+    			questionId="{!v.questionId}"/>
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 2}"  >

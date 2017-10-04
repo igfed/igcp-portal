@@ -26,7 +26,7 @@
 					console.log(formattedValue);
 
 					cmp.set("v.totalValue", formattedValue);
-				});
+				}, "fr");
 
 				cmp.set("v.totalGainLoss", previewObj.totalGainLoss);
 				cmp.set("v.totalGainLossPercentage", previewObj.percGainLoss);

@@ -115,7 +115,7 @@
 
 			} else {
 				params.callback({});
-				console.warn("No query params detected.");
+				//console.warn("CP_Utils: getURLParams: No query params detected.");
 			}
 		}
 
@@ -193,6 +193,10 @@
 
 			if(lang === "en") {
 				formattedValue = hlpr.formatCurrency(params.rawValue);
+			} else if(lang === "fr") {
+				formattedValue = hlpr.formatCurrency(params.rawValue, 2, 3, ' ', ',');
+			} else {
+				console.warn("CP_Utils: formatToCurrency: language unrecognized.");
 			}
 
 			params.callback(formattedValue);

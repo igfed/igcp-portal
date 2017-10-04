@@ -1,6 +1,7 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_OverviewController">
 	
 	<!-- ATTRS -->
+	<aura:attribute name="lang" type="String" default="en" ></aura:attribute>
 	<aura:attribute name="clientName" type="String" default=""></aura:attribute>
 
 	<!-- INCLUDES -->

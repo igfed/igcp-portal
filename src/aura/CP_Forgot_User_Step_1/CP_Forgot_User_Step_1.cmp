@@ -43,7 +43,7 @@
             <div class="slds-grid slds-wrap">
                 <div class="slds-form slds-size_12-of-12">
                 	<!-- TOAST ERROR -->
-                	<c:CP_Cmp_Toast id="error-box"
+                	<c:CP_Cmp_Toast id="forgot-user-step-1-toast-error"
                 		type="error"
                 		class="slds-m-top--x-small slds-m-bottom--xxx-small"/>
                     <!--FIELDS-->
