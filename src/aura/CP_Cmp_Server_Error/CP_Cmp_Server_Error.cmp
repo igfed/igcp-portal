@@ -1,4 +1,6 @@
 <aura:component >
+	<!-- INCLUDES -->
+	<c:CP_Utils aura:id="CP_Utils" />
 	<!-- HANDLER -->
 	<aura:handler event="c:CP_Evt_Click" action="{!c.gotoLogin}" />
 	<!-- MARKUP -->

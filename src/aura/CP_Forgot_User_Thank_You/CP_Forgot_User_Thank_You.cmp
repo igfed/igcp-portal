@@ -1,5 +1,8 @@
 <aura:component >
 
+	<!-- INCLUDES -->
+	<c:CP_Utils aura:id="CP_Utils" />
+
 	<!-- ATTRS -->
 	<aura:attribute name="email" type="String"></aura:attribute>
 
