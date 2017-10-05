@@ -56,7 +56,6 @@
 					isLocked = payload.State.IsLocked,
 					serviceUnavailable = payload.State.ServiceNotAvailable;
 
-
 				try {
 					if (fields[0] === "confirmPassword" && error.type === "error") {
 						events.fire("CP_Evt_Toast_Error", {

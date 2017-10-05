@@ -20,5 +20,8 @@
 		if(evt.getParam("payload").id === cmp.get("v.id")) {
 			cmp.set("v.currentStep", 3);
 		}
+	},
+	onLockedOut: function(cmp, evt, hlpr) {
+		cmp.set("v.currentStep", 4);
 	}
 })

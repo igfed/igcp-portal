@@ -11,7 +11,7 @@
             <div class="slds-grid slds-wrap">
                 
                 <c:CP_Cmp_Button class="slds-size_12-of-12 slds-medium-size_4-of-12 slds-m-horizontal--x-large slds-medium-m-horizontal--zero slds-grid slds-p-bottom--x-large slds-m-top--x-large" 
-                label="{!$Label.c.CP_Generic_Label_Return_To_Login}"/>
+                label="{!$Label.c.CP_Generic_Button_Return_To_Login}"/>
             </div>
             
         </div>

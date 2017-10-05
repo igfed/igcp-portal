@@ -22,6 +22,7 @@
     <!-- HANDLER -->
     <aura:handler event="c:CP_Evt_Next_Step" action="{!c.onNextStep}"></aura:handler>
     <aura:handler event="c:CP_Evt_Back_Step" action="{!c.onBackStep}"></aura:handler>
+    <aura:handler event="c:CP_Evt_Error_Locked_Out" action="{!c.onLockedOut}"></aura:handler>
     <aura:handler event="c:CP_Evt_Error_Not_Completed" action="{!c.onNotCompleted}"></aura:handler>
 
     <!-- COMPONENTS -->
@@ -48,6 +49,10 @@
 
     	<aura:if isTrue="{!v.currentStep == 3}"  >
     		<c:CP_Forgot_User_Not_Completed />
+    	</aura:if>
+
+    	<aura:if isTrue="{!v.currentStep == 4}"  >
+    		<c:CP_Forgot_User_Locked_Out />
     	</aura:if>
     	
     </div>

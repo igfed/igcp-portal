@@ -136,26 +136,45 @@
 }
 
 //UNDERLINE
-.#{$namespace}-underline {
+.#{$namespace}-underline,
+.#{$namespace}-underline__regular--grey {
 	border-bottom: 2px solid $ig-grey;
 }
 
-.#{$namespace}-underline--thick-blue {
+.#{$namespace}-underline__thin--grey {
+	border-bottom: 1px solid $ig-grey;
+}
+
+.#{$namespace}-underline__thick-grey {
+	border-bottom: 3px solid $ig-grey;
+}
+
+.#{$namespace}-underline__thin--blue {
+	border-bottom: 1px solid $ig-dark-blue;
+}
+
+.#{$namespace}-underline--blue,
+.#{$namespace}-underline__regular--blue {
+	border-bottom: 2px solid $ig-dark-blue;
+}
+
+.#{$namespace}-underline__thick--blue {
 	border-bottom: $ig-space--xx-small solid $ig-dark-blue;
 	transform-origin: left bottom;
 	transform: skewX(25deg);
 }
 
-.#{$namespace}-underline--white {
+.#{$namespace}-underline__thin--white {
 	border-bottom: 1px solid $ig-white;
 }
 
-.#{$namespace}-underline--thick-white {
-	border-bottom: 3px solid $ig-white;
+.#{$namespace}-underline--white,
+.#{$namespace}-underline__regular--white {
+	border-bottom: 2px solid $ig-white;
 }
 
-.#{$namespace}-underline--thick-grey {
-	border-bottom: 3px solid $ig-grey;
+.#{$namespace}-underline__thick--white {
+	border-bottom: 3px solid $ig-white;
 }
 
 //VALUE
@@ -230,11 +249,26 @@
 	left: 35px;
 }
 
-.#{$namespace}-account--total div {
+.#{$namespace}-account__total div {
 
 	span {
-		font-size: $ig-font-size--medium;
-		border-bottom: 2px solid $ig-dark-blue;
+		border-bottom: 1px solid $ig-grey;
+	}
+}
+
+.#{$namespace}-account__grand-total div {
+
+	font-family: $ig-whitney-semibold;
+
+	.#{$namespace}-account__grand-total--container {
+		width: 35%;
+		float: right;
+	}
+}
+
+.#{$namespace}-account__item {
+	sup {
+		top: -3px;
 	}
 }
 
@@ -256,7 +290,7 @@
 
 //CTA
 .#{$namespace}-cta {
-	background-color: $ig-beige;
+	background-color: $ig-white;
 }
 
 
@@ -425,6 +459,11 @@
 
 	display: inline-block;
 
+	&.#{$namespace}-tooltip__label--small {
+		padding-left: 8px;
+		padding-top: 6px;
+	}
+
 	.#{$namespace}-tooltip__tip {
 		border: none;
 	}
@@ -483,4 +522,12 @@
 	.#{$namespace}-toast__message {
 		color: $ig-white;
 	}
+}
+
+//Border
+.#{$namespace}-border--double {
+	height: 3px;
+	width: auto;
+	border-top: 1px solid $ig-grey;
+	border-bottom: 1px solid $ig-grey;
 }

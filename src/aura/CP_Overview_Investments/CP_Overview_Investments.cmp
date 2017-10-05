@@ -23,13 +23,16 @@
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	
 	<!-- MARKUP -->
-	<div class="igcp-container slds-p-around--small slds-large-p-around--medium slds-m-bottom--x-small slds-large-m-bottom--medium slds-large-m-right--medium">
+	<div class="igcp-container slds-p-around--small slds-large-p-around--small slds-m-bottom--x-small slds-large-m-bottom--medium slds-large-m-right--medium">
 		
-		<h2 class="slds-large-m-top--small slds-large-m-bottom--medium">{!$Label.c.CP_Overview_Investments_h2}</h2>
+		<h2 class="slds-large-m-top--small slds-large-m-bottom--medium slds-medium-p-left--small">{!$Label.c.CP_Overview_Investments_h2}</h2>
 		
 		<div class="slds-grid slds-wrap">
 			<c:CP_Cmp_Total_Value label="{!$Label.c.CP_Generic_Label_Total_Market_Value}" value="{!v.totalValue}" />
-			<c:CP_Cmp_Gain_Loss label="{!$Label.c.CP_Generic_Label_Change}" value="{!v.totalGainLoss}" percentage="{!v.totalGainLossPercentage}" gainLossType="{!v.gainLossType}" /> {!v.body}
+			<c:CP_Cmp_Gain_Loss label="{!$Label.c.CP_Generic_Label_Change}" value="{!v.totalGainLoss}" percentage="{!v.totalGainLossPercentage}" gainLossType="{!v.gainLossType}" /> 
+			<div class="igcp-underline__thin--grey slds-m-vertical--medium slds-size_12-of-12"></div>
+			<c:CP_Cmp_Graph_Asset_Mix />
+			{!v.body}
 		</div>
 	</div>
 </aura:component>

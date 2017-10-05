@@ -10,43 +10,7 @@
 			"username": cmp.get("v.username")
 		});
 
-		services.getRandSecurityQuestion(
-			cmp,
-			function(evt) {
-				var
-					payload = evt.payload,
-					events = cmp.find("CP_Events"),
-					isValid = payload.State.IsValid,
-					questionObj = {};
-
-				if (isValid === true) {
-
-					questionObj = payload.question;
-
-					cmp.set("v.question", questionObj.question);
-					hlpr.addToCurrentPayload(cmp, "question", questionObj.question);
-
-					cmp.set("v.isamStateId", questionObj.stateId);
-					cmp.set("v.questionId", questionObj.id);
-
-				} else {
-					events.fire("CP_Evt_Toast_Error", {
-						"id": "forgot-pass-step-2-toast-error",
-						"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-					});
-				}
-
-			},
-			function(error) {
-				console.error("Forgot Pass Step 2: get random question.");
-				console.error(error);
-
-				events.fire("CP_Evt_Toast_Error", {
-					"id": "forgot-pass-step-2-toast-error",
-					"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-				});
-			}
-		);
+		hlpr.getRandomSecurityQuestion(cmp, hlpr);
 	},
 	onSubmit: function(cmp, evt, hlpr) {
 
@@ -141,6 +105,15 @@
 					if (serviceUnavailable) {
 						events.fire("CP_Evt_Error_Not_Completed", {
 							"id": cmp.get("v.pageId")
+						});
+					}
+
+					if(isLocked === false && isValid === false) {
+						hlpr.getRandomSecurityQuestion(cmp, hlpr);
+
+						events.fire("CP_Evt_Toast_Error", {
+							"id": "forgot-pass-step-2-toast-error",
+							"message": $A.get("$Label.c.CP_Error_Please_Try_Again")
 						});
 					}
 

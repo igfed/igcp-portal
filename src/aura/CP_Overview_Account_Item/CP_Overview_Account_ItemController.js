@@ -19,6 +19,10 @@
 				cmp.set("v.val1", $A.get("$Label.c.CP_Generic_Not_Available"));
 			}
 
+			if(account.signGainLoss) {
+				cmp.set("v.gainLossType", account.signGainLoss);
+			}
+
 			if (account.marketValue) {
 				var marketValue = "";
 				utils.formatToCurrency(account.marketValue, function(formattedValue){

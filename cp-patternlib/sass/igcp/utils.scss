@@ -17,10 +17,7 @@
 
 		.#{getNamespace($value)}-utils__font--book {
 			font-family: $ig-whitney-book;
-		}
-
-
-		//Font Sizes
+		} //Font Sizes
 		.#{getNamespace($value)}-utils__font-size--x-small,
 		.#{getNamespace($value)}-utils__font-size--x-mini {
 			font-size: $ig-font-size--x-mini;
@@ -61,15 +58,10 @@
 		.#{getNamespace($value)}-utils__font-size--xx-large {
 			font-size: $ig-font-size--xx-large;
 			line-height: $ig-line-height--xx-large;
-		}
-
-
-		//Line Height
+		} //Line Height
 		.#{getNamespace($value)}-utils__line-height--regular {
 			line-height: $ig-line-height--base;
-		}
-
-		//Text
+		} //Text
 		.#{getNamespace($value)}-utils__text--default {
 			text-transform: none;
 		}
@@ -104,10 +96,7 @@
 
 		.#{getNamespace($value)}-utils__text-align--left {
 			text-align: left;
-		}
-
-
-		//Width
+		} //Width
 		.#{getNamespace($value)}-utils__width--25 {
 			width: 25%;
 		}
@@ -143,10 +132,7 @@
 
 		.#{getNamespace($value)}-utils__width--auto {
 			width: auto;
-		}
-
-
-		//Max-width
+		} //Max-width
 		.#{getNamespace($value)}-utils__max-width--large,
 		.#{getNamespace($value)}-utils__max-width--#{$ig-large} {
 			max-width: $ig-large;
@@ -164,9 +150,7 @@
 
 		.#{getNamespace($value)}-utils__max-width--none {
 			max-width: none;
-		}
-
-		//Display
+		} //Display
 		.#{getNamespace($value)}-utils__display--none,
 		.#{getNamespace($value)}-utils__hide {
 			display: none;
@@ -198,23 +182,17 @@
 			display: -webkit-flex;
 			display: -ms-flexbox;
 			display: flex;
-		}
-
-		//Bullets
+		} //Bullets
 		.#{getNamespace($value)}-utils__bullets--disc {
 			list-style: disc;
-		}
-
-		//Animations
+		} //Animations
 		.#{getNamespace($value)}-utils__fade--in {
 			@include fadeTo();
 		}
 
 		.#{getNamespace($value)}-utils__fade--out {
 			@include fadeTo(0);
-		}
-
-		//Opacity
+		} //Opacity
 		.#{getNamespace($value)}-utils__opacity--0 {
 			opacity: 0;
 		}
@@ -233,14 +211,10 @@
 
 		.#{getNamespace($value)}-utils__opacity--100 {
 			opacity: 1;
-		}
-
-		//Margin
+		} //Margin
 		.#{getNamespace($value)}-utils__margin--zero-auto {
 			margin: 0 auto;
-		}
-
-		//Order
+		} //Order
 		.#{getNamespace($value)}-utils__order--1 {
 			order: 1
 		}
@@ -259,9 +233,7 @@
 
 		.#{getNamespace($value)}-utils__order--5 {
 			order: 5
-		}
-
-		//Overflow
+		} //Overflow
 		.#{getNamespace($value)}-utils__overflow--visible {
 			overflow: visible;
 		}
@@ -276,11 +248,62 @@
 
 		.#{getNamespace($value)}-utils__overflow--auto {
 			overflow: auto;
-		}
-
-		//Height
+		} //Height
 		.#{getNamespace($value)}-utils__height--zero {
 			height: 0;
+		} //Colour
+		.#{getNamespace($value)}-utils__colour--link-blue,
+		.#{getNamespace($value)}-utils__color--link-blue {
+			color: $ig-link-blue;
+		}
+
+		.#{getNamespace($value)}-utils__colour--dark-blue,
+		.#{getNamespace($value)}-utils__color--dark-blue {
+			color: $ig-dark-blue;
+		}
+
+		.#{getNamespace($value)}-utils__colour--black,
+		.#{getNamespace($value)}-utils__color--black {
+			color: $ig-black;
+		}
+
+		.#{getNamespace($value)}-utils__colour--white,
+		.#{getNamespace($value)}-utils__color--white {
+			color: $ig-white;
+		} //Float
+		.#{getNamespace($value)}-utils__float--left {
+			float: left;
+		}
+
+		.#{getNamespace($value)}-utils__float--right {
+			float: right;
+		}
+
+		.#{getNamespace($value)}-utils__float--none {
+			float: none;
+		} 
+
+		//Center
+		.#{getNamespace($value)}-utils__center {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		.#{getNamespace($value)}-utils__position--relative {
+			position: relative;
+		}
+
+		.#{getNamespace($value)}-utils__position--absolute {
+			position: absolute;
+		}
+
+		.#{getNamespace($value)}-utils__position--fixed {
+			position: fixed;
+		}
+
+		.#{getNamespace($value)}-utils__position--static {
+			position: static;
 		}
 	}
 }

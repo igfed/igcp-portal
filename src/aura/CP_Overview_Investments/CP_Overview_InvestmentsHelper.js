@@ -5,6 +5,8 @@
 
 		accArr.forEach(function(item, i){
 
+			console.log(item);
+
 			var 
 				accountName = "",
 				totalValue = "";
@@ -30,6 +32,20 @@
 						"accountTotal" : ("$" + totalValue),
 						"accounts" : item.previewItems,
 						"lang" : cmp.get("v.lang")
+					},
+					cmp,
+					function(evt){}
+				);
+			} else if(i === (accArr.length - 1)) {
+				utils.createComponent(
+					"CP_Overview_Account",
+					{
+						"accountTitle" : accountName,
+						"accountType" : $A.get("$Label.c.CP_Generic_Not_Available"),
+						"accountTotal" : ("$" + totalValue),
+						"accounts" : item.previewItems,
+						"lang" : cmp.get("v.lang"),
+						"accountGrandTotal" : "$109,000.00"
 					},
 					cmp,
 					function(evt){}
