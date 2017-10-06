@@ -7,19 +7,48 @@
   event.container = {};
   event.template = {};
 
+
   function init() {
-    // Analytics click event handler
+    // Capture page data
+    var digitalData = {
+      pageInstanceID: getPageName() + window.location.hostname + "",
+      page: {
+        pageInfo: {
+          pageName: getPageName(),
+          language: getPageLanguage(),
+          server: window.location.href,
+          timezone: new Date().getTimezoneOffset() / 60
+        }
+      }
+    }
+
+
+    // Register click event handler
     $('.aa-click').on('click', function (e) {
       e.preventDefault();
       event.type = 'click';
       constructEventObj($(this));
     });
 
-    // Analytics hover event handler
+    // Register hover event handler
     $('.aa-hover').on('click', function () {
       event.type = 'hover';
       constructEventObj($(this));
     });
+  }
+
+  function getPageName() {
+    var name;
+
+    return name;
+
+  }
+
+  function getPageLanguage() {
+    var lang;
+
+    return lang;
+
   }
 
   function constructEventObj($this) {
