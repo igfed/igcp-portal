@@ -19,7 +19,10 @@
 	},
 	onNotCompleted: function(cmp, evt, hlpr) {
 		if(evt.getParam("payload").id === cmp.get("v.id")) {
-			cmp.set("v.currentStep", 4);
+			cmp.set("v.currentStep", 5);
 		}
+	},
+	onLockedOut: function(cmp, evt, hlpr) {
+		cmp.set("v.currentStep", 6);
 	}
 })

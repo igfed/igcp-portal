@@ -10,18 +10,7 @@
 			"username": cmp.get("v.username")
 		});
 
-		services.getRandSecurityQuestion(
-			cmp,
-			function(success) {
-				cmp.set("v.question", success["payload"][0]);
-				hlpr.addToCurrentPayload(cmp, "question", success["payload"][0]);
-				cmp.set("v.question", success["payload"][0].question);
-			},
-			function(error) {
-				console.error("GET RANDOM QUESTION");
-				console.error(error);
-			}
-		);
+		hlpr.getRandomSecurityQuestion(cmp, hlpr);
 	},
 	onSubmit: function(cmp, evt, hlpr) {
 
@@ -34,7 +23,7 @@
 	},
 	onInputValueReceived: function(cmp, evt, hlpr) {
 
-		var 
+		var
 			utils = cmp.find("CP_Utils"),
 			inputs = cmp.get("v.inputsReceived"),
 			formattedDob = "";
@@ -56,13 +45,15 @@
 				"username": cmp.get("v.username"),
 				"postalCode": cmp.get("v.postalCode"),
 				"dob": formattedDob,
-				"question" : cmp.get("v.question"),
-				"answer": cmp.get("v.answer")
+				"question": cmp.get("v.question"),
+				"answer": cmp.get("v.answer"),
+				"stateId": cmp.get("v.isamStateId"),
+				"id": cmp.get("v.questionId")
 			});
 
-			cmp.gotoNextStep();
+			console.log(cmp.get("v.payload"));
 
-			//cmp.onSubmitForm();
+			cmp.onSubmitForm();
 		}
 	},
 	onInputBlur: function(cmp, evt, hlpr) {
@@ -70,9 +61,7 @@
 	},
 	submitForm: function(cmp, evt, hlpr) {
 
-		var
-			events = cmp.find("CP_Events"),
-			services = cmp.find("CP_Services");
+		var services = cmp.find("CP_Services");
 
 		services.submitForm(
 			"StepTwo",
@@ -86,38 +75,68 @@
 
 				var
 					events = cmp.find("CP_Events"),
-					fields = error.payload.State.Fields,
-					messages = error.payload.State.Messages,
-					serviceUnavailable = error.payload.State.ServiceNotAvailable;
+					payload = error.payload,
+					fields = payload.State.Fields,
+					messages = payload.State.Messages,
+					isValid = payload.State.IsValid,
+					isLocked = payload.State.IsLocked,
+					serviceUnavailable = payload.State.ServiceNotAvailable;
 
-				if (serviceUnavailable) {
-					events.fire("CP_Evt_Error_Not_Completed", {
-						"id": "forgot-username"
+				try {
+
+					fields.forEach(function(errorType, i) {
+						var msgArr = [];
+
+						if (errorType === "answer") {
+							msgArr.push({ "msg": messages[i] });
+							events.fire("CP_Evt_Input_Error", {
+								"id": "text-input",
+								"errors": msgArr
+							});
+						}
 					});
-				}
 
-				fields.forEach(function(errorType, i) {
-					var msgArr = [];
-
-					if (errorType === "answer") {
-						msgArr.push({ "msg": messages[i] });
-						events.fire("CP_Evt_Input_Error", {
-							"id": "text-input",
-							"errors": msgArr
+					if (isLocked) {
+						events.fire("CP_Evt_Error_Locked_Out", {
+							"id": cmp.get("v.pageId")
 						});
 					}
-				});
 
-				if (error.type === "server-side-error") {
+					if (serviceUnavailable) {
+						events.fire("CP_Evt_Error_Not_Completed", {
+							"id": cmp.get("v.pageId")
+						});
+					}
+
+					if(isLocked === false && isValid === false) {
+						hlpr.getRandomSecurityQuestion(cmp, hlpr);
+
+						events.fire("CP_Evt_Toast_Error", {
+							"id": "forgot-pass-step-2-toast-error",
+							"message": $A.get("$Label.c.CP_Error_Please_Try_Again")
+						});
+					}
+
+					if (error.type === "server-side-error" || isValid === false) {
+						events.fire("CP_Evt_Toast_Error", {
+							"id": "forgot-pass-step-2-toast-error",
+							"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
+						});
+					} else {
+						//Display toast
+						events.fire("CP_Evt_Toast_Error", {
+							"id": "error-box",
+							"message": messages[0]
+						});
+					}
+
+				} catch (err) {
+					console.error("Forgot Password Step 2: There was an unknown error.");
+					console.error(err);
+
 					events.fire("CP_Evt_Toast_Error", {
-						"id": "error-box",
-						"message": $A.get("$Label.namespace.CP_Error_Server_Side_Generic")
-					});
-				} else {
-					//Display toast
-					events.fire("CP_Evt_Toast_Error", {
-						"id": "error-box",
-						"message": messages[0]
+						"id": "forgot-pass-step-2-toast-error",
+						"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
 					});
 				}
 			}

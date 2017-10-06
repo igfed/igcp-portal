@@ -154,7 +154,7 @@ public class CP_RegistrationController {
             result.Fields.add('postalCode');
             result.Messages.add(System.Label.CP_Registration_Postalcode_Is_Empty);
         }                
-        else if(!IGUser.IsValidPostalCode())
+        else if(!CP_Utility.IsValidPostalCode(IGuser.postalCode))
         {
             // Postatcode is empty 
             result.IsValid = false;
@@ -193,7 +193,7 @@ public class CP_RegistrationController {
             result.Fields.add('password');
             result.Messages.add(System.Label.CP_Registration_Password_Is_Empty);   
         }
-        else if(IGUserProfile.password != IGUserProfile.confirmPassword)
+        else if(!CP_Utility.ReEnteredPasswordMatched(IGUserProfile.password, IGUserProfile.confirmPassword))
         {
             // Confirm Password did not match
             result.IsValid = false;
@@ -208,7 +208,7 @@ public class CP_RegistrationController {
             result.Fields.add('email');
             result.Messages.add(System.Label.CP_Registration_Email_Is_empty);   
         }
-        else if (!IGUserProfile.IsValidEmail())
+        else if (!CP_Utility.IsValidEmail(IGUserProfile.email))
         {
             // Email is not valid 
             result.IsValid = false;

@@ -5,76 +5,16 @@ public class CP_ForgotPasswordClass {
     	public String dob { get; set; }
 
         public String stateId {get; set;}
-    	public String questionId { get; set; }
-    	public String securityQuestion { get; set; }
+    	public String id { get; set; }
+    	public String question { get; set; }
     	public String answer { get; set; }
+
+        public String password { get; set; }
+        public String confirmPassword { get; set; }        
     	
-    	
-    	private boolean recordFailedAttemptAndLock()
-        {
-            Contact objCon = this.getContactByUserName();
-            if(objCon != null)
-            {
-            	if (objCon.Portal_Action_Failure_Count__c > 3)
-	            {
-	                objCon.Portal_Action_Failure_Count__c = 0;
-	                objCon.Portal_User_Is_Locked__c	 = true;
-	                update objCon;
-	                return true;
-	            }
-	            else
-	            {
-	                objCon.Portal_Action_Failure_Count__c++;
-	                update objCon;
-	                return false;
-	            }
-	        }
-	        return false;
-        }
-
-        private boolean recordFailedSecurityAnswerAttemptAndLock()
-        {
-            Contact objCon = this.getContactByUserName();
-            if(objCon != null)
-            {
-            	if (objCon.Portal_Security_Answer_Failure_Count__c > 1)
-	            {
-	                objCon.Portal_Security_Answer_Failure_Count__c = 0;
-	                objCon.Portal_User_Is_Locked__c	 = true;
-	                update objCon;
-	                return true;
-	            }
-	            else
-	            {
-	                objCon.Portal_Security_Answer_Failure_Count__c++;
-	                update objCon;
-	                return false;
-	            }	
-            }
-            return false;
-        }
 
 
-    	// Search Contact by Business Partner ID
-        private Contact getContactByUserName()
-        {
-            List<Contact> contactList = [select ID, Portal_User_Is_Registered__c,
-                Portal_User_ID__c, Portal_User_Name__c, Email, Phone, 
-                MailingPostalCode, Birthdate, Business_Partner_ID__c, Preferred_Language__c, 
-                Portal_Action_Failure_Count__c, Portal_Security_Answer_Failure_Count__c, 
-                Portal_User_Is_Locked__c
-                from Contact 
-                where Portal_User_Name__c = : String.escapeSingleQuotes(this.username)
-                AND Portal_User_Is_Registered__c = true];
-
-            System.debug(contactList);
-
-            if(contactList.isEmpty())
-                return null;
-            else
-                return contactList[0];
-        }
-
+// Public Functions 
 
         public CP_Response.Result verifyClient()
         {
@@ -139,14 +79,21 @@ public class CP_ForgotPasswordClass {
                     else
                     {
                         CP_SCIMRestClient restClient = new CP_SCIMRestClient();
-                        CP_SCIMRestClient.IGUser thisUser; 
+                        CP_SCIMRestClient.RandomSecurityQuestion isamResponse; 
 
-                        response.Question.stateId= '123456789-987654321-147258369-963852741';
-                        response.Question.id = '1';
-                        response.Question.question = 'Hard coded question from Forgot passord Class';
+                        isamResponse = restClient.getRandomSecurityQuestion(this.username);
+                        System.debug('Response from rest client get random question');
+                        System.debug(isamResponse);
 
-                        System.debug('IG User Returned from ISAM');
-                        System.debug(response);
+                        if(isamResponse.success)
+                        {
+                            response.question = isamResponse.question;
+                        }
+                        else
+                        {
+                            response.State.IsValid = false;   
+                            response.State.Messages.add(isamResponse.error);
+                        }
                     }
                 }
                 else
@@ -182,20 +129,31 @@ public class CP_ForgotPasswordClass {
                     else
                     {
                         CP_SCIMRestClient restClient = new CP_SCIMRestClient();
-                        CP_SCIMRestClient.IGUser thisUser; 
-                        
-                        if(this.answer == 'answer')
+                        CP_SCIMRestClient.RandomQuestion request = new CP_SCIMRestClient.RandomQuestion();
+                        CP_SCIMRestClient.Response isamResponse;
+
+                        request.id = this.id;
+                        request.stateId = this.stateId; 
+                        request.answer = this.answer;
+
+                        isamResponse = restClient.validateAnswer(request);
+
+                        if(isamResponse.success && isamResponse.code == 204)
 		        		{
 							response.State.IsValid = true;
 		        		}
-		        		else
+		        		else if(isamResponse.success && isamResponse.code == 200)
 		        		{
-		        			response.State.IsValid = false;
+		        			response.State.IsValid = true;
 		        			response.State.IsLocked = this.recordFailedSecurityAnswerAttemptAndLock();
 		        			response.State.Fields.add('answer');
-
 			        		response.State.Messages.add(System.Label.CP_Forgot_UserName_Incorrect_Answer);	
 		        		}
+                        else
+                        {
+                            response.State.IsValid = true;
+                            response.State.Messages.add(isamResponse.error);
+                        }
                     }
                 }
                 else
@@ -212,23 +170,124 @@ public class CP_ForgotPasswordClass {
         	return response;
         }
 
+        public CP_Response updatePassword()
+        {
+            CP_Response response = new CP_Response();
+            try
+            {
+                CP_SCIMRestClient restClient = new CP_SCIMRestClient();
+                CP_SCIMRestClient.Response isamResponse;
+
+                isamResponse = restClient.updatePassword();
+                if(isamResponse.success)
+                {
+                    response.State.IsValid = true;
+                }
+                else
+                {
+                    response.State.IsValid = true;
+                    response.State.Messages.add(isamResponse.error);
+                }
+            }
+            catch(exception e)
+            {
+                response.State.IsValid = false;
+                response.State.Messages.add(e.getMessage());
+            }
+            return response;
+        }
+
+//
+
+
+
+// Private Function 
+
+
+        private boolean recordFailedAttemptAndLock()
+        {
+            Contact objCon = this.getContactByUserName();
+            if(objCon != null)
+            {
+                if (objCon.Portal_Action_Failure_Count__c > 3)
+                {
+                    objCon.Portal_Action_Failure_Count__c = 0;
+                    objCon.Portal_User_Is_Locked__c  = true;
+                    update objCon;
+                    return true;
+                }
+                else
+                {
+                    objCon.Portal_Action_Failure_Count__c++;
+                    update objCon;
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        private boolean recordFailedSecurityAnswerAttemptAndLock()
+        {
+            Contact objCon = this.getContactByUserName();
+            if(objCon != null)
+            {
+                if (objCon.Portal_Security_Answer_Failure_Count__c > 1)
+                {
+                    objCon.Portal_Security_Answer_Failure_Count__c = 0;
+                    objCon.Portal_User_Is_Locked__c  = true;
+                    update objCon;
+                    return true;
+                }
+                else
+                {
+                    objCon.Portal_Security_Answer_Failure_Count__c++;
+                    update objCon;
+                    return false;
+                }   
+            }
+            return false;
+        }
+
+
+        // Search Contact by Business Partner ID
+        private Contact getContactByUserName()
+        {
+            List<Contact> contactList = [select ID, Portal_User_Is_Registered__c,
+                Portal_User_ID__c, Portal_User_Name__c, Email, Phone, 
+                MailingPostalCode, Birthdate, Business_Partner_ID__c, Preferred_Language__c, 
+                Portal_Action_Failure_Count__c, Portal_Security_Answer_Failure_Count__c, 
+                Portal_User_Is_Locked__c
+                from Contact 
+                where Portal_User_Name__c = : String.escapeSingleQuotes(this.username)
+                AND Portal_User_Is_Registered__c = true];
+
+            System.debug(contactList);
+
+            if(contactList.isEmpty())
+                return null;
+            else
+                return contactList[0];
+        }
+
+
+// 
+
+
+
+// Sub Classes
 
 
         public class SecurityQuestion extends CP_Response
         {
-            public RandomQuestion Question {get; set;}
+            public CP_SCIMRestClient.RandomQuestion question {get; set;}
             public SecurityQuestion()
         	{
         		super();
-                this.Question = new RandomQuestion();
+                this.question = new CP_SCIMRestClient.RandomQuestion();
 			}
         }
 
-        public class RandomQuestion
-        {
-            public String stateId {get; set;}
-            public String id {get; set;}
-            public String question {get; set;}
-        }
+//
+
 
 }

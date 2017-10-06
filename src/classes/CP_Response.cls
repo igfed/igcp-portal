@@ -4,7 +4,7 @@ public virtual class CP_Response {
 
 	public CP_Response()
 	{
-		State = new Result();
+		this.State = new Result();
 	}
 
 	public class Result

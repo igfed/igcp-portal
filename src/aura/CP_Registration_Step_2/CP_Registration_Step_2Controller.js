@@ -5,83 +5,83 @@
 
 		//auto populate input if value already exists
 		//Username
-		if(cmp.get("v.username") !== "") {
+		if (cmp.get("v.username") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
-				"id" : "username-input",
-				"formId" : cmp.get("v.pageId"),
-				"value" : cmp.get("v.username")
+				"id": "username-input",
+				"formId": cmp.get("v.pageId"),
+				"value": cmp.get("v.username")
 			});
 		}
 
 		//E-mail
-		if(cmp.get("v.email") !== "") {
+		if (cmp.get("v.email") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
-				"id" : "email-input",
-				"formId" : cmp.get("v.pageId"),
-				"value" : cmp.get("v.email")
+				"id": "email-input",
+				"formId": cmp.get("v.pageId"),
+				"value": cmp.get("v.email")
 			});
 		}
 
 		//Phone
-		if(cmp.get("v.mobilePhone") !== "") {
+		if (cmp.get("v.mobilePhone") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
-				"id" : "phone-input",
-				"formId" : cmp.get("v.pageId"),
-				"value" : cmp.get("v.mobilePhone")
+				"id": "phone-input",
+				"formId": cmp.get("v.pageId"),
+				"value": cmp.get("v.mobilePhone")
 			});
 		}
 
 		//Question 1
-		if(cmp.get("v.securityQuestion1") !== "") {
+		if (cmp.get("v.securityQuestion1") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
-				"id" : "security-1-selector",
-				"formId" : cmp.get("v.pageId"),
-				"selected" : cmp.get("v.securityQuestion1")
+				"id": "security-1-selector",
+				"formId": cmp.get("v.pageId"),
+				"selected": cmp.get("v.securityQuestion1")
 			});
 		}
 
 		//Answer 1
-		if(cmp.get("v.answer1") !== "") {
+		if (cmp.get("v.answer1") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
-				"id" : "security-1-answer",
-				"formId" : cmp.get("v.pageId"),
-				"value" : cmp.get("v.answer1")
+				"id": "security-1-answer",
+				"formId": cmp.get("v.pageId"),
+				"value": cmp.get("v.answer1")
 			});
 		}
 
 		//Question 2
-		if(cmp.get("v.securityQuestion2") !== "") {
+		if (cmp.get("v.securityQuestion2") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
-				"id" : "security-2-selector",
-				"formId" : cmp.get("v.pageId"),
-				"selected" : cmp.get("v.securityQuestion2")
+				"id": "security-2-selector",
+				"formId": cmp.get("v.pageId"),
+				"selected": cmp.get("v.securityQuestion2")
 			});
 		}
 
 		//Answer 2
-		if(cmp.get("v.answer2") !== "") {
+		if (cmp.get("v.answer2") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
-				"id" : "security-2-answer",
-				"formId" : cmp.get("v.pageId"),
-				"value" : cmp.get("v.answer2")
+				"id": "security-2-answer",
+				"formId": cmp.get("v.pageId"),
+				"value": cmp.get("v.answer2")
 			});
 		}
 
 		//Question 3
-		if(cmp.get("v.securityQuestion3") !== "") {
+		if (cmp.get("v.securityQuestion3") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
-				"id" : "security-3-selector",
-				"formId" : cmp.get("v.pageId"),
-				"selected" : cmp.get("v.securityQuestion3")
+				"id": "security-3-selector",
+				"formId": cmp.get("v.pageId"),
+				"selected": cmp.get("v.securityQuestion3")
 			});
 		}
 
 		//Answer
-		if(cmp.get("v.answer3") !== "") {
+		if (cmp.get("v.answer3") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
-				"id" : "security-3-answer",
-				"formId" : cmp.get("v.pageId"),
-				"value" : cmp.get("v.answer3")
+				"id": "security-3-answer",
+				"formId": cmp.get("v.pageId"),
+				"value": cmp.get("v.answer3")
 			});
 		}
 	},
@@ -199,50 +199,65 @@
 
 				var
 					events = cmp.find("CP_Events"),
-					fields = error.payload.State.Fields,
-					messages = error.payload.State.Messages,
-					isLocked = error.payload.State.IsLocked,
-					serviceUnavailable = error.payload.State.ServiceNotAvailable;
+					payload = error.payload,
+					fields = payload.State.Fields,
+					messages = payload.State.Messages,
+					isValid = payload.State.IsValid,
+					isLocked = payload.State.IsLocked,
+					serviceUnavailable = payload.State.ServiceNotAvailable;
 
-				if (isLocked) {
-					events.fire("CP_Evt_Error_Locked_Out", {
-						"id": cmp.get("v.pageId")
-					});
-				}
+				try {
 
-				if (serviceUnavailable) {
-					events.fire("CP_Evt_Error_Not_Completed", {
-						"id": "registration"
-					});
-				}
-
-				fields.forEach(function(errorType, i) {
-					var msgArr = [];
-
-					if (errorType === "userName") {
-						msgArr.push({"msg" : messages[i]});
-						events.fire("CP_Evt_Input_Error", {
-							"id": "username-input",
-							"type" : errorType,
-							"errors": msgArr
+					if (isLocked) {
+						events.fire("CP_Evt_Error_Locked_Out", {
+							"id": cmp.get("v.pageId")
 						});
 					}
 
-					if (errorType === "email") {
-						msgArr.push({"msg" : messages[i]});
-						events.fire("CP_Evt_Input_Error", {
-							"id": "email-input",
-							"type" : errorType,
-							"errors": msgArr
+					if (serviceUnavailable) {
+						events.fire("CP_Evt_Error_Not_Completed", {
+							"id": "registration"
 						});
 					}
-				});
 
-				//Generic error
-				if (error.type === "error") {
+					fields.forEach(function(errorType, i) {
+						var msgArr = [];
+
+						if (errorType === "userName") {
+							msgArr.push({ "msg": messages[i] });
+							events.fire("CP_Evt_Input_Error", {
+								"id": "username-input",
+								"type": errorType,
+								"errors": msgArr
+							});
+						}
+
+						if (errorType === "email") {
+							msgArr.push({ "msg": messages[i] });
+							events.fire("CP_Evt_Input_Error", {
+								"id": "email-input",
+								"type": errorType,
+								"errors": msgArr
+							});
+						}
+					});
+
+					//Generic error
+					if (isValid === false) {
+						events.fire("CP_Evt_Toast_Error", {
+							"id": "registration-step-2-toast-error",
+							"message": $A.get("$Label.c.CP_Error_General")
+						});
+					}
+
+				} catch (err) {
+
+					console.error("Registration Step 2: There was an unknown error.");
+					console.error(err);
+
 					events.fire("CP_Evt_Toast_Error", {
 						"id": "registration-step-2-toast-error",
-						"message": $A.get("$Label.c.CP_Error_General")
+						"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
 					});
 				}
 			}

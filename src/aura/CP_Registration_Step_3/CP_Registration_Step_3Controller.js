@@ -95,8 +95,6 @@
 
 		var payload = evt.getParam("payload");
 
-		console.log(payload);
-
 		if (payload.id === "read_and_agree_checkbox") {
 			cmp.set("v.acceptTOS", payload.checked);
 		}
@@ -122,43 +120,44 @@
 			},
 			function(error) {
 
-				console.error(error);
-
 				var
 					events = cmp.find("CP_Events"),
-					errorObj = error.payload.State;
+					payload = error.payload,
+					fields = payload.State.Fields,
+					messages = payload.State.Messages,
+					isValid = payload.State.IsValid,
+					isLocked = payload.State.IsLocked,
+					serviceUnavailable = payload.State.ServiceNotAvailable;
 
 				try {
-
-					if (errorObj.IsLocked === true) {
+					if (isLocked === true) {
 						events.fire("CP_Evt_Error_Locked_Out", {
 							"id": cmp.get("v.pageId")
 						});
 					}
 
-				} catch (err) {
-					console.error("Registration Step 3: Is Locked");
-					console.error(errorObj.IsLocked);
-				}
-
-				try {
-
-					if (errorObj.ServiceNotAvailable === true) {
+					if (serviceNotAvailable === true) {
 						events.fire("CP_Evt_Error_Not_Completed", {
 							"id": cmp.get("v.pageId")
 						});
 					}
 
-				} catch (err) {
-					console.error("Registration Step 3: ServiceNotAvailable");
-					console.error(errorObj.IsLocked);
-				}
+					//Generic error
+					if (isValid === "error") {
+						events.fire("CP_Evt_Toast_Error", {
+							"id": "registration-step-3-toast-error",
+							"message": $A.get("$Label.c.CP_Error_General")
+						});
+					}
 
-				//Generic error
-				if (error.type === "error") {
+				} catch (err) {
+
+					console.error("Registration Step 3: There was an unknown error.");
+					console.error(err);
+
 					events.fire("CP_Evt_Toast_Error", {
 						"id": "registration-step-3-toast-error",
-						"message": $A.get("$Label.c.CP_Error_General")
+						"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
 					});
 				}
 			}
@@ -211,7 +210,7 @@
 				"answer3": cmp.get("v.answer3")
 			},
 			"acceptTOS": cmp.get("v.acceptTOS"),
-			"lang" : cmp.get("v.lang")
+			"lang": cmp.get("v.lang")
 		});
 	},
 	logPayloadVars: function(cmp, evt, hlpr) {

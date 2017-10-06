@@ -169,22 +169,18 @@
 			errors = [],
 			errorCheckObj = {},
 			isEmpty = value.length === 0 ? true : false,
-			minLength = hlpr.min(value.length, cmp.get("v.clientMinLength")),
 			hasNumberOnly = hlpr.hasNumberOnly(value);
 
 		if (isEmpty === true) {
 			errorCheckObj["isEmpty"] = isEmpty;
 		} else {
-			errorCheckObj["minLength"] = minLength;
 			errorCheckObj["hasNumberOnly"] = hasNumberOnly;
 		}
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 
 		errors.forEach(function(item, i) {
-			if (item.type === "minLength") {
-				item["msg"] = $A.get("$Label.c.CP_Error_Client_Number_Too_Short_1") + " " + cmp.get("v.clientMinLength") + " " + $A.get("$Label.c.CP_Error_Client_Number_Too_Short_2");
-			} else if (item.type === "hasNumberOnly") {
+			if (item.type === "hasNumberOnly") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Client_Number_Numbers_Only");
 			} else if(item.type === "isEmpty") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Empty_Field");

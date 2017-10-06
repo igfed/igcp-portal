@@ -1,11 +1,18 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+	<!-- ATTRS -->
+	<aura:attribute name="lang" type="String"></aura:attribute>
+
+	<!-- MARKUP -->
     <div class="igcp-container slds-show_large slds-p-around--medium slds-m-bottom--x-small slds-large-m-bottom--medium slds-m-right_none">
-        <h3>Alerts</h3>
+        <h3>{!$Label.c.CP_Generic_Label_Notifications}</h3>
         <c:CP_Overview_Alert_Item date="May 8, 2017" 
             message="You online statement for Q1 is ready" 
             ctaLink="/"/>
         <c:CP_Overview_Alert_Item date="May 14, 2017" 
             message="You online statement for Q2 is ready" 
             ctaLink="/"/>
+        <div class="igcp-utils__position--relative slds-p-bottom--medium">
+        	<c:CP_Cmp_Link href="#" label="{!$Label.c.CP_Generic_Label_View_All}" hasChevron="true" class="igcp-utils__font--semibold igcp-utils__font-size--mini igcp-utils__center" />
+        </div>
     </div>
 </aura:component>

@@ -1,6 +1,7 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_OverviewController">
 	
 	<!-- ATTRS -->
+	<aura:attribute name="lang" type="String" default="en_CA" ></aura:attribute>
 	<aura:attribute name="clientName" type="String" default=""></aura:attribute>
 
 	<!-- INCLUDES -->
@@ -19,17 +20,17 @@
 	<div class="igcp-overview igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-p-around--xx-small slds-large-p-around--medium">
 		<div class="slds-size_12-of-12">
 			<div class="slds-m-top--medium slds-large-m-top--none slds-m-bottom--large">
-				<h1>{!$Label.c.CP_Generic_Salutation_Hi} {!v.clientName}{!$Label.c.CP_Overview_Greeting_h1}</h1>
+				<h1 class="slds-p-left--small slds-medium-p-left--medium">{!$Label.c.CP_Generic_Salutation_Hi} {!v.clientName}{!$Label.c.CP_Overview_Greeting_h1}</h1>
 			</div>
 		</div>
 		<div class="slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_8-of-12">
-			<c:CP_Overview_Investments />
-			<c:CP_Overview_Mortgages />
-			<c:CP_Overview_Insurance />
+			<c:CP_Overview_Investments lang="{!v.lang}"/>
+			<c:CP_Overview_Mortgages lang="{!v.lang}"/>
+			<c:CP_Overview_Insurance lang="{!v.lang}"/>
 		</div>
 		<div class="slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_4-of-12">
-			<c:CP_Overview_Alerts />
-			<c:CP_Overview_CTA />
+			<c:CP_Overview_Alerts lang="{!v.lang}"/>
+			<c:CP_Overview_CTA lang="{!v.lang}"/>
 		</div>
 	</div>
 </aura:component>

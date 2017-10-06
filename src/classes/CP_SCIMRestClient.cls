@@ -6,6 +6,8 @@ public class CP_SCIMRestClient {
 
     private static String REST_GET_METHOD	= 'GET';
     private static String REST_POST_METHOD	= 'POST';
+    private static String REST_PUT_METHOD  = 'PUT';
+
     private static String USER_API_NAMED_CREDENTAIL	= 'IG_SCIM_User_API';
     private static String AUTH_API_NAMED_CREDENTAIL  = 'IG_SCIM_Auth_API';
 
@@ -88,9 +90,49 @@ public class CP_SCIMRestClient {
         
   
 
-        public SecurityQuestion getRandomSecurityQuestion(String userName)
+        public RandomSecurityQuestion getRandomSecurityQuestion(String userName)
         {
-            return this.getSecurityQuestion(userName);
+            RandomSecurityQuestion securityResponse = new RandomSecurityQuestion();
+
+            String param = '?PolicyId=urn:ibm:security:authentication:asf:username_context&username='+ userName.toLowerCase();
+            Response response = this.callGetRESTService(AUTH_API_NAMED_CREDENTAIL, param);
+
+            if(response.success)
+            {
+                System.debug('Security Questioned returned JSON');
+                System.debug(response.responseBody);
+
+                try
+                {
+                    securityResponse.Question.stateId = getSingleValueFromReturnedJSON(response.responseBody, 'stateId');
+                    securityResponse.Question.question = getSingleValueFromReturnedJSON(response.responseBody, 'knowledge.question.text');
+                    securityResponse.Question.id = getSingleValueFromReturnedJSON(response.responseBody, 'knowledge.question.unique.id');
+                    securityResponse.success = true;
+                }
+                catch(Exception e)
+                {
+                    securityResponse = new RandomSecurityQuestion(false, 500, e.getMessage());
+                }
+            }
+            else
+            {
+                securityResponse = new RandomSecurityQuestion(response.success, response.code, response.error);
+            }
+            return securityResponse;
+        }
+
+        public Response validateAnswer(RandomQuestion request)
+        {
+            String param = '?StateId='+ request.stateId;
+            String strBody = '{ "knowledge.questions.count": "1", "knowledgeQuestions" : [ { "knowledge.question.answer": "'+ request.answer +'", "knowledge.question.unique.id": "'+ request.id +'" } ] }';
+            return  this.callPutRESTService(AUTH_API_NAMED_CREDENTAIL, strBody, param);
+        }
+
+        public Response updatePassword()
+        {
+            String param = '';
+            String strBody = '{ }';
+            return  this.callPutRESTService(USER_API_NAMED_CREDENTAIL, strBody, param);   
         }
 
 
@@ -197,29 +239,7 @@ public class CP_SCIMRestClient {
             return response;
         }
 
-        private SecurityQuestion getSecurityQuestion(String userName)
-        {
-            SecurityQuestion response;
-            String param = '?PolicyId=urn:ibm:security:authentication:asf:username_context&username='+ userName.toLowerCase();
-            response = (SecurityQuestion) this.callGetRESTService(AUTH_API_NAMED_CREDENTAIL, param);
-
-            if(response.success)
-            {
-                try
-                {
-                    response.Question.stateId = getSingleValueFromReturnedJSON(response.responseBody, 'stateId');
-                    response.Question.question = getSingleValueFromReturnedJSON(response.responseBody, 'knowledge.question.text');
-                    response.Question.id = getSingleValueFromReturnedJSON(response.responseBody, 'knowledge.question.unique.id');
-                }
-                catch(Exception e)
-                {
-                    response = new SecurityQuestion(false, 500, e.getMessage());
-                }
-            }
-            return response;
-        }
-
-    
+        
     //
 
 
@@ -263,12 +283,12 @@ public class CP_SCIMRestClient {
         }
         
         //POST 
-        private Response callPostRESTService(String namedCredential, String body, String param) {
+        private Response callPostRESTService(String namedCredential, String body) {
         	Response ret;
         	try
         	{
     	    	HttpRequest req = new HttpRequest();
-    	        req.setEndpoint('callout:' +  namedCredential + param);
+    	        req.setEndpoint('callout:' +  namedCredential);
     	        req.setMethod(REST_POST_METHOD);
     	        req.setHeader(HTTP_HEADER_ACPT, REST_CONTENT);
                 req.setHeader(CONTENT_TYPE, REST_CONTENT);
@@ -294,8 +314,36 @@ public class CP_SCIMRestClient {
         	return ret;
         }
 
-        private Response callPostRESTService(String namedCredential, String body) {
-           return callPostRESTService(namedCredential, body, '');
+        //PUT
+        private Response callPutRESTService(String namedCredential, String body, string param) {
+          Response ret;
+            try
+            {
+                HttpRequest req = new HttpRequest();
+                req.setEndpoint('callout:' +  namedCredential + param);
+                req.setMethod(REST_PUT_METHOD);
+                req.setHeader(HTTP_HEADER_ACPT, REST_CONTENT);
+                req.setHeader(CONTENT_TYPE, REST_CONTENT);
+                req.setTimeout(120000);
+                req.setBody(body);
+
+                System.debug('Data Sent to ISAM');
+                System.debug(body);
+
+                Http http = new Http();
+                HTTPResponse res = http.send(req);
+            
+                System.debug('ISAM Response Object from PUT');
+                System.debug(res);
+
+                Integer resStatusCode = res.getStatusCode();
+                ret = new Response((resStatusCode == 204 || resStatusCode == 200), resStatusCode, res.getBody());
+            }
+            catch(exception e)
+            {
+                ret = new Response(false, 500, e.getMessage());
+            }
+            return ret;
         }
 
     // 
@@ -389,26 +437,27 @@ public class CP_SCIMRestClient {
 
         // Random Questions 
 
-        public class SecurityQuestion extends Response
+        public class RandomSecurityQuestion extends Response
         {
-            public Question question {get; set;}
+            public RandomQuestion question {get; set;}
 
-            public SecurityQuestion(){
+            public RandomSecurityQuestion(){
                 super();
-                this.question = new Question();
+                this.question = new RandomQuestion();
             }   
-            public SecurityQuestion(Boolean isSuccessful, Integer theCode, String theResponse)
+            public RandomSecurityQuestion(Boolean isSuccessful, Integer theCode, String theResponse)
             {
                 super(isSuccessful, theCode, theResponse);
-                this.question = new Question();
+                this.question = new RandomQuestion();
             }
         }
 
-        public class Question 
+        public class RandomQuestion 
         {
             public String stateId {get; set;}
             public String question {get; set;}
             public String id {get; set;}
+            public String answer {get; set;}
         }
     // 
 }

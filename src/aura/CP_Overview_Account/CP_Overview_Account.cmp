@@ -1,30 +1,43 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
-    
-    <!-- ATTRS -->
-    <aura:attribute name="accountTitle" type="String" />
-    <aura:attribute name="accountType" type="String" />
-    <aura:attribute name="accountTotal" type="String" />
-    <aura:attribute name="accountName" type="String" />
-    <aura:attribute name="accounts" type="List" default="[]"/>
-    <aura:attribute name="val1" type="String" />
-    <aura:attribute name="val2" type="String" />
-    <aura:attribute name="col1Name" type="String" default="{!$Label.c.CP_Overview_Change}"/>
-    <aura:attribute name="col2Name" type="String" default="{!$Label.c.CP_Overview_Market_Value}"/>
-    
-    <!-- MARKUP -->
-    <div class="igcp-overview--account slds-size_12-of-12 slds-m-bottom--small slds-large-m-bottom--large">
-        <aura:if isTrue="{!v.accountTitle}">
-            <h3 class="slds-m-top--x-small slds-m-bottom--small slds-large-m-bottom--large">{!v.accountTitle}</h3>
-        </aura:if>
-    
-        <c:CP_Overview_Account_Heading col1Name="{!v.col1Name}" col2Name="{!v.col2Name}" accountType="{!v.accountType}"/>
-
-         <aura:iteration var="account" items="{!v.accounts}">
-            <c:CP_Overview_Account_Item account="{!account}"/>
-        </aura:iteration>
-        
-        <div class="igcp-account--total slds-grid slds-grid_align-end">
-            <div class="slds-text-align_right slds-p-right--large slds-p-vertical--small slds-size_12-of-12"><span class="slds-p-bottom--xx-small">{!v.accountTotal}</span></div>
-        </div>
-    </div>
+	<!-- ATTRS -->
+	<aura:attribute name="lang" type="String"></aura:attribute>
+	<aura:attribute name="accountTitle" type="String" />
+	<aura:attribute name="accountType" type="String" />
+	<aura:attribute name="accountTotal" type="String" />
+	<aura:attribute name="accountGrandTotal" type="String" default=""></aura:attribute>
+	<aura:attribute name="accountName" type="String" />
+	<aura:attribute name="accounts" type="List" default="[]" />
+	<aura:attribute name="val1" type="String" />
+	<aura:attribute name="val2" type="String" />
+	<aura:attribute name="col1Name" type="String" default="{!$Label.c.CP_Overview_Change}" />
+	<aura:attribute name="col2Name" type="String" default="{!$Label.c.CP_Overview_Market_Value}" />
+	<aura:attribute name="itemType" type="String" default="investments"></aura:attribute>
+	<!-- MARKUP -->
+	<div class="igcp-overview--account slds-size_12-of-12 slds-m-bottom--small slds-large-m-bottom--large">
+		<aura:if isTrue="{!v.accountTitle}">
+			<h3 class="slds-m-top--x-small slds-m-bottom--small slds-large-m-bottom--large slds-p-horizontal--small">{!v.accountTitle}</h3>
+		</aura:if>
+		<c:CP_Overview_Account_Heading col1Name="{!v.col1Name}" col2Name="{!v.col2Name}" accountType="{!v.accountType}" />
+		<aura:iteration var="account" items="{!v.accounts}">
+			<c:CP_Overview_Account_Item account="{!account}" itemType="{!v.itemType}" lang="{!v.lang}" />
+		</aura:iteration>
+		<div class="igcp-account__total slds-grid slds-grid_align-end">
+			<div class="slds-p-top--small slds-p-left--small slds-large-p-vertical--small slds-size_12-of-12 slds-large-size_6-of-12">{!v.accountType + ' Total'}</div>
+			<div class="slds-text-align_right slds-p-vertical--small slds-size_12-of-12 slds-large-size_6-of-12"><span class="slds-p-horizontal--small slds-p-bottom--xx-small">{!v.accountTotal}</span></div>
+		</div>
+		<div class="igcp-account__grand-total slds-grid slds-grid_align-end">
+			<aura:if isTrue="{!v.accountGrandTotal != ''}">
+				
+				<div class="slds-p-top--small slds-p-left--small slds-large-p-vertical--small slds-size_12-of-12 slds-large-size_9-of-12">Total</div>
+				
+				<div class="slds-text-align_right slds-p-vertical--small slds-size_12-of-12 slds-large-size_3-of-12">
+					<div>
+						<span class="slds-p-horizontal--small slds-p-bottom--xx-small">{!v.accountGrandTotal}</span>
+						<div class="igcp-border--double"></div>
+					</div>
+				</div>
+				
+			</aura:if>
+		</div>
+	</div>
 </aura:component>

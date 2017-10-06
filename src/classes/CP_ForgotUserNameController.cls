@@ -29,7 +29,7 @@ public with sharing class CP_ForgotUserNameController {
                 response.State.Fields.add('email');
                 response.State.Messages.add(System.Label.CP_Registration_Email_Is_empty);
             }
-            else if (!response.IsValidEmail(objForm.email))
+            else if (!CP_Utility.IsValidEmail(objForm.email))
             {
                 // Email is not valid 
                 response.State.IsValid = false;

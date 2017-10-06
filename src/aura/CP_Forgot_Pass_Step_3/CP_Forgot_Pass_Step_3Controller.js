@@ -12,15 +12,17 @@
 
 		var inputs = cmp.get("v.inputsReceived");
 
-		hlpr.validateInput(cmp, evt.getParam("payload"));
+
+		hlpr.validatePassword(cmp, evt.getParam("payload"));
 
 		cmp.set("v.inputsReceived", (inputs += 1));
 
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
-		if (cmp.get("v.inputsReceived") === 2 && cmp.get("v.inputErrors") === false) {
+		if (cmp.get("v.inputsReceived") === 1 && cmp.get("v.inputErrors") === false) {
 
 			cmp.set("v.payload", {
+				"username": cmp.get("v.username"),
 				"password": cmp.get("v.password"),
 				"confirmPassword": cmp.get("v.confirmPassword")
 			});
@@ -33,9 +35,7 @@
 	},
 	submitForm: function(cmp, evt, hlpr) {
 
-		var
-			events = cmp.find("CP_Events"),
-			services = cmp.find("CP_Services");
+		var services = cmp.find("CP_Services");
 
 		services.submitForm(
 			"StepThree",
@@ -48,29 +48,50 @@
 				console.error(error);
 
 				var
-					fields = error.payload.State.Fields,
-					messages = error.payload.State.Messages;
+					events = cmp.find("CP_Events"),
+					payload = error.payload,
+					fields = payload.State.Fields,
+					messages = payload.State.Messages,
+					isValid = payload.State.IsValid,
+					isLocked = payload.State.IsLocked,
+					serviceUnavailable = payload.State.ServiceNotAvailable;
 
-				fields.forEach(function(errorType, i) {
-					var msgArr = [];
-					
-					if (errorType === "password1") {
-						msgArr.push({"msg" : messages[i]});
-						events.fire("CP_Evt_Input_Error", {
-							"id": "password1",
-							"errors": msgArr
+				try {
+					if (fields[0] === "confirmPassword" && error.type === "error") {
+						events.fire("CP_Evt_Toast_Error", {
+							"id": "forgot-pass-step-3-toast-error",
+							"message": $A.get("$Label.c.CP_Error_Confirm_Password_Match")
 						});
 					}
 
-					if (errorType === "password2") {
-						msgArr.push({"msg" : messages[i]});
-						events.fire("CP_Evt_Input_Error", {
-							"id": "password2",
-							"errors": msgArr
+					if (isLocked) {
+						events.fire("CP_Evt_Error_Locked_Out", {
+							"id": cmp.get("v.pageId")
 						});
 					}
 
-				});
+					if (serviceUnavailable) {
+						events.fire("CP_Evt_Error_Not_Completed", {
+							"id": cmp.get("v.pageId")
+						});
+					}
+
+					if (error.type === "server-side-error" || isValid === false) {
+						events.fire("CP_Evt_Toast_Error", {
+							"id": "forgot-pass-step-3-toast-error",
+							"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
+						});
+					}
+
+				} catch (err) {
+					console.error("Forgot Password Step 2: There was an unknown error.");
+					console.error(err);
+
+					events.fire("CP_Evt_Toast_Error", {
+						"id": "forgot-pass-step-3-toast-error",
+						"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
+					});
+				}
 			}
 		);
 	},
@@ -82,7 +103,6 @@
 	},
 	onKey: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
-		console.log(payload);
 		if (payload.id === "password-input") {
 			hlpr.validatePassword(cmp, payload);
 		}

@@ -1,15 +1,19 @@
 ({
 	addAccounts : function(accArr, cmp) {
 
-		console.log("addAccount");
-
 		var utils = cmp.find("CP_Utils");
 
 		accArr.forEach(function(item, i){
-			console.log("ADD ACCOUNTS")
+
 			console.log(item);
 
-			var accountName = "";
+			var 
+				accountName = "",
+				totalValue = "";
+
+			utils.formatToCurrency(item.totalValue, function(formattedValue){
+				totalValue = formattedValue;
+			}, cmp.get("v.lang"));
 
 			//For now this is how we will be translating the dealer name
 			//to the full name we have in custom labels
@@ -25,14 +29,26 @@
 					{
 						"accountTitle" : accountName,
 						"accountType" : $A.get("$Label.c.CP_Generic_Not_Available"),
-						"accountTotal" : item.totalValue,
-						"accounts" : item.previewItems
+						"accountTotal" : ("$" + totalValue),
+						"accounts" : item.previewItems,
+						"lang" : cmp.get("v.lang")
 					},
 					cmp,
-					function(evt){
-						console.log("CP OVER ACCOUNT");
-						console.log(evt);
-					}
+					function(evt){}
+				);
+			} else if(i === (accArr.length - 1)) {
+				utils.createComponent(
+					"CP_Overview_Account",
+					{
+						"accountTitle" : accountName,
+						"accountType" : $A.get("$Label.c.CP_Generic_Not_Available"),
+						"accountTotal" : ("$" + totalValue),
+						"accounts" : item.previewItems,
+						"lang" : cmp.get("v.lang"),
+						"accountGrandTotal" : "$109,000.00"
+					},
+					cmp,
+					function(evt){}
 				);
 			} else {
 				utils.createComponent(
@@ -40,18 +56,14 @@
 					{
 						"accountTitle" : accountName,
 						"accountType" : $A.get("$Label.c.CP_Generic_Not_Available"),
-						"accountTotal" : item.totalValue,
-						"accounts" : item.previewItems
+						"accountTotal" : ("$" + totalValue),
+						"accounts" : item.previewItems,
+						"lang" : cmp.get("v.lang")
 					},
 					cmp,
-					function(evt){
-						console.log("CP OVER ACCOUNT");
-						console.log(evt);
-					}
+					function(evt){}
 				);
 			}
 		});
-
-
 	}
 })

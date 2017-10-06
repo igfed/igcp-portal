@@ -57,8 +57,7 @@ p {
 
 body {
   font-family: "WhitneyBook", Arial, sans-serif;
-  background-image: url("../images/bg-tile.jpg");
-  background-repeat: repeat;
+  background-color: #f8f8f9;
   color: #282828; }
 
 a {
@@ -74,6 +73,9 @@ label {
   -moz-appearance: none;
   appearance: none;
   border-radius: 0.25rem; }
+
+dl dt {
+  font-weight: 100; }
 
 @media (min-width: 768px) {
   h1 {
@@ -125,7 +127,8 @@ label {
     position: relative;
     top: 3px;
     font-size: 14px;
-    margin-right: 4px; }
+    margin-right: 4px;
+    color: #282828; }
     .slds-form-element__label.input-label span {
       font-family: "WhitneyBook", Arial, sans-serif;
       color: #282828;
@@ -2465,7 +2468,49 @@ label {
     overflow: auto; }
 
   .igcp-utils__height--zero {
-    height: 0; } }
+    height: 0; }
+
+  .igcp-utils__colour--link-blue,
+  .igcp-utils__color--link-blue {
+    color: #0e75d5; }
+
+  .igcp-utils__colour--dark-blue,
+  .igcp-utils__color--dark-blue {
+    color: #0d263c; }
+
+  .igcp-utils__colour--black,
+  .igcp-utils__color--black {
+    color: #282828; }
+
+  .igcp-utils__colour--white,
+  .igcp-utils__color--white {
+    color: #fff; }
+
+  .igcp-utils__float--left {
+    float: left; }
+
+  .igcp-utils__float--right {
+    float: right; }
+
+  .igcp-utils__float--none {
+    float: none; }
+
+  .igcp-utils__center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); }
+
+  .igcp-utils__position--relative {
+    position: relative; }
+
+  .igcp-utils__position--absolute {
+    position: absolute; }
+
+  .igcp-utils__position--fixed {
+    position: fixed; }
+
+  .igcp-utils__position--static {
+    position: static; } }
 @media (min-width: 480px) {
   .igcp-small-utils__font--light {
     font-family: "WhitneyLight", Arial, sans-serif; }
@@ -2671,7 +2716,49 @@ label {
     overflow: auto; }
 
   .igcp-small-utils__height--zero {
-    height: 0; } }
+    height: 0; }
+
+  .igcp-small-utils__colour--link-blue,
+  .igcp-small-utils__color--link-blue {
+    color: #0e75d5; }
+
+  .igcp-small-utils__colour--dark-blue,
+  .igcp-small-utils__color--dark-blue {
+    color: #0d263c; }
+
+  .igcp-small-utils__colour--black,
+  .igcp-small-utils__color--black {
+    color: #282828; }
+
+  .igcp-small-utils__colour--white,
+  .igcp-small-utils__color--white {
+    color: #fff; }
+
+  .igcp-small-utils__float--left {
+    float: left; }
+
+  .igcp-small-utils__float--right {
+    float: right; }
+
+  .igcp-small-utils__float--none {
+    float: none; }
+
+  .igcp-small-utils__center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); }
+
+  .igcp-small-utils__position--relative {
+    position: relative; }
+
+  .igcp-small-utils__position--absolute {
+    position: absolute; }
+
+  .igcp-small-utils__position--fixed {
+    position: fixed; }
+
+  .igcp-small-utils__position--static {
+    position: static; } }
 @media (min-width: 768px) {
   .igcp-medium-utils__font--light {
     font-family: "WhitneyLight", Arial, sans-serif; }
@@ -2877,7 +2964,49 @@ label {
     overflow: auto; }
 
   .igcp-medium-utils__height--zero {
-    height: 0; } }
+    height: 0; }
+
+  .igcp-medium-utils__colour--link-blue,
+  .igcp-medium-utils__color--link-blue {
+    color: #0e75d5; }
+
+  .igcp-medium-utils__colour--dark-blue,
+  .igcp-medium-utils__color--dark-blue {
+    color: #0d263c; }
+
+  .igcp-medium-utils__colour--black,
+  .igcp-medium-utils__color--black {
+    color: #282828; }
+
+  .igcp-medium-utils__colour--white,
+  .igcp-medium-utils__color--white {
+    color: #fff; }
+
+  .igcp-medium-utils__float--left {
+    float: left; }
+
+  .igcp-medium-utils__float--right {
+    float: right; }
+
+  .igcp-medium-utils__float--none {
+    float: none; }
+
+  .igcp-medium-utils__center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); }
+
+  .igcp-medium-utils__position--relative {
+    position: relative; }
+
+  .igcp-medium-utils__position--absolute {
+    position: absolute; }
+
+  .igcp-medium-utils__position--fixed {
+    position: fixed; }
+
+  .igcp-medium-utils__position--static {
+    position: static; } }
 @media (min-width: 1024px) {
   .igcp-large-utils__font--light {
     font-family: "WhitneyLight", Arial, sans-serif; }
@@ -3083,11 +3212,56 @@ label {
     overflow: auto; }
 
   .igcp-large-utils__height--zero {
-    height: 0; } }
+    height: 0; }
+
+  .igcp-large-utils__colour--link-blue,
+  .igcp-large-utils__color--link-blue {
+    color: #0e75d5; }
+
+  .igcp-large-utils__colour--dark-blue,
+  .igcp-large-utils__color--dark-blue {
+    color: #0d263c; }
+
+  .igcp-large-utils__colour--black,
+  .igcp-large-utils__color--black {
+    color: #282828; }
+
+  .igcp-large-utils__colour--white,
+  .igcp-large-utils__color--white {
+    color: #fff; }
+
+  .igcp-large-utils__float--left {
+    float: left; }
+
+  .igcp-large-utils__float--right {
+    float: right; }
+
+  .igcp-large-utils__float--none {
+    float: none; }
+
+  .igcp-large-utils__center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); }
+
+  .igcp-large-utils__position--relative {
+    position: relative; }
+
+  .igcp-large-utils__position--absolute {
+    position: absolute; }
+
+  .igcp-large-utils__position--fixed {
+    position: fixed; }
+
+  .igcp-large-utils__position--static {
+    position: static; } }
 .igcp-main .slds-col--padded {
   padding: 0; }
 
 .igcp-background {
+  background-color: #f8f8f9; }
+
+.igcp-background__tiled {
   background-image: url("../images/bg-tile.jpg");
   background-repeat: repeat; }
 
@@ -3102,9 +3276,6 @@ label {
   max-width: 1024px;
   margin: 0 auto;
   min-height: calc(100vh - 234px); }
-
-.igcp-percentage--large {
-  font-size: 45%; }
 
 .igcp-horizontal-rule {
   border-bottom: 1px solid #fff;
@@ -3153,6 +3324,11 @@ label {
   font-size: 12px;
   letter-spacing: 0px; }
 
+.igcp-link__cta .slds-icon_container.slds-icon-utility-chevronright {
+  top: 0; }
+  .igcp-link__cta .slds-icon_container.slds-icon-utility-chevronright .slds-icon-text-default {
+    fill: #0e75d5; }
+
 .igcp-link__variant--a {
   font-family: "WhitneySemibold", Arial, sans-serif;
   font-size: 12px;
@@ -3167,22 +3343,37 @@ label {
   position: relative;
   top: -3px; }
 
-.igcp-underline {
+.igcp-underline,
+.igcp-underline__regular--grey {
   border-bottom: 2px solid #e9ecee; }
 
-.igcp-underline--thick-blue {
+.igcp-underline__thin--grey {
+  border-bottom: 1px solid #e9ecee; }
+
+.igcp-underline__thick-grey {
+  border-bottom: 3px solid #e9ecee; }
+
+.igcp-underline__thin--blue {
+  border-bottom: 1px solid #0d263c; }
+
+.igcp-underline--blue,
+.igcp-underline__regular--blue {
+  border-bottom: 2px solid #0d263c; }
+
+.igcp-underline__thick--blue {
   border-bottom: 8px solid #0d263c;
   transform-origin: left bottom;
   transform: skewX(25deg); }
 
-.igcp-underline--white {
+.igcp-underline__thin--white {
   border-bottom: 1px solid #fff; }
 
-.igcp-underline--thick-white {
-  border-bottom: 3px solid #fff; }
+.igcp-underline--white,
+.igcp-underline__regular--white {
+  border-bottom: 2px solid #fff; }
 
-.igcp-underline--thick-grey {
-  border-bottom: 3px solid #e9ecee; }
+.igcp-underline__thick--white {
+  border-bottom: 3px solid #fff; }
 
 .igcp-value--large {
   font-family: "WhitneyLight", Arial, sans-serif;
@@ -3191,6 +3382,9 @@ label {
   .igcp-value--large sup {
     font-size: 70%;
     top: -0.25em; }
+  .igcp-value--large sub {
+    font-size: 50%;
+    bottom: 0; }
 
 .igcp-value--medium {
   line-height: 24px;
@@ -3205,12 +3399,14 @@ label {
   font-size: 16px; }
 
 .igcp-value--gain {
+  top: 0;
   color: #008a2a; }
 
 .igcp-value--gain use {
   fill: #008a2a; }
 
 .igcp-value--loss {
+  top: 0;
   color: #ea051c; }
 
 .igcp-value--loss use {
@@ -3231,9 +3427,17 @@ label {
   position: relative;
   left: 35px; }
 
-.igcp-account--total div span {
-  font-size: 20px;
-  border-bottom: 2px solid #0d263c; }
+.igcp-account__total div span {
+  border-bottom: 1px solid #e9ecee; }
+
+.igcp-account__grand-total div {
+  font-family: "WhitneySemibold", Arial, sans-serif; }
+  .igcp-account__grand-total div .igcp-account__grand-total--container {
+    width: 35%;
+    float: right; }
+
+.igcp-account__item sup {
+  top: -3px; }
 
 .igcp-alert--item {
   border-bottom: 1px solid #e9ecee; }
@@ -3245,7 +3449,7 @@ label {
     font-size: 12px; }
 
 .igcp-cta {
-  background-color: #faf7e6; }
+  background-color: #fff; }
 
 .igcp-card {
   border: none;
@@ -3316,6 +3520,9 @@ label {
   .igcp-modal .igcp-modal__wrapper {
     max-width: 1024px;
     margin: 0 auto; }
+  .igcp-modal .igcp-modal__wrapper--text {
+    max-width: 600px;
+    margin: 0 auto; }
   .igcp-modal .igcp-modal__button--close {
     position: relative;
     float: right;
@@ -3339,14 +3546,20 @@ label {
   position: fixed;
   height: 175px;
   bottom: 0;
-  margin: 0 0 0 -60px;
-  padding-top: 32px; }
+  margin: 0 0 0 -24px;
+  padding: 16px; }
   .igcp-modal__footer .igcp-modal__footer-wrapper {
     margin: 0 auto;
     max-width: 1024px; }
+  .igcp-modal__footer .igcp-modal__footer-wrapper--text {
+    margin: 0 auto;
+    max-width: 600px; }
 
 .igcp-tooltip {
   display: inline-block; }
+  .igcp-tooltip.igcp-tooltip__label--small {
+    padding-left: 8px;
+    padding-top: 6px; }
   .igcp-tooltip .igcp-tooltip__tip {
     border: none; }
 
@@ -3382,6 +3595,12 @@ label {
 .igcp-toast .igcp-toast__message {
   color: #fff; }
 
+.igcp-border--double {
+  height: 3px;
+  width: auto;
+  border-top: 1px solid #e9ecee;
+  border-bottom: 1px solid #e9ecee; }
+
 @media (min-width: 768px) {
   .igcp-registration .igcp-registration__pfa h1 {
     font-size: 24px;
@@ -3397,7 +3616,14 @@ label {
 
   .igcp-figure .igcp-figure__caption h3,
   .igcp-figure .igcp-figure__caption p {
-    text-align: left; } }
+    text-align: left; }
+
+  .igcp-modal__footer {
+    margin: 0 0 0 -60px;
+    padding-top: 32px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px; } }
 @media (min-width: 1024px) {
   .igcp-button__chat {
     float: none;
@@ -3416,7 +3642,7 @@ label {
     overflow: visible; }
 
   .igcp-value--large {
-    font-size: 24px; }
+    font-size: 32px; }
 
   .igcp-value--medium {
     line-height: 24px;
