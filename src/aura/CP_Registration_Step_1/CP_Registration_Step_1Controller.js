@@ -65,7 +65,7 @@
 					isLocked = payload.State.IsLocked,
 					serviceUnavailable = payload.State.ServiceNotAvailable;
 
-				try {
+				//try {
 
 
 					if (isLocked) {
@@ -80,30 +80,30 @@
 						});
 					}
 
-					if (fields.length > 0) {
+					// if (fields.length > 0) {
+					// 	events.fire("CP_Evt_Toast_Error", {
+					// 		"id": "registration-step-1-toast-error",
+					// 		"message": $A.get("$Label.c.CP_Error_Registration_Step_1")
+					// 	});
+					// }
+
+					if (isValid === false) {
 						events.fire("CP_Evt_Toast_Error", {
 							"id": "registration-step-1-toast-error",
 							"message": $A.get("$Label.c.CP_Error_Registration_Step_1")
 						});
 					}
 
-					if (isValid === false) {
-						events.fire("CP_Evt_Toast_Error", {
-							"id": "registration-step-1-toast-error",
-							"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-						});
-					}
-
-				} catch (err) {
+				// } catch (err) {
 					
-					console.error("Registration Step 1: There was an unknown error.");
-					console.error(err);
+				// 	console.error("Registration Step 1: There was an unknown error.");
+				// 	console.error(err);
 
-					events.fire("CP_Evt_Toast_Error", {
-						"id": "registration-step-1-toast-error",
-						"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-					});
-				}
+				// 	events.fire("CP_Evt_Toast_Error", {
+				// 		"id": "registration-step-1-toast-error",
+				// 		"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
+				// 	});
+				// }
 
 			}
 		);

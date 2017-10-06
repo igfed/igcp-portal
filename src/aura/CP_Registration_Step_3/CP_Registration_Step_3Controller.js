@@ -129,7 +129,7 @@
 					isLocked = payload.State.IsLocked,
 					serviceUnavailable = payload.State.ServiceNotAvailable;
 
-				try {
+				//try {
 					if (isLocked === true) {
 						events.fire("CP_Evt_Error_Locked_Out", {
 							"id": cmp.get("v.pageId")
@@ -150,16 +150,16 @@
 						});
 					}
 
-				} catch (err) {
+				// } catch (err) {
 
-					console.error("Registration Step 3: There was an unknown error.");
-					console.error(err);
+				// 	console.error("Registration Step 3: There was an unknown error.");
+				// 	console.error(err);
 
-					events.fire("CP_Evt_Toast_Error", {
-						"id": "registration-step-3-toast-error",
-						"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-					});
-				}
+				// 	events.fire("CP_Evt_Toast_Error", {
+				// 		"id": "registration-step-3-toast-error",
+				// 		"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
+				// 	});
+				// }
 			}
 		);
 	},

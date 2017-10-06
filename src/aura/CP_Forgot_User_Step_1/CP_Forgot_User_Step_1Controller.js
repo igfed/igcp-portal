@@ -54,7 +54,7 @@
 					isLocked = payload.State.IsLocked,
 					serviceUnavailable = payload.State.ServiceNotAvailable;
 
-				try {
+				//try {
 
 					//Leaving this in in case the individual fields have errors for some reason
 					fields.forEach(function(errorType, i) {
@@ -89,12 +89,13 @@
 						});
 					}
 
-					if (error.type === "server-side-error" || isValid === false) {
-						events.fire("CP_Evt_Toast_Error", {
-							"id": "forgot-user-step-1-toast-error",
-							"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-						});
-					} else {
+					// if (error.type === "server-side-error" || isValid === false) {
+					// 	events.fire("CP_Evt_Toast_Error", {
+					// 		"id": "forgot-user-step-1-toast-error",
+					// 		"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
+					// 	});
+					// } else {
+					if(isValid === false) {
 						//Display toast
 						events.fire("CP_Evt_Toast_Error", {
 							"id": "forgot-user-step-1-toast-error",
@@ -102,15 +103,17 @@
 						});
 					}
 
-				} catch (err) {
-					console.error("Forgot User Step 1: There was an unknown error.");
-					console.error(err);
+					//}
 
-					events.fire("CP_Evt_Toast_Error", {
-						"id": "registration-step-1-toast-error",
-						"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-					});
-				}
+				// } catch (err) {
+				// 	console.error("Forgot User Step 1: There was an unknown error.");
+				// 	console.error(err);
+
+				// 	events.fire("CP_Evt_Toast_Error", {
+				// 		"id": "registration-step-1-toast-error",
+				// 		"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
+				// 	});
+				// }
 
 			}
 		);
