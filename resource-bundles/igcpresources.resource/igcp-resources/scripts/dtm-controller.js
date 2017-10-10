@@ -1,25 +1,71 @@
 (function ($) {
+
+  window.digitalData = window.digitalData || {};
+  window.digitalData.page = {};
+  window.digitalData.page.pageInfo = {};
+
   var event = {},
     $this,
+    adobeLoader,
     $component,
     $container;
   event.component = {};
   event.container = {};
   event.template = {};
 
+
   function init() {
-    // Analytics click event handler
+    // Capture page data
+    window.digitalData.pageInstanceID = getPageName() + window.location.hostname + "",
+    window.digitalData.page.pageInfo.pageName = getPageName(),
+    window.digitalData.page.pageInfo.language = getPageLanguage(),
+    window.digitalData.page.pageInfo.server = window.location.href,
+    window.digitalData.page.pageInfo.timezone = new Date().getTimezoneOffset() / 60
+      
+
+    console.log(window.digitalData);
+
+    // Only fire this in Salesforce
+    adobeBottomLoader();
+
+    // Register click event handler
     $('.aa-click').on('click', function (e) {
       e.preventDefault();
       event.type = 'click';
       constructEventObj($(this));
     });
 
-    // Analytics hover event handler
+    // Register hover event handler
     $('.aa-hover').on('click', function () {
       event.type = 'hover';
       constructEventObj($(this));
     });
+  }
+
+  function getPageName() {
+    return document.title;
+  }
+
+  function getPageLanguage() {
+    var lang;
+
+    if (window.location.href.indexOf('groupe') > 0 || window.location.href.indexOf('/fr/') > 0) {
+      lang= 'fr'
+    } else {
+      lang = 'en'
+    }
+
+    return lang;
+
+  }
+
+  function adobeBottomLoader() {
+    adobeLoader = setInterval(function () {
+      if (window._satellite) {
+        window._satellite.pageBottom();
+        clearInterval(adobeLoader);
+      }
+    }, 500);
   }
 
   function constructEventObj($this) {
@@ -65,7 +111,7 @@
     }
     if ($container.data('aa-tags')) {
       tags = $container.data('aa-tags').split(',');
-      tags.forEach(function(el) {
+      tags.forEach(function (el) {
         keyValue = el.split('::');
         event.container.tags.push({
           "name": keyValue[0],
