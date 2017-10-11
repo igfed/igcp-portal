@@ -7,35 +7,32 @@ global class CP_RegistrationClass {
         CP_Response.Result result = new CP_Response.Result();
         
         // Search Contact by Client/Policy/Loan Number
-        Financial_Asset__c objContact = IGUser.getClientInfo();
+        Financial_Asset__c objClient = IGUser.getClientInfo();
         
-        System.debug('Returned Contact object');
-        System.debug(objContact);
-
         // check if Contact exists
-		if(objContact == null)
+		if(objClient == null)
         {
             // Contact not found
             result.IsValid = false;
             result.Fields.add('clientNum');
-            result.Messages.add(System.Label.CP_Registration_Client_Number_Not_Found);
+            result.Messages.add(System.Label.CP_Error_Registration_Step_1);
 
             return result;
         }
         else // Contact Found Validate Client Status
         {
             // Contact is Locked 
-            if(objContact.Customer__r.Portal_Registration_Is_Locked__c == true)
+            if(objClient.Customer__r.Portal_Registration_Is_Locked__c == true)
             {
                 result.IsValid = false;
                 result.IsLocked = true;
-
+                result.Messages.add(System.Label.CP_Registration_Locked_h1);
                 return result;
             }
             else // Contact is not Locked, proceed with other checks
             {
                 // Check Client's Eligibility for Registration
-                if(objContact.Is_Registration_Eligibile__c == false)
+                if(objClient.Is_Registration_Eligibile__c == false && objClient.Asset_Type__c == 'Joint')
                 {
                     // Client is not Eligible
                     result.IsValid = false;
@@ -44,10 +41,19 @@ global class CP_RegistrationClass {
 
                     return result;
                 }
+                else if(objClient.Is_Registration_Eligibile__c == false && objClient.Asset_Type__c == 'Company')
+                {
+                    // Client is not Eligible
+                    result.IsValid = false;
+                    result.Fields.add('clientNum');
+                    result.Messages.add(System.Label.CP_Registration_Client_is_Company_and_Not_allowed_to_Register);
+
+                    return result;
+                }
                 else // Client is Eligible, proceed with other checks
                 {
                     // Check if the returned Contact has Registered flag set 
-                    if(objContact.Customer__r.Portal_User_Is_Registered__c == true)
+                    if(objClient.Customer__r.Portal_User_Is_Registered__c == true)
                     {
                         // Client is already Registered
                         result.IsValid = false;
@@ -58,27 +64,27 @@ global class CP_RegistrationClass {
                     else
                     {
                         // Validate Contact Postal code and Date of birth with values entered by user
-                        if(!CP_Utility.PostalCodeMatched(IGUser.postalCode, objContact.Customer__r.MailingPostalCode))
+                        if(!CP_Utility.PostalCodeMatched(IGUser.postalCode, objClient.Customer__r.MailingPostalCode))
                         {
                             // Postatcode did not match the stored info in Salesforce.
                             result.IsValid = false;
                             result.Fields.add('postalCode');
-                            result.Messages.add(System.Label.CP_Registration_Postalcode_Not_Matched);
+                            result.Messages.add(System.Label.CP_Error_Registration_Step_1);
                         }
-                        
-
-                        if(Date.valueOf(IGUser.dob) != objContact.Customer__r.Birthdate) 
+                        else if(Date.valueOf(IGUser.dob) != objClient.Customer__r.Birthdate) 
                         {
                             // Date of Birth did not match the stored info in Salesforce.
                             result.IsValid = false;
                             result.Fields.add('dob');
-                            result.Messages.add(System.Label.CP_Registration_DOB_Not_Matched);
+                            result.Messages.add(System.Label.CP_Error_Registration_Step_1);
                         }
                         
                         // If the result.isValid is false then record failed attempt
                         if(result.IsValid == false)
                         {
                             result.IsLocked = IGUser.recordFailedAttemptAndLock();
+                            if(result.IsLocked)
+                                result.Messages.add(System.Label.CP_Registration_Locked_h1);
                         }
                     }
                 }    
@@ -134,34 +140,46 @@ global class CP_RegistrationClass {
 
     public CP_Response.Result RegisterClient(RegistrationForm regForm)
     {
+
         CP_Response.Result result = new CP_Response.Result();
 
         // Make the ISAM call and get the new User ID
         CP_SCIMRestClient restClient = new CP_SCIMRestClient();
         CP_SCIMRestClient.Response res = new CP_SCIMRestClient.Response();
         
-        // Pull contact object from SalesForce        
-        Contact objContact = regForm.Identity.getContactObject();
-
-        // Update First and Last Name of regForm object from Contact object
-        regForm.Profile.firstName = objContact.firstName;
-        regForm.Profile.lastName = objContact.lastName; 
-
-        //  make the call to SCIM API to create the User in ISAM 
-        res = restClient.RegisterNewUser(regForm);
-        
-        if(res.success)
+        try
         {
-            // Update the New User ID into Salesforce 
-            regForm.Profile.userId = res.responseBody;
-            result = SaveInfoInSalesforce(regForm);
+            // Pull contact object from SalesForce        
+            Contact objContact = regForm.Identity.getContactObject();
+
+            // Update First and Last Name of regForm object from Contact object
+            regForm.Profile.firstName = objContact.firstName;
+            regForm.Profile.lastName = objContact.lastName; 
+
+            //  make the call to SCIM API to create the User in ISAM 
+            res = restClient.RegisterNewUser(regForm);
+            
+            if(res.success)
+            {
+                // Update the New User ID into Salesforce 
+                regForm.Profile.userId = res.responseBody;
+                result = SaveInfoInSalesforce(regForm);
+            }
+            else
+            {
+                result.IsValid = false;
+                result.ServiceNotAvailable = true;
+                result.Messages.add(System.Label.CP_Generic_Server_Error_Instructions);
+            }
         }
-        else
+        catch(Exception e)
         {
             result.IsValid = false;
             result.ServiceNotAvailable = true;
-            result.Messages.add(res.responseBody);
+            System.debug('Exception Caught - CP_RegistrationClass.RegisterClient: '+ e.getMessage());
+            result.Messages.add(System.Label.CP_Generic_Server_Error_Instructions);
         }
+        
         return result;
     }
 
@@ -256,7 +274,6 @@ global class CP_RegistrationClass {
                                   OR (RecordType.DeveloperName = 'Loan_Asset'  AND Loan_Number__c = : String.escapeSingleQuotes(this.clientNum))
                                   OR (RecordType.DeveloperName = 'Policy_Asset'  AND Policy_Number__c = : String.escapeSingleQuotes(this.clientNum))
                 ];
-
 
                 if(assetList.isEmpty())
                     return null;

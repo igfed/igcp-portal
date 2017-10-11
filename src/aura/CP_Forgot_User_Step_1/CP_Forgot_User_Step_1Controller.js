@@ -48,62 +48,62 @@
 				var
 					events = cmp.find("CP_Events"),
 					payload = error.payload,
-					fields = payload.State.Fields,
-					messages = payload.State.Messages,
 					isValid = payload.State.IsValid,
 					isLocked = payload.State.IsLocked,
+					fields = payload.State.Fields,
+					messages = payload.State.Messages,
 					serviceUnavailable = payload.State.ServiceNotAvailable;
 
 				//try {
 
-					//Leaving this in in case the individual fields have errors for some reason
-					fields.forEach(function(errorType, i) {
-						var msgArr = [];
+				//Leaving this in in case the individual fields have errors for some reason
+				// fields.forEach(function(errorType, i) {
+				// 	var msgArr = [];
 
-						if (errorType === "clientNum") {
-							msgArr.push({ "msg": messages[i] });
-							events.fire("CP_Evt_Input_Error", {
-								"id": "client-number",
-								"errors": msgArr
-							});
-						}
+				// 	if (errorType === "clientNum") {
+				// 		msgArr.push({ "msg": messages[i] });
+				// 		events.fire("CP_Evt_Input_Error", {
+				// 			"id": "client-number",
+				// 			"errors": msgArr
+				// 		});
+				// 	}
 
-						if (errorType === "email") {
-							msgArr.push({ "msg": messages[i] });
-							events.fire("CP_Evt_Input_Error", {
-								"id": "email-input",
-								"errors": msgArr
-							});
-						}
-					});
+				// 	if (errorType === "email") {
+				// 		msgArr.push({ "msg": messages[i] });
+				// 		events.fire("CP_Evt_Input_Error", {
+				// 			"id": "email-input",
+				// 			"errors": msgArr
+				// 		});
+				// 	}
+				// });
 
-					if (isLocked) {
-						events.fire("CP_Evt_Error_Locked_Out", {
-							"id": cmp.get("v.pageId")
-						});
-					}
+				// if (isLocked) {
+				// 	events.fire("CP_Evt_Error_Locked_Out", {
+				// 		"id": cmp.get("v.pageId")
+				// 	});
+				// }
 
-					if (serviceUnavailable) {
-						events.fire("CP_Evt_Error_Not_Completed", {
-							"id": cmp.get("v.pageId")
-						});
-					}
+				// if (serviceUnavailable) {
+				// 	events.fire("CP_Evt_Error_Not_Completed", {
+				// 		"id": cmp.get("v.pageId")
+				// 	});
+				// }
 
-					// if (error.type === "server-side-error" || isValid === false) {
-					// 	events.fire("CP_Evt_Toast_Error", {
-					// 		"id": "forgot-user-step-1-toast-error",
-					// 		"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-					// 	});
-					// } else {
-					if(isValid === false) {
-						//Display toast
-						events.fire("CP_Evt_Toast_Error", {
-							"id": "forgot-user-step-1-toast-error",
-							"message": messages[0]
-						});
-					}
+				// if (error.type === "server-side-error" || isValid === false) {
+				// 	events.fire("CP_Evt_Toast_Error", {
+				// 		"id": "forgot-user-step-1-toast-error",
+				// 		"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
+				// 	});
+				// } else {
+				// if (isValid === false) {
+				// 	//Display toast
+				// 	events.fire("CP_Evt_Toast_Error", {
+				// 		"id": "forgot-user-step-1-toast-error",
+				// 		"message": messages[0]
+				// 	});
+				// }
 
-					//}
+				//}
 
 				// } catch (err) {
 				// 	console.error("Forgot User Step 1: There was an unknown error.");
@@ -115,6 +115,35 @@
 				// 	});
 				// }
 
+				services.handleServerSideError({
+						"error": error,
+						"id": cmp.get("v.pageId"),
+						"toastId": "forgot-user-step-1-toast-error"
+					},
+					function(obj) {
+
+						if (obj.fields && obj.messages) {
+							obj.fields.forEach(function(errorType, i) {
+								var msgArr = [];
+
+								if (errorType === "clientNum") {
+									msgArr.push({ "msg": obj.messages[i] });
+									events.fire("CP_Evt_Input_Error", {
+										"id": "client-number",
+										"errors": msgArr
+									});
+								}
+
+								if (errorType === "email") {
+									msgArr.push({ "msg": obj.messages[i] });
+									events.fire("CP_Evt_Input_Error", {
+										"id": "email-input",
+										"errors": msgArr
+									});
+								}
+							});
+						}
+					});
 			}
 		);
 	},

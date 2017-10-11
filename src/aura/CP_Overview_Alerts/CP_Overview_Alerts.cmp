@@ -3,8 +3,8 @@
 	<aura:attribute name="lang" type="String"></aura:attribute>
 
 	<!-- MARKUP -->
-    <div class="igcp-container slds-show_large slds-p-around--medium slds-m-bottom--x-small slds-large-m-bottom--medium slds-m-right_none">
-        <h3>{!$Label.c.CP_Generic_Label_Notifications}</h3>
+    <div class="igcp-container slds-show_large slds-p-vertical--small slds-p-horizontal--medium slds-m-bottom--x-small slds-large-m-bottom--medium slds-m-right_none">
+        <h3 class="slds-large-m-top--small">{!$Label.c.CP_Generic_Label_Notifications}</h3>
         <c:CP_Overview_Alert_Item date="May 8, 2017" 
             message="You online statement for Q1 is ready" 
             ctaLink="/"/>

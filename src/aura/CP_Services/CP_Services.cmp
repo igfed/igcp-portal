@@ -1,4 +1,9 @@
 <aura:component >
+
+	<!-- Includes -->
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
+
 	<!-- SUBMIT FORM -->
 	<aura:method name="submitForm" action="{!c.onSubmitForm}">
 		<aura:attribute name="serviceName" type="String" default="default" />
@@ -50,5 +55,11 @@
 		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
 		<aura:attribute name="successCB" type="function" default="" />
 		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
+	<!-- HANDLER SERVER SIDE ERROR -->
+	<aura:method name="handleServerSideError" action="{!c.onHandleServerSideError}">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
 	</aura:method>
 </aura:component>

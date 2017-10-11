@@ -58,7 +58,8 @@ p {
 body {
   font-family: "WhitneyBook", Arial, sans-serif;
   background-color: #f8f8f9;
-  color: #282828; }
+  color: #282828;
+  display: none; }
 
 a {
   color: #0e75d5;
@@ -3445,8 +3446,6 @@ dl dt {
     border-bottom: none;
     margin-bottom: 0 !important;
     padding-bottom: 0 !important; }
-  .igcp-alert--item p {
-    font-size: 12px; }
 
 .igcp-cta {
   background-color: #fff; }

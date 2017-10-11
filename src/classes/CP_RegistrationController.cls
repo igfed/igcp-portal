@@ -7,17 +7,16 @@ public class CP_RegistrationController {
     @AuraEnabled
     public static string StepOne(String payload)
     {
-        System.debug('I am in Step One');
+        System.debug('CP_RegistrationController.StepOne');
+        System.debug('Payload: '+ payload);
         CP_Response response = new CP_Response();
         CP_RegistrationClass.UserIdentity objForm = new CP_RegistrationClass.UserIdentity();
         try
         {
-            System.debug('JSON String');
-            System.debug(payload);
-
             // Deserialize the passed JSON into User Identity Object     
             objForm = (CP_RegistrationClass.UserIdentity) JSON.deserialize(payload, CP_RegistrationClass.UserIdentity.class);
-            
+            System.debug('ObjForm: '+ objForm);
+
             // verify all required info is entered
             response.State = verifyStepOneInput(objForm);
 
@@ -31,7 +30,8 @@ public class CP_RegistrationController {
         catch(exception e)
         {
             response.State.IsValid = false;
-            response.State.Messages.add(e.getMessage());
+            System.debug('Exception Caught - CP_RegistrationController.StepOne: '+ e.getMessage());
+            response.State.Messages.add(System.Label.CP_Generic_Server_Error_Instructions);
         }
 
         // Serialize the result object and return as string
@@ -41,11 +41,14 @@ public class CP_RegistrationController {
     @AuraEnabled
 	public static string  StepTwo(String payload)
     {
+        System.debug('CP_RegistrationController.StepTwo');
+        System.debug('Payload: '+ payload);
         CP_Response response = new CP_Response();
         CP_RegistrationClass.UserProfile objForm = new CP_RegistrationClass.UserProfile();
         try
         {
             objForm = (CP_RegistrationClass.UserProfile) JSON.deserialize(payload, CP_RegistrationClass.UserProfile.class);
+            System.debug('ObjForm: '+ objForm);
 
             // verify all required info is entered
             response.State = verifyStepTwoInput(objForm);
@@ -60,7 +63,8 @@ public class CP_RegistrationController {
         catch(exception e)
         {
             response.State.IsValid = false;
-            response.State.Messages.add(e.getMessage());
+            System.debug('Exception Caught - CP_RegistrationController.StepTwo: '+ e.getMessage());
+            response.State.Messages.add(System.Label.CP_Generic_Server_Error_Instructions);
         }
 
         // Serialize the result object and return as string
@@ -70,19 +74,17 @@ public class CP_RegistrationController {
 	@AuraEnabled
 	public static string  StepThree(String payload)
     {
+        System.debug('CP_RegistrationController.StepThree');
+        System.debug('Payload: '+ payload);
+
         CP_Response response = new CP_Response();
         CP_RegistrationClass.RegistrationForm objForm = new CP_RegistrationClass.RegistrationForm();
         
-        System.debug('This is what i am getting from UI ');
-        System.debug(payload);
-
         try
         {
             // Deserialize the passed JSON into Registration Form Object     
             objForm = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(payload, CP_RegistrationClass.RegistrationForm.class);
-        
-            System.debug('Final ObjForm');
-            System.debug(objForm);
+            System.debug('ObjForm: '+ objForm);
 
             response.State = verifyStepOneInput(objForm.Identity);
             if(response.State.IsValid)
@@ -94,15 +96,15 @@ public class CP_RegistrationController {
                     if(response.State.IsValid)
                     {
                         response.State = Registration.RegisterClient(objForm);
-                    }   
+                    }
                 }
             }
         }
         catch(exception e)
         {
-           response.State.IsValid = false;
-           response.State.ServiceNotAvailable = true;
-           response.State.Messages.add(e.getMessage());
+            response.State.IsValid = false;
+            System.debug('Exception Caught - CP_RegistrationController.StepThree: '+ e.getMessage());
+            response.State.Messages.add(System.Label.CP_Generic_Server_Error_Instructions);
         }
 
         // Serialize the result object and return as string
@@ -113,10 +115,14 @@ public class CP_RegistrationController {
     @AuraEnabled
     public static string getSecurityQuestions(String payload)
     {
+        System.debug('CP_RegistrationController.getSecurityQuestions');
+        System.debug('Payload: '+ payload);
+
         CP_RegistrationClass.SecurityQuestions securityQuestions = new CP_RegistrationClass.SecurityQuestions();
         CP_RegistrationClass.RegistrationForm objForm;
 
         objForm = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(payload, CP_RegistrationClass.RegistrationForm.class);
+        System.debug('ObjForm: '+ objForm);
         
         try{
             String language; 
@@ -125,8 +131,9 @@ public class CP_RegistrationController {
         }
         catch(exception e)
         {
-            securityQuestions.State.IsValid = false;
-            securityQuestions.State.Messages.add(e.getMessage());
+            SecurityQuestions.State.IsValid = false;
+            System.debug('Exception Caught - CP_RegistrationController.getSecurityQuestions: '+ e.getMessage());
+            SecurityQuestions.State.Messages.add(System.Label.CP_Generic_Server_Error_Instructions);
         }
         return JSON.serialize(securityQuestions);
     }

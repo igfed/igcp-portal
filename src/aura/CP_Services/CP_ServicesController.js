@@ -580,5 +580,62 @@
 			}
 
 		}
+	},
+	onHandleServerSideError: function(cmp, evt, hlpr) {
+
+		var params = evt.getParam("arguments");
+		if (params) {
+
+			console.error(evt.getParam("payload"));
+
+			var
+				events = cmp.find("CP_Events"),
+				payload = evt.getParam("payload"),
+				errorObj = payload.error,
+				isValid = errorObj.State.IsValid,
+				isLocked = errorObj.State.IsLocked,
+				serviceUnavailable = errorObj.State.ServiceNotAvailable,
+				callbackObj = {};
+
+			if (isValid === false) {
+
+				//Backend returned value is not valid
+				if (isLocked === true) {
+
+					//if is locked is true then go to locked out view
+					events.fire("CP_Evt_Error_Locked_Out", {
+						"id": payload.id
+					});
+
+				} else if (serviceUnavailable === true) {
+
+					//if service is unavailable go to locked out view
+					events.fire("CP_Evt_Error_Not_Completed", {
+						"id": payload.id
+					});
+
+				} else if (errorObj.State.Fields.length !== 0 && errorObj.State.Messages.length !== 0) {
+					
+					//If there are error fields and messages	
+					callbackObj["fields"] = errorObj.State.Fields;
+					callbackObj["messages"] = errorObj.State.Messages;
+					params.callback(callbackObj);
+
+				} else if (errorObj.State.Fields.length === 0 && errorObj.State.Messages.length !== 0) {
+					
+					//if there are only messages
+					events.fire("CP_Evt_Toast_Error", {
+						"id": payload.toastId,
+						"message": errorObj.State.Messages[0]
+					});
+
+				} else {
+
+					//Fallback error
+					
+				}
+			}
+		}
+
 	}
 })

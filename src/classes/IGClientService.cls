@@ -44,7 +44,7 @@ public class IGClientService {
 		List<DTO_InsuranceDetail> insDetailDTOList = getInsuranceDetails(clientBpid);
 		for (DTO_InsuranceDetail insDTO : insDetailDTOList) {
 			DTO_InsurancePreviewItem item = new DTO_InsurancePreviewItem(insDTO.insuranceType, insDTO.policyType, insDTO.policyNumber, 
-					insDTO.company, Double.valueOf(insDTO.coverageAmount));
+					insDTO.company, String.isNotBlank(insDTO.coverageAmount) ? Double.valueOf(insDTO.coverageAmount) : null);
 			rv.addPreviewItem(item);
 		}
 		return rv;
@@ -173,6 +173,20 @@ public class IGClientService {
 	            	}
 	            }
 		    }
+		}
+		return rv;
+	}
+
+	public static DTO_AssetMixAggregate getAssetMixAggregate(String clientBpid) {
+		DTO_AssetMixAggregate rv = null;
+		if (String.isNotBlank(clientBpid)) {
+			rv = new DTO_AssetMixAggregate(clientBpid);
+			List<DTO_AssetMixDetail> assetMixDetailsList = IGClientService.getAssetMixDetails(clientBpid);
+			if (assetMixDetailsList != null && !assetMixDetailsList.isEmpty()) {
+				for (DTO_AssetMixDetail detail : assetMixDetailsList) {
+					rv.addAssetMixDetail(detail);
+				}
+			}
 		}
 		return rv;
 	}

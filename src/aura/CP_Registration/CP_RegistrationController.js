@@ -10,6 +10,9 @@
 				cmp.set("v.lang", "");
 			}
 		});
+
+		var body = document.querySelector("body");
+		body.className = "igcp-utils__display--block";
 	},
 	onStartRegistration: function(cmp, evt, hlpr) {
 		var

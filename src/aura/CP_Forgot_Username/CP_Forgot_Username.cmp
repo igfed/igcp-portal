@@ -20,6 +20,7 @@
     <c:CP_JS_Includes />
 
     <!-- HANDLER -->
+    <aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
     <aura:handler event="c:CP_Evt_Next_Step" action="{!c.onNextStep}"></aura:handler>
     <aura:handler event="c:CP_Evt_Back_Step" action="{!c.onBackStep}"></aura:handler>
     <aura:handler event="c:CP_Evt_Error_Locked_Out" action="{!c.onLockedOut}"></aura:handler>
@@ -34,8 +35,7 @@
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 1}"  >
-    		<c:CP_Forgot_User_Step_2 
-    			clientNum="{!v.clientNum}" 
+    		<c:CP_Forgot_User_Step_2 clientNum="{!v.clientNum}" 
     			email="{!v.email}" 
     			question="{!v.question}" 
     			answer="{!v.answer}"

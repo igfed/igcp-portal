@@ -15,9 +15,10 @@
 
 	<!-- HANDLERS -->
     <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+    <aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 	
 	<!-- MARKUP -->
-	<div class="igcp-overview igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-p-around--xx-small slds-large-p-around--medium">
+	<div class="igcp-overview igcp-wrapper igcp-background__tiled slds-grid slds-wrap slds-grid--align-center slds-p-around--xx-small slds-large-p-around--medium">
 		<div class="slds-size_12-of-12">
 			<div class="slds-m-top--medium slds-large-m-top--none slds-m-bottom--large">
 				<h1 class="slds-p-left--small slds-medium-p-left--medium">{!$Label.c.CP_Generic_Salutation_Hi} {!v.clientName}{!$Label.c.CP_Overview_Greeting_h1}</h1>

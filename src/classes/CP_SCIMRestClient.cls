@@ -7,6 +7,7 @@ public class CP_SCIMRestClient {
     private static String REST_GET_METHOD	= 'GET';
     private static String REST_POST_METHOD	= 'POST';
     private static String REST_PUT_METHOD  = 'PUT';
+    private static String REST_PATCH_METHOD  = 'PATCH';
 
     private static String USER_API_NAMED_CREDENTAIL	= 'IG_SCIM_User_API';
     private static String AUTH_API_NAMED_CREDENTAIL  = 'IG_SCIM_Auth_API';
@@ -50,7 +51,7 @@ public class CP_SCIMRestClient {
                     }
                     else
                     {
-                        response = new Response(false, response.code, 'Something went wrong');
+                        response = new Response(false, response.code, System.Label.CP_Generic_Server_Error_Instructions);
                     }
                 }
 
@@ -58,6 +59,7 @@ public class CP_SCIMRestClient {
             }
             catch(Exception e)
             {
+                System.debug('Exception Caught - CP_SCIMRestClient.RegisterNewUser: '+ e.getMessage());
                 response = new Response(false, response.code, e.getMessage());
             }
             return response; 
@@ -88,7 +90,6 @@ public class CP_SCIMRestClient {
             return null;
         }
         
-  
 
         public RandomSecurityQuestion getRandomSecurityQuestion(String userName)
         {
@@ -125,24 +126,36 @@ public class CP_SCIMRestClient {
         {
             String param = '?StateId='+ request.stateId;
             String strBody = '{ "knowledge.questions.count": "1", "knowledgeQuestions" : [ { "knowledge.question.answer": "'+ request.answer +'", "knowledge.question.unique.id": "'+ request.id +'" } ] }';
+
+                System.debug('strBody content');
+                System.debug(strBody);
+
             return  this.callPutRESTService(AUTH_API_NAMED_CREDENTAIL, strBody, param);
         }
 
-        public Response updatePassword()
+        public Response updatePassword(IGUser igUser)
         {
-            String param = '';
-            String strBody = '{ }';
-            return  this.callPutRESTService(USER_API_NAMED_CREDENTAIL, strBody, param);   
+            Response response; 
+            try
+            {
+                response = this.getUserIdByUserName(igUser.username);
+                if(response.success)
+                {
+                    String param = '/'+ response.responseBody;
+                    String strBody = '{ "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"], "Operations":[ { "op":"replace", "value":{ "password":"'+ igUser.password +'" } } ] }';
+                    response = this.callPatchRESTService(USER_API_NAMED_CREDENTAIL, strBody, param);   
+                }
+            }
+            catch(Exception e)
+            {
+                response = new Response(false, 500, e.getMessage());
+            }
+            return response;
         }
 
 
 
     //
-
-
-
-
-
 
 
 
@@ -240,6 +253,8 @@ public class CP_SCIMRestClient {
         }
 
         
+
+
     //
 
 
@@ -254,7 +269,8 @@ public class CP_SCIMRestClient {
     // Core Private Functions    
         
         // GET
-        private Response callGetRESTService(String namedCredential, String param) {
+        private Response callGetRESTService(String namedCredential, String param) 
+        {
         	Response ret;
         	try
         	{
@@ -263,7 +279,6 @@ public class CP_SCIMRestClient {
     	        req.setMethod(REST_GET_METHOD);
     	        req.setHeader(HTTP_HEADER_ACPT, REST_CONTENT);
                 req.setHeader(CONTENT_TYPE, REST_CONTENT);
-                
     	        req.setTimeout(120000);
     	
     	        Http http = new Http();
@@ -271,6 +286,7 @@ public class CP_SCIMRestClient {
     	        
                 System.debug('ISAM Response Object from GET');
                 System.debug(res);
+                System.debug(res.getBody());
 
     	        Integer resStatusCode = res.getStatusCode();
     	        ret = new Response((200 == resStatusCode), resStatusCode, res.getBody());
@@ -282,8 +298,10 @@ public class CP_SCIMRestClient {
         	return ret;
         }
         
+        
         //POST 
-        private Response callPostRESTService(String namedCredential, String body) {
+        private Response callPostRESTService(String namedCredential, String body) 
+        {
         	Response ret;
         	try
         	{
@@ -297,12 +315,15 @@ public class CP_SCIMRestClient {
 
                 System.debug('Data Sent to ISAM');
                 System.debug(body);
+                    System.debug(req);  
+
 
     	        Http http = new Http();
     	        HTTPResponse res = http.send(req);
     	    
                 System.debug('ISAM Response Object from POST');
                 System.debug(res);
+                System.debug(res.getBody());
 
     	        Integer resStatusCode = res.getStatusCode();
     	        ret = new Response((201 == resStatusCode), resStatusCode, res.getBody());
@@ -320,7 +341,7 @@ public class CP_SCIMRestClient {
             try
             {
                 HttpRequest req = new HttpRequest();
-                req.setEndpoint('callout:' +  namedCredential + param);
+                req.setEndpoint('callout:' + namedCredential + param);
                 req.setMethod(REST_PUT_METHOD);
                 req.setHeader(HTTP_HEADER_ACPT, REST_CONTENT);
                 req.setHeader(CONTENT_TYPE, REST_CONTENT);
@@ -329,12 +350,14 @@ public class CP_SCIMRestClient {
 
                 System.debug('Data Sent to ISAM');
                 System.debug(body);
+                System.debug(req);
 
                 Http http = new Http();
                 HTTPResponse res = http.send(req);
             
                 System.debug('ISAM Response Object from PUT');
                 System.debug(res);
+                System.debug(res.getBody());
 
                 Integer resStatusCode = res.getStatusCode();
                 ret = new Response((resStatusCode == 204 || resStatusCode == 200), resStatusCode, res.getBody());
@@ -345,6 +368,44 @@ public class CP_SCIMRestClient {
             }
             return ret;
         }
+
+
+        //PATCH
+        private Response callPatchRESTService(String namedCredential, String body, String param)
+        {
+            Response ret;
+            try
+            {
+                HttpRequest req = new HttpRequest();
+                req.setEndpoint('callout:' +  namedCredential+ param + '?_HttpMethod=PATCH');
+                req.setMethod(REST_POST_METHOD);
+                req.setHeader(HTTP_HEADER_ACPT, REST_CONTENT);
+                req.setHeader(CONTENT_TYPE, REST_CONTENT);
+                //req.setHeader('X-HTTP-Method-Override', 'PATCH');
+                req.setTimeout(120000);
+                req.setBody(body);
+
+                System.debug('Data Sent to ISAM');
+                System.debug(body);
+                    System.debug(req);  
+
+                Http http = new Http();
+                HTTPResponse res = http.send(req);
+            
+                System.debug('ISAM Response Object from PATCH');
+                System.debug(res);
+                System.debug(res.getBody());
+
+                Integer resStatusCode = res.getStatusCode();
+                ret = new Response((200 == resStatusCode), resStatusCode, res.getBody());
+            }
+            catch(exception e)
+            {
+                ret = new Response(false, 500, e.getMessage());
+            }
+            return ret;
+        }
+
 
     // 
 
@@ -459,5 +520,6 @@ public class CP_SCIMRestClient {
             public String id {get; set;}
             public String answer {get; set;}
         }
+
     // 
 }

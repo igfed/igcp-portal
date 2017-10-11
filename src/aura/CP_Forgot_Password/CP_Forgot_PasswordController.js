@@ -1,4 +1,8 @@
 ({
+	doneRendering: function(cmp, evt, hlpr) {
+		var body = document.querySelector("body");
+		body.className = "igcp-utils__display--block";
+	},
 	onNextStep: function(cmp, evt, hlpr) {
 
 		var
