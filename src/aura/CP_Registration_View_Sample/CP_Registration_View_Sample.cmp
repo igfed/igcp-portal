@@ -12,7 +12,7 @@
 			<button class="igcp-modal__button--close close-button" type="button" onclick="{!c.onClose}"></button>
 			<h3 class="slds-p-left--small slds-p-top--large">Investment Statement</h3>
 			<div class="slds-text-align_center">
-				Carousel coming soon!
+				 <div class="ig-carousel carousel" data-dots="true" data-infinite="true" data-arrows="true" data-responsive='[{"breakpoint": 640, "settings": {"slidesToShow": 2, "slidesToScroll": 2}}]'></div>
 			</div>
 		</div>
 	</div>

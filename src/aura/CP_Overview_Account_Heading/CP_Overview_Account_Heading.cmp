@@ -6,7 +6,7 @@
     
     <div class="igcp-underline__thin--blue slds-grid slds-p-horizontal--small slds-p-bottom--xx-small slds-large-p-bottom--x-small">
         <div class="igcp-label--small slds-size_6-of-12">{!v.accountType}</div>
-        <div class="igcp-label--small slds-show_large slds-text-align_right slds-size_3-of-12">{!v.col1Name}</div>
-        <div class="igcp-label--small slds-show_large slds-text-align_right slds-size_3-of-12">{!v.col2Name}</div>
+        <div class="igcp-label--small slds-text-align_right slds-size_3-of-12 slds-show_small">{!v.col1Name}</div>
+        <div class="igcp-label--small slds-text-align_right slds-size_6-of-12 slds-medium-size_3-of-12">{!v.col2Name}</div>
     </div>
 </aura:component>

@@ -1,7 +1,12 @@
 global class CP_Utility {
 	
+    public class UtilException extends Exception {}
+
 	public static Boolean IsValidEmail(String email)
     {
+        if(String.isBlank(email))
+            return false;
+            
         String emailRegex = '([a-zA-Z0-9_\\-\\.]+)@((\\[a-z]{1,3}\\.[a-z]{1,3}\\.[a-z]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})';
     
         Pattern MyPattern = Pattern.compile(emailRegex);
@@ -15,6 +20,9 @@ global class CP_Utility {
 
     public static Boolean IsValidPhoneNumber(String phoneNumber)
     {
+        if(String.isBlank(phoneNumber))
+            return false;
+
         String thisPhoneNumber = phoneNumber.replace(' ','');
         
         String MyRegex = '\\+?1?[ .-]?\\(?([0-9]{3})\\)?([ .-]?)([0-9]{3})([ .-]?)([0-9]{4})';
@@ -30,10 +38,12 @@ global class CP_Utility {
 
     public static Boolean IsValidPostalCode(String postalCode)
     {
+        if(String.isBlank(postalCode))
+            return false;
+
         String postalCodeRegex_1 = '[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]';
         String postalCodeRegex_2 = '[a-zA-Z][0-9][a-zA-Z](-| |)[0-9][a-zA-Z][0-9]';
-    
-        System.debug(postalCode);
+        String postalCodeRegex_3 = '/(^\\d{5}(?:[\\s]?[-\\s][\\s]?\\d{4})?$)/';
 
         Pattern MyPattern1 = Pattern.compile(postalCodeRegex_1);
         Matcher MyMatcher1 = MyPattern1.matcher(postalCode);
@@ -41,7 +51,10 @@ global class CP_Utility {
         Pattern MyPattern2 = Pattern.compile(postalCodeRegex_2);
         Matcher MyMatcher2 = MyPattern2.matcher(postalCode);
 
-        if(MyMatcher1.matches() || MyMatcher2.matches())
+        Pattern MyPattern3 = Pattern.compile(postalCodeRegex_2);
+        Matcher MyMatcher3 = MyPattern3.matcher(postalCode);
+
+        if(MyMatcher1.matches() || MyMatcher2.matches() || MyMatcher3.matches())
             return true;
         else
             return false;
@@ -49,6 +62,9 @@ global class CP_Utility {
 
     public static Boolean PostalCodeMatched(String codeEntered, String codeActual)
     {
+        if(String.isBlank(codeEntered) || String.isBlank(codeActual))
+            return false;
+
         codeEntered = codeEntered.remove(' ').remove('-').toUpperCase();
         codeActual = codeActual.remove(' ').remove('-').toUpperCase();
 
@@ -60,11 +76,56 @@ global class CP_Utility {
 
     public static Boolean ReEnteredPasswordMatched(String password, String rePassword)
     {
+        if(String.isBlank(password) || String.isBlank(rePassword))
+            return false;
+
         if(password == rePassword)
             return true;
         else
             return false;
     }
 
+
+    //  -------------------------------------------------------------------------
+    //  HELPER method: sendTemplatedEmail
+    //  -------------------------------------------------------------------------
+    public static void sendTemplatedEmail(String templateApiName, ID targetObjId, Id whatId, ID orgWideEmailId) {
+      //  templateId   must be ID of an Email template
+      //  targetObjId must be a Contact, User, Lead Id -- also used in merge fields of template recipient.xxxx
+      //  whatId    must be an SObject that is used in the merge fields of the template relatedTo.xxxx
+      //  fromId    if non null, use current user, otherwise, use this ID (most likely an org wide no reply id)
+      //  bcc      not permitted when using templates
+      
+    Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
+        
+    Id templateId;  
+    try {templateId = [select id, name from EmailTemplate where developername = : templateApiName].id;}
+    catch (Exception e) {
+      throw new UtilException ('[U-03] Unable to locate EmailTemplate using name: ' + templateApiName + 
+                    ' refer to Setup | Communications Templates ' + templateApiName);
+    }
+        
+        
+        email.setTargetObjectId(targetObjId);
+
+        if(whatId != null)
+            email.setWhatId(whatId);
+
+        //if(orgWideEmailId != null)
+        //    email.setorgWideEmailAddressId(orgWideEmailId);
+        
+        email.setTemplateId(templateId);
+        
+        email.setSaveAsActivity(false); 
+
+        System.debug(LoggingLevel.INFO,'** entered sendTemplatedEmail, templateId:' + templateId + 
+            ' tagetObjId:' + targetObjId + ' whatId:' + whatId + ' orgWideEmailId: ' + orgWideEmailId);
+        try {
+            Messaging.sendEmail(new Messaging.SingleEmailMessage[] {email});
+            return;
+        }
+        catch (EmailException e) {throw new UtilException('[U-02] sendTemplatedEmail error. ' + e.getMessage());}
+      
+    }  
 
 }

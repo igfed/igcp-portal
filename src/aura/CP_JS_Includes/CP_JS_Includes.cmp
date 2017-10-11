@@ -1,9 +1,8 @@
 <aura:component >
-	<ltng:require scripts="{!join(',', 
-    	$Resource.igcpresources + '/igcp-resources/scripts/jquery.js',
+	<ltng:require scripts="{!join(',',
+	    $Resource.igcpresources + '/igcp-resources/scripts/vendor.js',
     	$Resource.igcpresources + '/igcp-resources/scripts/dtm-controller.js',
-    	$Resource.igcpresources + '/igcp-resources/scripts/Chart.bundle.min.js',
-    	$Resource.igcpresources + '/igcp-resources/scripts/what-input.js',
-    	$Resource.igcpresources + '/igcp-resources/scripts/foundation.js')}" 
+    	$Resource.igcpresources + '/igcp-resources/scripts/main.js',
+    	$Resource.igcpresources + '/igcp-resources/scripts/Chart.bundle.min.js')}"
 	afterScriptsLoaded="{!c.scriptsLoaded}"/>
 </aura:component>

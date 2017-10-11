@@ -1,4 +1,4 @@
-<aura:component>
+<aura:component >
 	<!-- ATTRS -->
 	<aura:attribute name="renderComplete" type="Boolean" default="false" ></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-utils__width--100 slds-m-bottom--medium"></aura:attribute>

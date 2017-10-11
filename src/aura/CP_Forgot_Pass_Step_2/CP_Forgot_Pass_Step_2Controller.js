@@ -82,7 +82,7 @@
 					isLocked = payload.State.IsLocked,
 					serviceUnavailable = payload.State.ServiceNotAvailable;
 
-				//try {
+				try {
 
 					fields.forEach(function(errorType, i) {
 						var msgArr = [];
@@ -117,13 +117,12 @@
 						});
 					}
 
-					// if (error.type === "server-side-error" || isValid === false) {
-					// 	events.fire("CP_Evt_Toast_Error", {
-					// 		"id": "forgot-pass-step-2-toast-error",
-					// 		"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-					// 	});
-					// } else {
-					if(isValid === false)
+					if (error.type === "server-side-error" || isValid === false) {
+						events.fire("CP_Evt_Toast_Error", {
+							"id": "forgot-pass-step-2-toast-error",
+							"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
+						});
+					} else {
 						//Display toast
 						events.fire("CP_Evt_Toast_Error", {
 							"id": "error-box",
@@ -131,15 +130,15 @@
 						});
 					}
 
-				// } catch (err) {
-				// 	console.error("Forgot Password Step 2: There was an unknown error.");
-				// 	console.error(err);
+				} catch (err) {
+					console.error("Forgot Password Step 2: There was an unknown error.");
+					console.error(err);
 
-				// 	events.fire("CP_Evt_Toast_Error", {
-				// 		"id": "forgot-pass-step-2-toast-error",
-				// 		"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-				// 	});
-				// }
+					events.fire("CP_Evt_Toast_Error", {
+						"id": "forgot-pass-step-2-toast-error",
+						"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
+					});
+				}
 			}
 		);
 	},

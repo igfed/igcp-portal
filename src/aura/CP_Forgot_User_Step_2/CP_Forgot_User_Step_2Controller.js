@@ -100,13 +100,12 @@
 						});
 					}
 
-					// if (error.type === "server-side-error" || isValid === false) {
-					// 	events.fire("CP_Evt_Toast_Error", {
-					// 		"id": "forgot-user-step-2-toast-error",
-					// 		"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-					// 	});
-					// } else {
-					if(isValid === false)
+					if (error.type === "server-side-error" || isValid === false) {
+						events.fire("CP_Evt_Toast_Error", {
+							"id": "forgot-user-step-2-toast-error",
+							"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
+						});
+					} else {
 						//Display toast
 						events.fire("CP_Evt_Toast_Error", {
 							"id": "forgot-user-step-2-toast-error",

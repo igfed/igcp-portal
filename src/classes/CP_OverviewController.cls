@@ -36,6 +36,18 @@ public with sharing class CP_OverviewController {
 		return rv;
 	}
 
+	@AuraEnabled 
+	public static DTO_AssetMixAggregate getAssetMixAggregate(String bpid) {
+		DTO_AssetMixAggregate rv;
+		if (String.isBlank(bpid)) {
+			bpid = CP_OverviewController.getClientBPID();
+		}
+		if (String.isNotBlank(bpid)) {
+			rv = IGClientService.getAssetMixAggregate(bpid);
+		}
+		return rv;
+	}
+
 	@AuraEnabled
   	public static String getUserName() {
     	return UserInfo.getName();

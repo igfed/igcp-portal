@@ -100,9 +100,9 @@
 		var params = evt.getParam("arguments");
 		if (params) {
 
-			if(window.location.search) {
+			if (window.location.search) {
 
-				var 
+				var
 					queryPairs = location.search.slice(1).split('&'),
 					paramObj = {};
 
@@ -120,16 +120,16 @@
 		}
 
 	},
-	onForEach: function(cmp, evt, hlpr){
+	onForEach: function(cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 
-			if(typeof(params.obj) === "object") {
+			if (typeof(params.obj) === "object") {
 				var key, obj;
 
 				obj = params.obj;
 
-				for(key in obj) {
+				for (key in obj) {
 					params.callback(key, obj[key]);
 				}
 			} else {
@@ -140,7 +140,7 @@
 	onGoToLogin: function(cmp, evt, hlpr) {
 		try {
 
-			var 
+			var
 				params = evt.getParam("arguments"),
 				lang = "en";
 			if (params) {
@@ -148,29 +148,29 @@
 				//so far not sure how login
 				//will handle language
 				//just keeping this here for the future
-				if(params.lang) {
+				if (params.lang) {
 					lang = params.lang;
 				}
 			}
 
 			window.open("https://fitrp3-isam.investorsgroup.com/", "_self");
-		} catch(err) {
+		} catch (err) {
 			console.error("CP_Utils: gotoLogin: window not found.")
 			console.error(err);
 		}
 	},
 	onNavigateToURL: function(cmp, evt, hlpr) {
 		try {
-			var 
+			var
 				params = evt.getParam("arguments"),
 				target = "_self";
 
-			if(params) {
-				if(params.target) {
+			if (params) {
+				if (params.target) {
 					target = params.target;
 				}
 
-				if(params.url) {
+				if (params.url) {
 					window.open(params.url, target);
 				} else {
 					console.warn("CP_Utils: navigateToURL was called but no url was passed.");
@@ -178,22 +178,22 @@
 			}
 
 
-		} catch(err) {
+		} catch (err) {
 			console.error("CP_Utils: navigateToURL: window not found.")
 			console.error(err);
 		}
 	},
 	onFormatToCurrency: function(cmp, evt, hlpr) {
-		var 
+		var
 			params = evt.getParam("arguments"),
 			lang, formattedValue;
 
-		if(params) {
+		if (params) {
 			lang = params.lang;
 
-			if(lang === "en_CA" || lang === "en_US") {
+			if (lang === "en_CA" || lang === "en_US") {
 				formattedValue = hlpr.formatCurrency(params.rawValue);
-			} else if(lang === "fr_CA") {
+			} else if (lang === "fr_CA") {
 				formattedValue = hlpr.formatCurrency(params.rawValue, 2, 3, ' ', ',');
 			} else {
 				console.warn("CP_Utils: formatToCurrency: language unrecognized.");
@@ -201,5 +201,25 @@
 
 			params.callback(formattedValue);
 		}
+	},
+	onObjectIsEmpty: function(cmp, evt, hlpr) {
+		var params = evt.getParam("arguments");
+
+		if (params) {
+
+			var 
+				obj = params.obj,
+				isEmpty = true;
+
+			for (var key in obj) {
+				if (params.hasOwnProperty(key)) {
+					isEmpty = false;
+				}
+			}
+
+			params.callback(isEmpty);
+			
+		}
+
 	}
 })

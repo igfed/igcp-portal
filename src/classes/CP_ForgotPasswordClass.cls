@@ -144,14 +144,14 @@ public class CP_ForgotPasswordClass {
 		        		}
 		        		else if(isamResponse.success && isamResponse.code == 200)
 		        		{
-		        			response.State.IsValid = true;
+		        			response.State.IsValid = false;
 		        			response.State.IsLocked = this.recordFailedSecurityAnswerAttemptAndLock();
 		        			response.State.Fields.add('answer');
 			        		response.State.Messages.add(System.Label.CP_Forgot_UserName_Incorrect_Answer);	
 		        		}
                         else
                         {
-                            response.State.IsValid = true;
+                            response.State.IsValid = false;
                             response.State.Messages.add(isamResponse.error);
                         }
                     }
@@ -176,16 +176,27 @@ public class CP_ForgotPasswordClass {
             try
             {
                 CP_SCIMRestClient restClient = new CP_SCIMRestClient();
+                CP_SCIMRestClient.IGUser thisUser = new CP_SCIMRestClient.IGUser();
                 CP_SCIMRestClient.Response isamResponse;
 
-                isamResponse = restClient.updatePassword();
+                thisUser.username = this.username; 
+                thisUser.password = this.password; 
+
+                isamResponse = restClient.updatePassword(thisUser);
+                
+                System.debug('iSAM reponse after Update Password');
+                System.debug(isamResponse);
+
                 if(isamResponse.success)
                 {
+                    System.debug('calling sendEmail');
                     response.State.IsValid = true;
+                    Boolean emailSent  = this.sendEmail();
+                    System.debug('Email SENT: ' + emailSent);
                 }
                 else
                 {
-                    response.State.IsValid = true;
+                    response.State.IsValid = false;
                     response.State.Messages.add(isamResponse.error);
                 }
             }
@@ -269,6 +280,56 @@ public class CP_ForgotPasswordClass {
                 return contactList[0];
         }
 
+        private User getUserByUserName()
+        {
+            List<User> userList = [select ID, Username, Email
+                from User 
+                where username = : String.escapeSingleQuotes(this.username)];
+
+            System.debug(userList);
+
+            if(userList.isEmpty())
+                return null;
+            else
+                return userList[0];
+        }
+
+
+
+        private Boolean sendEmail()
+        {
+            try
+            {
+                Contact objContact = this.getContactByUserName();
+                if(objContact != null)
+                {
+                    String emailTemplate = objContact.Preferred_Language__c == 'French' ? 'IG_Forgot_Password_French' : 'IG_Forgot_Password_English';
+                    OrgWideEmailAddress owa  = [SELECT ID, Address from OrgWideEmailAddress where Address  ='derek.chu@investorsgroup.com']; 
+                    
+                    User objUser  = this.getUserByUserName();
+                    if(objUser != null)
+                    {
+                        if(owa != null)
+                             CP_Utility.sendTemplatedEmail(emailTemplate, objUser.Id, objContact.ID, owa.Id);
+                        else
+                             CP_Utility.sendTemplatedEmail(emailTemplate, objUser.Id, objContact.ID, null);
+                    }
+                    else
+                    {
+                        if(owa != null)
+                             CP_Utility.sendTemplatedEmail(emailTemplate, objContact.ID, objContact.ID, owa.Id);
+                        else
+                             CP_Utility.sendTemplatedEmail(emailTemplate, objContact.ID, objContact.ID, null);
+                    }
+                }
+            }
+            catch(exception e)
+            {
+                System.debug('Email Exception'+ e.getMessage());
+                return false;
+            }
+            return true;
+        }
 
 // 
 

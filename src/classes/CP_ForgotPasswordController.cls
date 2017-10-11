@@ -97,7 +97,7 @@ public with sharing class CP_ForgotPasswordController {
     {
         CP_ForgotPasswordClass objForm = new CP_ForgotPasswordClass(); 
         CP_Response response = new CP_Response();
-        System.debug('Step Three');
+        System.debug('Step Threeeeeeeeeeeeeeeeeee');
         System.debug(payload);
 
         try
@@ -105,14 +105,14 @@ public with sharing class CP_ForgotPasswordController {
             // Deserialize the passed JSON into User Identity Object     
             objForm = (CP_ForgotPasswordClass) JSON.deserialize(payload, CP_ForgotPasswordClass.class);
             
-            System.debug('objForm');
+            System.debug('This is what submited from UI');
             System.debug(objForm);
 
             response.State = verifyStepThreeInput(objForm);
 
             if(response.State.IsValid)
-                response = objForm.verifySecurityAnswer();
-
+                response = objForm.updatePassword();
+            
         }
         catch(exception e)
         {

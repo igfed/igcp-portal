@@ -16,6 +16,7 @@
 	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Selector_Change" action="{!c.onInputSelectorReceived}" />
