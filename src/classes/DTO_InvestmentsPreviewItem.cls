@@ -4,15 +4,18 @@ public class DTO_InvestmentsPreviewItem {
 	@AuraEnabled public Double gainLoss;
 	@AuraEnabled public Double percGainLoss;
 	@AuraEnabled public String dealerName;
+	@AuraEnabled public String registrationType;
 	@AuraEnabled public String signGainLoss; //neutral, positive, negative
 
-	public DTO_InvestmentsPreviewItem(String theAccountName, Double theMarketValue, Double theGainLoss, String theDealerName) {
-		this.accountName 	= theAccountName;
-		this.marketValue 	= theMarketValue;
-		this.gainLoss 		= theGainLoss;
-		this.dealerName		= theDealerName;
-		this.percGainLoss 	= calculateGainLossPerc(this.marketValue, this.gainLoss);
-		this.signGainLoss	= determineSignGainLoss(this.gainLoss);
+	public DTO_InvestmentsPreviewItem(String theAccountName, Double theMarketValue, Double theGainLoss, String theDealerName, 
+				String theRegistrationType) {
+		this.accountName 		= theAccountName;
+		this.marketValue 		= theMarketValue;
+		this.gainLoss 			= theGainLoss;
+		this.dealerName			= theDealerName;
+		this.registrationType 	= theRegistrationType;
+		this.percGainLoss 		= calculateGainLossPerc(this.marketValue, this.gainLoss);
+		this.signGainLoss		= determineSignGainLoss(this.gainLoss);
 	}
 
 	private Double calculateGainLossPerc(Double theValue, Double theGainLoss) {

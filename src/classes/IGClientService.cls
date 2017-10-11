@@ -1,10 +1,12 @@
 public class IGClientService {
+	private static final String WEBSERVICE_NAMED_CREDENTIAL = X360_Data_Services__c.getOrgDefaults().Service_Named_Credential__c;
+
 	public static List<DTO_AccountSummary> getAccountSummaries(String clientBpid) {
 		List<DTO_AccountSummary> rv = new List<DTO_AccountSummary>();
 		if (String.isBlank(clientBpid)) {
 			throw new IGClientServiceException('The client bpid can\'t be null or empty');
 		}
-		IGRestClient client = IGRestClientFactory.getIGRestClient('AccountSummary', 'IG_Client_Service');
+		IGRestClient client = IGRestClientFactory.getIGRestClient('AccountSummary', WEBSERVICE_NAMED_CREDENTIAL);
 		if (client != null) {
 		    IGAccountSummaryClient theClient = (IGAccountSummaryClient)client;
 		    theClient.bpid = clientBpid;
@@ -33,7 +35,10 @@ public class IGClientService {
 		List<DTO_AccountSummary> acctSummaryDTOList = IGClientService.getAccountSummaries(clientBpid);
 		for (DTO_AccountSummary summaryDTO : acctSummaryDTOList) {
 			DTO_InvestmentsPreviewItem item = new DTO_InvestmentsPreviewItem(summaryDTO.accountNumber, summaryDTO.marketValueCad, 
-					summaryDTO.gainLossCad, summaryDTO.dealerName);
+					summaryDTO.gainLossCad, summaryDTO.dealerName, summaryDTO.registrationType);
+			if (String.isNotBlank(summaryDTO.accountTypeLabel)) {
+				item.accountName = summaryDTO.accountTypeLabel + ' - ' + summaryDTO.accountNumber;
+			}
 			rv.addPreviewItem(item);
 		}
 		return rv;
@@ -61,15 +66,16 @@ public class IGClientService {
 		return rv;
 	}
 
-	public static List<DTO_AccountDetail> getAccountDetails(String clientBpid) {
+	public static List<DTO_AccountDetail> getAccountDetails(String clientBpid, String accountNumber) {
 		List<DTO_AccountDetail> rv = new List<DTO_AccountDetail>();
 		if (String.isBlank(clientBpid)) {
 			throw new IGClientServiceException('The client bpid can\'t be null or empty');
 		}
-		IGRestClient client = IGRestClientFactory.getIGRestClient('AccountDetails', 'IG_Client_Service');
+		IGRestClient client = IGRestClientFactory.getIGRestClient('AccountDetails', WEBSERVICE_NAMED_CREDENTIAL);
 		if (client != null) {
 		    IGAccountDetailClient theClient = (IGAccountDetailClient)client;
 		    theClient.bpid = clientBpid;
+		    theClient.accountNumber = accountNumber;
 		    IGRestClient.Response res = theClient.getServiceData();
 		    System.debug('=====> getAccountDetails.res: ' + res);
 		    if (res != null) {
@@ -95,7 +101,7 @@ public class IGClientService {
 		if (String.isBlank(clientBpid)) {
 			throw new IGClientServiceException('The client bpid can\'t be null or empty');
 		}
-		IGRestClient client = IGRestClientFactory.getIGRestClient('Insurance', 'IG_Client_Service');
+		IGRestClient client = IGRestClientFactory.getIGRestClient('Insurance', WEBSERVICE_NAMED_CREDENTIAL);
 		if (client != null) {
 		    IGInsuranceClient theClient = (IGInsuranceClient)client;
 		    theClient.bpid = clientBpid;
@@ -124,7 +130,7 @@ public class IGClientService {
 		if (String.isBlank(clientBpid)) {
 			throw new IGClientServiceException('The client bpid can\'t be null or empty');
 		}
-		IGRestClient client = IGRestClientFactory.getIGRestClient('Mortgage', 'IG_Client_Service');
+		IGRestClient client = IGRestClientFactory.getIGRestClient('Mortgage', WEBSERVICE_NAMED_CREDENTIAL);
 		if (client != null) {
 		    IGMortgageClient theClient = (IGMortgageClient)client;
 		    theClient.bpid = clientBpid;
@@ -153,7 +159,7 @@ public class IGClientService {
 		if (String.isBlank(clientBpid)) {
 			throw new IGClientServiceException('The client bpid can\'t be null or empty');
 		}
-		IGRestClient client = IGRestClientFactory.getIGRestClient('AssetMix', 'IG_Client_Service');
+		IGRestClient client = IGRestClientFactory.getIGRestClient('AssetMix', WEBSERVICE_NAMED_CREDENTIAL);
 		if (client != null) {
 			IGAssetMixClient theClient = (IGAssetMixClient)client;
 			theClient.bpid = clientBpid;
@@ -196,7 +202,7 @@ public class IGClientService {
 		if (String.isBlank(clientBpid)) {
 			throw new IGClientServiceException('The client bpid can\'t be null or empty');
 		}
-		IGRestClient client = IGRestClientFactory.getIGRestClient('Transactions', 'IG_Client_Service');
+		IGRestClient client = IGRestClientFactory.getIGRestClient('Transactions', WEBSERVICE_NAMED_CREDENTIAL);
 		if (client != null) {
 			IGTransactionsClient theClient = (IGTransactionsClient)client;
 			theClient.bpid = clientBpid;

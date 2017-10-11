@@ -25,7 +25,7 @@ public class CP_ForgotPasswordClass {
                 if(objContact == null)
                 {
                     state.IsValid = false;
-                    state.Messages.add(System.Label.CP_Forgot_Pass_User_Name_Not_Found);
+                    state.Messages.add(System.Label.CP_Error_Forgot_Password_Step_1);
                 }
                 else
                 {
@@ -39,13 +39,13 @@ public class CP_ForgotPasswordClass {
                         if(!CP_Utility.PostalCodeMatched(this.postalCode, objContact.MailingPostalCode))
                         {   
                             state.IsValid = false;
-                            state.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);
+                            state.Messages.add(System.Label.CP_Error_Forgot_Password_Step_1);
                             state.IsLocked = this.recordFailedAttemptAndLock();
                         }
                         else if(objContact.Birthdate != Date.valueOf(this.dob))
                         {   
                             state.IsValid = false;
-                            state.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);
+                            state.Messages.add(System.Label.CP_Error_Forgot_Password_Step_1);
                             state.IsLocked = this.recordFailedAttemptAndLock();
                         }
                     }

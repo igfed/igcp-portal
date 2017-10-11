@@ -22,21 +22,26 @@ public class CP_ForgotUserNameClass {
                     state.IsValid = false;
                     state.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);    
                 }
-                else if(objContact.email != this.email)
-                {   
-                    state.IsValid = false;
-                    state.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);
-                }
                 else
                 {
                     if(objContact.Portal_User_Is_Locked__c == true)
-                    {
+                    {   
                         state.IsValid = false;
                         state.IsLocked = true;
+                        state.Messages.add(System.Label.CP_Registration_Locked_h1);
+                    }
+                    else if (objContact.Portal_User_Is_Registered__c == false)
+                    {
+                        state.IsValid = false;
+                        state.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);
                     }
                     else
-                    {
-                        state.IsValid = true;
+                    {       
+                        if(objContact.email != this.email)
+                        {   
+                            state.IsValid = false;
+                            state.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);
+                        }
                     }
                 }
             }
@@ -82,8 +87,9 @@ public class CP_ForgotUserNameClass {
                         }
                         else
                         {
-                            response.State.IsValid = false;   
-                            response.State.Messages.add(isamResponse.error);
+                            response.State.IsValid = false; 
+                            response.State.ServiceNotAvailable = true; 
+                            response.State.Messages.add(System.Label.CP_Generic_Server_Error_Instructions);
                         }
                     }
                 }

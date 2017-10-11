@@ -12,7 +12,7 @@
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<!--  MARKUP -->
 	<div class="igcp-container slds-p-around--small slds-large-p-around--medium slds-m-bottom--x-small slds-large-m-bottom--medium slds-large-m-right--medium">
-		<h2 class="slds-m-top--small slds-m-bottom--medium slds-medium-p-horizontal--small">{!$Label.c.CP_Overview_Mortgage_h2}</h2>
+		<h2 class="slds-m-top--small slds-m-bottom--medium slds-p-horizontal--xx-small slds-medium-p-horizontal--small">{!$Label.c.CP_Overview_Mortgage_h2}</h2>
 		<div class="slds-grid slds-wrap">
 			<aura:if isTrue="{!v.showMarketing}">
 				<c:CP_Overview_Marketing_View tagline="{!$Label.c.CP_Overview_Mortgage_Marketing_Tagline}" cta="{!$Label.c.CP_Generic_Link_Learn_More}" href="#" />

@@ -586,16 +586,16 @@
 		var params = evt.getParam("arguments");
 		if (params) {
 
-			console.error(evt.getParam("payload"));
-
 			var
 				events = cmp.find("CP_Events"),
-				payload = evt.getParam("payload"),
-				errorObj = payload.error,
+				payload = params.payload,
+				errorObj = payload.error.payload,
 				isValid = errorObj.State.IsValid,
 				isLocked = errorObj.State.IsLocked,
 				serviceUnavailable = errorObj.State.ServiceNotAvailable,
 				callbackObj = {};
+
+			console.error(payload);
 
 			if (isValid === false) {
 
@@ -619,6 +619,8 @@
 					//If there are error fields and messages	
 					callbackObj["fields"] = errorObj.State.Fields;
 					callbackObj["messages"] = errorObj.State.Messages;
+					callbackObj["isLocked"] = isLocked;
+					callbackObj["isValid"] = isValid;
 					params.callback(callbackObj);
 
 				} else if (errorObj.State.Fields.length === 0 && errorObj.State.Messages.length !== 0) {
@@ -629,10 +631,17 @@
 						"message": errorObj.State.Messages[0]
 					});
 
+				} else if(errorObj.type === "server-side-error") {
+					events.fire("CP_Evt_Error_Not_Completed", {
+						"id": payload.id
+					});
 				} else {
 
 					//Fallback error
-					
+					events.fire("CP_Evt_Toast_Error", {
+						"id": payload.toastId,
+						"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
+					});
 				}
 			}
 		}

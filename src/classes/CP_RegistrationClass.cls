@@ -14,10 +14,7 @@ global class CP_RegistrationClass {
         {
             // Contact not found
             result.IsValid = false;
-            result.Fields.add('clientNum');
             result.Messages.add(System.Label.CP_Error_Registration_Step_1);
-
-            return result;
         }
         else // Contact Found Validate Client Status
         {
@@ -27,28 +24,34 @@ global class CP_RegistrationClass {
                 result.IsValid = false;
                 result.IsLocked = true;
                 result.Messages.add(System.Label.CP_Registration_Locked_h1);
-                return result;
             }
             else // Contact is not Locked, proceed with other checks
             {
                 // Check Client's Eligibility for Registration
                 if(objClient.Is_Registration_Eligibile__c == false && objClient.Asset_Type__c == 'Joint')
                 {
-                    // Client is not Eligible
                     result.IsValid = false;
-                    result.Fields.add('clientNum');
                     result.Messages.add(System.Label.CP_Registration_Client_is_Joint_and_Not_allowed_to_Register);
-
-                    return result;
                 }
                 else if(objClient.Is_Registration_Eligibile__c == false && objClient.Asset_Type__c == 'Company')
                 {
-                    // Client is not Eligible
                     result.IsValid = false;
-                    result.Fields.add('clientNum');
                     result.Messages.add(System.Label.CP_Registration_Client_is_Company_and_Not_allowed_to_Register);
-
-                    return result;
+                }
+                else if(objClient.Customer__r.Client_Is_Deceased__c == true)
+                {
+                    result.IsValid = false;
+                    result.Messages.add(System.Label.CP_Registration_Client_is_deceased);
+                }
+                else if(objClient.Customer__r.Client_Returned_Mail__c == true)
+                {
+                    result.IsValid = false;
+                    result.Messages.add(System.Label.CP_Registration_Client_mail_returned);
+                }
+                else if(objClient.Customer__r.Client_Zero_Balance__c == true)
+                {
+                    result.IsValid = false;
+                    result.Messages.add(System.Label.CP_Registration_Client_has_zero_balance);
                 }
                 else // Client is Eligible, proceed with other checks
                 {
@@ -57,9 +60,7 @@ global class CP_RegistrationClass {
                     {
                         // Client is already Registered
                         result.IsValid = false;
-                        result.Fields.add('clientNum');
                         result.Messages.add(System.Label.CP_Registration_Client_Already_Registered);
-                        return result;
                     }
                     else
                     {
@@ -68,14 +69,12 @@ global class CP_RegistrationClass {
                         {
                             // Postatcode did not match the stored info in Salesforce.
                             result.IsValid = false;
-                            result.Fields.add('postalCode');
                             result.Messages.add(System.Label.CP_Error_Registration_Step_1);
                         }
                         else if(Date.valueOf(IGUser.dob) != objClient.Customer__r.Birthdate) 
                         {
                             // Date of Birth did not match the stored info in Salesforce.
                             result.IsValid = false;
-                            result.Fields.add('dob');
                             result.Messages.add(System.Label.CP_Error_Registration_Step_1);
                         }
                         
@@ -217,7 +216,7 @@ global class CP_RegistrationClass {
                 objContact.Email = regForm.Profile.email;
                 objContact.Phone = regForm.Profile.mobilePhone;
                 objContact.Marketing_Email_Optout__c = regForm.Profile.emailOptIn == null ? false : true;
-                objContact.Preferred_Language__c = regForm.lang == null ? 'English' : regform.lang.toUpperCase() == 'FR_CA' ? 'French' : 'English';
+                //objContact.Preferred_Language__c = regForm.lang == null ? 'English' : regform.lang.toUpperCase() == 'FR_CA' ? 'French' : 'English';
                 objContact.Portal_User_Consent_Date__c = DateTime.now();
                 objContact.Portal_User_Consent_Obtained__c = true;
                 objContact.Portal_Action_Failure_Count__c = 0;
@@ -267,7 +266,8 @@ global class CP_RegistrationClass {
                                 Customer__r.Business_Partner_ID__c, Customer__r.Preferred_Language__c, Customer__r.Phone, 
                                 Customer__r.Portal_Action_Failure_Count__c, Customer__r.Portal_Registration_Is_Locked__c,
                                 Customer__r.Portal_User_Consent_Date__c, Customer__r.Portal_User_Consent_Obtained__c, 
-                                Customer__r.Portal_Registration_Eligible__c
+                                Customer__r.Portal_Registration_Eligible__c, 
+                                Customer__r.Client_Is_Deceased__c, Customer__r.Client_Returned_Mail__c, Customer__r.Client_Zero_Balance__c
                 FROM Financial_Asset__c
                 WHERE 
                                  (RecordType.DeveloperName = 'Investment_Asset'  AND Client_Number__c = : String.escapeSingleQuotes(this.clientNum))
@@ -296,7 +296,9 @@ global class CP_RegistrationClass {
                     objContact.Portal_Registration_Is_Locked__c = assetList[0].Customer__r.Portal_Registration_Is_Locked__c;
                     objContact.Portal_User_Consent_Date__c = assetList[0].Customer__r.Portal_User_Consent_Date__c;
                     objContact.Portal_User_Consent_Obtained__c = assetList[0].Customer__r.Portal_User_Consent_Obtained__c;
-                    
+                    objContact.Client_Is_Deceased__c = assetList[0].Customer__r.Client_Is_Deceased__c;
+                    objContact.Client_Returned_Mail__c = assetList[0].Customer__r.Client_Returned_Mail__c;
+                    objContact.Client_Zero_Balance__c = assetList[0].Customer__r.Client_Zero_Balance__c;
                     return objContact;
                 }
         }
@@ -318,7 +320,8 @@ global class CP_RegistrationClass {
                            Customer__r.Portal_Action_Failure_Count__c, 
                            Customer__r.Portal_Registration_Is_Locked__c,
                            Customer__r.Portal_User_Consent_Date__c, Customer__r.Portal_User_Consent_Obtained__c,
-                           Customer__r.Portal_Registration_Eligible__c
+                           Customer__r.Portal_Registration_Eligible__c, 
+                           Customer__r.Client_Is_Deceased__c, Customer__r.Client_Returned_Mail__c, Customer__r.Client_Zero_Balance__c
                     FROM 
                            Financial_Asset__c 
                     WHERE 

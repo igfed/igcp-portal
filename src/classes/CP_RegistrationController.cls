@@ -173,7 +173,7 @@ public class CP_RegistrationController {
         {
             // Postatcode is empty 
             result.IsValid = false;
-            result.Fields.add('postalCode');
+            result.Fields.add('dob');
             result.Messages.add(System.Label.CP_Registration_DOB_Is_Empty);
         } 
 

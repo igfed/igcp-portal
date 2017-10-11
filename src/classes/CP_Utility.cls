@@ -43,7 +43,7 @@ global class CP_Utility {
 
         String postalCodeRegex_1 = '[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]';
         String postalCodeRegex_2 = '[a-zA-Z][0-9][a-zA-Z](-| |)[0-9][a-zA-Z][0-9]';
-        String postalCodeRegex_3 = '/(^\\d{5}(?:[\\s]?[-\\s][\\s]?\\d{4})?$)/';
+        String postalCodeRegex_3 = '^\\d{5}(-\\d{4})?$';
 
         Pattern MyPattern1 = Pattern.compile(postalCodeRegex_1);
         Matcher MyMatcher1 = MyPattern1.matcher(postalCode);
@@ -51,7 +51,7 @@ global class CP_Utility {
         Pattern MyPattern2 = Pattern.compile(postalCodeRegex_2);
         Matcher MyMatcher2 = MyPattern2.matcher(postalCode);
 
-        Pattern MyPattern3 = Pattern.compile(postalCodeRegex_2);
+        Pattern MyPattern3 = Pattern.compile(postalCodeRegex_3);
         Matcher MyMatcher3 = MyPattern3.matcher(postalCode);
 
         if(MyMatcher1.matches() || MyMatcher2.matches() || MyMatcher3.matches())

@@ -73,72 +73,23 @@
 				console.error("Forgot Pass: Step 2: Error");
 				console.error(error);
 
-				var
-					events = cmp.find("CP_Events"),
-					payload = error.payload,
-					fields = payload.State.Fields,
-					messages = payload.State.Messages,
-					isValid = payload.State.IsValid,
-					isLocked = payload.State.IsLocked,
-					serviceUnavailable = payload.State.ServiceNotAvailable;
+				services.handleServerSideError({
+						"error": error,
+						"id": cmp.get("v.pageId"),
+						"toastId": "forgot-pass-step-2-toast-error"
+					},
+					function(obj) {
 
-				try {
+						if (obj.fields[0] === "answer" && obj.isLocked === false && obj.isValid === false) {
+							hlpr.getRandomSecurityQuestion(cmp, hlpr);
 
-					fields.forEach(function(errorType, i) {
-						var msgArr = [];
-
-						if (errorType === "answer") {
-							msgArr.push({ "msg": messages[i] });
-							events.fire("CP_Evt_Input_Error", {
-								"id": "text-input",
-								"errors": msgArr
+							events.fire("CP_Evt_Toast_Error", {
+								"id": "forgot-pass-step-2-toast-error",
+								"message": $A.get("$Label.c.CP_Error_Please_Try_Again")
 							});
 						}
-					});
-
-					if (isLocked) {
-						events.fire("CP_Evt_Error_Locked_Out", {
-							"id": cmp.get("v.pageId")
-						});
 					}
-
-					if (serviceUnavailable) {
-						events.fire("CP_Evt_Error_Not_Completed", {
-							"id": cmp.get("v.pageId")
-						});
-					}
-
-					if(isLocked === false && isValid === false) {
-						hlpr.getRandomSecurityQuestion(cmp, hlpr);
-
-						events.fire("CP_Evt_Toast_Error", {
-							"id": "forgot-pass-step-2-toast-error",
-							"message": $A.get("$Label.c.CP_Error_Please_Try_Again")
-						});
-					}
-
-					if (error.type === "server-side-error" || isValid === false) {
-						events.fire("CP_Evt_Toast_Error", {
-							"id": "forgot-pass-step-2-toast-error",
-							"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-						});
-					} else {
-						//Display toast
-						events.fire("CP_Evt_Toast_Error", {
-							"id": "error-box",
-							"message": messages[0]
-						});
-					}
-
-				} catch (err) {
-					console.error("Forgot Password Step 2: There was an unknown error.");
-					console.error(err);
-
-					events.fire("CP_Evt_Toast_Error", {
-						"id": "forgot-pass-step-2-toast-error",
-						"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-					});
-				}
+				);
 			}
 		);
 	},

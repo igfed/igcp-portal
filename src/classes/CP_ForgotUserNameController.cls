@@ -50,7 +50,6 @@ public with sharing class CP_ForgotUserNameController {
             {
                 // Client Number is empty
                 response.State.IsValid = false;
-                response.State.Fields.add('clientNum');
                 response.State.Messages.add(System.Label.CP_Registration_Client_Number_Is_Empty);
             }
             else
@@ -118,7 +117,7 @@ public with sharing class CP_ForgotUserNameController {
         
         if(String.isBlank(objForm.email))
         {
-            // Client Number is empty
+            // Client Number is empty  
             state.IsValid = false;
             state.Fields.add('email');
             state.Messages.add(System.Label.CP_Registration_Email_Is_Empty);

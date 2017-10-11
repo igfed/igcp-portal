@@ -1,20 +1,28 @@
 <aura:component >
+	
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="default" ></aura:attribute>
 	<aura:attribute name="userAgrees" type="Boolean" default="false"></aura:attribute>
+	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="c:CP_Evt_Click" action="{!c.onCancel}" />
 	<aura:handler event="c:CP_Evt_Input_Checkbox_Checked" action="{!c.onAgreeChecked}" />
 	<aura:handler event="c:CP_Evt_Input_Checkbox_Unchecked" action="{!c.onAgreeChecked}" />
+
+	<!-- METHOD -->
+	<aura:method name="close" action="{!c.onClose}" description="Close TOS window"></aura:method>
+	
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
+	
 	<!-- MARKUP -->
-	<div class="igcp-modal__wrapper--text">
+	<div id="tos-print-container" class="igcp-modal__wrapper--text">
 		<div class="slds-size_12-of-12">
 			<button class="igcp-modal__button--close close-button" type="button" onclick="{!c.onClose}"></button>
 		</div>
 		<h1 class="slds-size_12-of-12 slds-m-bottom--x-small">{!$Label.c.CP_Registration_TOS_h1}</h1>
-		<c:CP_Cmp_Link_Print />
+		<c:CP_Cmp_Link_Print container="tos-print-container"/>
 		<div class="slds-size_9-of-12"></div>
 		<p class="slds-size_12-of-12 slds-m-bottom--large">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae turpis et velit semper convallis. Integer dictum mi in ligula mollis rutrum. Etiam sed malesuada nibh. Vestibulum aliquet in diam non fermentum. Duis consequat, ante a imperdiet venenatis, turpis urna feugiat ex, blandit vehicula ante sapien at erat. Cras finibus finibus fermentum. Ut id vestibulum nibh. Duis non tempor metus. Morbi lobortis quis augue sed sodales. Nullam laoreet nunc a condimentum pulvinar. Vestibulum tempor ipsum a lacus sodales, a rhoncus orci porta. Cras tincidunt neque sit amet lacus blandit vulputate. Pellentesque nibh justo, rutrum et mi nec, pretium eleifend massa.</p>
 		<p class="slds-size_12-of-12 slds-m-bottom--large">Fusce tincidunt sem in erat tristique aliquet vel sit amet metus. Cras accumsan dignissim massa vehicula aliquam. Praesent sodales porta pellentesque. Sed nec ante et dui auctor facilisis sed non nisi. Suspendisse potenti. Vestibulum ut tellus gravida, pharetra leo fermentum, viverra sapien. Donec sed nunc in velit ornare laoreet a mattis turpis. Mauris id mattis nisl. Nulla sodales accumsan enim aliquam vehicula. Nunc at gravida sapien.</p>
@@ -40,7 +48,7 @@
 				<c:CP_Cmp_Button id="tos_agree_button-disabled" disabled="true" label="{!$Label.c.CP_Generic_Label_Agree}" class="slds-m-right_medium slds-float_left igcp-large-utils__display--block slds-x-small-size--4-of-12 slds-medium-size--2-of-12 slds-m-left_x-small" />
 			</aura:if>
 
-			<c:CP_Cmp_Button id="tos_agree_button-disabled" label="{!$Label.c.CP_Generic_Label_Cancel}" class="igcp-large-utils__display--block slds-m-right_medium slds-float_left slds-x-small-size--4-of-12 slds-medium-size--2-of-12" buttonClass="slds-button slds-button--neutral"/>
+			<c:CP_Cmp_Button id="tos_agree_button-cancel" label="{!$Label.c.CP_Generic_Label_Cancel}" class="igcp-large-utils__display--block slds-m-right_medium slds-float_left slds-x-small-size--4-of-12 slds-medium-size--2-of-12" buttonClass="slds-button slds-button--neutral"/>
 		</div>
 		</div>
 </aura:component>

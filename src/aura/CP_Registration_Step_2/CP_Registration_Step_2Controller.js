@@ -199,67 +199,45 @@
 
 				var
 					events = cmp.find("CP_Events"),
-					payload = error.payload,
-					fields = payload.State.Fields,
-					messages = payload.State.Messages,
-					isValid = payload.State.IsValid,
-					isLocked = payload.State.IsLocked,
-					serviceUnavailable = payload.State.ServiceNotAvailable;
+					services = cmp.find("CP_Services");
 
-				//try {
+				services.handleServerSideError({
+						"error": error,
+						"id": cmp.get("v.pageId"),
+						"toastId": "registration-step-2-toast-error"
+					},
+					function(obj) {
 
-					if (isLocked) {
-						events.fire("CP_Evt_Error_Locked_Out", {
-							"id": cmp.get("v.pageId")
-						});
-					}
+						console.log(obj);
 
-					if (serviceUnavailable) {
-						events.fire("CP_Evt_Error_Not_Completed", {
-							"id": "registration"
-						});
-					}
+						if (obj.fields && obj.messages) {
+							obj.fields.forEach(function(errorType, i) {
 
-					fields.forEach(function(errorType, i) {
-						var msgArr = [];
+								console.log(errorType);
 
-						if (errorType === "userName") {
-							msgArr.push({ "msg": messages[i] });
-							events.fire("CP_Evt_Input_Error", {
-								"id": "username-input",
-								"type": errorType,
-								"errors": msgArr
+								var msgArr = [];
+
+								if (errorType === "userName") {
+									msgArr.push({ "msg": obj.messages[i] });
+									events.fire("CP_Evt_Input_Error", {
+										"id": "username-input",
+										"type": errorType,
+										"errors": msgArr
+									});
+								}
+
+								if (errorType === "email") {
+									msgArr.push({ "msg": obj.messages[i] });
+									events.fire("CP_Evt_Input_Error", {
+										"id": "email-input",
+										"type": errorType,
+										"errors": msgArr
+									});
+								}
 							});
 						}
-
-						if (errorType === "email") {
-							msgArr.push({ "msg": messages[i] });
-							events.fire("CP_Evt_Input_Error", {
-								"id": "email-input",
-								"type": errorType,
-								"errors": msgArr
-							});
-						}
-					});
-
-					//Generic error
-					if (isValid === false) {
-						events.fire("CP_Evt_Toast_Error", {
-							"id": "registration-step-2-toast-error",
-							"message": $A.get("$Label.c.CP_Error_General")
-						});
 					}
-
-				// } catch (err) {
-
-				// 	console.error("Registration Step 2: There was an unknown error.");
-				// 	console.error(err);
-
-				// 	events.fire("CP_Evt_Toast_Error", {
-				// 		"id": "registration-step-2-toast-error",
-				// 		"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-				// 	});
-				// }
+				);
 			}
 		);
 	},

@@ -4,16 +4,52 @@
 		"selected_items":
 		[
 			[
+				"button",
+				"buttonCopy"
+			],
+			[
+				"render",
+				"renderComplete"
+			],
+			[
+				"aur",
+				"aura:attribute\tTag"
+			],
+			[
+				"acc",
+				"accountGrandTotal"
+			],
+			[
+				"aura",
+				"aura:if\tTag"
+			],
+			[
+				"light",
+				"lighterBlue"
+			],
+			[
+				"forma",
+				"formattedValue"
+			],
+			[
+				"decima",
+				"decimalPos"
+			],
+			[
+				"form",
+				"formattedValue"
+			],
+			[
+				"onINp",
+				"onInputValueReceived"
+			],
+			[
 				"Submit",
 				"submitForm"
 			],
 			[
 				"curre",
 				"currentPayload"
-			],
-			[
-				"aura",
-				"aura:attribute\tTag"
 			],
 			[
 				"getSec",
@@ -40,10 +76,27 @@
 	"buffers":
 	[
 		{
-			"file": "src/aura/CP_Forgot_User_Step_1/CP_Forgot_User_Step_1.cmp",
+			"file": "src/aura/CP_Registration_Step_1/CP_Registration_Step_1Controller.js",
 			"settings":
 			{
-				"buffer_size": 3544,
+				"buffer_size": 2750,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/aura/CP_Forgot_Pass_Step_1/CP_Forgot_Pass_Step_1Controller.js",
+			"settings":
+			{
+				"buffer_size": 3444,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/aura/CP_Registration_Step_2/CP_Registration_Step_2Controller.js",
+			"settings":
+			{
+				"buffer_size": 7465,
 				"line_ending": "Unix"
 			}
 		}
@@ -55,10 +108,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 392.0,
-		"last_filter": "mavenm",
+		"height": 59.0,
+		"last_filter": "mavenmate: Deploy Res",
 		"selected_items":
 		[
+			[
+				"mavenmate: Deploy Res",
+				"MavensMate: Deploy Resource Bundle..."
+			],
 			[
 				"mavenm",
 				"MavensMate: Deploy Resource Bundle..."
@@ -115,92 +172,149 @@
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/cp-patternlib",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/cp-patternlib/sass",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/cp-patternlib/sass/igcp",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Button",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Form_Back_Next",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Evt_Back_Step",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Evt_Button_Disable",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Evt_Button_Enable",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_1",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Change_Password",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Card",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Gain_Loss",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Graph_Asset_Mix",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Link",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Table",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Tooltip",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Total_Value",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_2",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Thank_You",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Username",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Account_Heading",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Account_Item",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Alert_Item",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Alerts",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_CTA",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Insurance",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Investments",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Mortgages",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Services",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/classes"
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Locked_Out",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_PFA",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_1",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_2"
 	],
 	"file_history":
 	[
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Investments/CP_Overview_Investments.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Mortgages/CP_Overview_MortgagesController.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Mortgages/CP_Overview_Mortgages.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview/CP_Overview.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Services/CP_Services.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Services/CP_ServicesController.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/classes/CP_OverviewController.cls",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview/CP_OverviewController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Locked_Out/CP_Forgot_Pass_Locked_Out.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Locked_Out/CP_Forgot_User_Locked_Out.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Password/CP_Forgot_PasswordController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/cp-patternlib/sass/igcp/utils.scss",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Alerts/CP_Overview_Alerts.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Step_2/CP_Forgot_Pass_Step_2Helper.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Step_2/CP_Forgot_Pass_Step_2Controller.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_2/CP_Forgot_User_Step_2Controller.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Username/CP_Forgot_UsernameController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Password/CP_Forgot_Password.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Locked_Out/CP_Forgot_Pass_Locked_OutController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_CTA/CP_Overview_CTA.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_2/CP_Forgot_User_Step_2Helper.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Username/CP_Forgot_Username.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Locked_Out/CP_Forgot_User_Locked_OutController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/cp-patternlib/sass/igcp/global-styles.scss",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Total_Value/CP_Cmp_Total_Value.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Account_Item/CP_Overview_Account_ItemController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/cp-patternlib/sass/mixins.scss",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Account/CP_Overview_Account.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Investments/CP_Overview_Investments.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Investments/CP_Overview_InvestmentsHelper.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Mortgages/CP_Overview_Mortgages.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Insurance/CP_Overview_Insurance.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Graph_Asset_Mix/CP_Cmp_Graph_Asset_MixController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Graph_Asset_Mix/CP_Cmp_Graph_Asset_Mix.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Card/CP_Cmp_Card.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Alert_Item/CP_Overview_Alert_Item.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Link/CP_Cmp_Link.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Account_Item/CP_Overview_Account_Item.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Account_Heading/CP_Overview_Account_Heading.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Investments/CP_Overview_InvestmentsController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Thank_You/CP_Forgot_Pass_Thank_You.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Gain_Loss/CP_Cmp_Gain_Loss.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Not_Completed/CP_Forgot_Pass_Not_CompletedController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Not_Completed/CP_Forgot_Pass_Not_Completed.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Step_3/CP_Forgot_Pass_Step_3Controller.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_JS_Includes/CP_JS_IncludesController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_JS_Includes/CP_JS_Includes.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/cp-patternlib/sass/global.scss",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/cp-patternlib/sass/igcp/breakpoints.scss",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Step_3/CP_Forgot_Pass_Step_3.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Step_3/CP_Forgot_Pass_Step_3Helper.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/cp-patternlib/sass/functions.scss",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview/CP_Overview.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Insurance/CP_Overview_InsuranceController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Services/CP_ServicesController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Mortgages/CP_Overview_MortgagesController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Mortgages/CP_Overview_MortgagesHelper.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Utils/CP_Utils.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Utils/CP_UtilsController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Insurance/CP_Overview_InsuranceHelper.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Utils/CP_UtilsHelper.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview/CP_OverviewController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Step_1/CP_Forgot_Pass_Step_1Controller.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_1/CP_Forgot_User_Step_1Controller.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_1/CP_Registration_Step_1Controller.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_2/CP_Registration_Step_2Controller.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_3/CP_Registration_Step_3Controller.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_2/CP_Forgot_User_Step_2.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Step_1/CP_Forgot_Pass_Step_1.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_1/CP_Forgot_User_Step_1.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Step_2/CP_Forgot_Pass_Step_2.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Server_Error/CP_Cmp_Server_Error.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Server_Error/CP_Cmp_Server_ErrorController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Not_Completed/CP_Forgot_User_Not_CompletedController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Not_Completed/CP_Forgot_User_Not_Completed.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Thank_You/CP_Forgot_User_Thank_You.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Thank_You/CP_Forgot_User_Thank_YouController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Locked_Out/CP_Registration_Locked_Out.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Not_Completed/CP_Registration_Not_CompletedController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Thank_You/CP_Registration_Thank_YouController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Locked_Out/CP_Registration_Locked_OutController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Not_Completed/CP_Registration_Not_Completed.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Thank_You/CP_Registration_Thank_You.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration/CP_RegistrationController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Text/CP_Cmp_Input_TextController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_1/CP_Registration_Step_1.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Validation/CP_ValidationController.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Validation/CP_ValidationHelper.js",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Form_Back_Next/CP_Cmp_Form_Back_Next.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration/CP_Registration.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Modal/CP_Cmp_Modal.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_TOS/CP_Registration_TOS.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/resource-bundles/cppatternlib.resource/cp-patternlib/styles/igcp.css",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/resource-bundles/cppatternlib.resource/cp-patternlib/styles/igcp.css.map",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/cp-patternlib/sass/igcp/footer.scss",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Services/CP_Services.cmp",
+		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/classes/CP_OverviewController.cls",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Instructions/CP_Registration_Instructions.cmp",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_PFA/CP_Registration_PFA.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Investments/CP_Overview_InvestmentsHelper.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Account_Item/CP_Overview_Account_ItemController.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Account_Item/CP_Overview_Account_Item.cmp",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Start/CP_Registration_Start.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_Investments/CP_Overview_InvestmentsController.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_3/CP_Registration_Step_3.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Utils/CP_UtilsController.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Utils/CP_Utils.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration/CP_RegistrationController.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Form_Back_Next/CP_Cmp_Form_Back_Next.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_3/CP_Registration_Step_3Controller.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Button/CP_Cmp_ButtonController.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Button/CP_Cmp_Button.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration/CP_Registration.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/cp-patternlib/sass/global.scss",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Evt_Button_Disable/CP_Evt_Button_Disable.evt",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Evt_Button_Enable/CP_Evt_Button_Enable.evt",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_1/CP_Registration_Step_1Controller.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_1/CP_Registration_Step_1.cmp",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_2/CP_Registration_Step_2.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_1/CP_Forgot_User_Step_1Controller.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Overview_CTA/CP_Overview_CTA.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_TOS/CP_Registration_TOS.cmp",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_TOS/CP_Registration_TOS.cmp-meta.xml",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/classes/CP_RegistrationController.cls",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Text/CP_Cmp_Input_Text.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Step_2/CP_Forgot_Pass_Step_2.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_2/CP_Forgot_User_Step_2.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Step_3/CP_Forgot_Pass_Step_3.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Thank_You/CP_Forgot_User_Thank_You.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_2/CP_Forgot_User_Step_2Controller.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Thank_You/CP_Forgot_Pass_Thank_You.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_2/CP_Forgot_User_Step_2Helper.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_User_Step_1/CP_Forgot_User_Step_1.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Username/CP_Forgot_Username.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Step_3/CP_Forgot_Pass_Step_3Helper.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Step_3/CP_Forgot_Pass_Step_3Controller.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Text/CP_Cmp_Input_TextController.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Text/CP_Cmp_Input_Text.cmp-meta.xml",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Pass_Step_2/CP_Forgot_Pass_Step_2Controller.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Password/CP_Forgot_Password.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Forgot_Password/CP_Forgot_PasswordController.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_2/CP_Registration_Step_2Controller.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Validation/CP_ValidationHelper.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Toast/CP_Cmp_ToastController.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Toast/CP_Cmp_Toast.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Locked_Out/CP_Registration_Locked_OutController.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Evt_Error_Locked_Out/CP_Evt_Error_Locked_Out.evt",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Evt_Error_Registration_Not_Completed/CP_Evt_Error_Registration_Not_Completed.evt",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Security_Questions/CP_Registration_Security_Questions.cmp",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Username/CP_Cmp_Input_Username.cmp",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Password/CP_Cmp_Input_Password.cmp",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Tooltip/CP_Cmp_Tooltip.cmp",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_JS_Includes/CP_JS_IncludesController.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_JS_Includes/CP_JS_Includes.cmp",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Selector/CP_Cmp_Input_SelectorHelper.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Step_2/CP_Registration_Step_2Helper.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Registration_Security_Questions/CP_Registration_Security_QuestionsController.js",
-		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Validation/CP_ValidationController.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Selector/CP_Cmp_Input_Selector.cmp",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Input_Selector/CP_Cmp_Input_SelectorController.js",
 		"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura/CP_Cmp_Name_Value_Item_A/CP_Cmp_Name_Value_Item_A.cmp",
@@ -215,12 +329,7 @@
 		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src/aura/CP_Registration/CP_Registration.cmp",
 		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src/aura/CP_Cmp_Form_Back_Next/CP_Cmp_Form_Back_Next.cmp",
 		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src/aura/CP_Registration_Step_1/CP_Registration_Step_1.cmp",
-		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src/aura/CP_Test_Input_Validation/CP_Test_Input_Validation.cmp",
-		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/config/.local_store",
-		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/cp-patternlib/README.md",
-		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/.gitignore",
-		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/isam/external_files/css/salesforce-lightning-design-system.css",
-		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src/aura/CP_Evt_Get_Input_Value/CP_Evt_Get_Input_Value.evt"
+		"/C/Users/ernyd/Projects/mm_projects/igcp-portal/src/aura/CP_Test_Input_Validation/CP_Test_Input_Validation.cmp"
 	],
 	"find":
 	{
@@ -231,6 +340,7 @@
 		"height": 143.0,
 		"where_history":
 		[
+			"/Users/spektraldevelopment/Workspace/work/IG/mm_workspace/igcp-portal/src/aura",
 			"C:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\cp-patternlib\\sass",
 			"C:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\",
 			"C:\\Users\\ernyd\\Projects\\mm_projects\\igcp-portal\\cp-patternlib\\",
@@ -243,6 +353,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"float",
+			"igcp-percentage--large",
+			"default=\"en\"",
+			"$Label.namespace.CP_Error_Server_Side_Generic",
+			"Toast",
+			"lang",
+			"CP_Cmp_Toast",
+			"fitrp3-isam.investorsgroup.com",
+			"modal__footer",
+			"600px",
 			"attempts",
 			"inputValue",
 			"{!v.form}",
@@ -276,6 +396,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"$Label.c.CP_Error_Server_Side_Generic",
+			"$ig-modal-wrapper-text-width",
 			"{!v.pageId}"
 		],
 		"reverse": false,
@@ -287,32 +409,88 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/aura/CP_Forgot_User_Step_1/CP_Forgot_User_Step_1.cmp",
-					"semi_transient": true,
+					"file": "src/aura/CP_Registration_Step_1/CP_Registration_Step_1Controller.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3544,
+						"buffer_size": 2750,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								741,
-								741
+								1847,
+								2059
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/XML/XML.tmLanguage"
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1139.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/aura/CP_Forgot_Pass_Step_1/CP_Forgot_Pass_Step_1Controller.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3444,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2983,
+								2983
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1594.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/aura/CP_Registration_Step_2/CP_Registration_Step_2Controller.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7465,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6368,
+								6553
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3607.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

@@ -47,51 +47,23 @@
 				console.error("Step 3: Error");
 				console.error(error);
 
-				var
-					events = cmp.find("CP_Events"),
-					payload = error.payload,
-					fields = payload.State.Fields,
-					messages = payload.State.Messages,
-					isValid = payload.State.IsValid,
-					isLocked = payload.State.IsLocked,
-					serviceUnavailable = payload.State.ServiceNotAvailable;
+				services.handleServerSideError({
+						"error": error,
+						"id": cmp.get("v.pageId"),
+						"toastId": "forgot-pass-step-3-toast-error"
+					},
+					function(obj) {
 
-				//try {
-					if (fields[0] === "confirmPassword" && error.type === "error") {
-						events.fire("CP_Evt_Toast_Error", {
-							"id": "forgot-pass-step-3-toast-error",
-							"message": $A.get("$Label.c.CP_Error_Confirm_Password_Match")
-						});
+						if (obj.fields) {
+							if (obj.fields[0] === "confirmPassword" && error.type === "error") {
+								events.fire("CP_Evt_Toast_Error", {
+									"id": "forgot-pass-step-3-toast-error",
+									"message": $A.get("$Label.c.CP_Error_Confirm_Password_Match")
+								});
+							}
+						}
 					}
-
-					if (isLocked) {
-						events.fire("CP_Evt_Error_Locked_Out", {
-							"id": cmp.get("v.pageId")
-						});
-					}
-
-					if (serviceUnavailable) {
-						events.fire("CP_Evt_Error_Not_Completed", {
-							"id": cmp.get("v.pageId")
-						});
-					}
-
-					if (error.type === "server-side-error" || isValid === false) {
-						events.fire("CP_Evt_Toast_Error", {
-							"id": "forgot-pass-step-3-toast-error",
-							"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-						});
-					}
-
-				// } catch (err) {
-				// 	console.error("Forgot Password Step 2: There was an unknown error.");
-				// 	console.error(err);
-
-				// 	events.fire("CP_Evt_Toast_Error", {
-				// 		"id": "forgot-pass-step-3-toast-error",
-				// 		"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-				// 	});
-				// }
+				);
 			}
 		);
 	},
