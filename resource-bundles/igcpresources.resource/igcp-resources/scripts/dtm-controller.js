@@ -13,9 +13,14 @@
   var event = {};
   event.component = {};
   event.container = {};
+  event.page = {};
   event.template = {};
   event.error = {};
-  event.form = {}
+  event.form = {};
+  event.search = {};
+  event.tool = {};
+  event.advisor = {};
+  event.download = {};
 
   // Handler for Direct calls
   window.aaDirectCall = (function () {
