@@ -520,10 +520,15 @@
 	}
 }
 
-//Border
+//BORDER
 .#{$namespace}-border--double {
 	height: 3px;
 	width: auto;
 	border-top: 1px solid $ig-grey;
 	border-bottom: 1px solid $ig-grey;
+}
+
+//GRAPH
+.#{$namespace}-graph__doughnut-legend {
+	
 }

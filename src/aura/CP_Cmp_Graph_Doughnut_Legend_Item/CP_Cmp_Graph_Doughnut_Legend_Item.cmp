@@ -1,0 +1,12 @@
+<aura:component>
+	
+	<!-- ATTRS -->
+	<aura:attribute name="colour" type="String"></aura:attribute>
+	<aura:attribute name="label" type="String" ></aura:attribute>
+	<aura:attribute name="detail" type="String" ></aura:attribute>
+	
+	<!-- MARKUP -->
+	<dt class="igcp-utils__position--relative slds-size_6-of-12" title="{!v.label}"><c:CP_Cmp_Colour_Swatch color="{!v.colour}" class="igcp-utils__float--left igcp-utils__center--vertical"/><div class="slds-m-left--medium">{!v.label}</div></dt>
+	<dd class="igcp-utils__text-align--right slds-size_6-of-12" title="{!v.detail}">{!v.detail}</dd>
+
+</aura:component>

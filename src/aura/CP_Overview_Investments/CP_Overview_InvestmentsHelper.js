@@ -1,69 +1,78 @@
 ({
-	addAccounts : function(accArr, cmp) {
+	addAccounts: function(accArr, cmp) {
 
 		var utils = cmp.find("CP_Utils");
 
-		accArr.forEach(function(item, i){
+		accArr.forEach(function(item, i) {
+			utils.forEach(item, function(key, val) {
 
-			console.log(item);
+				var
+					accountName = "",
+					totalValue = "",
+					registrationType = "";
 
-			var 
-				accountName = "",
-				totalValue = "";
+				utils.formatToCurrency(val.totalValue, function(formattedValue) {
+					if(cmp.get("v.lang") === "en_US" || cmp.get("v.lang") === "en_CA") {
+						formattedValue = "$" + formattedValue;
+					} else if(cmp.get("v.lang") === "fr_CA") {
+						formattedValue = formattedValue + " $";
+					} else {
+						formattedValue = "$" + formattedValue;
+					}
+					totalValue = formattedValue;
+				}, cmp.get("v.lang"));
 
-			utils.formatToCurrency(item.totalValue, function(formattedValue){
-				totalValue = formattedValue;
-			}, cmp.get("v.lang"));
+				if (val.dealerName === "IGSI") {
+					accountName = $A.get("$Label.c.CP_Overview_IGSI");
+				} else if (val.dealerName === "IGFS") {
+					accountName = $A.get("$Label.c.CP_Overview_IGFS");
+				}
 
-			//For now this is how we will be translating the dealer name
-			//to the full name we have in custom labels
-			if(item.dealerName === "IGSI") {
-				accountName = $A.get("$Label.c.CP_Overview_IGSI");
-			} else if(item.dealerName === "IGFS") {
-				accountName = $A.get("$Label.c.CP_Overview_IGFS");
-			}
+				if (key === "REGISTERED") {
+					registrationType = $A.get("$Label.c.CP_Generic_Label_Registered");
+				} else if (key === "NON-REGISTERED") {
+					registrationType = $A.get("$Label.c.CP_Generic_Label_Non_Registered");
+				}
 
-			if(i === 0) {
-				utils.createComponent(
-					"CP_Overview_Account",
-					{
-						"accountTitle" : accountName,
-						"accountType" : $A.get("$Label.c.CP_Generic_Not_Available"),
-						"accountTotal" : ("$" + totalValue),
-						"accounts" : item.previewItems,
-						"lang" : cmp.get("v.lang")
-					},
-					cmp,
-					function(evt){}
-				);
-			} else if(i === (accArr.length - 1)) {
-				utils.createComponent(
-					"CP_Overview_Account",
-					{
-						"accountTitle" : accountName,
-						"accountType" : $A.get("$Label.c.CP_Generic_Not_Available"),
-						"accountTotal" : ("$" + totalValue),
-						"accounts" : item.previewItems,
-						"lang" : cmp.get("v.lang"),
-						"accountGrandTotal" : "$109,000.00"
-					},
-					cmp,
-					function(evt){}
-				);
-			} else {
-				utils.createComponent(
-					"CP_Overview_Account",
-					{
-						"accountTitle" : accountName,
-						"accountType" : $A.get("$Label.c.CP_Generic_Not_Available"),
-						"accountTotal" : ("$" + totalValue),
-						"accounts" : item.previewItems,
-						"lang" : cmp.get("v.lang")
-					},
-					cmp,
-					function(evt){}
-				);
-			}
+				if (i === 0) {
+					utils.createComponent(
+						"CP_Overview_Account", {
+							"accountTitle": accountName,
+							"accountType": registrationType,
+							"accountTotal": totalValue,
+							"accounts": val.previewItems,
+							"lang": cmp.get("v.lang")
+						},
+						cmp,
+						function(evt) {}
+					);
+				} else if (i === (accArr.length - 1)) {
+					utils.createComponent(
+						"CP_Overview_Account", {
+							"accountTitle": accountName,
+							"accountType": registrationType,
+							"accountTotal": totalValue,
+							"accounts": val.previewItems,
+							"lang": cmp.get("v.lang"),
+							"accountGrandTotal": "$109,000.00"
+						},
+						cmp,
+						function(evt) {}
+					);
+				} else {
+					utils.createComponent(
+						"CP_Overview_Account", {
+							"accountTitle": accountName,
+							"accountType": registrationType,
+							"accountTotal": totalValue,
+							"accounts": val.previewItems,
+							"lang": cmp.get("v.lang")
+						},
+						cmp,
+						function(evt) {}
+					);
+				}
+			})
 		});
 	}
 })

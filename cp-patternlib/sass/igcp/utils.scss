@@ -290,6 +290,12 @@
 			transform: translateX(-50%);
 		}
 
+		.#{getNamespace($value)}-utils__center--vertical {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
 		.#{getNamespace($value)}-utils__position--relative {
 			position: relative;
 		}
