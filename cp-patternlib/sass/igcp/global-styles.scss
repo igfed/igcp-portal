@@ -514,7 +514,6 @@
 		}
 	}
 
-
 	.#{$namespace}-toast__message {
 		color: $ig-white;
 	}
@@ -526,4 +525,10 @@
 	width: auto;
 	border-top: 1px solid $ig-grey;
 	border-bottom: 1px solid $ig-grey;
+}
+
+//Boxed component
+.#{$namespace}-boxed--white {
+	background-color: #fff;
+	padding: 30px;
 }
