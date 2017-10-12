@@ -3,6 +3,7 @@
   window.digitalData = window.digitalData || {};
   window.digitalData.page = {};
   window.digitalData.page.pageInfo = {};
+  window.digitalData.events = [];
 
   var $this,
     adobeLoader,
@@ -23,14 +24,15 @@
   event.download = {};
 
   // Handler for Direct calls
-  window.aaDirectCall = (function () {
+  window.dcHandler = (function () {
 
-    function parse(dcname, data) {
+    function parse(dcName, data) {
       console.log('parse direct calls');
-
+      event.type = 'dc';
       _constructEventObj();
-
+      _executeDirectCall(dcName);
     }
+
     return {
       parse: parse
     };
@@ -57,12 +59,14 @@
       e.preventDefault();
       event.type = 'click';
       _constructEventObj($(this));
+      _executeDirectCall(event.dcName);
     });
 
     // Register hover event handlers
     $('.aa-hover').on('click', function () {
       event.type = 'hover';
       _constructEventObj($(this));
+      _executeDirectCall(event.dcName);
     });
   }
 
@@ -92,18 +96,20 @@
   }
 
   function _constructEventObj($this) {
+    event.page.referrer = window.location.href;
 
     if (event.type === 'click' || event.type === 'hover') {
-      var topics;
-      var tags = [];
-      var keyValue;
+      var topics,
+        tags = [],
+        keyValue;
 
       event.container.topics = [];
       event.container.tags = [];
 
       // Capture trigger data
+      event.dcName = $this.data('aa-dcname');
       event.goal = $this.data('aa-goal');
-      event.label = $this.data('aa-link-label');
+      event.linkLabel = $this.data('aa-link-label');
       event.parentID = $this.data('aa-parent');
 
       // Is it a nested event or one connected via an ID?
@@ -153,8 +159,13 @@
     if (event.type = 'dc') {
 
     }
+
     window.digitalData.events.push(event);
     console.log(window.digitalData.events);
+  }
+
+  function _executeDirectCall(name) {
+    _satellite.track(name);
   }
 
   init();
