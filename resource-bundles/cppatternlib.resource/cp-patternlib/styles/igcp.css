@@ -3633,6 +3633,10 @@ dl dt {
   border-top: 1px solid #e9ecee;
   border-bottom: 1px solid #e9ecee; }
 
+.igcp-boxed--white {
+  background-color: #fff;
+  padding: 30px 25px; }
+
 @media (min-width: 768px) {
   .igcp-registration .igcp-registration__pfa h1 {
     font-size: 24px;
