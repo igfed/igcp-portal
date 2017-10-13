@@ -1,4 +1,4 @@
-<aura:component>
+<aura:component >
 	<!-- ATTRS -->
 	<aura:attribute name="values" type="Map"></aura:attribute>
 	<!-- HANDLERS -->

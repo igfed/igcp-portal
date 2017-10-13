@@ -3412,7 +3412,7 @@ dl dt {
 .igcp-value--large {
   font-family: "WhitneyLight", Arial, sans-serif;
   line-height: 24px;
-  font-size: 32px; }
+  font-size: 16px; }
   .igcp-value--large sup {
     font-size: 70%;
     top: -0.25em; }
@@ -3655,7 +3655,10 @@ dl dt {
     padding-top: 32px;
     padding-left: 0px;
     padding-right: 0px;
-    padding-bottom: 0px; } }
+    padding-bottom: 0px; }
+
+  .igcp-value--large {
+    font-size: 32px; } }
 @media (min-width: 1024px) {
   .igcp-button__chat {
     float: none;
@@ -3672,9 +3675,6 @@ dl dt {
     top: 23px;
     height: 282px;
     overflow: visible; }
-
-  .igcp-value--large {
-    font-size: 32px; }
 
   .igcp-value--medium {
     line-height: 24px;

@@ -1,4 +1,4 @@
-<aura:component>
+<aura:component >
 	<tr>
 		<th>Name</th>
 		<th>Holding</th>

@@ -89,43 +89,36 @@ global class CP_Utility {
     //  -------------------------------------------------------------------------
     //  HELPER method: sendTemplatedEmail
     //  -------------------------------------------------------------------------
-    public static void sendTemplatedEmail(String templateApiName, ID targetObjId, Id whatId, ID orgWideEmailId) {
-      //  templateId   must be ID of an Email template
+    public static void sendTemplatedEmail(String templateApiName, ID targetObjId, Id whatId) {
+      //  templateApiName   must be API Name of an Email template
       //  targetObjId must be a Contact, User, Lead Id -- also used in merge fields of template recipient.xxxx
       //  whatId    must be an SObject that is used in the merge fields of the template relatedTo.xxxx
-      //  fromId    if non null, use current user, otherwise, use this ID (most likely an org wide no reply id)
-      //  bcc      not permitted when using templates
       
-    Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
+        Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
+
+        Id templateId;  
+        try {
+            templateId = [select id, name from EmailTemplate where developername = : templateApiName].id;
+        }
+        catch (Exception e) {
+            throw new UtilException ('[U-03] Unable to locate EmailTemplate using name: ' + templateApiName + 
+                                    ' refer to Setup | Communications Templates ' + templateApiName);
+        }
         
-    Id templateId;  
-    try {templateId = [select id, name from EmailTemplate where developername = : templateApiName].id;}
-    catch (Exception e) {
-      throw new UtilException ('[U-03] Unable to locate EmailTemplate using name: ' + templateApiName + 
-                    ' refer to Setup | Communications Templates ' + templateApiName);
-    }
-        
-        
+        email.setTemplateId(templateId);
+
         email.setTargetObjectId(targetObjId);
 
         if(whatId != null)
             email.setWhatId(whatId);
 
-        //if(orgWideEmailId != null)
-        //    email.setorgWideEmailAddressId(orgWideEmailId);
-        
-        email.setTemplateId(templateId);
-        
         email.setSaveAsActivity(false); 
 
-        System.debug(LoggingLevel.INFO,'** entered sendTemplatedEmail, templateId:' + templateId + 
-            ' tagetObjId:' + targetObjId + ' whatId:' + whatId + ' orgWideEmailId: ' + orgWideEmailId);
         try {
             Messaging.sendEmail(new Messaging.SingleEmailMessage[] {email});
-            return;
         }
-        catch (EmailException e) {throw new UtilException('[U-02] sendTemplatedEmail error. ' + e.getMessage());}
-      
+        catch (EmailException e) {
+            throw new UtilException('[U-02] sendTemplatedEmail error. ' + e.getMessage());
+        }
     }  
-
 }

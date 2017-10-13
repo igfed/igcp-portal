@@ -1,4 +1,4 @@
-<aura:component>
+<aura:component >
 	
 	<!-- ATTRS -->
 	<aura:attribute name="colour" type="String"></aura:attribute>

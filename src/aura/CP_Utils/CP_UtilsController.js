@@ -221,5 +221,16 @@
 			
 		}
 
+	},
+	onCalculatePercentage: function(cmp, evt, hlpr) {
+		var params = evt.getParam("arguments");
+
+		if (params) {
+			if(params.value && params.total) {
+				params.callback(Math.floor((params.value / params.total) * 100));
+			} else {
+				console.warn("CP_Utils: calculatePercentage: A value and total parameter are required.");
+			}
+		}
 	}
 })

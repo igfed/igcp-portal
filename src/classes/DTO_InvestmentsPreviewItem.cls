@@ -23,9 +23,11 @@ public class DTO_InvestmentsPreviewItem {
 		if (theValue != null && theGainLoss != null) {
 			Decimal decValue = Decimal.valueOf(theValue);
 			Decimal decGainLoss = Decimal.valueOf(theGainLoss);
-			Decimal result = decGainLoss.divide(decValue, 4);
-			result = result.setScale(2);
-			rv = result.doubleValue();
+			if (decValue != 0) {
+				Decimal result = decGainLoss.divide(decValue, 4);
+				result = result.setScale(2);
+				rv = result.doubleValue();
+			}
 		}
 		return rv;
 	}

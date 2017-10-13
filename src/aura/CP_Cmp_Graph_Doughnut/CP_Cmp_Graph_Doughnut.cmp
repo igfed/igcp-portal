@@ -1,4 +1,4 @@
-<aura:component>
+<aura:component >
 	
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="" ></aura:attribute>
@@ -7,17 +7,18 @@
 
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
 	
 	<!-- HANDLERS -->
-	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
+	<aura:handler event="c:CP_Evt_Set_Graph" action="{!c.onSetGraph}"></aura:handler>
 	
 	<!-- MARKUP -->
 	<div class="{!'slds-grid slds-wrap ' + v.class}">
 		<div class="slds-size_12-of-12 slds-p-horizontal--small">
 			<h3 class="igcp-label--small">{!$Label.c.CP_Generic_Label_Asset_Mix}</h3>
 		</div>
-		<div class="slds-size_6-of-12 slds-p-left--small slds-p-top--medium">
+		<div class="slds-size_6-of-12 slds-medium-p-left--small slds-mdeium-p-top--medium">
 			<canvas id="doughnut-chart" height="200"></canvas>
 		</div>
 		<div class="slds-size_6-of-12 slds-p-right--small">

@@ -304,23 +304,11 @@ public class CP_ForgotPasswordClass {
                 if(objContact != null)
                 {
                     String emailTemplate = objContact.Preferred_Language__c == 'French' ? 'IG_Forgot_Password_French' : 'IG_Forgot_Password_English';
-                    OrgWideEmailAddress owa  = [SELECT ID, Address from OrgWideEmailAddress where Address  ='derek.chu@investorsgroup.com']; 
-                    
                     User objUser  = this.getUserByUserName();
                     if(objUser != null)
-                    {
-                        if(owa != null)
-                             CP_Utility.sendTemplatedEmail(emailTemplate, objUser.Id, objContact.ID, owa.Id);
-                        else
-                             CP_Utility.sendTemplatedEmail(emailTemplate, objUser.Id, objContact.ID, null);
-                    }
+                        CP_Utility.sendTemplatedEmail(emailTemplate, objUser.Id, objContact.ID);
                     else
-                    {
-                        if(owa != null)
-                             CP_Utility.sendTemplatedEmail(emailTemplate, objContact.ID, objContact.ID, owa.Id);
-                        else
-                             CP_Utility.sendTemplatedEmail(emailTemplate, objContact.ID, objContact.ID, null);
-                    }
+                        CP_Utility.sendTemplatedEmail(emailTemplate, objContact.ID, objContact.ID);
                 }
             }
             catch(exception e)
