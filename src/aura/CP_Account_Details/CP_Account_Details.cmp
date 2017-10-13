@@ -67,7 +67,7 @@
 			<c:CP_Account_Investment_Profile />
 		</div>
 		<div class="slds-size_12-of-12">
-			<c:CP_Cmp_Table title="Holdings" 
+			<!-- <c:CP_Cmp_Table title="Holdings" 
 				values="{ 
 					headers: ['Name','Holding', 'Book Cost', 'Gain / Loss', 'Market Value'],
 	                values: [
@@ -83,7 +83,7 @@
 	                    	book_cost: '45,034.56',
 	                    	gain_loss: '5',
 	                    	market_value: '24, 000.67'  }
-	                    ]}"/>
+	                    ]}"/> -->
 		</div>
 	</div>
 </aura:component>

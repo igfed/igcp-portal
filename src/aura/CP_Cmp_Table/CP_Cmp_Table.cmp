@@ -8,7 +8,7 @@
 	<div class="igcp-container slds-p-around--medium">
 		<h3 class="slds-m-bottom--small">{!v.title}</h3>
 		<table style="width:100%">
-			<c:Cp_Cmp_Table_Header />
+			<c:CP_Cmp_Table_Header />
 			{!v.body}
 		</table>
 	</div>

@@ -519,7 +519,7 @@
 	}
 }
 
-//Border
+//BORDER
 .#{$namespace}-border--double {
 	height: 3px;
 	width: auto;
@@ -531,4 +531,8 @@
 .#{$namespace}-boxed--white {
 	background-color: #fff;
 	padding: 30px;
+}
+//GRAPH
+.#{$namespace}-graph__doughnut-legend {
+	
 }

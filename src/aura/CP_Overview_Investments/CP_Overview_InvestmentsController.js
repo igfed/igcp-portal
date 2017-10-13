@@ -17,9 +17,17 @@
 			bpid,
 			cmp,
 			function(previewObj) {
+
 				var
-					accountPreviewsObj = previewObj.previewAggregatesByType,
+ 
+					accountPreviewsObj = previewObj.previewAggregatesByTypeAndReg,
 					accountTypeArr = [];
+
+				console.log("previewObj")	
+				console.log(previewObj);
+
+				console.log("CP_Overview: accountPreviewsObj")
+				console.log(accountPreviewsObj);
 
 				utils.formatToCurrency(previewObj.totalValue, function(formattedValue) {
 					cmp.set("v.totalValue", formattedValue);
