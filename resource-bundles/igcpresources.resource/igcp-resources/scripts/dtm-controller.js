@@ -96,7 +96,7 @@
   }
 
   function _constructEventObj($this) {
-    event.page.referrer = window.location.href;
+    event.page.pageInfo.referrer = window.location.href;
 
     if (event.type === 'click' || event.type === 'hover') {
       var topics,
