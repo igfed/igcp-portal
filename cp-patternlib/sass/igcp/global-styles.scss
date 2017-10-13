@@ -181,7 +181,6 @@
 .#{$namespace}-value--large {
 	font-family: $ig-whitney-light;
 	line-height: $ig-line-height--base;
-	font-size: $ig-font-size--base;
 
 	sup {
 		font-size: 70%;
@@ -456,8 +455,8 @@
 	display: inline-block;
 
 	&.#{$namespace}-tooltip__label--small {
-		padding-left: 8px;
-		padding-top: 6px;
+		padding-left: 4px;
+		padding-top: 0px;
 	}
 
 	.#{$namespace}-tooltip__tip {
@@ -532,7 +531,6 @@
 	background-color: #fff;
 	padding: 30px 25px;
 }
+
 //GRAPH
-.#{$namespace}-graph__doughnut-legend {
-	
-}
+.#{$namespace}-graph__doughnut-legend {}

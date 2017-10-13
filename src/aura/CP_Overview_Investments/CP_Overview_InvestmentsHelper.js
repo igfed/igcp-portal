@@ -22,9 +22,9 @@
 					totalValue = formattedValue;
 				}, cmp.get("v.lang"));
 
-				if (val.dealerName === "IGSI") {
+				if (val.dealerName === "Investors Group Securities Inc.") {
 					accountName = $A.get("$Label.c.CP_Overview_IGSI");
-				} else if (val.dealerName === "IGFS") {
+				} else if (val.dealerName === "Investors Group Financial Services Inc.") {
 					accountName = $A.get("$Label.c.CP_Overview_IGFS");
 				}
 

@@ -113,6 +113,9 @@ dl dt {
   top: -3px;
   position: relative; }
 
+.slds-spinner_brand.slds-spinner:before, .slds-spinner_brand.slds-spinner:after, .slds-spinner_brand.slds-spinner__dot-a:before, .slds-spinner_brand.slds-spinner__dot-a:after, .slds-spinner_brand.slds-spinner__dot-b:before, .slds-spinner_brand.slds-spinner__dot-b:after {
+  background-color: #0d263c; }
+
 .slds-button {
   font-family: "WhitneySemibold", Arial, sans-serif;
   font-size: 16px;
@@ -3411,8 +3414,7 @@ dl dt {
 
 .igcp-value--large {
   font-family: "WhitneyLight", Arial, sans-serif;
-  line-height: 24px;
-  font-size: 16px; }
+  line-height: 24px; }
   .igcp-value--large sup {
     font-size: 70%;
     top: -0.25em; }
@@ -3590,8 +3592,8 @@ dl dt {
 .igcp-tooltip {
   display: inline-block; }
   .igcp-tooltip.igcp-tooltip__label--small {
-    padding-left: 8px;
-    padding-top: 6px; }
+    padding-left: 4px;
+    padding-top: 0px; }
   .igcp-tooltip .igcp-tooltip__tip {
     border: none; }
 
@@ -3644,9 +3646,6 @@ dl dt {
   .igcp-registration .igcp-registration__pfa--monitor {
     width: 360px; }
 
-  .igcp-footer .footer-link {
-    float: left; }
-
   .igcp-card__image {
     width: 75%; }
 
@@ -3662,8 +3661,20 @@ dl dt {
     padding-bottom: 0px; }
 
   .igcp-value--large {
-    font-size: 32px; } }
+    font-size: 32px; }
+
+  .igcp-tooltip.igcp-tooltip__label--small {
+    padding-left: 8px;
+    padding-top: 6px; }
+
+  .igcp-footer .footer-link {
+    float: left; } }
 @media (min-width: 1024px) {
+  .igcp-registration .igcp-registration__pfa--monitor {
+    top: 23px;
+    height: 282px;
+    overflow: visible; }
+
   .igcp-button__chat {
     float: none;
     position: fixed;
@@ -3674,11 +3685,6 @@ dl dt {
     position: absolute;
     right: -200px;
     top: -160px; }
-
-  .igcp-registration .igcp-registration__pfa--monitor {
-    top: 23px;
-    height: 282px;
-    overflow: visible; }
 
   .igcp-value--medium {
     line-height: 24px;
@@ -3698,15 +3704,6 @@ dl dt {
   .igcp-card__image {
     width: 100%; }
 
-  .igcp-footer {
-    padding-top: 0; }
-    .igcp-footer .footer-copyright .footer-copyright-border-top .row {
-      border-top: none; }
-      .igcp-footer .footer-copyright .footer-copyright-border-top .row .columns ul li {
-        border-right: none; }
-    .igcp-footer .footer-navigation .columns {
-      text-align: left; }
-
   .igcp-modal.igcp-modal__small .igcp-modal__small--inner {
     border-radius: 3px;
     /* Android 2.1+, Chrome, Firefox 4+, IE 9+, iOS 4+, Opera 10.50+, Safari 5+ */
@@ -3716,6 +3713,15 @@ dl dt {
     top: 25%;
     left: 25%;
     right: 25%;
-    bottom: 25%; } }
+    bottom: 25%; }
+
+  .igcp-footer {
+    padding-top: 0; }
+    .igcp-footer .footer-copyright .footer-copyright-border-top .row {
+      border-top: none; }
+      .igcp-footer .footer-copyright .footer-copyright-border-top .row .columns ul li {
+        border-right: none; }
+    .igcp-footer .footer-navigation .columns {
+      text-align: left; } }
 
 /*# sourceMappingURL=igcp.css.map */

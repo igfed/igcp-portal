@@ -8,7 +8,5 @@
 			+ "; width: " 
 			+ cmp.get("v.width"))
 		);
-
-		console.log(cmp.get("v.inlineStyle"));
 	}
 })

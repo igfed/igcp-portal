@@ -14,7 +14,7 @@
 	<!-- MARKUP -->
 	<div class="igcp-account__item igcp-underline__thin--grey slds-grid slds-wrap slds-p-horizontal--xx-small slds-medium-p-horizontal--small slds-p-bottom-x-small">
 		
-		<div class="slds-p-top--small slds-medium-p-vertical--small slds-size_6-of-12"><span class="igcp-utils__colour--link-blue">{!v.accountName}</span></div>
+		<div class="slds-p-vertical--small slds-size_6-of-12"><span class="igcp-utils__colour--link-blue">{!v.accountName}</span></div>
 		
 		<div class="slds-p-vertical--small slds-text-align_right slds-show_small slds-size_3-of-12">
 			<aura:if isTrue="{!v.gainLossType == 'positive'}">

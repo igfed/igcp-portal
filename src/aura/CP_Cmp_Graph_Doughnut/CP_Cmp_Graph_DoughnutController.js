@@ -36,6 +36,8 @@
 				"values": graphArr
 			});
 
+			events.fire("CP_Evt_Loading_Hide", { "id" : "doughnut-graph-loader" });
+
 		}
 	}
 })
