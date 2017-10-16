@@ -6,6 +6,9 @@
 	<!-- INCLUDES -->
 	<c:CP_CSS_Includes />
 
+	<!-- METHODS -->
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
+
 	<!-- MARKUP -->
 	<div class="igcp-overview igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-around--xx-small slds-large-p-around--medium">
 		<div class="slds-size_12-of-12">

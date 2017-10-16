@@ -164,7 +164,8 @@ public class CP_ForgotUserNameClass {
                         {
                             state.IsValid = false;
                             state.IsLocked = this.recordFailedSecurityAnswerAttemptAndLock();
-                            state.Messages.add(isamResponse.error);
+                            System.debug('Error From SCIM API: '+ isamResponse.error);
+                            state.Messages.add(System.Label.CP_Generic_Server_Error_Instructions);
                         }
                     }
                 }

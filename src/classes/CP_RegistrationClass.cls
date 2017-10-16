@@ -336,7 +336,6 @@ global class CP_RegistrationClass {
                 return assetList[0];
         }
 
-
         public boolean recordFailedAttemptAndLock()
         {
             Contact objCon = this.getContactObject();
@@ -359,36 +358,6 @@ global class CP_RegistrationClass {
             return false;
         }
 
-        /*
-        public Boolean IsValidPostalCode()
-        {
-            String postalCodeRegex_1 = '[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]';
-            String postalCodeRegex_2 = '[a-zA-Z][0-9][a-zA-Z](-| |)[0-9][a-zA-Z][0-9]';
-        
-            System.debug(this.postalCode);
-
-            Pattern MyPattern1 = Pattern.compile(postalCodeRegex_1);
-            Matcher MyMatcher1 = MyPattern1.matcher(this.postalCode);
-
-            Pattern MyPattern2 = Pattern.compile(postalCodeRegex_2);
-            Matcher MyMatcher2 = MyPattern2.matcher(this.postalCode);
-
-            if(MyMatcher1.matches() || MyMatcher2.matches())
-                return true;
-            else
-                return false;
-        }
-
-        public Boolean PostalCodeMatched(String code)
-        {
-            String inputCode = this.postalCode.remove(' ').remove('-').toUpperCase();
-            String sfCode = code.remove(' ').remove('-').toUpperCase();
-            if(inputCode == sfCode)
-                return true;
-            else
-                return false;
-        }
-        */
     }
 
     
@@ -444,38 +413,7 @@ global class CP_RegistrationClass {
                 return true;
 
         }
-        
-        /*
-        public Boolean IsValidEmail()
-        {
-            String emailRegex = '([a-zA-Z0-9_\\-\\.]+)@((\\[a-z]{1,3}\\.[a-z]{1,3}\\.[a-z]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})';
-        
-            Pattern MyPattern = Pattern.compile(emailRegex);
-            Matcher MyMatcher = MyPattern.matcher(this.email);
 
-            if(MyMatcher.matches())
-                return true;
-            else
-                return false;
-        }
-
-        public Boolean IsValidPhoneNumber()
-        {
-            String thisPhoneNumber = this.mobilePhone.replace(' ','');
-            System.debug('this.mobilePhone:'+ this.mobilePhone);
-            System.debug('thisPhoneNumber:'+ thisPhoneNumber);
-
-            String MyRegex = '\\+?1?[ .-]?\\(?([0-9]{3})\\)?([ .-]?)([0-9]{3})([ .-]?)([0-9]{4})';
-
-            //String phoneRegex = '(/^(\\+?1-?)?(\\([2-9]([02-9]\\d|1[02-9])\\)|[2-9]([02-9]\\d|1[02-9]))-?[2-9]([02-9]\\d|1[02-9])-?\\d{4}$/)';
-            
-            //String phoneRegex = '^((\\+1)?\\s?\\(\\d{3}\\)\\s?\\d{3}\\-\\d{4})?$';
-
-            Pattern MyPattern = Pattern.compile(MyRegex);
-            Matcher MyMatcher = MyPattern.matcher(thisPhoneNumber);
-            return MyMatcher.matches();
-        }
-        */
     }
     
      public class RegistrationForm

@@ -9,30 +9,53 @@ public  class CP_RegistrationControllerTest {
 
 			list<Contact> contactList = new List<Contact>();
 
+			Account testAccount = new Account();
+			testAccount.Name='Test Account' ;
+			insert testAccount;
+		
 			Contact contactObj = new Contact();
-
 			contactObj.FirstName = 'David';
 			contactObj.LastName = 'Web';
 			contactObj.Birthdate = Date.valueOf('1947-08-14');
-			contactObj.Business_Partner_ID__c = '1234567890000001';
 			contactObj.MailingPostalCode = 'M5C 1B5';
 			contactObj.Portal_User_Is_Registered__c = true;
 			contactObj.Portal_User_ID__c = '123-ABC-456-XYZ-789';
 			contactObj.Portal_User_Name__c = 'jBourne';
+			contactObj.Accountid= testAccount.id;
 
-			contactList.add(contactObj);
+			insert contactObj;
+
+			Financial_Asset__c fa = new  Financial_Asset__c();
+			fa.Asset_Type__c = 'Individual';
+			fa.Customer__c = contactObj.ID;
+			fa.Client__c = testAccount.Id;
+			fa.Client_Number__c = '147258369';
+
+			insert fa; 
+
+
+			
+			Account testAccount2 = new Account();
+			testAccount2.Name='Test Account 2' ;
+			insert testAccount2;
 
 			Contact contactObj2 = new Contact();
 			contactObj2.FirstName = 'Damien';
 			contactObj2.LastName = 'Rice';
-			contactObj2.Birthdate = Date.valueOf('1947-08-15');
-			contactObj2.Business_Partner_ID__c = '1234567890000002';
-			contactObj2.MailingPostalCode = 'M5C 1A9';
+			contactObj2.Birthdate = Date.valueOf('1990-01-01');
+			contactObj2.MailingPostalCode = 'A1B 2C3';
 			contactObj2.Portal_User_Is_Registered__c = false;
+			contactObj2.Accountid= testAccount2.id;
+
+			insert contactObj2;
 			
-			contactList.add(contactObj2);
-// some test
-			insert contactList;
+			Financial_Asset__c fa2 = new  Financial_Asset__c();
+			fa2.Asset_Type__c = 'Individual';
+			fa2.Customer__c = contactObj2.ID;
+			fa2.Client__c = testAccount2.Id;
+			fa2.Client_Number__c = '963852741';
+
+			insert fa2; 
 	}
 
 
@@ -76,12 +99,12 @@ public  class CP_RegistrationControllerTest {
 		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
-		System.assertEquals(System.Label.CP_Registration_Client_Number_Not_Found, result.State.Messages[0]);
+		System.assertEquals(System.Label.CP_Error_Registration_Step_1, result.State.Messages[0]);
 	}
 	
 	@isTest static void test_StepOne_ContactAlreadyRegistered() {
 		
-		String jsonObj = '{ "clientNum" : "1234567890000001", "postalCode" : "M4H 1K2", "dob" : "1978-11-06" }';
+		String jsonObj = '{ "clientNum" : "147258369", "postalCode" : "M5C 1B5", "dob" : "1947-08-14" }';
  
 		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
 
@@ -117,7 +140,7 @@ public  class CP_RegistrationControllerTest {
 
 	@isTest static void test_StepOne_ContactInvalidPostalCode() {
 		
-		String jsonObj = '{ "clientNum" : "1234567890000002", "postalCode" : "123456", "dob" : "1947-08-15" }';
+		String jsonObj = '{ "clientNum" : "963852741", "postalCode" : "1234785", "dob" : "1995-01-01" }';
 
 		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
 
@@ -129,14 +152,14 @@ public  class CP_RegistrationControllerTest {
 
 	@isTest static void test_StepOne_ContactPostalCodeNotMatched() {
 		
-		String jsonObj = '{ "clientNum" : "1234567890000002", "postalCode" : "M4H 1K2", "dob" : "1947-08-15" }';
+		String jsonObj = '{ "clientNum" : "963852741", "postalCode" : "M4H 1K2", "dob" : "1995-01-01" }';
 
 		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
 
 		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
-		System.assertEquals(System.Label.CP_Registration_Postalcode_Not_Matched, result.State.Messages[0]);
+		System.assertEquals(System.Label.CP_Error_Registration_Step_1, result.State.Messages[0]);
 	}
 	
 	@isTest static void test_StepOne_DOB_IsNull() {
@@ -162,22 +185,23 @@ public  class CP_RegistrationControllerTest {
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_DOB_Is_Empty, result.State.Messages[0]);
 	}
+
 	@isTest static void test_StepOne_ContactInvalidDOB() {
 		
-		String jsonObj = '{ "clientNum" : "1234567890000002", "postalCode" : "M5C 1A9", "dob" : "1978-11-06" }';
+		String jsonObj = '{ "clientNum" : "963852741", "postalCode" : "A1B 2C3", "dob" : "1978-11-06" }';
 
 		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
 
 		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
-		System.assertEquals(System.Label.CP_Registration_DOB_Not_Matched, result.State.Messages[0]);
+		System.assertEquals(System.Label.CP_Error_Registration_Step_1, result.State.Messages[0]);
 	}
 
 	@isTest static void test_StepOne_Success() {
 		
-		String jsonObj = '{ "clientNum" : "1234567890000002", "postalCode" : "M5C 1A9", "dob" : "1947-08-15" }';
-
+		String jsonObj = '{ "clientNum" : "963852741", "postalCode" : "A1B 2C3", "dob" : "1990-01-01" }';
+		
 		String jsonResult = CP_RegistrationController.StepOne(jsonObj);
 
 		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
@@ -193,18 +217,21 @@ public  class CP_RegistrationControllerTest {
 
 
 
-	@isTest static void test_GetSecurityQuestions()
+	@isTest
+	static void test_GetSecurityQuestions()
 	{
 		String jsonObj = '{ "lang" : "fr_ca" }';
 		String jsonResult = CP_RegistrationController.getSecurityQuestions(jsonObj);
 		
-		//System.debug(jsonResult);
+		List<Security_Question__mdt> questionList = [SELECT 
+                                        Question_Eng__c,
+                                        Question_Fr__c
+                                        FROM Security_Question__mdt];
 
 		CP_RegistrationClass.SecurityQuestions result = (CP_RegistrationClass.SecurityQuestions) JSON.deserialize(jsonResult, CP_RegistrationClass.SecurityQuestions.class);
-		
 
 		System.assertEquals(true, result.State.IsValid);
-		System.assertEquals(3, result.Questions.Size());
+		System.assertEquals(questionList.size(), result.Questions.Size());
 	}
 
 
@@ -325,6 +352,19 @@ public  class CP_RegistrationControllerTest {
 		System.assertEquals(System.Label.CP_Registration_Email_Is_Invalid, result.State.Messages[0]);
 	}
 
+	@istest static void test_StepTwo_UserNameExistInISAM()
+	{
+		Test.setMock(HttpCalloutMock.class, new CP_SCIMRestClientMock_UserQuery('testUser123'));
+
+		String jsonObj = '{ "username" : "testUser123", "password" : "password123", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" }';
+
+		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
+
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
+
+		System.assertEquals(false, result.State.IsValid);
+		System.assertEquals(System.Label.CP_Registration_User_Name_Already_Exist, result.State.Messages[0]);
+	}
 
 
 
