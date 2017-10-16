@@ -163,5 +163,8 @@
 			"value": cmp.get("v.passcode"),
 			"confirmValue": cmp.get("v.passcodeConfirm")
 		});
+	},
+	onShowPassword : function(cmp, evt, hlpr) {
+		cmp.set('v.showPassword', cmp.get('v.showPassword') ? false : true);
 	}
 })

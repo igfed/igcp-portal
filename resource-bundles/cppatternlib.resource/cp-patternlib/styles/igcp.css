@@ -58,8 +58,7 @@ p {
 body {
   font-family: "WhitneyBook", Arial, sans-serif;
   background-color: #f8f8f9;
-  color: #282828;
-  display: none; }
+  color: #282828;}
 
 a {
   color: #0e75d5;
@@ -2061,6 +2060,13 @@ dl dt {
   width: 16px;
   height: 16px;
   background: url(../icons/user_60.png) no-repeat top left;
+  background-size: 100%;
+  margin: 3px 5px 0 0; }
+.igcp-login .slds-icon-show-password {
+  float: right;
+  width: 33px;
+  height: 20px;
+  background: url(../icons/show_password.png) no-repeat top left;
   background-size: 100%;
   margin: 3px 5px 0 0; }
 .igcp-login .slds-icon-utility-info {
