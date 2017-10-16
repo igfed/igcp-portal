@@ -16,7 +16,6 @@
   event.container = {};
   event.page = {};
   event.template = {};
-  event.error = {};
   event.form = {};
   event.search = {};
   event.tool = {};
