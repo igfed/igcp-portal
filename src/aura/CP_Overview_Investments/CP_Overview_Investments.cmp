@@ -11,6 +11,7 @@
 	<aura:attribute name="accountTitle" type="String" />
 	<aura:attribute name="accountType" type="String" />
 	<aura:attribute name="accountTotal" type="String" />
+	<aura:attribute name="renderComplete" type="Boolean" default="false" ></aura:attribute>
 	
 	<!--  GENERAL OVERVIEW -->
 	<aura:attribute name="totalValue" type="String"></aura:attribute>
@@ -18,9 +19,16 @@
 	<aura:attribute name="totalGainLossPercentage" type="String"></aura:attribute>
 	<aura:attribute name="gainLossType" type="String"></aura:attribute>
 	<aura:attribute name="accounts" type="List"></aura:attribute>
+
+	<aura:attribute name="graphArr" type="List"></aura:attribute>
+	<aura:attribute name="graphTotal" type="String"></aura:attribute>
 	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+	<!-- METHODS -->
+	<aura:method name="setGraph" action="{!c.onSetGraph}" description="Call to set graph">
+	</aura:method>
 	
 	<!-- MARKUP -->
 	<div class="igcp-container slds-p-around--small slds-large-p-around--small slds-m-bottom--x-small slds-large-m-bottom--medium slds-large-m-right--medium">

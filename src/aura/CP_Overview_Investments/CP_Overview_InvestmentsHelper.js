@@ -12,9 +12,9 @@
 					registrationType = "";
 
 				utils.formatToCurrency(val.totalValue, function(formattedValue) {
-					if(cmp.get("v.lang") === "en_US" || cmp.get("v.lang") === "en_CA") {
+					if (cmp.get("v.lang") === "en_US" || cmp.get("v.lang") === "en_CA") {
 						formattedValue = "$" + formattedValue;
-					} else if(cmp.get("v.lang") === "fr_CA") {
+					} else if (cmp.get("v.lang") === "fr_CA") {
 						formattedValue = formattedValue + " $";
 					} else {
 						formattedValue = "$" + formattedValue;

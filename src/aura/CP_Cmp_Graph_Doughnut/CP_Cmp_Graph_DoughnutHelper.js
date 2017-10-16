@@ -35,11 +35,16 @@
 		},
 		generateGraph: function(graphArr, cmp, hlpr) {
 
+			console.log(document.getElementById("doughnut-chart").getContext('2d'));
+
 			var 
 				ctx = document.getElementById("doughnut-chart").getContext('2d'),
 				doughnut, labelArr = [], valArr = [];
 
+			console.log('ahahahah')
+
 			graphArr.forEach(function(item){
+				console.log(item);
 				labelArr.push(item.label);
 				valArr.push(item.detail);
 			});	
