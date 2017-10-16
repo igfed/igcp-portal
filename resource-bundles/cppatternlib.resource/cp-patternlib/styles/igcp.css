@@ -149,7 +149,8 @@ dl dt {
     .slds-form-element__label.input-label span {
       font-family: "WhitneyBook", Arial, sans-serif;
       color: #282828;
-      margin-left: 8px; }
+      margin-left: 8px;
+      margin-right: 8px; }
 
 .uiInput.has-error {
   border: none; }
@@ -3590,12 +3591,30 @@ dl dt {
     max-width: 600px; }
 
 .igcp-tooltip {
-  display: inline-block; }
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 8px; }
+  .igcp-tooltip .igcp-tooltip-container {
+    position: absolute;
+    left: 0;
+    top: 1px;
+    margin: 0;
+    width: 16px;
+    height: 16px; }
   .igcp-tooltip.igcp-tooltip__label--small {
     padding-left: 4px;
     padding-top: 0px; }
-  .igcp-tooltip .igcp-tooltip__tip {
-    border: none; }
+  .igcp-tooltip .igcp-tooltip__tip.has-tip {
+    border: none;
+    margin: 0;
+    width: 16px;
+    height: 16px; }
+  .igcp-tooltip .igcp-tooltip__tip .slds-icon_container.slds-icon-utility-info {
+    margin: 0; }
+    .igcp-tooltip .igcp-tooltip__tip .slds-icon_container.slds-icon-utility-info span {
+      margin: 0; }
 
 .igcp-tooltip__opened {
   position: absolute;

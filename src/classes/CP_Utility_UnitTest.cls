@@ -70,7 +70,7 @@ private class CP_Utility_UnitTest {
 			ID whatId = null; 
 			try
 			{
-				CP_Utility.sendTemplatedEmail(templateApiName, targetObjId, whatId, null);	
+				CP_Utility.sendTemplatedEmail(templateApiName, targetObjId, whatId);	
 			}
 			Catch(Exception e)
 			{

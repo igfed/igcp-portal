@@ -103,7 +103,7 @@ public class IGClientService {
 		return rv;
 	}
 
-	public DTO_InvestmentProfile getInvestmentProfileDTO(String clientBpid, String accountNumber) {
+	public static DTO_InvestmentProfile getInvestmentProfileDTO(String clientBpid, String accountNumber) {
 		DTO_InvestmentProfile rv = null;
 		if (String.isBlank(clientBpid)) {
 			throw new IGClientServiceException('The client business partner id can\'t be null or blank');
@@ -136,6 +136,41 @@ public class IGClientService {
 		        				}
 		        			}
 		        		}
+		        	}
+		        }
+		    }
+		}
+		return rv;
+	}
+
+	public static List<DTO_HoldingsDetail> getHoldings(String clientBpid, String accountNumber) {
+		List<DTO_HoldingsDetail> rv = new List<DTO_HoldingsDetail>();
+		if (String.isBlank(clientBpid)) {
+			throw new IGClientServiceException('The client business partner id can\'t be null or blank');
+		}
+		if (String.isBlank(accountNumber)) {
+			throw new IGClientServiceException('The account number can\'t be null or blank');
+		}
+		IGRestClient client = IGRestClientFactory.getIGRestClient('Holdings', WEBSERVICE_NAMED_CREDENTIAL);
+		if (client != null) {
+			IGHoldingsClient theClient = (IGHoldingsClient)client;
+			theClient.bpid = clientBpid;
+			theClient.accountNumber = accountNumber;
+			IGRestClient.Response res = theClient.getServiceData();
+		    System.debug('=====> getHoldingsDetailDTO.res: ' + res);
+		    if (res != null) {
+		    	if (!res.success) {
+		            System.debug('=====> getHoldingsDetailDTO.ERROR: ' + res.success + ', ' + res.code + ', ' + res.error);
+		            throw new IGClientServiceException('Service call failed: ' + res.success + ', ' + res.code + ', ' + res.error);
+		        } else {
+		        	IGHoldingsClient.HoldingData data = (IGHoldingsClient.HoldingData)res;
+		        	System.debug('=====> getHoldingsDetailDTO.data: ' + data);
+		        	if (data.Client != null && data.Client.Holdings != null && !data.Client.Holdings.isEmpty()) {
+	        			for (IGHoldingsClient.Holding holding : data.Client.Holdings) {
+	        				if (accountNumber == holding.ACCOUNT_NUMBER) {
+	        					rv.add(new DTO_HoldingsDetail(holding));
+	        				}
+	        			}
 		        	}
 		        }
 		    }

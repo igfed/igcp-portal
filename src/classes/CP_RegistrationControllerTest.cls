@@ -21,6 +21,7 @@ public  class CP_RegistrationControllerTest {
 			contactObj.Portal_User_Is_Registered__c = true;
 			contactObj.Portal_User_ID__c = '123-ABC-456-XYZ-789';
 			contactObj.Portal_User_Name__c = 'jBourne';
+			contactObj.email = 'testuser@test.com';
 			contactObj.Accountid= testAccount.id;
 
 			insert contactObj;
@@ -277,6 +278,23 @@ public  class CP_RegistrationControllerTest {
 		System.assertEquals(false, result.State.IsValid);
 		System.assertEquals(System.Label.CP_Registration_User_Name_Already_Exist, result.State.Messages[0]);
 	}
+
+	@istest static void test_StepTwo_UserNameExistInISAM()
+	{
+		Test.setMock(HttpCalloutMock.class, new CP_SCIMRestClientMock_UserQuery('testUser123'));
+
+		String jsonObj = '{ "username" : "testUser123", "password" : "password123", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" }';
+		Test.startTest();
+
+		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
+
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
+
+		Test.stopTest();
+
+		System.assertEquals(false, result.State.IsValid);
+		System.assertEquals(System.Label.CP_Registration_User_Name_Already_Exist, result.State.Messages[0]);
+	}
 	
 	@isTest static void test_StepTwo_Password_IsNull()
 	{
@@ -352,21 +370,60 @@ public  class CP_RegistrationControllerTest {
 		System.assertEquals(System.Label.CP_Registration_Email_Is_Invalid, result.State.Messages[0]);
 	}
 
-	@istest static void test_StepTwo_UserNameExistInISAM()
+	@isTest static void test_StepTwo_Email_Already_Registered()
 	{
-		Test.setMock(HttpCalloutMock.class, new CP_SCIMRestClientMock_UserQuery('testUser123'));
-
-		String jsonObj = '{ "username" : "testUser123", "password" : "password123", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" }';
+		String jsonObj = '{ "username" : "pGrass", "password" : "password123", "confirmPassword" : "password123", "email": "testuser@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" }';
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
 		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
 
 		System.assertEquals(false, result.State.IsValid);
-		System.assertEquals(System.Label.CP_Registration_User_Name_Already_Exist, result.State.Messages[0]);
+		System.assertEquals(System.Label.CP_Registration_Email_Is_Already_Registered, result.State.Messages[0]);
+	}
+
+	@istest static void test_StepTwo_Success()
+	{
+		Test.setMock(HttpCalloutMock.class, new CP_SCIMRestClientMock_UserQuery('testUser123', false));
+
+		String jsonObj = '{ "username" : "testUser99999", "password" : "password123", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" }';
+		Test.startTest();
+
+		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
+
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
+
+		Test.stopTest();
+
+		System.assertEquals(true, result.State.IsValid);
 	}
 
 
+
+
+
+
+	//				 STEP THREE TESTS
+	/////////////////////////////////////////////////////////////////
+
+
+
+	@istest static void test_StepThree_Success()
+	{
+		Test.setMock(HttpCalloutMock.class, new CP_SCIMRestClientMock_UserQuery('testUser123', false));
+
+		String jsonObj = '{ "Identity" :  {"clientNum" : "963852741", "postalCode" : "A1B 2C3", "dob" : "1990-01-01"} , "Profile": {"username" : "testUser99999", "password" : "password123", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three"}, "acceptTOS": true, "lang" : "fr_ca" }';
+		
+		Test.startTest();
+
+		String jsonResult = CP_RegistrationController.StepThree(jsonObj);
+
+		CP_Response result = (CP_Response) JSON.deserialize(jsonResult, CP_Response.class);
+
+		Test.stopTest();
+
+		System.assertEquals(true, result.State.IsValid);
+	}
 
 
 }

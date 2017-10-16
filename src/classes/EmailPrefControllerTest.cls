@@ -108,6 +108,9 @@ public class EmailPrefControllerTest {
 	   Financial_Asset__c assertFAObj = new Financial_Asset__c();
 	   assertFAObj = [select Client_Number__c,Pref_Trade_Confirmation__c,Pref_Tax_Receipts__c,Pref_Investment_Statements__c from Financial_Asset__c LIMIT 1];
 	   System.debug('test updated assets '+assertFAObj.Client_Number__c+' - '+assertFAObj.Pref_Investment_Statements__c + ' - '+assertFAObj.Pref_Tax_Receipts__c +' - '+assertFAObj.Pref_Trade_Confirmation__c);
+	   System.assertEquals(assertFAObj.Pref_Investment_Statements__c, 'Online');
+	   System.assertEquals(assertFAObj.Pref_Tax_Receipts__c, 'Online');
+	   System.assertEquals(assertFAObj.Pref_Trade_Confirmation__c, 'Paper');
 	}
 
 }
