@@ -11,8 +11,7 @@
 		var
 			events = cmp.find("CP_Events"),
 			services = cmp.find("CP_Services"),
-			utils = cmp.find("CP_Utils"),
-			bpid = "0003497138";
+			utils = cmp.find("CP_Utils");
 
 
 		//GET INVESTMENT PREVIEW
