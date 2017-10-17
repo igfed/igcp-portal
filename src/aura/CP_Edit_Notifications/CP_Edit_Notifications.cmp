@@ -1,1 +1,63 @@
-<aura:component ></aura:component>
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+	
+	<!-- ATTRS -->
+	<aura:attribute name="pageId" type="String" default="edit-notifications"></aura:attribute>
+	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
+
+	<aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+	
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Validation aura:id="CP_Validation" />
+	<c:CP_Services aura:id="CP_Services" />
+    <c:CP_CSS_Includes />
+    <c:CP_JS_Includes />
+
+	<!-- HANDLERS -->
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
+	<!-- <aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
+	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
+	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
+	<aura:handler event="c:CP_Evt_Key" action="{!c.onKey}" /> -->
+	
+	<!-- METHODS-->
+	<!-- <aura:method name="onSubmitForm" action="{!c.submitForm}" description="Call submit form">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method> -->
+	
+	<!-- MARKUP -->
+	<div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
+		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
+		<div class="slds-p-around--small igcp-boxed--white slds-medium-p-around--zero slds-size_12-of-12 slds-medium-size_6-of-12">
+			<h1>Edit Notification</h1>
+
+            <p class="slds-medium-p-top--small">Choose how you'd like us to communicate important information to you. We'll send you confirmation and security messages.</p>
+			<div class="slds-grid slds-wrap">
+				<div class="slds-form slds-size_12-of-12">
+
+                    <!--FIELDS-->
+                    <!-- EMAIL -->
+			    	<c:CP_Cmp_Input_Text id="email-input" form="{!v.pageId}" type="email" label="{!$Label.c.CP_Generic_Label_Email}" placeholder="" class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" />
+                   
+                    <!-- NEWS OPT IN-->
+                    <c:CP_Cmp_Input_Checkbox id="news-offers-opt" form="{!v.pageId}" class="slds-size_12-of-12" copy="I'd like to receive the latest news and offers from Investors Group to my email address (optional)" />
+
+                </div>
+                
+                <div class="slds-form slds-size_12-of-12 slds-medium-m-top--large">
+			    	<!-- PHONE -->
+			    	<c:CP_Cmp_Input_Text id="phone" form="{!v.pageId}" type="phone" label="Mobile Phone (optional)" placeholder="" class="slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
+
+				    <!-- PHONE OPT IN -->
+                    <c:CP_Cmp_Input_Checkbox id="mobile-message-opt" form="{!v.pageId}" class="slds-size_12-of-12" copy="Send me notifications to my mobile device" />
+
+				</div>
+				<!--CTAS-->
+				<c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Update}" nextType="submit" form="{!v.pageId}" />
+			</div>
+		</div>
+		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
+	</div>
+
+</aura:component>
