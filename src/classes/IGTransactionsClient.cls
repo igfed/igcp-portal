@@ -1,7 +1,9 @@
 public class IGTransactionsClient extends IGRestClient {
-	private static final String RESOURCE_NAME 		= 'transactions';
+	private static final String RESOURCE_NAME 				= 'transactions';
+	private static final String QRY_PARAM_ACCOUNT_NUMBER 	= 'ACCOUNT_NUMBER';
 
-	public String bpid 			{ get; set; } 
+	public String bpid 			{ get; set; }
+	public String accountNumber { get; set; } 
 
 	public IGTransactionsClient(String namedCredentialsName, IGRestClient.Language lang) {
 		super(namedCredentialsName, lang);
@@ -12,7 +14,8 @@ public class IGTransactionsClient extends IGRestClient {
 	}
 
 	public override String getHttpEndPoint() {
-    	return 'callout:' + this.namedCredentialsName + '/clients/' + bpid.trim() + '/' + RESOURCE_NAME;
+    	return 'callout:' + this.namedCredentialsName + '/clients/' + bpid.trim() + '/' + RESOURCE_NAME + 
+    			(String.isNotBlank(accountNumber) ? ('?' + QRY_PARAM_ACCOUNT_NUMBER + '=' + accountNumber.trim()) : '');
     }
 
     public override Response parseResponse(String responseBody) {
@@ -34,24 +37,26 @@ public class IGTransactionsClient extends IGRestClient {
 	}
 
 	public class Transactions {
-		public String 	CLIENT_BPID;
-		public String 	CLIENT_NUMBER;
-		public String 	ACCOUNT_NUMBER;
-		public String 	ACCOUNT_TYPE;
-		public String 	ACCOUNT_TYPE_LABEL;
-		public String 	HOLDING_NUMBER;
-		public String 	HOLDING_NAME;
-		public String 	SOURCE_SYSTEM;
-		public String 	TRANSACTION_DATE;
-		public String 	ACTIVITY;
-		public Double 	UNIT_PRICE;
-		public Integer 	UNITS;
-		public Double 	NET_AMOUNT;
-		public Double 	TRANSACTION_CHARGE;
-		public Double 	TAXES;
-		public Double 	GROSS_AMOUNT;
-		public String 	CURRENCY_X; //has to be renamed since CURRENCY is a reserved keyword in Apex
-		public Double 	EXCHANGE_RATE;
+		public String CLIENT_BPID;
+		public String CLIENT_NUMBER;
+		public String ACCOUNT_NUMBER;
+		public String ACCOUNT_TYPE;
+		public String ACCOUNT_TYPE_LABEL;
+		public String HOLDING_NUMBER;
+		public String HOLDING_NAME;
+		public String SOURCE_SYSTEM;
+		public String TRANSACTION_DATE;
+		//public String TRANSACTION_TYPE;
+		//public String TRANSACTION_TYPE_LABEL;
+		public String ACTIVITY;
+		public String UNIT_PRICE;
+		public String UNITS;
+		public String NET_AMOUNT;
+		public String TRANSACTION_CHARGE;
+		public String TAXES;
+		public String GROSS_AMOUNT;
+		public String CURRENCY_X;
+		public String EXCHANGE_RATE;
 	}
 
 }

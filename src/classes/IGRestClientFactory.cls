@@ -9,6 +9,7 @@ public class IGRestClientFactory {
 	private static final String INVESTMENT_PROFILE	= 'InvestmentProfile';
     private static final String ASSET_MIX           = 'AssetMix';
     private static final String TRANSACTIONS        = 'Transactions';
+    private static final String INSTRUCTIONS        = 'Instructions';
 	
     public static IGRestClient getIGRestClient(String clientType, String namedCredentialsName, 
     		IGRestClient.Language lang) {
@@ -39,6 +40,8 @@ public class IGRestClientFactory {
             rv = new IGAssetMixClient(namedCredentialsName, lang);
         } else if (TRANSACTIONS == clientType) {
             rv = new IGTransactionsClient(namedCredentialsName, lang);
+        } else if (INSTRUCTIONS == clientType) {
+            rv = new IGInstructionsClient(namedCredentialsName, lang);
         }
     	//add more REST client types here when needed...	
     	
