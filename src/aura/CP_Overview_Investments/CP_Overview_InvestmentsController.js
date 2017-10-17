@@ -87,7 +87,7 @@
 
 				var events = cmp.find("CP_Events");
 				events.fire(
-					"CP_Evt_Set_Doughnut",
+					"CP_Evt_Set_Graph",
 					{
 						"id" : "investments-asset-mix",
 						"type" : "doughnut",
