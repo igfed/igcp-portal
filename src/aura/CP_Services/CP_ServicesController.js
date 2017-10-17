@@ -849,5 +849,71 @@
 				console.log(err);
 			}
 		}
-	}
+	},
+	onGetUserInfo: function(cmp, evt, hlpr) {
+		
+		var params = evt.getParam("arguments");
+		if (params) {
+			var
+				component = params.component,
+				action;
+
+			try {
+
+				action = component.get("c.getUserInfoDTO");
+
+				action.setCallback(this, function(response) {
+
+					var state = response.getState();
+
+					if (state === "SUCCESS") {
+						// Alert the user with the value returned 
+						// from the server
+
+						if (response !== null) {
+							params.successCB(response.returnValue);
+						} else {
+							params.errorCB({
+								"payload": "No account name was found in Salesforce",
+								"type": "no-record"
+							});
+						}
+
+						// You would typically fire a event here to trigger 
+						// client-side notification that the server-side 
+						// action is complete
+
+					} else if (state === "INCOMPLETE") {
+						// do something
+						params.errorCB({
+							"payload": "Incomplete",
+							"type": "server-side-error"
+						});
+					} else if (state === "ERROR") {
+						var errors = response.getError();
+
+						if (errors) {
+							if (errors) {
+								params.errorCB({
+									"payload": errors,
+									"type": "server-side-error"
+								});
+							}
+						} else {
+							params.errorCB({
+								"payload": "Unknown error",
+								"type": "server-side-error"
+							})
+						}
+					}
+				});
+
+				$A.enqueueAction(action);
+
+			} catch (err) {
+				console.error("CP_Services: onGetUserInfo: controller not found, make sure it is attached to parent component.");
+				console.log(err);
+			}
+		}
+	},
 })

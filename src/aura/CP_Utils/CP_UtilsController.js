@@ -85,11 +85,12 @@
 	onWaitFor: function(cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
+
 			var
 				component = params.component,
 				timer = setInterval(function() {
-					if (component.get(params.attr) === true) {
-						params.callback();
+					if (component.get(params.attr) === true || component.get(params.attr) !== null) {
+						params.callback(component.get(params.attr));
 						clearInterval(timer);
 					}
 				}, 500);
