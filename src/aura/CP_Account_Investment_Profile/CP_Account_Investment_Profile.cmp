@@ -2,37 +2,28 @@
 	
 	<!-- ATTRS -->
 	<aura:attribute name="profile" type="Map"></aura:attribute>
-	<aura:attribute name="profileObj" type="Map" ></aura:attribute>
-	<aura:attribute name="investmentProfile" type="String" default="Moderate"/>
-	<aura:attribute name="investmentObjective" type="String" default="Retirement Savings"/>
-	<aura:attribute name="riskTolerance" type="String" default="High"/>
-	<aura:attribute name="investmentTimeHorizon" type="String" default="5 - 10 yrs"/>
-
-	<!-- HANDLERS -->
-	<aura:handler name="change" value="{!v.profile}" action="{!c.onProfileChange}"/>
-
 
 	<!-- Markup -->
 	<div class="igcp-container slds-p-around--medium slds-m-bottom--medium">
 		<h3 class="slds-m-bottom--small">Investment Profile</h3>
 		<dl class="igcp-list slds-grid slds-wrap">
 			<div class="slds-size_3-of-12 ">
-				<dt class="igcp-list__item-label--c slds-item_label slds-truncate" title="Investment Profile">Investment Profile</dt>
-				<dd class="igcp-list__item-detail--c slds-item_detail slds-truncate" title="Value for investment profile ">{!v.investmentProfile}</dd>
+				<dt class="igcp-list__item-label--c slds-item_label " title="Investment Profile">Investment Profile</dt>
+				<dd class="igcp-list__item-detail--c slds-item_detail" title="Value for investment profile ">{!v.profile.investmentProfile}</dd>
 		  </div>
 
 		    <div class="slds-size_3-of-12 ">
 				<dt class="igcp-list__item-label--c slds-item_label slds-truncate" title="Investment Objective">Investment Objective</dt>
-				<dd class="igcp-list__item-detail--c slds-item_detail slds-truncate" title="Value for investment objective">{!v.investmentObjective}</dd>
+				<dd class="igcp-list__item-detail--c slds-item_detail slds-truncate" title="Value for investment objective">{!v.profile.investmentObjective}</dd>
 			</div>
 			<div class="slds-size_3-of-12 ">
 				<dt class="igcp-list__item-label--c slds-item_label slds-truncate" title="Risk Tolerancel">Risk Tolerancel</dt>
-				<dd class="igcp-list__item-detail--c slds-item_detail slds-truncate" title="Value for risk tolerance">{!v.riskTolerance}</dd>
+				<dd class="igcp-list__item-detail--c slds-item_detail slds-truncate" title="Value for risk tolerance">{!v.profile.riskTolerance}</dd>
 		    </div>
 
 		    <div class="slds-size_3-of-12 ">
 				<dt class="igcp-list__item-label--c slds-item_label slds-truncate" title="Investment Time Horizon">Investment Time Horizon</dt>
-				<dd class="igcp-list__item-detail--c slds-item_detail slds-truncate" title="Value for Investment Time Horizon">{!v.investmentTimeHorizon}</dd>
+				<dd class="igcp-list__item-detail--c slds-item_detail slds-truncate" title="Value for Investment Time Horizon">{!v.profile.investmentTimeHorizon}</dd>
 			</div>
 		</dl>
 

@@ -23,13 +23,6 @@ private class CP_Utility_UnitTest {
 			contactList.add(contactObj);
 			insert contactList;
 			
-			/*
-			EmailTemplate testTemplate = new EmailTemplate();
-			testTemplate.name = 'Test Template';
-			testTemplate.Body = 'test body';
-			testTemplate.Subject = 'test subject';
-			insert testTemplate;
-			*/
 	}
 
 
@@ -77,6 +70,8 @@ private class CP_Utility_UnitTest {
 				System.assertEquals('CP_Utility.UtilException', e.getTypeName());
 			}
 		}
+		
+		
 	//
 
 	// Success Tests

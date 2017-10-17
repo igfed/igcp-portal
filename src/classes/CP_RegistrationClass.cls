@@ -205,8 +205,7 @@ global class CP_RegistrationClass {
             if(objContact == null)
             {
                 result.IsValid = false;
-                result.Fields.add('clientNum');
-                result.Messages.add(System.Label.CP_Registration_Client_Number_Not_Found);
+                result.Messages.add(System.Label.CP_Generic_Server_Error_Instructions);
             }
             else
             {
@@ -226,9 +225,9 @@ global class CP_RegistrationClass {
         }
         catch(exception e)
         {
-            System.debug('there was something wrong.'+ e.getMessage());
             result.IsValid = false;
-            result.Messages.add(e.getMessage());
+            System.debug('there was something wrong.'+ e.getMessage());
+            result.Messages.add(System.Label.CP_Generic_Server_Error_Instructions);
         }
         return result;
     }
@@ -445,7 +444,6 @@ global class CP_RegistrationClass {
                                         FROM Security_Question__mdt];
                 if(!questionList.isEmpty())
                 {
-
                     for(Security_Question__mdt Q : questionList)
                     {
                         if(lang.toUpperCase() == 'FR_CA')
@@ -463,7 +461,7 @@ global class CP_RegistrationClass {
             catch(Exception e)
             {
                 this.State.IsValid = false;
-                this.State.Messages.add(e.getMessage());
+                this.State.Messages.add(System.Label.CP_Generic_Server_Error_Instructions);
             }
         }
 
