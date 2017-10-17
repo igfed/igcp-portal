@@ -72,7 +72,15 @@
 
 	<!-- GET ACCOUNT DETAIL -->
 	<aura:method name="getAccountDetail" action="{!c.onGetAccountDetail}">
-		<aura:attribute name="accountName" type="String"></aura:attribute>
+		<aura:attribute name="accountNumber" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
+	<!-- GET INVESTMENT PROFILE -->
+	<aura:method name="getInvestmentProfile" action="{!c.onGetInvestmentProfile}">
+		<aura:attribute name="accountNumber" type="String"></aura:attribute>
 		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
 		<aura:attribute name="successCB" type="function" default="" />
 		<aura:attribute name="errorCB" type="function" default="" />

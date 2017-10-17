@@ -1,6 +1,8 @@
 ({
-	onInit: function(cmp, evt, hlpr) {},
+	onProfileChange: function(cmp, evt, hlpr) {
 
-	myAction : function(component, event, helper) {
+		cmp.set("v.profileObj", evt.getParam("value"));
+
+		console.log(cmp.get("v.profileObj"))
 	}
 })

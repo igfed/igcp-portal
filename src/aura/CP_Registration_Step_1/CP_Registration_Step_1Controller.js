@@ -49,10 +49,13 @@
 			events = cmp.find("CP_Events"),
 			services = cmp.find("CP_Services");
 
+		console.log("Step 1");
+
 		services.submitForm(
 			"StepOne",
 			cmp,
 			function(evt) {
+				console.log("Step 1: Next step");
 				cmp.onNextStep();
 			},
 			function(error) {

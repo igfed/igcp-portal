@@ -11,7 +11,8 @@
 		var
 			events = cmp.find("CP_Events"),
 			services = cmp.find("CP_Services"),
-			utils = cmp.find("CP_Utils");
+			utils = cmp.find("CP_Utils"),
+			bpid = "0003497138";
 
 
 		//GET INVESTMENT PREVIEW
@@ -21,7 +22,6 @@
 			function(previewObj) {
 
 				var
-
 					accountPreviewsObj = previewObj.previewAggregatesByTypeAndReg,
 					accountTypeArr = [];
 
@@ -40,6 +40,8 @@
 				utils.forEach(accountPreviewsObj, function(key, value) {
 					accountTypeArr.push(value);
 				});
+
+				console.log(accountTypeArr);
 
 				hlpr.addAccounts(accountTypeArr, cmp);
 
