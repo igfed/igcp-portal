@@ -53,81 +53,44 @@
 				console.error("Step 1: Error");
 				console.error(error);
 
-				var
-					events = cmp.find("CP_Events"),
-					payload = error.payload,
-					fields = payload.State.Fields,
-					messages = payload.State.Messages,
-					isValid = payload.State.IsValid,
-					isLocked = payload.State.IsLocked,
-					serviceUnavailable = payload.State.ServiceNotAvailable;
+				services.handleServerSideError({
+						"error": error,
+						"id": cmp.get("v.pageId"),
+						"toastId": "forgot-pass-step-1-toast-error"
+					},
+					function(obj) {
 
-				try {
-					fields.forEach(function(errorType, i) {
-						var msgArr = [];
+						if (obj.fields && obj.messages) {
+							obj.fields.forEach(function(errorType, i) {
+								var msgArr = [];
 
+								if (errorType === "username-input") {
+									msgArr.push({ "msg": obj.messages[i] });
+									events.fire("CP_Evt_Input_Error", {
+										"id": "username-input",
+										"errors": msgArr
+									});
+								}
 
-						if (errorType === "username-input") {
-							msgArr.push({ "msg": messages[i] });
-							events.fire("CP_Evt_Input_Error", {
-								"id": "username-input",
-								"errors": msgArr
+								if (errorType === "postal-code") {
+									msgArr.push({ "msg": obj.messages[i] });
+									events.fire("CP_Evt_Input_Error", {
+										"id": "postal-code",
+										"errors": msgArr
+									});
+								}
+
+								if (errorType === "dob") {
+									msgArr.push({ "msg": bj.messages[i] });
+									events.fire("CP_Evt_Input_Error", {
+										"id": "dob",
+										"errors": msgArr
+									});
+								}
 							});
 						}
-
-						if (errorType === "postal-code") {
-							msgArr.push({ "msg": messages[i] });
-							events.fire("CP_Evt_Input_Error", {
-								"id": "postal-code",
-								"errors": msgArr
-							});
-						}
-
-						if (errorType === "dob") {
-							msgArr.push({ "msg": messages[i] });
-							events.fire("CP_Evt_Input_Error", {
-								"id": "dob",
-								"errors": msgArr
-							});
-						}
-					});
-
-					if (isLocked) {
-						events.fire("CP_Evt_Error_Locked_Out", {
-							"id": cmp.get("v.pageId")
-						});
 					}
-
-					if (serviceUnavailable) {
-						events.fire("CP_Evt_Error_Not_Completed", {
-							"id": cmp.get("v.pageId")
-						});
-					}
-
-					if (error.type === "server-side-error" || isValid === false) {
-						events.fire("CP_Evt_Toast_Error", {
-							"id": "forgot-pass-step-1-toast-error",
-							"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-						});
-					}
-
-					//Generic error
-					if (error.type === "error") {
-						events.fire("CP_Evt_Toast_Error", {
-							"id": "forgot-pass-step-1-toast-error",
-							"message": $A.get("$Label.c.CP_Error_General")
-						});
-					}
-
-				} catch (err) {
-					console.error("Forgot Password Step 1: There was an unknown error.");
-					console.error(err);
-
-					events.fire("CP_Evt_Toast_Error", {
-						"id": "forgot-pass-step-1-toast-error",
-						"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-					});
-				}
+				);
 			}
 		);
 	},

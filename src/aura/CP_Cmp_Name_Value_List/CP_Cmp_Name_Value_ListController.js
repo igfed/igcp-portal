@@ -5,7 +5,7 @@
 		}
 	},
 	onSetList: function(cmp, evt, hlpr) {
-		console.log("CP_Cmp_Name_Value_List: onSetList");
+		console.warn("CP_Cmp_Name_Value_List: onSetList");
 
 		var payload = evt.getParam("payload");
 
@@ -25,11 +25,17 @@
 
 			values.forEach(function(item, i) {
 
+				var itemType = "";
+
+				if(item.type) {
+					itemType = item.type;
+				}
+
 				$A.createComponent(
 					componentName, {
 						"label": item.label,
 						"description": item.detail,
-						"type": item.type
+						"type": itemType
 					},
 					function(nameValueItem, status, errorMessage) {
 						if (status === "SUCCESS") {

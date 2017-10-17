@@ -1,18 +1,22 @@
 public class DTO_InvestmentsPreviewItem {
+	@AuraEnabled public String accountNumber;
 	@AuraEnabled public String accountName;
 	@AuraEnabled public Double marketValue;
 	@AuraEnabled public Double gainLoss;
 	@AuraEnabled public Double percGainLoss;
 	@AuraEnabled public String dealerName;
+	@AuraEnabled public String registrationType;
 	@AuraEnabled public String signGainLoss; //neutral, positive, negative
 
-	public DTO_InvestmentsPreviewItem(String theAccountName, Double theMarketValue, Double theGainLoss, String theDealerName) {
-		this.accountName 	= theAccountName;
-		this.marketValue 	= theMarketValue;
-		this.gainLoss 		= theGainLoss;
-		this.dealerName		= theDealerName;
-		this.percGainLoss 	= calculateGainLossPerc(this.marketValue, this.gainLoss);
-		this.signGainLoss	= determineSignGainLoss(this.gainLoss);
+	public DTO_InvestmentsPreviewItem(String theAccountNumber, Double theMarketValue, Double theGainLoss, String theDealerName, 
+				String theRegistrationType) {
+		this.accountNumber 		= theAccountNumber;
+		this.marketValue 		= theMarketValue;
+		this.gainLoss 			= theGainLoss;
+		this.dealerName			= theDealerName;
+		this.registrationType 	= theRegistrationType;
+		this.percGainLoss 		= calculateGainLossPerc(this.marketValue, this.gainLoss);
+		this.signGainLoss		= determineSignGainLoss(this.gainLoss);
 	}
 
 	private Double calculateGainLossPerc(Double theValue, Double theGainLoss) {
@@ -20,9 +24,11 @@ public class DTO_InvestmentsPreviewItem {
 		if (theValue != null && theGainLoss != null) {
 			Decimal decValue = Decimal.valueOf(theValue);
 			Decimal decGainLoss = Decimal.valueOf(theGainLoss);
-			Decimal result = decGainLoss.divide(decValue, 4);
-			result = result.setScale(2);
-			rv = result.doubleValue();
+			if (decValue != 0) {
+				Decimal result = decGainLoss.divide(decValue, 4);
+				result = result.setScale(2);
+				rv = result.doubleValue();
+			}
 		}
 		return rv;
 	}

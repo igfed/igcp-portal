@@ -47,7 +47,6 @@
     window.digitalData.page.pageInfo.server = window.location.href;
     window.digitalData.page.pageInfo.timezone = new Date().getTimezoneOffset() / 60;
 
-
     console.log(window.digitalData);
 
     // Only fire this in Salesforce

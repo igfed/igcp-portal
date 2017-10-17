@@ -98,5 +98,13 @@
 		<aura:attribute name="obj" type="Map"></aura:attribute>
 		<aura:attribute name="callback" type="function" default="" />
 	</aura:method>
+
+	<!-- CALCULATE PERCENTAGE -->
+	<!-- Calculates two values to create a percentage -->
+	<aura:method name="calculatePercentage" action="{!c.onCalculatePercentage}">
+		<aura:attribute name="value" type="Double"></aura:attribute>
+		<aura:attribute name="total" type="Double"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
 	
 </aura:component>

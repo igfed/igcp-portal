@@ -120,24 +120,30 @@
 		if (isEmpty === true) {
 
 			errorCheckObj["isEmpty"] = isEmpty;
-			
+
 		} else {
 
 			errorCheckObj["minLength"] = minLength;
 			errorCheckObj["hasUppercase"] = hasUppercase;
 
-			if(hasNumber !== true) {
+			if (hasNumber !== true) {
 				//check if pass has special char
 				errorCheckObj["hasSpecialChar"] = hasSpecialChar;
 			}
 
-			if(hasSpecialChar !== true) {
+			if (hasSpecialChar !== true) {
 				//Check if pass has number
 				errorCheckObj["hasNumber"] = hasNumber;
 			}
 		}
 
 		errors = hlpr.checkForErrors(errorCheckObj);
+
+		errors.forEach(function(item, i) {
+			if (item.type === "isEmpty") {
+				item["msg"] = $A.get("$Label.c.CP_Error_Empty_Field");
+			}
+		});
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
@@ -182,7 +188,7 @@
 		errors.forEach(function(item, i) {
 			if (item.type === "hasNumberOnly") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Client_Number_Numbers_Only");
-			} else if(item.type === "isEmpty") {
+			} else if (item.type === "isEmpty") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Empty_Field");
 			}
 		});
@@ -250,10 +256,10 @@
 			dayValid = hlpr.lessThanOrEqual(splitValues[1], 31);
 			yearValid = hlpr.lessThanOrEqual(splitValues[2], (new Date()).getFullYear());
 
-			if(splitValues[1] === "") {
+			if (splitValues[1] === "") {
 				errorCheckObj["hasDay"] = false;
 				errorCheckObj["hasYear"] = false;
-			} else if(splitValues[2] === "") {
+			} else if (splitValues[2] === "") {
 				errorCheckObj["hasYear"] = false;
 			} else {
 				errorCheckObj["monthValid"] = monthValid;
@@ -271,11 +277,11 @@
 				item["msg"] = $A.get("$Label.c.CP_Error_Day_Invalid");
 			} else if (item.type === "yearValid") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Year_Invalid");
-			} else if(item.type === "hasDay") {
+			} else if (item.type === "hasDay") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Date_No_Day");
-			} else if(item.type === "hasYear") {
+			} else if (item.type === "hasYear") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Date_No_Year");
-			} else if(item.type === "isEmpty") {
+			} else if (item.type === "isEmpty") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Date_Empty");
 			}
 		});
@@ -340,7 +346,7 @@
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
-	validateText: function (params, callBack, cmp, hlpr){
+	validateText: function(params, callBack, cmp, hlpr) {
 		var
 			value = params.value,
 			id = params.id,
@@ -352,7 +358,7 @@
 		if (isEmpty === true) {
 			errorCheckObj["isEmpty"] = isEmpty;
 		} else {
-			errorCheckObj["minLength"] = minLength;	
+			errorCheckObj["minLength"] = minLength;
 		}
 
 		errors = hlpr.checkForErrors(errorCheckObj);
@@ -365,7 +371,7 @@
 			}
 		});
 
-		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });	
+		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
 	validateQuestion: function(params, callBack, cmp, hlpr) {
 

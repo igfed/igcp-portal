@@ -1,4 +1,6 @@
 ({
-	myAction : function(component, event, helper) {
+	gotoLogin: function(cmp, evt, hlpr) {
+		var utils = cmp.find("CP_Utils");
+		utils.navigateToURL("/customers");
 	}
 })

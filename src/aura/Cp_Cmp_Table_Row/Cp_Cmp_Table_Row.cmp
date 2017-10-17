@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component >
 	<!-- ATTRS -->
 	<aura:attribute name="values" type="Map"></aura:attribute>
 	<!-- HANDLERS -->

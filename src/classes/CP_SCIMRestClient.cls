@@ -112,11 +112,13 @@ public class CP_SCIMRestClient {
                 }
                 catch(Exception e)
                 {
+                    System.debug('Exception Caught - CP_SCIMRestClient.getRandomSecurityQuestion: '+ e.getMessage());
                     securityResponse = new RandomSecurityQuestion(false, 500, e.getMessage());
                 }
             }
             else
             {
+                System.debug('Some Other Error in - CP_SCIMRestClient.getRandomSecurityQuestion: '+ response.error);
                 securityResponse = new RandomSecurityQuestion(response.success, response.code, response.error);
             }
             return securityResponse;

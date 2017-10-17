@@ -1,0 +1,20 @@
+@media print {
+	
+	//Elemements
+	body {
+		font-family: "WhitneyBook", Arial, sans-serif;
+		font-size: $ig-font-size--base;
+		line-height: $ig-line-height--base;
+		display: block;
+		margin: $ig-space--medium;
+	}
+	
+	input, button, svg {
+		display: none;
+	}
+
+	//Classes
+	.igcp-link__print {
+		display: none;
+	}
+}

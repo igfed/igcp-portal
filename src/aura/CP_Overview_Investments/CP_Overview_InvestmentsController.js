@@ -9,16 +9,20 @@
 		// 0003497138
 
 		var
+			events = cmp.find("CP_Events"),
 			services = cmp.find("CP_Services"),
 			utils = cmp.find("CP_Utils"),
 			bpid = "0003497138";
 
+
+		//GET INVESTMENT PREVIEW
 		services.getInvestmentsPreview(
 			bpid,
 			cmp,
 			function(previewObj) {
+
 				var
-					accountPreviewsObj = previewObj.previewAggregatesByType,
+					accountPreviewsObj = previewObj.previewAggregatesByTypeAndReg,
 					accountTypeArr = [];
 
 				utils.formatToCurrency(previewObj.totalValue, function(formattedValue) {
@@ -37,11 +41,63 @@
 					accountTypeArr.push(value);
 				});
 
+				console.log(accountTypeArr);
+
 				hlpr.addAccounts(accountTypeArr, cmp);
 
 			},
 			function(error) {
 				console.error("GET INVESTMENT PREVIEW");
+				console.error(error);
+			}
+		);
+
+		//GET ASSET MIX
+		services.getAssetMix(
+			bpid,
+			cmp,
+			function(previewObj) {
+
+				var graphArr = [{
+						"label": $A.get("$Label.c.CP_Generic_Label_Cash"),
+						"detail": previewObj.totalCashAmount
+
+					},
+					{
+						"label": $A.get("$Label.c.CP_Generic_Label_Fixed_Income"),
+						"detail": previewObj.totalFixedIncomeAmount
+
+					},
+					{
+						"label": $A.get("$Label.c.CP_Generic_Label_Balanced"),
+						"detail": previewObj.totalBalancedAmount
+
+					},
+					{
+						"label": $A.get("$Label.c.CP_Generic_Label_Equity"),
+						"detail": previewObj.totalEquityAmount
+
+					},
+					{
+						"label": $A.get("$Label.c.CP_Generic_Label_Specialty"),
+						"detail": previewObj.totalSpecialtyAmount
+
+					}
+				];
+
+				var events = cmp.find("CP_Events");
+				events.fire(
+					"CP_Evt_Set_Doughnut",
+					{
+						"id" : "investments-asset-mix",
+						"type" : "doughnut",
+						"data" : graphArr,
+						"total" : previewObj.totalAllAmounts
+					}
+				);
+			},
+			function(error) {
+				console.error("Get Asset Mix");
 				console.error(error);
 			}
 		);

@@ -1,25 +1,29 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 	
+	<!-- ATTRS -->
+	<aura:attribute name="profile" type="Map"></aura:attribute>
+
+	<!-- Markup -->
 	<div class="igcp-container slds-p-around--medium slds-m-bottom--medium">
 		<h3 class="slds-m-bottom--small">Investment Profile</h3>
 		<dl class="igcp-list slds-grid slds-wrap">
 			<div class="slds-size_3-of-12 ">
-				<dt class="igcp-list__item-label--c slds-item_label slds-truncate" title="First Label">Investment Profile</dt>
-				<dd class="igcp-list__item-detail--c slds-item_detail slds-truncate" title="Description for first label">Moderate</dd>
-		    </div>
+				<dt class="igcp-list__item-label--c slds-item_label " title="Investment Profile">Investment Profile</dt>
+				<dd class="igcp-list__item-detail--c slds-item_detail" title="Value for investment profile ">{!v.profile.investmentProfile}</dd>
+		  </div>
 
 		    <div class="slds-size_3-of-12 ">
-				<dt class="igcp-list__item-label--c slds-item_label slds-truncate" title="Second Label">Investment Objective</dt>
-				<dd class="igcp-list__item-detail--c slds-item_detail slds-truncate" title="Description for second label">Retirement Savings</dd>
+				<dt class="igcp-list__item-label--c slds-item_label slds-truncate" title="Investment Objective">Investment Objective</dt>
+				<dd class="igcp-list__item-detail--c slds-item_detail slds-truncate" title="Value for investment objective">{!v.profile.investmentObjective}</dd>
 			</div>
 			<div class="slds-size_3-of-12 ">
-				<dt class="igcp-list__item-label--c slds-item_label slds-truncate" title="First Label">Risk Tolerance</dt>
-				<dd class="igcp-list__item-detail--c slds-item_detail slds-truncate" title="Description for first label">High</dd>
+				<dt class="igcp-list__item-label--c slds-item_label slds-truncate" title="Risk Tolerancel">Risk Tolerancel</dt>
+				<dd class="igcp-list__item-detail--c slds-item_detail slds-truncate" title="Value for risk tolerance">{!v.profile.riskTolerance}</dd>
 		    </div>
 
 		    <div class="slds-size_3-of-12 ">
-				<dt class="igcp-list__item-label--c slds-item_label slds-truncate" title="Second Label">Investment Time Horizon</dt>
-				<dd class="igcp-list__item-detail--c slds-item_detail slds-truncate" title="Description for second label">5 - 10 yrs</dd>
+				<dt class="igcp-list__item-label--c slds-item_label slds-truncate" title="Investment Time Horizon">Investment Time Horizon</dt>
+				<dd class="igcp-list__item-detail--c slds-item_detail slds-truncate" title="Value for Investment Time Horizon">{!v.profile.investmentTimeHorizon}</dd>
 			</div>
 		</dl>
 

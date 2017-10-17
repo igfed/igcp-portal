@@ -5,6 +5,7 @@
 //Medium
 @media (min-width: $ig-medium) {
 
+	//REGISTRATION
 	.#{$namespace}-registration {
 		.#{$namespace}-registration__pfa {
 			h1 {
@@ -16,18 +17,14 @@
 		.#{$namespace}-registration__pfa--monitor {
 			width: 360px;
 		}
-	}
+	} 
 
-	.#{$namespace}-footer {
-		.footer-link {
-			float: left;
-		}
-	}
-
+	//CARD
 	.#{$namespace}-card__image {
 		width: 75%;
-	}
+	} 
 
+	//FIGURE
 	.#{$namespace}-figure {
 
 		.#{$namespace}-figure__caption {
@@ -36,20 +33,51 @@
 				text-align: left;
 			}
 		}
-	}
+	} 
 
+	//MODAL
 	.#{$namespace}-modal__footer {
 		margin: 0 0 0 -#{$ig-space--xx-large};
 		padding-top: 32px;
 		padding-left: 0px;
 		padding-right: 0px;
 		padding-bottom: 0px;
+	} 
+
+	//VALUES
+	.#{$namespace}-value--large {
+		font-size: $ig-font-size--large;
+	} 
+
+	//TOOLTIP
+	.#{$namespace}-tooltip {
+		&.#{$namespace}-tooltip__label--small {
+			padding-left: 8px;
+			padding-top: 6px;
+		}
+	} 
+
+	//FOOTER
+	.#{$namespace}-footer {
+		.footer-link {
+			float: left;
+		}
 	}
 }
 
 //Large
 @media (min-width: $ig-large) {
 
+	//REGISTRATION
+	.#{$namespace}-registration {
+		.#{$namespace}-registration__pfa--monitor {
+			top: 23px;
+			height: 282px;
+			overflow: visible;
+		}
+	} 
+
+	//BUTTON
 	.#{$namespace}-button__chat {
 		float: none;
 		position: fixed;
@@ -61,20 +89,9 @@
 		position: absolute;
 		right: -200px;
 		top: -160px;
-	}
+	} 
 
-	.#{$namespace}-registration {
-		.#{$namespace}-registration__pfa--monitor {
-			top: 23px;
-			height: 282px;
-			overflow: visible;
-		}
-	}
-
-	.#{$namespace}-value--large {
-		font-size: $ig-font-size--large;
-	}
-
+	//VALUES
 	.#{$namespace}-value--medium {
 		line-height: $ig-line-height--base;
 		font-size: $ig-font-size--medium-plus;
@@ -88,16 +105,34 @@
 	.#{$namespace}-value--x-small {
 		line-height: $ig-line-height--base;
 		font-size: $ig-font-size--base;
-	}
+	} 
 
+	//SEPARATOR
 	.#{$namespace}-separator--large {
 		height: $ig-space--x-small;
-	}
+	} 
 
+	//CARD
 	.#{$namespace}-card__image {
 		width: 100%;
-	}
+	} 
 
+	//MODAL
+	.#{$namespace}-modal {
+
+		&.#{$namespace}-modal__small {
+
+			.#{$namespace}-modal__small--inner {
+				@include roundCorner();
+				top: 25%;
+				left: 25%;
+				right: 25%;
+				bottom: 25%;
+			}
+		}
+	} 
+
+	//FOOTER
 	.#{$namespace}-footer {
 		padding-top: 0;
 
@@ -113,19 +148,6 @@
 
 		.footer-navigation .columns {
 			text-align: left;
-		}
-	} //Modal
-	.#{$namespace}-modal {
-
-		&.#{$namespace}-modal__small {
-
-			.#{$namespace}-modal__small--inner {
-				@include roundCorner();
-				top: 25%;
-				left: 25%;
-				right: 25%;
-				bottom: 25%;
-			}
 		}
 	}
 }

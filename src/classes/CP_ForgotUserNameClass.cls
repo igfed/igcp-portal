@@ -22,21 +22,26 @@ public class CP_ForgotUserNameClass {
                     state.IsValid = false;
                     state.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);    
                 }
-                else if(objContact.email != this.email)
-                {   
-                    state.IsValid = false;
-                    state.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);
-                }
                 else
                 {
                     if(objContact.Portal_User_Is_Locked__c == true)
-                    {
+                    {   
                         state.IsValid = false;
                         state.IsLocked = true;
+                        state.Messages.add(System.Label.CP_Registration_Locked_h1);
+                    }
+                    else if (objContact.Portal_User_Is_Registered__c == false)
+                    {
+                        state.IsValid = false;
+                        state.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);
                     }
                     else
-                    {
-                        state.IsValid = true;
+                    {       
+                        if(objContact.email != this.email)
+                        {   
+                            state.IsValid = false;
+                            state.Messages.add(System.Label.CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid);
+                        }
                     }
                 }
             }
@@ -82,8 +87,9 @@ public class CP_ForgotUserNameClass {
                         }
                         else
                         {
-                            response.State.IsValid = false;   
-                            response.State.Messages.add(isamResponse.error);
+                            response.State.IsValid = false; 
+                            response.State.ServiceNotAvailable = true; 
+                            response.State.Messages.add(System.Label.CP_Generic_Server_Error_Instructions);
                         }
                     }
                 }
@@ -158,7 +164,8 @@ public class CP_ForgotUserNameClass {
                         {
                             state.IsValid = false;
                             state.IsLocked = this.recordFailedSecurityAnswerAttemptAndLock();
-                            state.Messages.add(isamResponse.error);
+                            System.debug('Error From SCIM API: '+ isamResponse.error);
+                            state.Messages.add(System.Label.CP_Generic_Server_Error_Instructions);
                         }
                     }
                 }
@@ -306,24 +313,13 @@ public class CP_ForgotUserNameClass {
                 if(objContact != null)
                 {
                     String emailTemplate = objContact.Preferred_Language__c == 'French' ? 'IG_Forgot_User_Name_French' : 'IG_Forgot_User_Name_English';
-                    OrgWideEmailAddress owa  = [SELECT ID, Address from OrgWideEmailAddress where Address  ='derek.chu@investorsgroup.com']; 
-                    System.debug('=====> owa: ' + owa);
+                    
                     User objUser  = this.getUserByUserName(objContact.Portal_User_Name__c);
                     System.debug('=====> objUser: ' + objUser);
                     if(objUser != null)
-                    {
-                        if(owa != null)
-                             CP_Utility.sendTemplatedEmail(emailTemplate, objUser.Id, objContact.ID, owa.Id);
-                        else
-                             CP_Utility.sendTemplatedEmail(emailTemplate, objUser.Id, objContact.ID, null);
-                    }
+                        CP_Utility.sendTemplatedEmail(emailTemplate, objUser.Id, objContact.ID);
                     else
-                    {
-                        if(owa != null)
-                             CP_Utility.sendTemplatedEmail(emailTemplate, objContact.ID, objContact.ID, owa.Id);
-                        else
-                             CP_Utility.sendTemplatedEmail(emailTemplate, objContact.ID, objContact.ID, null);
-                    }
+                        CP_Utility.sendTemplatedEmail(emailTemplate, objContact.ID, objContact.ID);
                 }
             }
             catch(exception e)
@@ -334,8 +330,6 @@ public class CP_ForgotUserNameClass {
             return true;
         }
        
-
-
         
 
 

@@ -7,8 +7,8 @@
 		//Investments
 		if (cmp.get("v.itemType") === "investments") {
 
-			if (account.dealerName && account.accountName) {
-				cmp.set("v.accountName", (account.dealerName + " - " + account.accountName));
+			if (account.accountName) {
+				cmp.set("v.accountName", account.accountName);
 			} else {
 				cmp.set("v.accountName", $A.get("$Label.c.CP_Generic_Not_Available"));
 			}
@@ -26,7 +26,14 @@
 			if (account.marketValue) {
 				var marketValue = "";
 				utils.formatToCurrency(account.marketValue, function(formattedValue){
-					marketValue = "$" + formattedValue;
+					if(cmp.get("v.lang") === "en_US" || cmp.get("v.lang") === "en_CA") {
+						formattedValue = "$" + formattedValue;
+					} else if(cmp.get("v.lang") === "fr_CA") {
+						formattedValue = formattedValue + " $";
+					} else {
+						formattedValue = "$" + formattedValue;
+					}
+					marketValue = formattedValue;
 				}, cmp.get("v.lang"));
 				cmp.set("v.val2", marketValue);
 			} else {

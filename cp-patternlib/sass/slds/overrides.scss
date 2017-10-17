@@ -1,78 +1,89 @@
 //NOTE: This file contains extended/modified/new slds classes to fill in missing gaps in the SLDS capabilities. For reference see: https://lightningdesignsystem.com/
 .slds-icon_container {
-    top: -3px;
-    position: relative;
+	top: -3px;
+	position: relative;
+}
+
+.slds-spinner_brand {
+	&.slds-spinner:before,
+	&.slds-spinner:after,
+	&.slds-spinner__dot-a:before,
+	&.slds-spinner__dot-a:after,
+	&.slds-spinner__dot-b:before,
+	&.slds-spinner__dot-b:after {
+		background-color: $ig-dark-blue;
+	}
 }
 
 .slds-button {
-    font-family: $ig-whitney-semibold;
-    font-size: $ig-font-size--base;
-    letter-spacing: $ig-letter-spacing;
-    text-transform: capitalize;
+	font-family: $ig-whitney-semibold;
+	font-size: $ig-font-size--base;
+	letter-spacing: $ig-letter-spacing;
+	text-transform: capitalize;
 }
 
 .slds-button--brand {
 	background-color: $ig-blue;
-    color: #fff;
+	color: #fff;
 
-    &:hover {
-        background-color: transparent;
-        color: $ig-blue;
-        
-    }
+	&:hover {
+		background-color: transparent;
+		color: $ig-blue;
+	}
 }
 
 .slds-button--neutral {
-    background-color: transparent;
-    color: $ig-blue;
+	background-color: transparent;
+	color: $ig-blue;
 
-    &:hover {
-        background-color: $ig-blue;
-        color: $ig-white;
-    }
+	&:hover {
+		background-color: $ig-blue;
+		color: $ig-white;
+	}
 }
 
 .slds-form-element__label {
-    font-family: $ig-whitney-semibold;
-    font-size: $ig-font-size--base;
-    letter-spacing: $ig-letter-spacing;
+	font-family: $ig-whitney-semibold;
+	font-size: $ig-font-size--base;
+	letter-spacing: $ig-letter-spacing;
 
-    &.input-label {
-        position: relative;
-        top: 3px;
-        font-size: $ig-font-size--mini;
-        margin-right: $ig-space--xxx-small;
-        color: $ig-black;
+	&.input-label {
+		position: relative;
+		top: 3px;
+		font-size: $ig-font-size--mini;
+		margin-right: $ig-space--xxx-small;
+		color: $ig-black;
 
-        span {
-        	font-family: $ig-whitney-book;
-        	color: $ig-black;
-        	margin-left: $ig-space--xx-small;
-        }
-    }
+		span {
+			font-family: $ig-whitney-book;
+			color: $ig-black;
+			margin-left: $ig-space--xx-small;
+			margin-right: $ig-space--xx-small;
+		}
+	}
 }
 
 
 .uiInput.has-error {
-    border: none;
+	border: none;
 }
 
 .slds-input.igcp-input.has-error.uiInput.uiInputText.uiInput--input {
-    border: 1px solid red;
+	border: 1px solid red;
 }
 
 .slds-checkbox {
 
-    .slds-form-element__label.input-label {
-        font-family: $ig-whitney-book;
-        font-size: $ig-font-size--base;
-        line-height: $ig-line-height--base;
-        top: 0;
-    }
+	.slds-form-element__label.input-label {
+		font-family: $ig-whitney-book;
+		font-size: $ig-font-size--base;
+		line-height: $ig-line-height--base;
+		top: 0;
+	}
 
-    .slds-checkbox--faux {
-    border: 1px solid $ig-black;
-}
+	.slds-checkbox--faux {
+		border: 1px solid $ig-black;
+	}
 }
 
 .slds-checkbox [type=checkbox]:checked+.slds-checkbox_faux:after,
@@ -82,60 +93,60 @@
 .slds-checkbox [type=checkbox]:checked+.slds-checkbox__label .slds-checkbox_faux:after,
 .slds-checkbox [type=checkbox]:checked+.slds-checkbox__label .slds-checkbox--faux:after {
 
-    border-bottom: 2px solid $ig-dark-blue;
-    border-left: 2px solid $ig-dark-blue;
+	border-bottom: 2px solid $ig-dark-blue;
+	border-left: 2px solid $ig-dark-blue;
 }
 
 .slds-checkbox__label {
-    border: none;
+	border: none;
 }
 
 .slds-progress {
 
-    max-width: 100%;
+	max-width: 100%;
 
-    .slds-progress__item {
+	.slds-progress__item {
 
-        margin-bottom: 0;
+		margin-bottom: 0;
 
-        &.slds-is-completed .slds-progress__marker,
-        &.slds-is-active .slds-progress__marker {
-            background: $ig-dark-blue;
-            border: none;
-            color: $ig-white;
-            box-shadow: none;
-        }
+		&.slds-is-completed .slds-progress__marker,
+		&.slds-is-active .slds-progress__marker {
+			background: $ig-dark-blue;
+			border: none;
+			color: $ig-white;
+			box-shadow: none;
+		}
 
-        &.slds-is-completed .slds-progress__marker {
-            background: $ig-white;
-        }
+		&.slds-is-completed .slds-progress__marker {
+			background: $ig-white;
+		}
 
-        .slds-progress__marker {
-            width: $ig-space--medium;
-            height: $ig-space--medium;
-            border: none;
-            background: $ig-dark-grey;
-        }
-    }
+		.slds-progress__marker {
+			width: $ig-space--medium;
+			height: $ig-space--medium;
+			border: none;
+			background: $ig-dark-grey;
+		}
+	}
 
-    .slds-progress-bar__value {
-        background: $ig-dark-grey;
-    }
+	.slds-progress-bar__value {
+		background: $ig-dark-grey;
+	}
 
-    .slds-icon-text-default {
-        fill: $ig-white;
-    }
+	.slds-icon-text-default {
+		fill: $ig-white;
+	}
 
-    .slds-icon {
-        width: $ig-space--medium;
-        height: $ig-space--medium;
-    }
+	.slds-icon {
+		width: $ig-space--medium;
+		height: $ig-space--medium;
+	}
 
-    .slds-icon-utility-success {
-        svg {
-            fill: $ig-dark-blue;
-        }
-    }
+	.slds-icon-utility-success {
+		svg {
+			fill: $ig-dark-blue;
+		}
+	}
 }
 
 .slds-card {

@@ -1,0 +1,16 @@
+<aura:component >
+	
+	<!-- ATTRS -->
+	<aura:attribute name="color" type="String" default="#000" ></aura:attribute>
+	<aura:attribute name="width" type="String" default="10px"></aura:attribute>
+	<aura:attribute name="height" type="String" default="10px"></aura:attribute>
+	<aura:attribute name="inlineStyle" type="String" default=""></aura:attribute>
+	<aura:attribute name="class" type="String" default="" ></aura:attribute>
+
+	<!-- HANDLERS -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+	<!-- MARKUP -->
+	<div class="{!v.class}" style="{!v.inlineStyle}"></div>
+
+</aura:component>

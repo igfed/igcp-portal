@@ -181,7 +181,6 @@
 .#{$namespace}-value--large {
 	font-family: $ig-whitney-light;
 	line-height: $ig-line-height--base;
-	font-size: $ig-font-size--large;
 
 	sup {
 		font-size: 70%;
@@ -453,15 +452,43 @@
 //TOOLTIP
 .#{$namespace}-tooltip {
 
+	position: relative;
 	display: inline-block;
+	width: $ig-space--small;
+	height: $ig-space--small;
+	margin-left: $ig-space--xx-small;
+
+
+	.#{$namespace}-tooltip-container {
+		position: absolute;
+		left: 0;
+		top: 1px;
+		margin: 0;
+		width: $ig-space--small;
+		height: $ig-space--small;
+	}
 
 	&.#{$namespace}-tooltip__label--small {
-		padding-left: 8px;
-		padding-top: 6px;
+		padding-left: 4px;
+		padding-top: 0px;
 	}
 
 	.#{$namespace}-tooltip__tip {
-		border: none;
+
+		&.has-tip {
+			border: none;
+			margin: 0;
+			width: $ig-space--small;
+			height: $ig-space--small;
+		}
+
+		.slds-icon_container.slds-icon-utility-info {
+			margin: 0;
+
+			span {
+				margin: 0;
+			}
+		}
 	}
 }
 
@@ -476,12 +503,9 @@
 	background-color: $ig-dark-blue;
 }
 
+
+//FIGURE
 .#{$namespace}-figure {
-	.#{$namespace}-figure__image {
-		// margin: 0 auto;
-		// text-align: center;
-		// width: 35%;
-	}
 
 	.#{$namespace}-figure__caption {
 		margin: 0;
@@ -514,16 +538,24 @@
 		}
 	}
 
-
 	.#{$namespace}-toast__message {
 		color: $ig-white;
 	}
 }
 
-//Border
+//BORDER
 .#{$namespace}-border--double {
 	height: 3px;
 	width: auto;
 	border-top: 1px solid $ig-grey;
 	border-bottom: 1px solid $ig-grey;
 }
+
+//Boxed component
+.#{$namespace}-boxed--white {
+	background-color: #fff;
+	padding: 30px 25px;
+}
+
+//GRAPH
+.#{$namespace}-graph__doughnut-legend {}

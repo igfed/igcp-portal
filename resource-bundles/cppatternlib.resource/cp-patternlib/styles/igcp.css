@@ -78,6 +78,19 @@ label {
 dl dt {
   font-weight: 100; }
 
+@media print {
+  body {
+    font-family: "WhitneyBook", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    display: block;
+    margin: 24px; }
+
+  input, button, svg {
+    display: none; }
+
+  .igcp-link__print {
+    display: none; } }
 @media (min-width: 768px) {
   h1 {
     font-family: "WhitneyLight", Arial, sans-serif;
@@ -99,6 +112,9 @@ dl dt {
 .slds-icon_container {
   top: -3px;
   position: relative; }
+
+.slds-spinner_brand.slds-spinner:before, .slds-spinner_brand.slds-spinner:after, .slds-spinner_brand.slds-spinner__dot-a:before, .slds-spinner_brand.slds-spinner__dot-a:after, .slds-spinner_brand.slds-spinner__dot-b:before, .slds-spinner_brand.slds-spinner__dot-b:after {
+  background-color: #0d263c; }
 
 .slds-button {
   font-family: "WhitneySemibold", Arial, sans-serif;
@@ -133,7 +149,8 @@ dl dt {
     .slds-form-element__label.input-label span {
       font-family: "WhitneyBook", Arial, sans-serif;
       color: #282828;
-      margin-left: 8px; }
+      margin-left: 8px;
+      margin-right: 8px; }
 
 .uiInput.has-error {
   border: none; }
@@ -2047,6 +2064,16 @@ dl dt {
   background: url(../icons/user_60.png) no-repeat top left;
   background-size: 100%;
   margin: 3px 5px 0 0; }
+.igcp-login .slds-icon-show-password {
+  float: right;
+  width: 40px;
+  height: 40px;
+  background: url(../icons/show_password.png) no-repeat top left;
+  background-size: 100%;
+  margin: -37px 0 0 0;
+  font-size: 0; }
+  .igcp-login .slds-icon-show-password:hover {
+    cursor: pointer; }
 .igcp-login .slds-icon-utility-info {
   float: left;
   width: 16px;
@@ -2501,6 +2528,11 @@ dl dt {
     left: 50%;
     transform: translateX(-50%); }
 
+  .igcp-utils__center--vertical {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); }
+
   .igcp-utils__position--relative {
     position: relative; }
 
@@ -2748,6 +2780,11 @@ dl dt {
     position: absolute;
     left: 50%;
     transform: translateX(-50%); }
+
+  .igcp-small-utils__center--vertical {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); }
 
   .igcp-small-utils__position--relative {
     position: relative; }
@@ -2997,6 +3034,11 @@ dl dt {
     left: 50%;
     transform: translateX(-50%); }
 
+  .igcp-medium-utils__center--vertical {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); }
+
   .igcp-medium-utils__position--relative {
     position: relative; }
 
@@ -3245,6 +3287,11 @@ dl dt {
     left: 50%;
     transform: translateX(-50%); }
 
+  .igcp-large-utils__center--vertical {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); }
+
   .igcp-large-utils__position--relative {
     position: relative; }
 
@@ -3378,8 +3425,7 @@ dl dt {
 
 .igcp-value--large {
   font-family: "WhitneyLight", Arial, sans-serif;
-  line-height: 24px;
-  font-size: 32px; }
+  line-height: 24px; }
   .igcp-value--large sup {
     font-size: 70%;
     top: -0.25em; }
@@ -3555,12 +3601,30 @@ dl dt {
     max-width: 600px; }
 
 .igcp-tooltip {
-  display: inline-block; }
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 8px; }
+  .igcp-tooltip .igcp-tooltip-container {
+    position: absolute;
+    left: 0;
+    top: 1px;
+    margin: 0;
+    width: 16px;
+    height: 16px; }
   .igcp-tooltip.igcp-tooltip__label--small {
-    padding-left: 8px;
-    padding-top: 6px; }
-  .igcp-tooltip .igcp-tooltip__tip {
-    border: none; }
+    padding-left: 4px;
+    padding-top: 0px; }
+  .igcp-tooltip .igcp-tooltip__tip.has-tip {
+    border: none;
+    margin: 0;
+    width: 16px;
+    height: 16px; }
+  .igcp-tooltip .igcp-tooltip__tip .slds-icon_container.slds-icon-utility-info {
+    margin: 0; }
+    .igcp-tooltip .igcp-tooltip__tip .slds-icon_container.slds-icon-utility-info span {
+      margin: 0; }
 
 .igcp-tooltip__opened {
   position: absolute;
@@ -3600,15 +3664,16 @@ dl dt {
   border-top: 1px solid #e9ecee;
   border-bottom: 1px solid #e9ecee; }
 
+.igcp-boxed--white {
+  background-color: #fff;
+  padding: 30px 25px; }
+
 @media (min-width: 768px) {
   .igcp-registration .igcp-registration__pfa h1 {
     font-size: 24px;
     line-height: 32px; }
   .igcp-registration .igcp-registration__pfa--monitor {
     width: 360px; }
-
-  .igcp-footer .footer-link {
-    float: left; }
 
   .igcp-card__image {
     width: 75%; }
@@ -3622,8 +3687,23 @@ dl dt {
     padding-top: 32px;
     padding-left: 0px;
     padding-right: 0px;
-    padding-bottom: 0px; } }
+    padding-bottom: 0px; }
+
+  .igcp-value--large {
+    font-size: 32px; }
+
+  .igcp-tooltip.igcp-tooltip__label--small {
+    padding-left: 8px;
+    padding-top: 6px; }
+
+  .igcp-footer .footer-link {
+    float: left; } }
 @media (min-width: 1024px) {
+  .igcp-registration .igcp-registration__pfa--monitor {
+    top: 23px;
+    height: 282px;
+    overflow: visible; }
+
   .igcp-button__chat {
     float: none;
     position: fixed;
@@ -3634,14 +3714,6 @@ dl dt {
     position: absolute;
     right: -200px;
     top: -160px; }
-
-  .igcp-registration .igcp-registration__pfa--monitor {
-    top: 23px;
-    height: 282px;
-    overflow: visible; }
-
-  .igcp-value--large {
-    font-size: 32px; }
 
   .igcp-value--medium {
     line-height: 24px;
@@ -3661,15 +3733,6 @@ dl dt {
   .igcp-card__image {
     width: 100%; }
 
-  .igcp-footer {
-    padding-top: 0; }
-    .igcp-footer .footer-copyright .footer-copyright-border-top .row {
-      border-top: none; }
-      .igcp-footer .footer-copyright .footer-copyright-border-top .row .columns ul li {
-        border-right: none; }
-    .igcp-footer .footer-navigation .columns {
-      text-align: left; }
-
   .igcp-modal.igcp-modal__small .igcp-modal__small--inner {
     border-radius: 3px;
     /* Android 2.1+, Chrome, Firefox 4+, IE 9+, iOS 4+, Opera 10.50+, Safari 5+ */
@@ -3679,6 +3742,15 @@ dl dt {
     top: 25%;
     left: 25%;
     right: 25%;
-    bottom: 25%; } }
+    bottom: 25%; }
+
+  .igcp-footer {
+    padding-top: 0; }
+    .igcp-footer .footer-copyright .footer-copyright-border-top .row {
+      border-top: none; }
+      .igcp-footer .footer-copyright .footer-copyright-border-top .row .columns ul li {
+        border-right: none; }
+    .igcp-footer .footer-navigation .columns {
+      text-align: left; } }
 
 /*# sourceMappingURL=igcp.css.map */

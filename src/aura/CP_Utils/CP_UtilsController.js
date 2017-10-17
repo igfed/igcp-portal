@@ -85,11 +85,12 @@
 	onWaitFor: function(cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
+
 			var
 				component = params.component,
 				timer = setInterval(function() {
-					if (component.get(params.attr) === true) {
-						params.callback();
+					if (component.get(params.attr) === true || component.get(params.attr) !== null) {
+						params.callback(component.get(params.attr));
 						clearInterval(timer);
 					}
 				}, 500);
@@ -221,5 +222,16 @@
 			
 		}
 
+	},
+	onCalculatePercentage: function(cmp, evt, hlpr) {
+		var params = evt.getParam("arguments");
+
+		if (params) {
+			if(params.value && params.total) {
+				params.callback(Math.floor((params.value / params.total) * 100));
+			} else {
+				console.warn("CP_Utils: calculatePercentage: A value and total parameter are required.");
+			}
+		}
 	}
 })

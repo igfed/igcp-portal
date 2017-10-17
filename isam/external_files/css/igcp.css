@@ -57,9 +57,8 @@ p {
 
 body {
   font-family: "WhitneyBook", Arial, sans-serif;
-  background-image: url("../images/bg-tile.jpg");
-  background-repeat: repeat;
-  color: #282828; }
+  background-color: #f8f8f9;
+  color: #282828;}
 
 a {
   color: #0e75d5;
@@ -75,6 +74,22 @@ label {
   appearance: none;
   border-radius: 0.25rem; }
 
+dl dt {
+  font-weight: 100; }
+
+@media print {
+  body {
+    font-family: "WhitneyBook", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    display: block;
+    margin: 24px; }
+
+  input, button, svg {
+    display: none; }
+
+  .igcp-link__print {
+    display: none; } }
 @media (min-width: 768px) {
   h1 {
     font-family: "WhitneyLight", Arial, sans-serif;
@@ -97,6 +112,9 @@ label {
   top: -3px;
   position: relative; }
 
+.slds-spinner_brand.slds-spinner:before, .slds-spinner_brand.slds-spinner:after, .slds-spinner_brand.slds-spinner__dot-a:before, .slds-spinner_brand.slds-spinner__dot-a:after, .slds-spinner_brand.slds-spinner__dot-b:before, .slds-spinner_brand.slds-spinner__dot-b:after {
+  background-color: #0d263c; }
+
 .slds-button {
   font-family: "WhitneySemibold", Arial, sans-serif;
   font-size: 16px;
@@ -104,13 +122,15 @@ label {
   text-transform: capitalize; }
 
 .slds-button--brand {
-  background-color: #004171; }
+  background-color: #004171;
+  color: #fff; }
   .slds-button--brand:hover {
     background-color: transparent;
     color: #004171; }
 
 .slds-button--neutral {
-  background-color: transparent; }
+  background-color: transparent;
+  color: #004171; }
   .slds-button--neutral:hover {
     background-color: #004171;
     color: #fff; }
@@ -123,11 +143,18 @@ label {
     position: relative;
     top: 3px;
     font-size: 14px;
-    margin-right: 4px; }
+    margin-right: 4px;
+    color: #282828; }
     .slds-form-element__label.input-label span {
       font-family: "WhitneyBook", Arial, sans-serif;
       color: #282828;
       margin-left: 8px; }
+
+.uiInput.has-error {
+  border: none; }
+
+.slds-input.igcp-input.has-error.uiInput.uiInputText.uiInput--input {
+  border: 1px solid red; }
 
 .slds-checkbox .slds-form-element__label.input-label {
   font-family: "WhitneyBook", Arial, sans-serif;
@@ -164,9 +191,9 @@ label {
       width: 24px;
       height: 24px;
       border: none;
-      background: #cfd4d8; }
+      background: #d3d8dc; }
   .slds-progress .slds-progress-bar__value {
-    background: #cfd4d8; }
+    background: #d3d8dc; }
   .slds-progress .slds-icon-text-default {
     fill: #fff; }
   .slds-progress .slds-icon {
@@ -565,6 +592,11 @@ label {
   border-radius: 0; }
   .slds-icon_container.slds-icon-standard-person-account use {
     fill: #0ed59a; }
+
+.slds-input__icon.slds-input__icon--error {
+  top: 21px; }
+  .slds-input__icon.slds-input__icon--error .slds-icon-text-default {
+    fill: #D42F1A; }
 
 @media (min-width: 480px) {
   .slds-small-float_left {
@@ -1763,7 +1795,7 @@ label {
 .igcp-header {
   background-color: #fff;
   background-image: none;
-  border-bottom: 1px solid #e6e9eb;
+  border-bottom: 1px solid #e9ecee;
   height: 60px; }
   .igcp-header .igcp-nav {
     max-width: 1280px;
@@ -2030,6 +2062,19 @@ label {
   background: url(../icons/user_60.png) no-repeat top left;
   background-size: 100%;
   margin: 3px 5px 0 0; }
+.igcp-login .slds-icon-show-password {
+  float: right;
+  width: 40px;
+  height: 40px;
+  background: url(../icons/show_password.png) no-repeat top left;
+  background-size: 100%;
+  margin: -37px 0 0 0;
+  font-size: 0;
+ }
+
+ .igcp-login .slds-icon-show-password:hover {
+  cursor:pointer;
+ }
 .igcp-login .slds-icon-utility-info {
   float: left;
   width: 16px;
@@ -2452,7 +2497,54 @@ label {
     overflow: auto; }
 
   .igcp-utils__height--zero {
-    height: 0; } }
+    height: 0; }
+
+  .igcp-utils__colour--link-blue,
+  .igcp-utils__color--link-blue {
+    color: #0e75d5; }
+
+  .igcp-utils__colour--dark-blue,
+  .igcp-utils__color--dark-blue {
+    color: #0d263c; }
+
+  .igcp-utils__colour--black,
+  .igcp-utils__color--black {
+    color: #282828; }
+
+  .igcp-utils__colour--white,
+  .igcp-utils__color--white {
+    color: #fff; }
+
+  .igcp-utils__float--left {
+    float: left; }
+
+  .igcp-utils__float--right {
+    float: right; }
+
+  .igcp-utils__float--none {
+    float: none; }
+
+  .igcp-utils__center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); }
+
+  .igcp-utils__center--vertical {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); }
+
+  .igcp-utils__position--relative {
+    position: relative; }
+
+  .igcp-utils__position--absolute {
+    position: absolute; }
+
+  .igcp-utils__position--fixed {
+    position: fixed; }
+
+  .igcp-utils__position--static {
+    position: static; } }
 @media (min-width: 480px) {
   .igcp-small-utils__font--light {
     font-family: "WhitneyLight", Arial, sans-serif; }
@@ -2658,7 +2750,54 @@ label {
     overflow: auto; }
 
   .igcp-small-utils__height--zero {
-    height: 0; } }
+    height: 0; }
+
+  .igcp-small-utils__colour--link-blue,
+  .igcp-small-utils__color--link-blue {
+    color: #0e75d5; }
+
+  .igcp-small-utils__colour--dark-blue,
+  .igcp-small-utils__color--dark-blue {
+    color: #0d263c; }
+
+  .igcp-small-utils__colour--black,
+  .igcp-small-utils__color--black {
+    color: #282828; }
+
+  .igcp-small-utils__colour--white,
+  .igcp-small-utils__color--white {
+    color: #fff; }
+
+  .igcp-small-utils__float--left {
+    float: left; }
+
+  .igcp-small-utils__float--right {
+    float: right; }
+
+  .igcp-small-utils__float--none {
+    float: none; }
+
+  .igcp-small-utils__center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); }
+
+  .igcp-small-utils__center--vertical {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); }
+
+  .igcp-small-utils__position--relative {
+    position: relative; }
+
+  .igcp-small-utils__position--absolute {
+    position: absolute; }
+
+  .igcp-small-utils__position--fixed {
+    position: fixed; }
+
+  .igcp-small-utils__position--static {
+    position: static; } }
 @media (min-width: 768px) {
   .igcp-medium-utils__font--light {
     font-family: "WhitneyLight", Arial, sans-serif; }
@@ -2864,7 +3003,54 @@ label {
     overflow: auto; }
 
   .igcp-medium-utils__height--zero {
-    height: 0; } }
+    height: 0; }
+
+  .igcp-medium-utils__colour--link-blue,
+  .igcp-medium-utils__color--link-blue {
+    color: #0e75d5; }
+
+  .igcp-medium-utils__colour--dark-blue,
+  .igcp-medium-utils__color--dark-blue {
+    color: #0d263c; }
+
+  .igcp-medium-utils__colour--black,
+  .igcp-medium-utils__color--black {
+    color: #282828; }
+
+  .igcp-medium-utils__colour--white,
+  .igcp-medium-utils__color--white {
+    color: #fff; }
+
+  .igcp-medium-utils__float--left {
+    float: left; }
+
+  .igcp-medium-utils__float--right {
+    float: right; }
+
+  .igcp-medium-utils__float--none {
+    float: none; }
+
+  .igcp-medium-utils__center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); }
+
+  .igcp-medium-utils__center--vertical {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); }
+
+  .igcp-medium-utils__position--relative {
+    position: relative; }
+
+  .igcp-medium-utils__position--absolute {
+    position: absolute; }
+
+  .igcp-medium-utils__position--fixed {
+    position: fixed; }
+
+  .igcp-medium-utils__position--static {
+    position: static; } }
 @media (min-width: 1024px) {
   .igcp-large-utils__font--light {
     font-family: "WhitneyLight", Arial, sans-serif; }
@@ -3070,11 +3256,61 @@ label {
     overflow: auto; }
 
   .igcp-large-utils__height--zero {
-    height: 0; } }
+    height: 0; }
+
+  .igcp-large-utils__colour--link-blue,
+  .igcp-large-utils__color--link-blue {
+    color: #0e75d5; }
+
+  .igcp-large-utils__colour--dark-blue,
+  .igcp-large-utils__color--dark-blue {
+    color: #0d263c; }
+
+  .igcp-large-utils__colour--black,
+  .igcp-large-utils__color--black {
+    color: #282828; }
+
+  .igcp-large-utils__colour--white,
+  .igcp-large-utils__color--white {
+    color: #fff; }
+
+  .igcp-large-utils__float--left {
+    float: left; }
+
+  .igcp-large-utils__float--right {
+    float: right; }
+
+  .igcp-large-utils__float--none {
+    float: none; }
+
+  .igcp-large-utils__center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); }
+
+  .igcp-large-utils__center--vertical {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); }
+
+  .igcp-large-utils__position--relative {
+    position: relative; }
+
+  .igcp-large-utils__position--absolute {
+    position: absolute; }
+
+  .igcp-large-utils__position--fixed {
+    position: fixed; }
+
+  .igcp-large-utils__position--static {
+    position: static; } }
 .igcp-main .slds-col--padded {
   padding: 0; }
 
 .igcp-background {
+  background-color: #f8f8f9; }
+
+.igcp-background__tiled {
   background-image: url("../images/bg-tile.jpg");
   background-repeat: repeat; }
 
@@ -3090,9 +3326,6 @@ label {
   margin: 0 auto;
   min-height: calc(100vh - 234px); }
 
-.igcp-percentage--large {
-  font-size: 45%; }
-
 .igcp-horizontal-rule {
   border-bottom: 1px solid #fff;
   width: 100%;
@@ -3101,7 +3334,7 @@ label {
 .igcp-separator--large {
   width: 100%;
   height: 8px;
-  background-color: #f7f8f9; }
+  background-color: #f8f8f9; }
 
 .igcp-background__gradient {
   background: #fafafd;
@@ -3140,6 +3373,11 @@ label {
   font-size: 12px;
   letter-spacing: 0px; }
 
+.igcp-link__cta .slds-icon_container.slds-icon-utility-chevronright {
+  top: 0; }
+  .igcp-link__cta .slds-icon_container.slds-icon-utility-chevronright .slds-icon-text-default {
+    fill: #0e75d5; }
+
 .igcp-link__variant--a {
   font-family: "WhitneySemibold", Arial, sans-serif;
   font-size: 12px;
@@ -3154,30 +3392,47 @@ label {
   position: relative;
   top: -3px; }
 
-.igcp-underline {
-  border-bottom: 2px solid #e6e9eb; }
+.igcp-underline,
+.igcp-underline__regular--grey {
+  border-bottom: 2px solid #e9ecee; }
 
-.igcp-underline--thick-blue {
+.igcp-underline__thin--grey {
+  border-bottom: 1px solid #e9ecee; }
+
+.igcp-underline__thick-grey {
+  border-bottom: 3px solid #e9ecee; }
+
+.igcp-underline__thin--blue {
+  border-bottom: 1px solid #0d263c; }
+
+.igcp-underline--blue,
+.igcp-underline__regular--blue {
+  border-bottom: 2px solid #0d263c; }
+
+.igcp-underline__thick--blue {
   border-bottom: 8px solid #0d263c;
   transform-origin: left bottom;
   transform: skewX(25deg); }
 
-.igcp-underline--white {
+.igcp-underline__thin--white {
   border-bottom: 1px solid #fff; }
 
-.igcp-underline--thick-white {
-  border-bottom: 3px solid #fff; }
+.igcp-underline--white,
+.igcp-underline__regular--white {
+  border-bottom: 2px solid #fff; }
 
-.igcp-underline--thick-grey {
-  border-bottom: 3px solid #e6e9eb; }
+.igcp-underline__thick--white {
+  border-bottom: 3px solid #fff; }
 
 .igcp-value--large {
   font-family: "WhitneyLight", Arial, sans-serif;
-  line-height: 24px;
-  font-size: 32px; }
+  line-height: 24px; }
   .igcp-value--large sup {
     font-size: 70%;
     top: -0.25em; }
+  .igcp-value--large sub {
+    font-size: 50%;
+    bottom: 0; }
 
 .igcp-value--medium {
   line-height: 24px;
@@ -3192,16 +3447,18 @@ label {
   font-size: 16px; }
 
 .igcp-value--gain {
+  top: 0;
   color: #008a2a; }
 
 .igcp-value--gain use {
   fill: #008a2a; }
 
 .igcp-value--loss {
+  top: 0;
   color: #ea051c; }
 
 .igcp-value--loss use {
-  fill: #008a2a; }
+  fill: #ea051c; }
 
 .igcp-label {
   font-family: "WhitneySemibold", Arial, sans-serif;
@@ -3218,21 +3475,27 @@ label {
   position: relative;
   left: 35px; }
 
-.igcp-account--total div span {
-  font-size: 20px;
-  border-bottom: 2px solid #0d263c; }
+.igcp-account__total div span {
+  border-bottom: 1px solid #e9ecee; }
+
+.igcp-account__grand-total div {
+  font-family: "WhitneySemibold", Arial, sans-serif; }
+  .igcp-account__grand-total div .igcp-account__grand-total--container {
+    width: 35%;
+    float: right; }
+
+.igcp-account__item sup {
+  top: -3px; }
 
 .igcp-alert--item {
-  border-bottom: 1px solid #e6e9eb; }
+  border-bottom: 1px solid #e9ecee; }
   .igcp-alert--item:last-child {
     border-bottom: none;
     margin-bottom: 0 !important;
     padding-bottom: 0 !important; }
-  .igcp-alert--item p {
-    font-size: 12px; }
 
 .igcp-cta {
-  background-color: #faf7e6; }
+  background-color: #fff; }
 
 .igcp-card {
   border: none;
@@ -3302,11 +3565,14 @@ label {
     display: inline-block; }
   .igcp-modal .igcp-modal__wrapper {
     max-width: 1024px;
-    margin: 0 auto;
-    position: absolute; }
+    margin: 0 auto; }
+  .igcp-modal .igcp-modal__wrapper--text {
+    max-width: 600px;
+    margin: 0 auto; }
   .igcp-modal .igcp-modal__button--close {
     position: relative;
-    float: right; }
+    float: right;
+    border-radius: 50px; }
   .igcp-modal.igcp-modal__full {
     background-color: #fff; }
   .igcp-modal.igcp-modal__small {
@@ -3318,11 +3584,28 @@ label {
       left: 0;
       right: 0;
       bottom: 0;
-      border: 10px solid #e6e9eb;
+      border: 10px solid #e9ecee;
       overflow-y: scroll; }
+
+.igcp-modal__footer {
+  background-color: #f8f8f8;
+  position: fixed;
+  height: 175px;
+  bottom: 0;
+  margin: 0 0 0 -24px;
+  padding: 16px; }
+  .igcp-modal__footer .igcp-modal__footer-wrapper {
+    margin: 0 auto;
+    max-width: 1024px; }
+  .igcp-modal__footer .igcp-modal__footer-wrapper--text {
+    margin: 0 auto;
+    max-width: 600px; }
 
 .igcp-tooltip {
   display: inline-block; }
+  .igcp-tooltip.igcp-tooltip__label--small {
+    padding-left: 4px;
+    padding-top: 0px; }
   .igcp-tooltip .igcp-tooltip__tip {
     border: none; }
 
@@ -3358,6 +3641,16 @@ label {
 .igcp-toast .igcp-toast__message {
   color: #fff; }
 
+.igcp-border--double {
+  height: 3px;
+  width: auto;
+  border-top: 1px solid #e9ecee;
+  border-bottom: 1px solid #e9ecee; }
+
+.igcp-boxed--white {
+  background-color: #fff;
+  padding: 30px 25px; }
+
 @media (min-width: 768px) {
   .igcp-registration .igcp-registration__pfa h1 {
     font-size: 24px;
@@ -3365,16 +3658,35 @@ label {
   .igcp-registration .igcp-registration__pfa--monitor {
     width: 360px; }
 
-  .igcp-footer .footer-link {
-    float: left; }
-
   .igcp-card__image {
     width: 75%; }
 
   .igcp-figure .igcp-figure__caption h3,
   .igcp-figure .igcp-figure__caption p {
-    text-align: left; } }
+    text-align: left; }
+
+  .igcp-modal__footer {
+    margin: 0 0 0 -60px;
+    padding-top: 32px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px; }
+
+  .igcp-value--large {
+    font-size: 32px; }
+
+  .igcp-tooltip.igcp-tooltip__label--small {
+    padding-left: 8px;
+    padding-top: 6px; }
+
+  .igcp-footer .footer-link {
+    float: left; } }
 @media (min-width: 1024px) {
+  .igcp-registration .igcp-registration__pfa--monitor {
+    top: 23px;
+    height: 282px;
+    overflow: visible; }
+
   .igcp-button__chat {
     float: none;
     position: fixed;
@@ -3385,14 +3697,6 @@ label {
     position: absolute;
     right: -200px;
     top: -160px; }
-
-  .igcp-registration .igcp-registration__pfa--monitor {
-    top: 23px;
-    height: 282px;
-    overflow: visible; }
-
-  .igcp-value--large {
-    font-size: 24px; }
 
   .igcp-value--medium {
     line-height: 24px;
@@ -3412,15 +3716,6 @@ label {
   .igcp-card__image {
     width: 100%; }
 
-  .igcp-footer {
-    padding-top: 0; }
-    .igcp-footer .footer-copyright .footer-copyright-border-top .row {
-      border-top: none; }
-      .igcp-footer .footer-copyright .footer-copyright-border-top .row .columns ul li {
-        border-right: none; }
-    .igcp-footer .footer-navigation .columns {
-      text-align: left; }
-
   .igcp-modal.igcp-modal__small .igcp-modal__small--inner {
     border-radius: 3px;
     /* Android 2.1+, Chrome, Firefox 4+, IE 9+, iOS 4+, Opera 10.50+, Safari 5+ */
@@ -3430,6 +3725,15 @@ label {
     top: 25%;
     left: 25%;
     right: 25%;
-    bottom: 25%; } }
+    bottom: 25%; }
+
+  .igcp-footer {
+    padding-top: 0; }
+    .igcp-footer .footer-copyright .footer-copyright-border-top .row {
+      border-top: none; }
+      .igcp-footer .footer-copyright .footer-copyright-border-top .row .columns ul li {
+        border-right: none; }
+    .igcp-footer .footer-navigation .columns {
+      text-align: left; } }
 
 /*# sourceMappingURL=igcp.css.map */
