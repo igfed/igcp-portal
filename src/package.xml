@@ -14,6 +14,8 @@
 	</types>
 	<types>
 		<members>CP_Cmp_Edit_Notifications</members>
+		<members>CP_Edit_Documents</members>
+		<members>CP_Edit_Notifications</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<version>36.0</version>
