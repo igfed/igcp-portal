@@ -452,7 +452,21 @@
 //TOOLTIP
 .#{$namespace}-tooltip {
 
+	position: relative;
 	display: inline-block;
+	width: $ig-space--small;
+	height: $ig-space--small;
+	margin-left: $ig-space--xx-small;
+
+
+	.#{$namespace}-tooltip-container {
+		position: absolute;
+		left: 0;
+		top: 1px;
+		margin: 0;
+		width: $ig-space--small;
+		height: $ig-space--small;
+	}
 
 	&.#{$namespace}-tooltip__label--small {
 		padding-left: 4px;
@@ -460,7 +474,21 @@
 	}
 
 	.#{$namespace}-tooltip__tip {
-		border: none;
+
+		&.has-tip {
+			border: none;
+			margin: 0;
+			width: $ig-space--small;
+			height: $ig-space--small;
+		}
+
+		.slds-icon_container.slds-icon-utility-info {
+			margin: 0;
+
+			span {
+				margin: 0;
+			}
+		}
 	}
 }
 
@@ -475,12 +503,9 @@
 	background-color: $ig-dark-blue;
 }
 
+
+//FIGURE
 .#{$namespace}-figure {
-	.#{$namespace}-figure__image {
-		// margin: 0 auto;
-		// text-align: center;
-		// width: 35%;
-	}
 
 	.#{$namespace}-figure__caption {
 		margin: 0;

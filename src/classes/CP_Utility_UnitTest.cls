@@ -23,13 +23,6 @@ private class CP_Utility_UnitTest {
 			contactList.add(contactObj);
 			insert contactList;
 			
-			/*
-			EmailTemplate testTemplate = new EmailTemplate();
-			testTemplate.name = 'Test Template';
-			testTemplate.Body = 'test body';
-			testTemplate.Subject = 'test subject';
-			insert testTemplate;
-			*/
 	}
 
 
@@ -70,13 +63,15 @@ private class CP_Utility_UnitTest {
 			ID whatId = null; 
 			try
 			{
-				CP_Utility.sendTemplatedEmail(templateApiName, targetObjId, whatId, null);	
+				CP_Utility.sendTemplatedEmail(templateApiName, targetObjId, whatId);	
 			}
 			Catch(Exception e)
 			{
 				System.assertEquals('CP_Utility.UtilException', e.getTypeName());
 			}
 		}
+		
+		
 	//
 
 	// Success Tests

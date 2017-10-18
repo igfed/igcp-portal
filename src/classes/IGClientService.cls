@@ -66,8 +66,8 @@ public class IGClientService {
 		return rv;
 	}
 
-	public static List<DTO_AccountDetail> getAccountDetails(String clientBpid, String accountNumber) {
-		List<DTO_AccountDetail> rv = new List<DTO_AccountDetail>();
+	public static DTO_AccountDetail getAccountDetails(String clientBpid, String accountNumber) {
+		DTO_AccountDetail rv = null;
 		if (String.isBlank(clientBpid)) {
 			throw new IGClientServiceException('The client bpid can\'t be null or empty');
 		}
@@ -86,11 +86,93 @@ public class IGClientService {
 		            IGAccountDetailClient.AccountDetailData data = (IGAccountDetailClient.AccountDetailData)res;
 		            System.debug('=====> getAccountDetails.data: ' + data);
 		            if (data.Client != null && data.Client.AccountDetails != null && !data.Client.AccountDetails.isEmpty()) {
-		            	for (IGAccountDetailClient.AccountDetail acctDetail : data.Client.AccountDetails) {
-		            		rv.add(new DTO_AccountDetail(acctDetail));
+		            	if (data.Client.AccountDetails.size() == 1) {
+		            		rv = new DTO_AccountDetail(data.Client.AccountDetails.get(0));
+		            	} else {
+			            	for (IGAccountDetailClient.AccountDetail acctDetail : data.Client.AccountDetails) {
+			            		if (accountNumber == acctDetail.ACCOUNT_NUMBER) {
+			            			rv = new DTO_AccountDetail(acctDetail);
+			            			break;
+			            		}
+			            	}
 		            	}
 		            }
 		        } 
+		    }
+		}
+		return rv;
+	}
+
+	public static DTO_InvestmentProfile getInvestmentProfileDTO(String clientBpid, String accountNumber) {
+		DTO_InvestmentProfile rv = null;
+		if (String.isBlank(clientBpid)) {
+			throw new IGClientServiceException('The client business partner id can\'t be null or blank');
+		}
+		if (String.isBlank(accountNumber)) {
+			throw new IGClientServiceException('The account number can\'t be null or blank');
+		}
+		IGRestClient client = IGRestClientFactory.getIGRestClient('InvestmentProfile', WEBSERVICE_NAMED_CREDENTIAL);
+		if (client != null) {
+			IGInvestmentProfileClient theClient = (IGInvestmentProfileClient)client;
+			theClient.bpid = clientBpid;
+			theClient.accountNumber = accountNumber;
+			IGRestClient.Response res = theClient.getServiceData();
+		    System.debug('=====> getAccountDetails.res: ' + res);
+		    if (res != null) {
+		    	if (!res.success) {
+		            System.debug('=====> getInvestmentProfileDTO.ERROR: ' + res.success + ', ' + res.code + ', ' + res.error);
+		            throw new IGClientServiceException('Service call failed: ' + res.success + ', ' + res.code + ', ' + res.error);
+		        } else {
+		        	IGInvestmentProfileClient.InvestmentProfileData data = (IGInvestmentProfileClient.InvestmentProfileData)res;
+		        	System.debug('=====> getInvestmentProfileDTO.data: ' + data);
+		        	if (data.Client != null && data.Client.InvestmentProfiles != null && !data.Client.InvestmentProfiles.isEmpty()) {
+		        		if (data.Client.InvestmentProfiles.size() == 1) {
+		        			rv = new DTO_InvestmentProfile(data.Client.InvestmentProfiles.get(0));
+		        		} else {
+		        			for (IGInvestmentProfileClient.InvestmentProfile profile : data.Client.InvestmentProfiles) {
+		        				if (accountNumber == profile.ACCOUNT_NUMBER) {
+		        					rv = new DTO_InvestmentProfile(profile);	
+		        					break;
+		        				}
+		        			}
+		        		}
+		        	}
+		        }
+		    }
+		}
+		return rv;
+	}
+
+	public static List<DTO_HoldingsDetail> getHoldings(String clientBpid, String accountNumber) {
+		List<DTO_HoldingsDetail> rv = new List<DTO_HoldingsDetail>();
+		if (String.isBlank(clientBpid)) {
+			throw new IGClientServiceException('The client business partner id can\'t be null or blank');
+		}
+		if (String.isBlank(accountNumber)) {
+			throw new IGClientServiceException('The account number can\'t be null or blank');
+		}
+		IGRestClient client = IGRestClientFactory.getIGRestClient('Holdings', WEBSERVICE_NAMED_CREDENTIAL);
+		if (client != null) {
+			IGHoldingsClient theClient = (IGHoldingsClient)client;
+			theClient.bpid = clientBpid;
+			theClient.accountNumber = accountNumber;
+			IGRestClient.Response res = theClient.getServiceData();
+		    System.debug('=====> getHoldingsDetailDTO.res: ' + res);
+		    if (res != null) {
+		    	if (!res.success) {
+		            System.debug('=====> getHoldingsDetailDTO.ERROR: ' + res.success + ', ' + res.code + ', ' + res.error);
+		            throw new IGClientServiceException('Service call failed: ' + res.success + ', ' + res.code + ', ' + res.error);
+		        } else {
+		        	IGHoldingsClient.HoldingData data = (IGHoldingsClient.HoldingData)res;
+		        	System.debug('=====> getHoldingsDetailDTO.data: ' + data);
+		        	if (data.Client != null && data.Client.Holdings != null && !data.Client.Holdings.isEmpty()) {
+	        			for (IGHoldingsClient.Holding holding : data.Client.Holdings) {
+	        				if (accountNumber == holding.ACCOUNT_NUMBER) {
+	        					rv.add(new DTO_HoldingsDetail(holding));
+	        				}
+	        			}
+		        	}
+		        }
 		    }
 		}
 		return rv;
@@ -197,19 +279,67 @@ public class IGClientService {
 		return rv;
 	}
 
-	public static List<DTO_TransactionsDetail> getTransactionsDetails(String clientBpid) {
+	public static List<DTO_TransactionsDetail> getTransactionsDetails(String clientBpid, String accountNumber) {
 		List<DTO_TransactionsDetail> rv = new List<DTO_TransactionsDetail>();
 		if (String.isBlank(clientBpid)) {
 			throw new IGClientServiceException('The client bpid can\'t be null or empty');
+		}
+		if (String.isBlank(accountNumber)) {
+			throw new IGClientServiceException('The account number can\'t be null or empty');	
 		}
 		IGRestClient client = IGRestClientFactory.getIGRestClient('Transactions', WEBSERVICE_NAMED_CREDENTIAL);
 		if (client != null) {
 			IGTransactionsClient theClient = (IGTransactionsClient)client;
 			theClient.bpid = clientBpid;
+			theClient.accountNumber = accountNumber;
 			IGRestClient.Response res = theClient.getServiceData();
 		    System.debug('=====> getTransactionsDetails.res: ' + res);
 		    if (res != null) {
-		    	
+		    	if (!res.success) {
+		    		System.debug('=====> getTransactionsDetails.ERROR: ' + res.success + ', ' + res.code + ', ' + res.error);
+		            throw new IGClientServiceException('Service call failed: ' + res.success + ', ' + res.code + ', ' + res.error);
+	            } else {
+	            	IGTransactionsClient.TransactionsData data = (IGTransactionsClient.TransactionsData)res;
+	            	System.debug('=====> getTransactionsDetails.data: ' + data);
+	            	if (data.Client != null && data.Client.Transactions != null && data.Client.Transactions.isEmpty()) {
+	            		for (IGTransactionsClient.Transactions txn : data.Client.Transactions) {
+	            			rv.add(new DTO_TransactionsDetail(txn));
+	            		}
+	            	}
+	            }
+		    }
+		}
+		return rv;
+	}
+
+	public static List<DTO_InstructionsDetail> getInstructionsDetails(String clientBpid, String accountNumber) {
+		List<DTO_InstructionsDetail> rv = new List<DTO_InstructionsDetail>();
+		if (String.isBlank(clientBpid)) {
+			throw new IGClientServiceException('The client bpid can\'t be null or empty');
+		}
+		if (String.isBlank(accountNumber)) {
+			throw new IGClientServiceException('The account number can\'t be null or empty');	
+		}
+		IGRestClient client = IGRestClientFactory.getIGRestClient('Instructions', WEBSERVICE_NAMED_CREDENTIAL);
+		if (client != null) {
+			IGInstructionsClient theClient = (IGInstructionsClient)client;
+			theClient.bpid = clientBpid;
+			theClient.accountNumber = accountNumber;
+			IGRestClient.Response res = theClient.getServiceData();
+		    System.debug('=====> getInstructionsDetails.res: ' + res);
+		    if (res != null) {
+		    	if (!res.success) {
+		    		System.debug('=====> getInstructionsDetails.ERROR: ' + res.success + ', ' + res.code + ', ' + res.error);
+		            throw new IGClientServiceException('Service call failed: ' + res.success + ', ' + res.code + ', ' + res.error);
+	            } else {
+	            	IGInstructionsClient.InstructionsData data = (IGInstructionsClient.InstructionsData)res;
+	            	System.debug('=====> getInstructionsDetails.data: ' + data);
+	            	if (data.Client != null && data.Client.Instructions != null && !data.Client.Instructions.isEmpty()) {
+	            		for (IGInstructionsClient.Instructions inst : data.Client.Instructions) {
+	            			rv.add(new DTO_InstructionsDetail(inst));
+	            		}
+	            	}
+	            }
 		    }
 		}
 		return rv;

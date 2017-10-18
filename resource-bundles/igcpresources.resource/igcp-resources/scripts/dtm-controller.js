@@ -17,11 +17,11 @@
   function init() {
     // Capture page data
     window.digitalData.pageInstanceID = getPageName() + window.location.hostname + "",
-    window.digitalData.page.pageInfo.pageName = getPageName(),
-    window.digitalData.page.pageInfo.language = getPageLanguage(),
-    window.digitalData.page.pageInfo.server = window.location.href,
-    window.digitalData.page.pageInfo.timezone = new Date().getTimezoneOffset() / 60
-      
+      window.digitalData.page.pageInfo.pageName = getPageName(),
+      window.digitalData.page.pageInfo.language = getPageLanguage(),
+      window.digitalData.page.pageInfo.server = window.location.href,
+      window.digitalData.page.pageInfo.timezone = new Date().getTimezoneOffset() / 60
+
 
     console.log(window.digitalData);
 
@@ -50,7 +50,7 @@
     var lang;
 
     if (window.location.href.indexOf('groupe') > 0 || window.location.href.indexOf('/fr/') > 0) {
-      lang= 'fr'
+      lang = 'fr'
     } else {
       lang = 'en'
     }
