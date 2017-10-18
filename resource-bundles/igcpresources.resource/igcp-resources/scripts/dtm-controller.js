@@ -7,15 +7,12 @@
 
   var $this,
     adobeLoader,
-    $component,
-    $container;
+    $component
 
   // Event object that will be pushed into events array
   var event = {};
   event.component = {};
-  event.container = {};
   event.page = {};
-  event.template = {};
   event.form = {};
   event.search = {};
   event.tool = {};
@@ -101,57 +98,48 @@
         tags = [],
         keyValue;
 
-      event.container.topics = [];
-      event.container.tags = [];
+      event.component.topics = [];
+      event.component.tags = [];
 
       // Capture trigger data
       event.dcName = $this.data('aa-dcname');
       event.goal = $this.data('aa-goal');
       event.linkLabel = $this.data('aa-link-label');
       event.parentID = $this.data('aa-parent');
-
-      // Is it a nested event or one connected via an ID?
-      if (event.parentID) {
-        $component = $('body').find('[data-aa-id="' + event.parentID + '"]');
-        $container = $component.parents('.ig-analytics-container');
-      } else {
-        $component = $this.parents('.ig-analytics-component');
-        $container = $this.parents('.ig-analytics-container');
-      }
+      
+      // Store component container node  
+      $component = $this.parents('.ig-analytics-component');
 
       // Capture component data
       if ($component.length > 0) {
         event.component.id = $component.data('aa-id');
         event.component.name = $component.data('aa-name');
         event.component.location = $component.data('aa-location');
+
+        // If there is no parentID set
         if (!event.parentID) {
           event.parentID = event.component.id;
         }
-      }
 
-      // Capture container data
-      if ($container.length > 0) {
-        event.container.id = $container.data('aa-id');
-        event.container.name = $container.data('aa-name');
-        event.container.category = $container.data('aa-category');
-        event.container.location = $container.data('aa-location');
-        event.container.product = $container.data('aa-product');
-        event.container.category = $container.data('aa-category');
-        topics = $container.data('aa-topics');
+        // Topics ['topic1', 'topic2' ...]
+        topics = $component.data('aa-topics');
         if (topics) {
-          event.container.topics = topics.split(',');
+          event.component.topics = topics.split(',');
         }
-        if ($container.data('aa-tags')) {
-          tags = $container.data('aa-tags').split(',');
+
+        // Tags ['key1::value1', 'key2::value2' ...]
+        if ($component.data('aa-tags')) {
+          tags = $component.data('aa-tags').split(',');
           tags.forEach(function (el) {
             keyValue = el.split('::');
-            event.container.tags.push({
+            event.component.tags.push({
               "name": keyValue[0],
               "value": keyValue[1]
             })
           })
         }
       }
+
     }
 
     if (event.type = 'dc') {
