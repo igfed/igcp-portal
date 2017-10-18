@@ -36,32 +36,14 @@
 					<c:CP_Cmp_Gain_Loss label="Gain/Loss" description="Year to date" value="2,363.41" percentage="4.5" />
 					<div class="igcp-separator--large slds-size_12-of-12 slds-m-vertical--xxx-small slds-large-m-vertical--large "></div>
 					<div class="slds-grid slds-wrap">
-						<c:CP_Cmp_Name_Value_List id="list-1" class="slds-large-size_6-of-12" values="{ 
-			                    values: [
-			                        { 	label: 'Balance Date',
-			                        	detail: 'Apr 13, 2017'},
-			                        { 	label: 'Book Cost', 
-			                        	detail: '$153,954.57'},
-			                        { 	label: 'YTD Contribution', 
-			                        	detail: '$3,500.00'},
-			                        { 	label: 'RESP Benificiary Name',
-			                        	detail: 'Jamie Holmes'}
-			                        ]}" />
-						<c:CP_Cmp_Name_Value_List id="list-2" class="slds-large-size_6-of-12 slds-large-p-left--medium" values="{ 
-			                    values: [
-			                        { 	label: 'Net Contributions',
-			                        	detail: '$10,393.43'},
-			                        { 	label: '2016 Contributions', 
-			                        	detail: '$1,594.25'},
-			                        { 	label: '2017 Contributions', 
-			                        	detail: '$6,430.00'}
-			                        ]}" />
+						<c:CP_Cmp_Name_Value_List id="account-list-1" class="slds-large-size_6-of-12" />
+						<c:CP_Cmp_Name_Value_List id="account-list-2" class="slds-large-size_6-of-12 slds-large-p-left--medium" />
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_4-of-12">
-			<c:CP_Cmp_Card_Performance />
+			<c:CP_Cmp_Card_Performance id="account-details-performance-chart"/>
 		</div>
 		<div class="slds-size_12-of-12">
 			<c:CP_Account_Investment_Profile profile="{!v.investmentProfileObj}"/>

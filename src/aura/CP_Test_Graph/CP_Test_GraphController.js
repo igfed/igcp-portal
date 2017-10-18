@@ -26,7 +26,7 @@
 		var events = cmp.find('CP_Events');
 
 		events.fire(
-			"CP_Evt_Set_Doughnut", {
+			"CP_Evt_Set_Graph", {
 				"id": "test-graph-doughnut",
 				"type": "doughnut",
 				"data": graphArr,

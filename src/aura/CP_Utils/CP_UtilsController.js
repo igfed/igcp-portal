@@ -89,7 +89,7 @@
 			var
 				component = params.component,
 				timer = setInterval(function() {
-					if (component.get(params.attr) === true || component.get(params.attr) !== null) {
+					if (component.get(params.attr) !== null) {
 						params.callback(component.get(params.attr));
 						clearInterval(timer);
 					}
