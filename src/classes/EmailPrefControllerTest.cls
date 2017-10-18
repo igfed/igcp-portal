@@ -3,6 +3,8 @@ public class EmailPrefControllerTest {
 	
 	@testSetup 
 	static void setup(){
+
+		List<Financial_Asset__c> testFAsToInsert;
 	 	Profile pf = [SELECT Id FROM Profile WHERE Name = 'System Administrator'];
 		UserRole ur = new UserRole(Name = 'CEO');
         insert ur;
@@ -42,6 +44,7 @@ public class EmailPrefControllerTest {
 											LastName = 'testContact2 LastName2',
 											AccountId = testAccount.Id,
 											Business_Partner_ID__c = '1234567891');
+
 		System.runAs(tuser){
 			insert testContact;
 			insert testContact2;
@@ -65,21 +68,29 @@ public class EmailPrefControllerTest {
        	}
        	System.debug('finanacial asset record type map '+financialAssetsRecordTypeMap);
        
-
+       	testFAsToInsert = new List<Financial_Asset__c>();
         Financial_Asset__c testFA1 = new Financial_Asset__c(RecordTypeId = financialAssetsRecordTypeMap.get('Investment Asset'),
         													Client_Number__c = '0987654',
         													Customer__c = testContact.Id,
         													Client__c = testAccount.Id,
         													Asset_Type__c = 'Individual');
-         Financial_Asset__c testFA2 = new Financial_Asset__c(RecordTypeId = financialAssetsRecordTypeMap.get('Investment Asset'),
+        testFAsToInsert.add(testFA1);
+        Financial_Asset__c testFA2 = new Financial_Asset__c(RecordTypeId = financialAssetsRecordTypeMap.get('Investment Asset'),
         													Client_Number__c = '0987653',
         													Customer__c = testContact.Id,
         													Client__c = testAccount.Id,
-        													Asset_Type__c = 'Individual');
-        System.debug('to insert test FA 1 '+testFA1);
+        													Asset_Type__c = 'Joint');
+        testFAsToInsert.add(testFA2);
+        Financial_Asset__c testFA3 = new Financial_Asset__c(RecordTypeId = financialAssetsRecordTypeMap.get('Investment Asset'),
+        													Client_Number__c = '0987652',
+        													Customer__c = testContact.Id,
+        													Client__c = testAccount.Id,
+        													Asset_Type__c = 'Company');
+
+        testFAsToInsert.add(testFA3);
+      
         System.runAs(tuser){
-	        insert testFA1;
-	        insert testFA2;
+	        insert testFAsToInsert;
 	    }
         System.debug('inserted financial assets '+testFA1);
 
@@ -111,17 +122,36 @@ public class EmailPrefControllerTest {
 						);
 		
 		System.debug('user info '+testUser);
-		String jsonObj = '[{ "clientNumber" : "0987654",	"investmentStatements" : true, "taxReceipts" : true, "tradeConfirmation" : false }]';
+		String jsonObj = '{"allDocumentPreference" : false , "documentPreferences" : [{ "clientNumber" : "0987654",	"investmentStatements" : true, "taxReceipts" : true, "tradeConfirmation" : false },{ "clientNumber" : "0987653",	"investmentStatements" : false, "taxReceipts" : true, "tradeConfirmation" : false },{ "clientNumber" : "0987652",	"investmentStatements" : true, "taxReceipts" : true, "tradeConfirmation" : true }]}';
 		
 		System.runAs(testUser){
 	   		EmailPrefController.UpdateAssets(jsonObj);
 	   	}
-	   Financial_Asset__c assertFAObj = new Financial_Asset__c();
-	   assertFAObj = [select Client_Number__c,Pref_Trade_Confirmation__c,Pref_Tax_Receipts__c,Pref_Investment_Statements__c from Financial_Asset__c LIMIT 1];
-	   System.debug('test updated assets '+assertFAObj.Client_Number__c+' - '+assertFAObj.Pref_Investment_Statements__c + ' - '+assertFAObj.Pref_Tax_Receipts__c +' - '+assertFAObj.Pref_Trade_Confirmation__c);
+	   List<Financial_Asset__c> assertFAObj = new List<Financial_Asset__c>();
+	   assertFAObj = [select Client_Number__c,Pref_Trade_Confirmation__c,Pref_Tax_Receipts__c,Pref_Investment_Statements__c from Financial_Asset__c];
+	  // System.debug('test updated assets '+assertFAObj.Client_Number__c+' - '+assertFAObj.Pref_Investment_Statements__c + ' - '+assertFAObj.Pref_Tax_Receipts__c +' - '+assertFAObj.Pref_Trade_Confirmation__c);
 	   /*System.assertEquals(assertFAObj.Pref_Investment_Statements__c, 'Online');
 	   System.assertEquals(assertFAObj.Pref_Tax_Receipts__c, 'Online');
 	   System.assertEquals(assertFAObj.Pref_Trade_Confirmation__c, 'Paper');*/
+	   for(Financial_Asset__c eachFAToAssert : assertFAObj){
+	   		if(eachFAToAssert.Client_Number__c == '0987654'){
+	   		System.assertEquals(eachFAToAssert.Pref_Investment_Statements__c, 'Online');
+	   			System.assertEquals(eachFAToAssert.Pref_Tax_Receipts__c,'Online');
+	   			System.assertEquals(eachFAToAssert.Pref_Trade_Confirmation__c,'Paper');
+
+	   		}else if(eachFAToAssert.Client_Number__c == '0987653'){
+	   			System.assertEquals(eachFAToAssert.Pref_Investment_Statements__c,'Paper');
+	   			System.assertEquals(eachFAToAssert.Pref_Tax_Receipts__c,'Online');
+	   			System.assertEquals(eachFAToAssert.Pref_Trade_Confirmation__c,'Paper');
+
+	   			}else if(eachFAToAssert.Client_Number__c == '0987652'){
+	   				System.assertEquals(eachFAToAssert.Pref_Investment_Statements__c,'Online');
+		   			System.assertEquals(eachFAToAssert.Pref_Tax_Receipts__c,'Online');
+		   			System.assertEquals(eachFAToAssert.Pref_Trade_Confirmation__c,'Online');
+
+	   			}
+
+	   }
 	}
 
 }

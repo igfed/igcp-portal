@@ -3,7 +3,10 @@
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="edit-notifications"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
-
+	<aura:attribute name="legend" type="String" />
+    <aura:attribute name="label1" type="String" />
+    <aura:attribute name="label2" type="String" />
+    <aura:attribute name="tooltip" type="String" />
 	<aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 	
 	<!-- INCLUDES -->
@@ -27,7 +30,7 @@
 	</aura:method> -->
 	
 	<!-- MARKUP -->
-	<div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
+	<div class="igcp-wrapper igcp-edit-notifications slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
 		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
 		<div class="slds-p-around--small igcp-boxed--white slds-medium-p-around--zero slds-size_12-of-12 slds-medium-size_6-of-12">
 			<h1>Edit Notification</h1>
@@ -51,8 +54,16 @@
 
 				    <!-- PHONE OPT IN -->
                     <c:CP_Cmp_Input_Checkbox id="mobile-message-opt" form="{!v.pageId}" class="slds-size_12-of-12" copy="Send me notifications to my mobile device" />
-
+                    <span class="igcp-mobile-number">416-555-1234</span>
 				</div>
+
+               <!-- LANGUAGE PREFERENCE -->
+				<div class="slds-form slds-size_12-of-12 slds-m-top--large">
+			    	<span class="igcp-label--small">Language Preference<c:CP_Cmp_Tooltip tooltip="This is a tooltip about language"/></span>
+				</div>
+				<c:CP_Cmp_Radio_Group2 id="language-preference" form="{!v.pageId}" label1="English" label2="Franch" legend="Changing this language setting only changes your Online Access language choice. If you would like to change the language of all your Investors Group communications including statements, please contact your Consultant." />
+
+
 				<!--CTAS-->
 				<c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Update}" nextType="submit" form="{!v.pageId}" />
 			</div>

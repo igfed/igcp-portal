@@ -3668,6 +3668,30 @@ dl dt {
   background-color: #fff;
   padding: 30px 25px; }
 
+.igcp-edit-notifications .slds-checkbox--faux {
+  position: absolute;
+  top: 5px;
+  left: -8px; }
+  .igcp-edit-notifications .slds-checkbox--faux + .slds-form-element__label {
+    left: 20px; }
+.igcp-edit-notifications .igcp-mobile-number {
+  margin-left: 28px;
+  font-weight: bold;
+  font-size: 14px; }
+
+.igcp-radio-group2 .slds-form-element__legend {
+  color: #282828;
+  font-size: 13px;
+  font-family: "WhitneyBook", Arial, sans-serif; }
+.igcp-radio-group2 .slds-radio {
+  float: left; }
+  .igcp-radio-group2 .slds-radio input + label {
+    margin-left: 0; }
+.igcp-radio-group2 .slds-radio_faux {
+  border: 1px solid #282828 !important; }
+.igcp-radio-group2 .slds-radio_faux:after {
+  background: #282828 !important; }
+
 @media (min-width: 768px) {
   .igcp-registration .igcp-registration__pfa h1 {
     font-size: 24px;

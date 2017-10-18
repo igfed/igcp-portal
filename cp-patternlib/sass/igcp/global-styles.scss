@@ -551,13 +551,57 @@
 	border-bottom: 1px solid $ig-grey;
 }
 
-//Boxed component
+//BOXED COMPONENT (THIS MAY NOT BE REQUIRED)
 .#{$namespace}-boxed--white {
 	background-color: #fff;
 	padding: 30px 25px;
 }
 
+//EDIT PAGES
+.#{$namespace}-edit-notifications {
+	.slds-checkbox--faux {
+		position: absolute;
+		top: 5px;
+		left: -8px;
 
+		& + .slds-form-element__label {
+			left: 20px;
+		}
+	}
+
+	.#{$namespace}-mobile-number {
+		margin-left: 28px;
+		font-weight: bold;
+		font-size: 14px;
+	}
+	
+}
+
+//RADIO GROUPS
+
+.#{$namespace}-radio-group2 {
+	.slds-form-element__legend {
+		color: $ig-black;
+		font-size: 13px;
+		font-family: $ig-whitney-book;
+	}
+    .slds-radio {
+		float: left;
+		input + label {
+			margin-left: 0;
+		}
+	}
+	.slds-radio_faux {
+		border: 1px solid $ig-black !important;
+	}
+	.slds-radio_faux:after {
+		background: $ig-black !important;	
+	}
+}
+
+.#{$namespace}-edit-documents {
+	
+}
 
 
 //GRAPH

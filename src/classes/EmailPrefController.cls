@@ -15,9 +15,23 @@ public with sharing class EmailPrefController {
     	System.debug('payload '+payload);
     	List<Financial_Asset__c> listOfFinancialAssetsToupdate;
 
-    	EmailPrefResponse[] listOfFinancialAsset = (EmailPrefResponse[]) JSON.deserialize(payload, List<EmailPrefResponse>.class); 
-    	System.debug('List of financial assets received '+listOfFinancialAsset);
-    	listOfFinancialAssetsToupdate  = processRecords(listOfFinancialAsset);
+    	//EmailPrefResponse[] listOfFinancialAsset = (EmailPrefResponse[]) JSON.deserialize(payload, List<EmailPrefResponse>.class); 
+        EmailDocumentPreferences temp = (EmailDocumentPreferences) JSON.deserialize(payload,EmailDocumentPreferences.class);
+        System.debug(temp);
+        List<EmailPrefResponse> tempTest = new List<EmailPrefResponse>();
+        tempTest = temp.documentPreferences;
+        System.debug('list '+ tempTest);
+        for(EmailPrefResponse eachPredf : tempTest){
+            System.debug('1 :' +eachPredf.clientNumber);
+            System.debug('2 :' +eachPredf.investmentStatements);
+
+        }
+        if(temp.allDocumentPreference == false){
+            listOfFinancialAssetsToupdate  = processRecords(temp.documentPreferences);
+        }
+    	//System.debug('List of financial assets received '+listOfFinancialAsset);
+        System.debug('to update '+listOfFinancialAssetsToupdate);
+    	//listOfFinancialAssetsToupdate  = processRecords(listOfFinancialAsset);
     	if(listOfFinancialAssetsToupdate.size() > 0){
     		updateFinancialAssets(listOfFinancialAssetsToupdate);
     	}
@@ -33,6 +47,7 @@ public with sharing class EmailPrefController {
     *******************************************************************************************************/
     private static List<Financial_Asset__c> processRecords(EmailPrefResponse[] listOfFinancialAssetsResp){
 
+        System.debug('list of Financial assets response '+listOfFinancialAssetsResp);
     	// get all the financial assets of the specific contact from the salesforce to update
     	List<Financial_Asset__c> listOfFinancialAssetsToupdate;
     	Map<String,Financial_Asset__c> mapClientNumberFA;
