@@ -3679,6 +3679,93 @@ dl dt {
   font-weight: bold;
   font-size: 14px; }
 
+.igcp-edit-documents .igcp-client-details {
+  font-size: 12px;
+  color: #282828; }
+.igcp-edit-documents .slds-grid .slds-col {
+  height: 60px; }
+.igcp-edit-documents .slds-checkbox_toggle {
+  margin-top: 2px; }
+.igcp-edit-documents .slds-form-element__label {
+  font-size: 14px;
+  padding-left: 10px; }
+.igcp-edit-documents .igcp-document-section .slds-grid:last-child {
+  margin-bottom: -30px; }
+.igcp-edit-documents .slds-checkbox--toggle .slds-checkbox--faux,
+.igcp-edit-documents .slds-checkbox--toggle .slds-checkbox_faux,
+.igcp-edit-documents .slds-checkbox_toggle .slds-checkbox--faux,
+.igcp-edit-documents .slds-checkbox_toggle .slds-checkbox_faux {
+  height: 1.3rem;
+  width: 2.8rem;
+  border: 1px solid #6D7D8A;
+  background-color: #6D7D8A; }
+.igcp-edit-documents .slds-checkbox_off,
+.igcp-edit-documents .slds-checkbox_on {
+  display: block;
+  position: absolute;
+  top: -2px;
+  left: 55px;
+  font-size: 14px;
+  font-weight: bold; }
+.igcp-edit-documents .slds-checkbox_off {
+  color: #6D7D8A; }
+.igcp-edit-documents .slds-checkbox_on {
+  color: #0e75d5; }
+.igcp-edit-documents .slds-checkbox--toggle .slds-checkbox--faux:after,
+.igcp-edit-documents .slds-checkbox--toggle .slds-checkbox_faux:after,
+.igcp-edit-documents .slds-checkbox_toggle .slds-checkbox--faux:after,
+.igcp-edit-documents .slds-checkbox_toggle .slds-checkbox_faux:after,
+.igcp-edit-documents .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox--faux:before,
+.igcp-edit-documents .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox--faux_container .slds-checkbox--faux:before,
+.igcp-edit-documents .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox_faux:before,
+.igcp-edit-documents .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox_faux_container .slds-checkbox_faux:before,
+.igcp-edit-documents .slds-checkbox--toggle [type=checkbox]:checked ~ .slds-checkbox--faux:before,
+.igcp-edit-documents .slds-checkbox--toggle [type=checkbox]:checked ~ .slds-checkbox_faux:before,
+.igcp-edit-documents .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox--faux:before,
+.igcp-edit-documents .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox--faux_container .slds-checkbox--faux:before,
+.igcp-edit-documents .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox_faux:before,
+.igcp-edit-documents .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox_faux_container .slds-checkbox_faux:before,
+.igcp-edit-documents .slds-checkbox_toggle [type=checkbox]:checked ~ .slds-checkbox--faux:before,
+.igcp-edit-documents .slds-checkbox_toggle [type=checkbox]:checked ~ .slds-checkbox_faux:before {
+  background-color: #fff; }
+.igcp-edit-documents .slds-checkbox--toggle .slds-checkbox--faux:after,
+.igcp-edit-documents .slds-checkbox--toggle .slds-checkbox_faux:after,
+.igcp-edit-documents .slds-checkbox_toggle .slds-checkbox--faux:after,
+.igcp-edit-documents .slds-checkbox_toggle .slds-checkbox_faux:after {
+  top: 3.5px;
+  left: 3px;
+  width: 0.7rem;
+  height: 0.7rem; }
+.igcp-edit-documents .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox--faux:before,
+.igcp-edit-documents .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox--faux_container .slds-checkbox--faux:before,
+.igcp-edit-documents .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox_faux:before,
+.igcp-edit-documents .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox_faux_container .slds-checkbox_faux:before,
+.igcp-edit-documents .slds-checkbox--toggle [type=checkbox]:checked ~ .slds-checkbox--faux:before,
+.igcp-edit-documents .slds-checkbox--toggle [type=checkbox]:checked ~ .slds-checkbox_faux:before,
+.igcp-edit-documents .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox--faux:before,
+.igcp-edit-documents .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox--faux_container .slds-checkbox--faux:before,
+.igcp-edit-documents .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox_faux:before,
+.igcp-edit-documents .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox_faux_container .slds-checkbox_faux:before,
+.igcp-edit-documents .slds-checkbox_toggle [type=checkbox]:checked ~ .slds-checkbox--faux:before,
+.igcp-edit-documents .slds-checkbox_toggle [type=checkbox]:checked ~ .slds-checkbox_faux:before {
+  top: 3.5px;
+  right: 3px;
+  width: 0.7rem;
+  height: 0.7rem; }
+.igcp-edit-documents .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox--faux:after,
+.igcp-edit-documents .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox--faux_container .slds-checkbox--faux:after,
+.igcp-edit-documents .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox_faux:after,
+.igcp-edit-documents .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox_faux_container .slds-checkbox_faux:after,
+.igcp-edit-documents .slds-checkbox--toggle [type=checkbox]:checked ~ .slds-checkbox--faux:after,
+.igcp-edit-documents .slds-checkbox--toggle [type=checkbox]:checked ~ .slds-checkbox_faux:after,
+.igcp-edit-documents .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox--faux:after,
+.igcp-edit-documents .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox--faux_container .slds-checkbox--faux:after,
+.igcp-edit-documents .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox_faux:after,
+.igcp-edit-documents .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox_faux_container .slds-checkbox_faux:after,
+.igcp-edit-documents .slds-checkbox_toggle [type=checkbox]:checked ~ .slds-checkbox--faux:after,
+.igcp-edit-documents .slds-checkbox_toggle [type=checkbox]:checked ~ .slds-checkbox_faux:after {
+  display: none; }
+
 .igcp-radio-group2 .slds-form-element__legend {
   color: #282828;
   font-size: 13px;
