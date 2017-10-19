@@ -7,12 +7,19 @@
 	<c:CP_Utils aura:id="CP_Utils" />
 	<c:CP_Validation aura:id="CP_Validation" />
 	<c:CP_Services aura:id="CP_Services" />
-	<c:CP_User_Info />
 	
 	<!-- ATTRS -->
 	<aura:attribute name="accountTitle" type="String" default=""></aura:attribute>
 	<aura:attribute name="accountNumber" type="String" default=""></aura:attribute>
+
+	<!-- RETURNED DATA FROM SALESFORCE -->
+	<aura:attribute name="accountDetailObj" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="investmentProfileObj" type="Map" default="{}" ></aura:attribute>
+	<aura:attribute name="holdingsObj" type="Map" default="{}" ></aura:attribute>
+	<aura:attribute name="holdingsArr" type="List" default="[]"></aura:attribute>
+	<aura:attribute name="transactionsArr" type="List" default="[]"></aura:attribute>
+	<aura:attribute name="instructionsArr" type="List" default="[]"></aura:attribute>
+	<aura:attribute name="accountPerformanceObj" type="Map" default="{}"></aura:attribute>
 	
 	<!-- METHODS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
@@ -49,7 +56,7 @@
 			<c:CP_Account_Investment_Profile profile="{!v.investmentProfileObj}"/>
 		</div>
 		<div class="slds-size_12-of-12">
-			<!-- <c:CP_Cmp_Table title="Holdings" 
+			<c:CP_Cmp_Table data="{!v.holdingsObj}"
 				values="{ 
 					headers: ['Name','Holding', 'Book Cost', 'Gain / Loss', 'Market Value'],
 	                values: [
@@ -65,7 +72,7 @@
 	                    	book_cost: '45,034.56',
 	                    	gain_loss: '5',
 	                    	market_value: '24, 000.67'  }
-	                    ]}"/> -->
+	                    ]}" />
 		</div>
 	</div>
 </aura:component>

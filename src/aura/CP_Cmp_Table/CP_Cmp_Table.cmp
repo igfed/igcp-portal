@@ -1,12 +1,14 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
-	<aura:attribute name="title" type="String" default=""></aura:attribute>
 	<aura:attribute name="values" type="Map" ></aura:attribute>
 
+	<aura:attribute name="data" type="Map" ></aura:attribute>
+
 	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	<aura:handler name="change" value="{!v.data}" action="{!c.onDataChange}"/>
 
 	<div class="igcp-container slds-p-around--medium">
-		<h3 class="slds-m-bottom--small">{!v.title}</h3>
+		<h3 class="slds-m-bottom--small">{!v.data.title}</h3>
 		<table style="width:100%">
 			<c:CP_Cmp_Table_Header />
 			{!v.body}

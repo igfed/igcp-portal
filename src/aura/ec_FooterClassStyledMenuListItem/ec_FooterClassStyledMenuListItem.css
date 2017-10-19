@@ -1,0 +1,28 @@
+.THIS .slds-icon {
+    fill: token(colorTextBrand);
+}
+
+.THIS {
+    padding-right: 2em;
+    padding-bottom: 2em;
+}
+
+@media (max-width: 770px) {
+    .THIS {
+        width: 50%;
+    }
+}
+
+@media (max-width: 500px) {
+    .THIS {
+        width: 100%;
+    }
+}
+
+.THIS > a:hover{
+    color: token(colorTextBrand);    
+}
+.THIS li > a:hover {
+    background-color: inherit;
+    color: token(colorTextBrand);
+}

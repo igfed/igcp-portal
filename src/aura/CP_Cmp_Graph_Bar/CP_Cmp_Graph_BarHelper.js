@@ -35,49 +35,62 @@
 		},
 		generateGraph: function() {
 
-			console.log('GENERATE GRAPH')
-
 			var
 				ctx = document.getElementById("bar-chart").getContext('2d'),
-				bar;
-
-			console.warn("generateGraph");
-			console.log(ctx);
+				bar,
+				darkBlue = "#1d5076",
+				lightBlue = "#aed8ff",
+				grey = "#d2dce4",
+				lightGreen = "#e0f1f0",
+				orange = "#fd8424",
+				seafoamGreen = "#4dede7",
+				darkPink = "#ee7481",
+				lighterBlue = "#dbfbfa",
+				darkGrey = "#cccccc";
 
 			bar = new Chart(ctx, {
 				type: 'bar',
 				data: {
-					labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+					labels: ["YTD", "1yr", "3yr", "5yr", "Since"],
 					datasets: [{
-						label: '# of Votes',
-						data: [12, 19, 3, 5, 2, 3],
-						backgroundColor: [
-							'rgba(255, 99, 132, 0.2)',
-							'rgba(54, 162, 235, 0.2)',
-							'rgba(255, 206, 86, 0.2)',
-							'rgba(75, 192, 192, 0.2)',
-							'rgba(153, 102, 255, 0.2)',
-							'rgba(255, 159, 64, 0.2)'
-						],
-						borderColor: [
-							'rgba(255,99,132,1)',
-							'rgba(54, 162, 235, 1)',
-							'rgba(255, 206, 86, 1)',
-							'rgba(75, 192, 192, 1)',
-							'rgba(153, 102, 255, 1)',
-							'rgba(255, 159, 64, 1)'
-						],
-						borderWidth: 1
-					}]
+							label: "Opening value",
+							backgroundColor: darkBlue,
+							data: [10, 40, 35, 79, 10]
+						},
+						{
+							label: "Closing value",
+							backgroundColor: seafoamGreen,
+							data: [44, 33, 55, 66, 77]
+						}
+					]
 				},
 				options: {
 					scales: {
+						xAxes: [{
+							barThickness: 8,
+							categoryPercentage: 0.35,
+							gridLines: {
+								display: false
+							},
+							ticks: {
+								fontColor: "#282828"
+							}
+						}],
 						yAxes: [{
 							ticks: {
-								beginAtZero: true
+								beginAtZero: true,
+								fontColor: "#282828"
 							}
 						}]
-					}
+					},
+					legend: {
+						position: "bottom",
+						labels: {
+							boxWidth: 12,
+							fontColor: "#282828"
+						}
+					},
+					defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'WhitneySemibold', Arial, sans-serif"
 				}
 			});
 		}

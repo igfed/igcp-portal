@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="Tell the parent taxonomy loader to toggle back to showing taxonomy list items">
+    <aura:attribute name="originId" type="String" />
+</aura:event>

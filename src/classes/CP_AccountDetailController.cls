@@ -71,7 +71,23 @@ public with sharing class CP_AccountDetailController {
 			String bpid = IGClientUtils.getClientBpid();
 			if (String.isNotBlank(bpid)) {
 				rv = IGClientService.getInstructionsDetails(bpid, accountNumber);
-			}else {
+			} else {
+				throw new AuraHandledException('The client business partnet id can\'t be null or blank');
+			}
+		} else {
+			throw new AuraHandledException('The account number can\'t be null or blank');
+		}
+		return rv;
+	}
+
+	@AuraEnabled
+	public static DTO_AccountPerformance getAccountPerformance(String accountNumber) {
+		DTO_AccountPerformance rv = null;
+		if (String.isNotBlank(accountNumber)) {
+			String bpid = IGClientUtils.getClientBpid();
+			if (String.isNotBlank(bpid)) {
+				rv = IGClientService.getAccountPerformance(bpid, accountNumber);
+			} else {
 				throw new AuraHandledException('The client business partnet id can\'t be null or blank');
 			}
 		} else {

@@ -15,9 +15,17 @@ public with sharing class EmailPrefController {
     	System.debug('payload '+payload);
     	List<Financial_Asset__c> listOfFinancialAssetsToupdate;
 
-    	EmailPrefResponse[] listOfFinancialAsset = (EmailPrefResponse[]) JSON.deserialize(payload, List<EmailPrefResponse>.class); 
-    	System.debug('List of financial assets received '+listOfFinancialAsset);
-    	listOfFinancialAssetsToupdate  = processRecords(listOfFinancialAsset);
+    	//EmailPrefResponse[] listOfFinancialAsset = (EmailPrefResponse[]) JSON.deserialize(payload, List<EmailPrefResponse>.class); 
+        EmailDocumentPreferences listDocumentPrefs = (EmailDocumentPreferences) JSON.deserialize(payload,EmailDocumentPreferences.class);
+        
+        List<EmailPrefResponse> tempTest = new List<EmailPrefResponse>();
+        tempTest = listDocumentPrefs.documentPreferences;
+        System.debug('list '+ tempTest);
+        listOfFinancialAssetsToupdate  = processRecords(listDocumentPrefs.documentPreferences,listDocumentPrefs.allDocumentPreference);
+        
+         
+        System.debug('to update '+listOfFinancialAssetsToupdate);
+    
     	if(listOfFinancialAssetsToupdate.size() > 0){
     		updateFinancialAssets(listOfFinancialAssetsToupdate);
     	}
@@ -31,8 +39,9 @@ public with sharing class EmailPrefController {
 		1. Static method will process the Financial Assest records with field updates.
 		
     *******************************************************************************************************/
-    private static List<Financial_Asset__c> processRecords(EmailPrefResponse[] listOfFinancialAssetsResp){
+    private static List<Financial_Asset__c> processRecords(EmailPrefResponse[] listOfFinancialAssetsResp , Boolean statusAllDocuments){
 
+        System.debug('list of Financial assets response '+listOfFinancialAssetsResp);
     	// get all the financial assets of the specific contact from the salesforce to update
     	List<Financial_Asset__c> listOfFinancialAssetsToupdate;
     	Map<String,Financial_Asset__c> mapClientNumberFA;
@@ -62,33 +71,41 @@ public with sharing class EmailPrefController {
     		System.debug('tempFinancialAsset '+tempFinancialAsset);
     		System.debug('tempFinancialAsset.Pref_Investment_Statements__c '+tempFinancialAsset.Pref_Investment_Statements__c);
     		if(tempFinancialAsset.Client_Number__c == eachRespObj.clientNumber){
-	    		if(eachRespObj.investmentStatements == false
-	    			&& (tempFinancialAsset.Pref_Investment_Statements__c == 'Online' || tempFinancialAsset.Pref_Investment_Statements__c == null)){
-	    			tempFinancialAsset.Pref_Investment_Statements__c = 'Paper';
-	    			updated = true;
-	    		} else if(eachRespObj.investmentStatements == true 
-	    				 && (tempFinancialAsset.Pref_Investment_Statements__c == 'Paper' || tempFinancialAsset.Pref_Investment_Statements__c == null)){
-	    			tempFinancialAsset.Pref_Investment_Statements__c = 'Online';
-	    			updated = true;
-	    		}
-	    		if(eachRespObj.taxReceipts == false 
-	    			&& (tempFinancialAsset.Pref_Tax_Receipts__c == 'Online' ||  tempFinancialAsset.Pref_Tax_Receipts__c == null)){
-	    			tempFinancialAsset.Pref_Tax_Receipts__c = 'Paper';
-	    			updated = true;
-	    		} else if(eachRespObj.taxReceipts == true 
-	    			&& (tempFinancialAsset.Pref_Tax_Receipts__c == 'Paper' || tempFinancialAsset.Pref_Tax_Receipts__c == null)){
-	    			tempFinancialAsset.Pref_Tax_Receipts__c = 'Online';
-	    			updated = true;
-	    		}
-	    		if(eachRespObj.tradeConfirmation == false 
-	    			&&  (tempFinancialAsset.Pref_Trade_Confirmation__c == 'Online' || tempFinancialAsset.Pref_Trade_Confirmation__c == null)){
-	    			tempFinancialAsset.Pref_Trade_Confirmation__c = 'Paper';
-	    			updated = true;
-	    		} else if(eachRespObj.tradeConfirmation == true 
-	    			 && (tempFinancialAsset.Pref_Trade_Confirmation__c == 'Paper' || tempFinancialAsset.Pref_Trade_Confirmation__c ==null)){
-	    			tempFinancialAsset.Pref_Trade_Confirmation__c = 'Online';
-	    			updated = true;
-	    		}
+                if(statusAllDocuments != true){
+    	    		if(eachRespObj.investmentStatements == false
+    	    			&& (tempFinancialAsset.Pref_Investment_Statements__c == 'Online' || tempFinancialAsset.Pref_Investment_Statements__c == null)){
+    	    			tempFinancialAsset.Pref_Investment_Statements__c = 'Paper';
+    	    			updated = true;
+    	    		} else if(eachRespObj.investmentStatements == true 
+    	    				 && (tempFinancialAsset.Pref_Investment_Statements__c == 'Paper' || tempFinancialAsset.Pref_Investment_Statements__c == null)){
+    	    			tempFinancialAsset.Pref_Investment_Statements__c = 'Online';
+    	    			updated = true;
+    	    		}
+    	    		if(eachRespObj.taxReceipts == false 
+    	    			&& (tempFinancialAsset.Pref_Tax_Receipts__c == 'Online' ||  tempFinancialAsset.Pref_Tax_Receipts__c == null)){
+    	    			tempFinancialAsset.Pref_Tax_Receipts__c = 'Paper';
+    	    			updated = true;
+    	    		} else if(eachRespObj.taxReceipts == true 
+    	    			&& (tempFinancialAsset.Pref_Tax_Receipts__c == 'Paper' || tempFinancialAsset.Pref_Tax_Receipts__c == null)){
+    	    			tempFinancialAsset.Pref_Tax_Receipts__c = 'Online';
+    	    			updated = true;
+    	    		}
+    	    		if(eachRespObj.tradeConfirmation == false 
+    	    			&&  (tempFinancialAsset.Pref_Trade_Confirmation__c == 'Online' || tempFinancialAsset.Pref_Trade_Confirmation__c == null)){
+    	    			tempFinancialAsset.Pref_Trade_Confirmation__c = 'Paper';
+    	    			updated = true;
+    	    		} else if(eachRespObj.tradeConfirmation == true 
+    	    			 && (tempFinancialAsset.Pref_Trade_Confirmation__c == 'Paper' || tempFinancialAsset.Pref_Trade_Confirmation__c ==null)){
+    	    			tempFinancialAsset.Pref_Trade_Confirmation__c = 'Online';
+    	    			updated = true;
+    	    		}
+                }else if(statusAllDocuments == true){
+                    tempFinancialAsset.Pref_Investment_Statements__c = 'Online';
+                    tempFinancialAsset.Pref_Trade_Confirmation__c = 'Online';
+                    tempFinancialAsset.Pref_Tax_Receipts__c = 'Online';
+                    updated = true;
+
+                }
 	    	}
     		if(updated == true){
     			listOfFinancialAssetsToupdate.add(tempFinancialAsset);

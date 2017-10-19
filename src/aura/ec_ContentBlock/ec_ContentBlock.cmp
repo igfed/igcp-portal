@@ -1,0 +1,44 @@
+<aura:component controller="ec_ContentBlockController" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" >
+    <ltng:require styles="{! $Resource.ec_Component_Helper + '/css/common.css' }"
+            scripts="{! join(',',
+                    $Resource.ec_Component_Helper + '/js/common.js',
+                    $Resource.ec_Component_Helper + '/js/svgxuse.js')
+                    }"
+            afterScriptsLoaded="{! c.scriptLoad }" />
+
+    <aura:attribute name="SLDSPath" type="String" default="{!$Resource.ec_slds}" />
+    <aura:attribute name="html" type="String" default="" />
+
+    <aura:attribute name="ComponentHeading" type="string" />
+    <aura:attribute name="contentName" type="String" required="true" />
+    <aura:attribute name="contentLayout" type="String" required="true" />
+    <aura:attribute name="siteName" type="String" required="false" />
+    <aura:attribute name="ignoreTargets" type="boolean" default="false" description="Whether to ignore targeting" />
+
+    <aura:attribute name="errorMessage" type="String" />
+
+    <div aura:id="contentContainer" class="contentContainer">
+        <aura:if isTrue="{!v.errorMessage}">
+            <ui:message title="Content" severity="error">
+                {!v.errorMessage}
+            </ui:message>
+            <aura:set attribute="else">
+                <div class="slds-spinner_container hidden" aura:id="loadingSpinner">
+                    <div class="slds-spinner--brand slds-spinner slds-spinner--medium" role="status">
+                        <span class="slds-assistive-text">Loading</span>
+                        <div class="slds-spinner__dot-a"></div>
+                        <div class="slds-spinner__dot-b"></div>
+                    </div>
+                </div>
+                <aura:if isTrue="{!!empty(v.ComponentHeading)}">
+                    <h4 class="slds-text-title--caps slds-truncate componentHeading poweredBy-flush-with-padding"><aura:text value="{!v.ComponentHeading}" /></h4>
+                </aura:if>
+                {!v.body}
+                <div aura:id="contentMarkup" class="contentMarkup">
+                    <aura:unescapedHtml value="{!v.html}" />
+                </div>
+
+            </aura:set>
+        </aura:if>
+    </div>
+</aura:component>

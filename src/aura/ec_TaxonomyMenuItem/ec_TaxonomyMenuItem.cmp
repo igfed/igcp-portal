@@ -1,0 +1,48 @@
+<aura:component controller="ec_TaxonomyMenuController">
+    <aura:attribute name="taxonomyItemName" type="string" default="" description="Taxonomy item name" />
+    <aura:attribute name="tagPath" type="string" default="" description="Tag Path" />
+    <aura:attribute name="depth" type="integer" default="0" description="" />
+    <aura:attribute name="maxDepth" type="integer" default="0" description="" />
+    <aura:attribute name="taxonomyNode" type="TaxonomyBundle" description="Current Taxonomy Node bundle"/>
+    <aura:attribute name="classNames" type="string" default="" description="class names to apply to the LI item."/>
+    <aura:attribute name="taxonomyList" type="TaxonomyBundle[]" description="A list of child taxonomy bundles"/>
+    <aura:attribute name="taxonomyInstanceName" type="string" default="" />
+    <aura:attribute name="sitePrefix" type="string" default="" />
+    <aura:attribute name="nodeId" type="string" default="" />
+    <aura:attribute name="ariaLevel" type="Integer" default="1" />
+    <aura:attribute name="buttonClass" type="string" default="" />  <!-- used only to potentially disable/hide expandy -->
+    <aura:attribute name="ariaExpanded" type="boolean" default="false"/>
+    <aura:attribute name="urlPath" type="String" />
+
+    <aura:registerEvent name="taxonomyClickedEvent" type="c:ec_ChangeTaxonomyPathEvt" />
+    <aura:registerEvent name="refreshMenuEvent" type="c:ec_RefreshTaxonomyMenuEvt" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.ariaExpanded}" action="{!c.handleAriaExpandedChange}" />
+    <aura:handler event="c:ec_ChangeTaxonomyPathEvt" action="{!c.handleRefreshTaxonomyMenu}"/>
+
+    <li id="{!v.nodeId}" class="{!v.classNames}" role="treeitem" aria-level="{!v.ariaLevel}" aria-expanded="{!v.ariaExpanded}">
+        <div class="slds-tree__item" aura:id="treeItem">
+            <button class="{!'slds-button slds-p-horizontal--xx-small ' + v.buttonClass}"
+                    disabled=""
+                    title="expand / collapse"
+                    aria-controls="{!v.nodeId}"
+                    onclick="{!c.handleToggleTreeExpand}" >
+                <c:svgIcon class="slds-button__icon"
+                           svgPath="{!$Resource.ec_slds + '/assets/icons/utility-sprite/svg/symbols.svg#chevronright'}"
+                           category="utility"
+                           size="medium"
+                           name="chevronright" />
+                <span class="slds-assistive-text">Expand or collapse category</span>
+            </button>
+            <a id="{!v.nodeId + '__label'}" onclick="{!c.taxItemClicked}" data-tagPath="{!v.tagPath}"
+               class="slds-navigation-list--vertical__action slds-text-link--reset">{!v.taxonomyItemName}</a>
+        </div>
+        <ul class="{!if(v.ariaExpanded, 'slds-is-expanded', 'slds-is-collapsed')}"
+            aria-labelledby="{!v.nodeId + '__label'}"
+            role="group"
+            aura:id="subMenu">
+       		{!v.body}
+        </ul>
+    </li>
+</aura:component>

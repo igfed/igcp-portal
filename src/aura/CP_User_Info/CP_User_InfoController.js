@@ -17,7 +17,7 @@
 
 			var utils = cmp.find("CP_Utils");
 
-			utils.waitFor(cmp, "v.userInfo", function(userInfo) {
+			utils.waitForDefined(cmp, "v.userInfo", function(userInfo) {
 				utils.forEach(userInfo, function(key, val) {
 					if(key !== "clientBPID") {
 						$('head').append("<meta name=" + 'igcp:' + key + " content=" + val + ">");

@@ -3,7 +3,7 @@
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="edit-documents"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
-
+    <aura:attribute name="tooltip" type="String" />
 	<aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 	
 	<!-- INCLUDES -->
@@ -27,27 +27,73 @@
 	</aura:method> -->
 	
 	<!-- MARKUP -->
-	<div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
+	<div class="igcp-wrapper igcp-edit-documents slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
 		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
 		<div class="slds-p-around--small igcp-boxed--white slds-medium-p-around--zero slds-size_12-of-12 slds-medium-size_6-of-12">
-			<h1>Edit Documents (label)</h1>
+			<h1>Edit Documents</h1>
+
+			<p class="slds-medium-p-top--small">Choose how you'd like to receive your statements and other important financial documents. <a href="#">Explore the benefits.</a></p>
+			
+			<div class="slds-form-element slds-size_12-of-12 slds-medium-size_7-of-12 slds-align_absolute-center slds-m-top--medium slds-m-bottom--medium">
+				<label class="slds-checkbox_toggle slds-grid">
+					<input type="checkbox" name="checkbox" aria-describedby="toggle-desc" value="on" />
+					<span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
+						<span class="slds-checkbox_faux"></span>
+						<span class="slds-checkbox_on">View all your documents online</span>
+						<span class="slds-checkbox_off">View all your documents online</span>
+					</span>
+				</label>		
+			</div>
+
+			<div class="slds-size_12-of-12 igcp-document-section">
+				<h2>Investors Group Financial Services</h2>
+                <p class="igcp-client-details">Client Number: 123456</p>
+				<p class="igcp-client-details">GTFSA: *0896</p>
+
+				<hr/>
+
+				<div class="slds-grid">
+					<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">Investment Statements</div>
+					<div class="slds-form-element slds-col slds-size_5-of-12 slds-medium-size_3-of-12">
+						<label class="slds-checkbox_toggle slds-grid">
+							<input type="checkbox" name="checkbox" aria-describedby="toggle-desc" value="on" />
+							<span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
+								<span class="slds-checkbox_faux"></span>
+								<span class="slds-checkbox_on">Online</span>
+								<span class="slds-checkbox_off">Online</span>
+							</span>
+						</label>		
+					</div>
+				</div>
+
+
+				<div class="slds-grid">
+					<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">Tax Receipts</div>
+					<div class="slds-size_5-of-12 slds-medium-size_3-of-12">
+			    		<span class="igcp-label--small"><c:CP_Cmp_Tooltip tooltip="This is a tooltip"/> Paper</span>
+					</div>
+				</div>
+
+				<div class="slds-grid">
+					<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">Trade Confirmations</div>
+					<div class="slds-size_5-of-12 slds-medium-size_3-of-12">
+						<span class="igcp-label--small"><c:CP_Cmp_Tooltip tooltip="This is a tooltip"/> Paper</span>
+					</div>
+				</div>
+			</div>
+
+			<hr/>
+
+		
+			
 
 			<div class="slds-grid slds-wrap">
 				<div class="slds-form slds-size_12-of-12">
-					
-					<div class="{!v.class}">
-						<label class="slds-form-element__label input-label" for="confirm-password-input">{!$Label.c.CP_Change_Password_Current}</label>
-						<div class="slds-form-element__control">
-							
-						</div>
-					</div>
 
-					<!--FIELDS-->
-					<!-- PASSWORD -->
-					<c:CP_Cmp_Input_Password id="password-input" form="{!v.pageId}" type="password" confirmPassword="true" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Password}" />
+	
 				</div>
 				<!--CTAS-->
-				<c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="Back Label" nextLabel="Next Label" nextType="submit" form="{!v.pageId}" />
+				<c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Update}" nextType="submit" form="{!v.pageId}" />
 			</div>
 		</div>
 		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
