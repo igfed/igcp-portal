@@ -4,7 +4,14 @@
 		var
 			accountNumber = "13460563",
 			services = cmp.find("CP_Services"),
+			utils = cmp.find("CP_Utils"),
 			events = cmp.find("CP_Events");
+
+		utils.getURLParams(function(params){
+			if(params.language) {
+				cmp.set("v.lang", params.language);
+			}
+		});
 
 		services.getAccountDetail(
 			accountNumber,
@@ -16,6 +23,13 @@
 				console.log("*******");
 
 				cmp.set("v.accountDetailObj", success);
+
+				utils.formatToCurrency(success.marketValueCad, function(returnedValue){
+					cmp.set("v.marketValue", returnedValue);
+				}, cmp.get("v.lang"));
+
+				cmp.set("v.gainLossPercentage", "N/A");
+				cmp.set("v.change", "N/A");
 			},
 			function (error) {
 				console.error(error);
@@ -45,8 +59,6 @@
 				console.log("Get Holdings");
 				console.log(success);
 				console.log("*******");
-
-				cmp.set("v.holdingsArr", success);
 
 				var holdings = {
 					headers: ['Name', 'Holding', 'Book Cost', 'Gain / Loss', 'Market Value'],

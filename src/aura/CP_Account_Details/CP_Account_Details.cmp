@@ -9,6 +9,7 @@
 	<c:CP_Services aura:id="CP_Services" />
 	
 	<!-- ATTRS -->
+	<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
 	<aura:attribute name="accountTitle" type="String" default=""></aura:attribute>
 	<aura:attribute name="accountNumber" type="String" default=""></aura:attribute>
 
@@ -16,10 +17,14 @@
 	<aura:attribute name="accountDetailObj" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="investmentProfileObj" type="Map" default="{}" ></aura:attribute>
 	<aura:attribute name="holdingsObj" type="Map" default="{}" ></aura:attribute>
-	<aura:attribute name="holdingsArr" type="List" default="[]"></aura:attribute>
 	<aura:attribute name="transactionsArr" type="List" default="[]"></aura:attribute>
 	<aura:attribute name="instructionsArr" type="List" default="[]"></aura:attribute>
 	<aura:attribute name="accountPerformanceObj" type="Map" default="{}"></aura:attribute>
+
+	<aura:attribute name="marketValue" type="String" default=""></aura:attribute>
+	<aura:attribute name="change" type="String" default=""></aura:attribute>
+	<aura:attribute name="gainLossType" type="String" default="positive" ></aura:attribute>
+	<aura:attribute name="gainLossPercentage" type="String" default="N/A"></aura:attribute>
 	
 	<!-- METHODS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
@@ -29,8 +34,11 @@
 	<div class="igcp-overview igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-around--xx-small slds-large-p-around--medium">
 		<div class="slds-size_12-of-12">
 			<div class="slds-m-top--medium slds-large-m-top--none slds-m-bottom--large">
-				<c:CP_Cmp_Text_Link class="slds-float_left" linkClass="igcp-link__variant--a igcp-utils__text--uppercase" icon="utility:left" label="Overview" />
-				<c:CP_Cmp_Text_Link class="slds-float_right" linkClass="igcp-link__variant--a igcp-utils__text--uppercase" icon="utility:table" label="View Statement" />
+				
+				<c:CP_Cmp_Text_Link class="slds-float_left" linkClass="igcp-link__variant--a igcp-utils__text--uppercase" icon="utility:left" label="{!$Label.c.CP_Generic_Label_Overview}" />
+				
+				<c:CP_Cmp_Text_Link class="slds-float_right" linkClass="igcp-link__variant--a igcp-utils__text--uppercase" icon="utility:table" label="{!$Label.c.CP_Generic_Label_View_Statement}" />
+
 			</div>
 		</div>
 		<div class="slds-size_12-of-12">
@@ -39,8 +47,19 @@
 		<div class="slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_8-of-12">
 			<div class="igcp-container slds-large-m-right--medium slds-p-around--small slds-large-p-around--medium slds-m-bottom--x-small slds-large-m-bottom--medium">
 				<div class="slds-grid slds-wrap">
-					<c:CP_Cmp_Total_Value label="Market Value" value="52,520.44" />
-					<c:CP_Cmp_Gain_Loss label="Gain/Loss" description="Year to date" value="2,363.41" percentage="4.5" />
+					
+
+					<c:CP_Cmp_Total_Value label="{!$Label.c.CP_Generic_Label_Market_Value}" value="{!v.marketValue}" />
+					
+
+					<c:CP_Cmp_Gain_Loss 
+						label="{!$Label.c.CP_Generic_Label_Change}" 
+						description="{!$Label.c.CP_Generic_Label_Year_To_Date}" 
+						value="{!v.change}" 
+						percentage="{!v.gainLossPercentage}" 
+						gainLossType="{!v.gainLossType}" />
+					
+
 					<div class="igcp-separator--large slds-size_12-of-12 slds-m-vertical--xxx-small slds-large-m-vertical--large "></div>
 					<div class="slds-grid slds-wrap">
 						<c:CP_Cmp_Name_Value_List id="account-list-1" class="slds-large-size_6-of-12" />
