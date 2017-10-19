@@ -53,8 +53,8 @@
 				<hr/>
 
 				<div class="slds-grid">
-					<div class="slds-col slds-size_9-of-12">Investment Statements</div>
-					<div class="slds-form-element slds-col slds-size_3-of-12">
+					<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">Investment Statements</div>
+					<div class="slds-form-element slds-col slds-size_5-of-12 slds-medium-size_3-of-12">
 						<label class="slds-checkbox_toggle slds-grid">
 							<input type="checkbox" name="checkbox" aria-describedby="toggle-desc" value="on" />
 							<span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
@@ -68,13 +68,17 @@
 
 
 				<div class="slds-grid">
-					<div class="slds-col slds-size_8-of-12">Tax Receipts</div>
-					<div class="slds-col slds-size_4-of-12">Tax Receipts</div>
+					<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">Tax Receipts</div>
+					<div class="slds-size_5-of-12 slds-medium-size_3-of-12">
+			    		<span class="igcp-label--small"><c:CP_Cmp_Tooltip tooltip="This is a tooltip"/> Paper</span>
+					</div>
 				</div>
 
 				<div class="slds-grid">
-					<div class="slds-col slds-size_8-of-12">Trade Confirmations</div>
-					<div class="slds-col slds-size_4-of-12">Tax Receipts</div>
+					<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">Trade Confirmations</div>
+					<div class="slds-size_5-of-12 slds-medium-size_3-of-12">
+						<span class="igcp-label--small"><c:CP_Cmp_Tooltip tooltip="This is a tooltip"/> Paper</span>
+					</div>
 				</div>
 			</div>
 

@@ -512,7 +512,6 @@
 		position: absolute;
 		top: 5px;
 		left: -8px;
-		
 		&+.slds-form-element__label {
 			left: 20px;
 		}
@@ -539,8 +538,14 @@
 		font-size: 14px;
 		padding-left: 10px;
 	}
-	.#{$namespace}-document-section .slds-grid:last-child {
-		margin-bottom: -30px;
+	.#{$namespace}-document-section {
+		.slds-grid:last-child {
+			margin-bottom: -30px;
+		}
+		.#{$namespace}-tooltip {
+			margin-left:  0;
+		}
+
 	}
 	.slds-checkbox--toggle .slds-checkbox--faux,
 	.slds-checkbox--toggle .slds-checkbox_faux,
@@ -646,8 +651,6 @@
 		background: $ig-black !important;
 	}
 }
-
-.#{$namespace}-edit-documents {}
 
 //GRAPH
 .#{$namespace}-graph__doughnut-legend {}
