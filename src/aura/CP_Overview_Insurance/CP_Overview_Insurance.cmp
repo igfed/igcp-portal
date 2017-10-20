@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_OverviewController">
+<aura:component controller="CP_OverviewController">
 	
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />

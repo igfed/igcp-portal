@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_ForgotUserNameController">
+<aura:component controller="CP_ForgotUserNameController">
 
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="forgot-user-step-2"></aura:attribute>

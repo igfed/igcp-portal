@@ -1,5 +1,5 @@
 ({
-	onInit: function (cmp, evt, hlpr) {
+	onInit: function(cmp, evt, hlpr) {
 
 		var
 			accountNumber = "13460563",
@@ -7,8 +7,8 @@
 			utils = cmp.find("CP_Utils"),
 			events = cmp.find("CP_Events");
 
-		utils.getURLParams(function(params){
-			if(params.language) {
+		utils.getURLParams(function(params) {
+			if (params.language) {
 				cmp.set("v.lang", params.language);
 			}
 		});
@@ -16,7 +16,7 @@
 		services.getAccountDetail(
 			accountNumber,
 			cmp,
-			function (success) {
+			function(success) {
 				console.log("*******");
 				console.log("Get Account Detail");
 				console.log(success);
@@ -24,14 +24,18 @@
 
 				cmp.set("v.accountDetailObj", success);
 
-				utils.formatToCurrency(success.marketValueCad, function(returnedValue){
-					cmp.set("v.marketValue", returnedValue);
-				}, cmp.get("v.lang"));
+				try {
+					utils.formatToCurrency(success.marketValueCad, function(returnedValue) {
+						cmp.set("v.marketValue", returnedValue);
+					}, cmp.get("v.lang"));
+				} catch (err) {
+
+				}
 
 				cmp.set("v.gainLossPercentage", "N/A");
 				cmp.set("v.change", "N/A");
 			},
-			function (error) {
+			function(error) {
 				console.error(error);
 			}
 		);
@@ -39,14 +43,14 @@
 		services.getInvestmentProfile(
 			accountNumber,
 			cmp,
-			function (success) {
+			function(success) {
 				console.log("*******");
 				console.log("Get Investment Profile");
 				console.log(success);
 				console.log("*******");
 				cmp.set("v.investmentProfileObj", success);
 			},
-			function (error) {
+			function(error) {
 				console.error(error);
 			}
 		);
@@ -54,36 +58,47 @@
 		services.getHoldings(
 			accountNumber,
 			cmp,
-			function (success) {
-				console.log("*******");
+			function(success) {
+				console.log("############");
 				console.log("Get Holdings");
 				console.log(success);
-				console.log("*******");
+				console.log("############");
 
-				var holdings = {
-					headers: ['Name', 'Holding', 'Book Cost', 'Gain / Loss', 'Market Value'],
-					title: 'Holdings',
-					records: success
-				}
+				// var holdings = {
+				// 	headers: ['Name', 'Holding', 'Book Cost', 'Gain / Loss', 'Market Value'],
+				// 	title: 'Holdings',
+				// 	records: success
+				// }
 
-				cmp.set("v.holdingsObj", holdings);
+				// cmp.set("v.holdingsObj", holdings);
 
 			},
-			function (error) {
-				console.error(error);
+			function(error) {
+				events.fire(
+					"CP_Evt_Set_Table", {
+						"id": "holdings-table",
+						"headers": ["Name", "Holding", "Book Cost", "Gain / Loss", "Market Value"],
+						"title": "Holdings",
+						"data": [
+							["Account 1", 32.7, 15034.56, 5.3, 18000.67 ],
+							["Account 2", 34.3, 1214.56, 5.6, 124420.67 ],
+							["Account 3", 14.7, 15034.56, 4.3, 5400.67 ]
+						]
+					}
+				);
 			}
 		);
 
 		services.getTransactions(
 			accountNumber,
 			cmp,
-			function (success) {
+			function(success) {
 				console.log("*******");
 				console.log("Get Transactions");
 				console.log(success);
 				console.log("*******");
 			},
-			function (error) {
+			function(error) {
 				console.error(error);
 			}
 		);
@@ -91,13 +106,13 @@
 		services.getInstructions(
 			accountNumber,
 			cmp,
-			function (success) {
+			function(success) {
 				console.log("*******");
 				console.log("Get Instructions");
 				console.log(success);
 				console.log("*******");
 			},
-			function (error) {
+			function(error) {
 				console.error(error);
 			}
 		);
@@ -105,76 +120,11 @@
 		services.getAccountPerformance(
 			accountNumber,
 			cmp,
-			function (success) {
+			function(success) {
 				console.log("*******");
 				console.log("Get Account Performance");
 				console.log(success);
 				console.log("*******");
-			},
-			function (error) {
-				console.error(error);
-			}
-		);
-
-		services.getHoldings(
-			accountNumber,
-			cmp,
-			function(success) {
-				console.log("############");
-				console.log("Get Holdings");
-				console.log(success);
-				console.log("############");
-
-				var holdings = {
-					headers: ['Name', 'Holding', 'Book Cost', 'Gain / Loss', 'Market Value'],
-					title: 'Holdings',
-					records: success
-				}
-
-				cmp.set("v.holdingsObj", holdings);
-
-			},
-			function(error) {
-				console.error(error);
-			}
-		);
-
-		services.getTransactions(
-			accountNumber,
-			cmp,
-			function(success) {
-				// console.log("*******");
-				// console.log("Get Transactions");
-				// console.log(success);
-				// console.log("*******");
-			},
-			function(error) {
-				console.error(error);
-			}
-		);
-
-		services.getInstructions(
-			accountNumber,
-			cmp,
-			function(success) {
-				// console.log("*******");
-				// console.log("Get Instructions");
-				// console.log(success);
-				// console.log("*******");
-			},
-			function(error) {
-				console.error(error);
-			}
-		);
-
-		services.getAccountPerformance(
-			accountNumber,
-			cmp,
-			function(success) {
-				// console.log("*******");
-				// console.log("Get Account Performance");
-				// console.log(success);
-				// console.log("*******");
 			},
 			function(error) {
 				console.error(error);
@@ -228,7 +178,7 @@
 				"id": "account-details-performance-chart"
 			});
 	},
-	doneRendering: function (cmp, evt, hlpr) {
+	doneRendering: function(cmp, evt, hlpr) {
 		var body = document.querySelector("body");
 		body.className = "igcp-background__tiled igcp-utils__display--block";
 	}

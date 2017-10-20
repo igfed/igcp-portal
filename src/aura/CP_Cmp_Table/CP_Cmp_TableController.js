@@ -1,34 +1,20 @@
 ({
 	doInit: function(cmp, evt, hlpr) {
-	
-		var data = cmp.get("v.records")
-		console.info('Table ctrl | values: ', cmp.get("v.values"))
-		console.info('Table ctrl | data: ', cmp.get("v.data"))
+		if(cmp.get("v.id") === "") {
+			console.warn("CP_Cmp_Table: An id is required.");
+		}
+	},
+	onSetTable: function(cmp, evt, hlpr) {
 
 		var 
-			utils = cmp.find("CP_Utils"),
-			data = cmp.get("v.records"),
-			values = cmp.get("v.values")['values'],
-			componentName = "c:CP_Cmp_Table_Row";
-
-		values.forEach(function(item, i) {
-
-			// utils.createComponent(
-			// 	componentName, 
-			// 	{
-			// 		"values" : item
-			// 	}, 
-			// 	function(ready){}
-			// );
-		});
-
-	},
-	onDataChange: function(cmp, evt, hlpr){
-		// console.log("old value: " + evt.getParam("oldValue"));
-		console.log('onChange: ', evt.getParam("value"));
+			payload = evt.getParam("payload"),
+			utils = cmp.find("CP_Utils");
 		
-		// cmp.set('v.data', evt.getParam('value'))
+		if(cmp.get("v.id") === payload.id) {
 
-		// console.log('data on change', cmp.get("v.data"));
+			hlpr.generateHeader(cmp, utils, payload.headers, function(ready){
+				hlpr.generateTable(cmp, utils, payload.data, function(ready){});
+			});
+		}
 	}
 })

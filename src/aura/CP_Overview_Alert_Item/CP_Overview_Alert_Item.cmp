@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component >
     
     <aura:attribute name="date" type="String" default="" />
     <aura:attribute name="message" type="String" default="" />

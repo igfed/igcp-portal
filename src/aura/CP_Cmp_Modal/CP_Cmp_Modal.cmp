@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component >
 	<!-- ATTTRS -->
 	<aura:attribute name="id" type="String" default="default"></aura:attribute>
 	<aura:attribute name="class" type="String" default=""></aura:attribute>
