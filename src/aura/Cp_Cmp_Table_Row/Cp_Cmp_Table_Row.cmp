@@ -8,8 +8,8 @@
 	<aura:attribute name="data" type="Map"></aura:attribute>
 	
 	<!-- HANDLERS -->
-	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-	<tr>
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<tr class="igcp-table__row igcp-underline__thin--grey">
 		{!v.body}
 	</tr>
 </aura:component>

@@ -559,3 +559,22 @@
 
 //GRAPH
 .#{$namespace}-graph__doughnut-legend {}
+
+//TABLES
+.#{$namespace}-table {
+
+	width: 100%;
+
+	.#{$namespace}-table__row {
+		
+		.#{$namespace}-table__header {
+			font-size: $ig-font-size--mini;
+			letter-spacing: $ig-letter-spacing;
+			color: $ig-blue;
+		}
+
+		.#{$namespace}-table__data {
+
+		}
+	}
+}

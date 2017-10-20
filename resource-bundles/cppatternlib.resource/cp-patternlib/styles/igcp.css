@@ -78,6 +78,9 @@ label {
 dl dt {
   font-weight: 100; }
 
+table {
+  width: 100%; }
+
 @media print {
   body {
     font-family: "WhitneyBook", Arial, sans-serif;
@@ -3667,6 +3670,13 @@ dl dt {
 .igcp-boxed--white {
   background-color: #fff;
   padding: 30px 25px; }
+
+.igcp-table {
+  width: 100%; }
+  .igcp-table .igcp-table__row .igcp-table__header {
+    font-size: 14px;
+    letter-spacing: 0px;
+    color: #004171; }
 
 @media (min-width: 768px) {
   .igcp-registration .igcp-registration__pfa h1 {

@@ -78,7 +78,6 @@
 					"CP_Evt_Set_Table", {
 						"id": "holdings-table",
 						"headers": ["Name", "Holding", "Book Cost", "Gain / Loss", "Market Value"],
-						"title": "Holdings",
 						"data": [
 							["Account 1", "32.7", "15034.56", "5.3", "18000.67" ],
 							["Account 2", "34.3", "1214.56", "5.6", "124420.67" ],
