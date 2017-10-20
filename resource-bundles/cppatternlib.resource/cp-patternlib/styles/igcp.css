@@ -3671,14 +3671,6 @@ table {
   background-color: #fff;
   padding: 30px 25px; }
 
-<<<<<<< HEAD
-.igcp-table {
-  width: 100%; }
-  .igcp-table .igcp-table__row .igcp-table__header {
-    font-size: 14px;
-    letter-spacing: 0px;
-    color: #004171; }
-=======
 .igcp-edit-notifications .slds-checkbox--faux {
   position: absolute;
   top: 5px;
@@ -3791,7 +3783,13 @@ table {
   border: 1px solid #282828 !important; }
 .igcp-radio-group2 .slds-radio_faux:after {
   background: #282828 !important; }
->>>>>>> 08e86f8021fce2b95f59ab5a997b91768e9566a0
+
+.igcp-table {
+  width: 100%; }
+  .igcp-table .igcp-table__row .igcp-table__header {
+    font-size: 14px;
+    letter-spacing: 0px;
+    color: #004171; }
 
 @media (min-width: 768px) {
   .igcp-registration .igcp-registration__pfa h1 {

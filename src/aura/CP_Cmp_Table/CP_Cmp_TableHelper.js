@@ -5,7 +5,8 @@
 				"CP_Cmp_Table_Header", 
 				{
 					"id": cmp.get("v.id"),
-					"headers": data
+					"headers": data,
+					"style" : cmp.get("v.styleConfig")
 				},
 				cmp,
 				function(ready) {
@@ -22,14 +23,15 @@
 				utils.createComponent(
 					"CP_Cmp_Table_Row",
 					{
-						"data" : row
+						"data" : row,
+						"style" : cmp.get("v.styleConfig")
 					},
 					cmp,
 					function(ready){}
 				);
 			});
 		} catch(err) {
-
+			console.error(err);
 		}
 	}
 })

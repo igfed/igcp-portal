@@ -1,15 +1,18 @@
-<aura:component >
+<aura:component>
+
+	<!-- INCLUDES -->
+	<c:CP_Utils aura:id="CP_Utils" />
 
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String"></aura:attribute>
 	<aura:attribute name="headers" type="List"></aura:attribute>
+	<aura:attribute name="style" type="Map"></aura:attribute>
+
+	<!-- HANDLERS -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 
 	<!-- MARKUP -->
-	<tr>
-		<th>Name</th>
-		<th>Holding</th>
-		<th>Book Cost</th>
-		<th>Gain / Loss</th>
-		<th>Market Value</th>
+	<tr class="igcp-table__row igcp-underline__thin--blue">
+		{!v.body}
 	</tr>
 </aura:component>

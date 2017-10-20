@@ -39,31 +39,6 @@
 				}
 			});
 
-			hlpr.checkType(params.cmpId, function(returnedVal){
-				if(returnedVal !== "string") {
-					console.error("CP_Utils: createComponent: The cmpId must be a string.");
-				}
-			});
-
-			hlpr.checkType(params.params, function(returnedVal){
-				if(returnedVal !== "object") {
-					console.error("CP_Utils: createComponent: The params passed must be inside an object.");
-				}
-			});
-
-			if(container !== null || container !== undefined) {
-				hlpr.checkType(container, function(returnedVal){
-					console.log("RETURNED")
-					console.log(returnedVal);
-
-					if(returnedVal !== "object") {
-						console.error("CP_Utils: createComponent: passed container is not valid, it should be 'cmp'.");
-					}
-				});
-			} else {
-				console.error("CP_Utils: createComponent: container is not defined.")
-			}
-
 			$A.createComponent(
 				compId, params.params,
 				function(component, status, errorMessage) {

@@ -6,6 +6,7 @@
 
 	<!-- ATTRS -->
 	<aura:attribute name="data" type="Map"></aura:attribute>
+	<aura:attribute name="style" type="Map"></aura:attribute>
 	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
