@@ -1,4 +1,5 @@
 <aura:component>
+	
 	<!-- ATTRS -->
 	<aura:attribute name="lang" type="String"></aura:attribute>
 

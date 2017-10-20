@@ -1,4 +1,4 @@
-<aura:component>
+<aura:component >
 	<aura:attribute name="image" type="String" />
 	<aura:attribute name="title" type="String" />
 	<aura:attribute name="copy" type="String" />

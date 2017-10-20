@@ -1,10 +1,9 @@
-<aura:component>
+<aura:component >
 
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
 	
-
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default=""></aura:attribute>
 	<aura:attribute name="class" type="String" default=""></aura:attribute>
