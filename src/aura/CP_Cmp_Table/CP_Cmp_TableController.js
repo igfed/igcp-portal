@@ -1,6 +1,13 @@
 ({
 	doInit: function(cmp, evt, hlpr) {
 	
+<<<<<<< HEAD
+=======
+		var data = cmp.get("v.records")
+		console.info('Table ctrl | values: ', cmp.get("v.values"))
+		console.info('Table ctrl | data: ', cmp.get("v.data"))
+
+>>>>>>> master
 		var 
 			utils = cmp.find("CP_Utils"),
 			data = cmp.get("v.records"),
