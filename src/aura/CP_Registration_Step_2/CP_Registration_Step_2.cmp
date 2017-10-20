@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_RegistrationController">
+<aura:component controller="CP_RegistrationController">
 	
 	<!-- ATTRS	 -->
 	<aura:attribute name="pageId" type="String" default="registration-step-2"></aura:attribute>

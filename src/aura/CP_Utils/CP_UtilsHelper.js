@@ -1,4 +1,16 @@
 ({
+	stringHas: function(pattern, string, callback){
+		var hasVal = false;
+
+		if(string.indexOf(pattern) !== -1) {
+			hasVal = true;
+		}
+
+		callback(hasVal);
+	},
+	checkType: function(obj, callback){
+		callback(typeof obj);
+	},
 	formatCurrency: function(rawVal, decimalPos, commaPos, commaDelimeter, decimalDelimiter) {
 		/**
 		 * Number.prototype.format(n, x, s, c)
@@ -33,11 +45,11 @@
 			formattedValue += ".00";
 		}
 
-		return formattedValue;
-
 		//Examples
 		//12345678.9.formatCurrency(2, 3, '.', ','); // "12.345.678,90"
 		//123456.789.formatCurrency(4, 4, ' ', ':'); // "12 3456:7890"
 		//12345678.9.formatCurrency(0, 3, '-'); // "12-345-679"
+
+		return formattedValue;
 	}
 })

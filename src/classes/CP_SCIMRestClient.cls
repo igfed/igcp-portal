@@ -379,11 +379,11 @@ public class CP_SCIMRestClient {
             try
             {
                 HttpRequest req = new HttpRequest();
-                req.setEndpoint('callout:' +  namedCredential+ param + '?_HttpMethod=PATCH');
+                req.setEndpoint('callout:' +  namedCredential+ param);    //?_HttpMethod=PATCH'
                 req.setMethod(REST_POST_METHOD);
                 req.setHeader(HTTP_HEADER_ACPT, REST_CONTENT);
                 req.setHeader(CONTENT_TYPE, REST_CONTENT);
-                //req.setHeader('X-HTTP-Method-Override', 'PATCH');
+                req.setHeader('X-HTTP-Method-Override', 'PATCH');
                 req.setTimeout(120000);
                 req.setBody(body);
 

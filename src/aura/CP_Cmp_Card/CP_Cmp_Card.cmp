@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component>
 	<aura:attribute name="image" type="String" />
 	<aura:attribute name="title" type="String" />
 	<aura:attribute name="copy" type="String" />

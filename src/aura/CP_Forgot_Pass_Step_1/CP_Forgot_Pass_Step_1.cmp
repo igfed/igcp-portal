@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_ForgotPasswordController">
+<aura:component controller="CP_ForgotPasswordController">
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="forgot-password-step-1"></aura:attribute>
 	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>

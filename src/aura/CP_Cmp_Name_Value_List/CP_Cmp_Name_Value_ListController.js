@@ -5,8 +5,6 @@
 		}
 	},
 	onSetList: function(cmp, evt, hlpr) {
-		console.warn("CP_Cmp_Name_Value_List: onSetList");
-
 		var payload = evt.getParam("payload");
 
 		if (cmp.get("v.id") === payload.id) {

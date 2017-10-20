@@ -1,6 +1,12 @@
 <aura:component >
+
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
+
 	<!-- ATTRS -->
-	<aura:attribute name="values" type="Map"></aura:attribute>
+	<aura:attribute name="data" type="Map"></aura:attribute>
+	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 	<tr>

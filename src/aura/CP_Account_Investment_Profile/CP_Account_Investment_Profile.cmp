@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component>
 	
 	<!-- ATTRS -->
 	<aura:attribute name="profile" type="Map"></aura:attribute>
@@ -16,7 +16,7 @@
 				<dd class="igcp-list__item-detail--c slds-item_detail" title="Value for investment objective">{!v.profile.investmentObjective}</dd>
 			</div>
 			<div class="slds-size_12-of-12 slds-small-size_6-of-12 slds-large-size_3-of-12">
-				<dt class="igcp-list__item-label--c slds-item_label" title="Risk Tolerancel">Risk Tolerancel</dt>
+				<dt class="igcp-list__item-label--c slds-item_label" title="Risk Tolerancel">Risk Tolerance</dt>
 				<dd class="igcp-list__item-detail--c slds-item_detail" title="Value for risk tolerance">{!v.profile.riskTolerance}</dd>
 		    </div>
 		    <div class="slds-size_12-of-12 slds-small-size_6-of-12 slds-large-size_3-of-12 igcp-small-utils__text-align--right igcp-large-utils__text-align--left">

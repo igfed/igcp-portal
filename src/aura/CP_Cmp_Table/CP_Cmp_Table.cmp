@@ -1,16 +1,23 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component>
 
-	<aura:attribute name="values" type="Map" ></aura:attribute>
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
+	
 
-	<aura:attribute name="data" type="Map" ></aura:attribute>
-
+	<!-- ATTRS -->
+	<aura:attribute name="id" type="String" default=""></aura:attribute>
+	<aura:attribute name="class" type="String" default=""></aura:attribute>
+	<aura:attribute name="data" type="Map" default="{}"></aura:attribute>
+    
+	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-	<aura:handler name="change" value="{!v.data}" action="{!c.onDataChange}"/>
+	<aura:handler event="c:CP_Evt_Set_Table" action="{!c.onSetTable}" />
 
-	<div class="igcp-container slds-p-around--medium">
+	<!-- MARKUP -->
+	<div class="{!'igcp-container slds-p-around--medium ' + v.class}">
 		<h3 class="slds-m-bottom--small">{!v.data.title}</h3>
 		<table style="width:100%">
-			<c:CP_Cmp_Table_Header />
 			{!v.body}
 		</table>
 	</div>

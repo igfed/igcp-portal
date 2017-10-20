@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component>
 	<!-- ATTRS -->
 	<aura:attribute name="class" type="String" default="slds-size_6-of-12 slds-medium-p-left--small"></aura:attribute>
 	<aura:attribute name="label" type="String" default="Total Value"></aura:attribute>

@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component>
 	
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
