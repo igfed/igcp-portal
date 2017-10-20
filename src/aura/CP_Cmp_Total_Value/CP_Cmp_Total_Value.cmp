@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <aura:component >
+=======
+<aura:component>
+>>>>>>> master
 	<!-- ATTRS -->
 	<aura:attribute name="class" type="String" default="slds-size_6-of-12 slds-medium-p-left--small"></aura:attribute>
 	<aura:attribute name="label" type="String" default="Total Value"></aura:attribute>

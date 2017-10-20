@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <aura:component >
+=======
+<aura:component>
+>>>>>>> master
 	
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" />

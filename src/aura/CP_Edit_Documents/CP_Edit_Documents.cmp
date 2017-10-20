@@ -39,8 +39,13 @@
 					<input type="checkbox" name="checkbox" aria-describedby="toggle-desc" value="on" />
 					<span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
 						<span class="slds-checkbox_faux"></span>
+<<<<<<< HEAD
 						<span class="slds-checkbox_on">{!$Label.c.CP_Statement_Preference_Global_Setting_Online}</span>
 						<span class="slds-checkbox_off">{!$Label.c.CP_Statement_Preference_Global_Setting_Paper}</span>
+=======
+						<span class="slds-checkbox_on">View all your documents online</span>
+						<span class="slds-checkbox_off">Paper Statements</span>
+>>>>>>> master
 					</span>
 				</label>		
 			</div>
@@ -85,8 +90,13 @@
 			<hr class="slds-m-bottom--x-large"/>
 
 			<div class="slds-size_12-of-12 igcp-document-section">
+<<<<<<< HEAD
 				<h2>{!$Label.c.CP_Generic_Label_Investors_Group_Security_Inc}</h2>
                 <p class="igcp-client-details">{!$Label.c.CP_Generic_Label_Client_Number}: 9231212</p>
+=======
+				<h2>Investors Group Security Inc.</h2>
+                <p class="igcp-client-details">Client Number: 9231212</p>
+>>>>>>> master
 				<p class="igcp-client-details">TFSA *4732, Joint RESP *4831</p>
 
 				<hr/>
@@ -122,6 +132,7 @@
 			</div>
 
 			<hr class="slds-m-bottom--x-large"/>
+<<<<<<< HEAD
 
 			<div class="slds-size_12-of-12 igcp-document-section">
 				<h2>{!$Label.c.CP_Generic_Label_Investors_Group_Financial_Services}</h2>
@@ -130,6 +141,16 @@
 
 				<hr/>
 
+=======
+
+			<div class="slds-size_12-of-12 igcp-document-section">
+				<h2>Investors Group Financial Services</h2>
+                <p class="igcp-client-details">Client Number: 123456</p>
+				<p class="igcp-client-details">GTFSA: *0896</p>
+
+				<hr/>
+
+>>>>>>> master
 				<div class="slds-grid">
 					<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">{!$Label.c.CP_Generic_Label_Investment_Statements}</div>
 					<div class="slds-form-element slds-col slds-size_5-of-12 slds-medium-size_3-of-12">
@@ -163,8 +184,13 @@
 			<hr class="slds-m-bottom--x-large"/>
 		
 			<div class="slds-size_12-of-12 igcp-document-section">
+<<<<<<< HEAD
 				<h2>{!$Label.c.CP_Generic_Label_Mortgage}</h2>
                 <p class="igcp-client-details">{!$Label.c.CP_Generic_Label_Loan_Number}: 143212</p>
+=======
+				<h2>Mortgage</h2>
+                <p class="igcp-client-details">Loan Number: 143212</p>
+>>>>>>> master
 
 				<hr/>
 
