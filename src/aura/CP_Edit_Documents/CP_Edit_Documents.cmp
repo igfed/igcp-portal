@@ -40,7 +40,7 @@
 					<span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
 						<span class="slds-checkbox_faux"></span>
 						<span class="slds-checkbox_on">View all your documents online</span>
-						<span class="slds-checkbox_off">View all your documents online</span>
+						<span class="slds-checkbox_off">Paper Statements</span>
 					</span>
 				</label>		
 			</div>
@@ -60,7 +60,7 @@
 							<span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
 								<span class="slds-checkbox_faux"></span>
 								<span class="slds-checkbox_on">Online</span>
-								<span class="slds-checkbox_off">Online</span>
+								<span class="slds-checkbox_off">Paper</span>
 							</span>
 						</label>		
 					</div>
@@ -98,7 +98,7 @@
 							<input type="checkbox" name="checkbox" aria-describedby="toggle-desc" value="on" />
 							<span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
 								<span class="slds-checkbox_faux"></span>
-								<span class="slds-checkbox_on">Paper</span>
+								<span class="slds-checkbox_on">Online</span>
 								<span class="slds-checkbox_off">Paper</span>
 							</span>
 						</label>		
@@ -138,7 +138,7 @@
 							<span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
 								<span class="slds-checkbox_faux"></span>
 								<span class="slds-checkbox_on">Online</span>
-								<span class="slds-checkbox_off">Online</span>
+								<span class="slds-checkbox_off">Paper</span>
 							</span>
 						</label>		
 					</div>
@@ -176,7 +176,7 @@
 							<span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
 								<span class="slds-checkbox_faux"></span>
 								<span class="slds-checkbox_on">Online</span>
-								<span class="slds-checkbox_off">Online</span>
+								<span class="slds-checkbox_off">Paper</span>
 							</span>
 						</label>		
 					</div>
@@ -187,10 +187,7 @@
 			<hr/>
 
 			<div class="slds-grid slds-wrap">
-				<div class="slds-form slds-size_12-of-12">
 
-	
-				</div>
 				<!--CTAS-->
 				<c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Update}" nextType="submit" form="{!v.pageId}" />
 			</div>
