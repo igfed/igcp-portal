@@ -7,13 +7,8 @@
 			utils = cmp.find("CP_Utils"),
 			events = cmp.find("CP_Events");
 
-<<<<<<< HEAD
-		utils.getURLParams(function(params) {
-			if (params.language) {
-=======
 		utils.getURLParams(function(params){
 			if(params.language) {
->>>>>>> master
 				cmp.set("v.lang", params.language);
 			}
 		});
@@ -21,23 +16,6 @@
 		services.getAccountDetail(
 			accountNumber,
 			cmp,
-<<<<<<< HEAD
-			function(success) {
-				// console.log("*******");
-				// console.log("Get Account Detail");
-				// console.log(success);
-				// console.log("*******");
-
-				cmp.set("v.accountDetailObj", success);
-
-				try {
-					utils.formatToCurrency(success.marketValueCad, function(returnedValue) {
-						cmp.set("v.marketValue", returnedValue);
-					}, cmp.get("v.lang"));
-				} catch(err) {
-					cmp.set("v.marketValue", "N/A");
-				}
-=======
 			function (success) {
 				console.log("*******");
 				console.log("Get Account Detail");
@@ -49,16 +27,11 @@
 				utils.formatToCurrency(success.marketValueCad, function(returnedValue){
 					cmp.set("v.marketValue", returnedValue);
 				}, cmp.get("v.lang"));
->>>>>>> master
 
 				cmp.set("v.gainLossPercentage", "N/A");
 				cmp.set("v.change", "N/A");
 			},
-<<<<<<< HEAD
-			function(error) {
-=======
 			function (error) {
->>>>>>> master
 				console.error(error);
 			}
 		);
@@ -66,19 +39,11 @@
 		services.getInvestmentProfile(
 			accountNumber,
 			cmp,
-<<<<<<< HEAD
-			function(success) {
-				// console.log("*******");
-				// console.log("Get Investment Profile");
-				// console.log(success);
-				// console.log("*******");
-=======
 			function (success) {
 				console.log("*******");
 				console.log("Get Investment Profile");
 				console.log(success);
 				console.log("*******");
->>>>>>> master
 				cmp.set("v.investmentProfileObj", success);
 			},
 			function (error) {
