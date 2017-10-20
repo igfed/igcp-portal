@@ -30,6 +30,7 @@ public abstract class IGRestClient {
     protected Response callRESTService() {
     	HttpRequest req = new HttpRequest();
         String endPoint = getHttpEndPoint();
+
         if (String.isNotBlank(endPoint) && endPoint.indexOf('?') == -1) {
             req.setEndpoint(getHttpEndPoint() + '?' + this.langQueryString);
         } else {
@@ -40,6 +41,7 @@ public abstract class IGRestClient {
         req.setHeader(HTTP_HEADER_CORR, generateGUID());
         req.setHeader(HTTP_HEADER_ACPT, REST_CONTENT);
         req.setTimeout(120000);
+        System.debug('request '+req);
         Http http = new Http();
         HTTPResponse res = http.send(req);
         

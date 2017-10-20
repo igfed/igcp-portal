@@ -261,53 +261,13 @@
 
 				action = component.get("c.getUserFirstName");
 
-				action.setCallback(this, function(response) {
-
-					var state = response.getState();
-
-					if (state === "SUCCESS") {
-						// Alert the user with the value returned 
-						// from the server
-
-						if (response !== null) {
-							params.successCB(response.returnValue);
-						} else {
-							params.errorCB({
-								"payload": "No first name was returned",
-								"type": "no-name"
-							});
-						}
-
-						// You would typically fire a event here to trigger 
-						// client-side notification that the server-side 
-						// action is complete
-
-					} else if (state === "INCOMPLETE") {
-						// do something
-						params.errorCB({
-							"payload": "Incomplete",
-							"type": "server-side-error"
-						});
-					} else if (state === "ERROR") {
-						var errors = response.getError();
-
-						if (errors) {
-							if (errors) {
-								params.errorCB({
-									"payload": errors,
-									"type": "server-side-error"
-								});
-							}
-						} else {
-							params.errorCB({
-								"payload": "Unknown error",
-								"type": "server-side-error"
-							})
-						}
-					}
-				});
-
-				$A.enqueueAction(action);
+				hlpr.setCallback(
+					params,
+					action,
+					this,
+					"No first name was returned",
+					"no-name"
+				);
 			} catch (err) {
 				console.error("CP_Services: onGetClientFirstName: controller not found, make sure it is attached to parent component.");
 				console.log(err);
@@ -325,53 +285,14 @@
 
 				action = component.get("c.getUserName");
 
-				action.setCallback(this, function(response) {
+				hlpr.setCallback(
+					params,
+					action,
+					this,
+					"No full name was returned",
+					"no-name"
+				);
 
-					var state = response.getState();
-
-					if (state === "SUCCESS") {
-						// Alert the user with the value returned 
-						// from the server
-
-						if (response !== null) {
-							params.successCB(response.returnValue);
-						} else {
-							params.errorCB({
-								"payload": "No first name was returned",
-								"type": "no-name"
-							});
-						}
-
-						// You would typically fire a event here to trigger 
-						// client-side notification that the server-side 
-						// action is complete
-
-					} else if (state === "INCOMPLETE") {
-						// do something
-						params.errorCB({
-							"payload": "Incomplete",
-							"type": "server-side-error"
-						});
-					} else if (state === "ERROR") {
-						var errors = response.getError();
-
-						if (errors) {
-							if (errors) {
-								params.errorCB({
-									"payload": errors,
-									"type": "server-side-error"
-								});
-							}
-						} else {
-							params.errorCB({
-								"payload": "Unknown error",
-								"type": "server-side-error"
-							})
-						}
-					}
-				});
-
-				$A.enqueueAction(action);
 			} catch (err) {
 				console.error("CP_Services: onGetClientFullName: controller not found, make sure it is attached to parent component.");
 				console.log(err);
@@ -389,55 +310,13 @@
 
 				action = component.get("c.getInvestmentPreviewDTO");
 
-				//action.setParams({ bpid: params.bpid });
-
-				action.setCallback(this, function(response) {
-
-					var state = response.getState();
-
-					if (state === "SUCCESS") {
-						// Alert the user with the value returned 
-						// from the server
-
-						if (response !== null) {
-							params.successCB(response.returnValue);
-						} else {
-							params.errorCB({
-								"payload": "No BPID was found in Salesforce",
-								"type": "no-record"
-							});
-						}
-
-						// You would typically fire a event here to trigger 
-						// client-side notification that the server-side 
-						// action is complete
-
-					} else if (state === "INCOMPLETE") {
-						// do something
-						params.errorCB({
-							"payload": "Incomplete",
-							"type": "server-side-error"
-						});
-					} else if (state === "ERROR") {
-						var errors = response.getError();
-
-						if (errors) {
-							if (errors) {
-								params.errorCB({
-									"payload": errors,
-									"type": "server-side-error"
-								});
-							}
-						} else {
-							params.errorCB({
-								"payload": "Unknown error",
-								"type": "server-side-error"
-							})
-						}
-					}
-				});
-
-				$A.enqueueAction(action);
+				hlpr.setCallback(
+					params,
+					action,
+					this,
+					"No BPID was found in Salesforce",
+					"no-record"
+				);
 			} catch (err) {
 				console.error("CP_Services: onGetInvestmentsPreview: controller not found, make sure it is attached to parent component.");
 				console.log(err);
@@ -456,55 +335,13 @@
 
 				action = component.get("c.getMortgagePreviewDTO");
 
-				//action.setParams({ bpid: params.bpid });
-
-				action.setCallback(this, function(response) {
-
-					var state = response.getState();
-
-					if (state === "SUCCESS") {
-						// Alert the user with the value returned 
-						// from the server
-
-						if (response !== null) {
-							params.successCB(response.returnValue);
-						} else {
-							params.errorCB({
-								"payload": "No BPID was found in Salesforce",
-								"type": "no-record"
-							});
-						}
-
-						// You would typically fire a event here to trigger 
-						// client-side notification that the server-side 
-						// action is complete
-
-					} else if (state === "INCOMPLETE") {
-						// do something
-						params.errorCB({
-							"payload": "Incomplete",
-							"type": "server-side-error"
-						});
-					} else if (state === "ERROR") {
-						var errors = response.getError();
-
-						if (errors) {
-							if (errors) {
-								params.errorCB({
-									"payload": errors,
-									"type": "server-side-error"
-								});
-							}
-						} else {
-							params.errorCB({
-								"payload": "Unknown error",
-								"type": "server-side-error"
-							})
-						}
-					}
-				});
-
-				$A.enqueueAction(action);
+				hlpr.setCallback(
+					params,
+					action,
+					this,
+					"No BPID was found in Salesforce",
+					"no-record"
+				);
 
 			} catch (err) {
 				console.error("CP_Services: onGetMortgagePreview: controller not found, make sure it is attached to parent component.");
@@ -524,61 +361,243 @@
 
 				action = component.get("c.getInsurancePreviewDTO");
 
-				//action.setParams({ bpid: params.bpid });
-
-				action.setCallback(this, function(response) {
-
-					var state = response.getState();
-
-					if (state === "SUCCESS") {
-						// Alert the user with the value returned 
-						// from the server
-
-						if (response !== null) {
-							params.successCB(response.returnValue);
-						} else {
-							params.errorCB({
-								"payload": "No BPID was found in Salesforce",
-								"type": "no-record"
-							});
-						}
-
-						// You would typically fire a event here to trigger 
-						// client-side notification that the server-side 
-						// action is complete
-
-					} else if (state === "INCOMPLETE") {
-						// do something
-						params.errorCB({
-							"payload": "Incomplete",
-							"type": "server-side-error"
-						});
-					} else if (state === "ERROR") {
-						var errors = response.getError();
-
-						if (errors) {
-							if (errors) {
-								params.errorCB({
-									"payload": errors,
-									"type": "server-side-error"
-								});
-							}
-						} else {
-							params.errorCB({
-								"payload": "Unknown error",
-								"type": "server-side-error"
-							})
-						}
-					}
-				});
-
-				$A.enqueueAction(action);
+				hlpr.setCallback(
+					params,
+					action,
+					this,
+					"No BPID was found in Salesforce",
+					"no-record"
+				);
 
 			} catch (err) {
 				console.error("CP_Services: onGetInsurancePreview: controller not found, make sure it is attached to parent component.");
 				console.log(err);
 			}
 
+		}
+	},
+	onGetAssetMix: function(cmp, evt, hlpr) {
+
+		var params = evt.getParam("arguments");
+		if (params) {
+			var
+				component = params.component,
+				action;
+
+			try {
+
+				action = component.get("c.getAssetMixAggregate");
+
+				hlpr.setCallback(
+					params,
+					action,
+					this,
+					"No BPID was found in Salesforce",
+					"no-record"
+				);
+
+			} catch (err) {
+				console.error("CP_Services: onGetAssetMix: controller not found, make sure it is attached to parent component.");
+				console.log(err);
+			}
+		}
+	},
+	onGetAccountDetail: function(cmp, evt, hlpr) {
+
+		var params = evt.getParam("arguments");
+		if (params) {
+			var
+				component = params.component,
+				action;
+
+			try {
+
+				action = component.get("c.getAccountDetailDTO");
+
+				action.setParams({ accountNumber: params.accountNumber });
+
+				hlpr.setCallback(
+					params,
+					action,
+					this,
+					"No account name was found in Salesforce",
+					"no-record"
+				);
+
+			} catch (err) {
+				console.error("CP_Services: onGetAccountDetail: controller not found, make sure it is attached to parent component.");
+				console.log(err);
+			}
+		}
+	},
+	onGetInvestmentProfile: function(cmp, evt, hlpr) {
+
+		var params = evt.getParam("arguments");
+		if (params) {
+			var
+				component = params.component,
+				action;
+
+			try {
+
+				action = component.get("c.getInvestmentProfileDTO");
+
+				action.setParams({ accountNumber: params.accountNumber });
+
+				hlpr.setCallback(
+					params,
+					action,
+					this,
+					"No account name was found in Salesforce",
+					"no-record"
+				);
+
+			} catch (err) {
+				console.error("CP_Services: onGetInvestmentProfile: controller not found, make sure it is attached to parent component.");
+				console.log(err);
+			}
+		}
+	},
+	onGetHoldings: function(cmp, evt, hlpr) {
+
+		var params = evt.getParam("arguments");
+		if (params) {
+
+			var
+				component = params.component,
+				action;
+
+			try {
+
+				action = component.get("c.getHoldingsDTOList");
+
+				action.setParams({ accountNumber: params.accountNumber });
+
+				hlpr.setCallback(
+					params,
+					action,
+					this,
+					"No account name was found in Salesforce",
+					"no-record"
+				);
+
+			} catch (err) {
+				console.error("CP_Services: onGetHoldings: controller not found, make sure it is attached to parent component.");
+				console.log(err);
+			}
+		}
+	},
+	onGetTransactions: function(cmp, evt, hlpr) {
+
+		var params = evt.getParam("arguments");
+		if (params) {
+
+			var
+				component = params.component,
+				action;
+
+			try {
+
+				action = component.get("c.getTransactionsDTOList");
+
+				action.setParams({ accountNumber: params.accountNumber });
+
+				hlpr.setCallback(
+					params,
+					action,
+					this,
+					"No account name was found in Salesforce",
+					"no-record"
+				);
+
+			} catch (err) {
+				console.error("CP_Services: onGetTransactions: controller not found, make sure it is attached to parent component.");
+				console.log(err);
+			}
+		}
+	},
+	onGetInstructions: function(cmp, evt, hlpr) {
+
+		var params = evt.getParam("arguments");
+		if (params) {
+
+			var
+				component = params.component,
+				action;
+
+			try {
+
+				action = component.get("c.getInstructionsDTOList");
+
+				action.setParams({ accountNumber: params.accountNumber });
+
+				hlpr.setCallback(
+					params,
+					action,
+					this,
+					"No account name was found in Salesforce",
+					"no-record"
+				);
+
+			} catch (err) {
+				console.error("CP_Services: onGetInstructions: controller not found, make sure it is attached to parent component.");
+				console.log(err);
+			}
+		}
+	},
+	onGetAccountPerformance: function(cmp, evt, hlpr) {
+
+		var params = evt.getParam("arguments");
+		if (params) {
+
+			var
+				component = params.component,
+				action;
+
+			try {
+
+				action = component.get("c.getAccountPerformance");
+
+				action.setParams({ accountNumber: params.accountNumber });
+
+				hlpr.setCallback(
+					params,
+					action,
+					this,
+					"No account name was found in Salesforce",
+					"no-record"
+				);
+
+			} catch (err) {
+				console.error("CP_Services: onGetAccountPerformance: controller not found, make sure it is attached to parent component.");
+				console.log(err);
+			}
+		}
+	},
+	onGetUserInfo: function(cmp, evt, hlpr) {
+
+		var params = evt.getParam("arguments");
+		if (params) {
+			var
+				component = params.component,
+				action;
+
+			try {
+
+				action = component.get("c.getUserInfoDTO");
+
+				hlpr.setCallback(
+					params,
+					action,
+					this,
+					"Unable to retrieve user information",
+					"unable-to-retrieve"
+				);
+
+			} catch (err) {
+				console.error("CP_Services: onGetUserInfo: controller not found, make sure it is attached to parent component.");
+				console.log(err);
+			}
 		}
 	},
 	onHandleServerSideError: function(cmp, evt, hlpr) {
@@ -643,277 +662,5 @@
 				}
 			}
 		}
-	},
-	onGetAssetMix: function(cmp, evt, hlpr) {
-
-		var params = evt.getParam("arguments");
-		if (params) {
-			var
-				component = params.component,
-				action;
-
-			try {
-
-				action = component.get("c.getAssetMixAggregate");
-
-				//action.setParams({ bpid: params.bpid });
-
-				action.setCallback(this, function(response) {
-
-					var state = response.getState();
-
-					if (state === "SUCCESS") {
-						// Alert the user with the value returned 
-						// from the server
-
-						if (response !== null) {
-							params.successCB(response.returnValue);
-						} else {
-							params.errorCB({
-								"payload": "No BPID was found in Salesforce",
-								"type": "no-record"
-							});
-						}
-
-						// You would typically fire a event here to trigger 
-						// client-side notification that the server-side 
-						// action is complete
-
-					} else if (state === "INCOMPLETE") {
-						// do something
-						params.errorCB({
-							"payload": "Incomplete",
-							"type": "server-side-error"
-						});
-					} else if (state === "ERROR") {
-						var errors = response.getError();
-
-						if (errors) {
-							if (errors) {
-								params.errorCB({
-									"payload": errors,
-									"type": "server-side-error"
-								});
-							}
-						} else {
-							params.errorCB({
-								"payload": "Unknown error",
-								"type": "server-side-error"
-							})
-						}
-					}
-				});
-
-				$A.enqueueAction(action);
-
-			} catch (err) {
-				console.error("CP_Services: onGetAssetMix: controller not found, make sure it is attached to parent component.");
-				console.log(err);
-			}
-		}
-	},
-	onGetAccountDetail: function(cmp, evt, hlpr) {
-		
-		var params = evt.getParam("arguments");
-		if (params) {
-			var
-				component = params.component,
-				action;
-
-			console.log(params);
-
-			try {
-
-				action = component.get("c.getAccountDetailDTO");
-
-				action.setParams({ accountNumber: params.accountNumber });
-
-				action.setCallback(this, function(response) {
-
-					var state = response.getState();
-
-					if (state === "SUCCESS") {
-						// Alert the user with the value returned 
-						// from the server
-
-						if (response !== null) {
-							params.successCB(response.returnValue);
-						} else {
-							params.errorCB({
-								"payload": "No account name was found in Salesforce",
-								"type": "no-record"
-							});
-						}
-
-						// You would typically fire a event here to trigger 
-						// client-side notification that the server-side 
-						// action is complete
-
-					} else if (state === "INCOMPLETE") {
-						// do something
-						params.errorCB({
-							"payload": "Incomplete",
-							"type": "server-side-error"
-						});
-					} else if (state === "ERROR") {
-						var errors = response.getError();
-
-						if (errors) {
-							if (errors) {
-								params.errorCB({
-									"payload": errors,
-									"type": "server-side-error"
-								});
-							}
-						} else {
-							params.errorCB({
-								"payload": "Unknown error",
-								"type": "server-side-error"
-							})
-						}
-					}
-				});
-
-				$A.enqueueAction(action);
-
-			} catch (err) {
-				console.error("CP_Services: onGetAccountDetail: controller not found, make sure it is attached to parent component.");
-				console.log(err);
-			}
-		}
-	},
-	onGetInvestmentProfile: function(cmp, evt, hlpr) {
-		
-		var params = evt.getParam("arguments");
-		if (params) {
-			var
-				component = params.component,
-				action;
-
-			try {
-
-				action = component.get("c.getInvestmentProfileDTO");
-
-				action.setParams({ accountNumber: params.accountNumber });
-
-				action.setCallback(this, function(response) {
-
-					var state = response.getState();
-
-					if (state === "SUCCESS") {
-						// Alert the user with the value returned 
-						// from the server
-
-						if (response !== null) {
-							params.successCB(response.returnValue);
-						} else {
-							params.errorCB({
-								"payload": "No account name was found in Salesforce",
-								"type": "no-record"
-							});
-						}
-
-						// You would typically fire a event here to trigger 
-						// client-side notification that the server-side 
-						// action is complete
-
-					} else if (state === "INCOMPLETE") {
-						// do something
-						params.errorCB({
-							"payload": "Incomplete",
-							"type": "server-side-error"
-						});
-					} else if (state === "ERROR") {
-						var errors = response.getError();
-
-						if (errors) {
-							if (errors) {
-								params.errorCB({
-									"payload": errors,
-									"type": "server-side-error"
-								});
-							}
-						} else {
-							params.errorCB({
-								"payload": "Unknown error",
-								"type": "server-side-error"
-							})
-						}
-					}
-				});
-
-				$A.enqueueAction(action);
-
-			} catch (err) {
-				console.error("CP_Services: onGetInvestmentProfile: controller not found, make sure it is attached to parent component.");
-				console.log(err);
-			}
-		}
-	},
-	onGetUserInfo: function(cmp, evt, hlpr) {
-		
-		var params = evt.getParam("arguments");
-		if (params) {
-			var
-				component = params.component,
-				action;
-
-			try {
-
-				action = component.get("c.getUserInfoDTO");
-
-				action.setCallback(this, function(response) {
-
-					var state = response.getState();
-
-					if (state === "SUCCESS") {
-						// Alert the user with the value returned 
-						// from the server
-
-						if (response !== null) {
-							params.successCB(response.returnValue);
-						} else {
-							params.errorCB({
-								"payload": "No account name was found in Salesforce",
-								"type": "no-record"
-							});
-						}
-
-						// You would typically fire a event here to trigger 
-						// client-side notification that the server-side 
-						// action is complete
-
-					} else if (state === "INCOMPLETE") {
-						// do something
-						params.errorCB({
-							"payload": "Incomplete",
-							"type": "server-side-error"
-						});
-					} else if (state === "ERROR") {
-						var errors = response.getError();
-
-						if (errors) {
-							if (errors) {
-								params.errorCB({
-									"payload": errors,
-									"type": "server-side-error"
-								});
-							}
-						} else {
-							params.errorCB({
-								"payload": "Unknown error",
-								"type": "server-side-error"
-							})
-						}
-					}
-				});
-
-				$A.enqueueAction(action);
-
-			} catch (err) {
-				console.error("CP_Services: onGetUserInfo: controller not found, make sure it is attached to parent component.");
-				console.log(err);
-			}
-		}
-	},
+	}
 })

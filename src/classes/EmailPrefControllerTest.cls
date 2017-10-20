@@ -99,12 +99,7 @@ public class EmailPrefControllerTest {
 	}
 	@isTest 
 	static void testEmailPrefController() {
-		/*
-		public String clientNumber;
-	public Boolean investmentStatements;
-	public Boolean taxReceipts;
-	public Boolean tradeConfirmation;
-		*/
+		
 		User testUser = new User(
 						     ProfileId = [SELECT Id FROM Profile WHERE Name = 'IG Customer Community User'].Id,
 						     LastName = 'testPortalLastName',
@@ -129,10 +124,7 @@ public class EmailPrefControllerTest {
 	   	}
 	   List<Financial_Asset__c> assertFAObj = new List<Financial_Asset__c>();
 	   assertFAObj = [select Client_Number__c,Pref_Trade_Confirmation__c,Pref_Tax_Receipts__c,Pref_Investment_Statements__c from Financial_Asset__c];
-	  // System.debug('test updated assets '+assertFAObj.Client_Number__c+' - '+assertFAObj.Pref_Investment_Statements__c + ' - '+assertFAObj.Pref_Tax_Receipts__c +' - '+assertFAObj.Pref_Trade_Confirmation__c);
-	   /*System.assertEquals(assertFAObj.Pref_Investment_Statements__c, 'Online');
-	   System.assertEquals(assertFAObj.Pref_Tax_Receipts__c, 'Online');
-	   System.assertEquals(assertFAObj.Pref_Trade_Confirmation__c, 'Paper');*/
+	  
 	   for(Financial_Asset__c eachFAToAssert : assertFAObj){
 	   		if(eachFAToAssert.Client_Number__c == '0987654'){
 	   		System.assertEquals(eachFAToAssert.Pref_Investment_Statements__c, 'Online');
@@ -143,6 +135,54 @@ public class EmailPrefControllerTest {
 	   			System.assertEquals(eachFAToAssert.Pref_Investment_Statements__c,'Paper');
 	   			System.assertEquals(eachFAToAssert.Pref_Tax_Receipts__c,'Online');
 	   			System.assertEquals(eachFAToAssert.Pref_Trade_Confirmation__c,'Paper');
+
+	   			}else if(eachFAToAssert.Client_Number__c == '0987652'){
+	   				System.assertEquals(eachFAToAssert.Pref_Investment_Statements__c,'Online');
+		   			System.assertEquals(eachFAToAssert.Pref_Tax_Receipts__c,'Online');
+		   			System.assertEquals(eachFAToAssert.Pref_Trade_Confirmation__c,'Online');
+
+	   			}
+
+	   }
+	}
+	@isTest 
+	static void testEmailPrefControllerDocumentsOnline() {
+		
+		User testUser = new User(
+						     ProfileId = [SELECT Id FROM Profile WHERE Name = 'IG Customer Community User'].Id,
+						     LastName = 'testPortalLastName',
+						     Email = 'testPortalUser@example.com',
+						     Username = 'testPortalUser000@example.com' + System.currentTimeMillis(),
+						     CompanyName = 'TEST',
+						     Title = 'title',
+						     Alias = 'alias',
+						     TimeZoneSidKey = 'America/Los_Angeles',
+						     EmailEncodingKey = 'UTF-8',
+						     LanguageLocaleKey = 'en_US',
+						     LocaleSidKey = 'en_US',
+						     ContactId = [select Id from Contact where LastName = 'testContact LastName'].Id
+						    						    
+						);
+		
+		System.debug('user info '+testUser);
+		String jsonObj = '{"allDocumentPreference" : true , "documentPreferences" : [{ "clientNumber" : "0987654",	"investmentStatements" : true, "taxReceipts" : true, "tradeConfirmation" : false },{ "clientNumber" : "0987653",	"investmentStatements" : false, "taxReceipts" : true, "tradeConfirmation" : false },{ "clientNumber" : "0987652",	"investmentStatements" : true, "taxReceipts" : true, "tradeConfirmation" : true }]}';
+		
+		System.runAs(testUser){
+	   		EmailPrefController.UpdateAssets(jsonObj);
+	   	}
+	   List<Financial_Asset__c> assertFAObj = new List<Financial_Asset__c>();
+	   assertFAObj = [select Client_Number__c,Pref_Trade_Confirmation__c,Pref_Tax_Receipts__c,Pref_Investment_Statements__c from Financial_Asset__c];
+	
+	   for(Financial_Asset__c eachFAToAssert : assertFAObj){
+	   		if(eachFAToAssert.Client_Number__c == '0987654'){
+	   		System.assertEquals(eachFAToAssert.Pref_Investment_Statements__c, 'Online');
+	   			System.assertEquals(eachFAToAssert.Pref_Tax_Receipts__c,'Online');
+	   			System.assertEquals(eachFAToAssert.Pref_Trade_Confirmation__c,'Online');
+
+	   		}else if(eachFAToAssert.Client_Number__c == '0987653'){
+	   			System.assertEquals(eachFAToAssert.Pref_Investment_Statements__c,'Online');
+	   			System.assertEquals(eachFAToAssert.Pref_Tax_Receipts__c,'Online');
+	   			System.assertEquals(eachFAToAssert.Pref_Trade_Confirmation__c,'Online');
 
 	   			}else if(eachFAToAssert.Client_Number__c == '0987652'){
 	   				System.assertEquals(eachFAToAssert.Pref_Investment_Statements__c,'Online');

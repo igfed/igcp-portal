@@ -345,6 +345,42 @@ public class IGClientService {
 		return rv;
 	}
 
+	public static DTO_AccountPerformance getAccountPerformance(String clientBpid, String accountNumber) {
+		DTO_AccountPerformance rv = null;
+		if (String.isBlank(clientBpid)) {
+			throw new IGClientServiceException('The client bpid can\'t be null or empty');
+		}
+		if (String.isBlank(accountNumber)) {
+			throw new IGClientServiceException('The account number can\'t be null or empty');	
+		}
+		IGRestClient client = IGRestClientFactory.getIGRestClient('AccountPerformance', WEBSERVICE_NAMED_CREDENTIAL);
+		if (client != null) {
+			IGAccountPerformanceClient theClient = (IGAccountPerformanceClient)client;
+			theClient.bpid = clientBpid;
+			theClient.accountNumber = accountNumber;
+			IGRestClient.Response res = theClient.getServiceData();
+		    System.debug('=====> getAccountPerformance.res: ' + res);
+		    if (res != null) {
+		    	if (!res.success) {
+		    		System.debug('=====> getAccountPerformance.ERROR: ' + res.success + ', ' + res.code + ', ' + res.error);
+		            throw new IGClientServiceException('Service call failed: ' + res.success + ', ' + res.code + ', ' + res.error);
+	            } else {
+	            	IGAccountPerformanceClient.AccountPerformanceData data = (IGAccountPerformanceClient.AccountPerformanceData)res;
+	            	System.debug('=====> getAccountPerformance.data: ' + data);
+	            	if (data.Client != null && data.Client.AccountPerformances != null && !data.Client.AccountPerformances.isEmpty()) {
+	            		for (IGAccountPerformanceClient.AccountPerformance perf : data.Client.AccountPerformances) {
+	            			if (accountNumber == perf.ACCOUNT_NUMBER) {
+	            				rv = new DTO_AccountPerformance(perf);
+	            				break;
+	            			}
+	            		}
+	            	}
+	            }
+		    }
+		}
+		return rv;
+	}
+
 	public class IGClientServiceException extends Exception {
 
 	}

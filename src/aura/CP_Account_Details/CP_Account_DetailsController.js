@@ -2,14 +2,118 @@
 	onInit: function(cmp, evt, hlpr) {
 
 		var
+			accountNumber = "13460563",
 			services = cmp.find("CP_Services"),
+			utils = cmp.find("CP_Utils"),
 			events = cmp.find("CP_Events");
 
-		services.getInvestmentProfile(
-			"13460563",
+		utils.getURLParams(function(params) {
+			if (params.language) {
+				cmp.set("v.lang", params.language);
+			}
+		});
+
+		services.getAccountDetail(
+			accountNumber,
 			cmp,
 			function(success) {
+				// console.log("*******");
+				// console.log("Get Account Detail");
+				// console.log(success);
+				// console.log("*******");
+
+				cmp.set("v.accountDetailObj", success);
+
+				try {
+					utils.formatToCurrency(success.marketValueCad, function(returnedValue) {
+						cmp.set("v.marketValue", returnedValue);
+					}, cmp.get("v.lang"));
+				} catch(err) {
+					cmp.set("v.marketValue", "N/A");
+				}
+
+				cmp.set("v.gainLossPercentage", "N/A");
+				cmp.set("v.change", "N/A");
+			},
+			function(error) {
+				console.error(error);
+			}
+		);
+
+		services.getInvestmentProfile(
+			accountNumber,
+			cmp,
+			function(success) {
+				// console.log("*******");
+				// console.log("Get Investment Profile");
+				// console.log(success);
+				// console.log("*******");
 				cmp.set("v.investmentProfileObj", success);
+			},
+			function(error) {
+				console.error(error);
+			}
+		);
+
+		services.getHoldings(
+			accountNumber,
+			cmp,
+			function(success) {
+				console.log("############");
+				console.log("Get Holdings");
+				console.log(success);
+				console.log("############");
+
+				var holdings = {
+					headers: ['Name', 'Holding', 'Book Cost', 'Gain / Loss', 'Market Value'],
+					title: 'Holdings',
+					records: success
+				}
+
+				cmp.set("v.holdingsObj", holdings);
+
+			},
+			function(error) {
+				console.error(error);
+			}
+		);
+
+		services.getTransactions(
+			accountNumber,
+			cmp,
+			function(success) {
+				// console.log("*******");
+				// console.log("Get Transactions");
+				// console.log(success);
+				// console.log("*******");
+			},
+			function(error) {
+				console.error(error);
+			}
+		);
+
+		services.getInstructions(
+			accountNumber,
+			cmp,
+			function(success) {
+				// console.log("*******");
+				// console.log("Get Instructions");
+				// console.log(success);
+				// console.log("*******");
+			},
+			function(error) {
+				console.error(error);
+			}
+		);
+
+		services.getAccountPerformance(
+			accountNumber,
+			cmp,
+			function(success) {
+				// console.log("*******");
+				// console.log("Get Account Performance");
+				// console.log(success);
+				// console.log("*******");
 			},
 			function(error) {
 				console.error(error);

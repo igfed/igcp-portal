@@ -35,8 +35,6 @@
 		},
 		generateGraph: function() {
 
-			console.log('GENERATE GRAPH')
-
 			var
 				ctx = document.getElementById("bar-chart").getContext('2d'),
 				bar,
@@ -50,35 +48,49 @@
 				lighterBlue = "#dbfbfa",
 				darkGrey = "#cccccc";
 
-			console.warn("generateGraph");
-			console.log(ctx);
-
 			bar = new Chart(ctx, {
 				type: 'bar',
 				data: {
 					labels: ["YTD", "1yr", "3yr", "5yr", "Since"],
 					datasets: [{
-							label: "Harpo",
+							label: "Opening value",
 							backgroundColor: darkBlue,
 							data: [10, 40, 35, 79, 10]
 						},
 						{
-							label: "Chico",
+							label: "Closing value",
 							backgroundColor: seafoamGreen,
 							data: [44, 33, 55, 66, 77]
 						}
 					]
 				},
 				options: {
-					barThickness: 10,
-					maxBarThickness: 10,
 					scales: {
+						xAxes: [{
+							barThickness: 8,
+							categoryPercentage: 0.35,
+							gridLines: {
+								display: false
+							},
+							ticks: {
+								fontColor: "#282828"
+							}
+						}],
 						yAxes: [{
 							ticks: {
-								beginAtZero: true
+								beginAtZero: true,
+								fontColor: "#282828"
 							}
 						}]
-					}
+					},
+					legend: {
+						position: "bottom",
+						labels: {
+							boxWidth: 12,
+							fontColor: "#282828"
+						}
+					},
+					defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'WhitneySemibold', Arial, sans-serif"
 				}
 			});
 		}
