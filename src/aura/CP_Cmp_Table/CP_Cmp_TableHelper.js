@@ -19,11 +19,6 @@
 	generateTable: function(cmp, utils, data, callback) {
 		try {
 			data.forEach(function(row, i){
-<<<<<<< HEAD
-				row.forEach(function(item, i){
-					console.log(item);
-				});
-=======
 				utils.createComponent(
 					"CP_Cmp_Table_Row",
 					{
@@ -32,7 +27,6 @@
 					cmp,
 					function(ready){}
 				);
->>>>>>> master
 			});
 		} catch(err) {
 

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<aura:component >
-=======
 <aura:component>
->>>>>>> master
 	<!-- INCLUDES -->
 	<c:CP_Utils aura:id="CP_Utils" />
 	<!-- ATTRS -->

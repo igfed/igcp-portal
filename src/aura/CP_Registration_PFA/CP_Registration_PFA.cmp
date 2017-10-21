@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<aura:component >
-=======
 <aura:component>
->>>>>>> master
 
 	<!-- IMPORTS -->
 	<c:CP_Events aura:id="CP_Events"/>

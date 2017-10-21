@@ -1,15 +1,9 @@
 <aura:component >
-<<<<<<< HEAD:src/aura/CP_Cmp_Table_Row/CP_Cmp_Table_Row.cmp
-	<!-- INCLUDES -->
-	<c:CP_Events aura:id="CP_Events" />
-	<c:CP_Utils aura:id="CP_Utils" />
-=======
 
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
 
->>>>>>> master:src/aura/Cp_Cmp_Table_Row/Cp_Cmp_Table_Row.cmp
 	<!-- ATTRS -->
 	<aura:attribute name="data" type="Map"></aura:attribute>
 	

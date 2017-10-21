@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<aura:component >
-=======
 <aura:component>
->>>>>>> master
     
     <aura:attribute name="col1Name" type="String" />
     <aura:attribute name="col2Name" type="String" />

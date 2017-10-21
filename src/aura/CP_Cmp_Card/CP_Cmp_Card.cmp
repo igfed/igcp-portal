@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<aura:component >
-=======
 <aura:component>
->>>>>>> master
 	<aura:attribute name="image" type="String" />
 	<aura:attribute name="title" type="String" />
 	<aura:attribute name="copy" type="String" />
