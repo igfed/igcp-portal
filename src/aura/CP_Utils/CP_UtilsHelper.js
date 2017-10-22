@@ -1,6 +1,4 @@
 ({
-<<<<<<< HEAD
-=======
 	stringHas: function(pattern, string, callback){
 		var hasVal = false;
 
@@ -10,7 +8,6 @@
 
 		callback(hasVal);
 	},
->>>>>>> master
 	checkType: function(obj, callback){
 		callback(typeof obj);
 	},
