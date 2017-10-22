@@ -57,4 +57,4 @@ config
 .settings
 
 #MavensMate
-src/aura/package.xml
+src/package.xml
