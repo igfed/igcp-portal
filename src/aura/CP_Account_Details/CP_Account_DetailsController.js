@@ -109,7 +109,7 @@
 				"id": "transactions-table",
 				"headers": ["Date", "Name", "Activity", "Unit Price", "Quantity", "Amount"],
 				"data": [
-					["April 13, 2017", "Account 1", "Buy", "14.56", "7.03", "102.12"],
+					["April 13, 2017", "Account 1", "Buy", "14.56", "7.03", "1000002.12"],
 					["April 13, 2017", "Account 2", "Sell", "14.56", "7.03", "102.12"],
 					["April 13, 2017", "Account 3", "Buy", "14.56", "7.03", "102.12"],
 					["November 13, 2017", "Account 4", "Income", "14.56", "7.03", "102.12"],
