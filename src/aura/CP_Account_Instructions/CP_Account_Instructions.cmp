@@ -6,8 +6,8 @@
 			id="instructions-table" 
 			tableClass="igcp-table__instructions"
 			styleConfig="{
-				'grid' : ['3', '4', '2', '1', '1', '1'],
-				'textAlign' : ['left', 'left', 'left', 'right', 'right', 'right']
+				'grid' : ['3', '4', '3', '2', '1'],
+				'textAlign' : ['left', 'left', 'left', 'left', 'right']
 			}"/>
 	</div>
 </aura:component>
