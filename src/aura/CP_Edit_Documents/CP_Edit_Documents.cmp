@@ -129,7 +129,6 @@
 				<p class="igcp-client-details">GTFSA: *0896</p>
 
 				<hr/>
-
 				<div class="slds-grid">
 					<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">{!$Label.c.CP_Generic_Label_Investment_Statements}</div>
 					<div class="slds-form-element slds-col slds-size_5-of-12 slds-medium-size_3-of-12">
@@ -165,7 +164,6 @@
 			<div class="slds-size_12-of-12 igcp-document-section">
 				<h2>{!$Label.c.CP_Generic_Label_Mortgage}</h2>
                 <p class="igcp-client-details">{!$Label.c.CP_Generic_Label_Loan_Number}: 143212</p>
-
 				<hr/>
 
 				<div class="slds-grid">

@@ -1,23 +1,24 @@
-<aura:component>
+<aura:component >
 
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
 	
-
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default=""></aura:attribute>
 	<aura:attribute name="class" type="String" default=""></aura:attribute>
+	<aura:attribute name="tableClass" type="String" default=""></aura:attribute>
 	<aura:attribute name="data" type="Map" default="{}"></aura:attribute>
+	<aura:attribute name="styleConfig" type="Map" default="{}"></aura:attribute>
     
 	<!-- HANDLERS -->
-	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="c:CP_Evt_Set_Table" action="{!c.onSetTable}" />
 
 	<!-- MARKUP -->
-	<div class="{!'igcp-container slds-p-around--medium ' + v.class}">
+	<div class="{!v.class}">
 		<h3 class="slds-m-bottom--small">{!v.data.title}</h3>
-		<table style="width:100%">
+		<table class="{! 'igcp-table ' + v.tableClass}">
 			{!v.body}
 		</table>
 	</div>

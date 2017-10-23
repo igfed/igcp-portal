@@ -1,5 +1,5 @@
 ({
-	doInit: function(cmp, evt, hlpr) {
+	onInit: function(cmp, evt, hlpr) {
 		if(cmp.get("v.id") === "") {
 			console.warn("CP_Cmp_Table: An id is required.");
 		}
