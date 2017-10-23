@@ -1,7 +1,9 @@
 public class IGMortgageClient extends IGRestClient {
 	private static final String RESOURCE_NAME 		= 'mortgages';
+	private static final String QRY_PARAM_LOAN_NUM  = 'LOAN_NUM';
 	
-	public String bpid 			{ get; set; }    
+	public String bpid 			{ get; set; }
+	public String loanNumber 	{ get; set; }
     
     public IGMortgageClient(String namedCredentialsName, IGRestClient.Language lang) {
 		super(namedCredentialsName, lang);
@@ -12,7 +14,8 @@ public class IGMortgageClient extends IGRestClient {
 	}
 	
 	public override String getHttpEndPoint() {
-    	return 'callout:' + this.namedCredentialsName + '/clients/' + bpid.trim() + '/' + RESOURCE_NAME;
+    	return 'callout:' + this.namedCredentialsName + '/clients/' + bpid.trim() + '/' + RESOURCE_NAME + 
+    			(String.isNotBlank(loanNumber) ? ('?' + QRY_PARAM_LOAN_NUM + '=' + loanNumber.trim()) : '');
     }
 
     public override Response parseResponse(String responseBody) {

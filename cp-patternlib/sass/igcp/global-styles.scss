@@ -542,8 +542,8 @@
 		.slds-grid:last-child {
 			margin-bottom: -30px;
 		}
-		.#{$namespace}-tooltip {
-			margin-left: 0;
+		.igcp-tooltip .igcp-tooltip__tip.has-tip {
+			margin-left: -8px;
 		}
 	}
 	.slds-checkbox--toggle .slds-checkbox--faux,
@@ -656,30 +656,23 @@
 
 //TABLES
 .#{$namespace}-table {
-
 	width: 100%;
-
 	.#{$namespace}-table__row {
-
 		.#{$namespace}-table__header {
 			font-size: $ig-font-size--mini;
 			letter-spacing: $ig-letter-spacing;
 			color: $ig-blue;
 		}
-
 		.#{$namespace}-table__data {}
 	}
-
 	&.#{$namespace}-table__holdings {
 		.#{$namespace}-table__row {
 			.#{$namespace}-table__header {
 				display: none;
 			}
-
 			.#{$namespace}-table__data {
 				display: none;
 			}
-
 			.#{$namespace}-table__header:first-child,
 			.#{$namespace}-table__header:last-child,
 			.#{$namespace}-table__data:first-child,
@@ -688,18 +681,15 @@
 			}
 		}
 	}
-
 	&.#{$namespace}-table__transactions,
 	&.#{$namespace}-table__instructions {
 		.#{$namespace}-table__row {
 			.#{$namespace}-table__header {
 				display: none;
 			}
-
 			.#{$namespace}-table__data {
 				display: none;
 			}
-
 			.#{$namespace}-table__header:first-child,
 			.#{$namespace}-table__header:last-child,
 			.#{$namespace}-table__header:nth-child(3),

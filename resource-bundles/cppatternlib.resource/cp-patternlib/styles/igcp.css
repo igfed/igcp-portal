@@ -3693,8 +3693,8 @@ table {
   padding-left: 10px; }
 .igcp-edit-documents .igcp-document-section .slds-grid:last-child {
   margin-bottom: -30px; }
-.igcp-edit-documents .igcp-document-section .igcp-tooltip {
-  margin-left: 0; }
+.igcp-edit-documents .igcp-document-section .igcp-tooltip .igcp-tooltip__tip.has-tip {
+  margin-left: -8px; }
 .igcp-edit-documents .slds-checkbox--toggle .slds-checkbox--faux,
 .igcp-edit-documents .slds-checkbox--toggle .slds-checkbox_faux,
 .igcp-edit-documents .slds-checkbox_toggle .slds-checkbox--faux,
