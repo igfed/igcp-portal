@@ -59,7 +59,9 @@
 
 	//TABLES
 	.#{$namespace}-table {
-		&.#{$namespace}-table__holdings {
+		&.#{$namespace}-table__holdings,
+		&.#{$namespace}-table__transactions,
+		&.#{$namespace}-table__instructions {
 			.#{$namespace}-table__row {
 				.#{$namespace}-table__header {
 					display: table-cell;

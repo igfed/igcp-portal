@@ -7,7 +7,7 @@
 			tableClass="igcp-table__holdings"
 			styleConfig="{
 				'grid' : ['3', '2', '2', '2', '3'],
-				'textAlign' : ['left', 'right', 'center', 'center', 'right']
+				'textAlign' : ['left', 'right', 'right', 'right', 'right']
 			}"/>
 	</div>
 </aura:component>

@@ -1,12 +1,12 @@
 <aura:component >
 	<!-- MARKUP -->
 	<div class="igcp-container slds-p-around--small slds-m-bottom--medium">
-		<h3 class="slds-p-horizontal--xx-small">Recent Transactions</h3>
+		<h3 class="slds-p-horizontal--xx-small">{!$Label.c.CP_Account_Title_Transactions}</h3>
 		<c:CP_Cmp_Table 
 			id="transactions-table" 
 			tableClass="igcp-table__transactions"
 			styleConfig="{
-				'grid' : ['2', '4', '2', '1', '1', '2'],
+				'grid' : ['3', '4', '1', '1', '1', '3'],
 				'textAlign' : ['left', 'left', 'left', 'right', 'right', 'right']
 			}"/>
 	</div>
