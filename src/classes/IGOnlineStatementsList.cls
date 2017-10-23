@@ -2,10 +2,7 @@ public class IGOnlineStatementsList extends IGRestClient{
 	private static final String IG_OLS_NAMED_CREDS 	= 'IG_Client_Portal_Dev_1_3';
 	private List<String> clientNumbersString;
 	private LIst<Financial_Asset__c> listOfFAs;
-	/*
-	https://anypoint.mulesoft.com/apiconsoleproxy/api/v1/proxy/https://mocksvc.mulesoft.com/mocks/
-	df5fe611-d3e3-45c3-92a1-c212b33dc901/ig/portal/1.3/documents/statements/list?client_numbers='1234'&dates=asdasda
-	*/
+	
 
 	public IGOnlineStatementsList() {
 		super(IG_OLS_NAMED_CREDS);
@@ -14,6 +11,7 @@ public class IGOnlineStatementsList extends IGRestClient{
 	public List<statementList> getListOfStatements(Id contactId){
 		listOfFAs = new List<Financial_Asset__c>();
 		listOfFAs = [select Client_Number__c from Financial_Asset__c where Customer__c =: contactId];
+		System.debug('listOfFAs '+listOfFAs);
 		getServiceData();
 		//client_numbers=123123&client_numbers=1231231
 		return null;
@@ -22,26 +20,44 @@ public class IGOnlineStatementsList extends IGRestClient{
 	public override String getHttpEndPoint() {
 		Integer testClientNumber = 12345;
 		String testDate = 'qwerty';
-		String clientNumeberString;
-		System.debug(listOfFAs);
+		String clientNumeberString='';
+		System.debug('listOfFAs '+listOfFAs.size());
 		for(Financial_Asset__c eachFA : listOfFAs){
 			clientNumeberString += 'client_numbers='+eachFA.Client_Number__c+'&';
 		}
-		return 'callout:'+IG_OLS_NAMED_CREDS+'/documents/statements/list?client_numbers='+testClientNumber+'&dates='+testDate;
+		return 'callout:'+IG_OLS_NAMED_CREDS+'/documents/statements/list?'+clientNumeberString+'dates='+testDate;
 	}
 	public override Response parseResponse(String responseBody) {
     	System.debug('response '+responseBody);
-    	return null;
+    	clientStatementData rv;
+    	try{
+    		rv = (clientStatementData)System.JSON.deserializeStrict(responseBody, clientStatementData.class);
+    	}
+    	catch(Exception e){
+    		System.debug('Exception '+e);
+    	}
+
+    	System.debug('rv->>>>>> '+rv);
+    	return rv;
     }
-    public void testFunction(){
+    public class clientStatementData extends IGRestClient.Response {
+    	public Client Client;
+
+    	public clientStatementData(Boolean isSuccessful, Integer theCode, String theResponse) {
+    		super(isSuccessful, theCode, theResponse);
+    	}
+    }
+   public void testFunction(){
     	System.debug(super.callRESTService());
     }
     public class Client extends IGRestClient.Entities {
-		public List<statementList> AssetMixes;
+		public List<statementList> statementsOL;
 	}
     public class statementList{
-    	String name;
-    	String date_x;
+    	String clientName;
     	String clientNumber;
+    	String docId;
+    	String statementdate;
+    	
     } 
 }

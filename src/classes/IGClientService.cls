@@ -236,6 +236,46 @@ public class IGClientService {
 		return rv;
 	}
 
+	public static DTO_MortgageDetail getMortgageDetails(String clientBpid, String loanNumber) {
+		DTO_MortgageDetail rv = null;
+		if (String.isBlank(clientBpid)) {
+			throw new IGClientServiceException('The client bpid can\'t be null or empty');
+		}
+		if (String.isNotBlank(loanNumber)) {
+			throw new IGClientServiceException('The loan number can\'t be null or empty');	
+		}
+		IGRestClient client = IGRestClientFactory.getIGRestClient('Mortgage', WEBSERVICE_NAMED_CREDENTIAL);
+		if (client != null) {
+			IGMortgageClient theClient = (IGMortgageClient)client;
+			theClient.bpid = clientBpid;
+			theClient.loanNumber = loanNumber;
+			IGRestClient.Response res = theClient.getServiceData();
+		    System.debug('=====> getMortgageDetails.res: ' + res);
+		    if (res != null) {
+		    	if (!res.success) {
+		    		System.debug('=====> getMortgageDetails.ERROR: ' + res.success + ', ' + res.code + ', ' + res.error);
+		            throw new IGClientServiceException('Service call failed: ' + res.success + ', ' + res.code + ', ' + res.error);
+	            } else {
+					IGMortgageClient.MortgageData data = (IGMortgageClient.MortgageData)res;
+		            System.debug('=====> getMortgageDetails.data: ' + data);
+		            if (data.Client != null && data.Client.Loans != null && !data.Client.Loans.isEmpty()) {
+		            	if (data.Client.Loans.size() == 1) {
+		            		rv = new DTO_MortgageDetail(data.Client.Loans.get(0));
+		            	} else {
+		            		for (IGMortgageClient.Loans loan : data.Client.Loans) {
+		            			if (loanNumber == loan.LOAN_NUM) {
+		            				rv = new DTO_MortgageDetail(loan);
+		            				break;
+		            			}
+		            		}
+		            	}
+		            }		            	
+	            }
+		    }
+		}
+		return rv;
+	}
+
 	public static List<DTO_AssetMixDetail> getAssetMixDetails(String clientBpid) {
 		List<DTO_AssetMixDetail> rv = new List<DTO_AssetMixDetail>();
 		if (String.isBlank(clientBpid)) {

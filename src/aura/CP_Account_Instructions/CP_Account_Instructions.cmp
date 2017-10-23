@@ -1,1 +1,12 @@
-<aura:component ></aura:component>
+<aura:component >
+	<!-- MARKUP -->
+	<div class="igcp-container slds-p-around--small slds-m-bottom--medium">
+		<h3 class="slds-p-horizontal--xx-small">{!$Label.c.CP_Account_Title_Instructions}</h3>
+		<c:CP_Cmp_Table id="instructions-table" 
+			tableClass="igcp-table__instructions"
+			styleConfig="{
+				'grid' : ['2', '4', '2', '1', '1', '2'],
+				'textAlign' : ['left', 'left', 'left', 'right', 'right', 'right']
+			}"/>
+	</div>
+</aura:component>
