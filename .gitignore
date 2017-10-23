@@ -56,3 +56,6 @@ config
 .local_store
 .describe
 .settings
+
+#MavensMate
+src/package.xml

@@ -57,6 +57,21 @@
 		}
 	} 
 
+	//TABLES
+	.#{$namespace}-table {
+		&.#{$namespace}-table__holdings {
+			.#{$namespace}-table__row {
+				.#{$namespace}-table__header {
+					display: table-cell;
+				}
+
+				.#{$namespace}-table__data {
+					display: table-cell;
+				}
+			}
+		}
+	} 
+
 	//FOOTER
 	.#{$namespace}-footer {
 		.footer-link {
