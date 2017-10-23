@@ -7,7 +7,7 @@
 			if (urlParams.language) {
 				cmp.set("v.lang", urlParams.language);
 			} else {
-				cmp.set("v.lang", "");
+				cmp.set("v.lang", "en_CA");
 			}
 		});
 

@@ -22,8 +22,8 @@
 				cmp.set("v.options", re.payload);
 			},
 			function(error) {
-				console.log("SecurityQuestions: ERROR");
-				console.log(error);
+				console.error("SecurityQuestions:");
+				console.error(error);
 			}
 		);
 	},
