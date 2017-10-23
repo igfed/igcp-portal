@@ -131,6 +131,18 @@
 		// 	}
 		// );
 
+		events.fire(
+			"CP_Evt_Set_Table", {
+				"id": "instructions-table",
+				"headers": ["Date", "Name", "Activity", "Frequency", "Amount"],
+				"data": [
+					["April 13, 2017", "IG Mackenzie Growth Equity", "Pre-Authorized Contribution", "Monthly", "107.03"],
+					["July 13, 2017", "Growth", "Systematic Withdrawal", "Weekly", "107.03"],
+					["April 13, 2017", "IG Mackenzie Growth Equity", "Pre-Authorized Contribution", "Monthly", "107.03"]
+				]
+			}
+		);
+
 		// services.getAccountPerformance(
 		// 	accountNumber,
 		// 	cmp,

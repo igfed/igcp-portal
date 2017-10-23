@@ -10,7 +10,7 @@
 	
 	<!-- ATTRS -->
 	<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
-	<aura:attribute name="accountTitle" type="String" default=""></aura:attribute>
+	<aura:attribute name="accountTitle" type="String" default="RRSP"></aura:attribute>
 	<aura:attribute name="accountNumber" type="String" default=""></aura:attribute>
 
 	<!-- RETURNED DATA FROM SALESFORCE -->
@@ -42,7 +42,7 @@
 			</div>
 		</div>
 		<div class="slds-size_12-of-12">
-			<h1 class="">{!v.accountTitle}</h1>
+			<c:CP_Account_Title_Dropdown accountTitle="{!v.accountTitle}"/>
 		</div>
 		<div class="slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_8-of-12">
 			<div class="igcp-container slds-large-m-right--medium slds-p-around--small slds-large-p-around--medium slds-m-bottom--x-small slds-large-m-bottom--medium">

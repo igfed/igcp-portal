@@ -1,0 +1,10 @@
+<aura:component >
+	<!-- ATTRS -->
+	<aura:attribute name="accountTitle" type="String"></aura:attribute>
+	<aura:attribute name="accountNumber" type="String"></aura:attribute>
+	<aura:attribute name="class" type="String" default=""></aura:attribute>
+	<!-- MARKUP -->
+	<div class="{!v.class}">
+		<h1 class="slds-m-horizontal--medium">{!v.accountTitle}<span>{!'-'+ v.accountNumber}</span></h1>
+	</div>
+</aura:component>
