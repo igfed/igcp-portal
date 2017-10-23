@@ -1,6 +1,0 @@
-<apex:page showHeader="false" sidebar="false">
- Could not log you in at this time (add IG Branding) <br/>
- <apex:outputText value="ErrorCode={!$CurrentPage.parameters.ErrorCode}"/><br/>
- <apex:outputText value="ErrorDescription={!$CurrentPage.parameters.ErrorDescription}"/><br/>
- <apex:outputText value="ErrorDetails={!$CurrentPage.parameters.ErrorDetails}"/><br/>
-</apex:page>
