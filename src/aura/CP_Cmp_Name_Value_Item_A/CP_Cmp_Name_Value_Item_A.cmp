@@ -1,4 +1,4 @@
-<aura:component>
+<aura:component >
 	
 	<aura:attribute name="label" type="String" ></aura:attribute>
 	<aura:attribute name="description" type="String" ></aura:attribute>

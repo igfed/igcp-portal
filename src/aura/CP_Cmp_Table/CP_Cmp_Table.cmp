@@ -7,6 +7,7 @@
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default=""></aura:attribute>
 	<aura:attribute name="class" type="String" default=""></aura:attribute>
+	<aura:attribute name="tableClass" type="String" default=""></aura:attribute>
 	<aura:attribute name="data" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="styleConfig" type="Map" default="{}"></aura:attribute>
     
@@ -17,7 +18,7 @@
 	<!-- MARKUP -->
 	<div class="{!v.class}">
 		<h3 class="slds-m-bottom--small">{!v.data.title}</h3>
-		<table class="igcp-table">
+		<table class="{! 'igcp-table ' + v.tableClass}">
 			{!v.body}
 		</table>
 	</div>

@@ -1,0 +1,102 @@
+<apex:page controller="cms.CreateContentController" extensions="ec_LinkItem"
+    showHeader="false" sidebar="false" cache="false" standardStylesheets="false" title="OrchestraCMS content editor">
+    
+    <apex:outputPanel layout="block">
+
+        <link href="{!URLFOR($Resource.ec_slds, '/assets/styles/salesforce-lightning-design-system.css')}" rel="stylesheet" />
+        <link href="{!URLFOR($Resource.ec_ContentEditorFixes)}" rel="stylesheet" />
+        <script src="{!URLFOR($Resource.ec_sldsIconSelectorWidget)}" type="text/javascript"></script>
+
+        <style>
+            .ui-dialog img {        /* override slds's img max-width: 100% for OrchestraCMS media selector dialogue (and others?) */
+                max-width: none;
+            }
+
+            /* Fix Image Loader alignment */
+            #imageInputimageInput1 .ui-button:first-of-type,
+            #imageInputimageInput2 .ui-button:first-of-type {
+                margin-left: 10px;
+            }
+        </style>
+
+        <script>
+            $(document).ready(function() {
+                var $iconContainer = $('.sldsIconContainer');
+                ce.content_editor('registerSaveFunction', function() {
+                    return [
+                        {"name":"linkText", "value":$('#linkText').val(), "type":"Text", "simple":true},
+                        {"name":"linkDest", "value":$('#linkDest').val(), "type":"Text", "simple":true},
+                        {"name":"iconOverride", "value":$('#iconOverride').val(), "type":"Text", "simple":true},
+                        {"name":"iconType", "value":$iconContainer.sldsIconSelector('getIconType'), "type":"Text", "simple":true},
+                        {"name":"iconName", "value":$iconContainer.sldsIconSelector('getIconName'), "type":"Text", "simple":true},
+                        {"name":"iconAltText", "value":$('#iconAltText').val(), "type":"Text", "simple":true},
+                        {"name":"iconTitleText", "value":$('#iconTitleText').val(), "type":"Text", "simple":true}
+                    ];
+
+                });
+
+                var isEnabled = ocmsEditorAPI.getEnabled();
+                if(isEnabled) {
+                    $('input, textarea, select').removeAttr('disabled');
+                }
+
+                $iconContainer.sldsIconSelector({
+                    iconType: '{!iconType}',
+                    iconName: '{!iconName}',
+                    sldsPath: '{!URLFOR($Resource.ec_slds)}',
+                    disable: {!disableAll}
+                });
+
+            });
+        </script>
+        
+        <div class="ocms-contentPropertiesEdit">
+            <form>
+                <table class="ocmsContentEditor ocmsContentEditorNested">
+                    <tr>
+                        <td>
+                            <label class="ocmsLabel" for="linkText">Link Text</label>
+                            <input class="ocmsTextInputLrg" type="text" id="linkText" value="{! linkText }" disabled="disabled" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="ocmsLabel" for="linkDest">Link Destination</label>
+                            <input class="ocmsTextInputLrg" type="text" id="linkDest" value="{! linkDest }" disabled="disabled" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="ocmsLabel">Lightning Experience Icon</label>
+                            <div class="sldsIconContainer"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="ocmsLabel" for="iconOverride">Custom Icon</label>
+                            <p class="ocmsHelpText">This will replace the Lightning Experience Icon.</p>
+                            <input id="iconOverride" name="iconOverride" type="hidden" value="{!iconOverride}" />
+                            <cms:ImageSelector cPassThroughId="iconOverride" type="Image"
+                                cImage="{!iconOverride}" dialogId="iconOverrideDlg"
+                                disabled="disabled" sname="{!content.cms__Site_Name__c}" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="ocmsLabel" for="iconAltText">Custom Icon Alternative Text</label>
+                            <input class="ocmsTextInputLrg" type="text" id="iconAltText" value="{! iconAltText }" disabled="disabled" />
+                            <p class="ocmsHelpText">Words that describe the image that will be read by screen-reading software.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="ocmsLabel" for="iconTitleText">Custom Icon Title Text</label>
+                            <input class="ocmsTextInputLrg" type="text" id="iconTitleText" value="{! iconTitleText }" disabled="disabled" />
+                            <p class="ocmsHelpText">Text that appears when the mouse pointer hovers over the image.</p>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </apex:outputPanel>
+</apex:page>

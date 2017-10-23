@@ -1,0 +1,28 @@
+<apex:page id="contentPreview" controller="cms.CoreController" standardStylesheets="false" showHeader="false" sidebar="false">
+    <apex:composition template="{!page_template}">
+        <apex:define name="header">
+            <link href="{!URLFOR($Resource.ec_slds, '/assets/styles/salesforce-lightning-design-system.css')}" rel="stylesheet" />
+            <link href="{!URLFOR($Resource.ec_Component_Helper, '/css/common.css')}" rel="stylesheet" />
+            <script src="{!URLFOR($Resource.ec_Component_Helper, 'js/common.js')}" type="text/javascript"></script>
+            <style>
+                .ui-widget {
+                    margin-top: 1rem;
+                }
+            </style>
+        </apex:define>
+        <apex:define name="body">
+            <div class="mainContentArea restrictWidthContainer">
+                <div class="siteforceSldsTwoCol84Layout">
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col--padded slds-size--12-of-12 slds-medium-size--8-of-12 slds-large-size--8-of-12">
+                            <div class="ui-widget">
+                                <cms:Panel panelName="contentPreview" panelController="{!controller}" panelHeight="100px" panelWidth="550px" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </apex:define>
+    </apex:composition>
+</apex:page>
