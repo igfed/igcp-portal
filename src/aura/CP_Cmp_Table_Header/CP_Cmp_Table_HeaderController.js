@@ -18,6 +18,10 @@
 				thClass += "slds-size_" + style.grid[i] + "-of-12 ";
 			}
 
+			if(style.textAlign[i] !== null || style.textAlign[i] !== undefined) {
+				thClass += ("igcp-utils__text-align--" + style.textAlign[i] + " ");
+			}
+
 			utils.createComponent(
 				"aura:html",
 				{ 
