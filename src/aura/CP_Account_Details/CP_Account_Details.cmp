@@ -9,6 +9,7 @@
 	<c:CP_Services aura:id="CP_Services" />
 	
 	<!-- ATTRS -->
+	<aura:attribute name="pageId" type="String" default="account-detail"></aura:attribute>
 	<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
 	<aura:attribute name="accountTitle" type="String" default="RRSP"></aura:attribute>
 	<aura:attribute name="accountNumber" type="String" default="3110863"></aura:attribute>
@@ -48,9 +49,7 @@
 			<div class="igcp-container slds-large-m-right--medium slds-p-around--small slds-large-p-around--medium slds-m-bottom--x-small slds-large-m-bottom--medium">
 				<div class="slds-grid slds-wrap">
 					
-
-					<c:CP_Cmp_Total_Value label="{!$Label.c.CP_Generic_Label_Market_Value}" value="{!v.marketValue}" />
-					
+					<c:CP_Cmp_Total_Value label="{!$Label.c.CP_Generic_Label_Market_Value}" value="{!v.marketValue}" />				
 
 					<c:CP_Cmp_Gain_Loss label="{!$Label.c.CP_Generic_Label_Change}" 
 						description="{!$Label.c.CP_Generic_Label_Year_To_Date}" 
@@ -58,7 +57,6 @@
 						percentage="{!v.gainLossPercentage}" 
 						gainLossType="{!v.gainLossType}" />
 					
-
 					<div class="igcp-separator--large slds-size_12-of-12 slds-m-vertical--xxx-small slds-large-m-vertical--large "></div>
 					<div class="slds-grid slds-wrap">
 						
@@ -86,5 +84,6 @@
 		<div class="slds-size_12-of-12">
 			<c:CP_Account_Instructions />
 		</div>
+		<c:CP_Cmp_Modal id="{!v.pageId}" modalType="small"/>
 	</div>
 </aura:component>

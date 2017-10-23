@@ -3789,6 +3789,9 @@ table {
     font-size: 14px;
     letter-spacing: 0px;
     color: #004171; }
+  .igcp-table .igcp-table__row--link:hover {
+    cursor: pointer;
+    background-color: #f8f8f9; }
   .igcp-table.igcp-table__holdings .igcp-table__row .igcp-table__header {
     display: none; }
   .igcp-table.igcp-table__holdings .igcp-table__row .igcp-table__data {

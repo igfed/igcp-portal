@@ -10,7 +10,7 @@
 	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
-	<tr class="igcp-table__row igcp-underline__thin--grey">
+	<tr class="igcp-table__row igcp-table__row--link igcp-underline__thin--grey">
 		{!v.body}
 	</tr>
 </aura:component>

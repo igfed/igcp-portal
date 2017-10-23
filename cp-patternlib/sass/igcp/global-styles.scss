@@ -663,8 +663,13 @@
 			letter-spacing: $ig-letter-spacing;
 			color: $ig-blue;
 		}
-		.#{$namespace}-table__data {}
 	}
+
+	.#{$namespace}-table__row--link:hover {
+		cursor: pointer;
+		background-color: $ig-light-grey;
+	}
+
 	&.#{$namespace}-table__holdings {
 		.#{$namespace}-table__row {
 			.#{$namespace}-table__header {
