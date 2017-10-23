@@ -112,7 +112,8 @@
 			validator = cmp.find('CP_Validation'),
 			events = cmp.find('CP_Events'),
 			utils = cmp.find('CP_Utils'),
-			inputs = cmp.get("v.inputsReceived");
+			inputs = cmp.get("v.inputsReceived"),
+			formattedDob = "";
 
 		validator.validate(evt.getParam("payload"), function(obj) {
 
@@ -155,13 +156,18 @@
 
 		cmp.set("v.inputsReceived", (inputs += 1));
 
-		console.log(cmp.get("v.inputsReceived"));
-
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
 		if (cmp.get("v.inputsReceived") === 8 && cmp.get("v.inputErrors") === false) {
 
+			utils.convertToYMD(cmp.get("v.dob"), function(value) {
+				formattedDob = value;
+			});
+
 			cmp.set("v.payload", {
+				"clientNum": cmp.get("v.clientNum"),
+				"postalCode": cmp.get("v.postalCode"),
+				"dob": formattedDob,
 				"username": cmp.get("v.username"),
 				"password": cmp.get("v.password"),
 				"confirmPassword": cmp.get("v.confirmPassword"),
@@ -175,6 +181,8 @@
 				"securityQuestion3": cmp.get("v.securityQuestion3"),
 				"answer3": cmp.get("v.answer3")
 			});
+
+			console.log(cmp.get("v.payload"));
 
 			cmp.onSubmitForm();
 		}
