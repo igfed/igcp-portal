@@ -21,6 +21,10 @@
 
 .#{$namespace}-container {
 	background-color: #fff;
+
+	@media (max-width: 480px) {
+		margin: 0 10px;
+	}
 }
 
 .#{$namespace}-wrapper-x-large {
@@ -498,12 +502,6 @@
 	width: auto;
 	border-top: 1px solid $ig-grey;
 	border-bottom: 1px solid $ig-grey;
-}
-
-//BOXED COMPONENT (THIS MAY NOT BE REQUIRED)
-.#{$namespace}-boxed--white {
-	background-color: #fff;
-	padding: 30px 25px;
 }
 
 //EDIT PAGES

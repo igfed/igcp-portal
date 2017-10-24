@@ -3317,6 +3317,9 @@ table {
 
 .igcp-container {
   background-color: #fff; }
+  @media (max-width: 480px) {
+    .igcp-container {
+      margin: 0 10px; } }
 
 .igcp-wrapper-x-large {
   max-width: 1280px;
@@ -3665,10 +3668,6 @@ table {
   width: auto;
   border-top: 1px solid #e9ecee;
   border-bottom: 1px solid #e9ecee; }
-
-.igcp-boxed--white {
-  background-color: #fff;
-  padding: 30px 25px; }
 
 .igcp-edit-notifications .slds-checkbox--faux {
   position: absolute;
