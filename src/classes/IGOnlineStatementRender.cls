@@ -1,4 +1,4 @@
-public with sharing class IGOnlineStatementRender {
+public abstract class IGOnlineStatementRender {
 	private static string HTTP_HEADER_CORR  = 'correlationid';
     private static string HTTP_HEADER_ACPT  = 'Accept';
     private static string HTTP_QUERY_LANG   = 'LANG';
@@ -12,6 +12,19 @@ public with sharing class IGOnlineStatementRender {
     public String namedCredentialsName;
     public String langQueryString;    
     
+    public IGOnlineStatementRender(string namedCredentialsName){
+        this(namedCredentialsName, Language.ENGLISH);
+    }
+
+    public IGOnlineStatementRender(string namedCredentialsName, Language lang){
+        this.namedCredentialsName = namedCredentialsName;
+        if(Language.FRENCH==lang){
+            this.langQueryString = HTTP_QUERY_LANG + '=FR';
+        }
+        else {
+            this.langQueryString = HTTP_QUERY_LANG + '=EN';
+        }
+    }
     
 
     
@@ -20,15 +33,10 @@ public with sharing class IGOnlineStatementRender {
 	df5fe611-d3e3-45c3-92a1-c212b33dc901/ig/portal/1.3/documents/statements/list?client_numbers='1234'&dates=asdasda
 	*/
 	
-	private String getHttpEndPoint() {
-		
-		String testDocId = 'djcxMjYtNTAxMS01MDEyLTUwMTctREFBMTktMzgyMzVGQUFBLTQzODYxLTIxNTM4LTM4MjQ2MTAtMjIzNTE5LTc4LTc5LTItMS0wLV4BMTIyMzg3MwFGVElaRURTATE0NzAwATABOTkzMg==';
-		return 'callout:'+IG_OLS_NAMED_CREDS+'/documents/statements/'+testDocId;
-	}
-	 public Response parseResponse(String responseBody) {
-    	System.debug('response '+responseBody);
-    	return null;
-    }
+    public abstract String getHttpEndPoint();
+	
+	public abstract Response parseResponse(String responseBody);
+
     public void testFunction(){
     	System.debug(callRESTServiceForPdf());
     }
@@ -56,7 +64,26 @@ public with sharing class IGOnlineStatementRender {
         ret = new Response((200 == resStatusCode), resStatusCode, res.getBody());
         return ret;
     }
-    public class Response {
+     public Response getServiceData() {
+        Response rv = null;
+        Response res = callRESTServiceForPdf();
+        System.debug('res '+res.success);
+        if (res.success) {
+            try {
+                rv = parseResponse(res.responseBody);
+                rv.success = true;
+
+            } catch (JSONException e) {
+                System.debug('exception '+e);
+                rv = new Response(false, -1, e.getMessage());
+            }
+        } else {
+            return res;
+        }
+        return rv;
+    }
+    
+    public virtual class Response {
         public boolean success      { get; set; }
         public Integer code         { get; set; }
         public String responseBody  { get; set; }    

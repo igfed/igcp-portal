@@ -541,7 +541,25 @@
 			margin-bottom: -30px;
 		}
 		.igcp-tooltip .igcp-tooltip__tip.has-tip {
-			margin-left: -8px;
+			margin-left: 0;
+		}
+
+		.slds-checkbox_toggle {
+			float: right;
+			width: auto;
+		}
+		.slds-checkbox_off,
+		.slds-checkbox_on {
+			top: -2px;
+			left: -45px;
+		}
+	}
+	.#{$namespace}-label--with-tooltip {
+		float: right;
+		
+		.igcp-label--small {
+			color: $ig-dark-grey;
+			font-family: $ig-whitney-book;
 		}
 	}
 	.slds-checkbox--toggle .slds-checkbox--faux,
@@ -558,7 +576,7 @@
 		display: block;
 		position: absolute;
 		top: -2px;
-		left: 55px;
+		left: 53px;
 		font-size: 14px;
 		font-weight: bold;
 	}

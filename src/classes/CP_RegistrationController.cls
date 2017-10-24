@@ -44,20 +44,20 @@ public class CP_RegistrationController {
         System.debug('CP_RegistrationController.StepTwo');
         System.debug('Payload: '+ payload);
         CP_Response response = new CP_Response();
-        CP_RegistrationClass.UserProfile objForm = new CP_RegistrationClass.UserProfile();
+        CP_RegistrationClass.RegistrationForm objForm = new CP_RegistrationClass.RegistrationForm();
         try
         {
-            objForm = (CP_RegistrationClass.UserProfile) JSON.deserialize(payload, CP_RegistrationClass.UserProfile.class);
+            objForm = (CP_RegistrationClass.RegistrationForm) JSON.deserialize(payload, CP_RegistrationClass.RegistrationForm.class);
             System.debug('ObjForm: '+ objForm);
 
             // verify all required info is entered
-            response.State = verifyStepTwoInput(objForm);
+            response.State = verifyStepTwoInput(objForm.Profile);
 
             // if all required info is available then call verifyProfile
             if(response.State.IsValid)
             {
                 // Call the Registration class's verification method by passing in the Deserialized User profile object and get a result Object in return
-                response.State = Registration.verifyProfile(objForm);
+                response.State = Registration.verifyProfile(objForm.Profile, objForm.Identity.clientNum);
             }
         }
         catch(exception e)

@@ -36,5 +36,8 @@
 				function(ready){}
 			);
 		});
+	},
+	onClick: function(cmp, evt, hlpr){
+		console.log("CLICKED")
 	}
 })

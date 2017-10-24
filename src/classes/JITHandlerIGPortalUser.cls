@@ -97,8 +97,11 @@ Internal methods
             throw new JITApplicationException('You have not registred for access to this system [5]. Please contact your administrator');
         }
         // ensure that the contact is not already associated with a portal user...this can only happens if there was a bug or someone manually messed up the data
-        List<User> existingUsers = [SELECT Id from User where ContactId=:c.Id];
+        List<User> existingUsers = [SELECT Id, FederationIdentifier from User where ContactId=:c.Id];
         if(!existingUsers.isEmpty()){
+            //User existingUser = existingUsers.get(0);
+            //if(federationIdentifier.equalsIgnoreCase(existingUser.FederationIdentifier)) return existingUser;
+
             System.debug('handleJit - User with portal user id [' + federationIdentifier + '] is already associated with an existing portal user');
             throw new JITApplicationException('Access denied. You do not have access to this system [6]. Please contact your administrator');
         }
