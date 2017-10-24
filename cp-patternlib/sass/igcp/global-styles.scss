@@ -375,9 +375,42 @@
 		float: right;
 		border-radius: 50px;
 	}
+
+	//full
 	&.#{$namespace}-modal__full {
 		background-color: $ig-white;
 	}
+
+
+
+
+
+	//details
+	&.#{$namespace}-modal__details {
+		background-color: $ig-dark-blue--90;
+		.#{$namespace}-modal__details--inner {
+			position: fixed;
+			background-color: $ig-white;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			border: 10px solid $ig-grey;
+			overflow-y: scroll;
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+	//small
 	&.#{$namespace}-modal__small {
 		background-color: $ig-dark-blue--90;
 		.#{$namespace}-modal__small--inner {
@@ -392,6 +425,7 @@
 		}
 	}
 }
+
 
 .#{$namespace}-modal__footer {
 	background-color: #f8f8f8;
