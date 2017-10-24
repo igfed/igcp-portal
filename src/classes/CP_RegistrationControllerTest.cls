@@ -430,7 +430,7 @@ public  class CP_RegistrationControllerTest {
 
 	@isTest static void test_StepTwo_UserName_IsNull()
 	{
-		String jsonObj = '{ "username" : null, "password" : "password123", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" }';
+		String jsonObj = '{ "Identity" :  {"clientNum" : "963852741", "postalCode" : "A1B 2C3", "dob" : "1990-01-01"} , "Profile": { "username" : null, "password" : "password123", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" } }';
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
@@ -442,7 +442,7 @@ public  class CP_RegistrationControllerTest {
 
 	@isTest static void test_StepTwo_UserName_IsEmpty()
 	{
-		String jsonObj = '{ "username" : "", "password" : "password123", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" }';
+		String jsonObj = '{ "Identity" :  {"clientNum" : "963852741", "postalCode" : "A1B 2C3", "dob" : "1990-01-01"} , "Profile": { "username" : "", "password" : "password123", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" } }';
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
@@ -454,7 +454,7 @@ public  class CP_RegistrationControllerTest {
 
 	@isTest static void test_StepTwo_UserName_AlreadyExist()
 	{
-		String jsonObj = '{ "username" : "jBourne", "password" : "password123", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" }';
+		String jsonObj = '{ "Identity" :  {"clientNum" : "963852741", "postalCode" : "A1B 2C3", "dob" : "1990-01-01"} , "Profile": { "username" : "jBourne", "password" : "password123", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" } }';
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
@@ -468,7 +468,7 @@ public  class CP_RegistrationControllerTest {
 	{
 		Test.setMock(HttpCalloutMock.class, new CP_SCIMRestClientMock_UserQuery('testUser123'));
 
-		String jsonObj = '{ "username" : "testUser123", "password" : "password123", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" }';
+		String jsonObj = '{ "Identity" :  {"clientNum" : "963852741", "postalCode" : "A1B 2C3", "dob" : "1990-01-01"} , "Profile": { "username" : "testUser123", "password" : "password123", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" } }';
 		Test.startTest();
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
@@ -483,7 +483,7 @@ public  class CP_RegistrationControllerTest {
 	
 	@isTest static void test_StepTwo_Password_IsNull()
 	{
-		String jsonObj = '{ "username" : "pGrass", "password" : "", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" }';
+		String jsonObj = '{ "Identity" :  {"clientNum" : "963852741", "postalCode" : "A1B 2C3", "dob" : "1990-01-01"} , "Profile": { "username" : "pGrass", "password" : "", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" } }';
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
@@ -495,7 +495,7 @@ public  class CP_RegistrationControllerTest {
 
 	@isTest static void test_StepTwo_Password_IsEmpty()
 	{
-		String jsonObj = '{ "username" : "pGrass", "password" : "", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" }';
+		String jsonObj = '{ "Identity" :  {"clientNum" : "963852741", "postalCode" : "A1B 2C3", "dob" : "1990-01-01"} , "Profile": { "username" : "pGrass", "password" : "", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" } }';
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
@@ -507,7 +507,7 @@ public  class CP_RegistrationControllerTest {
 
 	@isTest static void test_StepTwo_Password_NotMatched()
 	{
-		String jsonObj = '{ "username" : "pGrass", "password" : "pwd123", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" }';
+		String jsonObj = '{ "Identity" :  {"clientNum" : "963852741", "postalCode" : "A1B 2C3", "dob" : "1990-01-01"} , "Profile": { "username" : "pGrass", "password" : "pwd123", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" } }';
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
@@ -520,7 +520,7 @@ public  class CP_RegistrationControllerTest {
 
 	@isTest static void test_StepTwo_Email_IsNUll()
 	{
-		String jsonObj = '{ "username" : "pGrass", "password" : "password123", "confirmPassword" : "password123", "email": null, "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" }';
+		String jsonObj = '{ "Identity" :  {"clientNum" : "963852741", "postalCode" : "A1B 2C3", "dob" : "1990-01-01"} , "Profile": { "username" : "pGrass", "password" : "password123", "confirmPassword" : "password123", "email": null, "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" } }';
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
@@ -533,7 +533,7 @@ public  class CP_RegistrationControllerTest {
 
 	@isTest static void test_StepTwo_Email_IsEmpty()
 	{
-		String jsonObj = '{ "username" : "pGrass", "password" : "password123", "confirmPassword" : "password123", "email": "", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" }';
+		String jsonObj = '{ "Identity" :  {"clientNum" : "963852741", "postalCode" : "A1B 2C3", "dob" : "1990-01-01"} , "Profile": { "username" : "pGrass", "password" : "password123", "confirmPassword" : "password123", "email": "", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" } }';
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
@@ -545,7 +545,7 @@ public  class CP_RegistrationControllerTest {
 
 	@isTest static void test_StepTwo_Email_IsNotValid()
 	{
-		String jsonObj = '{ "username" : "pGrass", "password" : "password123", "confirmPassword" : "password123", "email": "email@testdotcome", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" }';
+		String jsonObj = '{ "Identity" :  {"clientNum" : "963852741", "postalCode" : "A1B 2C3", "dob" : "1990-01-01"} , "Profile": { "username" : "pGrass", "password" : "password123", "confirmPassword" : "password123", "email": "email@testdotcome", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" } }';
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
@@ -557,7 +557,7 @@ public  class CP_RegistrationControllerTest {
 
 	@isTest static void test_StepTwo_Email_Already_Registered()
 	{
-		String jsonObj = '{ "username" : "pGrass", "password" : "password123", "confirmPassword" : "password123", "email": "testuser@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" }';
+		String jsonObj = '{ "Identity" :  {"clientNum" : "963852741", "postalCode" : "A1B 2C3", "dob" : "1990-01-01"} , "Profile": { "username" : "pGrass", "password" : "password123", "confirmPassword" : "password123", "email": "testuser@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" } }';
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);
 
@@ -571,7 +571,7 @@ public  class CP_RegistrationControllerTest {
 	{
 		Test.setMock(HttpCalloutMock.class, new CP_SCIMRestClientMock_UserQuery('testUser123', false));
 
-		String jsonObj = '{ "username" : "testUser99999", "password" : "password123", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" }';
+		String jsonObj = '{ "Identity" :  {"clientNum" : "963852741", "postalCode" : "A1B 2C3", "dob" : "1990-01-01"} , "Profile": { "username" : "testUser99999", "password" : "password123", "confirmPassword" : "password123", "email": "test@test.com", "emailOptIn": true, "mobilePhone" : "647 123 4567", "securityQuestion1": "question one", "answer1": "answer one", "securityQuestion2": "question two", "answer2": "answer two", "securityQuestion3": "question three", "answer3": "answer three" } }';
 		Test.startTest();
 
 		String jsonResult = CP_RegistrationController.StepTwo(jsonObj);

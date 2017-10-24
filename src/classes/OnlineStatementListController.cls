@@ -8,10 +8,11 @@ public class OnlineStatementListController {
 		Id contextContactId;
         
     	contactToUse = [select Id, Business_Partner_ID__c from Contact where Id in (select ContactId from User where id=:UserInfo.getUserId())];
-    	contextContactId = contactToUse.get(0).Id;
+    	System.debug(contactToUse);
+    	contextContactId = '0033D00000LKcwIQAT';//contactToUse.get(0).Id;
     	IGOnlineStatementsList onlineStatementClient = new IGOnlineStatementsList();
     	rv = onlineStatementClient.getListOfStatements(contextContactId);
-    	
+    	System.debug('rv '+rv);
 		return rv;
 	} 
 }
