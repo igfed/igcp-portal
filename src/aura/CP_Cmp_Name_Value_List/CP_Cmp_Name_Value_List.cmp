@@ -1,20 +1,24 @@
-<aura:component >
-
+<aura:component>
 	<!-- INCLUDES -->
 	<c:CP_Utils aura:id="CP_Utils" />
-	
 	<!-- ATTRS -->
-	<aura:attribute name="id" type="String" default="default" ></aura:attribute>
+	<aura:attribute name="id" type="String" default="default"></aura:attribute>
 	<aura:attribute name="class" type="String" default=""></aura:attribute>
 	<aura:attribute name="gridSizing" type="String" default="12"></aura:attribute>
-	<aura:attribute name="values" type="Map" ></aura:attribute>
-	<aura:attribute name="variant" type="String" default="b" ></aura:attribute>
-
+	<aura:attribute name="values" type="Map"></aura:attribute>
+	<aura:attribute name="variant" type="String" default="b"></aura:attribute>
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
-	<aura:handler name="change" value="{!v.values}" action="{!c.ValuesChange}"/>
+	<aura:handler name="change" value="{!v.values}" action="{!c.ValuesChange}" />
 	<aura:handler event="c:CP_Evt_Set_List" action="{!c.onSetList}" />
-	
 	<!-- MARKUP -->
-	<div aura:id="list-container" class="{!'igcp-list ' + v.class}"></div>
+	<aura:if isTrue="{!v.gridSizing == '12'}">
+		<div aura:id="list-container" class="{!'igcp-list ' + v.class}"></div>
+	</aura:if>
+	<aura:if isTrue="{!v.gridSizing == '6'}">
+		<div class="slds-grid slds-wrap">
+			<div aura:id="list-container-left" class="{!'igcp-list slds-size_6-of-12 slds-p-right--x-small' + v.class}"></div>
+			<div aura:id="list-container-right" class="{!'igcp-list slds-size_6-of-12 slds-p-left--x-small' + v.class}"></div>
+		</div>
+	</aura:if>
 </aura:component>

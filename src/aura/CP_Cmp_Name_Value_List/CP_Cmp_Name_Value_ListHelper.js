@@ -37,7 +37,7 @@
 			);
 		});
 	},
-	generateContainer: function(gridSizing, cmp, callback) {
+	generateContainer: function(gridSizing, cmp, container, callback) {
 
 		var
 			utils = cmp.find("CP_Utils");
@@ -45,19 +45,32 @@
 		if(gridSizing === "12") {
 			utils.createComponent(
 				"aura:html", {
-					"aura:id" : "list-container",
 					"tag": "dl",
 					"body": "",
 					"HTMLAttributes": {
 						"class": "slds-list_horizontal slds-wrap"
 					}
 				},
-				cmp.find("list-container"),
+				container,
 				function(ready) {
 					callback(ready);
 				}
 			);
 		} else if(gridSizing === "6") {
+
+			utils.createComponent(
+				"aura:html", {
+					"tag": "dl",
+					"body": "",
+					"HTMLAttributes": {
+						"class": "slds-list_horizontal slds-wrap"
+					}
+				},
+				container,
+				function(ready) {
+					callback(ready);
+				}
+			);
 
 		}
 	}
