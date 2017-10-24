@@ -33,4 +33,13 @@
 			</aura:if>
 		</div>
 	</aura:if>
+
+	<aura:if isTrue="{!v.modalType == 'details'}">
+		<div class="{!'igcp-modal igcp-modal__details slds-grid slds-wrap slds-p-around--xx-large ' + v.class}">
+			<aura:if isTrue="{!v.id == 'account-detail'}">
+				<c:CP_Account_Full_Details />
+			</aura:if>
+
+		</div>
+	</aura:if>
 </aura:component>

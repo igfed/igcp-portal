@@ -1,8 +1,11 @@
 ({
 	onInit: function(cmp, evt, hlpr) {
 
+		//180030728
+		//13460563
+
 		var
-			accountNumber = "13460563",
+			accountNumber = "180030728",
 			services = cmp.find("CP_Services"),
 			utils = cmp.find("CP_Utils"),
 			events = cmp.find("CP_Events");
@@ -65,6 +68,28 @@
 				console.log("Get Holdings");
 				console.log(success);
 				console.log("############");
+
+				var
+					holdingsArr = success,
+					dataArr = [],
+					dataObjArr = [];
+
+				holdingsArr.forEach(function(item, i) {
+					dataArr.push([item.productName, item.holdingNumber, "N/A", "N/A", item.marketValueCad]);
+					dataObjArr.push(item);
+
+				});
+
+				events.fire(
+					"CP_Evt_Set_Table", {
+						"id": "holdings-table",
+						"headers": ["Name", "Holding", "Book Cost", "Gain / Loss", "Market Value"],
+						"data": dataArr,
+						"dataObj": dataObjArr
+					}
+				);
+
+
 			},
 			function(error) {
 				console.error("Get Holdings");
@@ -72,17 +97,17 @@
 			}
 		);
 
-		events.fire(
-			"CP_Evt_Set_Table", {
-				"id": "holdings-table",
-				"headers": ["Name", "Holding", "Book Cost", "Gain / Loss", "Market Value"],
-				"data": [
-					["Account 1", "32.7", "15034.56", "5.3", "18000.67"],
-					["Account 2", "34.3", "1214.56", "5.6", "124420.67"],
-					["Account 3", "14.7", "15034.56", "4.3", "5400.67"]
-				]
-			}
-		);
+		// events.fire(
+		// 	"CP_Evt_Set_Table", {
+		// 		"id": "holdings-table",
+		// 		"headers": ["Name", "Holding", "Book Cost", "Gain / Loss", "Market Value"],
+		// 		"data": [
+		// 			["Account 1", "32.7", "15034.56", "5.3", "18000.67"],
+		// 			["Account 2", "34.3", "1214.56", "5.6", "124420.67"],
+		// 			["Account 3", "14.7", "15034.56", "4.3", "5400.67"]
+		// 		]
+		// 	}
+		// );
 
 		services.getTransactions(
 			accountNumber,
@@ -96,19 +121,18 @@
 			function(error) {
 				console.error("Transactions");
 				console.error(error);
-			}
-		);
-
-		events.fire(
-			"CP_Evt_Set_Table", {
-				"id": "transactions-table",
-				"headers": ["Date", "Name", "Activity", "Unit Price", "Quantity", "Amount"],
-				"data": [
-					["April 13, 2017", "Account 1", "Buy", "14.56", "7.03", "1000002.12"],
-					["April 13, 2017", "Account 2", "Sell", "14.56", "7.03", "102.12"],
-					["April 13, 2017", "Account 3", "Buy", "14.56", "7.03", "102.12"],
-					["November 13, 2017", "Account 4", "Income", "14.56", "7.03", "102.12"],
-				]
+				events.fire(
+					"CP_Evt_Set_Table", {
+						"id": "transactions-table",
+						"headers": ["Date", "Name", "Activity", "Unit Price", "Quantity", "Amount"],
+						"data": [
+							["April 13, 2017", "Account 1", "Buy", "14.56", "7.03", "1000002.12"],
+							["April 13, 2017", "Account 2", "Sell", "14.56", "7.03", "102.12"],
+							["April 13, 2017", "Account 3", "Buy", "14.56", "7.03", "102.12"],
+							["November 13, 2017", "Account 4", "Income", "14.56", "7.03", "102.12"],
+						]
+					}
+				);
 			}
 		);
 
@@ -124,18 +148,17 @@
 			function(error) {
 				console.error("Instructions");
 				console.error(error);
-			}
-		);
-
-		events.fire(
-			"CP_Evt_Set_Table", {
-				"id": "instructions-table",
-				"headers": ["Date", "Name", "Activity", "Frequency", "Amount"],
-				"data": [
-					["April 13, 2017", "IG Mackenzie Growth Equity", "Pre-Authorized Contribution", "Monthly", "107.03"],
-					["July 13, 2017", "Growth", "Systematic Withdrawal", "Weekly", "107.03"],
-					["April 13, 2017", "IG Mackenzie Growth Equity", "Pre-Authorized Contribution", "Monthly", "107.03"]
-				]
+				events.fire(
+					"CP_Evt_Set_Table", {
+						"id": "instructions-table",
+						"headers": ["Date", "Name", "Activity", "Frequency", "Amount"],
+						"data": [
+							["April 13, 2017", "IG Mackenzie Growth Equity", "Pre-Authorized Contribution", "Monthly", "107.03"],
+							["July 13, 2017", "Growth", "Systematic Withdrawal", "Weekly", "107.03"],
+							["April 13, 2017", "IG Mackenzie Growth Equity", "Pre-Authorized Contribution", "Monthly", "107.03"]
+						]
+					}
+				);
 			}
 		);
 

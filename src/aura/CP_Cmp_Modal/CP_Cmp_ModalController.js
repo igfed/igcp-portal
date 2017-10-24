@@ -8,6 +8,9 @@
 	onClose: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
 
+		console.log("CLOSE");
+		console.log(payload);
+
 		if (payload) {
 			
 			if (payload.id === cmp.get("v.id")) {
@@ -19,6 +22,9 @@
 	},
 	onOpen: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
+
+		console.log("MODAL OPEN");
+		console.log(payload);
 
 		if (payload.id === cmp.get("v.id")) {
 

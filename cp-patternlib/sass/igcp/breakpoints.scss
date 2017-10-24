@@ -17,14 +17,10 @@
 		.#{$namespace}-registration__pfa--monitor {
 			width: 360px;
 		}
-	} 
-
-	//CARD
+	} //CARD
 	.#{$namespace}-card__image {
 		width: 75%;
-	} 
-
-	//FIGURE
+	} //FIGURE
 	.#{$namespace}-figure {
 
 		.#{$namespace}-figure__caption {
@@ -33,31 +29,23 @@
 				text-align: left;
 			}
 		}
-	} 
-
-	//MODAL
+	} //MODAL
 	.#{$namespace}-modal__footer {
 		margin: 0 0 0 -#{$ig-space--xx-large};
 		padding-top: 32px;
 		padding-left: 0px;
 		padding-right: 0px;
 		padding-bottom: 0px;
-	} 
-
-	//VALUES
+	} //VALUES
 	.#{$namespace}-value--large {
 		font-size: $ig-font-size--large;
-	} 
-
-	//TOOLTIP
+	} //TOOLTIP
 	.#{$namespace}-tooltip {
 		&.#{$namespace}-tooltip__label--small {
 			padding-left: 0;
 			padding-top: 6px;
 		}
-	} 
-
-	//TABLES
+	} //TABLES
 	.#{$namespace}-table {
 		&.#{$namespace}-table__holdings,
 		&.#{$namespace}-table__transactions,
@@ -72,9 +60,7 @@
 				}
 			}
 		}
-	}
-
-	//FOOTER
+	} //FOOTER
 	.#{$namespace}-footer {
 		.footer-link {
 			float: left;
@@ -92,9 +78,7 @@
 			height: 282px;
 			overflow: visible;
 		}
-	} 
-
-	//BUTTON
+	} //BUTTON
 	.#{$namespace}-button__chat {
 		float: none;
 		position: fixed;
@@ -106,9 +90,7 @@
 		position: absolute;
 		right: -200px;
 		top: -160px;
-	} 
-
-	//VALUES
+	} //VALUES
 	.#{$namespace}-value--medium {
 		line-height: $ig-line-height--base;
 		font-size: $ig-font-size--medium-plus;
@@ -122,19 +104,13 @@
 	.#{$namespace}-value--x-small {
 		line-height: $ig-line-height--base;
 		font-size: $ig-font-size--base;
-	} 
-
-	//SEPARATOR
+	} //SEPARATOR
 	.#{$namespace}-separator--large {
 		height: $ig-space--x-small;
-	} 
-
-	//CARD
+	} //CARD
 	.#{$namespace}-card__image {
 		width: 100%;
-	} 
-
-	//MODAL
+	} //MODAL
 	.#{$namespace}-modal {
 
 		&.#{$namespace}-modal__small {
@@ -147,9 +123,17 @@
 				bottom: 25%;
 			}
 		}
-	} 
 
-	//FOOTER
+		&.#{$namespace}-modal__details {
+			.#{$namespace}-modal__details--inner {
+				@include roundCorner();
+				top: 25%;
+				left: 10%;
+				right: 10%;
+				bottom: 25%;
+			}
+		}
+	} //FOOTER
 	.#{$namespace}-footer {
 		padding-top: 0;
 

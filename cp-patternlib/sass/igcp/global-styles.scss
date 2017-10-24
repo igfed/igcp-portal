@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //BEM convention
 //[namespace]-[block]__[element]--[modifier]
 //See https://seesparkbox.com/foundry/bem_by_example for details
@@ -722,4 +723,747 @@
 			}
 		}
 	}
+=======
+//BEM convention
+//[namespace]-[block]__[element]--[modifier]
+//See https://seesparkbox.com/foundry/bem_by_example for details
+//Global Styles - specific styles for elements that can be used globally, I may break these styles into sub categories down the road if this file gets too big 
+//GENERAL
+.#{$namespace}-main {
+	//Override default padding in community page
+	.slds-col--padded {
+		padding: 0;
+	}
+}
+
+.#{$namespace}-background {
+	background-color: $ig-light-grey;
+}
+
+.#{$namespace}-background__tiled {
+	background-image: url('../images/bg-tile.jpg');
+	background-repeat: repeat;
+}
+
+.#{$namespace}-container {
+	background-color: #fff;
+}
+
+.#{$namespace}-wrapper-x-large {
+	max-width: $ig-x-large;
+	margin: 0 auto;
+}
+
+.#{$namespace}-wrapper {
+	max-width: $ig-large;
+	margin: 0 auto; //234 is the height of the footer
+	min-height: calc(100vh - 234px);
+}
+
+.#{$namespace}-horizontal-rule {
+	border-bottom: 1px solid #fff;
+	width: 100%;
+	height: $ig-space--large;
+}
+
+.#{$namespace}-separator--large {
+	width: 100%;
+	height: $ig-space--xx-small;
+	background-color: $ig-light-grey;
+}
+
+.#{$namespace}-background__gradient {
+	background: #fafafd;
+	/* Old browsers */
+	background: -moz-linear-gradient(top, #fafafd 0%, #fefefe 100%);
+	/* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #fafafd 0%, #fefefe 100%);
+	/* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #fafafd 0%, #fefefe 100%);
+	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafd', endColorstr='#fefefe', GradientType=0);
+	/* IE6-9 */
+}
+
+//INPUT
+.#{$namespace}-input {
+	border-radius: 0;
+	margin-bottom: 0;
+	border: 1px solid $ig-black;
+	&.input,
+	&.uiInput--input.input,
+	&.uiInput--select.select {
+		border-radius: 0;
+		margin-bottom: 0;
+		border: 1px solid $ig-black;
+	}
+}
+
+.#{$namespace}-input__help-link {
+	font-family: $ig-whitney-book;
+	letter-spacing: $ig-letter-spacing;
+	font-size: $ig-font-size--base;
+}
+
+.#{$namespace}-input__password {
+	//Have to put this here because 
+	//I don't have access to the ui component 
+	//to give it a unique igcp class name
+	.slds-icon-utility-info {
+		top: 0;
+	}
+}
+
+.#{$namespace}-input__selector {
+	&.uiInput--select.select {
+		height: 38px;
+	}
+}
+
+//LINK
+.#{$namespace}-link {
+	font-family: $ig-whitney-book;
+	font-size: $ig-space--x-small;
+	letter-spacing: $ig-letter-spacing;
+}
+
+.#{$namespace}-link__cta {
+	.slds-icon_container.slds-icon-utility-chevronright {
+		top: 0;
+		.slds-icon-text-default {
+			fill: $ig-link-blue;
+		}
+	}
+}
+
+.#{$namespace}-link__variant--a {
+	font-family: $ig-whitney-semibold;
+	font-size: $ig-space--x-small;
+	letter-spacing: $ig-letter-spacing;
+}
+
+.#{$namespace}-link__glyph--after {
+	position: relative;
+	top: -1px;
+	padding-left: $ig-space--xxx-small;
+}
+
+.#{$namespace}-link__print {
+	.#{$namespace}-link__print--icon {
+		position: relative;
+		top: -3px;
+	}
+}
+
+//UNDERLINE
+.#{$namespace}-underline,
+.#{$namespace}-underline__regular--grey {
+	border-bottom: 2px solid $ig-grey;
+}
+
+.#{$namespace}-underline__thin--grey {
+	border-bottom: 1px solid $ig-grey;
+}
+
+.#{$namespace}-underline__thick-grey {
+	border-bottom: 3px solid $ig-grey;
+}
+
+.#{$namespace}-underline__thin--blue {
+	border-bottom: 1px solid $ig-dark-blue;
+}
+
+.#{$namespace}-underline--blue,
+.#{$namespace}-underline__regular--blue {
+	border-bottom: 2px solid $ig-dark-blue;
+}
+
+.#{$namespace}-underline__thick--blue {
+	border-bottom: $ig-space--xx-small solid $ig-dark-blue;
+	transform-origin: left bottom;
+	transform: skewX(25deg);
+}
+
+.#{$namespace}-underline__thin--white {
+	border-bottom: 1px solid $ig-white;
+}
+
+.#{$namespace}-underline--white,
+.#{$namespace}-underline__regular--white {
+	border-bottom: 2px solid $ig-white;
+}
+
+.#{$namespace}-underline__thick--white {
+	border-bottom: 3px solid $ig-white;
+}
+
+//VALUE
+.#{$namespace}-value--large {
+	font-family: $ig-whitney-light;
+	line-height: $ig-line-height--base;
+	sup {
+		font-size: 70%;
+		top: -0.25em;
+	}
+	sub {
+		font-size: 50%;
+		bottom: 0;
+	}
+}
+
+.#{$namespace}-value--medium {
+	line-height: $ig-line-height--base;
+	font-size: $ig-font-size--medium-plus;
+}
+
+.#{$namespace}-value--small {
+	line-height: $ig-line-height--base;
+	font-size: $ig-font-size--medium;
+}
+
+.#{$namespace}-value--x-small {
+	line-height: $ig-line-height--base;
+	font-size: $ig-font-size--base;
+}
+
+.#{$namespace}-value--gain {
+	top: 0;
+	color: $ig-dark-green;
+}
+
+.#{$namespace}-value--gain use {
+	fill: $ig-dark-green;
+}
+
+.#{$namespace}-value--loss {
+	top: 0;
+	color: $ig-red;
+}
+
+.#{$namespace}-value--loss use {
+	fill: $ig-red;
+}
+
+//LABEL
+.#{$namespace}-label {
+	font-family: $ig-whitney-semibold;
+	font-size: $ig-space--small;
+	letter-spacing: $ig-letter-spacing;
+}
+
+.#{$namespace}-label--small {
+	font-family: $ig-whitney-semibold;
+	font-size: $ig-font-size--mini;
+	letter-spacing: $ig-letter-spacing;
+	color: $ig-blue;
+}
+
+//ACCOUNT
+.#{$namespace}-account-arrow--right {
+	position: relative;
+	left: 35px;
+}
+
+.#{$namespace}-account__total div {
+	span {
+		border-bottom: 1px solid $ig-grey;
+	}
+}
+
+.#{$namespace}-account__grand-total div {
+	font-family: $ig-whitney-semibold;
+	.#{$namespace}-account__grand-total--container {
+		width: 35%;
+		float: right;
+	}
+}
+
+.#{$namespace}-account__item {
+	sup {
+		top: -3px;
+	}
+}
+
+//ALERT
+.#{$namespace}-alert--item {
+	border-bottom: 1px solid $ig-grey;
+	&:last-child {
+		border-bottom: none;
+		margin-bottom: 0 !important;
+		padding-bottom: 0 !important;
+	}
+}
+
+//CTA
+.#{$namespace}-cta {
+	background-color: $ig-white;
+}
+
+//CARD
+.#{$namespace}-card {
+	border: none;
+	background: transparent;
+}
+
+.#{$namespace}-card__link {
+	position: relative;
+	top: -4px;
+}
+
+.#{$namespace}-card__image {
+	width: 50%;
+}
+
+//PROGRESS INDICATOR
+.#{$namespace}-progress-indicator {
+	.#{$namespace}-progress-indicator__step {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -15px;
+		margin-left: -3px;
+		font-family: $ig-whitney-semibold;
+		font-size: $ig-font-size--mini;
+	}
+	.#{$namespace}-progress-indicator__step--complete {
+		margin-top: -16px;
+		margin-left: -10px;
+	}
+}
+
+//LIST
+.#{$namespace}-list {
+	.#{$namespace}-list__item-label--a {
+		padding-top: 0;
+	}
+	.#{$namespace}-list__item-label--b {
+		font-family: $ig-whitney-book;
+		font-weight: normal;
+		text-transform: capitalize;
+		width: 50%;
+	}
+	.#{$namespace}-list__item-detail--b {
+		font-family: $ig-whitney-semibold;
+		font-weight: normal;
+		width: 50%;
+		text-align: right;
+	}
+	.#{$namespace}-list__item-label--c {
+		font-family: $ig-whitney-book;
+		font-weight: normal;
+		margin-bottom: 0;
+	}
+	.#{$namespace}-list__item-detail--c {
+		font-family: $ig-whitney-semibold;
+		font-weight: normal;
+	}
+}
+
+//BUTTON
+.#{$namespace}-button__chat {
+	float: right;
+	padding-top: $ig-space--xx-small;
+	padding-bottom: $ig-space--xx-small;
+	border-radius: $ig-space--medium;
+	background-clip: padding-box;
+	.slds-icon_container {
+		top: -2px;
+		position: relative;
+	}
+	svg {
+		fill: $ig-white;
+	}
+}
+
+//MODAL
+.#{$namespace}-modal {
+	display: none;
+	position: fixed;
+	z-index: 100;
+	overflow-y: scroll;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	&.#{$namespace}-modal--show {
+		display: inline-block;
+	}
+	.#{$namespace}-modal__wrapper {
+		max-width: $ig-large;
+		margin: 0 auto;
+	}
+	.#{$namespace}-modal__wrapper--text {
+		max-width: $ig-modal-wrapper-text-width;
+		margin: 0 auto;
+	}
+	.#{$namespace}-modal__button--close {
+		position: relative;
+		float: right;
+		border-radius: 50px;
+	}
+
+	//full
+	&.#{$namespace}-modal__full {
+		background-color: $ig-white;
+	}
+
+
+
+
+
+	//details
+	&.#{$namespace}-modal__details {
+		background-color: $ig-dark-blue--90;
+		.#{$namespace}-modal__details--inner {
+			position: fixed;
+			background-color: $ig-white;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			border: 10px solid $ig-grey;
+			overflow-y: scroll;
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+	//small
+	&.#{$namespace}-modal__small {
+		background-color: $ig-dark-blue--90;
+		.#{$namespace}-modal__small--inner {
+			position: fixed;
+			background-color: $ig-white;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			border: 10px solid $ig-grey;
+			overflow-y: scroll;
+		}
+	}
+}
+
+
+.#{$namespace}-modal__footer {
+	background-color: #f8f8f8;
+	position: fixed;
+	height: 175px;
+	bottom: 0;
+	margin: 0 0 0 -#{$ig-space--medium};
+	padding: $ig-space--small;
+	.#{$namespace}-modal__footer-wrapper {
+		margin: 0 auto;
+		max-width: $ig-large;
+	}
+	.#{$namespace}-modal__footer-wrapper--text {
+		margin: 0 auto;
+		max-width: $ig-modal-wrapper-text-width;
+	}
+}
+
+//TOOLTIP
+.#{$namespace}-tooltip {
+	position: relative;
+	display: inline-block;
+	width: $ig-space--small;
+	height: $ig-space--small;
+	margin-left: $ig-space--xx-small;
+	.#{$namespace}-tooltip-container {
+		position: absolute;
+		left: 0;
+		top: 1px;
+		margin: 0;
+		width: $ig-space--small;
+		height: $ig-space--small;
+	}
+	&.#{$namespace}-tooltip__label--small {
+		padding-left: 0;
+		padding-top: 3px;
+	}
+	.#{$namespace}-tooltip__tip {
+		&.has-tip {
+			border: none;
+			margin: 0;
+			width: $ig-space--small;
+			height: $ig-space--small;
+		}
+		.slds-icon_container.slds-icon-utility-info {
+			margin: 0;
+			span {
+				margin: 0;
+			}
+		}
+	}
+}
+
+.#{$namespace}-tooltip__opened {
+	position: absolute; //top: calc(100% + .6495rem);
+	z-index: 1200;
+	max-width: 10rem;
+	padding: .75rem;
+	border-radius: 5px;
+	font-size: 80%;
+	color: $ig-white;
+	background-color: $ig-dark-blue;
+}
+
+//FIGURE
+.#{$namespace}-figure {
+	.#{$namespace}-figure__caption {
+		margin: 0;
+	}
+}
+
+//STATUS
+.#{$namespace}-text__success,
+.#{$namespace}-text__ok {
+	color: $ig-system-success;
+}
+
+.#{$namespace}-text__error,
+.#{$namespace}-text__alert {
+	color: $ig-system-error;
+}
+
+.#{$namespace}-text__informational {
+	color: $ig-system-informational;
+}
+
+//TOAST
+.#{$namespace}-toast {
+	.#{$namespace}-toast__icon {
+		position: relative;
+		top: 1px;
+		svg {
+			fill: $ig-white;
+		}
+	}
+	.#{$namespace}-toast__message {
+		color: $ig-white;
+	}
+}
+
+//BORDER
+.#{$namespace}-border--double {
+	height: 3px;
+	width: auto;
+	border-top: 1px solid $ig-grey;
+	border-bottom: 1px solid $ig-grey;
+}
+
+//BOXED COMPONENT (THIS MAY NOT BE REQUIRED)
+.#{$namespace}-boxed--white {
+	background-color: #fff;
+	padding: 30px 25px;
+}
+
+//EDIT PAGES
+.#{$namespace}-edit-notifications {
+	.slds-checkbox--faux {
+		position: absolute;
+		top: 5px;
+		left: -8px;
+		&+.slds-form-element__label {
+			left: 20px;
+		}
+	}
+	.#{$namespace}-mobile-number {
+		margin-left: 28px;
+		font-weight: bold;
+		font-size: 14px;
+	}
+}
+
+.#{$namespace}-edit-documents {
+	.#{$namespace}-client-details {
+		font-size: 12px;
+		color: $ig-black;
+	}
+	.slds-grid .slds-col {
+		height: 60px;
+	}
+	.slds-checkbox_toggle {
+		margin-top: 2px;
+	}
+	.slds-form-element__label {
+		font-size: 14px;
+		padding-left: 10px;
+	}
+	.#{$namespace}-document-section {
+		.slds-grid:last-child {
+			margin-bottom: -30px;
+		}
+		.igcp-tooltip .igcp-tooltip__tip.has-tip {
+			margin-left: -8px;
+		}
+	}
+	.slds-checkbox--toggle .slds-checkbox--faux,
+	.slds-checkbox--toggle .slds-checkbox_faux,
+	.slds-checkbox_toggle .slds-checkbox--faux,
+	.slds-checkbox_toggle .slds-checkbox_faux {
+		height: 1.3rem;
+		width: 2.8rem;
+		border: 1px solid $ig-darkest-grey;
+		background-color: $ig-darkest-grey;
+	}
+	.slds-checkbox_off,
+	.slds-checkbox_on {
+		display: block;
+		position: absolute;
+		top: -2px;
+		left: 55px;
+		font-size: 14px;
+		font-weight: bold;
+	}
+	.slds-checkbox_off {
+		color: $ig-darkest-grey;
+	}
+	.slds-checkbox_on {
+		color: $ig-link-blue;
+	}
+	.slds-checkbox--toggle .slds-checkbox--faux:after,
+	.slds-checkbox--toggle .slds-checkbox_faux:after,
+	.slds-checkbox_toggle .slds-checkbox--faux:after,
+	.slds-checkbox_toggle .slds-checkbox_faux:after,
+	.slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox--faux:before,
+	.slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox--faux_container .slds-checkbox--faux:before,
+	.slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox_faux:before,
+	.slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox_faux_container .slds-checkbox_faux:before,
+	.slds-checkbox--toggle [type=checkbox]:checked~.slds-checkbox--faux:before,
+	.slds-checkbox--toggle [type=checkbox]:checked~.slds-checkbox_faux:before,
+	.slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox--faux:before,
+	.slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox--faux_container .slds-checkbox--faux:before,
+	.slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox_faux:before,
+	.slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox_faux_container .slds-checkbox_faux:before,
+	.slds-checkbox_toggle [type=checkbox]:checked~.slds-checkbox--faux:before,
+	.slds-checkbox_toggle [type=checkbox]:checked~.slds-checkbox_faux:before {
+		background-color: #fff;
+	}
+	.slds-checkbox--toggle .slds-checkbox--faux:after,
+	.slds-checkbox--toggle .slds-checkbox_faux:after,
+	.slds-checkbox_toggle .slds-checkbox--faux:after,
+	.slds-checkbox_toggle .slds-checkbox_faux:after {
+		top: 3.5px;
+		left: 3px;
+		width: 0.7rem;
+		height: 0.7rem;
+	}
+	.slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox--faux:before,
+	.slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox--faux_container .slds-checkbox--faux:before,
+	.slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox_faux:before,
+	.slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox_faux_container .slds-checkbox_faux:before,
+	.slds-checkbox--toggle [type=checkbox]:checked~.slds-checkbox--faux:before,
+	.slds-checkbox--toggle [type=checkbox]:checked~.slds-checkbox_faux:before,
+	.slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox--faux:before,
+	.slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox--faux_container .slds-checkbox--faux:before,
+	.slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox_faux:before,
+	.slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox_faux_container .slds-checkbox_faux:before,
+	.slds-checkbox_toggle [type=checkbox]:checked~.slds-checkbox--faux:before,
+	.slds-checkbox_toggle [type=checkbox]:checked~.slds-checkbox_faux:before {
+		top: 3.5px;
+		right: 3px;
+		width: 0.7rem;
+		height: 0.7rem;
+	}
+	.slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox--faux:after,
+	.slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox--faux_container .slds-checkbox--faux:after,
+	.slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox_faux:after,
+	.slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox_faux_container .slds-checkbox_faux:after,
+	.slds-checkbox--toggle [type=checkbox]:checked~.slds-checkbox--faux:after,
+	.slds-checkbox--toggle [type=checkbox]:checked~.slds-checkbox_faux:after,
+	.slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox--faux:after,
+	.slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox--faux_container .slds-checkbox--faux:after,
+	.slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox_faux:after,
+	.slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox_faux_container .slds-checkbox_faux:after,
+	.slds-checkbox_toggle [type=checkbox]:checked~.slds-checkbox--faux:after,
+	.slds-checkbox_toggle [type=checkbox]:checked~.slds-checkbox_faux:after {
+		display: none;
+	}
+}
+
+//RADIO GROUPS
+.#{$namespace}-radio-group2 {
+	.slds-form-element__legend {
+		color: $ig-black;
+		font-size: 13px;
+		font-family: $ig-whitney-book;
+	}
+	.slds-radio {
+		float: left;
+		input+label {
+			margin-left: 0;
+		}
+	}
+	.slds-radio_faux {
+		border: 1px solid $ig-black !important;
+	}
+	.slds-radio_faux:after {
+		background: $ig-black !important;
+	}
+}
+
+//GRAPH
+.#{$namespace}-graph__doughnut-legend {}
+
+//TABLES
+.#{$namespace}-table {
+	width: 100%;
+	.#{$namespace}-table__row {
+		.#{$namespace}-table__header {
+			font-size: $ig-font-size--mini;
+			letter-spacing: $ig-letter-spacing;
+			color: $ig-blue;
+		}
+	}
+
+	.#{$namespace}-table__row--link:hover {
+		cursor: pointer;
+		background-color: $ig-light-grey;
+	}
+
+	&.#{$namespace}-table__holdings {
+		.#{$namespace}-table__row {
+			.#{$namespace}-table__header {
+				display: none;
+			}
+			.#{$namespace}-table__data {
+				display: none;
+			}
+			.#{$namespace}-table__header:first-child,
+			.#{$namespace}-table__header:last-child,
+			.#{$namespace}-table__data:first-child,
+			.#{$namespace}-table__data:last-child {
+				display: table-cell;
+			}
+		}
+	}
+	&.#{$namespace}-table__transactions,
+	&.#{$namespace}-table__instructions {
+		.#{$namespace}-table__row {
+			.#{$namespace}-table__header {
+				display: none;
+			}
+			.#{$namespace}-table__data {
+				display: none;
+			}
+			.#{$namespace}-table__header:first-child,
+			.#{$namespace}-table__header:last-child,
+			.#{$namespace}-table__header:nth-child(3),
+			.#{$namespace}-table__data:first-child,
+			.#{$namespace}-table__data:last-child,
+			.#{$namespace}-table__data:nth-child(3) {
+				display: table-cell;
+			}
+		}
+	}
+>>>>>>> faa3a7b16f129ae995566d12837ff733a8e17d2d
 }
