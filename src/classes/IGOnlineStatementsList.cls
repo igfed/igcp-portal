@@ -51,7 +51,7 @@ public class IGOnlineStatementsList extends IGRestClient{
     	}
     	catch(Exception e){
     		System.debug('Exception '+e);
-    	}
+    	} 
 
     	System.debug('rv->>>>>> '+rv);
     	return rv;
