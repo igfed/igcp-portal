@@ -29,14 +29,17 @@
 				text-align: left;
 			}
 		}
-	} //MODAL
+	} 
+	//MODAL
 	.#{$namespace}-modal__footer {
 		margin: 0 0 0 -#{$ig-space--xx-large};
 		padding-top: 32px;
 		padding-left: 0px;
 		padding-right: 0px;
 		padding-bottom: 0px;
-	} //VALUES
+	} 
+
+	//VALUES
 	.#{$namespace}-value--large {
 		font-size: $ig-font-size--large;
 	} //TOOLTIP

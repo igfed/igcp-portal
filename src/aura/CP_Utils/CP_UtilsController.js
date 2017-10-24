@@ -49,6 +49,7 @@
 						var body = container.get("v.body");
 						body.push(component);
 						container.set("v.body", body);
+
 					} else if (status === "INCOMPLETE") {
 						console.warn("No response from server or client is offline.");
 						// Show offline error

@@ -23,9 +23,6 @@
 	onOpen: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
 
-		console.log("MODAL OPEN");
-		console.log(payload);
-
 		if (payload.id === cmp.get("v.id")) {
 
 			var modalClass = cmp.get("v.class") + " igcp-modal--show";

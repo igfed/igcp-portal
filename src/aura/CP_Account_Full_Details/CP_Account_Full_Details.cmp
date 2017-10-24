@@ -1,15 +1,18 @@
-<aura:component >
-
-
-
+<aura:component>
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
+	<!-- ATTRS -->
+	<aura:attribute name="accountTitle" type="String" default="Account Details"></aura:attribute>
+	<aura:attribute name="detailsList" type="List" default=""></aura:attribute>
+	<!-- HANDLERS -->
+	<aura:handler event="c:CP_Evt_Set_Details" action="{!c.onDetailsSet}"></aura:handler>
 	<!-- MARKUP -->
 	<div class="igcp-modal__details--inner">
 		<div class="slds-size_12-of-12">
 			<button class="igcp-modal__button--close close-button" type="button" onclick="{!c.onClose}"></button>
-			<h3 class="slds-p-left--small slds-p-top--large">Investment Statement</h3>
-			<div class="slds-text-align_center">
-				FULL DETAILS
-			</div>
+			<h3 class="slds-p-left--small slds-p-top--large">{!v.accountTitle}</h3>
+			<c:CP_Cmp_Name_Value_List id="account-details-list" />
 		</div>
 	</div>
 </aura:component>
