@@ -183,6 +183,9 @@
       margin: 0 auto;
       display: block;
       background-color: $ig-blue;
+      &:hover {
+        background-color: $ig-white !important;
+      }
     }
 
     .slds-form-element__label {
