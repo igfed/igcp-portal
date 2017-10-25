@@ -1,12 +1,17 @@
 <aura:component >
+
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
+
 	<!-- ATTRS -->
+	<aura:attribute name="id" type="String" default="account-full-details" ></aura:attribute>
 	<aura:attribute name="accountTitle" type="String" default="Account Details"></aura:attribute>
 	<aura:attribute name="detailsList" type="List" default=""></aura:attribute>
+
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Set_Details" action="{!c.onDetailsSet}"></aura:handler>
+	
 	<!-- MARKUP -->
 	<div class="igcp-modal__details--inner slds-grid">
 		<div class="slds-size_2-of-12"></div>
