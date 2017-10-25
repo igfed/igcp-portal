@@ -1,29 +1,28 @@
-<aura:component >
-
+<aura:component>
 	<!-- ATTRS -->
-	<aura:attribute name="id" type="String" default="view-sample" ></aura:attribute>
-
+	<aura:attribute name="id" type="String" default="view-sample"></aura:attribute>
 	<!-- INCLUDES -->
-	<c:CP_Events aura:id="CP_Events"/>
-
+	<c:CP_Events aura:id="CP_Events" />
 	<!-- MARKUP -->
 	<div class="igcp-modal__small--inner">
 		<div class="slds-size_12-of-12">
 			<button class="igcp-modal__button--close close-button" type="button" onclick="{!c.onClose}"></button>
 			<h3 class="slds-p-left--small slds-p-top--large">Investment Statement</h3>
 			<div class="slds-text-align_center">
-				 
-
-
-<div class="ig-carousel" data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
-  <div><h3>1</h3></div>
-  <div><h3>2</h3></div>
-  <div><h3>3</h3></div>
-  <div><h3>4</h3></div>
-  <div><h3>5</h3></div>
-  <div><h3>6</h3></div>
-</div>
-
+				<div class="ig-carousel" data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
+					<div>
+						<h3>1</h3></div>
+					<div>
+						<h3>2</h3></div>
+					<div>
+						<h3>3</h3></div>
+					<div>
+						<h3>4</h3></div>
+					<div>
+						<h3>5</h3></div>
+					<div>
+						<h3>6</h3></div>
+				</div>
 			</div>
 		</div>
 	</div>

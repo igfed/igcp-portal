@@ -1,4 +1,4 @@
-<aura:component>
+<aura:component >
 	<!-- ATTRS -->
 	<aura:attribute name="accountTitle" type="String"></aura:attribute>
 	<aura:attribute name="accountNumber" type="String"></aura:attribute>

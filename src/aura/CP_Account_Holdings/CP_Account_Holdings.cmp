@@ -1,4 +1,8 @@
 <aura:component >
+
+	<!-- ATTRS -->
+	<aura:attribute name="modalId" type="String" default=""></aura:attribute>
+
 	<!-- MARKUP -->
 	<div class="igcp-container slds-p-around--small slds-m-bottom--medium">
 		<h2 class="slds-p-horizontal--xx-small">{!$Label.c.CP_Account_Title_Holdings}</h2>
@@ -7,6 +11,7 @@
 			styleConfig="{
 				'grid' : ['3', '2', '2', '2', '3'],
 				'textAlign' : ['left', 'right', 'right', 'right', 'right']
-			}"/>
+			}"
+			modalId="{!v.modalId}"/>
 	</div>
 </aura:component>

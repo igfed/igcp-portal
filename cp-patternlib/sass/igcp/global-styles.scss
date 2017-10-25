@@ -21,6 +21,10 @@
 
 .#{$namespace}-container {
 	background-color: #fff;
+
+	@media (max-width: 480px) {
+		margin: 0 10px;
+	}
 }
 
 .#{$namespace}-wrapper-x-large {
@@ -390,6 +394,17 @@
 			border: 10px solid $ig-grey;
 			overflow-y: scroll;
 		}
+	} //details
+	&.#{$namespace}-modal__details {
+		background-color: $ig-dark-blue--90;
+		.#{$namespace}-modal__details--inner {
+			position: fixed;
+			background-color: $ig-white;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
 	}
 }
 
@@ -500,12 +515,6 @@
 	border-bottom: 1px solid $ig-grey;
 }
 
-//BOXED COMPONENT (THIS MAY NOT BE REQUIRED)
-.#{$namespace}-boxed--white {
-	background-color: #fff;
-	padding: 30px 25px;
-}
-
 //EDIT PAGES
 .#{$namespace}-edit-notifications {
 	.slds-checkbox--faux {
@@ -543,9 +552,28 @@
 			margin-bottom: -30px;
 		}
 		.igcp-tooltip .igcp-tooltip__tip.has-tip {
-			margin-left: -8px;
+			margin-left: 0;
+		}
+
+		.slds-checkbox_toggle {
+			float: right;
+			width: auto;
+		}
+		.slds-checkbox_off,
+		.slds-checkbox_on {
+			top: -2px;
+			left: -45px;
 		}
 	}
+	.#{$namespace}-label--with-tooltip {
+		float: right;
+
+		.igcp-label--small {
+			color: $ig-dark-grey;
+			font-family: $ig-whitney-book;
+		}
+	}
+
 	.slds-checkbox--toggle .slds-checkbox--faux,
 	.slds-checkbox--toggle .slds-checkbox_faux,
 	.slds-checkbox_toggle .slds-checkbox--faux,
@@ -560,7 +588,7 @@
 		display: block;
 		position: absolute;
 		top: -2px;
-		left: 55px;
+		left: 53px;
 		font-size: 14px;
 		font-weight: bold;
 	}

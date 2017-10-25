@@ -30,9 +30,12 @@
 	</aura:method> -->
 	
 	<!-- MARKUP -->
-	<div class="igcp-wrapper igcp-edit-notifications slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
+
+
+<div class="igcp-background__tiled">
+	<div class="igcp-wrapper igcp-edit-notifications slds-grid slds-wrap slds-grid--align-center slds-p-around--xx-small slds-large-p-around--medium">
 		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
-		<div class="slds-p-around--small igcp-boxed--white slds-medium-p-around--zero slds-size_12-of-12 slds-medium-size_6-of-12">
+		<div class="slds-p-around--medium igcp-container slds-p-vertical--small slds-p-horizontal--medium slds-m-bottom--x-small slds-large-m-bottom--medium slds-size_12-of-12 slds-medium-size_6-of-12">
 			<h1>{!$Label.c.CP_Manage_Notifications_Title}</h1>
 	
             <p class="slds-medium-p-top--small">{!$Label.c.CP_Manage_Notifications_Page_Summary}</p>
@@ -69,5 +72,5 @@
 		</div>
 		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
 	</div>
-
+</div>
 </aura:component>

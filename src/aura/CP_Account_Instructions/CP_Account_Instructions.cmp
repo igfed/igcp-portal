@@ -5,8 +5,8 @@
 		<c:CP_Cmp_Table id="instructions-table" 
 			tableClass="igcp-table__instructions"
 			styleConfig="{
-				'grid' : ['3', '4', '3', '2', '1'],
-				'textAlign' : ['left', 'left', 'left', 'left', 'right']
+				'grid' : ['3', '4', '2', '1', '1', '1'],
+				'textAlign' : ['left', 'left', 'left', 'right', 'right', 'right']
 			}"/>
 	</div>
 </aura:component>
