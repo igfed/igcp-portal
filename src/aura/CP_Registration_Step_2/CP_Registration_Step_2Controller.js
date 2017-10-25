@@ -269,5 +269,8 @@
 		} else if (payload.id === "password-input") {
 			hlpr.validatePassword(cmp, payload);
 		}
+	},
+	doneRendering: function(cmp, evt, hlpr){
+		
 	}
 })

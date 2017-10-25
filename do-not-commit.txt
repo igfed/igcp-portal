@@ -1,0 +1,25 @@
+{
+    "allDocumentPreference": false,
+    "documentPreferences": [{
+            "clientNumber": "0987654 ",
+            "investmentStatements": true,
+            "taxReceipts": true,
+            "tradeConfirmation": false
+        },
+        {
+            "clientNumber": "0987653",
+            "investmentStatements": false,
+            "taxReceipts": true,
+            "tradeConfirmation": false
+        },
+        {
+            "clientNumber": "0987652",
+            "investmentStatements": true,
+            "taxReceipts": true,
+            "tradeConfirmation": true
+        }
+    ]
+}
+
+// Statement Preference Page
+// method name is : UpdateAssets(String payload)

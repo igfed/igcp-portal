@@ -13,7 +13,7 @@
 		if(cmp.get("v.id") === payload.id) {
 
 			hlpr.generateHeader(cmp, utils, payload.headers, function(ready){
-				hlpr.generateTable(cmp, utils, payload.data, function(ready){});
+				hlpr.generateTable(cmp, utils, payload, function(ready){});
 			});
 		}
 	}

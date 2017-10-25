@@ -10,6 +10,7 @@
 	<aura:attribute name="tableClass" type="String" default=""></aura:attribute>
 	<aura:attribute name="data" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="styleConfig" type="Map" default="{}"></aura:attribute>
+	<aura:attribute name="modalId" type="String" default=""></aura:attribute>
     
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
