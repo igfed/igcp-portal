@@ -58,10 +58,14 @@
 		.#{getNamespace($value)}-utils__font-size--xx-large {
 			font-size: $ig-font-size--xx-large;
 			line-height: $ig-line-height--xx-large;
-		} //Line Height
+		} 
+		
+		//Line Height
 		.#{getNamespace($value)}-utils__line-height--regular {
 			line-height: $ig-line-height--base;
-		} //Text
+		} 
+		
+		//Text
 		.#{getNamespace($value)}-utils__text--default {
 			text-transform: none;
 		}

@@ -1,9 +1,102 @@
 public class DocumentPreferenceController {
 	@AuraEnabled
 	public static List<IGDocumentPreference> getFinancialAssetsToEdit(){
+		
+		return InvestmentFinancialAsset();
+		
+	}
+	@AuraEnabled
+	public static List<IGDocumentPreferenceLoan> getFinancialAssetsLoan(){
+		
+		return loanFinancialAsset();
+	}
+	@AuraEnabled
+	public static List<IGDocumentPreferencePolicy> getFinancialAssetsPolicy(){
+		
+		return policyFinancialAsset();
+	}
+	private static List<IGDocumentPreferenceLoan> loanFinancialAsset(){
+		//List<Financial_Asset__c> loanFinancianAssets;
+		List<IGDocumentPreferenceLoan> docPreferenceLoan;
+		List<Contact> contactToUse;
+		Id contextContactId;
+
+		contactToUse = new List<Contact>();
+    	contactToUse = [select Id, Business_Partner_ID__c from Contact where Id in (select ContactId from User where id=:UserInfo.getUserId())];
+    	contextContactId = contactToUse.get(0).Id;
+    	//contextContactId = '0033D00000LKcwI';
+
+    	docPreferenceLoan = new List<IGDocumentPreferenceLoan>();
+		//loanFinancianAssets = new List<Financial_Asset__c>();
+		//loanFinancianAssets = [select Loan_Number__c,Pref_Mortgage_Statements__c from Financial_Asset__c where RecordType.Name = 'Loan Asset' AND Customer__c =: contextContactId];
+		//System.debug('SOQL '+[select Loan_Number__c,Pref_Mortgage_Statements__c from Financial_Asset__c where RecordType.Name = 'Loan Asset' AND Customer__c =: contextContactId]);
+		for(Financial_Asset__c eachFA : [select Loan_Number__c,Pref_Mortgage_Statements__c from Financial_Asset__c where RecordType.Name = 'Loan Asset' AND Customer__c =: contextContactId]){
+			IGDocumentPreferenceLoan temp = new IGDocumentPreferenceLoan();
+			temp.loanNumber = eachFA.Loan_Number__c;
+			if(eachFA.Pref_Mortgage_Statements__c == null 
+				|| eachFA.Pref_Mortgage_Statements__c == ''
+				|| eachFA.Pref_Mortgage_Statements__c == 'Paper' ){
+				temp.mortgageStatement = false;
+			}else {
+				temp.mortgageStatement = true;
+			}
+			docPreferenceLoan.add(temp);
+		}
+		System.debug(docPreferenceLoan.size());
+		return docPreferenceLoan;
+	}
+
+	private static List<IGDocumentPreferencePolicy> policyFinancialAsset(){
+		//List<Financial_Asset__c> loanFinancianAssets;
+		List<IGDocumentPreferencePolicy> docPreferencePolicy;
+		List<Contact> contactToUse;
+		Id contextContactId;
+
+		contactToUse = new List<Contact>();
+    	contactToUse = [select Id, Business_Partner_ID__c from Contact where Id in (select ContactId from User where id=:UserInfo.getUserId())];
+    	contextContactId = contactToUse.get(0).Id;
+    	//contextContactId = '0033D00000LKcwI';
+
+    	docPreferencePolicy = new List<IGDocumentPreferencePolicy>();
+		//loanFinancianAssets = new List<Financial_Asset__c>();
+		//loanFinancianAssets = [select Loan_Number__c,Pref_Mortgage_Statements__c from Financial_Asset__c where RecordType.Name = 'Loan Asset' AND Customer__c =: contextContactId];
+		//System.debug('SOQL2 '+[select Policy_Number__c,Pref_Policy_Statements__c from Financial_Asset__c where RecordType.Name = 'Policy Asset' AND Customer__c =: contextContactId]);
+		for(Financial_Asset__c eachFA : [select Policy_Number__c,Pref_Policy_Statements__c from Financial_Asset__c where RecordType.Name = 'Policy Asset' AND Customer__c =: contextContactId]){
+			IGDocumentPreferencePolicy temp = new IGDocumentPreferencePolicy();
+			temp.policyNumber = eachFA.Policy_Number__c;
+			if(eachFA.Pref_Policy_Statements__c == null 
+				|| eachFA.Pref_Policy_Statements__c == ''
+				|| eachFA.Pref_Policy_Statements__c == 'Paper' ){
+				temp.policyStatement = false;
+			}else{
+				temp.policyStatement = true;
+			}
+			docPreferencePolicy.add(temp);
+		}
+		System.debug(docPreferencePolicy.size());
+		return docPreferencePolicy;
+
+		policyFinancianAssets = new List<Financial_Asset__c>();
+		policyFinancianAssets = [select Policy_Number__c from Financial_Asset__c where RecordType.Name = 'Policy Asset' AND Customer__c =: contextContactId];
+		return policyFinancianAssets;
+	}
+	private static List<IGDocumentPreference> InvestmentFinancialAsset(){
+		List<Financial_Asset__c> listOfFinancialAssets;
+		Map<String,Financial_Asset__c> mapFinancialAssets;
 		//UserInfo.getUserId()
-		String contactBpId = IGClientUtils.getClientBpid();
-		//String contactBpId = '0003497138';
+		//String contactBpId = IGClientUtils.getClientBpid();
+		String contactBpId = '0003497138';
+		List<Contact> contextContactList = new List<Contact>();
+		contextContactList = [select Id,Business_Partner_ID__c from Contact where Business_Partner_ID__c =: contactBpId];
+		Id contextContactId = contextContactList.get(0).Id;
+
+		listOfFinancialAssets = new List<Financial_Asset__c>([select Client_Number__c,Pref_Investment_Statements__c,Pref_Tax_Receipts__c,Pref_Trade_Confirmation__c from Financial_Asset__c where RecordType.Name = 'Investment Asset' AND Customer__c =: contextContactId]);
+		mapFinancialAssets = new Map<String,Financial_Asset__c>();
+		for(Financial_Asset__c eachFA :  listOfFinancialAssets){
+			mapFinancialAssets.put(eachFA.Client_Number__c,eachFA);
+
+
+		}
 		List<DTO_AccountSummary> listToDisplay;
 		List<IGDocumentPreference> docPreferenceInvestment;
 		listToDisplay = new List<DTO_AccountSummary>();
@@ -11,49 +104,47 @@ public class DocumentPreferenceController {
 		listToDisplay = IGClientService.getAccountSummaries(contactBpId);
 		System.debug(listToDisplay.size());
 		for(DTO_AccountSummary eachDTOSummary : listToDisplay){
-			System.debug('client BP id'+eachDTOSummary.clientNumber);
+			
 			
 			IGDocumentPreference temp = new IGDocumentPreference();
 			temp.clientBpid=eachDTOSummary.clientBpid;
 			temp.clientNumber = eachDTOSummary.clientNumber;
 			temp.accountTypeLabel = eachDTOSummary.accountTypeLabel;
 			temp.dealerName = eachDTOSummary.dealerName;
+			
+			if(mapFinancialAssets.containsKey(eachDTOSummary.clientNumber)){
+				Financial_Asset__c tempFA = new Financial_Asset__c();
+				tempFA = mapFinancialAssets.get(eachDTOSummary.clientNumber);
+			
+				System.debug('tempFA.Pref_Tax_Receipts__c '+tempFA.Pref_Tax_Receipts__c);
+				if(tempFA.Pref_Tax_Receipts__c == 'Online'){
+					
+					temp.prefTaxReciepts = true;
+				}else {
+					temp.prefTaxReciepts = false;
+				}
+				System.debug('tempFA.Pref_Trade_Confirmation__c '+tempFA.Pref_Trade_Confirmation__c);
+				if(tempFA.Pref_Trade_Confirmation__c == 'Online'){
+				
+					temp.prefTradeConfirmation = true;
+				}else {
+					temp.prefTradeConfirmation = false;
+				}
+				System.debug('tempFA.Pref_Investment_Statements__c '+tempFA.Pref_Investment_Statements__c);
+				if(tempFA.Pref_Investment_Statements__c == 'Online'){
+					temp.prefInvestmentStatements = true;
+				}else {
+					temp.prefInvestmentStatements = false;
+				}
+				
+
+			}
+			System.debug('temp '+temp);
 			docPreferenceInvestment.add(temp);													
 																
 		}
+		System.debug(docPreferenceInvestment);
 		return docPreferenceInvestment;
-		
 	}
-	@AuraEnabled
-	public static List<Financial_Asset__c> getFinancialAssetsLoan(){
-		List<Financial_Asset__c> loanFinancianAssets;
-		List<Contact> contactToUse;
-		Id contextContactId;
-
-		contactToUse = new List<Contact>();
-    	contactToUse = [select Id, Business_Partner_ID__c from Contact where Id in (select ContactId from User where id=:UserInfo.getUserId())];
-    	contextContactId = contactToUse.get(0).Id;
-
-
-		loanFinancianAssets = new List<Financial_Asset__c>();
-		loanFinancianAssets = [select Loan_Number__c from Financial_Asset__c where RecordType.Name = 'Loan Asset' AND Customer__c =: contextContactId];
-		return loanFinancianAssets;
-	}
-	@AuraEnabled
-	public static List<Financial_Asset__c> getFinancialAssetsPolicy(){
-		List<Financial_Asset__c> policyFinancianAssets;
-		List<Contact> contactToUse;
-		Id contextContactId;
-
-		contactToUse = new List<Contact>();
-    	contactToUse = [select Id, Business_Partner_ID__c from Contact where Id in (select ContactId from User where id=:UserInfo.getUserId())];
-    	contextContactId = contactToUse.get(0).Id;
-
-
-		policyFinancianAssets = new List<Financial_Asset__c>();
-		policyFinancianAssets = [select Policy_Number__c from Financial_Asset__c where RecordType.Name = 'Policy Asset' AND Customer__c =: contextContactId];
-		return policyFinancianAssets;
-	}
-
 
 }

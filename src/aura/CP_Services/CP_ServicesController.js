@@ -1,5 +1,5 @@
 ({
-	onSubmitForm: function(cmp, evt, hlpr) {
+	onSubmitForm: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -15,7 +15,7 @@
 
 				// Create a callback that is executed after 
 				// the server-side action returns
-				action.setCallback(this, function(response) {
+				action.setCallback(this, function (response) {
 
 					var state = response.getState(),
 						res, valid;
@@ -84,7 +84,7 @@
 			}
 		}
 	},
-	onGetSecurityQuestions: function(cmp, evt, hlpr) {
+	onGetSecurityQuestions: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 
@@ -99,7 +99,7 @@
 
 				// Create a callback that is executed after 
 				// the server-side action returns
-				action.setCallback(this, function(response) {
+				action.setCallback(this, function (response) {
 
 					var state = response.getState(),
 						res, valid;
@@ -167,7 +167,7 @@
 
 		}
 	},
-	onGetRandSecurityQuestion: function(cmp, evt, hlpr) {
+	onGetRandSecurityQuestion: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 
@@ -181,7 +181,7 @@
 
 				// Create a callback that is executed after 
 				// the server-side action returns
-				action.setCallback(this, function(response) {
+				action.setCallback(this, function (response) {
 
 					var state = response.getState(),
 						res, valid;
@@ -250,7 +250,7 @@
 
 		}
 	},
-	onGetClientFirstName: function(cmp, evt, hlpr) {
+	onGetClientFirstName: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 			var
@@ -274,7 +274,7 @@
 			}
 		}
 	},
-	onGetClientFullName: function(cmp, evt, hlpr) {
+	onGetClientFullName: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 			var
@@ -299,7 +299,7 @@
 			}
 		}
 	},
-	onGetInvestmentsPreview: function(cmp, evt, hlpr) {
+	onGetInvestmentsPreview: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 			var
@@ -324,7 +324,7 @@
 
 		}
 	},
-	onGetMortgagePreview: function(cmp, evt, hlpr) {
+	onGetMortgagePreview: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 			var
@@ -350,7 +350,7 @@
 
 		}
 	},
-	onGetInsurancePreview: function(cmp, evt, hlpr) {
+	onGetInsurancePreview: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 			var
@@ -376,7 +376,7 @@
 
 		}
 	},
-	onGetAssetMix: function(cmp, evt, hlpr) {
+	onGetAssetMix: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -402,7 +402,7 @@
 			}
 		}
 	},
-	onGetAccountDetail: function(cmp, evt, hlpr) {
+	onGetAccountDetail: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -430,7 +430,7 @@
 			}
 		}
 	},
-	onGetInvestmentProfile: function(cmp, evt, hlpr) {
+	onGetInvestmentProfile: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -458,7 +458,7 @@
 			}
 		}
 	},
-	onGetHoldings: function(cmp, evt, hlpr) {
+	onGetHoldings: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -487,7 +487,7 @@
 			}
 		}
 	},
-	onGetTransactions: function(cmp, evt, hlpr) {
+	onGetTransactions: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -516,7 +516,7 @@
 			}
 		}
 	},
-	onGetInstructions: function(cmp, evt, hlpr) {
+	onGetInstructions: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -545,7 +545,7 @@
 			}
 		}
 	},
-	onGetAccountPerformance: function(cmp, evt, hlpr) {
+	onGetAccountPerformance: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -574,7 +574,7 @@
 			}
 		}
 	},
-	onGetUserInfo: function(cmp, evt, hlpr) {
+	onGetUserInfo: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -600,7 +600,7 @@
 			}
 		}
 	},
-	onHandleServerSideError: function(cmp, evt, hlpr) {
+	onHandleServerSideError: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -660,6 +660,30 @@
 						"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
 					});
 				}
+			}
+		}
+	},
+	onGetMortgageDetail: function (cmp, evt, hlpr) {
+
+		var params = evt.getParam("arguments");
+		if (params) {
+			var
+				component = params.component,
+				action;
+
+			try {
+				action = component.get("c.getMortgageDetailDTO");
+				action.setParams({ loanNumber: params.loanNumber });
+				hlpr.setCallbackPromise(
+					params,
+					action,
+					this,
+					"No loan record was found in Salesforce",
+					"no-record"
+				);
+			} catch (err) {
+				console.error("CP_Services: onGetMortgageDetail: controller not found, make sure it is attached to parent component.");
+				console.log(err);
 			}
 		}
 	}

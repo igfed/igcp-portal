@@ -163,13 +163,5 @@
 			"value": cmp.get("v.passcode"),
 			"confirmValue": cmp.get("v.passcodeConfirm")
 		});
-	},
-	doneRendering: function(cmp, evt, hlpr){
-		if(!cmp.get("v.isDoneRendering")){
-			if (cmp.get("v.hasFocus") === true) {
-				cmp.find("password-input").getElement().focus();
-			}
-			cmp.set("v.isDoneRendering", true);	
-		}
 	}
 })

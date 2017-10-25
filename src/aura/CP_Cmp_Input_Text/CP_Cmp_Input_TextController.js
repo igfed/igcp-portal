@@ -57,6 +57,7 @@
 	},
 	onError: function(cmp, evt, hlpr) {
 
+
 		var
 			payload = evt.getParam("payload"),
 			errors = payload.errors,
@@ -64,6 +65,8 @@
 			field;
 
 		if (cmp.get("v.id") === payload.id) {
+
+			console.log('id', cmp.get('v.id'))
 
 			//show error icon
 			cmp.set("v.errorIconClass", "igcp-utils__display--block slds-input__icon slds-input__icon--error");

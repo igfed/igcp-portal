@@ -241,7 +241,7 @@ public class IGClientService {
 		if (String.isBlank(clientBpid)) {
 			throw new IGClientServiceException('The client bpid can\'t be null or empty');
 		}
-		if (String.isNotBlank(loanNumber)) {
+		if (String.isBlank(loanNumber)) {
 			throw new IGClientServiceException('The loan number can\'t be null or empty');	
 		}
 		IGRestClient client = IGRestClientFactory.getIGRestClient('Mortgage', WEBSERVICE_NAMED_CREDENTIAL);
