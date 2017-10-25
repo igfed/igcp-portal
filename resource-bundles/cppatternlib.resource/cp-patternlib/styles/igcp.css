@@ -2131,6 +2131,8 @@ table {
   margin: 0 auto;
   display: block;
   background-color: #004171; }
+  .igcp-login .igcp-login--col1 .slds-button:hover {
+    background-color: #fff !important; }
 .igcp-login .igcp-login--col1 .slds-form-element__label {
   color: #004171; }
 .igcp-login .igcp-login--col1 .igcp-nav__link:hover, .igcp-login .igcp-login--col1 .igcp-nav__link.igcp-nav__link--selected {
