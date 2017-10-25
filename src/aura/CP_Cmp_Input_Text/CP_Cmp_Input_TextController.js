@@ -44,21 +44,29 @@
 
 		if (cmp.get("v.id") === evt.getParam("payload").id) {
 
+			var field = cmp.find("text-input");
+			var confirmField = cmp.find("text-confirm-input");
+
+			field.set("v.errors", []);
+			confirmField.set("v.errors", []);
+
 			//hide error icon
 			cmp.set("v.errorIconClass", "igcp-utils__display--none slds-input__icon slds-input__icon--error");
 
-			var field = cmp.find("text-input");
-			field.set("v.errors", []);
 		}
 	},
 	onError: function(cmp, evt, hlpr) {
 
+
 		var
 			payload = evt.getParam("payload"),
 			errors = payload.errors,
-			errorArr = [];
+			errorArr = [],
+			field;
 
 		if (cmp.get("v.id") === payload.id) {
+
+			console.log('id', cmp.get('v.id'))
 
 			//show error icon
 			cmp.set("v.errorIconClass", "igcp-utils__display--block slds-input__icon slds-input__icon--error");
@@ -67,10 +75,17 @@
 				errors.forEach(function(item, i) {
 					errorArr.push({ message: item.msg });
 				});
-			}
 
-			var field = cmp.find("text-input");
-			field.set("v.errors", errorArr);
+				if(errors[0].type == 'emailsMatch') {
+					field = cmp.find("text-confirm-input");
+				}else{
+					field = cmp.find("text-input");
+				}
+				
+				field.set("v.errors", errorArr);
+			}		
+
+			
 		}
 	},
 	onHandleKey: function(cmp, evt, hlpr) {
@@ -83,6 +98,15 @@
 			"id": cmp.get("v.id"),
 			"type": cmp.get("v.type"),
 			"value": cmp.get("v.inputValue") === undefined ? "" : cmp.get("v.inputValue")
+		});
+	},
+	onConfirmationBlur: function(cmp, evt, hlpr) {
+		var events = cmp.find("CP_Events");
+		events.fire("CP_Evt_Input_Blur", {
+			"id": cmp.get("v.id"),
+			"type": "email-confirm",
+			"value": cmp.get("v.inputValue"),
+			"confirmValue": cmp.get("v.inputValueConfirm")
 		});
 	}
 })

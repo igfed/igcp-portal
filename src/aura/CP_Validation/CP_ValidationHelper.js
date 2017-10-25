@@ -317,6 +317,26 @@
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
+	validateEmailConfirm: function(params, callBack, cmp, hlpr) {
+		
+				var
+					value = params.value,
+					id = params.id,
+					errors = [],
+					errorCheckObj = {};
+		
+				errorCheckObj["emailsMatch"] = hlpr.isSame(params.value, params.confirmValue);
+		
+				errors = hlpr.checkForErrors(errorCheckObj);
+		
+				errors.forEach(function(item, i) {
+					if (item.type === "emailsMatch") {
+						item["msg"] = $A.get("$Label.c.CP_Error_Emails_Match");
+					}
+				});
+		
+				callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+			},
 	validatePhone: function(params, callBack, cmp, hlpr) {
 
 		var

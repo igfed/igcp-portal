@@ -7,6 +7,8 @@
 	<aura:attribute name="id" type="String" default="default"></aura:attribute>
 	<aura:attribute name="form" type="String" default="default"></aura:attribute>
 	<aura:attribute name="type" type="String" default="text"></aura:attribute>
+	<aura:attribute name="confirmField" type="Boolean" default="false"></aura:attribute>
+	<aura:attribute name="inputValueConfirm" type="String" default="" />
 	<aura:attribute name="label" type="String" />
 	<aura:attribute name="icon" type="String" />
 	<aura:attribute name="placeholder" type="String" default="" />
@@ -58,4 +60,16 @@
 			</div>
 		</aura:renderIf>
 	</div>
+
+	<aura:renderIf isTrue="{!v.confirmField}">
+		<div class="{!v.class}">
+			<label class="slds-form-element__label input-label" for="text-confirm-input">Confirm {!v.label}
+				<span>{!v.example}</span>
+			</label>
+			<div class="slds-form-element__control">
+				<!-- INPUT -->
+				<ui:inputText aura:id="text-confirm-input" label="" value="{!v.inputValueConfirm}" class="slds-input igcp-input" required="{!v.required}" blur="{!c.onConfirmationBlur}" />
+			</div>
+		</div>
+	</aura:renderIf>
 </aura:component>

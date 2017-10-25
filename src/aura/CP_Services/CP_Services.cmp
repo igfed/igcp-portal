@@ -125,4 +125,12 @@
 		<aura:attribute name="errorCB" type="function" default="" />
 	</aura:method>
 
+	<!-- GET MORTGAGE DETAIL -->
+	<aura:method name="getMortgageDetail" action="{!c.onGetMortgageDetail}">
+		<aura:attribute name="loanNumber" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
 </aura:component>

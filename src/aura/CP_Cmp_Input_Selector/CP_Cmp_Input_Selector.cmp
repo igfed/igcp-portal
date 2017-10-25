@@ -32,7 +32,7 @@
 		<div class="slds-form-element">
 			<label class="slds-form-element__label input-label" for="{!v.id}">{!v.label}</label>
 			<aura:renderIf isTrue="{!v.tooltip}">
-				tooltip coming soon...
+				<c:CP_Cmp_Tooltip tooltip="{!v.tooltip}" />
 			</aura:renderIf>
 			<div class="slds-form-element__control">
 				<ui:inputSelect aura:id="selector-input" class="igcp-input igcp-input__selector" change="{!c.onChange}" value="{!v.selectedValue}" blur="{!c.onBlur}">

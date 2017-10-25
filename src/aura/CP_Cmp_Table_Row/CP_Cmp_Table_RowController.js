@@ -36,14 +36,22 @@
 			);
 		});
 	},
-	onClick: function(cmp, evt, hlpr){
+	onClick: function(cmp, evt, hlpr) {
 		console.log(cmp.get("v.dataObj"))
 
 		console.log(cmp.get("v.modalId"));
 
 		var events = cmp.find("CP_Events");
+
+		//open modal
 		events.fire("CP_Evt_Modal_Open", {
-			"id" : cmp.get("v.modalId")
+			"id": cmp.get("v.modalId")
+		});
+
+		//fire data to details modal
+		events.fire("CP_Evt_Set_Details", {
+			"id": cmp.get("v.modalId"),
+			"data": cmp.get("v.dataObj")
 		});
 	}
 })

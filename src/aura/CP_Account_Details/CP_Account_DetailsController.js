@@ -179,7 +179,7 @@
 
 		events.fire(
 			"CP_Evt_Set_List", {
-				"id": "account-list-1",
+				"id": "account-list",
 				"values": [{
 						label: 'Balance Date',
 						detail: 'Apr 13, 2017'
@@ -195,15 +195,8 @@
 					{
 						label: 'RESP Benificiary Name',
 						detail: 'Jamie Holmes'
-					}
-				]
-			}
-		);
-
-		events.fire(
-			"CP_Evt_Set_List", {
-				"id": "account-list-2",
-				"values": [{
+					},
+					{
 						label: 'Net Contributions',
 						detail: '$10,393.43'
 					},

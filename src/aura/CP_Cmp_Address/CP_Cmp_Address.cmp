@@ -1,0 +1,18 @@
+<aura:component >
+
+    <!-- ATTRS -->
+    <aura:attribute name="class" type="String" default=""></aura:attribute>
+    <aura:attribute name="label" type="String" default="Address"></aura:attribute>
+	<aura:attribute name="street" type="String" default="12-180 Queen Street"></aura:attribute>
+    <aura:attribute name="city" type="String" default="Toronto"></aura:attribute>
+    <aura:attribute name="province" type="String" default="Ontario"></aura:attribute>
+    <aura:attribute name="postalCode" type="String" default="L3Y 5Y5"></aura:attribute>
+
+    <!-- MARKUP -->
+    <div class="{!v.class}">
+        <h3 class="igcp-label--small igcp-utils__width--full slds-m-bottom--zero slds-float_left">{!v.label}</h3>
+        <p class="igcp-utils__width--full igcp-utils__font-size--medium igcp-utils__line-height--regular">{!v.street},</p>
+        <p class="igcp-utils__width--full igcp-utils__font-size--medium igcp-utils__line-height--regular">{!v.city + ', ' + v.province}</p>
+        <p class="igcp-utils__width--full igcp-utils__font-size--medium igcp-utils__line-height--regular">{!v.postalCode}</p>
+    </div>
+</aura:component>

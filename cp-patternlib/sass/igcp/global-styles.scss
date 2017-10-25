@@ -394,6 +394,17 @@
 			border: 10px solid $ig-grey;
 			overflow-y: scroll;
 		}
+	} //details
+	&.#{$namespace}-modal__details {
+		background-color: $ig-dark-blue--90;
+		.#{$namespace}-modal__details--inner {
+			position: fixed;
+			background-color: $ig-white;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
 	}
 }
 
@@ -556,13 +567,13 @@
 	}
 	.#{$namespace}-label--with-tooltip {
 		float: right;
-		
+
 		.igcp-label--small {
 			color: $ig-dark-grey;
 			font-family: $ig-whitney-book;
 		}
 	}
-	
+
 	.slds-checkbox--toggle .slds-checkbox--faux,
 	.slds-checkbox--toggle .slds-checkbox_faux,
 	.slds-checkbox_toggle .slds-checkbox--faux,
