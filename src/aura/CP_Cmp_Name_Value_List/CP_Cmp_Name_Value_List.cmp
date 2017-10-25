@@ -16,9 +16,9 @@
 		<div aura:id="list-container" class="{!'igcp-list ' + v.class}"></div>
 	</aura:if>
 	<aura:if isTrue="{!v.gridSizing == '6'}">
-		<div class="slds-grid slds-wrap">
-			<div aura:id="list-container-left" class="{!'igcp-list slds-size_6-of-12 slds-p-right--x-small' + v.class}"></div>
-			<div aura:id="list-container-right" class="{!'igcp-list slds-size_6-of-12 slds-p-left--x-small' + v.class}"></div>
+		<div class="{!'igcp-list slds-grid slds-wrap ' + v.class}">
+			<div aura:id="list-container-left" class="slds-size_6-of-12 slds-p-right--x-small"></div>
+			<div aura:id="list-container-right" class="slds-size_6-of-12 slds-p-left--x-small"></div>
 		</div>
 	</aura:if>
 </aura:component>

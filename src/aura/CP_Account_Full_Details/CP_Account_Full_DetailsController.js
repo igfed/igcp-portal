@@ -18,10 +18,10 @@
 			});
 		});
 
-		// events.fire("CP_Evt_Set_List", {
-		// 	"id": "account-details-list",
-		// 	"values": detailArr
-		// });
+		events.fire("CP_Evt_Set_List", {
+			"id": "account-details-list",
+			"values": detailArr
+		});
 
 	}
 })
