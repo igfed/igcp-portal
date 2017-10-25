@@ -24,6 +24,7 @@
 	<aura:attribute name="charClass" type="String" default="igcp-utils__font-size--x-small"></aura:attribute>
 	<aura:attribute name="hasFocus" type="Boolean" default="false" />
 	<aura:attribute name="inputClass" type="String" default="slds-input igcp-input igcp-input--error"></aura:attribute>
+	<aura:attribute name="isDoneRendering" type="Boolean" default="false" ></aura:attribute>
 	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />

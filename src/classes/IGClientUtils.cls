@@ -7,4 +7,20 @@ public class IGClientUtils {
         }
         return rv;
 	}
+
+	public static Boolean isValidAccount(String bpid, String accountNumber) {
+		Boolean rv = false;
+		if (String.isNotBlank(bpid) && String.isNotBlank(accountNumber)) {
+			DTO_InvestmentsPreview dto = CacheManager.getInvestmentPreviewDTO(bpid);
+			if (dto != null) {
+				for (String accNum : dto.accountNumbers) {
+					if (accountNumber == accNum) {
+						rv = true;
+						break;
+					}
+				}
+			}
+		} 
+		return rv;
+	}
 }
