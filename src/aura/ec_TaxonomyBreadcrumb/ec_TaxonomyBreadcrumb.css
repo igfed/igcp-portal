@@ -1,0 +1,28 @@
+.THIS span:empty:before {
+    /*This will ensure that if the span is empty, it will still take up vertical space.*/
+    /* but do we really want that? */
+    /*content: "\200b";*/
+}
+
+.THIS .breadcrumbish.slds-breadcrumb {
+    flex-wrap: wrap;
+}
+
+.THIS .breadcrumbish .slds-breadcrumb__item {
+    margin: 0 .5rem;
+}
+
+.THIS .breadcrumbish .slds-breadcrumb__item:before {
+    left: -0.7rem;
+    color: token(colorTextDefault);
+}
+
+.THIS .breadcrumbish .slds-breadcrumb__item:first-child {
+    margin-left: 0;
+}
+
+@media only screen and (max-width: 48rem) {
+    .THIS .breadcrumbish.slds-breadcrumb {
+        display: none;
+    }
+}

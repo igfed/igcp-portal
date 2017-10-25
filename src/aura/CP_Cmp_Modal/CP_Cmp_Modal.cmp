@@ -1,4 +1,5 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component >
+	
 	<!-- ATTTRS -->
 	<aura:attribute name="id" type="String" default="default"></aura:attribute>
 	<aura:attribute name="class" type="String" default=""></aura:attribute>
@@ -20,7 +21,7 @@
 	<aura:if isTrue="{!v.modalType == 'full'}">
 		<div class="{!'igcp-modal igcp-modal__full slds-grid slds-wrap slds-p-around--medium slds-medium-p-around--xx-large ' + v.class}">
 			<aura:if isTrue="{!v.id == 'registration-tos'}">
-				<c:CP_Registration_TOS id="registration-tos"/>
+				<c:CP_Registration_TOS id="{!v.id}"/>
 			</aura:if>
 		</div>
 	</aura:if>
@@ -28,8 +29,17 @@
 	<aura:if isTrue="{!v.modalType == 'small'}">
 		<div class="{!'igcp-modal igcp-modal__small slds-grid slds-wrap slds-p-around--xx-large ' + v.class}">
 			<aura:if isTrue="{!v.id == 'view-sample'}">
-				<c:CP_Registration_View_Sample />
+				<c:CP_Registration_View_Sample id="{!v.id}"/>
 			</aura:if>
+		</div>
+	</aura:if>
+
+	<aura:if isTrue="{!v.modalType == 'details'}">
+		<div class="{!'igcp-modal igcp-modal__details slds-grid slds-wrap slds-p-around--xx-large ' + v.class}">
+			<aura:if isTrue="{!v.id == 'account-detail'}">
+				<c:CP_Account_Full_Details id="{!v.id}"/>
+			</aura:if>
+
 		</div>
 	</aura:if>
 </aura:component>

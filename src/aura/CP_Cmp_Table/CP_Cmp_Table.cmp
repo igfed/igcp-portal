@@ -1,14 +1,25 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component >
 
-	<aura:attribute name="title" type="String" default=""></aura:attribute>
-	<aura:attribute name="values" type="Map" ></aura:attribute>
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
+	
+	<!-- ATTRS -->
+	<aura:attribute name="id" type="String" default=""></aura:attribute>
+	<aura:attribute name="class" type="String" default=""></aura:attribute>
+	<aura:attribute name="tableClass" type="String" default=""></aura:attribute>
+	<aura:attribute name="data" type="Map" default="{}"></aura:attribute>
+	<aura:attribute name="styleConfig" type="Map" default="{}"></aura:attribute>
+	<aura:attribute name="modalId" type="String" default=""></aura:attribute>
+    
+	<!-- HANDLERS -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="c:CP_Evt_Set_Table" action="{!c.onSetTable}" />
 
-	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-
-	<div class="igcp-container slds-p-around--medium">
-		<h3 class="slds-m-bottom--small">{!v.title}</h3>
-		<table style="width:100%">
-			<c:CP_Cmp_Table_Header />
+	<!-- MARKUP -->
+	<div class="{!v.class}">
+		<h3 class="slds-m-bottom--small">{!v.data.title}</h3>
+		<table class="{! 'igcp-table ' + v.tableClass}">
 			{!v.body}
 		</table>
 	</div>

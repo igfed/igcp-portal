@@ -86,6 +86,38 @@
 		<aura:attribute name="errorCB" type="function" default="" />
 	</aura:method>
 
+	<!-- GET HOLDINGS -->
+	<aura:method name="getHoldings" action="{!c.onGetHoldings}">
+		<aura:attribute name="accountNumber" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
+	<!-- GET TRANSACTIONS -->
+	<aura:method name="getTransactions" action="{!c.onGetTransactions}">
+		<aura:attribute name="accountNumber" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
+	<!-- GET INSTRUCTIONS -->
+	<aura:method name="getInstructions" action="{!c.onGetInstructions}">
+		<aura:attribute name="accountNumber" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
+	<!-- GET ACCOUNT PERFORMANCE -->
+	<aura:method name="getAccountPerformance" action="{!c.onGetAccountPerformance}">
+		<aura:attribute name="accountNumber" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
 	<!-- GET USER INFO -->
 	<aura:method name="getUserInfo" action="{!c.onGetUserInfo}">
 		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>

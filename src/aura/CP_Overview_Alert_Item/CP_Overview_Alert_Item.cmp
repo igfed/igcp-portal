@@ -1,10 +1,12 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component >
     
+    <!-- ATTRS -->
     <aura:attribute name="date" type="String" default="" />
     <aura:attribute name="message" type="String" default="" />
     <aura:attribute name="cta" type="String" default="{!$Label.c.CP_Generic_Label_View_Document}" />
     <aura:attribute name="ctaLink" type="String" default="" />
     
+    <!-- MARKUP -->
     <div class="igcp-alert--item slds-p-bottom--medium slds-m-bottom--medium">
         <div class="igcp-label--small">{!v.date}</div>
         <p>{!v.message}</p>

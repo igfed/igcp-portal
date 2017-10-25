@@ -112,7 +112,8 @@
 			validator = cmp.find('CP_Validation'),
 			events = cmp.find('CP_Events'),
 			utils = cmp.find('CP_Utils'),
-			inputs = cmp.get("v.inputsReceived");
+			inputs = cmp.get("v.inputsReceived"),
+			formattedDob = "";
 
 		validator.validate(evt.getParam("payload"), function(obj) {
 
@@ -155,25 +156,34 @@
 
 		cmp.set("v.inputsReceived", (inputs += 1));
 
-		console.log(cmp.get("v.inputsReceived"));
-
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
 		if (cmp.get("v.inputsReceived") === 8 && cmp.get("v.inputErrors") === false) {
 
+			utils.convertToYMD(cmp.get("v.dob"), function(value) {
+				formattedDob = value;
+			});
+
 			cmp.set("v.payload", {
-				"username": cmp.get("v.username"),
-				"password": cmp.get("v.password"),
-				"confirmPassword": cmp.get("v.confirmPassword"),
-				"email": cmp.get("v.email"),
-				"emailOptIn": cmp.get("v.emailOptIn"),
-				"mobilePhone": cmp.get("v.mobilePhone"),
-				"securityQuestion1": cmp.get("v.securityQuestion1"),
-				"answer1": cmp.get("v.answer1"),
-				"securityQuestion2": cmp.get("v.securityQuestion2"),
-				"answer2": cmp.get("v.answer2"),
-				"securityQuestion3": cmp.get("v.securityQuestion3"),
-				"answer3": cmp.get("v.answer3")
+				"Identity": {
+					"clientNum": cmp.get("v.clientNum"),
+					"postalCode": cmp.get("v.postalCode"),
+					"dob": formattedDob
+				},
+				"Profile": {
+					"username": cmp.get("v.username"),
+					"password": cmp.get("v.password"),
+					"confirmPassword": cmp.get("v.confirmPassword"),
+					"email": cmp.get("v.email"),
+					"emailOptIn": cmp.get("v.emailOptIn"),
+					"mobilePhone": cmp.get("v.mobilePhone"),
+					"securityQuestion1": cmp.get("v.securityQuestion1"),
+					"answer1": cmp.get("v.answer1"),
+					"securityQuestion2": cmp.get("v.securityQuestion2"),
+					"answer2": cmp.get("v.answer2"),
+					"securityQuestion3": cmp.get("v.securityQuestion3"),
+					"answer3": cmp.get("v.answer3")
+				}
 			});
 
 			cmp.onSubmitForm();
@@ -189,13 +199,13 @@
 			events = cmp.find("CP_Events"),
 			services = cmp.find("CP_Services");
 
-		console.log("Step 2");
+		//console.log("Step 2");
 
 		services.submitForm(
 			"StepTwo",
 			cmp,
 			function(evt) {
-				console.log("Step 2: Next step");
+				//console.log("Step 2: Next step");
 				cmp.onNextStep();
 			},
 			function(error) {
@@ -211,12 +221,8 @@
 					},
 					function(obj) {
 
-						console.log(obj);
-
 						if (obj.fields && obj.messages) {
 							obj.fields.forEach(function(errorType, i) {
-
-								console.log(errorType);
 
 								var msgArr = [];
 
@@ -263,5 +269,8 @@
 		} else if (payload.id === "password-input") {
 			hlpr.validatePassword(cmp, payload);
 		}
+	},
+	doneRendering: function(cmp, evt, hlpr){
+		
 	}
 })

@@ -327,6 +327,30 @@
 			isEmpty = value.length === 0 ? true : false,
 			isPhone = hlpr.isPhone(value);
 
+		if (isEmpty !== true) {
+			errorCheckObj["isPhone"] = isPhone;
+		}
+
+		errors = hlpr.checkForErrors(errorCheckObj);
+
+		errors.forEach(function(item, i) {
+			if (item.type === "isPhone") {
+				item["msg"] = $A.get("$Label.c.CP_Error_Phone_Invalid");
+			}
+		});
+
+		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+	},
+	validatePhoneRequired: function(params, callBack, cmp, hlpr) {
+
+		var
+			value = params.value,
+			id = params.id,
+			errors = [],
+			errorCheckObj = {},
+			isEmpty = value.length === 0 ? true : false,
+			isPhone = hlpr.isPhone(value);
+
 		if (isEmpty === true) {
 			errorCheckObj["isEmpty"] = isEmpty;
 		} else {

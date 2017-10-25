@@ -1,30 +1,20 @@
 ({
-	doInit: function(cmp, evt, hlpr) {
+	onInit: function(cmp, evt, hlpr) {
+		if(cmp.get("v.id") === "") {
+			console.warn("CP_Cmp_Table: An id is required.");
+		}
+	},
+	onSetTable: function(cmp, evt, hlpr) {
 
 		var 
-			values = cmp.get("v.values")['values'],
-			componentName = "c:CP_Cmp_Table_Row";	
+			payload = evt.getParam("payload"),
+			utils = cmp.find("CP_Utils");
+		
+		if(cmp.get("v.id") === payload.id) {
 
-		values.forEach(function(item, i) {
-
-			$A.createComponent(
-				componentName, {
-					"values": item
-				},
-				function(row, status, errorMessage) {
-					if (status === "SUCCESS") {
-						var body = cmp.get("v.body");
-						body.push(row);
-						cmp.set("v.body", body);
-					} else if (status === "INCOMPLETE") {
-						console.log("No response from server or client is offline.")
-						// Show offline error
-					} else if (status === "ERROR") {
-						console.log("Error: " + errorMessage);
-						// Show error message
-					}
-				}
-			);
-		});
+			hlpr.generateHeader(cmp, utils, payload.headers, function(ready){
+				hlpr.generateTable(cmp, utils, payload, function(ready){});
+			});
+		}
 	}
 })

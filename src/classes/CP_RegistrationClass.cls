@@ -93,7 +93,7 @@ global class CP_RegistrationClass {
         return result;
     }
  
-    public CP_Response.Result verifyProfile(CP_RegistrationClass.UserProfile IGUserProfile)
+    public CP_Response.Result verifyProfile(CP_RegistrationClass.UserProfile IGUserProfile, String clientNumber)
     {
         CP_Response.Result result = new CP_Response.Result();
         
@@ -105,7 +105,7 @@ global class CP_RegistrationClass {
             result.Messages.add(System.Label.CP_Registration_User_Name_Already_Exist);
         }
         
-        if(IGUserProfile.EmailAlreadyRegistered())
+        if(IGUserProfile.EmailAlreadyRegistered(clientNumber))
         {
             // Email Is Already Registered
             result.IsValid = false;
@@ -125,7 +125,7 @@ global class CP_RegistrationClass {
         {
             result = this.verifyIdentity(regForm.Identity);
             if(result.IsValid)
-                result = verifyProfile(regForm.Profile);
+                result = verifyProfile(regForm.Profile, regForm.Identity.clientNum);
         }
         else
         {
@@ -400,13 +400,25 @@ global class CP_RegistrationClass {
         }
 
         //CP_Registration_Email_Is_Already_Registered
-        public Boolean EmailAlreadyRegistered()
+        public Boolean EmailAlreadyRegistered(String clientNumber)
         {
-            List<contact> contactList = [select ID, Portal_User_Is_Registered__c, Email, Portal_User_ID__c, 
-                Portal_User_Name__c, MailingPostalCode, Birthdate, Business_Partner_ID__c 
-                from Contact 
-                where Email = : String.escapeSingleQuotes(this.email) limit 1];
-            if(contactList.isEmpty())
+            List<Financial_Asset__c> assetList = 
+                [ 
+                    SELECT 
+                           RecordType.Name, Asset_Type__c, Client__c, Customer__c,  
+                           Is_Registration_Eligibile__c,
+                           Policy_Number__c, Loan_Number__c, Client_Number__c, 
+                           Customer__r.Email
+                    FROM 
+                           Financial_Asset__c 
+                    WHERE
+                            Customer__r.Email = : String.escapeSingleQuotes(this.email) AND (
+                                  (RecordType.DeveloperName = 'Investment_Asset'  AND Client_Number__c != : String.escapeSingleQuotes(clientNumber))
+                                  OR (RecordType.DeveloperName = 'Loan_Asset'  AND Loan_Number__c != : String.escapeSingleQuotes(clientNumber))
+                                  OR (RecordType.DeveloperName = 'Policy_Asset'  AND Policy_Number__c != : String.escapeSingleQuotes(clientNumber))
+                                  )
+                    ]; 
+            if(assetList.isEmpty())
                 return false;
             else
                 return true;

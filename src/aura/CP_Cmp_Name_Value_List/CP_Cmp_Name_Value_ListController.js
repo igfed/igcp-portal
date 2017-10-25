@@ -5,53 +5,35 @@
 		}
 	},
 	onSetList: function(cmp, evt, hlpr) {
-		console.warn("CP_Cmp_Name_Value_List: onSetList");
-
-		var payload = evt.getParam("payload");
+		var 
+			payload = evt.getParam("payload"),
+			gridSizing = cmp.get("v.gridSizing");
 
 		if (cmp.get("v.id") === payload.id) {
-			var
-				values = payload.values,
-				variant = cmp.get("v.variant"),
-				componentName = "";
 
-			if (variant === "a") {
-				componentName = "c:CP_Cmp_Name_Value_Item_A";
-			} else if (variant === "b") {
-				componentName = "c:CP_Cmp_Name_Value_Item_B";
+			if(gridSizing === "12") {
+				hlpr.generateContainer(gridSizing, cmp, cmp.find("list-container"), function(ready) {
+					hlpr.generateList(payload.values, cmp, ready.component);
+				});
+
+			} else if(gridSizing === "6") {
+
+				var 
+					valsArr = payload.values;
+					sliceIndexOn = Math.ceil(valsArr.length / 2),
+					leftArr = valsArr.slice(0, sliceIndexOn),
+					rightArr = valsArr.slice(sliceIndexOn, valsArr.length);
+
+				hlpr.generateContainer(gridSizing, cmp, cmp.find("list-container-left"), function(ready) {
+					hlpr.generateList(leftArr, cmp, ready.component);
+				});
+
+				hlpr.generateContainer(gridSizing, cmp, cmp.find("list-container-right"), function(ready) {
+					hlpr.generateList(rightArr, cmp, ready.component);
+				});
 			} else {
-				console.warn('CP_Cmp_Name_Value_List: variant ' + variant + ' unrecognized');
+				console.warn("CP_Cmp_Name_Value_List: Grid sizing unrecognized.");
 			}
-
-			values.forEach(function(item, i) {
-
-				var itemType = "";
-
-				if(item.type) {
-					itemType = item.type;
-				}
-
-				$A.createComponent(
-					componentName, {
-						"label": item.label,
-						"description": item.detail,
-						"type": itemType
-					},
-					function(nameValueItem, status, errorMessage) {
-						if (status === "SUCCESS") {
-							var body = cmp.get("v.body");
-							body.push(nameValueItem);
-							cmp.set("v.body", body);
-						} else if (status === "INCOMPLETE") {
-							console.log("No response from server or client is offline.")
-							// Show offline error
-						} else if (status === "ERROR") {
-							console.log("Error: " + errorMessage);
-							// Show error message
-						}
-					}
-				);
-			});
 		}
 
 	}

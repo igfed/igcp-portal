@@ -1,0 +1,12 @@
+<design:component label="Content">
+    <design:attribute name="ComponentHeading" label="Heading"
+                      description="Enter a heading to appear above the content item. (optional)" />
+    <design:attribute name="contentName" label="Content Name" 
+                      description="Enter the full name of the OrchestraCMS content item."/>
+    <design:attribute name="contentLayout" label="Content Template" 
+                      description="Enter the full name (not label) of the content item’s content template that will be used to render the content item."/>
+    <design:attribute name="ignoreTargets" Label="Ignore Targets" description="When selected, targets applied to content are ignored and all content is displayed." />
+    <design:attribute name="siteName" label="OrchestraCMS Site Name"
+                      description="Enter the name of an OrchestraCMS site to map this component to it. The component will get content from that site. Leave blank for the default mapping, which is based on matching names of the Community’s force.com site and the OrchestraCMS site."
+                      default="" />
+</design:component>

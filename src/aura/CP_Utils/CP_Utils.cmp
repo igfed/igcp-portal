@@ -58,6 +58,15 @@
 		<aura:attribute name="callback" type="function" default="" />
 	</aura:method>
 
+
+	<!-- WAIT FOR DEFINED-->
+	<!-- Waits until the attr passed is defined -->
+	<aura:method name="waitForDefined" action="{!c.onWaitForDefined}">
+		<aura:attribute name="component" type="Aura.component[]" />
+		<aura:attribute name="attr" type="String" ></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+
 	<!-- GET URL PARAMS -->
 	<!-- Gets all URL parameters and returns them in an object -->
 	<aura:method name="getURLParams" action="{!c.onGetURLParams}">
@@ -105,6 +114,14 @@
 		<aura:attribute name="value" type="Double"></aura:attribute>
 		<aura:attribute name="total" type="Double"></aura:attribute>
 		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+
+	<!-- FORMAT TO PHONE -->
+	<!-- Takes a normal number string and returns it formatted -->
+	<aura:method name="formatToPhone" action="{!c.onFormatToPhone}">
+		<aura:attribute name="rawValue" type="String"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+		<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
 	</aura:method>
 	
 </aura:component>

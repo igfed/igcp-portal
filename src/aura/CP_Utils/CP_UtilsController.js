@@ -3,10 +3,44 @@
 		var params = evt.getParam("arguments");
 		if (params) {
 
-			var container = params.container;
+			var
+				container = params.container,
+				compId = "";
+
+			hlpr.checkType(params.cmpId, function(returnedVal) {
+				if (returnedVal !== "string") {
+					console.error("CP_Utils: createComponent: The cmpId must be a string.");
+				}
+			});
+
+			hlpr.checkType(params.params, function(returnedVal) {
+				if (returnedVal !== "object") {
+					console.error("CP_Utils: createComponent: The params passed must be inside an object.");
+				}
+			});
+
+			if (container !== null || container !== undefined) {
+				hlpr.checkType(container, function(returnedVal) {
+					if (returnedVal !== "object") {
+						console.error("CP_Utils: createComponent: passed container is not valid, it should be 'cmp'.");
+					}
+				});
+			} else {
+				console.error("CP_Utils: createComponent: container is not defined.")
+			}
+
+			//check if we're creating an aura default component
+			//or a custom one
+			hlpr.stringHas("aura", params.cmpId, function(returnedVal) {
+				if (returnedVal === true) {
+					compId = params.cmpId;
+				} else {
+					compId = "c:" + params.cmpId;
+				}
+			});
 
 			$A.createComponent(
-				"c:" + params.cmpId, params.params,
+				compId, params.params,
 				function(component, status, errorMessage) {
 
 					//Add the new button to the body array
@@ -15,6 +49,7 @@
 						var body = container.get("v.body");
 						body.push(component);
 						container.set("v.body", body);
+
 					} else if (status === "INCOMPLETE") {
 						console.warn("No response from server or client is offline.");
 						// Show offline error
@@ -83,6 +118,20 @@
 		}
 	},
 	onWaitFor: function(cmp, evt, hlpr) {
+		var params = evt.getParam("arguments");
+		if (params) {
+
+			var
+				component = params.component,
+				timer = setInterval(function() {
+					if (component.get(params.attr) === true) {
+						params.callback(component.get(params.attr));
+						clearInterval(timer);
+					}
+				}, 500);
+		}
+	},
+	onWaitForDefined: function(cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 
@@ -208,7 +257,7 @@
 
 		if (params) {
 
-			var 
+			var
 				obj = params.obj,
 				isEmpty = true;
 
@@ -219,7 +268,7 @@
 			}
 
 			params.callback(isEmpty);
-			
+
 		}
 
 	},
@@ -227,10 +276,26 @@
 		var params = evt.getParam("arguments");
 
 		if (params) {
-			if(params.value && params.total) {
+			if (params.value && params.total) {
 				params.callback(Math.floor((params.value / params.total) * 100));
 			} else {
 				console.warn("CP_Utils: calculatePercentage: A value and total parameter are required.");
+			}
+		}
+	},
+	onFormatToPhone: function(cmp, evt, hlpr) {
+		var params = evt.getParam("arguments"),
+			lang;
+
+		if (params) {
+			lang = params.lang;
+
+			if (lang === "en_CA" || lang === "en_US" || lang === "fr_CA") {
+				var s2 = ("" + params.rawValue).replace(/\D/g, '');
+				var m = s2.match(/^(\d{3})(\d{3})(\d{4})$/);
+				params.callback((!m) ? null : "(" + m[1] + ") " + m[2] + "-" + m[3]);
+			} else {
+				console.warn("CP_Utils: formatToPhone: language unrecognized.");
 			}
 		}
 	}

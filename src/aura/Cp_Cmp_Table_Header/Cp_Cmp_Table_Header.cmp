@@ -1,9 +1,0 @@
-<aura:component >
-	<tr>
-		<th>Name</th>
-		<th>Holding</th>
-		<th>Book Cost</th>
-		<th>Gain / Loss</th>
-		<th>Market Value</th>
-	</tr>
-</aura:component>

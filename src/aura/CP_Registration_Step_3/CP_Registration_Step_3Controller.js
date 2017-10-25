@@ -2,6 +2,7 @@
 	onInit: function(cmp, evt, hlpr) {
 		var
 			itemsArr = [],
+			utils = cmp.find("CP_Utils"),
 			events = cmp.find("CP_Events");
 
 		cmp.updateISAMPayload();
@@ -52,6 +53,32 @@
 				"type": "answer"
 			}
 		];
+
+		//Insert phone number if available
+		if (cmp.get("v.mobilePhone") !== "") {
+
+			var
+				arrOne = itemsArr.slice(0, 3),
+				arrTwo = itemsArr.slice(3, itemsArr.length - 1),
+				formattedPhone = "";
+
+			utils.formatToPhone(
+				cmp.get("v.mobilePhone"), 
+				function(returnedVal){
+					formattedPhone = returnedVal;
+				}, 
+				cmp.get("v.lang")
+			);
+
+			arrOne.push({
+				"label": $A.get("$Label.c.CP_Generic_Label_Phone"),
+				"detail": formattedPhone,
+				"type": "single"
+			});
+
+			itemsArr = [];
+			itemsArr = arrOne.concat(arrTwo);
+		}
 
 		events.fire("CP_Evt_Set_List", {
 			"id": cmp.get("v.pageId"),
@@ -203,9 +230,9 @@
 			cmp.get("v.answer3")
 		];
 
-		console.log("Registration Step 3: logPayloadVars");
+		//console.log("Registration Step 3: logPayloadVars");
 		logArray.forEach(function(item, i) {
-			console.log(item);
+			//console.log(item);
 		});
 	}
 })

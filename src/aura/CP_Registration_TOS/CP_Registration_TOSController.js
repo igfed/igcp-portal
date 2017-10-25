@@ -25,9 +25,6 @@
 	onCancel: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
 
-		console.log("CANCEL");
-		console.log(payload);
-
 		if(payload.id === "tos_agree_button-cancel") {
 			cmp.close();
 		}

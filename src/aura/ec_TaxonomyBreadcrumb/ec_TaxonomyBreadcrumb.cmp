@@ -1,0 +1,22 @@
+<aura:component access="global" >
+    <!-- implements="forceCommunity:availableForAllPageTypes" -->
+    <ltng:require scripts="{! $Resource.ec_Component_Helper + '/js/common.js' }"
+            afterScriptsLoaded="{! c.scriptLoad }" />
+
+    <aura:attribute name="tagPath" type="string" />
+    <aura:attribute name="tags" type="string[]" />
+    <aura:attribute name="taxonomyInstanceName" type="string" />
+    <aura:attribute name="showFirstLevel" type="Boolean" default="false" />
+    <aura:attribute name="allowEditSubscriptions" type="Boolean" default="false" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:ec_ChangeTaxonomyPathEvt" action="{!c.handleLoadTaxonomyContent}" />
+    <aura:registerEvent name="taxonomyClickedEvent" type="c:ec_ChangeTaxonomyPathEvt"/>
+    
+    <nav role="navigation" aria-label="Breadcrumbs" class="slds-m-bottom--small">
+        <div class="breadcrumbish slds-breadcrumb slds-list--horizontal slds-text-title--caps">
+            {!v.body}
+        </div>
+    </nav>
+
+</aura:component>

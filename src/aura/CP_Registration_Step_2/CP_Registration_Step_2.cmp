@@ -1,10 +1,15 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_RegistrationController">
+<aura:component controller="CP_RegistrationController">
 	
 	<!-- ATTRS	 -->
 	<aura:attribute name="pageId" type="String" default="registration-step-2"></aura:attribute>
 	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="inputsReceived" type="Integer" default="2"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
+
+	<!-- Step 1 -->
+	<aura:attribute name="clientNum" type="String"></aura:attribute>
+	<aura:attribute name="postalCode" type="String"></aura:attribute>
+	<aura:attribute name="dob" type="String"></aura:attribute>
 	
 	<!-- Step 2 -->
 	<aura:attribute name="username" type="String" />
@@ -23,6 +28,7 @@
 	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Selector_Change" action="{!c.onInputSelectorReceived}" />
@@ -62,19 +68,19 @@
 				
 				<!--FIELDS-->
 				<!-- USERNAME -->
-				<c:CP_Cmp_Input_Username id="username-input" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Username}" maxLength="32" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Username}" />
+				<c:CP_Cmp_Input_Username id="username-input" form="{!v.pageId}" hasFocus="true" label="{!$Label.c.CP_Generic_Label_Username}" maxLength="32" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 				
 				<!-- PASSWORD -->
 				<c:CP_Cmp_Input_Password id="password-input" form="{!v.pageId}" type="password" confirmPassword="true" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Password}" />
 				
 				<!-- EMAIL -->
-				<c:CP_Cmp_Input_Text id="email-input" form="{!v.pageId}" type="email" label="{!$Label.c.CP_Generic_Label_Email}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+				<c:CP_Cmp_Input_Text id="email-input" form="{!v.pageId}" type="email" label="{!$Label.c.CP_Generic_Label_Email}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Email}"/>
 				
 				<!-- NEWS OPT IN  -->
 				<c:CP_Cmp_Input_Checkbox id="news-offers-opt" form="{!v.pageId}" class="slds-size_12-of-12 slds-large-size_9-of-12" copy="{!$Label.c.CP_Registration_Step_2_Opt_In}" />
 				
 				<!-- PHONE -->
-				<c:CP_Cmp_Input_Text id="phone-input" form="{!v.pageId}" type="phone" label="{!$Label.c.CP_Generic_Label_Phone}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+				<c:CP_Cmp_Input_Text id="phone-input" form="{!v.pageId}" type="phone" label="{!$Label.c.CP_Generic_Label_Phone}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Phone}" />
 				
 				<!-- SECURITY QUESTIONS -->
 				<c:CP_Registration_Security_Questions securityQuestion1="{!v.securityQuestion1}" 
