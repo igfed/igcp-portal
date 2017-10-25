@@ -33,9 +33,9 @@
 			<div class="slds-p-around--medium igcp-container slds-p-vertical--small slds-p-horizontal--medium slds-m-bottom--x-small slds-large-m-bottom--medium slds-size_12-of-12 slds-medium-size_6-of-12">
 				<h1>{!$Label.c.CP_Statement_Preference_Title}</h1>
 
-				<p class="slds-medium-p-top--small">{!$Label.c.CP_Statement_Preference_Page_Summary} &nbsp;<a href="#"> {!$Label.c.CP_Generic_Label_Explore_The_Benefits}</a></p>
+				<p class="slds-medium-p-top--small slds-m-bottom--large">{!$Label.c.CP_Statement_Preference_Page_Summary} &nbsp;<a href="#"> {!$Label.c.CP_Generic_Label_Explore_The_Benefits}</a></p>
 				
-				<div class="slds-form-element slds-size_12-of-12 slds-medium-size_7-of-12 slds-align_absolute-center slds-m-top--medium slds-m-bottom--medium">
+				<!-- <div class="slds-form-element slds-size_12-of-12 slds-medium-size_7-of-12 slds-align_absolute-center slds-m-top{double-dash}medium slds-m-bottom{double-dash}medium">
 					<label class="slds-checkbox_toggle slds-grid">
 						<input type="checkbox" name="checkbox" aria-describedby="toggle-desc" value="on" />
 						<span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
@@ -44,7 +44,7 @@
 							<span class="slds-checkbox_off">{!$Label.c.CP_Statement_Preference_Global_Setting_Paper}</span>
 						</span>
 					</label>		
-				</div>
+				</div> -->
 
 				<div class="slds-size_12-of-12 igcp-document-section">
 					<h3>{!$Label.c.CP_Generic_Label_Investors_Group_Financial_Services}</h3>

@@ -39,10 +39,13 @@
 	},
 	generateContainer: function(gridSizing, cmp, container, callback) {
 
-		var
-			utils = cmp.find("CP_Utils");
+		var utils = cmp.find("CP_Utils");
+
+		//Clear container of any previous children
+		container.set("v.body", []);
 		
 		if(gridSizing === "12") {
+
 			utils.createComponent(
 				"aura:html", {
 					"tag": "dl",
@@ -56,6 +59,7 @@
 					callback(ready);
 				}
 			);
+
 		} else if(gridSizing === "6") {
 
 			utils.createComponent(

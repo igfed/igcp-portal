@@ -1,4 +1,4 @@
-<aura:component>
+<aura:component >
 	<!-- INCLUDES -->
 	<c:CP_Utils aura:id="CP_Utils" />
 	<!-- ATTRS -->
