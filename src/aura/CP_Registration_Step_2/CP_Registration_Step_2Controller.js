@@ -95,6 +95,7 @@
 	},
 	onInputSelectorReceived: function(cmp, evt, hlpr) {
 		var
+			validator = cmp.find('CP_Validation'),
 			inputId = evt.getParam("payload").id,
 			inputValue = evt.getParam("payload").selected;
 
@@ -138,12 +139,19 @@
 					cmp.set("v.confirmPassword", evt.getParam("payload").confirmValue);
 				} else if (inputId === "email-input") {
 					cmp.set("v.email", inputValue);
+					cmp.set("v.emailConfirm", evt.getParam("payload").confirmValue);
 				} else if (inputId === "phone-input") {
 					cmp.set("v.mobilePhone", inputValue);
+				} else if (inputId === "security-1-selector") {
+					cmp.set("v.securityQuestion1", inputValue);
 				} else if (inputId === "security-1-answer") {
 					cmp.set("v.answer1", inputValue);
+				} else if (inputId === "security-2-selector") {
+					cmp.set("v.securityQuestion2", inputValue);
 				} else if (inputId === "security-2-answer") {
 					cmp.set("v.answer2", inputValue);
+				} else if (inputId === "security-3-selector") {
+					cmp.set("v.securityQuestion3", inputValue);
 				} else if (inputId === "security-3-answer") {
 					cmp.set("v.answer3", inputValue);
 				}
@@ -190,7 +198,6 @@
 		}
 	},
 	onInputBlur: function(cmp, evt, hlpr) {
-
 		hlpr.validateInput(cmp, evt.getParam("payload"));
 	},
 	submitForm: function(cmp, evt, hlpr) {
@@ -198,8 +205,6 @@
 		var
 			events = cmp.find("CP_Events"),
 			services = cmp.find("CP_Services");
-
-		//console.log("Step 2");
 
 		services.submitForm(
 			"StepTwo",
@@ -269,8 +274,5 @@
 		} else if (payload.id === "password-input") {
 			hlpr.validatePassword(cmp, payload);
 		}
-	},
-	doneRendering: function(cmp, evt, hlpr){
-		
 	}
 })

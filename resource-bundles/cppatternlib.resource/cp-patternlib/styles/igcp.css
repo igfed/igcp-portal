@@ -3362,6 +3362,8 @@ table {
     border-radius: 0;
     margin-bottom: 0;
     border: 1px solid #282828; }
+  .igcp-input.uiInput--select.has-error.select {
+    border: none; }
 
 .igcp-input__help-link {
   font-family: "WhitneyBook", Arial, sans-serif;

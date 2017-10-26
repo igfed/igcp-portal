@@ -79,4 +79,26 @@ public class IGClientUtils {
          	return objConList[0];
     }
 
+    public static String generateHash(String input) {
+    	String rv = null;
+    	if (String.isNotBlank(input)) {
+	    	Blob targetBlob = Blob.valueOf(input);
+			Blob hash = Crypto.generateDigest('MD5', targetBlob);
+			String theString = EncodingUtil.convertToHex(hash);
+			rv = theString;
+			//rv = EncodingUtil.urlEncode(theString, 'UTF-8');
+    	}
+    	return rv;
+    }
+
+    public static String generateRandomString(Integer len) {
+	    final String chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz';
+	    String randStr = '';
+	    while (randStr.length() < len) {
+	       Integer idx = Math.mod(Math.abs(Crypto.getRandomInteger()), chars.length());
+	       randStr += chars.substring(idx, idx+1);
+	    }
+	    return randStr; 
+	}
+
 }
