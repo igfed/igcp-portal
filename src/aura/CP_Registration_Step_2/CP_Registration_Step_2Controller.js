@@ -116,51 +116,7 @@
 			inputs = cmp.get("v.inputsReceived"),
 			formattedDob = "";
 
-		validator.validate(evt.getParam("payload"), function(obj) {
-
-			if (obj.isValid === false) {
-
-				cmp.set("v.inputErrors", true);
-
-				events.fire("CP_Evt_Input_Error", {
-					"id": obj.id,
-					"errors": obj.errors
-				});
-			} else {
-
-				var
-					inputId = evt.getParam("payload").id,
-					inputValue = evt.getParam("payload").value;
-
-				if (inputId === "username-input") {
-					cmp.set("v.username", inputValue);
-				} else if (inputId === "password-input") {
-					cmp.set("v.password", inputValue);
-					cmp.set("v.confirmPassword", evt.getParam("payload").confirmValue);
-				} else if (inputId === "email-input") {
-					cmp.set("v.email", inputValue);
-					cmp.set("v.emailConfirm", evt.getParam("payload").confirmValue);
-				} else if (inputId === "phone-input") {
-					cmp.set("v.mobilePhone", inputValue);
-				} else if (inputId === "security-1-selector") {
-					cmp.set("v.securityQuestion1", inputValue);
-				} else if (inputId === "security-1-answer") {
-					cmp.set("v.answer1", inputValue);
-				} else if (inputId === "security-2-selector") {
-					cmp.set("v.securityQuestion2", inputValue);
-				} else if (inputId === "security-2-answer") {
-					cmp.set("v.answer2", inputValue);
-				} else if (inputId === "security-3-selector") {
-					cmp.set("v.securityQuestion3", inputValue);
-				} else if (inputId === "security-3-answer") {
-					cmp.set("v.answer3", inputValue);
-				}
-
-				events.fire("CP_Evt_Input_Valid", {
-					"id": obj.id
-				});
-			}
-		});
+		hlpr.validateInput(cmp, evt.getParam("payload"));
 
 		cmp.set("v.inputsReceived", (inputs += 1));
 
@@ -210,7 +166,6 @@
 			"StepTwo",
 			cmp,
 			function(evt) {
-				//console.log("Step 2: Next step");
 				cmp.onNextStep();
 			},
 			function(error) {

@@ -5,7 +5,6 @@
 			validator = cmp.find('CP_Validation'),
 			events = cmp.find('CP_Events');
 
-
 		validator.validate(payload, function(obj) {
 
 			if (obj.isValid === false) {
@@ -28,10 +27,10 @@
 					cmp.set("v.username", inputValue);
 				} else if (inputId === "password-input") {
 					cmp.set("v.password", inputValue);
-					cmp.set("v.confirmPassword", evt.getParam("payload").confirmValue);
+					cmp.set("v.confirmPassword", payload.confirmValue);
 				} else if (inputId === "email-input") {
 					cmp.set("v.email", inputValue);
-					cmp.set("v.emailConfirm", evt.getParam("payload").confirmValue);
+					cmp.set("v.emailConfirm", payload.confirmValue);
 				} else if (inputId === "phone-input") {
 					cmp.set("v.mobilePhone", inputValue);
 				} else if (inputId === "security-1-selector") {

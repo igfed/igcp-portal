@@ -329,8 +329,11 @@
 		if (isEmpty === true) {
 			errorCheckObj["isEmpty"] = isEmpty;
 		} else {
-			errorCheckObj["isEmail"] = isEmail;
-			errorCheckObj["emailsMatch"] = hlpr.isSame(params.value, params.confirmValue);
+			if(isEmail === false) {
+				errorCheckObj["isEmail"] = isEmail;
+			} else {
+				errorCheckObj["emailsMatch"] = hlpr.isSame(params.value, params.confirmValue);
+			}
 		}
 
 		errors = hlpr.checkForErrors(errorCheckObj);

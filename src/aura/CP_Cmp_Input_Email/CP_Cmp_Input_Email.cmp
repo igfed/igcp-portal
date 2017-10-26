@@ -71,7 +71,7 @@
 			</label>
 			<div class="slds-form-element__control">
 				<!-- INPUT -->
-				<ui:inputText aura:id="text-confirm-input" label="" value="{!v.inputValueConfirm}" class="slds-input igcp-input" required="{!v.required}" blur="{!c.onConfirmationBlur}" />
+				<ui:inputText aura:id="text-confirm-input" label="" value="{!v.inputValueConfirm}" class="slds-input igcp-input" required="{!v.required}" blur="{!c.onBlur}" />
 			</div>
 		</div>
 	</aura:renderIf>
