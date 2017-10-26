@@ -1,5 +1,5 @@
 ({
-	onCreateComponent: function(cmp, evt, hlpr) {
+	onCreateComponent: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 
@@ -7,20 +7,20 @@
 				container = params.container,
 				compId = "";
 
-			hlpr.checkType(params.cmpId, function(returnedVal) {
+			hlpr.checkType(params.cmpId, function (returnedVal) {
 				if (returnedVal !== "string") {
 					console.error("CP_Utils: createComponent: The cmpId must be a string.");
 				}
 			});
 
-			hlpr.checkType(params.params, function(returnedVal) {
+			hlpr.checkType(params.params, function (returnedVal) {
 				if (returnedVal !== "object") {
 					console.error("CP_Utils: createComponent: The params passed must be inside an object.");
 				}
 			});
 
 			if (container !== null || container !== undefined) {
-				hlpr.checkType(container, function(returnedVal) {
+				hlpr.checkType(container, function (returnedVal) {
 					if (returnedVal !== "object") {
 						console.error("CP_Utils: createComponent: passed container is not valid, it should be 'cmp'.");
 					}
@@ -31,7 +31,7 @@
 
 			//check if we're creating an aura default component
 			//or a custom one
-			hlpr.stringHas("aura", params.cmpId, function(returnedVal) {
+			hlpr.stringHas("aura", params.cmpId, function (returnedVal) {
 				if (returnedVal === true) {
 					compId = params.cmpId;
 				} else {
@@ -41,7 +41,7 @@
 
 			$A.createComponent(
 				compId, params.params,
-				function(component, status, errorMessage) {
+				function (component, status, errorMessage) {
 
 					//Add the new button to the body array
 					if (status === "SUCCESS") {
@@ -65,7 +65,7 @@
 			console.warn("CP_Utils: onCreateComponent: No params passed.");
 		}
 	},
-	onDestroyComponent: function(cmp, evt, hlpr) {
+	onDestroyComponent: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 			console.warn("CP_Utils: onDestroyComponent: coming soon, sorry");
@@ -76,7 +76,7 @@
 			console.warn("CP_Utils: onDestroyComponent: No params passed.");
 		}
 	},
-	convertToYMD: function(cmp, evt, hlpr) {
+	convertToYMD: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 			var
@@ -85,7 +85,7 @@
 			params.callback(splitArr[2] + "-" + splitArr[0] + "-" + splitArr[1]);
 		}
 	},
-	onDeleteAt: function(cmp, evt, hlpr) {
+	onDeleteAt: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 			var
@@ -93,7 +93,7 @@
 				index = params.index,
 				newArr = [];
 
-			array.forEach(function(item, i) {
+			array.forEach(function (item, i) {
 				if (i != index) {
 					newArr.push(item);
 				}
@@ -102,7 +102,7 @@
 			params.callback(newArr);
 		}
 	},
-	onArrayContains: function(cmp, evt, hlpr) {
+	onArrayContains: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 			var
@@ -117,13 +117,13 @@
 			params.callback(hasValue);
 		}
 	},
-	onWaitFor: function(cmp, evt, hlpr) {
+	onWaitFor: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 
 			var
 				component = params.component,
-				timer = setInterval(function() {
+				timer = setInterval(function () {
 					if (component.get(params.attr) === true) {
 						params.callback(component.get(params.attr));
 						clearInterval(timer);
@@ -131,13 +131,13 @@
 				}, 500);
 		}
 	},
-	onWaitForDefined: function(cmp, evt, hlpr) {
+	onWaitForDefined: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 
 			var
 				component = params.component,
-				timer = setInterval(function() {
+				timer = setInterval(function () {
 					if (component.get(params.attr) !== null) {
 						params.callback(component.get(params.attr));
 						clearInterval(timer);
@@ -145,7 +145,7 @@
 				}, 500);
 		}
 	},
-	onGetURLParams: function(cmp, evt, hlpr) {
+	onGetURLParams: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -156,7 +156,7 @@
 					queryPairs = location.search.slice(1).split('&'),
 					paramObj = {};
 
-				queryPairs.forEach(function(item, i) {
+				queryPairs.forEach(function (item, i) {
 					item = item.split('=');
 					paramObj[item[0]] = decodeURIComponent(item[1] || '');
 				});
@@ -170,11 +170,11 @@
 		}
 
 	},
-	onForEach: function(cmp, evt, hlpr) {
+	onForEach: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 
-			if (typeof(params.obj) === "object") {
+			if (typeof (params.obj) === "object") {
 				var key, obj;
 
 				obj = params.obj;
@@ -187,7 +187,7 @@
 			}
 		}
 	},
-	onGoToLogin: function(cmp, evt, hlpr) {
+	onGoToLogin: function (cmp, evt, hlpr) {
 		try {
 
 			var
@@ -209,7 +209,7 @@
 			console.error(err);
 		}
 	},
-	onNavigateToURL: function(cmp, evt, hlpr) {
+	onNavigateToURL: function (cmp, evt, hlpr) {
 		try {
 			var
 				params = evt.getParam("arguments"),
@@ -233,7 +233,7 @@
 			console.error(err);
 		}
 	},
-	onFormatToCurrency: function(cmp, evt, hlpr) {
+	onFormatToCurrency: function (cmp, evt, hlpr) {
 		var
 			params = evt.getParam("arguments"),
 			lang, formattedValue;
@@ -241,18 +241,44 @@
 		if (params) {
 			lang = params.lang;
 
-			if (lang === "en_CA" || lang === "en_US") {
-				formattedValue = hlpr.formatCurrency(params.rawValue);
-			} else if (lang === "fr_CA") {
-				formattedValue = hlpr.formatCurrency(params.rawValue, 2, 3, ' ', ',');
+			console.log(params.rawValue);
+			console.log("is num: " + hlpr.isNumber(params.rawValue));
+
+			if (hlpr.isNumber(params.rawValue) === true) {
+				if (lang === "en_CA" || lang === "en_US") {
+
+					if (params.includeDollarSign === false) {
+						formattedValue = hlpr.formatCurrency(params.rawValue);
+					} else {
+						formattedValue = "$" + hlpr.formatCurrency(params.rawValue);
+					}
+				} else if (lang === "fr_CA") {
+					if (params.includeDollarSign === false) {
+						formattedValue = hlpr.formatCurrency(params.rawValue, 2, 3, ' ', ',');
+					} else {
+						formattedValue = hlpr.formatCurrency(params.rawValue, 2, 3, ' ', ',') + " $";
+					}
+				} else {
+					console.warn("CP_Utils: formatToCurrency: language unrecognized.");
+				}
+
+				if (lang === "en_CA" || lang === "en_US") {
+					if (formattedValue.indexOf('.') === -1) {
+						formattedValue += ".00";
+					}
+				} else if (lang === "fr_CA") {
+					if (formattedValue.indexOf(',') === -1) {
+						formattedValue += ",00";
+					}
+				}
 			} else {
-				console.warn("CP_Utils: formatToCurrency: language unrecognized.");
+				formattedValue = params.rawValue;
 			}
 
 			params.callback(formattedValue);
 		}
 	},
-	onObjectIsEmpty: function(cmp, evt, hlpr) {
+	onObjectIsEmpty: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 
 		if (params) {
@@ -272,7 +298,7 @@
 		}
 
 	},
-	onCalculatePercentage: function(cmp, evt, hlpr) {
+	onCalculatePercentage: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 
 		if (params) {
@@ -283,7 +309,7 @@
 			}
 		}
 	},
-	onFormatToPhone: function(cmp, evt, hlpr) {
+	onFormatToPhone: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments"),
 			lang;
 
