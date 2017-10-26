@@ -1,0 +1,23 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <!-- ATTRS -->
+    <aura:attribute name="pageId" type="String" default="activity-details"></aura:attribute>
+    <aura:attribute name="currentTable" type="String" default="transactions"></aura:attribute>
+
+    <!-- MARKUP -->
+    <div class="igcp-container slds-grid slds-wrap">
+        <div class="slds-size_12-of-12">
+            Header/Sub Nav
+        </div>
+
+        <div class="slds-size_12-of-12">
+            <aura:if isTrue="{!v.currentTable == 'transactions'}">
+                <c:CP_Activity_Transactions />
+            </aura:if>
+
+            <aura:if isTrue="{!v.currentTable == 'instructions'}">
+                <c:CP_Activity_Instructions />
+            </aura:if>
+        </div>
+        <c:CP_Cmp_Modal id="{!v.pageId}" modalType="details"/>
+    </div>
+</aura:component>
