@@ -16,7 +16,7 @@ public class EmailChangeController {
 		Id contId;
 		//updateEmailISAM();
 		updateContactEmail(emailAddr);
-		updateUserEmail(contId);
+		//updateUserEmail(contId);
 
 
 	}
@@ -38,12 +38,15 @@ public class EmailChangeController {
 
     	if(toUpdate = true){
     		update contactToUpdate;
+
     	}
 
 	}
 
 	@future
-	private static void updateUserEmail(Id userContactId){
-		user userToUpdate = [SELECT Id, ContactId,username,email,Contact.AccountId,IsPortalEnabled,IsActive FROM User WHERE Contactid =: userContactId AND isActive = true];
+	private static void updateUserEmail(Id userContactId,String emailAddress){
+		user userToUpdate = [SELECT Id, ContactId,username,Email,Contact.AccountId,IsPortalEnabled,IsActive FROM User WHERE Contactid =: userContactId AND isActive = true];
+		userToUpdate.Email = emailAddress;
+
 	}
 }
