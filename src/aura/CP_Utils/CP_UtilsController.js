@@ -247,16 +247,16 @@
 			if (hlpr.isNumber(params.rawValue) === true) {
 				if (lang === "en_CA" || lang === "en_US") {
 
-					if (params.includeDollarSign === false) {
-						formattedValue = hlpr.formatCurrency(params.rawValue);
-					} else {
+					if(params.includeDollarSign === true) {
 						formattedValue = "$" + hlpr.formatCurrency(params.rawValue);
+					} else {
+						formattedValue = hlpr.formatCurrency(params.rawValue);
 					}
 				} else if (lang === "fr_CA") {
-					if (params.includeDollarSign === false) {
-						formattedValue = hlpr.formatCurrency(params.rawValue, 2, 3, ' ', ',');
-					} else {
+					if (params.includeDollarSign === true) {
 						formattedValue = hlpr.formatCurrency(params.rawValue, 2, 3, ' ', ',') + " $";
+					} else {
+						formattedValue = hlpr.formatCurrency(params.rawValue, 2, 3, ' ', ',');
 					}
 				} else {
 					console.warn("CP_Utils: formatToCurrency: language unrecognized.");

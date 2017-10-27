@@ -261,7 +261,7 @@
 
 				action = component.get("c.getUserFirstName");
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -285,7 +285,7 @@
 
 				action = component.get("c.getUserName");
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -310,7 +310,7 @@
 
 				action = component.get("c.getInvestmentPreviewDTO");
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -335,7 +335,7 @@
 
 				action = component.get("c.getMortgagePreviewDTO");
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -361,7 +361,7 @@
 
 				action = component.get("c.getInsurancePreviewDTO");
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -388,7 +388,7 @@
 
 				action = component.get("c.getAssetMixAggregate");
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -416,7 +416,7 @@
 
 				action.setParams({ accountNumber: params.accountNumber });
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -444,7 +444,7 @@
 
 				action.setParams({ accountNumber: params.accountNumber });
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -473,7 +473,7 @@
 
 				action.setParams({ accountNumber: params.accountNumber });
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -502,7 +502,7 @@
 
 				action.setParams({ accountNumber: params.accountNumber });
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -531,7 +531,7 @@
 
 				action.setParams({ accountNumber: params.accountNumber });
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -560,7 +560,7 @@
 
 				action.setParams({ accountNumber: params.accountNumber });
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -586,7 +586,7 @@
 
 				action = component.get("c.getUserInfoDTO");
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
