@@ -44,6 +44,7 @@ p {
 	font-family: $ig-whitney-book;
 	font-size: $ig-font-size--base;
 	letter-spacing: $ig-letter-spacing;
+	line-height: $ig-line-height--base;
 }
 
 body {
@@ -70,8 +71,17 @@ label {
 	border-radius: 0.25rem;
 }
 
-dl dt {
-    font-weight: 100
+dl {
+	dt {
+		font-weight: 100;
+		line-height: 18px;
+		margin-bottom: $ig-space--x-small;
+	}
+
+	dd {
+		line-height: 18px;
+		margin-bottom: $ig-space--x-small;
+	}
 }
 
 table {

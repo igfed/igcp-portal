@@ -17,7 +17,7 @@
     <aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}" />
     
     <!-- MARKUP -->
-    <div class="{!v.class}">
+    <div id="{!v.id}" class="{!v.class}">
         <div class="slds-form-element">
             <div class="slds-form-element__control">
                 <span class="slds-checkbox">

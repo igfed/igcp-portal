@@ -35,7 +35,7 @@
 	<aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}" />
 	
 	<!-- MARKUP -->
-	<div class="{!v.class}">
+	<div id="{!v.id}" class="{!v.class}">
 		
 		<!-- ICON -->
 		<aura:renderIf isTrue="{!v.icon}">

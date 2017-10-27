@@ -124,5 +124,14 @@
 		<aura:attribute name="callback" type="function" default="" />
 		<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
 	</aura:method>
+
+	<!-- SCROLL TO -->
+	<!-- Animated scroll using jQuery-->
+	<aura:method name="scrollTo" action="{!c.onScrollTo}">
+		<aura:attribute name="id" type="String" ></aura:attribute>
+		<aura:attribute name="pos" type="String" default="0"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+		<aura:attribute name="speed" type="String" default="500"></aura:attribute>
+	</aura:method>
 	
 </aura:component>

@@ -5,6 +5,8 @@
 	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="inputsReceived" type="Integer" default="2"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
+	<aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
+	<aura:attribute name="errIdArr" type="List" default="[]"></aura:attribute>
 
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String"></aura:attribute>
@@ -29,6 +31,7 @@
 	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Selector_Change" action="{!c.onInputSelectorReceived}" />

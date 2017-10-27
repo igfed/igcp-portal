@@ -52,7 +52,8 @@ h4 {
 p {
   font-family: "WhitneyBook", Arial, sans-serif;
   font-size: 16px;
-  letter-spacing: 0px; }
+  letter-spacing: 0px;
+  line-height: 24px; }
 
 body {
   font-family: "WhitneyBook", Arial, sans-serif;
@@ -75,7 +76,12 @@ label {
   border-radius: 0.25rem; }
 
 dl dt {
-  font-weight: 100; }
+  font-weight: 100;
+  line-height: 18px;
+  margin-bottom: 12px; }
+dl dd {
+  line-height: 18px;
+  margin-bottom: 12px; }
 
 table {
   width: 100%; }
@@ -2532,6 +2538,10 @@ table {
     left: 50%;
     transform: translateX(-50%); }
 
+  .igcp-utils__center--relative {
+    position: relative;
+    margin: 0 auto; }
+
   .igcp-utils__center--vertical {
     position: absolute;
     top: 50%;
@@ -2784,6 +2794,10 @@ table {
     position: absolute;
     left: 50%;
     transform: translateX(-50%); }
+
+  .igcp-small-utils__center--relative {
+    position: relative;
+    margin: 0 auto; }
 
   .igcp-small-utils__center--vertical {
     position: absolute;
@@ -3038,6 +3052,10 @@ table {
     left: 50%;
     transform: translateX(-50%); }
 
+  .igcp-medium-utils__center--relative {
+    position: relative;
+    margin: 0 auto; }
+
   .igcp-medium-utils__center--vertical {
     position: absolute;
     top: 50%;
@@ -3290,6 +3308,10 @@ table {
     position: absolute;
     left: 50%;
     transform: translateX(-50%); }
+
+  .igcp-large-utils__center--relative {
+    position: relative;
+    margin: 0 auto; }
 
   .igcp-large-utils__center--vertical {
     position: absolute;

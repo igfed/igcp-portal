@@ -296,6 +296,12 @@
 			transform: translateX(-50%);
 		}
 
+		.#{getNamespace($value)}-utils__center--relative {
+			position: relative;
+			margin: 0 auto;
+		}
+
+
 		.#{getNamespace($value)}-utils__center--vertical {
 			position: absolute;
 			top: 50%;

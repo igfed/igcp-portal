@@ -116,13 +116,17 @@
 			inputs = cmp.get("v.inputsReceived"),
 			formattedDob = "";
 
-		hlpr.validateInput(cmp, evt.getParam("payload"));
+		hlpr.validateInput(cmp, evt.getParam("payload"), function(id){
+			var errIdArr = cmp.get("v.errIdArr");
+			errIdArr.push(id);
+			cmp.set("v.errIdArr", errIdArr);
+		});
 
 		cmp.set("v.inputsReceived", (inputs += 1));
 
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
-		if (cmp.get("v.inputsReceived") === 8 && cmp.get("v.inputErrors") === false) {
+		if (cmp.get("v.inputsReceived") === 11 && cmp.get("v.inputErrors") === false) {
 
 			utils.convertToYMD(cmp.get("v.dob"), function(value) {
 				formattedDob = value;
@@ -151,6 +155,9 @@
 			});
 
 			cmp.onSubmitForm();
+		} else if (cmp.get("v.inputsReceived") === 11 && cmp.get("v.inputErrors") === true) {
+			utils.scrollTo("#" + cmp.get("v.errIdArr")[0]);
+			cmp.set("v.errIdArr", []);
 		}
 	},
 	onInputBlur: function(cmp, evt, hlpr) {
@@ -228,6 +235,11 @@
 			hlpr.validateUsername(cmp, payload);
 		} else if (payload.id === "password-input") {
 			hlpr.validatePassword(cmp, payload);
+		}
+	},
+	doneRendering: function(cmp, evt, hlpr) {
+		if(cmp.get("v.renderComplete") === false) {
+			cmp.set("v.renderComplete", true);
 		}
 	}
 })

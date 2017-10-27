@@ -324,5 +324,39 @@
 				console.warn("CP_Utils: formatToPhone: language unrecognized.");
 			}
 		}
+	},
+	onScrollTo: function (cmp, evt, hlpr) {
+
+		var params = evt.getParam("arguments");
+		if (params) {
+			var 
+				speed = params.speed,
+				pos = params.pos;
+
+			if (params.id === "html, body" || params.id === "html" || params.id === "body") {
+				$( "html, body" ).animate({
+					scrollTop: pos
+				  }, {
+					duration: speed,
+					complete: function() {
+					  if(params.callback) {
+						  params.callback();
+					  }
+					}
+				  });
+			} else {
+				console.log(params.id);
+				$( "html, body" ).animate({
+					scrollTop: $(params.id).offset().top
+				  }, {
+					duration: speed,
+					complete: function() {
+					  if(params.callback) {
+						  params.callback();
+					  }
+					}
+				  });
+			}
+		}
 	}
 })
