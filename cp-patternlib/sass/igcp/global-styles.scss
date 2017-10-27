@@ -682,9 +682,6 @@
 	}
 }
 
-//GRAPH
-.#{$namespace}-graph__doughnut-legend {}
-
 //TABLES
 .#{$namespace}-table {
 	width: 100%;
@@ -735,5 +732,12 @@
 				display: table-cell;
 			}
 		}
+	}
+}
+
+//ADDRESS
+.#{$namespace}-address {
+	p {
+		line-height: 20px;
 	}
 }

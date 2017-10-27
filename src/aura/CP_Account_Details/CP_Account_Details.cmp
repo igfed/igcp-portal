@@ -60,7 +60,7 @@
 					<div class="igcp-separator--large slds-size_12-of-12 slds-m-vertical--xxx-small slds-large-m-vertical--large "></div>
 					<div class="slds-grid slds-wrap">
 						
-						<c:CP_Cmp_Name_Value_List id="account-list" gridSizing="6"/>
+						<c:CP_Cmp_Name_Value_List id="account-list" gridSizing="6" class="slds-m-vertical--small"/>
 						
 					</div>
 				</div>

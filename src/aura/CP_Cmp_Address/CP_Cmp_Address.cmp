@@ -9,10 +9,10 @@
     <aura:attribute name="postalCode" type="String" default="L3Y 5Y5"></aura:attribute>
 
     <!-- MARKUP -->
-    <div class="{!v.class}">
+    <div class="{!'igcp-address ' + v.class}">
         <h3 class="igcp-label--small igcp-utils__width--full slds-m-bottom--zero slds-float_left">{!v.label}</h3>
-        <p class="igcp-utils__width--full igcp-utils__font-size--medium igcp-utils__line-height--regular">{!v.street},</p>
-        <p class="igcp-utils__width--full igcp-utils__font-size--medium igcp-utils__line-height--regular">{!v.city + ', ' + v.province}</p>
-        <p class="igcp-utils__width--full igcp-utils__font-size--medium igcp-utils__line-height--regular">{!v.postalCode}</p>
+        <p class="igcp-utils__width--full slds-">{!v.street},</p>
+        <p class="igcp-utils__width--full">{!v.city + ', ' + v.province}</p>
+        <p class="igcp-utils__width--full">{!v.postalCode}</p>
     </div>
 </aura:component>

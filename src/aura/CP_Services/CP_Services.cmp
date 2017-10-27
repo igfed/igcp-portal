@@ -133,4 +133,11 @@
 		<aura:attribute name="errorCB" type="function" default="" />
 	</aura:method>
 
+	<!-- UPDATE ASSETS -->
+	<aura:method name="updateAssets" action="{!c.onUpdateAssets}">
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
 </aura:component>

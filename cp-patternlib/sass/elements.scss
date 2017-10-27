@@ -45,6 +45,7 @@ p {
 	font-size: $ig-font-size--base;
 	letter-spacing: $ig-letter-spacing;
 	line-height: $ig-line-height--base;
+	margin: 0;
 }
 
 body {
@@ -72,6 +73,9 @@ label {
 }
 
 dl {
+
+	margin: 0;
+
 	dt {
 		font-weight: 100;
 		line-height: 18px;

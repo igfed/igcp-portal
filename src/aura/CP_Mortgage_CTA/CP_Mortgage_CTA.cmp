@@ -2,13 +2,20 @@
 	
 	<!-- ATTRS -->
 	<aura:attribute name="lang" type="String"></aura:attribute>
+    <aura:attribute name="image" type="String" default="/igcp-resources/images/overview/painting-man.png"></aura:attribute>
+    <aura:attribute name="title" type="String" default="Tax Season 2017"></aura:attribute>
+    <aura:attribute name="copy" type="String" default="Get quick access to your tax documents. Opt-in for eStatements today."></aura:attribute>
+    <aura:attribute name="buttonCopy" type="String" default="Learn More"></aura:attribute>
+    <aura:attribute name="link" type="String" default="#"></aura:attribute>
+    
 
 	<!-- MARKUP -->
     <div class="igcp-cta igcp-container slds-p-around--medium slds-m-bottom--zero slds-large-m-bottom--medium slds-m-right_none">
-        <c:CP_Cmp_Card image="{!$Resource.igcpresources + '/igcp-resources/images/overview/painting-man.png'}"
-            title="Tax Season 2017"
-            copy="Get quick access to your tax documents. Opt-in for eStatements today."
-            buttonCopy="Learn More" 
-            buttonLink="#"/>
+        <c:CP_Cmp_Card 
+            image="{!$Resource.igcpresources + v.image}"
+            title="{!v.title}"
+            copy="{!v.copy}"
+            buttonCopy="{!v.buttonCopy}" 
+            buttonLink="{!v.link}"/>
     </div>
 </aura:component>

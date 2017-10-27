@@ -11,7 +11,9 @@
 			try {
 				action = component.get("c." + params.serviceName);
 
-				action.setParams({ payload: JSON.stringify(component.get("v.payload")) });
+				action.setParams({
+					payload: JSON.stringify(component.get("v.payload"))
+				});
 
 				// Create a callback that is executed after 
 				// the server-side action returns
@@ -95,7 +97,9 @@
 			try {
 				action = component.get("c.getSecurityQuestions");
 
-				action.setParams({ payload: JSON.stringify(component.get("v.payload")) });
+				action.setParams({
+					payload: JSON.stringify(component.get("v.payload"))
+				});
 
 				// Create a callback that is executed after 
 				// the server-side action returns
@@ -177,7 +181,9 @@
 
 			try {
 				action = component.get("c.getSecurityQuestion");
-				action.setParams({ payload: JSON.stringify(component.get("v.payload")) });
+				action.setParams({
+					payload: JSON.stringify(component.get("v.payload"))
+				});
 
 				// Create a callback that is executed after 
 				// the server-side action returns
@@ -414,7 +420,9 @@
 
 				action = component.get("c.getAccountDetailDTO");
 
-				action.setParams({ accountNumber: params.accountNumber });
+				action.setParams({
+					accountNumber: params.accountNumber
+				});
 
 				hlpr.setCallbackPromise(
 					params,
@@ -442,7 +450,9 @@
 
 				action = component.get("c.getInvestmentProfileDTO");
 
-				action.setParams({ accountNumber: params.accountNumber });
+				action.setParams({
+					accountNumber: params.accountNumber
+				});
 
 				hlpr.setCallbackPromise(
 					params,
@@ -471,7 +481,9 @@
 
 				action = component.get("c.getHoldingsDTOList");
 
-				action.setParams({ accountNumber: params.accountNumber });
+				action.setParams({
+					accountNumber: params.accountNumber
+				});
 
 				hlpr.setCallbackPromise(
 					params,
@@ -500,7 +512,9 @@
 
 				action = component.get("c.getTransactionsDTOList");
 
-				action.setParams({ accountNumber: params.accountNumber });
+				action.setParams({
+					accountNumber: params.accountNumber
+				});
 
 				hlpr.setCallbackPromise(
 					params,
@@ -529,7 +543,9 @@
 
 				action = component.get("c.getInstructionsDTOList");
 
-				action.setParams({ accountNumber: params.accountNumber });
+				action.setParams({
+					accountNumber: params.accountNumber
+				});
 
 				hlpr.setCallbackPromise(
 					params,
@@ -558,7 +574,9 @@
 
 				action = component.get("c.getAccountPerformance");
 
-				action.setParams({ accountNumber: params.accountNumber });
+				action.setParams({
+					accountNumber: params.accountNumber
+				});
 
 				hlpr.setCallbackPromise(
 					params,
@@ -673,7 +691,9 @@
 
 			try {
 				action = component.get("c.getMortgageDetailDTO");
-				action.setParams({ loanNumber: params.loanNumber });
+				action.setParams({
+					loanNumber: params.loanNumber
+				});
 				hlpr.setCallbackPromise(
 					params,
 					action,
@@ -683,6 +703,32 @@
 				);
 			} catch (err) {
 				console.error("CP_Services: onGetMortgageDetail: controller not found, make sure it is attached to parent component.");
+				console.log(err);
+			}
+		}
+	},
+	onUpdateAssets: function (cmp, evt, hlpr) {
+
+		var params = evt.getParam("arguments");
+		if (params) {
+			var
+				component = params.component,
+				action;
+
+			try {
+				action = component.get("c.UpdateAssets");
+				action.setParams({
+					payload: params.payload
+				});
+				hlpr.setCallbackPromise(
+					params,
+					action,
+					this,
+					"Unable to update assets",
+					"no-assets"
+				);
+			} catch (err) {
+				console.error("CP_Services: onUpdateAssets: controller not found, make sure it is attached to parent component.");
 				console.log(err);
 			}
 		}
