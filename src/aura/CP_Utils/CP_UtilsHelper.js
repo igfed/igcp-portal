@@ -8,6 +8,9 @@
 
 		callback(hasVal);
 	},
+	isNumber: function(val) {
+		return /^-{0,1}\d*\.{0,1}\d+$/.test(val);
+	},
 	checkType: function(obj, callback){
 		callback(typeof obj);
 	},
@@ -28,8 +31,10 @@
 
 			if(rawValArr[rawValArr.length - 1].length >= 3) {
 				rawVal = Number(rawVal.slice(0, -1));
+			} else {
+				rawVal = Number(rawVal);
 			}
-		} 
+		}
 
 		//if decimalPos is not defined, default to 2
 		decimalPos = decimalPos || 2;
@@ -41,9 +46,9 @@
 
 		formattedValue = (decimalDelimiter ? num.replace('.', decimalDelimiter) : num).replace(new RegExp(re, 'g'), '$&' + (commaDelimeter || ','));
 
-		if(formattedValue.indexOf('.') === -1) {
-			formattedValue += ".00";
-		}
+		// if(formattedValue.indexOf('.') === -1) {
+		// 	formattedValue += ".00";
+		// }
 
 		//Examples
 		//12345678.9.formatCurrency(2, 3, '.', ','); // "12.345.678,90"

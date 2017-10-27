@@ -10,18 +10,20 @@
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="registration"></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-utils__overflow--hidden"></aura:attribute>
-	<aura:attribute name="currentStep" type="Integer" default="2"></aura:attribute>
+	<aura:attribute name="currentStep" type="Integer" default="0"></aura:attribute>
 	
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default="" />
 	<aura:attribute name="postalCode" type="String" default="" />
 	<aura:attribute name="dob" type="String" default="" />
 	<aura:attribute name="lang" type="String"></aura:attribute>
+
 	<!-- Step 2 -->
 	<aura:attribute name="username" type="String" default="" />
 	<aura:attribute name="password" type="String" default="" />
 	<aura:attribute name="confirmPassword" type="String" default="" />
 	<aura:attribute name="email" type="String" default="" />
+	<aura:attribute name="emailConfirm" type="String" default="" />
 	<aura:attribute name="emailOptIn" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="mobilePhone" type="String" default="" />
 	<aura:attribute name="securityQuestion1" type="String" default=""></aura:attribute>
@@ -30,8 +32,10 @@
 	<aura:attribute name="answer2" type="String"></aura:attribute>
 	<aura:attribute name="securityQuestion3" type="String" default=""></aura:attribute>
 	<aura:attribute name="answer3" type="String"></aura:attribute>
+
 	<!-- Step 3 -->
 	<aura:attribute name="acceptTOS" type="Boolean" default="false"></aura:attribute>
+
 	<!-- HANDLERS -->
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 	<aura:handler event="c:CP_Evt_Start" action="{!c.onStartRegistration}"></aura:handler>
@@ -39,6 +43,7 @@
 	<aura:handler event="c:CP_Evt_Back_Step" action="{!c.onBackStep}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Error_Locked_Out" action="{!c.onLockedOut}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Error_Not_Completed" action="{!c.onNotCompleted}"></aura:handler>
+	
 	<!-- COMPONENTS -->
 	<div class="{!v.class}">
 		<aura:if isTrue="{!v.currentStep == 0}">
@@ -56,7 +61,8 @@
 				username="{!v.username}" 
 				password="{!v.password}" 
 				confirmPassword="{!v.confirmPassword}" 
-				email="{!v.email}" 
+				email="{!v.email}"
+				emailConfirm="{!v.emailConfirm}" 
 				emailOptIn="{!v.emailOptIn}" 
 				mobilePhone="{!v.mobilePhone}" 
 				securityQuestion1="{!v.securityQuestion1}" 
@@ -75,6 +81,7 @@
 				password="{!v.password}" 
 				confirmPassword="{!v.confirmPassword}" 
 				email="{!v.email}" 
+				emailConfirm="{!v.emailConfirm}" 
 				emailOptIn="{!v.emailOptIn}" 
 				mobilePhone="{!v.mobilePhone}" 
 				securityQuestion1="{!v.securityQuestion1}" 

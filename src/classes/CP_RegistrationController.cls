@@ -57,7 +57,7 @@ public class CP_RegistrationController {
             if(response.State.IsValid)
             {
                 // Call the Registration class's verification method by passing in the Deserialized User profile object and get a result Object in return
-                response.State = Registration.verifyProfile(objForm.Profile, objForm.Identity.clientNum);
+                response.State = Registration.verifyProfile(objForm);
             }
         }
         catch(exception e)

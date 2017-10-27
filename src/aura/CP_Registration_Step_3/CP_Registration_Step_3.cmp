@@ -16,6 +16,7 @@
 	<aura:attribute name="password" type="String" default="" />
 	<aura:attribute name="confirmPassword" type="String" default="" />
 	<aura:attribute name="email" type="String" default="" />
+	<aura:attribute name="emailConfirm" type="String" default="" />
 	<aura:attribute name="emailOptIn" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="mobilePhone" type="String" default="" />
 	<aura:attribute name="securityQuestion1" type="String" default=""></aura:attribute>

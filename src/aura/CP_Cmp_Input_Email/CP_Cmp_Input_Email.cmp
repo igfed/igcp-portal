@@ -1,0 +1,78 @@
+<aura:component >
+	
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
+
+	<!-- ATTRS -->
+	<aura:attribute name="id" type="String" default="default"></aura:attribute>
+	<aura:attribute name="form" type="String" default="default"></aura:attribute>
+	<aura:attribute name="type" type="String" default="email-confirm"></aura:attribute>
+	<aura:attribute name="confirmField" type="Boolean" default="true"></aura:attribute>
+	<aura:attribute name="inputValueConfirm" type="String" default="" />
+	<aura:attribute name="label" type="String" />
+	<aura:attribute name="icon" type="String" />
+	<aura:attribute name="placeholder" type="String" default="" />
+	<aura:attribute name="helpText" type="String" />
+	<aura:attribute name="helpLink" type="String" default="#" />
+	<aura:attribute name="errorIconClass" type="String" default="igcp-utils__display--none slds-input__icon slds-input__icon--error"></aura:attribute>
+	<aura:attribute name="errorText" type="String" default="This is a required field" />
+	<aura:attribute name="required" type="Boolean" default="false" />
+	<aura:attribute name="class" type="String" default="slds-form-element slds-clearfix" />
+	<aura:attribute name="tooltip" type="String" />
+	<aura:attribute name="instructions" type="List" />
+	<aura:attribute name="inputValue" type="String" default=""></aura:attribute>
+	<aura:attribute name="maxLength" type="Integer" default="254"></aura:attribute>
+	<aura:attribute name="example" type="String" default=""></aura:attribute>
+	<aura:attribute name="hasFocus" type="Boolean" default="false" />
+	<aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
+
+	<!-- HANDLERS -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
+	<aura:handler event="c:CP_Evt_Set_Input_Value" action="{!c.onSetValue}" />
+	<aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}" />
+	<aura:handler event="c:CP_Evt_Input_Valid" action="{!c.onValid}" />
+	<aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}" />
+	
+	<!-- MARKUP -->
+	<div class="{!v.class}">
+		<aura:renderIf isTrue="{!v.icon}">
+			<lightning:icon iconName="{!v.icon}" size="small" class="slds-m-right--xx-small" alternativeText="{!v.label}" />
+		</aura:renderIf>
+		<label class="slds-form-element__label input-label" for="text-input">{!v.label}
+			<aura:renderIf isTrue="{!v.tooltip}">
+				<c:CP_Cmp_Tooltip tooltip="{!v.tooltip}" />
+			</aura:renderIf>
+			<span>{!v.example}</span>
+		</label>
+		<aura:renderIf isTrue="{!v.instructions}">
+			<ul class="igcp-utils__bullets--disc slds-m-bottom--xx-small">
+				<aura:iteration items="{!v.instructions}" var="item">
+					<li class="igcp-utils__font-size--x-small">{!item}</li>
+				</aura:iteration>
+			</ul>
+		</aura:renderIf>
+		<div class="slds-form-element__control">
+			<!-- INPUT -->
+			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" keypress="{!c.onHandleKey}" keydown="{!c.onHandleKey}" keyup="{!c.onHandleKey}" blur="{!c.onBlur}" />
+		</div>
+		<aura:renderIf isTrue="{!v.helpText}">
+			<div class="igcp-input__help-link slds-float--right">
+				<a class="igcp-link__variant--a igcp-underline" href="{!v.helpLink}">{!v.helpText}</a>
+			</div>
+		</aura:renderIf>
+	</div>
+
+	<aura:renderIf isTrue="{!v.confirmField}">
+		<div class="{!v.class}">
+			<label class="slds-form-element__label input-label" for="text-confirm-input">Confirm {!v.label}
+				<span>{!v.example}</span>
+			</label>
+			<div class="slds-form-element__control">
+				<!-- INPUT -->
+				<ui:inputText aura:id="text-confirm-input" label="" value="{!v.inputValueConfirm}" class="slds-input igcp-input" required="{!v.required}" blur="{!c.onBlur}" />
+			</div>
+		</div>
+	</aura:renderIf>
+</aura:component>

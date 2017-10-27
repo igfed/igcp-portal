@@ -1,5 +1,5 @@
 ({
-	onInit: function(cmp, evt, hlpr) {
+	onInit: function (cmp, evt, hlpr) {
 		if (cmp.get("v.id") === "default") {
 			console.error("CP_Cmp_Input_Text: A unique 'id' is required.");
 		}
@@ -8,7 +8,7 @@
 			console.error("CP_Cmp_Input_Text: Input needs to be associated with a 'form'.")
 		}
 	},
-	doneRendering: function(cmp, evt, hlpr) {
+	doneRendering: function (cmp, evt, hlpr) {
 		if (cmp.get("v.renderComplete") === false) {
 			if (cmp.get("v.hasFocus") === true) {
 				cmp.find("text-input").getElement().focus();
@@ -16,7 +16,7 @@
 			cmp.set("v.renderComplete", true);
 		}
 	},
-	onGetValue: function(cmp, evt, hlpr) {
+	onGetValue: function (cmp, evt, hlpr) {
 
 		var
 			events = cmp.find('CP_Events'),
@@ -27,11 +27,12 @@
 			events.fire("CP_Evt_Send_Input_Value", {
 				"id": cmp.get("v.id"),
 				"type": cmp.get("v.type"),
-				"value": cmp.get("v.inputValue") === undefined ? "" : cmp.get("v.inputValue")
+				"value": cmp.get("v.inputValue") === undefined ? "" : cmp.get("v.inputValue"),
+				"confirmValue": cmp.get("v.inputValueConfirm")
 			});
 		}
 	},
-	onSetValue: function(cmp, evt, hlpr) {
+	onSetValue: function (cmp, evt, hlpr) {
 
 		var payload = evt.getParam("payload");
 
@@ -40,7 +41,7 @@
 		}
 
 	},
-	onValid: function(cmp, evt, hlpr) {
+	onValid: function (cmp, evt, hlpr) {
 
 		if (cmp.get("v.id") === evt.getParam("payload").id) {
 
@@ -55,8 +56,7 @@
 
 		}
 	},
-	onError: function(cmp, evt, hlpr) {
-
+	onError: function (cmp, evt, hlpr) {
 
 		var
 			payload = evt.getParam("payload"),
@@ -66,33 +66,24 @@
 
 		if (cmp.get("v.id") === payload.id) {
 
-			console.log('id', cmp.get('v.id'))
-
 			//show error icon
 			cmp.set("v.errorIconClass", "igcp-utils__display--block slds-input__icon slds-input__icon--error");
 
 			if (errors.length > 0) {
-				errors.forEach(function(item, i) {
+				errors.forEach(function (item, i) {
 					errorArr.push({ message: item.msg });
 				});
 
-				if(errors[0].type == 'emailsMatch') {
-					field = cmp.find("text-confirm-input");
-				}else{
-					field = cmp.find("text-input");
-				}
-				
+				field = cmp.find("text-input");
 				field.set("v.errors", errorArr);
-			}		
-
-			
+			}
 		}
 	},
-	onHandleKey: function(cmp, evt, hlpr) {
+	onHandleKey: function (cmp, evt, hlpr) {
 		//Needed to override default behaviour
 		evt.preventDefault();
 	},
-	onBlur: function(cmp, evt, hlpr) {
+	onBlur: function (cmp, evt, hlpr) {
 		var events = cmp.find("CP_Events");
 		events.fire("CP_Evt_Input_Blur", {
 			"id": cmp.get("v.id"),
@@ -100,13 +91,13 @@
 			"value": cmp.get("v.inputValue") === undefined ? "" : cmp.get("v.inputValue")
 		});
 	},
-	onConfirmationBlur: function(cmp, evt, hlpr) {
-		var events = cmp.find("CP_Events");
-		events.fire("CP_Evt_Input_Blur", {
-			"id": cmp.get("v.id"),
-			"type": "email-confirm",
-			"value": cmp.get("v.inputValue"),
-			"confirmValue": cmp.get("v.inputValueConfirm")
-		});
+	onConfirmationBlur: function (cmp, evt, hlpr) {
+		// var events = cmp.find("CP_Events");
+		// events.fire("CP_Evt_Input_Blur", {
+		// 	"id": cmp.get("v.id"),
+		// 	"type": "email-confirm",
+		// 	"value": cmp.get("v.inputValue"),
+		// 	"confirmValue": cmp.get("v.inputValueConfirm")
+		// });
 	}
 })

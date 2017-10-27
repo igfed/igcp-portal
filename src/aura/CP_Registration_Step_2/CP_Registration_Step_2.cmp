@@ -16,6 +16,7 @@
 	<aura:attribute name="password" type="String" />
 	<aura:attribute name="confirmPassword" type="String" />
 	<aura:attribute name="email" type="String" />
+	<aura:attribute name="emailConfirm" type="String" default="" />
 	<aura:attribute name="emailOptIn" type="Boolean"></aura:attribute>
 	<aura:attribute name="mobilePhone" type="String" default="" />
 	<aura:attribute name="securityQuestion1" type="String"></aura:attribute>
@@ -28,7 +29,6 @@
 	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
-	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Selector_Change" action="{!c.onInputSelectorReceived}" />
@@ -37,7 +37,6 @@
 	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
 	<aura:handler event="c:CP_Evt_Key" action="{!c.onKey}" />
 
-	
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
@@ -74,7 +73,7 @@
 				<c:CP_Cmp_Input_Password id="password-input" form="{!v.pageId}" type="password" confirmPassword="true" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Password}" />
 				
 				<!-- EMAIL -->
-				<c:CP_Cmp_Input_Text id="email-input" form="{!v.pageId}" type="email" confirmField="true" label="{!$Label.c.CP_Generic_Label_Email}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Email}"/>
+				<c:CP_Cmp_Input_Email id="email-input" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Email}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Email}"/>
 				
 				<!-- NEWS OPT IN  -->
 				<c:CP_Cmp_Input_Checkbox id="news-offers-opt" form="{!v.pageId}" class="slds-size_12-of-12 slds-large-size_9-of-12" copy="{!$Label.c.CP_Registration_Step_2_Opt_In}" />

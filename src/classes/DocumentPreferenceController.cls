@@ -76,16 +76,13 @@ public class DocumentPreferenceController {
 		System.debug(docPreferencePolicy.size());
 		return docPreferencePolicy;
 
-		policyFinancianAssets = new List<Financial_Asset__c>();
-		policyFinancianAssets = [select Policy_Number__c from Financial_Asset__c where RecordType.Name = 'Policy Asset' AND Customer__c =: contextContactId];
-		return policyFinancianAssets;
 	}
 	private static List<IGDocumentPreference> InvestmentFinancialAsset(){
 		List<Financial_Asset__c> listOfFinancialAssets;
 		Map<String,Financial_Asset__c> mapFinancialAssets;
 		//UserInfo.getUserId()
-		//String contactBpId = IGClientUtils.getClientBpid();
-		String contactBpId = '0003497138';
+		string contactBpId = IGClientUtils.getClientBpid();
+		//String contactBpId = '0003497138';
 		List<Contact> contextContactList = new List<Contact>();
 		contextContactList = [select Id,Business_Partner_ID__c from Contact where Business_Partner_ID__c =: contactBpId];
 		Id contextContactId = contextContactList.get(0).Id;
