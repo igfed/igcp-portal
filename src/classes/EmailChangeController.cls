@@ -38,7 +38,6 @@ public class EmailChangeController {
 
     	if(toUpdate = true){
     		update contactToUpdate;
-
     	}
 
 	}
