@@ -11,8 +11,7 @@
 
 	<!-- MARKUP -->
     <div class="igcp-cta igcp-container slds-p-around--medium slds-m-bottom--zero slds-large-m-bottom--medium slds-m-right_none">
-        <c:CP_Cmp_Card 
-            image="{!$Resource.igcpresources + v.image}"
+        <c:CP_Cmp_Card image="{!$Resource.igcpresources + v.image}"
             title="{!v.title}"
             copy="{!v.copy}"
             buttonCopy="{!v.buttonCopy}" 

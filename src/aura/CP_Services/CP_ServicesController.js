@@ -718,14 +718,15 @@
 			try {
 				action = component.get("c.UpdateAssets");
 				action.setParams({
-					payload: params.payload
+					payload:""
 				});
+
 				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
-					"Unable to update assets",
-					"no-assets"
+					"Assets failed to update.",
+					"unknown-error"
 				);
 			} catch (err) {
 				console.error("CP_Services: onUpdateAssets: controller not found, make sure it is attached to parent component.");

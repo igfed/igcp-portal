@@ -11,7 +11,7 @@ public class IGOnlineStatementsList extends IGRestClient{
 	public List<DTO_OnlineStatement> getListOfStatements(Id contactId){
 		listOfFAs = new List<Financial_Asset__c>();
 		List<DTO_OnlineStatement> rv;
-		listOfFAs = [select Client_Number__c from Financial_Asset__c where Customer__c =: contactId];
+		listOfFAs = [select Client_Number__c from Financial_Asset__c where Customer__c =: contactId AND Client_Number__c != null];
 		System.debug('listOfFAs '+listOfFAs);
 		IGRestClient.Response res  = getServiceData();
 		//client_numbers=123123&client_numbers=1231231
@@ -22,8 +22,14 @@ public class IGOnlineStatementsList extends IGRestClient{
 		           
 	            } else {
 	            	clientStatementData data = (clientStatementData)res;
+
 	            	System.debug('=====> getonlinestatemnet.data: ' + data);
 	            	for(ClientStatementResults eachResult : data.clientStatementResults){
+	            		Datetime temp = Date.valueOf(eachResult.statementdate);
+	            		/*System.debug(Date.valueOf(eachResult.statementdate)+'->>'+String.valueOf(temp.format('MMM')));
+	            		System.debug(temp.format('MMMM D, YYYY'));*/
+	            		eachResult.statementdate = temp.format('MMM')+' '+temp.format('d')+', '+temp.format('YYYY');
+	            		System.debug('date format '+eachResult.statementdate);
 	            		rv.add(new DTO_OnlineStatement(eachResult));
 	            	}
 	            	
@@ -41,6 +47,7 @@ public class IGOnlineStatementsList extends IGRestClient{
 		for(Financial_Asset__c eachFA : listOfFAs){
 			clientNumeberString += 'client_numbers='+eachFA.Client_Number__c+'&';
 		}
+		//clientNumeberString = 'client_numbers=33333'; // this is to test, will change when the service is up.
 		return 'callout:'+IG_OLS_NAMED_CREDS+'/documents/statements/list?'+clientNumeberString+'dates='+testDate;
 	}
 	public override Response parseResponse(String responseBody) {

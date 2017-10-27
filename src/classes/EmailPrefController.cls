@@ -1,4 +1,4 @@
-public with sharing class EmailPrefController {
+public class EmailPrefController {
 
 	/********************************************************************************************************
 	Return Type:		Void
