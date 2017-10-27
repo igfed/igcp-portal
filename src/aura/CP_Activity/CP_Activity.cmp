@@ -1,11 +1,25 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_AccountDetailController">
+   
+   <!-- INCLUDES -->
+	<c:CP_CSS_Includes />
+	<c:CP_JS_Includes />
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Validation aura:id="CP_Validation" />
+	<c:CP_Services aura:id="CP_Services" />
+    
     <!-- ATTRS -->
     <aura:attribute name="pageId" type="String" default="activity-details"></aura:attribute>
+    <aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
     <aura:attribute name="currentTable" type="String" default="transactions"></aura:attribute>
 
+    <!-- HANDLERS -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
+
     <!-- MARKUP -->
-    <div class="igcp-container slds-grid slds-wrap">
-        <div class="slds-size_12-of-12">
+    <div class="igcp-wrapper slds-grid slds-wrap">
+        <div class="igcp-container slds-size_12-of-12">
             Header/Sub Nav
         </div>
 

@@ -26,7 +26,7 @@
 					"CP_Cmp_Table_Row", {
 						"data": row,
 						"style": cmp.get("v.styleConfig"),
-						"dataObj": JSON.stringify(payload.dataObj[i]),
+						"dataObj": payload.dataObj === undefined ? {} : JSON.stringify(payload.dataObj[i]) ,
 						"modalId" : cmp.get("v.modalId")
 					},
 					cmp,
