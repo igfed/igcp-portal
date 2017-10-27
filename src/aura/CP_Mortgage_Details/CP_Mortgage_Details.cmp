@@ -63,35 +63,27 @@
 		<c:CP_Cmp_Modal id="{!v.pageId}" modalType="details"/>
 
 		<div class="slds-size_12-of-12">
-			<c:CP_Cmp_Card_Mortgage title="Be mortgage-free sooner"
-				subtitle="With these 3 simple options"
+			<c:CP_Cmp_Card_Mortgage 
+				title="Be mortgage-free sooner"
+				subtitle="With these three simple options"
 				tiles="{
 					tile1: {
-						image: '/igcp-resources/images/mortgage/stoplight.png',
+						image: '/igcp-resources/images/mortgage/calc.png',
 						title: 'A mortgage that fits your plan',
 						description: 'Use these calculators to determine what type of mortgage you can afford, and what your mortgage payments will be.'
 					},
 					tile2: {
-						image: null,
+						image: '/igcp-resources/images/mortgage/house.png',
 						title: 'The right mortgage...the right rate',
 						description: 'Take advantage of our limited-time mortgage promotions.'
 					},
 					tile3: {
-						image: null,
+						image: '/igcp-resources/images/mortgage/stoplight.png',
 						title: 'Frequently asked questions',
 						description: 'Here are some of our most common mortgage-related questions.'
 					}
 				}"
 			/>
-
-
-			<!--<c:CP_Cmp_Card 
-				image="{!$Resource.igcpresources + '/igcp-resources/images/overview/painting-man.png'}"
-			 	title="Be mortgage-free sooner" 
-				copy=""
-				buttonCopy="Get More Advice" buttonLink=""
-				buttonLink="#"
-				/>-->
 		</div>
 	</div>
 </aura:component>
