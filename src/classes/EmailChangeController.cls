@@ -38,7 +38,6 @@ public class EmailChangeController {
 
     	if(toUpdate = true){
     		update contactToUpdate;
-    		updateUserEmail(contextContactId,emailAddress);
     	}
 
 	}
@@ -47,7 +46,6 @@ public class EmailChangeController {
 	private static void updateUserEmail(Id userContactId,String emailAddress){
 		user userToUpdate = [SELECT Id, ContactId,username,Email,Contact.AccountId,IsPortalEnabled,IsActive FROM User WHERE Contactid =: userContactId AND isActive = true];
 		userToUpdate.Email = emailAddress;
-		update userToUpdate;
 
 	}
 }
