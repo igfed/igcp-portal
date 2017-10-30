@@ -140,4 +140,11 @@
 		<aura:attribute name="errorCB" type="function" default="" />
 	</aura:method>
 
+	<!-- GET ALL FINANCIAL ASSETS -->
+	<aura:method name="getAllFinancialAssets" action="{!c.onGetAllFinancialAssets}">
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
 </aura:component>

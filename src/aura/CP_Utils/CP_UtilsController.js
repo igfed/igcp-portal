@@ -58,7 +58,11 @@
 						// Show error message
 					}
 
-					params.callback({ "component": component, "status": status, "errorMessage": errorMessage });
+					params.callback({
+						"component": component,
+						"status": status,
+						"errorMessage": errorMessage
+					});
 				}
 			);
 		} else {
@@ -203,7 +207,7 @@
 				}
 			}
 
-			window.open("https://fitrp3-isam.investorsgroup.com/", "_self");
+			window.open("https://fitrp3-isam.investorsgroup.com/isam/sps/auth", "_self");
 		} catch (err) {
 			console.error("CP_Utils: gotoLogin: window not found.")
 			console.error(err);
@@ -247,7 +251,7 @@
 			if (hlpr.isNumber(params.rawValue) === true) {
 				if (lang === "en_CA" || lang === "en_US") {
 
-					if(params.includeDollarSign === true) {
+					if (params.includeDollarSign === true) {
 						formattedValue = "$" + hlpr.formatCurrency(params.rawValue);
 					} else {
 						formattedValue = hlpr.formatCurrency(params.rawValue);
@@ -329,33 +333,33 @@
 
 		var params = evt.getParam("arguments");
 		if (params) {
-			var 
+			var
 				speed = params.speed,
 				pos = params.pos;
 
 			if (params.id === "html, body" || params.id === "html" || params.id === "body") {
-				$( "html, body" ).animate({
+				$("html, body").animate({
 					scrollTop: pos
-				  }, {
+				}, {
 					duration: speed,
-					complete: function() {
-					  if(params.callback) {
-						  params.callback();
-					  }
+					complete: function () {
+						if (params.callback) {
+							params.callback();
+						}
 					}
-				  });
+				});
 			} else {
 				console.log(params.id);
-				$( "html, body" ).animate({
+				$("html, body").animate({
 					scrollTop: $(params.id).offset().top
-				  }, {
+				}, {
 					duration: speed,
-					complete: function() {
-					  if(params.callback) {
-						  params.callback();
-					  }
+					complete: function () {
+						if (params.callback) {
+							params.callback();
+						}
 					}
-				  });
+				});
 			}
 		}
 	}

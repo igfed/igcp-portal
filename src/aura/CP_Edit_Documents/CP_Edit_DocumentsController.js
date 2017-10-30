@@ -11,19 +11,18 @@
 
 		if (payload.id === "form_submit") {
 
-			services.updateAssets(
+			services.getAllFinancialAssets(
 				cmp,
 				function (success) {
 					// ToDo: on success logic
-					console.log('edit_docs submitForm():', success)
+					console.info('edit_docs getAllFinancialAssets():', success)
 				},
 				function (error) {
 
 					var
 						events = cmp.find("CP_Events"),
 						services = cmp.find("CP_Services");
-					console.error("CP_Edit_Documents: updateAssets");
-					console.error(error);
+					console.error("CP_Edit_Documents: getAllFinancialAssets", error);			
 
 					/* services.handleServerSideError({
 							"error": error,
