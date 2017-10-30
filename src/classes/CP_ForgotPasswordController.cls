@@ -3,7 +3,6 @@ public with sharing class CP_ForgotPasswordController {
 	@AuraEnabled
     public static string StepOne(String payload)
     {
-        System.debug('I am in Step One');
         CP_ForgotPasswordClass objForm = new CP_ForgotPasswordClass(); 
         CP_Response response = new CP_Response();
         try
@@ -97,7 +96,6 @@ public with sharing class CP_ForgotPasswordController {
     {
         CP_ForgotPasswordClass objForm = new CP_ForgotPasswordClass(); 
         CP_Response response = new CP_Response();
-        System.debug('Step Threeeeeeeeeeeeeeeeeee');
         System.debug(payload);
 
         try

@@ -66,16 +66,20 @@ public class IGClientService {
 		return rv;
 	}
 
-	public static DTO_AccountDetail getAccountDetails(String clientBpid, String accountNumber) {
+	public static DTO_AccountDetail getAccountDetails(String clientBpid, String accountNumberEnc) {
 		DTO_AccountDetail rv = null;
 		if (String.isBlank(clientBpid)) {
 			throw new IGClientServiceException('The client bpid can\'t be null or empty');
+		}
+		String accNumber = IGClientUtils.getAccountNumberFromEnc(accountNumberEnc);
+		if (String.isBlank(accNumber)) {
+			throw new IGClientServiceException('Account number not found');	
 		}
 		IGRestClient client = IGRestClientFactory.getIGRestClient('AccountDetails', WEBSERVICE_NAMED_CREDENTIAL);
 		if (client != null) {
 		    IGAccountDetailClient theClient = (IGAccountDetailClient)client;
 		    theClient.bpid = clientBpid;
-		    theClient.accountNumber = accountNumber;
+		    theClient.accountNumber = accNumber;
 		    IGRestClient.Response res = theClient.getServiceData();
 		    System.debug('=====> getAccountDetails.res: ' + res);
 		    if (res != null) {
@@ -90,7 +94,7 @@ public class IGClientService {
 		            		rv = new DTO_AccountDetail(data.Client.AccountDetails.get(0));
 		            	} else {
 			            	for (IGAccountDetailClient.AccountDetail acctDetail : data.Client.AccountDetails) {
-			            		if (accountNumber == acctDetail.ACCOUNT_NUMBER) {
+			            		if (accNumber == acctDetail.ACCOUNT_NUMBER) {
 			            			rv = new DTO_AccountDetail(acctDetail);
 			            			break;
 			            		}
@@ -103,19 +107,20 @@ public class IGClientService {
 		return rv;
 	}
 
-	public static DTO_InvestmentProfile getInvestmentProfileDTO(String clientBpid, String accountNumber) {
+	public static DTO_InvestmentProfile getInvestmentProfileDTO(String clientBpid, String accountNumberEnc) {
 		DTO_InvestmentProfile rv = null;
 		if (String.isBlank(clientBpid)) {
 			throw new IGClientServiceException('The client business partner id can\'t be null or blank');
 		}
-		if (String.isBlank(accountNumber)) {
-			throw new IGClientServiceException('The account number can\'t be null or blank');
+		String accNumber = IGClientUtils.getAccountNumberFromEnc(accountNumberEnc);
+		if (String.isBlank(accNumber)) {
+			throw new IGClientServiceException('Account number bot found');	
 		}
 		IGRestClient client = IGRestClientFactory.getIGRestClient('InvestmentProfile', WEBSERVICE_NAMED_CREDENTIAL);
 		if (client != null) {
 			IGInvestmentProfileClient theClient = (IGInvestmentProfileClient)client;
 			theClient.bpid = clientBpid;
-			theClient.accountNumber = accountNumber;
+			theClient.accountNumber = accNumber;
 			IGRestClient.Response res = theClient.getServiceData();
 		    System.debug('=====> getAccountDetails.res: ' + res);
 		    if (res != null) {
@@ -130,7 +135,7 @@ public class IGClientService {
 		        			rv = new DTO_InvestmentProfile(data.Client.InvestmentProfiles.get(0));
 		        		} else {
 		        			for (IGInvestmentProfileClient.InvestmentProfile profile : data.Client.InvestmentProfiles) {
-		        				if (accountNumber == profile.ACCOUNT_NUMBER) {
+		        				if (accNumber == profile.ACCOUNT_NUMBER) {
 		        					rv = new DTO_InvestmentProfile(profile);	
 		        					break;
 		        				}
@@ -143,19 +148,20 @@ public class IGClientService {
 		return rv;
 	}
 
-	public static List<DTO_HoldingsDetail> getHoldings(String clientBpid, String accountNumber) {
+	public static List<DTO_HoldingsDetail> getHoldings(String clientBpid, String accountNumberEnc) {
 		List<DTO_HoldingsDetail> rv = new List<DTO_HoldingsDetail>();
 		if (String.isBlank(clientBpid)) {
 			throw new IGClientServiceException('The client business partner id can\'t be null or blank');
 		}
-		if (String.isBlank(accountNumber)) {
-			throw new IGClientServiceException('The account number can\'t be null or blank');
+		String accNumber = IGClientUtils.getAccountNumberFromEnc(accountNumberEnc);
+		if (String.isBlank(accNumber)) {
+			throw new IGClientServiceException('Account number bot found');	
 		}
 		IGRestClient client = IGRestClientFactory.getIGRestClient('Holdings', WEBSERVICE_NAMED_CREDENTIAL);
 		if (client != null) {
 			IGHoldingsClient theClient = (IGHoldingsClient)client;
 			theClient.bpid = clientBpid;
-			theClient.accountNumber = accountNumber;
+			theClient.accountNumber = accNumber;
 			IGRestClient.Response res = theClient.getServiceData();
 		    System.debug('=====> getHoldingsDetailDTO.res: ' + res);
 		    if (res != null) {
@@ -167,7 +173,7 @@ public class IGClientService {
 		        	System.debug('=====> getHoldingsDetailDTO.data: ' + data);
 		        	if (data.Client != null && data.Client.Holdings != null && !data.Client.Holdings.isEmpty()) {
 	        			for (IGHoldingsClient.Holding holding : data.Client.Holdings) {
-	        				if (accountNumber == holding.ACCOUNT_NUMBER) {
+	        				if (accNumber == holding.ACCOUNT_NUMBER) {
 	        					rv.add(new DTO_HoldingsDetail(holding));
 	        				}
 	        			}
@@ -319,19 +325,20 @@ public class IGClientService {
 		return rv;
 	}
 
-	public static List<DTO_TransactionsDetail> getTransactionsDetails(String clientBpid, String accountNumber) {
+	public static List<DTO_TransactionsDetail> getTransactionsDetails(String clientBpid, String accountNumberEnc) {
 		List<DTO_TransactionsDetail> rv = new List<DTO_TransactionsDetail>();
 		if (String.isBlank(clientBpid)) {
 			throw new IGClientServiceException('The client bpid can\'t be null or empty');
 		}
-		if (String.isBlank(accountNumber)) {
-			throw new IGClientServiceException('The account number can\'t be null or empty');	
+		String accNumber = IGClientUtils.getAccountNumberFromEnc(accountNumberEnc);
+		if (String.isBlank(accNumber)) {
+			throw new IGClientServiceException('Account number bot found');	
 		}
 		IGRestClient client = IGRestClientFactory.getIGRestClient('Transactions', WEBSERVICE_NAMED_CREDENTIAL);
 		if (client != null) {
 			IGTransactionsClient theClient = (IGTransactionsClient)client;
 			theClient.bpid = clientBpid;
-			theClient.accountNumber = accountNumber;
+			theClient.accountNumber = accNumber;
 			IGRestClient.Response res = theClient.getServiceData();
 		    System.debug('=====> getTransactionsDetails.res: ' + res);
 		    if (res != null) {
@@ -352,19 +359,20 @@ public class IGClientService {
 		return rv;
 	}
 
-	public static List<DTO_InstructionsDetail> getInstructionsDetails(String clientBpid, String accountNumber) {
+	public static List<DTO_InstructionsDetail> getInstructionsDetails(String clientBpid, String accountNumberEnc) {
 		List<DTO_InstructionsDetail> rv = new List<DTO_InstructionsDetail>();
 		if (String.isBlank(clientBpid)) {
 			throw new IGClientServiceException('The client bpid can\'t be null or empty');
 		}
-		if (String.isBlank(accountNumber)) {
-			throw new IGClientServiceException('The account number can\'t be null or empty');	
+		String accNumber = IGClientUtils.getAccountNumberFromEnc(accountNumberEnc);
+		if (String.isBlank(accNumber)) {
+			throw new IGClientServiceException('Account number bot found');	
 		}
 		IGRestClient client = IGRestClientFactory.getIGRestClient('Instructions', WEBSERVICE_NAMED_CREDENTIAL);
 		if (client != null) {
 			IGInstructionsClient theClient = (IGInstructionsClient)client;
 			theClient.bpid = clientBpid;
-			theClient.accountNumber = accountNumber;
+			theClient.accountNumber = accNumber;
 			IGRestClient.Response res = theClient.getServiceData();
 		    System.debug('=====> getInstructionsDetails.res: ' + res);
 		    if (res != null) {
@@ -385,19 +393,20 @@ public class IGClientService {
 		return rv;
 	}
 
-	public static DTO_AccountPerformance getAccountPerformance(String clientBpid, String accountNumber) {
+	public static DTO_AccountPerformance getAccountPerformance(String clientBpid, String accountNumberEnc) {
 		DTO_AccountPerformance rv = null;
 		if (String.isBlank(clientBpid)) {
 			throw new IGClientServiceException('The client bpid can\'t be null or empty');
 		}
-		if (String.isBlank(accountNumber)) {
-			throw new IGClientServiceException('The account number can\'t be null or empty');	
+		String accNumber = IGClientUtils.getAccountNumberFromEnc(accountNumberEnc);
+		if (String.isBlank(accNumber)) {
+			throw new IGClientServiceException('Account number bot found');	
 		}
 		IGRestClient client = IGRestClientFactory.getIGRestClient('AccountPerformance', WEBSERVICE_NAMED_CREDENTIAL);
 		if (client != null) {
 			IGAccountPerformanceClient theClient = (IGAccountPerformanceClient)client;
 			theClient.bpid = clientBpid;
-			theClient.accountNumber = accountNumber;
+			theClient.accountNumber = accNumber;
 			IGRestClient.Response res = theClient.getServiceData();
 		    System.debug('=====> getAccountPerformance.res: ' + res);
 		    if (res != null) {
@@ -409,7 +418,7 @@ public class IGClientService {
 	            	System.debug('=====> getAccountPerformance.data: ' + data);
 	            	if (data.Client != null && data.Client.AccountPerformances != null && !data.Client.AccountPerformances.isEmpty()) {
 	            		for (IGAccountPerformanceClient.AccountPerformance perf : data.Client.AccountPerformances) {
-	            			if (accountNumber == perf.ACCOUNT_NUMBER) {
+	            			if (accNumber == perf.ACCOUNT_NUMBER) {
 	            				rv = new DTO_AccountPerformance(perf);
 	            				break;
 	            			}
@@ -435,9 +444,9 @@ public class IGClientService {
 		IGRestClient client = IGRestClientFactory.getIGRestClient('ClientRegistration', WEBSERVICE_NAMED_CREDENTIAL);
 		if (client != null) {
 			IGClientRegistrationClient theClient = (IGClientRegistrationClient)client;
-			theClient.dateOfBirth 	 = dateOfBirth;
-			theClient.postalCode 	 = postalCode;
-			theClient.identityNumber = identityNumber;
+			theClient.dateOfBirth 	 = dateOfBirth.trim();
+			theClient.postalCode 	 = postalCode.remove(' ').trim();
+			theClient.identityNumber = identityNumber.trim();
 			IGRestClient.Response res = theClient.getServiceData();
 		    System.debug('=====> getClientRegistrations.res: ' + res);
 		    if (res != null) {

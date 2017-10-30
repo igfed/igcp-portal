@@ -1,4 +1,4 @@
-public with sharing class EmailPrefController {
+public class EmailPrefController {
 
 	/********************************************************************************************************
 	Return Type:		Void
@@ -10,32 +10,37 @@ public with sharing class EmailPrefController {
 	@AuraEnabled
     public static void UpdateAssets(String payload)
     {
+        if(payload !=null || payload != ''){
     	//deseriallize the response from the page to list of EmailPrefResponse object.
-    	System.debug('user id'+IGClientUtils.getClientBpid());
-    	System.debug('payload '+payload);
-    	List<Financial_Asset__c> listOfFinancialAssetsToupdate;
+        	/*System.debug('user id'+IGClientUtils.getClientBpid());
+        	System.debug('payload '+payload);
+        	List<Financial_Asset__c> listOfFinancialAssetsToupdate;
 
-    	//EmailPrefResponse[] listOfFinancialAsset = (EmailPrefResponse[]) JSON.deserialize(payload, List<EmailPrefResponse>.class); 
-        EmailDocumentPreferences listDocumentPrefs = (EmailDocumentPreferences) JSON.deserialize(payload,EmailDocumentPreferences.class);
-        System.debug('listDocumentPrefs '+listDocumentPrefs);
+        	//EmailPrefResponse[] listOfFinancialAsset = (EmailPrefResponse[]) JSON.deserialize(payload, List<EmailPrefResponse>.class); 
+            EmailDocumentPreferences listDocumentPrefs = (EmailDocumentPreferences) JSON.deserialize(payload,EmailDocumentPreferences.class);
+            System.debug('listDocumentPrefs '+listDocumentPrefs);
 
-        listOfFinancialAssetsToupdate = new List<Financial_Asset__c>();
-        listOfFinancialAssetsToupdate.addAll(processLoanRecords(listDocumentPrefs.documentPreferencesLoan,listDocumentPrefs.allDocumentPreference));
-        listOfFinancialAssetsToupdate.addAll(processRecords(listDocumentPrefs.documentPreferences,listDocumentPrefs.allDocumentPreference));
-        listOfFinancialAssetsToupdate.addAll(processPolicyRecords(listDocumentPrefs.documentPreferencesPolicy,listDocumentPrefs.allDocumentPreference));
-        System.debug('listOfFinancialAssetsToupdate'+listOfFinancialAssetsToupdate);
-        /*
-        List<EmailPrefResponse> tempTest = new List<EmailPrefResponse>();
-        tempTest = listDocumentPrefs.documentPreferences;
-        System.debug('list '+ tempTest);
-        listOfFinancialAssetsToupdate  = processRecords(listDocumentPrefs.documentPreferences,listDocumentPrefs.allDocumentPreference);
-        
-         
-        System.debug('to update '+listOfFinancialAssetsToupdate);
-    */
-    	if(listOfFinancialAssetsToupdate.size() > 0){
-    		updateFinancialAssets(listOfFinancialAssetsToupdate);
-    	}
+            listOfFinancialAssetsToupdate = new List<Financial_Asset__c>();
+            listOfFinancialAssetsToupdate.addAll(processLoanRecords(listDocumentPrefs.documentPreferencesLoan,listDocumentPrefs.allDocumentPreference));
+            listOfFinancialAssetsToupdate.addAll(processRecords(listDocumentPrefs.documentPreferences,listDocumentPrefs.allDocumentPreference));
+            listOfFinancialAssetsToupdate.addAll(processPolicyRecords(listDocumentPrefs.documentPreferencesPolicy,listDocumentPrefs.allDocumentPreference));
+            System.debug('listOfFinancialAssetsToupdate'+listOfFinancialAssetsToupdate);*/
+            /* empyyyyyy
+            List<EmailPrefResponse> tempTest = new List<EmailPrefResponse>();
+            tempTest = listDocumentPrefs.documentPreferences;
+            System.debug('list '+ tempTest);
+            listOfFinancialAssetsToupdate  = processRecords(listDocumentPrefs.documentPreferences,listDocumentPrefs.allDocumentPreference);
+            
+             
+            System.debug('to update '+listOfFinancialAssetsToupdate);
+        */
+        	//if(listOfFinancialAssetsToupdate.size() > 0){
+        		//updateFinancialAssets(listOfFinancialAssetsToupdate);
+        	//}
+        }else {
+            System.debug('payload empyty');
+
+        }
 
 
     }

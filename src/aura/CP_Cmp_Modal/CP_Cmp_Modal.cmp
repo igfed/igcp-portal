@@ -23,6 +23,11 @@
 			<aura:if isTrue="{!v.id == 'registration-tos'}">
 				<c:CP_Registration_TOS id="{!v.id}"/>
 			</aura:if>
+			<!-- Todo: v.id == 'editDocuments-tos'> -->
+			<aura:if isTrue="{!v.id == 'editDocument-tos'}">
+				<c:CP_Edit_Documents_TOS id="editDocument-tos"/>
+			</aura:if>
+
 		</div>
 	</aura:if>
 	<!-- small -->

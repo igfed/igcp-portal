@@ -11,7 +11,7 @@
 	<div class="{!v.class}">
 		<a class="{!v.linkClass}">
 			<aura:renderIf isTrue="{!v.icon}">
-                <lightning:icon iconName="{!v.icon}" size="{!v.iconSize}" class="slds-m-right--xx-small" alternativeText="{!v.label}" />
+                <lightning:icon iconName="{!v.icon}" size="{!v.iconSize}" alternativeText="{!v.label}" />
             </aura:renderIf> 
 			{!v.label}
 		</a>

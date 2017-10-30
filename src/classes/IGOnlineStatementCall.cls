@@ -10,10 +10,12 @@ public class IGOnlineStatementCall extends IGOnlineStatementRender {
 		documentId = docId;
 		
 	}
-	public string getPdfContent(){
+	public String getPdfContent(){
 		IGOnlineStatementCall.Response res = getServiceData();
-		System.debug('response '+res);
-		return null;
+		//System.debug('response '+res.Document);
+		IGOnlineStatementCall.Document tempDocument = (IGOnlineStatementCall.Document)res;
+		System.debug(tempDocument.Content);
+		return tempDocument.Content;
 	}
 	
 	public override String getHttpEndPoint() {

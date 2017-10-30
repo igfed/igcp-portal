@@ -13,7 +13,7 @@
 	<!-- HANDLER -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<!-- MARKUP -->
-	<div class="igcp-account__item igcp-underline__thin--grey slds-grid slds-wrap slds-p-horizontal--xx-small slds-medium-p-horizontal--small slds-p-bottom-x-small">
+	<div class="igcp-account__item igcp-underline__thin--grey slds-grid slds-wrap slds-p-horizontal--xx-small slds-medium-p-horizontal--small slds-p-bottom-x-small" onclick="{!c.onItemClick}">
 		
 		<div class="slds-p-vertical--small slds-size_6-of-12"><span class="igcp-utils__colour--link-blue">{!v.accountName}</span></div>
 		

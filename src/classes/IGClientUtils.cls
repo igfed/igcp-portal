@@ -9,16 +9,14 @@ public class IGClientUtils {
 	}
 
 	public static Boolean isValidAccount(String bpid, String accountNumber) {
+		System.debug('=====> isValidAccount - bpid: ' + bpid);
+		System.debug('=====> isValidAccount - accountNumber: ' + accountNumber);
 		Boolean rv = false;
 		if (String.isNotBlank(bpid) && String.isNotBlank(accountNumber)) {
 			DTO_InvestmentsPreview dto = CacheManager.getInvestmentPreviewDTO(bpid);
 			if (dto != null) {
-				for (String accNum : dto.accountNumbers) {
-					if (accountNumber == accNum) {
-						rv = true;
-						break;
-					}
-				}
+				System.debug('=====> isValidAccount - accNumbersMap: ' + dto.accNumbersMap);
+				rv = dto.accNumbersMap.containsKey(accountNumber);
 			}
 		} 
 		return rv;
@@ -99,6 +97,18 @@ public class IGClientUtils {
 	       randStr += chars.substring(idx, idx+1);
 	    }
 	    return randStr; 
+	}
+
+	public static String getAccountNumberFromEnc(String encAccNum) {
+		String rv = null;
+		if (String.isNotBlank(encAccNum)) {
+			String bpid = IGClientUtils.getClientBpid();
+			if (String.isNotBlank(bpid)) {
+				DTO_InvestmentsPreview dto = CacheManager.getInvestmentPreviewDTO(bpid);	
+				rv = dto.accNumbersMap.get(encAccNum);
+			}
+		}
+		return rv;
 	}
 
 }

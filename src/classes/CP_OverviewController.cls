@@ -12,12 +12,15 @@ public with sharing class CP_OverviewController {
 
     @AuraEnabled
     public static DTO_InvestmentsPreview getInvestmentPreviewDTO() {
+    	/*
         DTO_InvestmentsPreview rv;
         String bpid = CP_OverviewController.getClientBPID();
         if (String.isNotBlank(bpid)) {
             rv = IGClientService.getInvestmentsPreview(bpid);
         }
         return rv;
+        */
+        return CP_OverviewController.getInvestmentPreviewDTOFromCache();
     }
     
     @AuraEnabled

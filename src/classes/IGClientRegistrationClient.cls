@@ -41,6 +41,9 @@ public with sharing class IGClientRegistrationClient extends IGRestClient {
 		public String CLIENT_TYPE;	
 		public String DECEASED_INDICATOR;
 		public String UNLOCATED_INDICATOR;
+		public String ACTIVE_INVESTMENT;
+		public String ACTIVE_INSURANCE;
+		public String ACTIVE_MORTGAGE;
 		public String MATCH_TYPE;
 	}
 }

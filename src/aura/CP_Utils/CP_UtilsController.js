@@ -58,7 +58,11 @@
 						// Show error message
 					}
 
-					params.callback({ "component": component, "status": status, "errorMessage": errorMessage });
+					params.callback({
+						"component": component,
+						"status": status,
+						"errorMessage": errorMessage
+					});
 				}
 			);
 		} else {
@@ -138,11 +142,16 @@
 			var
 				component = params.component,
 				timer = setInterval(function () {
-					if (component.get(params.attr) !== null) {
+					if (component.get(params.attr) !== null || component.get(params.attr) !== undefined) {
 						params.callback(component.get(params.attr));
 						clearInterval(timer);
 					}
 				}, 500);
+
+			// setTimeout(function(){
+			// 	clearInterval(timer);
+			// 	params.timeoutCallback(params.attr + " is still not defined and has timed out after 15 seconds.");
+			// }, 15000);
 		}
 	},
 	onGetURLParams: function (cmp, evt, hlpr) {
@@ -203,7 +212,7 @@
 				}
 			}
 
-			window.open("https://fitrp3-isam.investorsgroup.com/", "_self");
+			window.open("https://fitrp3-isam.investorsgroup.com/isam/sps/auth", "_self");
 		} catch (err) {
 			console.error("CP_Utils: gotoLogin: window not found.")
 			console.error(err);
@@ -241,13 +250,10 @@
 		if (params) {
 			lang = params.lang;
 
-			console.log(params.rawValue);
-			console.log("is num: " + hlpr.isNumber(params.rawValue));
-
 			if (hlpr.isNumber(params.rawValue) === true) {
 				if (lang === "en_CA" || lang === "en_US") {
 
-					if(params.includeDollarSign === true) {
+					if (params.includeDollarSign === true) {
 						formattedValue = "$" + hlpr.formatCurrency(params.rawValue);
 					} else {
 						formattedValue = hlpr.formatCurrency(params.rawValue);
@@ -322,6 +328,40 @@
 				params.callback((!m) ? null : "(" + m[1] + ") " + m[2] + "-" + m[3]);
 			} else {
 				console.warn("CP_Utils: formatToPhone: language unrecognized.");
+			}
+		}
+	},
+	onScrollTo: function (cmp, evt, hlpr) {
+
+		var params = evt.getParam("arguments");
+		if (params) {
+			var
+				speed = params.speed,
+				pos = params.pos;
+
+			if (params.id === "html, body" || params.id === "html" || params.id === "body") {
+				$("html, body").animate({
+					scrollTop: pos
+				}, {
+					duration: speed,
+					complete: function () {
+						if (params.callback) {
+							params.callback();
+						}
+					}
+				});
+			} else {
+				console.log(params.id);
+				$("html, body").animate({
+					scrollTop: $(params.id).offset().top
+				}, {
+					duration: speed,
+					complete: function () {
+						if (params.callback) {
+							params.callback();
+						}
+					}
+				});
 			}
 		}
 	}

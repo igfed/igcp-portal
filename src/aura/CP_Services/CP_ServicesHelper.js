@@ -8,6 +8,7 @@
 			var state = response.getState();
 
 			if (state === "SUCCESS") {
+
 				// Alert the user with the value returned 
 				// from the server
 				if (response !== null) {
@@ -65,10 +66,10 @@
 					if (response !== null) {
 						resolve(params.successCB(response.returnValue));
 					} else {
-						reject(params.errorCB({
+						reject({
 							"payload": errorMsg,
 							"type": errorType
-						}));
+						});
 					}
 	
 					// You would typically fire a event here to trigger 
@@ -76,30 +77,31 @@
 					// action is complete
 				} else if (state === "INCOMPLETE") {
 					// do something
-					reject(params.errorCB({
+					reject({
 						"payload": "Incomplete",
 						"type": "server-side-error"
-					}));
+					});
 				} else if (state === "ERROR") {
 					var errors = response.getError();
-	
 					if (errors) {
 						if (errors) {
-							reject(params.errorCB({
+							reject({
 								"payload": errors,
 								"type": "server-side-error"
-							}));
+							});
 						}
 					} else {
-						reject(params.errorCB({
+						reject({
 							"payload": "Unknown error",
 							"type": "server-side-error"
-						}));
+						});
 					}
 				}
 			});
 	
 			$A.enqueueAction(action);
-		}));
+		})).catch(function(err) {
+			params.errorCB(err);
+		});
 	}
 })

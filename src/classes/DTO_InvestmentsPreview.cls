@@ -6,7 +6,8 @@ public class DTO_InvestmentsPreview {
 	@AuraEnabled public Map<String, DTO_InvestmentsPreviewAggregate> previewAggregatesByType;
 	@AuraEnabled public Map<String, Map<String, DTO_InvestmentsPreviewAggregate>> previewAggregatesByTypeAndReg;
 	
-	public Set<String> accountNumbers;
+	//public Set<String> accountNumbers;
+	@AuraEnabled public Map<String, String> accNumbersMap; //key: random string, value: acc number
 
 	public DTO_InvestmentsPreview() {
 		this.totalValue 	= 0;
@@ -15,7 +16,8 @@ public class DTO_InvestmentsPreview {
 		this.signGainLoss	= 'neutral';
 		this.previewAggregatesByType = new Map<String, DTO_InvestmentsPreviewAggregate>();
 		this.previewAggregatesByTypeAndReg = new Map<String, Map<String, DTO_InvestmentsPreviewAggregate>>();
-		this.accountNumbers = new Set<String>();
+		//this.accountNumbers = new Set<String>();
+		this.accNumbersMap  = new Map<String, String>();
 	}
 	/*
 	public void addPreviewAggregate(DTO_InvestmentsPreviewAggregate aggregate) {
@@ -62,7 +64,8 @@ public class DTO_InvestmentsPreview {
 				percGainLoss = result.doubleValue();
 			}
 
-			accountNumbers.add(item.accountNumber);
+			//accountNumbers.add(item.accountNumberEnc);
+			accNumbersMap.put(item.accountNumberEnc, item.accountNumber);
 		}
 	}
 }

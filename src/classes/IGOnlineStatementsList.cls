@@ -2,6 +2,20 @@ public class IGOnlineStatementsList extends IGRestClient{
 	private static final String IG_OLS_NAMED_CREDS 	= 'IG_Client_Portal_Dev_1_3';
 	private List<String> clientNumbersString;
 	private LIst<Financial_Asset__c> listOfFAs;
+	private static Map<Integer, String> monthsMap = new Map<Integer, String>{
+		  1 => 'Jan',
+		  2 => 'Feb',
+		  3 => 'Mar',
+		  4 => 'Apr',
+		  5 => 'May',
+		  6 => 'Jun',
+		  7 => 'Jul',
+		  8 => 'Aug',
+		  9 => 'Sep',
+		  10 => 'Oct',
+		  11 => 'Nov',
+		  12 => 'Dec'
+		};
 	
 
 	public IGOnlineStatementsList() {
@@ -11,7 +25,7 @@ public class IGOnlineStatementsList extends IGRestClient{
 	public List<DTO_OnlineStatement> getListOfStatements(Id contactId){
 		listOfFAs = new List<Financial_Asset__c>();
 		List<DTO_OnlineStatement> rv;
-		listOfFAs = [select Client_Number__c from Financial_Asset__c where Customer__c =: contactId];
+		listOfFAs = [select Client_Number__c from Financial_Asset__c where Customer__c =: contactId AND Client_Number__c != null];
 		System.debug('listOfFAs '+listOfFAs);
 		IGRestClient.Response res  = getServiceData();
 		//client_numbers=123123&client_numbers=1231231
@@ -22,16 +36,25 @@ public class IGOnlineStatementsList extends IGRestClient{
 		           
 	            } else {
 	            	clientStatementData data = (clientStatementData)res;
+
 	            	System.debug('=====> getonlinestatemnet.data: ' + data);
 	            	for(ClientStatementResults eachResult : data.clientStatementResults){
+	            		Date tempDate = Date.valueOf(eachResult.statementdate);
+	            		/*System.debug(Date.valueOf(eachResult.statementdate)+'->>'+String.valueOf(temp.format('MMM')));
+	            		System.debug(temp.format('MMMM D, YYYY'));*/
+	            		System.debug(eachResult.statementdate+'->>'+ Date.valueOf(eachResult.statementdate));
+	            		//eachResult.statementdate = monthsMap.get(tempDate.day()) +' '+temp.format('d')+', '+temp.format('YYYY');
+	            		eachResult.statementdate = monthsMap.get(tempDate.month()) +' '+tempDate.day() +', '+tempDate.year();
+	            		System.debug('date format '+eachResult.statementdate);
 	            		rv.add(new DTO_OnlineStatement(eachResult));
-	            	}
+	            	}/**/
 	            	
 	            }
 		    }
 		System.debug(rv);
 		return rv;
 	}
+	
 
 	public override String getHttpEndPoint() {
 		Integer testClientNumber = 12345;
@@ -41,6 +64,7 @@ public class IGOnlineStatementsList extends IGRestClient{
 		for(Financial_Asset__c eachFA : listOfFAs){
 			clientNumeberString += 'client_numbers='+eachFA.Client_Number__c+'&';
 		}
+		//clientNumeberString = 'client_numbers=33333'; // this is to test, will change when the service is up.
 		return 'callout:'+IG_OLS_NAMED_CREDS+'/documents/statements/list?'+clientNumeberString+'dates='+testDate;
 	}
 	public override Response parseResponse(String responseBody) {

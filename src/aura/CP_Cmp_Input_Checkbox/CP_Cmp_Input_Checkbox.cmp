@@ -22,9 +22,8 @@
             <div class="slds-form-element__control">
                 <span class="slds-checkbox">
 
-                <input aura:id="checkbox-input" type="checkbox" name="options" id="{!v.id}" onclick="{!c.onCheck}"/>
-
-                <label class="slds-checkbox__label" for="{!v.id}" >
+                <input aura:id="checkbox-input" type="checkbox" name="options" id="{!v.id}"/>
+                <label class="slds-checkbox__label" for="{!v.id}" onclick="{!c.onCheck}">
                   <span class="slds-checkbox--faux"></span>
                   <span class="slds-form-element__label input-label">{!v.copy}</span>
                 </label>

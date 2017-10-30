@@ -11,8 +11,9 @@
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="account-detail"></aura:attribute>
 	<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
-	<aura:attribute name="accountTitle" type="String" default="RRSP"></aura:attribute>
-	<aura:attribute name="accountNumber" type="String" default="3110863"></aura:attribute>
+	<aura:attribute name="accountTitle" type="String" default=""></aura:attribute>
+	<aura:attribute name="accountNumber" type="String"></aura:attribute>
+	<aura:attribute name="accountNumberEnc" type="String"></aura:attribute>
 
 	<!-- RETURNED DATA FROM SALESFORCE -->
 	<aura:attribute name="accountDetailObj" type="Map" default="{}"></aura:attribute>
@@ -36,9 +37,9 @@
 		<div class="slds-size_12-of-12">
 			<div class="slds-m-top--medium slds-large-m-top--none slds-m-bottom--large">
 				
-				<c:CP_Cmp_Text_Link class="slds-float_left" linkClass="igcp-link__variant--a igcp-utils__text--uppercase" icon="utility:left" label="{!$Label.c.CP_Generic_Label_Overview}" />
+				<c:CP_Cmp_Text_Link class="slds-float_left" linkClass="igcp-link__variant--a" icon="utility:chevronleft" label="{!$Label.c.CP_Generic_Label_Overview}" />
 				
-				<c:CP_Cmp_Text_Link class="slds-float_right" linkClass="igcp-link__variant--a igcp-utils__text--uppercase" icon="utility:table" label="{!$Label.c.CP_Generic_Label_View_Statement}" />
+				<c:CP_Cmp_Text_Link class="slds-float_right" linkClass="igcp-link__variant--a" icon="utility:table" label="{!$Label.c.CP_Generic_Label_View_Statement}" />
 
 			</div>
 		</div>
@@ -60,7 +61,7 @@
 					<div class="igcp-separator--large slds-size_12-of-12 slds-m-vertical--xxx-small slds-large-m-vertical--large "></div>
 					<div class="slds-grid slds-wrap">
 						
-						<c:CP_Cmp_Name_Value_List id="account-list" gridSizing="6"/>
+						<c:CP_Cmp_Name_Value_List id="account-list" gridSizing="6" class="slds-m-vertical--small"/>
 						
 					</div>
 				</div>

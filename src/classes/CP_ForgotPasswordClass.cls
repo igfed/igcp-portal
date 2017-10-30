@@ -1,5 +1,8 @@
 public class CP_ForgotPasswordClass {
 
+        private static String FORGOT_PASSWORD_EMAIL_TEMPLATE_FRENCH = 'IG_Forgot_Password_French';
+        private static String FORGOT_PASSWORD_EMAIL_TEMPLATE_ENGLISH = 'IG_Forgot_Password_English';
+
     	public String username { get; set; }
     	public String postalCode { get; set; }
     	public String dob { get; set; }
@@ -10,7 +13,7 @@ public class CP_ForgotPasswordClass {
     	public String answer { get; set; }
 
         public String password { get; set; }
-        public String confirmPassword { get; set; }        
+        public String confirmPassword { get; set; }
     	
 
 
@@ -21,7 +24,7 @@ public class CP_ForgotPasswordClass {
         	CP_Response.Result state = new CP_Response.Result();
         	try
         	{
-                Contact objContact = this.getContactByUserName();
+                Contact objContact = IGClientUtils.getContactByUserName(this.username);
                 if(objContact == null)
                 {
                     state.IsValid = false;
@@ -65,7 +68,7 @@ public class CP_ForgotPasswordClass {
         	SecurityQuestion response = new SecurityQuestion();
         	try
         	{
-        		Contact objContact = this.getContactByUserName();
+        		Contact objContact = IGClientUtils.getContactByUserName(this.username);
                 System.debug('Contact Object');
                 System.debug(objContact);
 
@@ -115,7 +118,7 @@ public class CP_ForgotPasswordClass {
         	CP_Response response = new CP_Response();
         	try
         	{
-        		Contact objContact = this.getContactByUserName();
+        		Contact objContact = IGClientUtils.getContactByUserName(this.username);
                 System.debug('Contact Object');
                 System.debug(objContact);
 
@@ -217,7 +220,7 @@ public class CP_ForgotPasswordClass {
 
         private boolean recordFailedAttemptAndLock()
         {
-            Contact objCon = this.getContactByUserName();
+            Contact objCon = IGClientUtils.getContactByUserName(this.username);
             if(objCon != null)
             {
                 if (objCon.Portal_Action_Failure_Count__c > 3)
@@ -239,7 +242,7 @@ public class CP_ForgotPasswordClass {
 
         private boolean recordFailedSecurityAnswerAttemptAndLock()
         {
-            Contact objCon = this.getContactByUserName();
+            Contact objCon = IGClientUtils.getContactByUserName(this.username);
             if(objCon != null)
             {
                 if (objCon.Portal_Security_Answer_Failure_Count__c > 1)
@@ -260,26 +263,7 @@ public class CP_ForgotPasswordClass {
         }
 
 
-        // Search Contact by Business Partner ID
-        private Contact getContactByUserName()
-        {
-            List<Contact> contactList = [select ID, Portal_User_Is_Registered__c,
-                Portal_User_ID__c, Portal_User_Name__c, Email, Phone, 
-                MailingPostalCode, Birthdate, Business_Partner_ID__c, Preferred_Language__c, 
-                Portal_Action_Failure_Count__c, Portal_Security_Answer_Failure_Count__c, 
-                Portal_User_Is_Locked__c
-                from Contact 
-                where Portal_User_Name__c = : String.escapeSingleQuotes(this.username)
-                AND Portal_User_Is_Registered__c = true];
-
-            System.debug(contactList);
-
-            if(contactList.isEmpty())
-                return null;
-            else
-                return contactList[0];
-        }
-
+        
         private User getUserByUserName()
         {
             List<User> userList = [select ID, Username, Email
@@ -300,10 +284,10 @@ public class CP_ForgotPasswordClass {
         {
             try
             {
-                Contact objContact = this.getContactByUserName();
+                Contact objContact = IGClientUtils.getContactByUserName(this.username);
                 if(objContact != null)
                 {
-                    String emailTemplate = objContact.Preferred_Language__c == 'French' ? 'IG_Forgot_Password_French' : 'IG_Forgot_Password_English';
+                    String emailTemplate = objContact.Preferred_Language__c == 'French' ? FORGOT_PASSWORD_EMAIL_TEMPLATE_FRENCH : FORGOT_PASSWORD_EMAIL_TEMPLATE_ENGLISH;
                     User objUser  = this.getUserByUserName();
                     if(objUser != null)
                         CP_Utility.sendTemplatedEmail(emailTemplate, objUser.Id, objContact.ID);

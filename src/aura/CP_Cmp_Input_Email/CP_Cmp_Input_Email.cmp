@@ -36,7 +36,7 @@
 	<aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}" />
 	
 	<!-- MARKUP -->
-	<div class="{!v.class}">
+	<div id="{!v.id}" class="{!v.class}">
 		<aura:renderIf isTrue="{!v.icon}">
 			<lightning:icon iconName="{!v.icon}" size="small" class="slds-m-right--xx-small" alternativeText="{!v.label}" />
 		</aura:renderIf>

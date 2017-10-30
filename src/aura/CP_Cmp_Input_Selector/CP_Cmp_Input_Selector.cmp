@@ -29,7 +29,7 @@
 	<aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}" />
 
 	<!-- MARKUP -->
-	<div class="{!v.class}">
+	<div id="{!v.id}" class="{!v.class}">
 		<div class="slds-form-element">
 			<label class="slds-form-element__label input-label" for="{!v.id}">{!v.label}</label>
 			<aura:renderIf isTrue="{!v.tooltip}">

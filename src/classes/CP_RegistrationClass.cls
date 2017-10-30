@@ -1,5 +1,12 @@
 global class CP_RegistrationClass {
 
+private static string ALLOWED_CLIENT_TYPE = '1';
+private static string CLIENT_IS_DECEASED = 'Y';
+private static string CLIENT_MAIL_RETURNED = 'Y';
+
+private static string HAS_ACTIVE_INVESTMENT = 'Y';
+private static string HAS_ACTIVE_INSURANCE = 'Y';
+private static string HAS_ACTIVE_MORTGAGE = 'Y';
 
 // Public Functions     
     public CP_Response.Result verifyIdentity(CP_RegistrationClass.UserIdentity IGUser)
@@ -7,88 +14,108 @@ global class CP_RegistrationClass {
         CP_Response.Result result = new CP_Response.Result();
         
         // Search Contact by Client/Policy/Loan Number
-        Financial_Asset__c objClient = IGUser.getClientInfo();
-        /*      
-        if(objClient.Asset_Type__c == 'Joint')
+        List<DTO_ClientRegistration> objClient = IGClientService.getClientRegistrations(IGUser.dob, IGUser.postalCode, IGUser.clientNum);
+        
+        System.debug('objClient from API');
+        System.debug(objClient);
+        
+        if(objClient.isEmpty())
         {
             result.IsValid = false;
-            result.Messages.add(System.Label.CP_Registration_Client_is_Joint_and_Not_allowed_to_Register);
+            result.Messages.add(System.Label.CP_Error_Registration_Step_1);
         }
-        else if(objClient.Client_Is_Deceased__c == true)
+        else 
         {
-            result.IsValid = false;
-            result.Messages.add(System.Label.CP_Registration_Client_is_deceased);
-        }
-        else if(objClient.Client_Returned_Mail__c == true)
-        {
-            result.IsValid = false;
-            result.Messages.add(System.Label.CP_Registration_Client_mail_returned);
-        }
-        else if(objClient.Client_Zero_Balance__c == true)
-        {
-            result.IsValid = false;
-            result.Messages.add(System.Label.CP_Registration_Client_has_zero_balance);
-        }
-        else // Client is Eligible, proceed with other checks
-        {
-         */
-            String clientBPID = '123456789';
+            Boolean hasActiveAsset = false;
 
-            Contact objContact =  IGClientUtils.getContactByBPID(clientBPID);
-            // check if Contact exists
-    		if(objContact == null)
+            for(DTO_ClientRegistration objAsset : objClient)
             {
-                // Contact not found
-                result.IsValid = false;
-                result.Messages.add(System.Label.CP_Error_Registration_Step_1);
-            }
-            else // Contact Found Validate Client Status
-            {
-                // set isLocked flag as per Contact object
-                result.IsLocked = objContact.Portal_Registration_Is_Locked__c;
-
-                // Contact is Locked 
-                if(objContact.Portal_Registration_Is_Locked__c == true)
+                if(objAsset.clientType != ALLOWED_CLIENT_TYPE)
                 {
                     result.IsValid = false;
-                    result.Messages.add(System.Label.CP_Registration_Locked_h1);
+                    result.Messages.add(System.Label.CP_Registration_Client_is_Joint_and_Not_allowed_to_Register);
                 }
-                else // Contact is not Locked, proceed with other checks
+                else if(objAsset.deceasedIndicator == CLIENT_IS_DECEASED)
                 {
-                    // Check if the returned Contact has Registered flag set 
-                    if(objContact.Portal_User_Is_Registered__c == true)
+                    result.IsValid = false;
+                    result.Messages.add(System.Label.CP_Registration_Client_is_deceased);
+                }
+                else if(objAsset.unlocatedIndicator == CLIENT_MAIL_RETURNED)
+                {
+                    result.IsValid = false;
+                    result.Messages.add(System.Label.CP_Registration_Client_mail_returned);
+                }
+                else if(objAsset.activeInvestment == HAS_ACTIVE_INVESTMENT || objAsset.activeInsurance == HAS_ACTIVE_INSURANCE || objAsset.activeMortgage == HAS_ACTIVE_MORTGAGE)
+                {
+                    hasActiveAsset = true;
+                }
+            }
+            
+            if(!hasActiveAsset)
+            {
+                result.IsValid = false;
+                result.Messages.add(System.Label.CP_Registration_Client_has_zero_balance);
+            }
+
+            if(result.IsValid) // Client is Eligible, proceed with other checks
+            {
+
+                Contact objContact =  IGClientUtils.getContactByBPID(objClient[0].clientBpid);
+                // check if Contact exists
+                if(objContact == null)
+                {
+                    // Contact not found
+                    result.IsValid = false;
+                    result.Messages.add(System.Label.CP_Error_Registration_Step_1);
+                }
+                else // Contact Found Validate Client Status
+                {
+                    // set isLocked flag as per Contact object
+                    result.IsLocked = objContact.Portal_Registration_Is_Locked__c;
+
+                    // Contact is Locked 
+                    if(objContact.Portal_Registration_Is_Locked__c == true)
                     {
-                        // Client is already Registered
                         result.IsValid = false;
-                        result.Messages.add(System.Label.CP_Registration_Client_Already_Registered);
+                        result.Messages.add(System.Label.CP_Registration_Locked_h1);
                     }
-                    else
+                    else // Contact is not Locked, proceed with other checks
                     {
-                        // Validate Contact Postal code and Date of birth with values entered by user
-                        if(!CP_Utility.PostalCodeMatched(IGUser.postalCode, objContact.MailingPostalCode))
+                        // Check if the returned Contact has Registered flag set 
+                        if(objContact.Portal_User_Is_Registered__c == true)
                         {
-                            // Postatcode did not match the stored info in Salesforce.
+                            // Client is already Registered
                             result.IsValid = false;
-                            result.Messages.add(System.Label.CP_Error_Registration_Step_1);
+                            result.Messages.add(System.Label.CP_Registration_Client_Already_Registered);
                         }
-                        else if(Date.valueOf(IGUser.dob) != objContact.Birthdate) 
+                        else
                         {
-                            // Date of Birth did not match the stored info in Salesforce.
-                            result.IsValid = false;
-                            result.Messages.add(System.Label.CP_Error_Registration_Step_1);
-                        }
-                        
-                        // If the result.isValid is false then record failed attempt
-                        if(result.IsValid == false)
-                        {
-                            result.IsLocked = IGUser.recordFailedAttemptAndLock();
-                            if(result.IsLocked)
-                                result.Messages.add(System.Label.CP_Registration_Locked_h1);
+                            // Validate Contact Postal code and Date of birth with values entered by user
+                            if(!CP_Utility.PostalCodeMatched(IGUser.postalCode, objContact.MailingPostalCode))
+                            {
+                                // Postatcode did not match the stored info in Salesforce.
+                                result.IsValid = false;
+                                result.Messages.add(System.Label.CP_Error_Registration_Step_1);
+                            }
+                            else if(Date.valueOf(IGUser.dob) != objContact.Birthdate) 
+                            {
+                                // Date of Birth did not match the stored info in Salesforce.
+                                result.IsValid = false;
+                                result.Messages.add(System.Label.CP_Error_Registration_Step_1);
+                            }
+                            
+                            // If the result.isValid is false then record failed attempt
+                            if(result.IsValid == false)
+                            {
+                                result.IsLocked = IGUser.recordFailedAttemptAndLock();
+                                if(result.IsLocked)
+                                    result.Messages.add(System.Label.CP_Registration_Locked_h1);
+                            }
                         }
                     }
                 }
             }
-        /*}*/
+        }
 
         return result;
     }
