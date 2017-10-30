@@ -16,13 +16,16 @@
 				function (success) {
 					// ToDo: on success logic
 					console.info('edit_docs getAllFinancialAssets():', success)
+					events.fire("CP_Evt_Modal_Open", {
+						"id": "editDocument-tos"
+					});
 				},
 				function (error) {
 
 					var
 						events = cmp.find("CP_Events"),
 						services = cmp.find("CP_Services");
-					console.error("CP_Edit_Documents: getAllFinancialAssets", error);			
+					console.error("CP_Edit_Documents: getAllFinancialAssets", error);
 
 					/* services.handleServerSideError({
 							"error": error,
@@ -35,5 +38,13 @@
 			);
 
 		}
-	}
+	},
+	onAgreeChecked: function (cmp, evt, hlpr) {
+
+		var payload = evt.getParam("payload");
+
+		if (payload.id === "read_and_agree_checkbox") {
+			cmp.set("v.acceptTOS", payload.checked);
+		}
+	},
 })

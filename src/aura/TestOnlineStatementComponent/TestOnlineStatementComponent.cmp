@@ -4,15 +4,22 @@
 					type="DTO_OnlineStatement[]" />	
     <!--- on initialization of component init event will fire and doInit action will execute-->
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-    
-    
+    <div id="aura-page">
+        <div class="container">
+            <ui:button label="gotoURL" press="{!c.gotoURL}" />
+        </div>
+        <div class="container">
+            <ui:button label="navigate" press="{!c.navigate}" />
+        </div>
+    </div>
+    <!--
     <div class="container">
         <h2>Postions</h2>
         <table class="table table-striped">
             
-            <tbody>
+            <tbody>-->
                 <!-- TO Check if list is not empty-->
-               
+               <!--
                     <aura:iteration var="position" items="{!v.lstPositions}" >
                         <tr>
                             <td><ui:outputText value="{!position.docId}"/></td>
@@ -26,6 +33,6 @@
         
        
         
-    </div>
+    </div> -->
     
 </aura:component>

@@ -104,7 +104,5 @@
 		</aura:if>
 		<c:CP_Cmp_Modal id="registration-tos" />
 		<c:CP_Cmp_Modal id="view-sample" modalType="small" />
-		<!-- FOOTER -->
-		<!-- <c:CP_Cmp_Footer /> -->
 	</div>
 </aura:component>

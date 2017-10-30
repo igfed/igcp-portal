@@ -245,9 +245,6 @@
 		if (params) {
 			lang = params.lang;
 
-			console.log(params.rawValue);
-			console.log("is num: " + hlpr.isNumber(params.rawValue));
-
 			if (hlpr.isNumber(params.rawValue) === true) {
 				if (lang === "en_CA" || lang === "en_US") {
 

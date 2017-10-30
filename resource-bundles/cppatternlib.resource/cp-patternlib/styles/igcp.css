@@ -2570,7 +2570,10 @@ table {
     position: fixed; }
 
   .igcp-utils__position--static {
-    position: static; } }
+    position: static; }
+
+  .igcp-utils__cursor--pointer {
+    cursor: pointer; } }
 @media (min-width: 480px) {
   .igcp-small-utils__font--light {
     font-family: "WhitneyLight", Arial, sans-serif; }
@@ -2837,7 +2840,10 @@ table {
     position: fixed; }
 
   .igcp-small-utils__position--static {
-    position: static; } }
+    position: static; }
+
+  .igcp-small-utils__cursor--pointer {
+    cursor: pointer; } }
 @media (min-width: 768px) {
   .igcp-medium-utils__font--light {
     font-family: "WhitneyLight", Arial, sans-serif; }
@@ -3104,7 +3110,10 @@ table {
     position: fixed; }
 
   .igcp-medium-utils__position--static {
-    position: static; } }
+    position: static; }
+
+  .igcp-medium-utils__cursor--pointer {
+    cursor: pointer; } }
 @media (min-width: 1024px) {
   .igcp-large-utils__font--light {
     font-family: "WhitneyLight", Arial, sans-serif; }
@@ -3371,7 +3380,10 @@ table {
     position: fixed; }
 
   .igcp-large-utils__position--static {
-    position: static; } }
+    position: static; }
+
+  .igcp-large-utils__cursor--pointer {
+    cursor: pointer; } }
 .igcp-main .slds-col--padded {
   padding: 0; }
 
@@ -3563,6 +3575,10 @@ table {
 
 .igcp-account__item sup {
   top: -3px; }
+
+.igcp-account__item:hover {
+  cursor: pointer;
+  background-color: #f8f8f9; }
 
 .igcp-alert--item {
   border-bottom: 1px solid #e9ecee; }

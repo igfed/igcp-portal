@@ -56,7 +56,10 @@
         "browser": true
     },
     "globals" : {
-        "$A" : false
+        "$A" : false,
+        "evt" : false,
+        "cmp" : false,
+        "hlpr" : false
 
     }
 }

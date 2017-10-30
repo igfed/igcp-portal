@@ -1,3 +1,4 @@
 <aura:application >
-    <c:pdfViewerExampleComponent />	
+    <!--<c:pdfViewerExampleComponent />	 -->
+    <c:TestOnlineStatementComponent />
 </aura:application>

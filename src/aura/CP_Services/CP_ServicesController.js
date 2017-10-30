@@ -421,8 +421,9 @@
 				action = component.get("c.getAccountDetailDTO");
 
 				action.setParams({
-					accountNumber: params.accountNumber
+					accountNumberEnc: params.accountNumber
 				});
+
 
 				hlpr.setCallbackPromise(
 					params,
@@ -451,7 +452,7 @@
 				action = component.get("c.getInvestmentProfileDTO");
 
 				action.setParams({
-					accountNumber: params.accountNumber
+					accountNumberEnc: params.accountNumber
 				});
 
 				hlpr.setCallbackPromise(
@@ -482,7 +483,7 @@
 				action = component.get("c.getHoldingsDTOList");
 
 				action.setParams({
-					accountNumber: params.accountNumber
+					accountNumberEnc: params.accountNumber
 				});
 
 				hlpr.setCallbackPromise(
@@ -513,7 +514,7 @@
 				action = component.get("c.getTransactionsDTOList");
 
 				action.setParams({
-					accountNumber: params.accountNumber
+					accountNumberEnc: params.accountNumber
 				});
 
 				hlpr.setCallbackPromise(
@@ -544,7 +545,7 @@
 				action = component.get("c.getInstructionsDTOList");
 
 				action.setParams({
-					accountNumber: params.accountNumber
+					accountNumberEnc: params.accountNumber
 				});
 
 				hlpr.setCallbackPromise(
@@ -575,7 +576,7 @@
 				action = component.get("c.getAccountPerformance");
 
 				action.setParams({
-					accountNumber: params.accountNumber
+					accountNumberEnc: params.accountNumber
 				});
 
 				hlpr.setCallbackPromise(

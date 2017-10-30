@@ -8,6 +8,7 @@
 			var state = response.getState();
 
 			if (state === "SUCCESS") {
+
 				// Alert the user with the value returned 
 				// from the server
 				if (response !== null) {

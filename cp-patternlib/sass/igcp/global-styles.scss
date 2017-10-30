@@ -271,6 +271,11 @@
 	}
 }
 
+.#{$namespace}-account__item:hover {
+	cursor: pointer;
+	background-color: $ig-light-grey;
+}
+
 //ALERT
 .#{$namespace}-alert--item {
 	border-bottom: 1px solid $ig-grey;
