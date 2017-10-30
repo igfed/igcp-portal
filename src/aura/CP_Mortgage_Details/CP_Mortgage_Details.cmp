@@ -1,0 +1,89 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_MortgageDetailController">
+	<!-- INCLUDES -->
+	<c:CP_CSS_Includes />
+	<c:CP_JS_Includes />
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Validation aura:id="CP_Validation" />
+	<c:CP_Services aura:id="CP_Services" />
+
+	<!-- ATTRS -->
+	<aura:attribute name="pageId" type="String" default="mortgage-detail"></aura:attribute>
+	<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
+	<aura:attribute name="accountTitle" type="String" default="Fixed Rate Mortgage"></aura:attribute>
+	<aura:attribute name="accountNumber" type="String" default="1234567"></aura:attribute>
+
+	<!-- RETURNED DATA FROM SALESFORCE -->
+	<aura:attribute name="payment" type="String" default=""></aura:attribute>
+	<aura:attribute name="frequency" type="String" default=""></aura:attribute>
+	<aura:attribute name="lastPaymentDate" type="String" default=""></aura:attribute>
+	<aura:attribute name="nextPaymentDate" type="String" default=""></aura:attribute>
+	<aura:attribute name="loanAmount" type="String" default=""></aura:attribute>
+
+	<aura:attribute name="prePaymentPrivilege" type="String" default=""></aura:attribute>
+	<aura:attribute name="maturityDate" type="String" default=""></aura:attribute>
+	<aura:attribute name="remainingAmortization" type="String" default=""></aura:attribute>
+	<aura:attribute name="term" type="String" default=""></aura:attribute>
+	<aura:attribute name="remainingTerm" type="String" default=""></aura:attribute>
+
+	<!-- METHODS -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
+
+	<!-- MARKUP -->
+	<div class="igcp-overview igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-around--xx-small slds-large-p-around--medium">
+		<div class="slds-size_12-of-12">
+			<div class="slds-m-top--medium slds-large-m-top--none slds-m-bottom--large">
+				<c:CP_Cmp_Text_Link class="slds-float_left" linkClass="igcp-link__variant--a igcp-utils__text--uppercase" icon="utility:left"
+				    label="{!$Label.c.CP_Generic_Label_Overview}" />
+				<c:CP_Cmp_Text_Link class="slds-float_right" linkClass="igcp-link__variant--a igcp-utils__text--uppercase" icon="utility:table"
+				    label="{!$Label.c.CP_Generic_Label_View_Statement}" />
+			</div>
+		</div>
+		<div class="slds-size_12-of-12">
+			<c:CP_Account_Title_Dropdown accountTitle="{!v.accountTitle}" accountNumber="{!v.accountNumber}" />
+		</div>
+
+		<div class="slds-grid slds-wrap slds-grid_vertical-stretch">
+			<div class="slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_8-of-12">
+				<div class="igcp-container slds-large-m-right--medium slds-p-around--small slds-large-p-around--medium slds-m-bottom--x-small slds-large-m-bottom--medium">
+					<div class="slds-grid slds-wrap slds-grid_vertical-stretch">
+						<c:CP_Cmp_Rate class="slds-size_6-of-12 slds-medium-size_3-of-12" />
+						<c:CP_Cmp_Balance class="slds-size_6-of-12 slds-medium-size_5-of-12" />
+						<c:CP_Cmp_Address class="slds-size_12-of-12 slds-medium-size_4-of-12" />
+
+						<div class="igcp-separator--large slds-size_12-of-12 slds-m-vertical--xxx-small slds-large-m-vertical--medium"></div>
+						<div class="slds-grid slds-wrap">
+							<c:CP_Cmp_Name_Value_List id="mortgage-list" gridSizing="6" class="slds-m-vertical--small" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="igcp-utils__height--auto slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_4-of-12">
+				<c:CP_Mortgage_CTA />
+			</div>
+		</div>
+		<c:CP_Cmp_Modal id="{!v.pageId}" modalType="details" />
+
+		<div class="slds-size_12-of-12">
+			<c:CP_Cmp_Card_Mortgage title="Be mortgage-free sooner" subtitle="With these three simple options" tiles="{
+					tile1: {
+						image: '/igcp-resources/images/mortgage/calc.png',
+						title: 'A mortgage that fits your plan',
+						description: 'Use these calculators to determine what type of mortgage you can afford, and what your mortgage payments will be.'
+					},
+					tile2: {
+						image: '/igcp-resources/images/mortgage/house.png',
+						title: 'The right mortgage...the right rate',
+						description: 'Take advantage of our limited-time mortgage promotions.'
+					},
+					tile3: {
+						image: '/igcp-resources/images/mortgage/stoplight.png',
+						title: 'Frequently asked questions',
+						description: 'Here are some of our most common mortgage-related questions.'
+					}
+				}" />
+		</div>
+	</div>
+</aura:component>

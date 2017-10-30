@@ -6,23 +6,23 @@
 	onSubmit: function (cmp, evt, hlpr) {
 		var
 			payload = evt.getParam("payload"),
-			events = cmp.find("CP_Events");
-			console.log('edit_docs onSubmit() payload:', payload)
+			events = cmp.find("CP_Events"),
+			services = cmp.find("CP_Services");
 
-		if (payload.id === "edit-documents") {
+		if (payload.id === "form_submit") {
 
-			services.submitForm(
-				"UpdateAssets",
+			services.getAllFinancialAssets(
 				cmp,
-				function (evt) {
+				function (success) {
 					// ToDo: on success logic
-					console.log('edit_docs submitForm():', evt)
+					console.info('edit_docs getAllFinancialAssets():', success)
 				},
 				function (error) {
 
 					var
 						events = cmp.find("CP_Events"),
 						services = cmp.find("CP_Services");
+					console.error("CP_Edit_Documents: getAllFinancialAssets", error);			
 
 					/* services.handleServerSideError({
 							"error": error,

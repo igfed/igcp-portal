@@ -59,7 +59,6 @@
 					callback(ready);
 				}
 			);
-
 		} else if(gridSizing === "6") {
 
 			utils.createComponent(

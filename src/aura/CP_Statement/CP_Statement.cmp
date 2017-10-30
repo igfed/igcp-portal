@@ -1,0 +1,153 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+	
+	<!-- ATTRS -->
+	<aura:attribute name="pageId" type="String" default="statement"></aura:attribute>
+	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
+	<aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+	
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Validation aura:id="CP_Validation" />
+	<c:CP_Services aura:id="CP_Services" />
+    <c:CP_CSS_Includes />
+    <c:CP_JS_Includes />
+
+	<!-- HANDLERS -->
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
+
+	<!-- <aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
+	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
+	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
+	<aura:handler event="c:CP_Evt_Key" action="{!c.onKey}" /> -->
+	
+	<!-- METHODS-->
+	<!-- <aura:method name="onSubmitForm" action="{!c.submitForm}" description="Call submit form">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method> -->
+	
+	<!-- MARKUP -->
+
+
+<div class="igcp-background__tiled">
+	<div class="igcp-wrapper igcp-statement slds-grid slds-wrap slds-grid--align-center slds-p-around--small slds-large-p-around--medium">
+		<div class="slds-p-vertical--small slds-p-horizontal--large slds-m-bottom--x-small slds-large-m-bottom--medium slds-size_12-of-12">
+			<h1 class="slds-m-top--medium">Documents</h1>
+	
+            <div class="igcp-document-tabs slds-tabs_default">
+                <ul class="slds-tabs_default__nav" role="tablist">
+                    <li class="slds-tabs_default__item slds-is-active" title="Item One" role="presentation"><a onclick="{!c.switchTabs}" class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Investment Statements</a></li>
+                    <li class="slds-tabs_default__item" title="Item Two" role="presentation"><a onclick="{!c.switchTabs}" class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" id="tab-default-2__item">Tax Receipts</a></li>
+                    <li class="slds-tabs_default__item" title="Item Three" role="presentation"><a onclick="{!c.switchTabs}" class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-3" id="tab-default-3__item">Confirms</a></li>
+                    <li class="slds-tabs_default__item" title="Item Three" role="presentation"><a onclick="{!c.switchTabs}" class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-4" id="tab-default-4__item">Mortgage Statements</a></li>
+                </ul>
+                
+                <div id="tab-default-1" class="slds-tabs_default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">
+                    
+                    <div class="igcp-document-table">
+                        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                        <thead>
+                            <tr>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Opportunity Name">Date</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Account Name">Documents</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Close Date">Client Number</div>
+                            </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <th scope="row" data-label="Date">
+                                <div class="slds-truncate" title="Dec 31, 2016">Dec 31, 2016</div>
+                            </th>
+                            <td data-label="Documents">
+                                <div class="slds-truncate" title="Doc"><a href="#">Investors Group Financial Services Investment Statement (Year End)</a></div>
+                            </td>
+                            <td data-label="Client Number">
+                                <div class="slds-truncate" title="100-156-1">100-156-1</div>
+                            </td>
+                            </tr>
+                            <tr>
+                            <th scope="row" data-label="Date">
+                                <div class="slds-truncate" title="Nov 28, 2016">Nov 28, 2016</div>
+                            </th>
+                            <td data-label="Documents">
+                                <div class="slds-truncate" title="Doc"><a href="#">Investors Group Financial Services Investment Statement (Quarterly)</a></div>
+                            </td>
+                            <td data-label="Client Number">
+                                <div class="slds-truncate" title="123-432-1">123-432-1</div>
+                            </td>
+                            </tr>
+                            <tr>
+                            <th scope="row" data-label="Date">
+                                <div class="slds-truncate" title="June 30, 2016">June 30, 2016</div>
+                            </th>
+                            <td data-label="Documents">
+                                <div class="slds-truncate" title="Doc"><a href="#">Investors Group Financial Services Investment Statement (Quarterly)</a></div>
+                            </td>
+                            <td data-label="Client Number">
+                                <div class="slds-truncate" title="123-432-1">123-432-1</div>
+                            </td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                
+                </div>
+                <div id="tab-default-2" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-2__item">Item Two Content</div>
+                <div id="tab-default-3" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-3__item">Item Three Content</div>
+                <div id="tab-default-3" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-3__item">Item Four Content</div>
+
+                <div class="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open">
+                    <button class="slds-button slds-button_icon slds-button_icon-border-filled" aria-haspopup="true" title="Show More">
+                        
+                        <span class="slds-assistive-text">Show More</span>
+                    </button>
+                    <div class="slds-dropdown slds-dropdown_left">
+                        <ul class="slds-dropdown__list" role="menu">
+                        <li class="slds-dropdown__item" role="presentation">
+                            <a href="javascript:void(0);" role="menuitem" tabindex="0">
+                            <span class="slds-truncate" title="Menu Item One">Menu Item One</span>
+                            </a>
+                        </li>
+                        <li class="slds-dropdown__item" role="presentation">
+                            <a href="javascript:void(0);" role="menuitem" tabindex="-1">
+                            <span class="slds-truncate" title="Menu Item Two">Menu Item Two</span>
+                            </a>
+                        </li>
+                        <li class="slds-dropdown__item" role="presentation">
+                            <a href="javascript:void(0);" role="menuitem" tabindex="-1">
+                            <span class="slds-truncate" title="Menu Item Three">Menu Item Three</span>
+                            </a>
+                        </li>
+                        <li class="slds-has-divider_top-space" role="separator"></li>
+                        <li class="slds-dropdown__item" role="presentation">
+                            <a href="javascript:void(0);" role="menuitem" tabindex="-1">
+                            <span class="slds-truncate" title="Menu Item Four">Menu Item Four</span>
+                            </a>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="igcp-banner">
+                <div class="slds-size_12-of-12 slds-medium-size_6-of-12">
+                <div class="igcp-banner-text">
+                        <h3 class="igcp-banner-heading">Featured News</h3>
+                        <p>Here's news about your statement and other important information.</p>
+                        <c:CP_Cmp_Button id="learn-more" label="Learn More" class="igcp-button--complete"/>
+                    </div>
+                </div>
+      
+                <img class="" src="{!$Resource.igcpresources + '/igcp-resources/images/banner_image.png'}" alt="Banner Image" />
+           
+            </div>
+		</div>
+	</div>
+</div>
+</aura:component>

@@ -1,0 +1,15 @@
+<aura:component >
+
+   <!-- ATTRS -->
+	<aura:attribute name="modalId" type="String" default=""></aura:attribute>
+
+	<!-- MARKUP -->
+	<div class="igcp-container slds-p-around--small slds-m-bottom--medium">
+		<c:CP_Cmp_Table id="transactions-table" 
+			styleConfig="{
+				'grid' : ['2', '2', '2', '2', '2', '2'],
+				'textAlign' : ['left', 'left', 'left', 'left', 'right', 'right']
+			}"
+			modalId="{!v.modalId}"/>
+	</div>
+</aura:component>

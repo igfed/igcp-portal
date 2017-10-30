@@ -7,7 +7,6 @@
 	<c:CP_Utils aura:id="CP_Utils" />
 	<c:CP_Validation aura:id="CP_Validation" />
 	<c:CP_Services aura:id="CP_Services" />
-	<c:CP_User_Info />
 	
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="account-detail"></aura:attribute>
@@ -28,7 +27,7 @@
 	<aura:attribute name="gainLossType" type="String" default="positive" ></aura:attribute>
 	<aura:attribute name="gainLossPercentage" type="String" default="N/A"></aura:attribute>
 	
-	<!-- METHODS -->
+	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 	
@@ -37,9 +36,9 @@
 		<div class="slds-size_12-of-12">
 			<div class="slds-m-top--medium slds-large-m-top--none slds-m-bottom--large">
 				
-				<c:CP_Cmp_Text_Link class="slds-float_left" linkClass="igcp-link__variant--a igcp-utils__text--uppercase" icon="utility:left" label="{!$Label.c.CP_Generic_Label_Overview}" />
+				<c:CP_Cmp_Text_Link class="slds-float_left" linkClass="igcp-link__variant--a" icon="utility:chevronleft" label="{!$Label.c.CP_Generic_Label_Overview}" />
 				
-				<c:CP_Cmp_Text_Link class="slds-float_right" linkClass="igcp-link__variant--a igcp-utils__text--uppercase" icon="utility:table" label="{!$Label.c.CP_Generic_Label_View_Statement}" />
+				<c:CP_Cmp_Text_Link class="slds-float_right" linkClass="igcp-link__variant--a" icon="utility:table" label="{!$Label.c.CP_Generic_Label_View_Statement}" />
 
 			</div>
 		</div>
@@ -61,7 +60,7 @@
 					<div class="igcp-separator--large slds-size_12-of-12 slds-m-vertical--xxx-small slds-large-m-vertical--large "></div>
 					<div class="slds-grid slds-wrap">
 						
-						<c:CP_Cmp_Name_Value_List id="account-list" gridSizing="6"/>
+						<c:CP_Cmp_Name_Value_List id="account-list" gridSizing="6" class="slds-m-vertical--small"/>
 						
 					</div>
 				</div>

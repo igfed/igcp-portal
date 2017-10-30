@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="DocumentPreferenceController">
 	
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="edit-documents"></aura:attribute>
@@ -16,8 +16,8 @@
 
 	<!-- HANDLERS -->
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
-	<!-- <aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
-	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
+	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
+	<!-- <aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
 	<aura:handler event="c:CP_Evt_Key" action="{!c.onKey}" /> -->
 	
@@ -174,10 +174,11 @@
 				<div class="slds-grid slds-wrap">
 
 					<!--CTAS-->
-					<c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Update}" nextType="submit" form="{!v.pageId}" />
+					<c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Update}" nextType="complete" modalId="editDocument-tos" form="{!v.pageId}" />
 				</div>
 			</div>
 		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
 	</div>
+	<c:CP_Cmp_Modal id="editDocument-tos" />
 </div>
 </aura:component>

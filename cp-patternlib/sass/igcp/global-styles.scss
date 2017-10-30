@@ -21,7 +21,6 @@
 
 .#{$namespace}-container {
 	background-color: #fff;
-
 	@media (max-width: 480px) {
 		margin: 0 10px;
 	}
@@ -75,6 +74,9 @@
 		margin-bottom: 0;
 		border: 1px solid $ig-black;
 	}
+	&.uiInput--select.has-error.select {
+		border: none;
+	}
 }
 
 .#{$namespace}-input__help-link {
@@ -106,7 +108,8 @@
 }
 
 .#{$namespace}-link__cta {
-	.slds-icon_container.slds-icon-utility-chevronright {
+	.slds-icon_container.slds-icon-utility-chevronright,
+	.slds-icon_container.slds-icon-utility-chevronleft {
 		top: 0;
 		.slds-icon-text-default {
 			fill: $ig-link-blue;
@@ -118,6 +121,11 @@
 	font-family: $ig-whitney-semibold;
 	font-size: $ig-space--x-small;
 	letter-spacing: $ig-letter-spacing;
+
+	
+	.slds-icon-text-default {
+		fill: $ig-link-blue;
+	}
 }
 
 .#{$namespace}-link__glyph--after {
@@ -554,7 +562,6 @@
 		.igcp-tooltip .igcp-tooltip__tip.has-tip {
 			margin-left: 0;
 		}
-
 		.slds-checkbox_toggle {
 			float: right;
 			width: auto;
@@ -567,13 +574,11 @@
 	}
 	.#{$namespace}-label--with-tooltip {
 		float: right;
-
 		.igcp-label--small {
 			color: $ig-dark-grey;
 			font-family: $ig-whitney-book;
 		}
 	}
-
 	.slds-checkbox--toggle .slds-checkbox--faux,
 	.slds-checkbox--toggle .slds-checkbox_faux,
 	.slds-checkbox_toggle .slds-checkbox--faux,
@@ -679,9 +684,6 @@
 	}
 }
 
-//GRAPH
-.#{$namespace}-graph__doughnut-legend {}
-
 //TABLES
 .#{$namespace}-table {
 	width: 100%;
@@ -692,12 +694,10 @@
 			color: $ig-blue;
 		}
 	}
-
 	.#{$namespace}-table__row--link:hover {
 		cursor: pointer;
 		background-color: $ig-light-grey;
 	}
-
 	&.#{$namespace}-table__holdings {
 		.#{$namespace}-table__row {
 			.#{$namespace}-table__header {
@@ -731,6 +731,95 @@
 			.#{$namespace}-table__data:nth-child(3) {
 				display: table-cell;
 			}
+		}
+	}
+}
+
+//ADDRESS
+.#{$namespace}-address {
+	p {
+		line-height: 20px;
+	}
+}
+
+//STATEMENT
+.#{$namespace}-statement {
+	.#{$namespace}-document-tabs {
+		background: transparent;
+		position: relative;
+
+		.slds-tabs--default__nav,
+		.slds-tabs_default__nav {
+			list-style-type: none;
+			margin: 0 0 5px 0;
+			border-bottom: 1px solid #ddd;
+		}
+		.slds-dropdown-trigger {
+			position: absolute;
+			top: -40px;
+			right: 0;
+		}
+		.slds-tabs_default__link,
+		thead tr th {
+			font-size: 13px;
+			font-weight: bold !important;
+			color: $ig-blue;
+			text-transform: capitalize;
+			font-family: $ig-whitney-book;
+		}
+	}
+	.#{$namespace}-document-table {
+		background: #fff;
+		table {
+			padding: 20px 20px 30px 20px;
+			font-size: 14px;
+		}
+		table tr {
+			background-color: #fff !important;
+		}
+		thead tr th,
+		thead tr td {
+			border-top: none !important;
+		}
+		table tr th,
+		table tr td {
+			padding-left: 0 !important;
+			border: none;
+			border-top: 1px solid #ddd;
+		}
+	}
+	.#{$namespace}-banner {
+		background-color: $ig-terrible-teal;
+		height: 180px;
+		position: relative;
+		margin-top: -15px;
+
+		.#{$namespace}-banner-heading {
+			color: $ig-black;
+		}
+		.#{$namespace}-banner-text {
+			z-index: 1000;
+			position: absolute;
+			top: 35px;
+			left: 40px;
+		}
+		button {
+			background: transparent;
+			border: 1px solid $ig-black;
+			width: 150px;
+			margin-top: 10px;
+			font-size: 13px;
+			font-weight: bold !important;
+			color: $ig-black;
+			text-transform: capitalize;
+			font-family: $ig-whitney-book;
+		}
+		img {
+			width: auto;
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: 1;
 		}
 	}
 }
