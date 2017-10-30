@@ -1,82 +1,5 @@
 public class DocumentPreferenceController {
 	@AuraEnabled
-<<<<<<< HEAD
-	public static IGAllDocumentPreference getAllFinancialAssets(){
-		
-
-		return statementFinancialAsset();
-		
-	}
-	private static IGAllDocumentPreference statementFinancialAsset(){
-		List<IGDocumentPreference> listInvestmentDocs;
-		List<IGDocumentPreferenceLoan> listLoanDocs;
-		List<IGDocumentPreferencePolicy> listPolicyDocs;
-		IGAllDocumentPreference allDocsToReturn = new IGAllDocumentPreference();
-		String clientBPId = IGClientUtils.getClientBpid();
-
-		//call the API for getting all the financial assets from the MuleSoft API
-		listInvestmentDocs = new List<IGDocumentPreference>();
-		listLoanDocs = new List<IGDocumentPreferenceLoan>();
-		listPolicyDocs = new List<IGDocumentPreferencePolicy>();
-
-
-
-		/*mock data to connect with UI, need to change once API is live
-		@AuraEnabled public String clientBpid;
-		@AuraEnabled public String clientNumber;
-		@AuraEnabled public String accountTypeLabel;
-		@AuraEnabled public String dealerName;
-
-		public class IGAllDocumentPreference {
-	List<IGDocumentPreference> investAssetDocuments;
-	List<IGDocumentPreferenceLoan> loanAssetDocuments;
-	List<IGDocumentPreferencePolicy> policyAssetDocuments;
-}
-
-		*/
-		IGDocumentPreference testInvDocPref = new IGDocumentPreference();
-		testInvDocPref.clientBpid = '111111';
-		testInvDocPref.clientNumber = '22222';
-		testInvDocPref.accountTypeLabel = 'RRSP';
-		testInvDocPref.dealerName = 'Investment Group Financial Services';
-		listInvestmentDocs.add(testInvDocPref);
-
-		IGDocumentPreference testInvDocPref2 = new IGDocumentPreference();
-		testInvDocPref2.clientBpid = '111111';
-		testInvDocPref2.clientNumber = '55555';
-		testInvDocPref2.accountTypeLabel = 'RRSPVP';
-		testInvDocPref2.dealerName = 'Investment Group';
-		listInvestmentDocs.add(testInvDocPref2);
-
-		IGDocumentPreferenceLoan testLoanDocPref = new IGDocumentPreferenceLoan();
-		testLoanDocPref.loanNumber = '33333';
-		listLoanDocs.add(testLoanDocPref);
-		IGDocumentPreferenceLoan testLoanDocPref2 = new IGDocumentPreferenceLoan();
-		testLoanDocPref2.loanNumber = '66666';
-		listLoanDocs.add(testLoanDocPref2);
-
-		IGDocumentPreferencePolicy testPolicyDocPref = new IGDocumentPreferencePolicy();
-		testPolicyDocPref.policyNumber = '44444';
-		listPolicyDocs.add(testPolicyDocPref);
-		IGDocumentPreferencePolicy testPolicyDocPref2 = new IGDocumentPreferencePolicy();
-		testPolicyDocPref2.policyNumber = '7777';
-		listPolicyDocs.add(testPolicyDocPref2);
-
-		allDocsToReturn.investAssetDocuments = listInvestmentDocs;
-		allDocsToReturn.loanAssetDocuments = listLoanDocs;
-		allDocsToReturn.policyAssetDocuments = listPolicyDocs;
-
-		System.debug('all docs '+allDocsToReturn);
-
-		return allDocsToReturn;
-
-
-
-
-	}
-	/*@AuraEnabled
-=======
->>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 	public static List<IGDocumentPreference> getFinancialAssetsToEdit(){
 		
 		return InvestmentFinancialAsset();
@@ -219,10 +142,6 @@ public class DocumentPreferenceController {
 		}
 		System.debug(docPreferenceInvestment);
 		return docPreferenceInvestment;
-<<<<<<< HEAD
-	}*/
-=======
 	}
->>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 
 }

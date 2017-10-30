@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <aura:component >
 
 	<!-- IMPORTS -->
@@ -33,40 +32,4 @@
 
 		</div>
 	</div>
-=======
-<aura:component >
-
-	<!-- IMPORTS -->
-	<c:CP_Events aura:id="CP_Events"/>
-
-	<!-- HANDLERS -->
-	<aura:handler event="c:CP_Evt_Click" action="{!c.onStart}"></aura:handler>
-
-	<!-- MARKUP -->
-	<div class="igcp-background__gradient">
-		
-		<div class="igcp-utils__max-width--large igcp-utils__margin--zero-auto slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-around--large slds-medium-p-around--xx-large">
-			
-			<div class="slds-size_12-of-12 slds-medium-size_7-of-12 slds-large-size_5-of-12">
-				
-				<div class="slds-m-top--zero slds-medium-m-top--medium slds-large-m-top--none slds-m-bottom--medium slds-large-m-bottom--large">
-					
-					<h1 class="slds-p-horizontal--xxx-small slds-medium-p-left--zero slds-medium-p-right--medium slds-large-p-right--large slds-text-align_center slds-medium-text-align_left">{!$Label.c.CP_Registration_Start_h1}</h1>
-					
-					<p class="slds-m-vertical--x-small slds-medium-p-right--medium slds-large-p-right--large slds-text-align_center slds-medium-text-align_left">{!$Label.c.CP_Registration_Start_Instructions}</p>
-					
-					<c:CP_Cmp_Button id="get-started-pfa" label="{!$Label.c.CP_Generic_Button_Get_Started}" class="igcp-utils__width--100 igcp-medium-utils__width--50 slds-m-top--medium slds-p-horizontal--large slds-medium-p-horizontal--zero" />
-
-				</div>	
-			</div>
-			
-			<div class="igcp-utils__text-align--center igcp-large-utils__text-align--left slds-size_12-of-12 slds-medium-size_5-of-12 slds-large-size_7-of-12 slds-m-top--large slds-large-m-top--zero">
-				<div>
-					<img class="igcp-medium-utils__max-width--none" src="{!$Resource.igcpresources + '/igcp-resources/images/registration/registration-hero.png'}" alt="{!$Label.c.CP_Registration_Img_Hero_Alt}"/>
-				</div>
-			</div>
-
-		</div>
-	</div>
->>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 </aura:component>

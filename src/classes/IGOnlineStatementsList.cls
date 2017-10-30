@@ -2,23 +2,6 @@ public class IGOnlineStatementsList extends IGRestClient{
 	private static final String IG_OLS_NAMED_CREDS 	= 'IG_Client_Portal_Dev_1_3';
 	private List<String> clientNumbersString;
 	private LIst<Financial_Asset__c> listOfFAs;
-<<<<<<< HEAD
-	private static Map<Integer, String> monthsMap = new Map<Integer, String>{
-		  1 => 'Jan',
-		  2 => 'Feb',
-		  3 => 'Mar',
-		  4 => 'Apr',
-		  5 => 'May',
-		  6 => 'Jun',
-		  7 => 'Jul',
-		  8 => 'Aug',
-		  9 => 'Sep',
-		  10 => 'Oct',
-		  11 => 'Nov',
-		  12 => 'Dec'
-		};
-=======
->>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 	
 
 	public IGOnlineStatementsList() {
@@ -42,17 +25,6 @@ public class IGOnlineStatementsList extends IGRestClient{
 
 	            	System.debug('=====> getonlinestatemnet.data: ' + data);
 	            	for(ClientStatementResults eachResult : data.clientStatementResults){
-<<<<<<< HEAD
-	            		Date tempDate = Date.valueOf(eachResult.statementdate);
-	            		/*System.debug(Date.valueOf(eachResult.statementdate)+'->>'+String.valueOf(temp.format('MMM')));
-	            		System.debug(temp.format('MMMM D, YYYY'));*/
-	            		System.debug(eachResult.statementdate+'->>'+ Date.valueOf(eachResult.statementdate));
-	            		//eachResult.statementdate = monthsMap.get(tempDate.day()) +' '+temp.format('d')+', '+temp.format('YYYY');
-	            		eachResult.statementdate = monthsMap.get(tempDate.month()) +' '+tempDate.day() +', '+tempDate.year();
-	            		System.debug('date format '+eachResult.statementdate);
-	            		rv.add(new DTO_OnlineStatement(eachResult));
-	            	}/**/
-=======
 	            		Datetime temp = Date.valueOf(eachResult.statementdate);
 	            		/*System.debug(Date.valueOf(eachResult.statementdate)+'->>'+String.valueOf(temp.format('MMM')));
 	            		System.debug(temp.format('MMMM D, YYYY'));*/
@@ -60,17 +32,12 @@ public class IGOnlineStatementsList extends IGRestClient{
 	            		System.debug('date format '+eachResult.statementdate);
 	            		rv.add(new DTO_OnlineStatement(eachResult));
 	            	}
->>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 	            	
 	            }
 		    }
 		System.debug(rv);
 		return rv;
 	}
-<<<<<<< HEAD
-	
-=======
->>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 
 	public override String getHttpEndPoint() {
 		Integer testClientNumber = 12345;

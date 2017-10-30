@@ -3910,6 +3910,19 @@ table {
 .igcp-address p {
   line-height: 20px; }
 
+.igcp-statement .slds-tabs--default__nav, .igcp-statement .slds-tabs_default__nav {
+  list-style-type: none;
+  margin: 0; }
+.igcp-statement .slds-dropdown-trigger {
+  position: absolute;
+  top: -40px;
+  right: 0; }
+.igcp-statement .slds-tabs_default {
+  position: relative; }
+.igcp-statement .igcp-banner {
+  margin-top: 30px;
+  background-color: #43c1bc; }
+
 @media (min-width: 768px) {
   .igcp-registration .igcp-registration__pfa h1 {
     font-size: 24px;

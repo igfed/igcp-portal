@@ -741,3 +741,27 @@
 		line-height: 20px;
 	}
 }
+
+//STATEMENT
+.#{$namespace}-statement {
+	.slds-tabs--default__nav, .slds-tabs_default__nav {
+		list-style-type: none;
+		margin: 0;
+	}
+
+	.slds-dropdown-trigger {
+		position: absolute;
+		top: -40px;
+		right: 0;
+	}
+
+	.slds-tabs_default {
+		position: relative;
+	}
+
+	.igcp-banner {
+		margin-top: 30px;
+		background-color: $ig-terrible-teal;
+	}
+
+}

@@ -13,10 +13,4 @@ public class DTO_OnlineStatement {
 		this.docId = src.docId;
 		this.statementName = src.clientName + ' '+src.statementdate;
 	}
-<<<<<<< HEAD
-	public DTO_OnlineStatement(){
-		
-	}
-=======
->>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 }

@@ -37,21 +37,13 @@ global class OnlineStatementListControllerTestMock implements HttpCalloutMock {
 		'      \"clientName\": \"NASAUZ\",'+
 		'      \"clientNumber\": \"1223873\",'+
 		'      \"docId\": \"djcxMjYtNTAxMS01MDEyLTUwMTctREFBMjAtMzkzOTJGQUFBLTE3NDM0MzItMjEzNjUtMzU4MTgzNC0yMjQ0MDgtNzgtNzktMi0xLTAtXgExMjIzODczAUZUSVpFRFMBMTQ3OTEBMAE5OTMy\",'+
-<<<<<<< HEAD
-		'      \"statementdate\": \"2017-06-30T00:00:00-02:00\"'+
-=======
 		'      \"statementdate\": \"2012-06-30T00:00:00-02:00\"'+
->>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 		'    },'+
 		'    {'+
 		'      \"clientName\": \"FTIZEDS\",'+
 		'      \"clientNumber\": \"1223872\",'+
 		'      \"docId\": \"djcxMjYtNTAxMS01MDEyLTUwMTctREFBMTktMzgyMzVGQUFBLTQzODYxLTIxNTM4LTM4MjQ2MTAtMjIzNTE5LTc4LTc5LTItMS0wLV4BMTIyMzg3MwFGVElaRURTATE0NzAwATABOTkzMg==\",'+
-<<<<<<< HEAD
-		'      \"statementdate\": \"2016-03-31T00:00:00-05:00\"'+
-=======
 		'      \"statementdate\": \"2010-03-31T00:00:00-05:00\"'+
->>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 		'    }'+
 		'  ]'+
 		'}';

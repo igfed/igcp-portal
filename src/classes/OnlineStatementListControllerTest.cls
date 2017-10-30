@@ -124,38 +124,8 @@ public class OnlineStatementListControllerTest {
 		//String jsonObj = '{"allDocumentPreference" : true , "documentPreferences" : [{ "clientNumber" : "0987654",	"investmentStatements" : true, "taxReceipts" : true, "tradeConfirmation" : false },{ "clientNumber" : "0987653",	"investmentStatements" : false, "taxReceipts" : true, "tradeConfirmation" : false },{ "clientNumber" : "0987652",	"investmentStatements" : true, "taxReceipts" : true, "tradeConfirmation" : true }],"documentPreferencesLoan":[{}]}';
 		
 		System.runAs(testUser){
-<<<<<<< HEAD
-			Test.startTest();
-	   		List<DTO_OnlineStatement> listOLStatements = new List<DTO_OnlineStatement>();
-	   		listOLStatements = OnlineStatementListController.getOnlineStatementListFilter('Last 4 quarters');
-	   		System.debug('List 1 current '+listOLStatements);
-	   		DTO_OnlineStatement asssertRec1 = new DTO_OnlineStatement();
-		    asssertRec1 = listOLStatements.get(0);
-		    System.assertEquals('NASAUZ',asssertRec1.clientName);
-		    System.assertEquals('Jun 30, 2017',asssertRec1.statementDate);
-		    System.assertEquals('1223873',asssertRec1.clientNumber);
-		    System.assertEquals('NASAUZ Jun 30, 2017',asssertRec1.statementName);
-		    
-		    listOLStatements.clear();
-		    listOLStatements = OnlineStatementListController.getOnlineStatementListFilter('2016');
-		    System.debug('List 2 current '+listOLStatements);
-		    DTO_OnlineStatement asssertRec2 = new DTO_OnlineStatement();
-		    asssertRec2 = listOLStatements.get(0);
-
-		    System.assertEquals('FTIZEDS',asssertRec2.clientName);
-		    System.assertEquals('Mar 31, 2016',asssertRec2.statementDate);
-		    System.assertEquals('1223872',asssertRec2.clientNumber);
-		    System.assertEquals('FTIZEDS Mar 31, 2016',asssertRec2.statementName);
-
-	   		Test.stopTest();
-	   	
-	   	}
-	   
-
-=======
 	   		List<DTO_OnlineStatement> listOLStatements = OnlineStatementListController.getOnlineStatementList();
 	   		System.debug(listOLStatements);
 	   	}
->>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 	 }
 }
