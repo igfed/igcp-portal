@@ -224,7 +224,6 @@
 					]
 				}
 			);
-
 			events.fire(
 				"CP_Evt_Set_Graph", {
 					"id": "account-details-performance-chart"

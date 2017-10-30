@@ -11,7 +11,7 @@
             });
             urlEvent.fire();*/
 
-		/*var action = component.get("c.getOnlineStatementListFilter");
+		var action = component.get("c.getOnlineStatementListFilter");
         action.setParams({'filter':'Last 4 quarters'});
 		console.log(action);
 		action.setCallback(this,function(resp){
@@ -30,7 +30,7 @@
             });
             
             //adds the server-side action to the queue        
-            $A.enqueueAction(action);*/
+            $A.enqueueAction(action);
 	},
         gotoURL : function (component) {
         var urlEvent = $A.get("e.force:navigateToURL");
@@ -46,7 +46,7 @@
           "url": 'https://www.google.com/'
         });
         urlEvent.fire();*/
-        window.open('https://igportaldev3--portaldev3--c.cs70.visual.force.com/apex/StatementPDFRender?docid=djcxMjYtNTAxMS01MDEyLTUwMTctREFBMTktMzgyMzVGQUFBLTQzODYxLTIxNTM4LTM4MjQ2MTAtMjIzNTE5LTc4LTc5LTItMS0wLV4BMTIyMzg3MwFGVElaRURTATE0NzAwATABOTkzMg');
+        window.open('https://www.google.com/');
     }
 		
 })
