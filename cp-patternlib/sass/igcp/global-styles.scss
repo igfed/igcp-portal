@@ -109,7 +109,8 @@
 }
 
 .#{$namespace}-link__cta {
-	.slds-icon_container.slds-icon-utility-chevronright {
+	.slds-icon_container.slds-icon-utility-chevronright,
+	.slds-icon_container.slds-icon-utility-chevronleft {
 		top: 0;
 		.slds-icon-text-default {
 			fill: $ig-link-blue;
@@ -121,6 +122,11 @@
 	font-family: $ig-whitney-semibold;
 	font-size: $ig-space--x-small;
 	letter-spacing: $ig-letter-spacing;
+
+	
+	.slds-icon-text-default {
+		fill: $ig-link-blue;
+	}
 }
 
 .#{$namespace}-link__glyph--after {

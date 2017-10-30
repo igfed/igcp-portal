@@ -3446,15 +3446,19 @@ table {
   font-size: 12px;
   letter-spacing: 0px; }
 
-.igcp-link__cta .slds-icon_container.slds-icon-utility-chevronright {
+.igcp-link__cta .slds-icon_container.slds-icon-utility-chevronright,
+.igcp-link__cta .slds-icon_container.slds-icon-utility-chevronleft {
   top: 0; }
-  .igcp-link__cta .slds-icon_container.slds-icon-utility-chevronright .slds-icon-text-default {
+  .igcp-link__cta .slds-icon_container.slds-icon-utility-chevronright .slds-icon-text-default,
+  .igcp-link__cta .slds-icon_container.slds-icon-utility-chevronleft .slds-icon-text-default {
     fill: #0e75d5; }
 
 .igcp-link__variant--a {
   font-family: "WhitneySemibold", Arial, sans-serif;
   font-size: 12px;
   letter-spacing: 0px; }
+  .igcp-link__variant--a .slds-icon-text-default {
+    fill: #0e75d5; }
 
 .igcp-link__glyph--after {
   position: relative;

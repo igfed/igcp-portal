@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="EmailPrefController">
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="DocumentPreferenceController">
 	
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="edit-documents"></aura:attribute>
