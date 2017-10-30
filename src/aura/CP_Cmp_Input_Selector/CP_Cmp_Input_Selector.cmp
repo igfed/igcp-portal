@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <aura:component >
 	
 	<!-- ATTRS -->
@@ -54,4 +55,62 @@
 			</div>
 		</div>
 	</div>
+=======
+<aura:component >
+	
+	<!-- ATTRS -->
+	<aura:attribute name="id" type="String" />
+	<aura:attribute name="form" type="String"></aura:attribute>
+	<aura:attribute name="selectedValue" type="String" default=""></aura:attribute>
+	<aura:attribute name="currentSelectedValue" type="String" default=""></aura:attribute>
+	<aura:attribute name="label" type="String" />
+	<aura:attribute name="placeholder" type="String" />
+	<aura:attribute name="class" type="String" />
+	<aura:attribute name="tooltip" type="String" />
+	<aura:attribute name="defaultOptions" type="String[]" />
+	<aura:attribute name="options" type="String[]"></aura:attribute>
+	<aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
+	<aura:attribute name="type" type="String" default="selector"></aura:attribute>
+
+	<!-- INCLUDES -->
+	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Events aura:id="CP_Events" />
+
+	<!-- HANDLERS -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
+	<aura:handler event="c:CP_Evt_Input_Selector_Change" action="{!c.onChangeReceived}"></aura:handler>
+	<aura:handler event="c:CP_Evt_Selector_Send_Options" action="{!c.onOptionsReceived}"></aura:handler>
+	<aura:handler event="c:CP_Evt_Set_Input_Value" action="{!c.onSetValue}"></aura:handler>
+	<aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}"></aura:handler>
+	<aura:handler event="c:CP_Evt_Input_Valid" action="{!c.onValid}" />
+	<aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}" />
+
+	<!-- MARKUP -->
+	<div id="{!v.id}" class="{!v.class}">
+		<div class="slds-form-element">
+			<label class="slds-form-element__label input-label" for="{!v.id}">{!v.label}</label>
+			<aura:renderIf isTrue="{!v.tooltip}">
+				<c:CP_Cmp_Tooltip tooltip="{!v.tooltip}" />
+			</aura:renderIf>
+			<div class="slds-form-element__control">
+				<ui:inputSelect aura:id="selector-input" class="igcp-input igcp-input__selector" change="{!c.onChange}" value="{!v.selectedValue}" blur="{!c.onBlur}">
+
+					<aura:renderIf isTrue="{!v.currentSelectedValue == ''}"> 
+						<ui:inputSelectOption text="Select a security question" label="{!v.placeholder}" disabled="true" value="true" />
+					</aura:renderIf>
+
+					<aura:iteration items="{!v.options}" var="opt" indexVar="index">
+						<aura:if isTrue="{!opt == 'v.currentSelectedValue'}"> 
+							<ui:inputSelectOption text="{!opt}" label="{!opt }" value="true"/>
+							<aura:set attribute="else">
+        						<ui:inputSelectOption text="{!opt}" label="{!opt }" value="false"/>
+    						</aura:set>
+						</aura:if>
+					</aura:iteration>
+				</ui:inputSelect>
+			</div>
+		</div>
+	</div>
+>>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 </aura:component>

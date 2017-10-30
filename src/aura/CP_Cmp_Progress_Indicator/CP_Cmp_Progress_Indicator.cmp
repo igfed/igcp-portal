@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <aura:component >
 
 	<!-- ATTRS -->
@@ -44,4 +45,52 @@
 			</span>
 		</div>
 	</div>
+=======
+<aura:component >
+
+	<!-- ATTRS -->
+	<aura:attribute name="currentStep" type="Integer" default="1" />
+	<aura:attribute name="totalSteps" type="Integer" default="3" />
+	<aura:attribute name="totalStepsArr" type="List" />
+
+	<!-- HANDLERS -->
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+	<!-- MARKUP -->
+	<div class="igcp-progress-indicator slds-progress slds-m-horizontal--zero slds-m-vertical--medium">
+		<ol class="slds-progress__list">
+			<aura:iteration items="{!v.totalStepsArr}" var="item">
+				<aura:renderIf isTrue="{!greaterthan(v.currentStep, item)}">
+					<li class="slds-progress__item slds-is-completed">
+						<button class="slds-button slds-progress__marker">
+							<span class="igcp-progress-indicator__step igcp-progress-indicator__step--complete"><lightning:icon iconName="utility:success" alternativeText="Step Complete" /></span>
+							<span class="slds-assistive-text">Step 1 - Active</span>
+						</button>
+					</li>
+					<aura:set attribute="else">
+						<aura:renderIf isTrue="{!equals(v.currentStep, item)}">
+							<li class="slds-progress__item slds-is-active">
+								<button class="slds-button slds-progress__marker"><span class="igcp-progress-indicator__step">{!item}</span>
+									<span class="slds-assistive-text">Step {!item}</span>
+								</button>
+							</li>
+							<aura:set attribute="else">
+								<li class="slds-progress__item">
+									<button class="slds-button slds-progress__marker"><span class="igcp-progress-indicator__step">{!item}</span>
+										<span class="slds-assistive-text">Step {!item}</span>
+									</button>
+								</li>
+							</aura:set>
+						</aura:renderIf>
+					</aura:set>
+				</aura:renderIf>
+			</aura:iteration>
+		</ol>
+		<div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" role="progressbar">
+			<span class="slds-progress-bar__value" style="{!'width: ' + mult(div(100, v.totalSteps - 1), v.currentStep - 1) + '%;'}">
+            <span class="slds-assistive-text">Progress: 0%</span>
+			</span>
+		</div>
+	</div>
+>>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 </aura:component>

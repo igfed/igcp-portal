@@ -1,5 +1,6 @@
 public class DocumentPreferenceController {
 	@AuraEnabled
+<<<<<<< HEAD
 	public static IGAllDocumentPreference getAllFinancialAssets(){
 		
 
@@ -74,6 +75,8 @@ public class DocumentPreferenceController {
 
 	}
 	/*@AuraEnabled
+=======
+>>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 	public static List<IGDocumentPreference> getFinancialAssetsToEdit(){
 		
 		return InvestmentFinancialAsset();
@@ -216,6 +219,10 @@ public class DocumentPreferenceController {
 		}
 		System.debug(docPreferenceInvestment);
 		return docPreferenceInvestment;
+<<<<<<< HEAD
 	}*/
+=======
+	}
+>>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 
 }

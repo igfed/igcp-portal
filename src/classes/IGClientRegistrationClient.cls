@@ -43,6 +43,9 @@ public with sharing class IGClientRegistrationClient extends IGRestClient {
 		public String UNLOCATED_INDICATOR;
 		public String MATCH_TYPE;
 	}
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 }

@@ -21,6 +21,10 @@
 
 .#{$namespace}-container {
 	background-color: #fff;
+
+	@media (max-width: 480px) {
+		margin: 0 10px;
+	}
 }
 
 .#{$namespace}-wrapper-x-large {
@@ -70,6 +74,9 @@
 		border-radius: 0;
 		margin-bottom: 0;
 		border: 1px solid $ig-black;
+	}
+	&.uiInput--select.has-error.select {
+		border: none;
 	}
 }
 
@@ -390,6 +397,17 @@
 			border: 10px solid $ig-grey;
 			overflow-y: scroll;
 		}
+	} //details
+	&.#{$namespace}-modal__details {
+		background-color: $ig-dark-blue--90;
+		.#{$namespace}-modal__details--inner {
+			position: fixed;
+			background-color: $ig-white;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
 	}
 }
 
@@ -500,12 +518,6 @@
 	border-bottom: 1px solid $ig-grey;
 }
 
-//BOXED COMPONENT (THIS MAY NOT BE REQUIRED)
-.#{$namespace}-boxed--white {
-	background-color: #fff;
-	padding: 30px 25px;
-}
-
 //EDIT PAGES
 .#{$namespace}-edit-notifications {
 	.slds-checkbox--faux {
@@ -542,11 +554,29 @@
 		.slds-grid:last-child {
 			margin-bottom: -30px;
 		}
-		.#{$namespace}-tooltip {
-			margin-left:  0;
+		.igcp-tooltip .igcp-tooltip__tip.has-tip {
+			margin-left: 0;
 		}
 
+		.slds-checkbox_toggle {
+			float: right;
+			width: auto;
+		}
+		.slds-checkbox_off,
+		.slds-checkbox_on {
+			top: -2px;
+			left: -45px;
+		}
 	}
+	.#{$namespace}-label--with-tooltip {
+		float: right;
+
+		.igcp-label--small {
+			color: $ig-dark-grey;
+			font-family: $ig-whitney-book;
+		}
+	}
+
 	.slds-checkbox--toggle .slds-checkbox--faux,
 	.slds-checkbox--toggle .slds-checkbox_faux,
 	.slds-checkbox_toggle .slds-checkbox--faux,
@@ -561,7 +591,7 @@
 		display: block;
 		position: absolute;
 		top: -2px;
-		left: 55px;
+		left: 53px;
 		font-size: 14px;
 		font-weight: bold;
 	}
@@ -652,24 +682,62 @@
 	}
 }
 
-//GRAPH
-.#{$namespace}-graph__doughnut-legend {}
-
 //TABLES
 .#{$namespace}-table {
-
 	width: 100%;
-
 	.#{$namespace}-table__row {
-		
 		.#{$namespace}-table__header {
 			font-size: $ig-font-size--mini;
 			letter-spacing: $ig-letter-spacing;
 			color: $ig-blue;
 		}
+	}
 
-		.#{$namespace}-table__data {
+	.#{$namespace}-table__row--link:hover {
+		cursor: pointer;
+		background-color: $ig-light-grey;
+	}
 
+	&.#{$namespace}-table__holdings {
+		.#{$namespace}-table__row {
+			.#{$namespace}-table__header {
+				display: none;
+			}
+			.#{$namespace}-table__data {
+				display: none;
+			}
+			.#{$namespace}-table__header:first-child,
+			.#{$namespace}-table__header:last-child,
+			.#{$namespace}-table__data:first-child,
+			.#{$namespace}-table__data:last-child {
+				display: table-cell;
+			}
 		}
+	}
+	&.#{$namespace}-table__transactions,
+	&.#{$namespace}-table__instructions {
+		.#{$namespace}-table__row {
+			.#{$namespace}-table__header {
+				display: none;
+			}
+			.#{$namespace}-table__data {
+				display: none;
+			}
+			.#{$namespace}-table__header:first-child,
+			.#{$namespace}-table__header:last-child,
+			.#{$namespace}-table__header:nth-child(3),
+			.#{$namespace}-table__data:first-child,
+			.#{$namespace}-table__data:last-child,
+			.#{$namespace}-table__data:nth-child(3) {
+				display: table-cell;
+			}
+		}
+	}
+}
+
+//ADDRESS
+.#{$namespace}-address {
+	p {
+		line-height: 20px;
 	}
 }

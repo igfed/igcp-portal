@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <aura:component >
     
     <!-- ATTRS -->
@@ -32,4 +33,40 @@
             </div>
         </div>
     </div>
+=======
+<aura:component >
+    
+    <!-- ATTRS -->
+    <aura:attribute name="id" type="String" default="default"  />
+    <aura:attribute name="form" type="String" default="default" ></aura:attribute>
+    <aura:attribute name="type" type="String" default="checkbox" ></aura:attribute>
+    <aura:attribute name="copy" type="String" />
+    <aura:attribute name="class" type="String" default="" />
+    <aura:attribute name="isChecked" type="Boolean" default="false" ></aura:attribute>
+    <aura:attribute name="checked" type="String" default="checked"></aura:attribute>
+
+    <!-- INCLUDES -->
+    <c:CP_Events aura:id="CP_Events" />
+
+    <!-- HANDLERS -->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}" />
+    
+    <!-- MARKUP -->
+    <div id="{!v.id}" class="{!v.class}">
+        <div class="slds-form-element">
+            <div class="slds-form-element__control">
+                <span class="slds-checkbox">
+
+                <input aura:id="checkbox-input" type="checkbox" name="options" id="{!v.id}" onclick="{!c.onCheck}"/>
+
+                <label class="slds-checkbox__label" for="{!v.id}" >
+                  <span class="slds-checkbox--faux"></span>
+                  <span class="slds-form-element__label input-label">{!v.copy}</span>
+                </label>
+                </span>
+            </div>
+        </div>
+    </div>
+>>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 </aura:component>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <aura:component >
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
@@ -52,4 +53,60 @@
 			</aura:if>
 		</div>
 	</div>
+=======
+<aura:component >
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events" />
+	<!-- ATTRS -->
+	<aura:attribute name="id" type="String" default="default"></aura:attribute>
+	<aura:attribute name="form" type="String" default="default"></aura:attribute>
+	<aura:attribute name="nextType" type="String" default="start"></aura:attribute>
+	<aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-grid slds-wrap slds-grid--align-center slds-p-bottom--x-large slds-m-top--large slds-medium-m-top--xx-large" />
+	<aura:attribute name="backLabel" type="String" default="Back" />
+	<aura:attribute name="nextLabel" type="String" default="Next" />
+	<aura:attribute name="modalID" type="String" default="igcp-modal" />
+	<!-- HANDLERS -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="c:CP_Evt_Click" action="{!c.onButtonClick}" />
+	<!-- METHODS -->
+	<aura:method name="onNextStep" action="{!c.onNext}" description="Go to next step">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
+	<aura:method name="onBackStep" action="{!c.onBack}" description="Go to previous step">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
+	<aura:method name="onStart" action="{!c.onStart}" description="Start">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
+	<aura:method name="onComplete" action="{!c.onComplete}" description="Complete">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
+	<!-- MARKUP -->
+	<div class="{!v.class}">
+		<!--CTAS-->
+		<div class="igcp-utils__order--2 igcp-medium-utils__order--1 slds-m-horizontal--medium slds-medium-m-horizontal--zero slds-size_12-of-12 slds-medium-size_5-of-12">
+			<!--BACK /CANCEL -->
+			<c:CP_Cmp_Button id="back_button" label="{!v.backLabel}" class="igcp-button--back igcp-utils__width--100 slds-p-horizontal--medium slds-medium-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-float_none slds-medium-float_left" buttonClass="slds-button slds-button--neutral" />
+		
+		</div>
+
+		<div class="igcp-utils__display--none igcp-medium-utils__display--flex igcp-utils__order--2 slds-size_2-of-12"></div>
+
+		<div class="igcp-utils__order--1 igcp-medium-utils__order--3 slds-m-horizontal--medium slds-medium-m-horizontal--zero slds-size_12-of-12 slds-medium-size_5-of-12">
+			<aura:if isTrue="{!v.nextType == 'start'}">
+				<!--START-->
+				<c:CP_Cmp_Button id="start_button" label="{!v.nextLabel}" class="igcp-button--start igcp-utils__width--100 slds-p-horizontal--medium slds-medium-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-float_none slds-medium-float_right" />
+			</aura:if>
+			<aura:if isTrue="{!v.nextType == 'complete'}">
+				<!-- COMPLETE -->
+				<c:CP_Cmp_Button id="complete_button" label="{!v.nextLabel}" class="igcp-button--complete igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-float_none slds-medium-float_right slds-p-horizontal--medium slds-medium-p-horizontal--zero"/>
+
+			</aura:if>
+			<aura:if isTrue="{!v.nextType == 'submit'}">
+				<!-- SUBMIT -->
+				<c:CP_Cmp_Submit id="form_submit" for="{!v.form}" label="{!v.nextLabel}" class="igcp-button--submit igcp-utils__width--100 slds-p-horizontal--medium slds-medium-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-float_none slds-medium-float_right"/>
+			</aura:if>
+		</div>
+	</div>
+>>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 </aura:component>

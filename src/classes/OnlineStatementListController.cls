@@ -1,4 +1,5 @@
 public class OnlineStatementListController {
+<<<<<<< HEAD
 
 	private static Map<String,List<DTO_OnlineStatement>> mapYearStatement;//= new Map<String,List<DTO_OnlineStatement>>();
 
@@ -8,6 +9,9 @@ public class OnlineStatementListController {
 		getOnlineList(getAllStatements());
 	}
 	/*
+=======
+	
+>>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 	@Auraenabled
 	public static List<DTO_OnlineStatement> getOnlineStatementList(){
 		List<Contact> contactToUse;
@@ -23,6 +27,7 @@ public class OnlineStatementListController {
     	rv = onlineStatementClient.getListOfStatements(contextContactId);
     	System.debug('rv '+rv);
 		return rv;
+<<<<<<< HEAD
 	} */
 	@Auraenabled
 	public static List<DTO_OnlineStatement> getOnlineStatementListFilter(String filter){
@@ -44,6 +49,11 @@ public class OnlineStatementListController {
 
 	}
 	private static List<DTO_OnlineStatement> getAllStatements(){
+=======
+	} 
+	@Auraenabled
+	public static List<DTO_OnlineStatement> getOnlineStatementListFilter(String filter){
+>>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 		List<Contact> contactToUse;
 		List<DTO_OnlineStatement> rv = null;
 		contactToUse = new List<Contact>();
@@ -51,6 +61,7 @@ public class OnlineStatementListController {
         System.debug(UserInfo.getUserId());
     	contactToUse = [select Id, Business_Partner_ID__c from Contact where Id in (select ContactId from User where id=:UserInfo.getUserId())];
     	System.debug(contactToUse);
+<<<<<<< HEAD
     	//contextContactId = '0033D00000LKcwIQAT';//contactToUse.get(0).Id;
     	contextContactId =  contactToUse.get(0).Id;
     	IGOnlineStatementsList onlineStatementClient = new IGOnlineStatementsList();
@@ -83,5 +94,9 @@ public class OnlineStatementListController {
 			}
 
 		}
+=======
+
+    	return null;
+>>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 	}
 }

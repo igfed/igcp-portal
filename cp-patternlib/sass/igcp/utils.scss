@@ -58,10 +58,14 @@
 		.#{getNamespace($value)}-utils__font-size--xx-large {
 			font-size: $ig-font-size--xx-large;
 			line-height: $ig-line-height--xx-large;
-		} //Line Height
+		} 
+		
+		//Line Height
 		.#{getNamespace($value)}-utils__line-height--regular {
 			line-height: $ig-line-height--base;
-		} //Text
+		} 
+		
+		//Text
 		.#{getNamespace($value)}-utils__text--default {
 			text-transform: none;
 		}
@@ -96,7 +100,9 @@
 
 		.#{getNamespace($value)}-utils__text-align--left {
 			text-align: left;
-		} //Width
+		} 
+
+		//Width
 		.#{getNamespace($value)}-utils__width--25 {
 			width: 25%;
 		}
@@ -132,7 +138,23 @@
 
 		.#{getNamespace($value)}-utils__width--auto {
 			width: auto;
-		} //Max-width
+		} 
+
+		//Height
+		.#{getNamespace($value)}-utils__height--full,
+		.#{getNamespace($value)}-utils__height--100 {
+			height: 100%;
+		}
+
+		.#{getNamespace($value)}-utils__height--50 {
+			height: 50%;
+		}
+
+		.#{getNamespace($value)}-utils__height--auto {
+			height: auto;
+		}
+		
+		//Max-width
 		.#{getNamespace($value)}-utils__max-width--large,
 		.#{getNamespace($value)}-utils__max-width--#{$ig-large} {
 			max-width: $ig-large;
@@ -150,7 +172,9 @@
 
 		.#{getNamespace($value)}-utils__max-width--none {
 			max-width: none;
-		} //Display
+		} 
+
+		//Display
 		.#{getNamespace($value)}-utils__display--none,
 		.#{getNamespace($value)}-utils__hide {
 			display: none;
@@ -211,10 +235,14 @@
 
 		.#{getNamespace($value)}-utils__opacity--100 {
 			opacity: 1;
-		} //Margin
+		} 
+		
+		//Margin
 		.#{getNamespace($value)}-utils__margin--zero-auto {
 			margin: 0 auto;
-		} //Order
+		} 
+		
+		//Order
 		.#{getNamespace($value)}-utils__order--1 {
 			order: 1
 		}
@@ -233,7 +261,9 @@
 
 		.#{getNamespace($value)}-utils__order--5 {
 			order: 5
-		} //Overflow
+		} 
+		
+		//Overflow
 		.#{getNamespace($value)}-utils__overflow--visible {
 			overflow: visible;
 		}
@@ -248,10 +278,14 @@
 
 		.#{getNamespace($value)}-utils__overflow--auto {
 			overflow: auto;
-		} //Height
+		} 
+		
+		//Height
 		.#{getNamespace($value)}-utils__height--zero {
 			height: 0;
-		} //Colour
+		} 
+		
+		//Colour
 		.#{getNamespace($value)}-utils__colour--link-blue,
 		.#{getNamespace($value)}-utils__color--link-blue {
 			color: $ig-link-blue;
@@ -270,7 +304,9 @@
 		.#{getNamespace($value)}-utils__colour--white,
 		.#{getNamespace($value)}-utils__color--white {
 			color: $ig-white;
-		} //Float
+		} 
+		
+		//Float
 		.#{getNamespace($value)}-utils__float--left {
 			float: left;
 		}
@@ -290,6 +326,11 @@
 			transform: translateX(-50%);
 		}
 
+		.#{getNamespace($value)}-utils__center--relative {
+			position: relative;
+			margin: 0 auto;
+		}
+		
 		.#{getNamespace($value)}-utils__center--vertical {
 			position: absolute;
 			top: 50%;

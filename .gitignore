@@ -10,6 +10,7 @@
 *.vi
 .sass-cache
 .history
+.git-credentials
 
 # OS or Editor folders
 .DS_Store
@@ -55,3 +56,6 @@ config
 .local_store
 .describe
 .settings
+
+#MavensMate
+src/package.xml

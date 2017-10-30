@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <aura:component >
 
 	<!-- CREATE COMPONENT -->
@@ -134,4 +135,142 @@
 		<aura:attribute name="speed" type="String" default="500"></aura:attribute>
 	</aura:method>
 	
+=======
+<aura:component >
+
+	<!-- CREATE COMPONENT -->
+	<!-- Creates a component dynamically -->
+	<aura:method name="createComponent" action="{!c.onCreateComponent}">
+		<aura:attribute name="cmpId" type="String" />
+		<aura:attribute name="params" type="Map" default="{}" />
+		<aura:attribute name="container" type="Aura.component[]" />
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+
+	<!-- DESTROY COMPONENT -->
+	<!-- Destroys component dynamically WARNING: not working yet -->
+	<aura:method name="destroyComponent" action="{!c.onDestroyComponent}">
+		<aura:attribute name="child" type="Aura.component[]" />
+		<aura:attribute name="parent" type="Aura.component[]"></aura:attribute>
+	</aura:method>
+
+	<!-- CONVERT TO YMD -->
+	<!-- Converts a date to the format required by the backend controller 
+	ex. 06/06/1969 becomes 1969-06-06 -->
+	<aura:method name="convertToYMD" action="{!c.convertToYMD}">
+		<aura:attribute name="date" type="String"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+
+	<!-- DELETE AT -->
+	<!-- Deletes an item in an array based on its index position
+	returns a new array minus the deleted item -->
+	<aura:method name="deleteAt" action="{!c.onDeleteAt}">
+		<aura:attribute name="array" type="String[]"></aura:attribute>
+		<aura:attribute name="index" type="Integer"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+
+	<!-- ARRAY CONTAINS -->
+	<!-- Checks if an array contains a particular value
+	Returns a boolean -->
+	<aura:method name="arrayContains" action="{!c.onArrayContains}">
+		<aura:attribute name="array" type="String[]"></aura:attribute>
+		<aura:attribute name="value" type="String"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+
+	<!-- DELETE IN ARRAY -->
+	<!-- Deletes a specified element from an array -->
+	<aura:method name="deleteInArray" action="{!c.onDeleteInArray}">
+		<aura:attribute name="array" type="String[]"></aura:attribute>
+		<aura:attribute name="value" type="String"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+
+	<!-- WAIT FOR -->
+	<!-- Waits for a boolean to return true before calling back -->
+	<aura:method name="waitFor" action="{!c.onWaitFor}">
+		<aura:attribute name="component" type="Aura.component[]" />
+		<aura:attribute name="attr" type="String" ></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+
+
+	<!-- WAIT FOR DEFINED-->
+	<!-- Waits until the attr passed is defined -->
+	<aura:method name="waitForDefined" action="{!c.onWaitForDefined}">
+		<aura:attribute name="component" type="Aura.component[]" />
+		<aura:attribute name="attr" type="String" ></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+
+	<!-- GET URL PARAMS -->
+	<!-- Gets all URL parameters and returns them in an object -->
+	<aura:method name="getURLParams" action="{!c.onGetURLParams}">
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+ 
+	<!-- FOR EACH -->
+	<!-- A Lodash style forEach loop -->
+	<aura:method name="forEach" action="{!c.onForEach}">
+		<aura:attribute name="obj" type="Map" ></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+
+	<!-- GO TO LOGIN -->
+	<!-- NAVIGATES TO LOGIN URL -->
+	<aura:method name="gotoLogin" action="{!c.onGoToLogin}">
+		<aura:attribute name="lang" type="String" ></aura:attribute>
+	</aura:method>
+
+	<!-- NAVIGATE TO URL -->
+	<!-- NAVIGATES TO URL ;) -->
+	<aura:method name="navigateToURL" action="{!c.onNavigateToURL}">
+		<aura:attribute name="url" type="String" ></aura:attribute>
+		<aura:attribute name="target" type="String" ></aura:attribute>
+	</aura:method>
+
+	<!-- FORMAT CURRENCY -->
+	<!-- Takes a normal number string and returns it formatted -->
+	<aura:method name="formatToCurrency" action="{!c.onFormatToCurrency}">
+		<aura:attribute name="rawValue" type="String"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+		<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
+		<aura:attribute name="includeDollarSign" type="Boolean" default="false"></aura:attribute>
+	</aura:method>
+
+	<!-- OBJECT IS EMPTY -->
+	<!-- Checks if an object is empty -->
+	<aura:method name="objectIsEmpty" action="{!c.onObjectIsEmpty}">
+		<aura:attribute name="obj" type="Map"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+
+	<!-- CALCULATE PERCENTAGE -->
+	<!-- Calculates two values to create a percentage -->
+	<aura:method name="calculatePercentage" action="{!c.onCalculatePercentage}">
+		<aura:attribute name="value" type="Double"></aura:attribute>
+		<aura:attribute name="total" type="Double"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+
+	<!-- FORMAT TO PHONE -->
+	<!-- Takes a normal number string and returns it formatted -->
+	<aura:method name="formatToPhone" action="{!c.onFormatToPhone}">
+		<aura:attribute name="rawValue" type="String"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+		<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
+	</aura:method>
+
+	<!-- SCROLL TO -->
+	<!-- Animated scroll using jQuery-->
+	<aura:method name="scrollTo" action="{!c.onScrollTo}">
+		<aura:attribute name="id" type="String" ></aura:attribute>
+		<aura:attribute name="pos" type="String" default="0"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+		<aura:attribute name="speed" type="String" default="500"></aura:attribute>
+	</aura:method>
+	
+>>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 </aura:component>

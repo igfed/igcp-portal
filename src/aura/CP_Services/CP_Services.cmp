@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <aura:component >
 
 	<!-- Includes -->
@@ -140,4 +141,148 @@
 		<aura:attribute name="errorCB" type="function" default="" />
 	</aura:method>
 
+=======
+<aura:component >
+
+	<!-- Includes -->
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
+
+	<!-- SUBMIT FORM -->
+	<aura:method name="submitForm" action="{!c.onSubmitForm}">
+		<aura:attribute name="serviceName" type="String" default="default" />
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="validCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+	<!-- GET SECURITY QUESTIONS -->
+	<aura:method name="getSecurityQuestions" action="{!c.onGetSecurityQuestions}">
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="validCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+	<!-- GET RAND SECURITY QUESTION -->
+	<aura:method name="getRandSecurityQuestion" action="{!c.onGetRandSecurityQuestion}">
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="validCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+	<!-- GET INVESTMENTS PREVIEW -->
+	<aura:method name="getInvestmentsPreview" action="{!c.onGetInvestmentsPreview}">
+		<aura:attribute name="bpid" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+	<!-- GET MORTGAGE PREVIEW -->
+	<aura:method name="getMortgagePreview" action="{!c.onGetMortgagePreview}">
+		<aura:attribute name="bpid" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+	<!-- GET INSURANCE PREVIEW -->
+	<aura:method name="getInsurancePreview" action="{!c.onGetInsurancePreview}">
+		<aura:attribute name="bpid" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+	<!-- GET INSURANCE PREVIEW -->
+	<aura:method name="getAssetMix" action="{!c.onGetAssetMix}">
+		<aura:attribute name="bpid" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+	<!-- GET CLIENT FIRST NAME -->
+	<aura:method name="getClientFirstName" action="{!c.onGetClientFirstName}">
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+	<!-- GET CLIENT FULL NAME -->
+	<aura:method name="getClientFullName" action="{!c.onGetClientFullName}">
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
+	<!-- HANDLER SERVER SIDE ERROR -->
+	<aura:method name="handleServerSideError" action="{!c.onHandleServerSideError}">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+
+	<!-- GET ACCOUNT DETAIL -->
+	<aura:method name="getAccountDetail" action="{!c.onGetAccountDetail}">
+		<aura:attribute name="accountNumber" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
+	<!-- GET INVESTMENT PROFILE -->
+	<aura:method name="getInvestmentProfile" action="{!c.onGetInvestmentProfile}">
+		<aura:attribute name="accountNumber" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
+	<!-- GET HOLDINGS -->
+	<aura:method name="getHoldings" action="{!c.onGetHoldings}">
+		<aura:attribute name="accountNumber" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
+	<!-- GET TRANSACTIONS -->
+	<aura:method name="getTransactions" action="{!c.onGetTransactions}">
+		<aura:attribute name="accountNumber" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
+	<!-- GET INSTRUCTIONS -->
+	<aura:method name="getInstructions" action="{!c.onGetInstructions}">
+		<aura:attribute name="accountNumber" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
+	<!-- GET ACCOUNT PERFORMANCE -->
+	<aura:method name="getAccountPerformance" action="{!c.onGetAccountPerformance}">
+		<aura:attribute name="accountNumber" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
+	<!-- GET USER INFO -->
+	<aura:method name="getUserInfo" action="{!c.onGetUserInfo}">
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
+	<!-- GET MORTGAGE DETAIL -->
+	<aura:method name="getMortgageDetail" action="{!c.onGetMortgageDetail}">
+		<aura:attribute name="loanNumber" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
+	<!-- UPDATE ASSETS -->
+	<aura:method name="updateAssets" action="{!c.onUpdateAssets}">
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
+>>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 </aura:component>

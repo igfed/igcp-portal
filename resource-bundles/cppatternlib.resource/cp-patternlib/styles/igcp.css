@@ -37,9 +37,8 @@ h2 {
 
 h3 {
   font-family: "WhitneyBook", Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  color: #282828;
+  font-size: 20px;
+  line-height: 32px;
   text-transform: inherit;
   text-transform: initial; }
 
@@ -53,7 +52,9 @@ h4 {
 p {
   font-family: "WhitneyBook", Arial, sans-serif;
   font-size: 16px;
-  letter-spacing: 0px; }
+  letter-spacing: 0px;
+  line-height: 24px;
+  margin: 0; }
 
 body {
   font-family: "WhitneyBook", Arial, sans-serif;
@@ -75,8 +76,15 @@ label {
   appearance: none;
   border-radius: 0.25rem; }
 
-dl dt {
-  font-weight: 100; }
+dl {
+  margin: 0; }
+  dl dt {
+    font-weight: 100;
+    line-height: 18px;
+    margin-bottom: 12px; }
+  dl dd {
+    line-height: 18px;
+    margin-bottom: 12px; }
 
 table {
   width: 100%; }
@@ -2132,6 +2140,8 @@ table {
   margin: 0 auto;
   display: block;
   background-color: #004171; }
+  .igcp-login .igcp-login--col1 .slds-button:hover {
+    background-color: #fff !important; }
 .igcp-login .igcp-login--col1 .slds-form-element__label {
   color: #004171; }
 .igcp-login .igcp-login--col1 .igcp-nav__link:hover, .igcp-login .igcp-login--col1 .igcp-nav__link.igcp-nav__link--selected {
@@ -2396,6 +2406,16 @@ table {
   .igcp-utils__width--auto {
     width: auto; }
 
+  .igcp-utils__height--full,
+  .igcp-utils__height--100 {
+    height: 100%; }
+
+  .igcp-utils__height--50 {
+    height: 50%; }
+
+  .igcp-utils__height--auto {
+    height: auto; }
+
   .igcp-utils__max-width--large,
   .igcp-utils__max-width--1024px {
     max-width: 1024px; }
@@ -2531,6 +2551,10 @@ table {
     left: 50%;
     transform: translateX(-50%); }
 
+  .igcp-utils__center--relative {
+    position: relative;
+    margin: 0 auto; }
+
   .igcp-utils__center--vertical {
     position: absolute;
     top: 50%;
@@ -2648,6 +2672,16 @@ table {
 
   .igcp-small-utils__width--auto {
     width: auto; }
+
+  .igcp-small-utils__height--full,
+  .igcp-small-utils__height--100 {
+    height: 100%; }
+
+  .igcp-small-utils__height--50 {
+    height: 50%; }
+
+  .igcp-small-utils__height--auto {
+    height: auto; }
 
   .igcp-small-utils__max-width--large,
   .igcp-small-utils__max-width--1024px {
@@ -2784,6 +2818,10 @@ table {
     left: 50%;
     transform: translateX(-50%); }
 
+  .igcp-small-utils__center--relative {
+    position: relative;
+    margin: 0 auto; }
+
   .igcp-small-utils__center--vertical {
     position: absolute;
     top: 50%;
@@ -2901,6 +2939,16 @@ table {
 
   .igcp-medium-utils__width--auto {
     width: auto; }
+
+  .igcp-medium-utils__height--full,
+  .igcp-medium-utils__height--100 {
+    height: 100%; }
+
+  .igcp-medium-utils__height--50 {
+    height: 50%; }
+
+  .igcp-medium-utils__height--auto {
+    height: auto; }
 
   .igcp-medium-utils__max-width--large,
   .igcp-medium-utils__max-width--1024px {
@@ -3037,6 +3085,10 @@ table {
     left: 50%;
     transform: translateX(-50%); }
 
+  .igcp-medium-utils__center--relative {
+    position: relative;
+    margin: 0 auto; }
+
   .igcp-medium-utils__center--vertical {
     position: absolute;
     top: 50%;
@@ -3154,6 +3206,16 @@ table {
 
   .igcp-large-utils__width--auto {
     width: auto; }
+
+  .igcp-large-utils__height--full,
+  .igcp-large-utils__height--100 {
+    height: 100%; }
+
+  .igcp-large-utils__height--50 {
+    height: 50%; }
+
+  .igcp-large-utils__height--auto {
+    height: auto; }
 
   .igcp-large-utils__max-width--large,
   .igcp-large-utils__max-width--1024px {
@@ -3290,6 +3352,10 @@ table {
     left: 50%;
     transform: translateX(-50%); }
 
+  .igcp-large-utils__center--relative {
+    position: relative;
+    margin: 0 auto; }
+
   .igcp-large-utils__center--vertical {
     position: absolute;
     top: 50%;
@@ -3318,6 +3384,9 @@ table {
 
 .igcp-container {
   background-color: #fff; }
+  @media (max-width: 480px) {
+    .igcp-container {
+      margin: 0 10px; } }
 
 .igcp-wrapper-x-large {
   max-width: 1280px;
@@ -3358,6 +3427,8 @@ table {
     border-radius: 0;
     margin-bottom: 0;
     border: 1px solid #282828; }
+  .igcp-input.uiInput--select.has-error.select {
+    border: none; }
 
 .igcp-input__help-link {
   font-family: "WhitneyBook", Arial, sans-serif;
@@ -3588,6 +3659,15 @@ table {
       bottom: 0;
       border: 10px solid #e9ecee;
       overflow-y: scroll; }
+  .igcp-modal.igcp-modal__details {
+    background-color: rgba(13, 38, 60, 0.9); }
+    .igcp-modal.igcp-modal__details .igcp-modal__details--inner {
+      position: fixed;
+      background-color: #fff;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0; }
 
 .igcp-modal__footer {
   background-color: #f8f8f8;
@@ -3667,10 +3747,6 @@ table {
   border-top: 1px solid #e9ecee;
   border-bottom: 1px solid #e9ecee; }
 
-.igcp-boxed--white {
-  background-color: #fff;
-  padding: 30px 25px; }
-
 .igcp-edit-notifications .slds-checkbox--faux {
   position: absolute;
   top: 5px;
@@ -3694,8 +3770,20 @@ table {
   padding-left: 10px; }
 .igcp-edit-documents .igcp-document-section .slds-grid:last-child {
   margin-bottom: -30px; }
-.igcp-edit-documents .igcp-document-section .igcp-tooltip {
+.igcp-edit-documents .igcp-document-section .igcp-tooltip .igcp-tooltip__tip.has-tip {
   margin-left: 0; }
+.igcp-edit-documents .igcp-document-section .slds-checkbox_toggle {
+  float: right;
+  width: auto; }
+.igcp-edit-documents .igcp-document-section .slds-checkbox_off,
+.igcp-edit-documents .igcp-document-section .slds-checkbox_on {
+  top: -2px;
+  left: -45px; }
+.igcp-edit-documents .igcp-label--with-tooltip {
+  float: right; }
+  .igcp-edit-documents .igcp-label--with-tooltip .igcp-label--small {
+    color: #d3d8dc;
+    font-family: "WhitneyBook", Arial, sans-serif; }
 .igcp-edit-documents .slds-checkbox--toggle .slds-checkbox--faux,
 .igcp-edit-documents .slds-checkbox--toggle .slds-checkbox_faux,
 .igcp-edit-documents .slds-checkbox_toggle .slds-checkbox--faux,
@@ -3709,7 +3797,7 @@ table {
   display: block;
   position: absolute;
   top: -2px;
-  left: 55px;
+  left: 53px;
   font-size: 14px;
   font-weight: bold; }
 .igcp-edit-documents .slds-checkbox_off {
@@ -3790,6 +3878,37 @@ table {
     font-size: 14px;
     letter-spacing: 0px;
     color: #004171; }
+  .igcp-table .igcp-table__row--link:hover {
+    cursor: pointer;
+    background-color: #f8f8f9; }
+  .igcp-table.igcp-table__holdings .igcp-table__row .igcp-table__header {
+    display: none; }
+  .igcp-table.igcp-table__holdings .igcp-table__row .igcp-table__data {
+    display: none; }
+  .igcp-table.igcp-table__holdings .igcp-table__row .igcp-table__header:first-child,
+  .igcp-table.igcp-table__holdings .igcp-table__row .igcp-table__header:last-child,
+  .igcp-table.igcp-table__holdings .igcp-table__row .igcp-table__data:first-child,
+  .igcp-table.igcp-table__holdings .igcp-table__row .igcp-table__data:last-child {
+    display: table-cell; }
+  .igcp-table.igcp-table__transactions .igcp-table__row .igcp-table__header, .igcp-table.igcp-table__instructions .igcp-table__row .igcp-table__header {
+    display: none; }
+  .igcp-table.igcp-table__transactions .igcp-table__row .igcp-table__data, .igcp-table.igcp-table__instructions .igcp-table__row .igcp-table__data {
+    display: none; }
+  .igcp-table.igcp-table__transactions .igcp-table__row .igcp-table__header:first-child,
+  .igcp-table.igcp-table__transactions .igcp-table__row .igcp-table__header:last-child,
+  .igcp-table.igcp-table__transactions .igcp-table__row .igcp-table__header:nth-child(3),
+  .igcp-table.igcp-table__transactions .igcp-table__row .igcp-table__data:first-child,
+  .igcp-table.igcp-table__transactions .igcp-table__row .igcp-table__data:last-child,
+  .igcp-table.igcp-table__transactions .igcp-table__row .igcp-table__data:nth-child(3), .igcp-table.igcp-table__instructions .igcp-table__row .igcp-table__header:first-child,
+  .igcp-table.igcp-table__instructions .igcp-table__row .igcp-table__header:last-child,
+  .igcp-table.igcp-table__instructions .igcp-table__row .igcp-table__header:nth-child(3),
+  .igcp-table.igcp-table__instructions .igcp-table__row .igcp-table__data:first-child,
+  .igcp-table.igcp-table__instructions .igcp-table__row .igcp-table__data:last-child,
+  .igcp-table.igcp-table__instructions .igcp-table__row .igcp-table__data:nth-child(3) {
+    display: table-cell; }
+
+.igcp-address p {
+  line-height: 20px; }
 
 @media (min-width: 768px) {
   .igcp-registration .igcp-registration__pfa h1 {
@@ -3818,6 +3937,11 @@ table {
   .igcp-tooltip.igcp-tooltip__label--small {
     padding-left: 0;
     padding-top: 6px; }
+
+  .igcp-table.igcp-table__holdings .igcp-table__row .igcp-table__header, .igcp-table.igcp-table__transactions .igcp-table__row .igcp-table__header, .igcp-table.igcp-table__instructions .igcp-table__row .igcp-table__header {
+    display: table-cell; }
+  .igcp-table.igcp-table__holdings .igcp-table__row .igcp-table__data, .igcp-table.igcp-table__transactions .igcp-table__row .igcp-table__data, .igcp-table.igcp-table__instructions .igcp-table__row .igcp-table__data {
+    display: table-cell; }
 
   .igcp-footer .footer-link {
     float: left; } }
@@ -3865,6 +3989,16 @@ table {
     top: 25%;
     left: 25%;
     right: 25%;
+    bottom: 25%; }
+  .igcp-modal.igcp-modal__details .igcp-modal__details--inner {
+    border-radius: 3px;
+    /* Android 2.1+, Chrome, Firefox 4+, IE 9+, iOS 4+, Opera 10.50+, Safari 5+ */
+    /* useful if you don't want a bg color from leaking outside the border: */
+    background-clip: padding-box;
+    /* Android 2.2+, Chrome, Firefox 4+, IE 9+, iOS 4+, Opera 10.50+, Safari 4+ */
+    top: 25%;
+    left: 10%;
+    right: 10%;
     bottom: 25%; }
 
   .igcp-footer {

@@ -124,6 +124,7 @@ public class OnlineStatementListControllerTest {
 		//String jsonObj = '{"allDocumentPreference" : true , "documentPreferences" : [{ "clientNumber" : "0987654",	"investmentStatements" : true, "taxReceipts" : true, "tradeConfirmation" : false },{ "clientNumber" : "0987653",	"investmentStatements" : false, "taxReceipts" : true, "tradeConfirmation" : false },{ "clientNumber" : "0987652",	"investmentStatements" : true, "taxReceipts" : true, "tradeConfirmation" : true }],"documentPreferencesLoan":[{}]}';
 		
 		System.runAs(testUser){
+<<<<<<< HEAD
 			Test.startTest();
 	   		List<DTO_OnlineStatement> listOLStatements = new List<DTO_OnlineStatement>();
 	   		listOLStatements = OnlineStatementListController.getOnlineStatementListFilter('Last 4 quarters');
@@ -151,5 +152,10 @@ public class OnlineStatementListControllerTest {
 	   	}
 	   
 
+=======
+	   		List<DTO_OnlineStatement> listOLStatements = OnlineStatementListController.getOnlineStatementList();
+	   		System.debug(listOLStatements);
+	   	}
+>>>>>>> b8a8fe43d1187fe7fe241397066e2593fe661b68
 	 }
 }
