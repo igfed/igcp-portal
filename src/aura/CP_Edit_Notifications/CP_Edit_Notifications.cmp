@@ -30,11 +30,14 @@
 	</aura:method> -->
 	
 	<!-- MARKUP -->
-	<div class="igcp-wrapper igcp-edit-documents slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
-		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
-		<div class="slds-p-around--small igcp-boxed--white slds-medium-p-around--zero slds-size_12-of-12 slds-medium-size_6-of-12">
-			<h1>{!$Label.c.CP_Manage_Notifications_Title}</h1>
 
+
+<div class="igcp-background__tiled">
+	<div class="igcp-wrapper igcp-edit-notifications slds-grid slds-wrap slds-grid--align-center slds-p-around--small slds-large-p-around--medium">
+		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
+		<div class="igcp-container slds-p-vertical--small slds-p-horizontal--large slds-m-bottom--x-small slds-large-m-bottom--medium slds-size_12-of-12 slds-medium-size_6-of-12">
+			<h1 class="slds-m-top--medium">{!$Label.c.CP_Manage_Notifications_Title}</h1>
+	
             <p class="slds-medium-p-top--small">{!$Label.c.CP_Manage_Notifications_Page_Summary}</p>
 			<div class="slds-grid slds-wrap">
 				<div class="slds-form slds-size_12-of-12">
@@ -44,24 +47,24 @@
 			    	<c:CP_Cmp_Input_Text id="email-input" form="{!v.pageId}" type="email" label="{!$Label.c.CP_Generic_Label_Email}" placeholder="" class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" />
                    
                     <!-- NEWS OPT IN-->
-                    <c:CP_Cmp_Input_Checkbox id="news-offers-opt" form="{!v.pageId}" class="slds-size_12-of-12" copy="I'd like to receive the latest news and offers from Investors Group to my email address (optional)" />
+                    <c:CP_Cmp_Input_Checkbox id="news-offers-opt" form="{!v.pageId}" class="slds-size_12-of-12" copy="{!$Label.c.CP_Manage_Notifications_News_Opt_In}" />
 
                 </div>
  
                 <div class="slds-form slds-size_12-of-12 slds-medium-m-top--large">
 			    	<!-- PHONE -->
-			    	<c:CP_Cmp_Input_Text id="phone" form="{!v.pageId}" type="phone" label="Mobile Phone (optional)" placeholder="" class="slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
+			    	<c:CP_Cmp_Input_Text id="phone" form="{!v.pageId}" type="phone" label="{!$Label.c.CP_Generic_Label_Mobile_Phone_Optional}" placeholder="" class="slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
 
 				    <!-- PHONE OPT IN -->
-                    <c:CP_Cmp_Input_Checkbox id="mobile-message-opt" form="{!v.pageId}" class="slds-size_12-of-12" copy="Send me notifications to my mobile device" />
+                    <c:CP_Cmp_Input_Checkbox id="mobile-message-opt" form="{!v.pageId}" class="slds-size_12-of-12" copy="{!$Label.c.CP_Manage_Notifications_Mobile_Opt_In}" />
                     <span class="igcp-mobile-number">416-555-1234</span>
 				</div>
 
                <!-- LANGUAGE PREFERENCE -->
 				<div class="slds-form slds-size_12-of-12 slds-m-top--large">
-			    	<span class="igcp-label--small">Language Preference<c:CP_Cmp_Tooltip tooltip="This is a tooltip about language"/></span>
+			    	<span class="igcp-label--small">{!$Label.c.CP_Generic_Label_Language_Preference}<c:CP_Cmp_Tooltip tooltip="This is a tooltip about language"/></span>
 				</div>
-				<c:CP_Cmp_Radio_Group2 id="language-preference" form="{!v.pageId}" label1="English" label2="Franch" legend="Changing this language setting only changes your Online Access language choice. If you would like to change the language of all your Investors Group communications including statements, please contact your Consultant." />
+				<c:CP_Cmp_Radio_Group2 id="language-preference" form="{!v.pageId}" label1="English" label2="Franch" legend="{!$Label.c.CP_Manage_Notifications_Language_Preference_Details}" />
 
 				<!--CTAS-->
 				<c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Update}" nextType="submit" form="{!v.pageId}" />
@@ -69,5 +72,5 @@
 		</div>
 		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
 	</div>
-
+</div>
 </aura:component>

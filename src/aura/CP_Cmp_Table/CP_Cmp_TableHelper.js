@@ -1,12 +1,11 @@
 ({
-	generateHeader: function(cmp, utils, data, callback) {
+	generateHeader: function(cmp, utils, payload, callback) {
 		try {
 			utils.createComponent(
-				"CP_Cmp_Table_Header", 
-				{
+				"CP_Cmp_Table_Header", {
 					"id": cmp.get("v.id"),
-					"headers": data,
-					"style" : cmp.get("v.styleConfig")
+					"headers": payload,
+					"style": cmp.get("v.styleConfig")
 				},
 				cmp,
 				function(ready) {
@@ -17,20 +16,24 @@
 			console.error(err);
 		}
 	},
-	generateTable: function(cmp, utils, data, callback) {
+	generateTable: function(cmp, utils, payload, callback) {
 		try {
-			data.forEach(function(row, i){
+
+			var tableData = payload.data;
+
+			tableData.forEach(function(row, i) {
 				utils.createComponent(
-					"CP_Cmp_Table_Row",
-					{
-						"data" : row,
-						"style" : cmp.get("v.styleConfig")
+					"CP_Cmp_Table_Row", {
+						"data": row,
+						"style": cmp.get("v.styleConfig"),
+						"dataObj": payload.dataObj === undefined ? {} : JSON.stringify(payload.dataObj[i]) ,
+						"modalId" : cmp.get("v.modalId")
 					},
 					cmp,
-					function(ready){}
+					function(ready) {}
 				);
 			});
-		} catch(err) {
+		} catch (err) {
 			console.error(err);
 		}
 	}

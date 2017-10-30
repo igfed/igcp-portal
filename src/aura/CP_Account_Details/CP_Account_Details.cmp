@@ -9,9 +9,10 @@
 	<c:CP_Services aura:id="CP_Services" />
 	
 	<!-- ATTRS -->
+	<aura:attribute name="pageId" type="String" default="account-detail"></aura:attribute>
 	<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
-	<aura:attribute name="accountTitle" type="String" default=""></aura:attribute>
-	<aura:attribute name="accountNumber" type="String" default=""></aura:attribute>
+	<aura:attribute name="accountTitle" type="String" default="RRSP"></aura:attribute>
+	<aura:attribute name="accountNumber" type="String" default="3110863"></aura:attribute>
 
 	<!-- RETURNED DATA FROM SALESFORCE -->
 	<aura:attribute name="accountDetailObj" type="Map" default="{}"></aura:attribute>
@@ -26,7 +27,7 @@
 	<aura:attribute name="gainLossType" type="String" default="positive" ></aura:attribute>
 	<aura:attribute name="gainLossPercentage" type="String" default="N/A"></aura:attribute>
 	
-	<!-- METHODS -->
+	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 	
@@ -42,15 +43,13 @@
 			</div>
 		</div>
 		<div class="slds-size_12-of-12">
-			<h1 class="">{!v.accountTitle}</h1>
+			<c:CP_Account_Title_Dropdown accountTitle="{!v.accountTitle}" accountNumber="{!v.accountNumber}"/>
 		</div>
 		<div class="slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_8-of-12">
 			<div class="igcp-container slds-large-m-right--medium slds-p-around--small slds-large-p-around--medium slds-m-bottom--x-small slds-large-m-bottom--medium">
 				<div class="slds-grid slds-wrap">
 					
-
-					<c:CP_Cmp_Total_Value label="{!$Label.c.CP_Generic_Label_Market_Value}" value="{!v.marketValue}" />
-					
+					<c:CP_Cmp_Total_Value label="{!$Label.c.CP_Generic_Label_Market_Value}" value="{!v.marketValue}" />				
 
 					<c:CP_Cmp_Gain_Loss label="{!$Label.c.CP_Generic_Label_Change}" 
 						description="{!$Label.c.CP_Generic_Label_Year_To_Date}" 
@@ -58,12 +57,10 @@
 						percentage="{!v.gainLossPercentage}" 
 						gainLossType="{!v.gainLossType}" />
 					
-
 					<div class="igcp-separator--large slds-size_12-of-12 slds-m-vertical--xxx-small slds-large-m-vertical--large "></div>
 					<div class="slds-grid slds-wrap">
 						
-						<c:CP_Cmp_Name_Value_List id="account-list-1" class="slds-large-size_6-of-12" />
-						<c:CP_Cmp_Name_Value_List id="account-list-2" class="slds-large-size_6-of-12 slds-large-p-left--medium" />
+						<c:CP_Cmp_Name_Value_List id="account-list" gridSizing="6" class="slds-m-vertical--small"/>
 						
 					</div>
 				</div>
@@ -76,7 +73,16 @@
 			<c:CP_Account_Investment_Profile profile="{!v.investmentProfileObj}"/>
 		</div>
 		<div class="slds-size_12-of-12">
-			<c:CP_Account_Holdings />
+			<c:CP_Account_Holdings modalId="{!v.pageId}"/>
 		</div>
+
+		<div class="slds-size_12-of-12">
+			<c:CP_Account_Recent_Transactions />
+		</div>
+
+		<div class="slds-size_12-of-12">
+			<c:CP_Account_Instructions />
+		</div>
+		<c:CP_Cmp_Modal id="{!v.pageId}" modalType="details"/>
 	</div>
 </aura:component>

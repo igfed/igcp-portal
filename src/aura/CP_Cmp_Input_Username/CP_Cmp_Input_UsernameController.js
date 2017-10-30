@@ -9,12 +9,13 @@
 		}
 	},
 	doneRendering: function(cmp, evt, hlpr){
+		if(!cmp.get("v.isDoneRendering")){
+			if (cmp.get("v.hasFocus") === true) {
+				cmp.find("text-input").getElement().focus();
+			}
 
-		//we need access to the DOM for this
-		//wait until component is rendered
-		// if (cmp.get("v.hasFocus") === true) {
-		// 	cmp.find("text-input").getElement().focus();
-		// }
+			cmp.set("v.isDoneRendering", true);	
+		}
 		
 	},
 	onGetValue: function(cmp, evt, hlpr) {

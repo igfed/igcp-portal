@@ -3,10 +3,13 @@
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
+
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="default"></aura:attribute>
 	<aura:attribute name="form" type="String" default="default"></aura:attribute>
 	<aura:attribute name="type" type="String" default="text"></aura:attribute>
+	<aura:attribute name="confirmField" type="Boolean" default="false"></aura:attribute>
+	<aura:attribute name="inputValueConfirm" type="String" default="" />
 	<aura:attribute name="label" type="String" />
 	<aura:attribute name="icon" type="String" />
 	<aura:attribute name="placeholder" type="String" default="" />
@@ -23,6 +26,7 @@
 	<aura:attribute name="example" type="String" default=""></aura:attribute>
 	<aura:attribute name="hasFocus" type="Boolean" default="false" />
 	<aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
+
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
@@ -30,8 +34,9 @@
 	<aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}" />
 	<aura:handler event="c:CP_Evt_Input_Valid" action="{!c.onValid}" />
 	<aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}" />
+	
 	<!-- MARKUP -->
-	<div class="{!v.class}">
+	<div id="{!v.id}" class="{!v.class}">
 		<aura:renderIf isTrue="{!v.icon}">
 			<lightning:icon iconName="{!v.icon}" size="small" class="slds-m-right--xx-small" alternativeText="{!v.label}" />
 		</aura:renderIf>
@@ -58,4 +63,16 @@
 			</div>
 		</aura:renderIf>
 	</div>
+
+	<aura:renderIf isTrue="{!v.confirmField}">
+		<div class="{!v.class}">
+			<label class="slds-form-element__label input-label" for="text-confirm-input">Confirm {!v.label}
+				<span>{!v.example}</span>
+			</label>
+			<div class="slds-form-element__control">
+				<!-- INPUT -->
+				<ui:inputText aura:id="text-confirm-input" label="" value="{!v.inputValueConfirm}" class="slds-input igcp-input" required="{!v.required}" blur="{!c.onConfirmationBlur}" />
+			</div>
+		</div>
+	</aura:renderIf>
 </aura:component>

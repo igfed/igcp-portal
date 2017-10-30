@@ -24,6 +24,7 @@
 	<aura:attribute name="charClass" type="String" default="igcp-utils__font-size--x-small"></aura:attribute>
 	<aura:attribute name="hasFocus" type="Boolean" default="false" />
 	<aura:attribute name="inputClass" type="String" default="slds-input igcp-input igcp-input--error"></aura:attribute>
+	<aura:attribute name="isDoneRendering" type="Boolean" default="false" ></aura:attribute>
 	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
@@ -34,7 +35,7 @@
 	<aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}" />
 	
 	<!-- MARKUP -->
-	<div class="{!v.class}">
+	<div id="{!v.id}" class="{!v.class}">
 		
 		<!-- ICON -->
 		<aura:renderIf isTrue="{!v.icon}">
@@ -53,10 +54,6 @@
 		<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
 			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input igcp-input--error" required="{!v.required}" maxlength="{!v.maxLength}" keyup="{!c.onHandleKey}" updateOn="keyup" blur="{!c.onBlur}" />
 			
-			<!-- ERROR ICON -->
-			<span class="{!v.errorIconClass}" title="An error has occurred">
-     			<lightning:icon iconName="utility:error" size="small" class="slds-m-right--xx-small" alternativeText="Info" />
-            </span>
 		</div>
 		
 		<!-- INSTRUCTIONS -->

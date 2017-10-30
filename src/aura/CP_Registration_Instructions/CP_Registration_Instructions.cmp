@@ -1,4 +1,4 @@
-<aura:component>
+<aura:component >
 	
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="registration-instructions"></aura:attribute>

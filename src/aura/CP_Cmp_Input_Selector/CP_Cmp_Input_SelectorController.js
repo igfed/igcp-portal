@@ -1,15 +1,15 @@
 ({
-	onInit: function(cmp, evt, hlpr) {
+	onInit: function (cmp, evt, hlpr) {
 		cmp.set("v.options", cmp.get("v.defaultOptions"));
 	},
-	doneRendering: function(cmp, evt, hlpr) {
+	doneRendering: function (cmp, evt, hlpr) {
 		cmp.set("v.renderComplete", true);
 
-		if(cmp.get("v.currentSelectedValue") !== "") {
+		if (cmp.get("v.currentSelectedValue") !== "") {
 			cmp.set("v.selectedValue", cmp.get("v.currentSelectedValue"));
 		}
 	},
-	onSetValue: function(cmp, evt, hlpr) {
+	onSetValue: function (cmp, evt, hlpr) {
 
 		var
 			payload = evt.getParam("payload"),
@@ -23,14 +23,14 @@
 			utils.waitFor(
 				cmp,
 				"v.renderComplete",
-				function() {
+				function () {
 					cmp.set("v.selectedValue", payload.selected);
 					cmp.set("v.currentSelectedValue", cmp.get("v.selectedValue"));
 
 					options = cmp.get("v.options");
 
 					//Remove selected from options
-					options.forEach(function(opt, i) {
+					options.forEach(function (opt, i) {
 						//if the currenSelectedValue is not an option
 						//and if array does not already contain value
 						if (cmp.get("v.currentSelectedValue") !== opt) {
@@ -48,7 +48,22 @@
 
 		}
 	},
-	onChange: function(cmp, evt, hlpr) {
+	onGetValue: function (cmp, evt, hlpr) {
+
+		var
+			events = cmp.find('CP_Events'),
+			formId = evt.getParam('payload').formId,
+			form = cmp.get('v.form');
+
+		if (formId === form) {
+			events.fire("CP_Evt_Send_Input_Value", {
+				"id": cmp.get("v.id"),
+				"type": cmp.get("v.type"),
+				"value": cmp.get("v.currentSelectedValue") === undefined ? "" : cmp.get("v.currentSelectedValue")
+			});
+		}
+	},
+	onChange: function (cmp, evt, hlpr) {
 
 		var
 			utils = cmp.find("CP_Utils"),
@@ -59,7 +74,7 @@
 		cmp.set("v.currentSelectedValue", cmp.get("v.selectedValue"));
 
 		//Remove selected from options
-		options.forEach(function(opt, i) {
+		options.forEach(function (opt, i) {
 			//if the currenSelectedValue is not an option
 			//and if array does not already contain value
 			if (cmp.get("v.currentSelectedValue") !== opt) {
@@ -73,7 +88,7 @@
 			"options": newOptions
 		});
 	},
-	onChangeReceived: function(cmp, evt, hlpr) {
+	onChangeReceived: function (cmp, evt, hlpr) {
 
 		var
 			utils = cmp.find("CP_Utils"),
@@ -86,7 +101,7 @@
 			//this selector
 			//populate with remaining options
 			if (cmp.get("v.currentSelectedValue") === "") {
-				payload.options.forEach(function(opt, i) {
+				payload.options.forEach(function (opt, i) {
 					newOptions.push(opt);
 				});
 			} else {
@@ -94,7 +109,7 @@
 				//push that value first to newOptions
 				//then push the left over options
 				newOptions.push(cmp.get("v.currentSelectedValue"));
-				payload.options.forEach(function(opt, i) {
+				payload.options.forEach(function (opt, i) {
 					newOptions.push(opt);
 				});
 			}
@@ -102,7 +117,7 @@
 			cmp.set("v.options", newOptions);
 		}
 	},
-	onOptionsReceived: function(cmp, evt, hlpr) {
+	onOptionsReceived: function (cmp, evt, hlpr) {
 
 		if (evt.getParam("payload")) {
 			var payload = evt.getParam("payload");
@@ -117,7 +132,7 @@
 			console.warn("CP_Cmp_Input_Selector: onOptionsReceived: no payload");
 		}
 	},
-	onBlur: function(cmp, evt, hlpr) {
+	onBlur: function (cmp, evt, hlpr) {
 		var events = cmp.find("CP_Events");
 		events.fire("CP_Evt_Input_Blur", {
 			"id": cmp.get("v.id"),
@@ -125,7 +140,7 @@
 			"value": cmp.get("v.currentSelectedValue")
 		});
 	},
-	onValid: function(cmp, evt, hlpr) {
+	onValid: function (cmp, evt, hlpr) {
 
 		if (cmp.get("v.id") === evt.getParam("payload").id) {
 			var field = cmp.find("selector-input");
@@ -133,7 +148,7 @@
 		}
 
 	},
-	onError: function(cmp, evt, hlpr) {
+	onError: function (cmp, evt, hlpr) {
 		var
 			payload = evt.getParam("payload"),
 			errors = payload.errors,
@@ -142,7 +157,7 @@
 		if (cmp.get("v.id") === payload.id) {
 
 			if (errors.length > 0) {
-				errors.forEach(function(item, i) {
+				errors.forEach(function (item, i) {
 					errorArr.push({ message: item.msg });
 				});
 			}

@@ -73,6 +73,7 @@ public abstract class IGRestClient {
     public Response getServiceData() {
     	Response rv = null;
 		Response res = callRESTService();
+        System.debug('res '+res);
 		if (res.success) {
 			try {
 				rv = parseResponse(res.responseBody);

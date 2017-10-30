@@ -1,5 +1,5 @@
 ({
-	onSubmitForm: function(cmp, evt, hlpr) {
+	onSubmitForm: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -11,11 +11,13 @@
 			try {
 				action = component.get("c." + params.serviceName);
 
-				action.setParams({ payload: JSON.stringify(component.get("v.payload")) });
+				action.setParams({
+					payload: JSON.stringify(component.get("v.payload"))
+				});
 
 				// Create a callback that is executed after 
 				// the server-side action returns
-				action.setCallback(this, function(response) {
+				action.setCallback(this, function (response) {
 
 					var state = response.getState(),
 						res, valid;
@@ -84,7 +86,7 @@
 			}
 		}
 	},
-	onGetSecurityQuestions: function(cmp, evt, hlpr) {
+	onGetSecurityQuestions: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 
@@ -95,11 +97,13 @@
 			try {
 				action = component.get("c.getSecurityQuestions");
 
-				action.setParams({ payload: JSON.stringify(component.get("v.payload")) });
+				action.setParams({
+					payload: JSON.stringify(component.get("v.payload"))
+				});
 
 				// Create a callback that is executed after 
 				// the server-side action returns
-				action.setCallback(this, function(response) {
+				action.setCallback(this, function (response) {
 
 					var state = response.getState(),
 						res, valid;
@@ -167,7 +171,7 @@
 
 		}
 	},
-	onGetRandSecurityQuestion: function(cmp, evt, hlpr) {
+	onGetRandSecurityQuestion: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 
@@ -177,11 +181,13 @@
 
 			try {
 				action = component.get("c.getSecurityQuestion");
-				action.setParams({ payload: JSON.stringify(component.get("v.payload")) });
+				action.setParams({
+					payload: JSON.stringify(component.get("v.payload"))
+				});
 
 				// Create a callback that is executed after 
 				// the server-side action returns
-				action.setCallback(this, function(response) {
+				action.setCallback(this, function (response) {
 
 					var state = response.getState(),
 						res, valid;
@@ -250,7 +256,7 @@
 
 		}
 	},
-	onGetClientFirstName: function(cmp, evt, hlpr) {
+	onGetClientFirstName: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 			var
@@ -261,7 +267,7 @@
 
 				action = component.get("c.getUserFirstName");
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -274,7 +280,7 @@
 			}
 		}
 	},
-	onGetClientFullName: function(cmp, evt, hlpr) {
+	onGetClientFullName: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 			var
@@ -285,7 +291,7 @@
 
 				action = component.get("c.getUserName");
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -299,7 +305,7 @@
 			}
 		}
 	},
-	onGetInvestmentsPreview: function(cmp, evt, hlpr) {
+	onGetInvestmentsPreview: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 			var
@@ -310,7 +316,7 @@
 
 				action = component.get("c.getInvestmentPreviewDTO");
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -324,7 +330,7 @@
 
 		}
 	},
-	onGetMortgagePreview: function(cmp, evt, hlpr) {
+	onGetMortgagePreview: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 			var
@@ -335,7 +341,7 @@
 
 				action = component.get("c.getMortgagePreviewDTO");
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -350,7 +356,7 @@
 
 		}
 	},
-	onGetInsurancePreview: function(cmp, evt, hlpr) {
+	onGetInsurancePreview: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 			var
@@ -361,7 +367,7 @@
 
 				action = component.get("c.getInsurancePreviewDTO");
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -376,7 +382,7 @@
 
 		}
 	},
-	onGetAssetMix: function(cmp, evt, hlpr) {
+	onGetAssetMix: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -388,7 +394,7 @@
 
 				action = component.get("c.getAssetMixAggregate");
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -402,7 +408,7 @@
 			}
 		}
 	},
-	onGetAccountDetail: function(cmp, evt, hlpr) {
+	onGetAccountDetail: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -414,9 +420,11 @@
 
 				action = component.get("c.getAccountDetailDTO");
 
-				action.setParams({ accountNumber: params.accountNumber });
+				action.setParams({
+					accountNumber: params.accountNumber
+				});
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -430,7 +438,7 @@
 			}
 		}
 	},
-	onGetInvestmentProfile: function(cmp, evt, hlpr) {
+	onGetInvestmentProfile: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -442,9 +450,11 @@
 
 				action = component.get("c.getInvestmentProfileDTO");
 
-				action.setParams({ accountNumber: params.accountNumber });
+				action.setParams({
+					accountNumber: params.accountNumber
+				});
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -458,7 +468,7 @@
 			}
 		}
 	},
-	onGetHoldings: function(cmp, evt, hlpr) {
+	onGetHoldings: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -471,9 +481,11 @@
 
 				action = component.get("c.getHoldingsDTOList");
 
-				action.setParams({ accountNumber: params.accountNumber });
+				action.setParams({
+					accountNumber: params.accountNumber
+				});
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -487,7 +499,7 @@
 			}
 		}
 	},
-	onGetTransactions: function(cmp, evt, hlpr) {
+	onGetTransactions: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -500,9 +512,11 @@
 
 				action = component.get("c.getTransactionsDTOList");
 
-				action.setParams({ accountNumber: params.accountNumber });
+				action.setParams({
+					accountNumber: params.accountNumber
+				});
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -516,7 +530,7 @@
 			}
 		}
 	},
-	onGetInstructions: function(cmp, evt, hlpr) {
+	onGetInstructions: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -529,9 +543,11 @@
 
 				action = component.get("c.getInstructionsDTOList");
 
-				action.setParams({ accountNumber: params.accountNumber });
+				action.setParams({
+					accountNumber: params.accountNumber
+				});
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -545,7 +561,7 @@
 			}
 		}
 	},
-	onGetAccountPerformance: function(cmp, evt, hlpr) {
+	onGetAccountPerformance: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -558,9 +574,11 @@
 
 				action = component.get("c.getAccountPerformance");
 
-				action.setParams({ accountNumber: params.accountNumber });
+				action.setParams({
+					accountNumber: params.accountNumber
+				});
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -574,7 +592,7 @@
 			}
 		}
 	},
-	onGetUserInfo: function(cmp, evt, hlpr) {
+	onGetUserInfo: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -586,7 +604,7 @@
 
 				action = component.get("c.getUserInfoDTO");
 
-				hlpr.setCallback(
+				hlpr.setCallbackPromise(
 					params,
 					action,
 					this,
@@ -600,7 +618,7 @@
 			}
 		}
 	},
-	onHandleServerSideError: function(cmp, evt, hlpr) {
+	onHandleServerSideError: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -660,6 +678,59 @@
 						"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
 					});
 				}
+			}
+		}
+	},
+	onGetMortgageDetail: function (cmp, evt, hlpr) {
+
+		var params = evt.getParam("arguments");
+		if (params) {
+			var
+				component = params.component,
+				action;
+
+			try {
+				action = component.get("c.getMortgageDetailDTO");
+				action.setParams({
+					loanNumber: params.loanNumber
+				});
+				hlpr.setCallbackPromise(
+					params,
+					action,
+					this,
+					"No loan record was found in Salesforce",
+					"no-record"
+				);
+			} catch (err) {
+				console.error("CP_Services: onGetMortgageDetail: controller not found, make sure it is attached to parent component.");
+				console.log(err);
+			}
+		}
+	},
+	onUpdateAssets: function (cmp, evt, hlpr) {
+
+		var params = evt.getParam("arguments");
+		if (params) {
+			var
+				component = params.component,
+				action;
+
+			try {
+				action = component.get("c.UpdateAssets");
+				action.setParams({
+					payload:""
+				});
+
+				hlpr.setCallbackPromise(
+					params,
+					action,
+					this,
+					"Assets failed to update.",
+					"unknown-error"
+				);
+			} catch (err) {
+				console.error("CP_Services: onUpdateAssets: controller not found, make sure it is attached to parent component.");
+				console.log(err);
 			}
 		}
 	}

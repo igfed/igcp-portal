@@ -1,4 +1,4 @@
-<aura:component>
+<aura:component >
 
 	<!-- IMPORTS -->
 	<c:CP_Events aura:id="CP_Events"/>

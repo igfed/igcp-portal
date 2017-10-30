@@ -1,4 +1,4 @@
-<aura:component>
+<aura:component >
     
     <!-- ATTRS -->
     <aura:attribute name="col1Name" type="String" />

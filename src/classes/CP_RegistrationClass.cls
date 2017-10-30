@@ -8,55 +8,55 @@ global class CP_RegistrationClass {
         
         // Search Contact by Client/Policy/Loan Number
         Financial_Asset__c objClient = IGUser.getClientInfo();
-        
-        // check if Contact exists
-		if(objClient == null)
+        /*      
+        if(objClient.Asset_Type__c == 'Joint')
         {
-            // Contact not found
             result.IsValid = false;
-            result.Messages.add(System.Label.CP_Error_Registration_Step_1);
+            result.Messages.add(System.Label.CP_Registration_Client_is_Joint_and_Not_allowed_to_Register);
         }
-        else // Contact Found Validate Client Status
+        else if(objClient.Client_Is_Deceased__c == true)
         {
-            // Contact is Locked 
-            if(objClient.Customer__r.Portal_Registration_Is_Locked__c == true)
+            result.IsValid = false;
+            result.Messages.add(System.Label.CP_Registration_Client_is_deceased);
+        }
+        else if(objClient.Client_Returned_Mail__c == true)
+        {
+            result.IsValid = false;
+            result.Messages.add(System.Label.CP_Registration_Client_mail_returned);
+        }
+        else if(objClient.Client_Zero_Balance__c == true)
+        {
+            result.IsValid = false;
+            result.Messages.add(System.Label.CP_Registration_Client_has_zero_balance);
+        }
+        else // Client is Eligible, proceed with other checks
+        {
+         */
+            String clientBPID = '123456789';
+
+            Contact objContact =  IGClientUtils.getContactByBPID(clientBPID);
+            // check if Contact exists
+    		if(objContact == null)
             {
+                // Contact not found
                 result.IsValid = false;
-                result.IsLocked = true;
-                result.Messages.add(System.Label.CP_Registration_Locked_h1);
+                result.Messages.add(System.Label.CP_Error_Registration_Step_1);
             }
-            else // Contact is not Locked, proceed with other checks
+            else // Contact Found Validate Client Status
             {
-                // Check Client's Eligibility for Registration
-                if(objClient.Is_Registration_Eligibile__c == false && objClient.Asset_Type__c == 'Joint')
+                // set isLocked flag as per Contact object
+                result.IsLocked = objContact.Portal_Registration_Is_Locked__c;
+
+                // Contact is Locked 
+                if(objContact.Portal_Registration_Is_Locked__c == true)
                 {
                     result.IsValid = false;
-                    result.Messages.add(System.Label.CP_Registration_Client_is_Joint_and_Not_allowed_to_Register);
+                    result.Messages.add(System.Label.CP_Registration_Locked_h1);
                 }
-                else if(objClient.Is_Registration_Eligibile__c == false && objClient.Asset_Type__c == 'Company')
-                {
-                    result.IsValid = false;
-                    result.Messages.add(System.Label.CP_Registration_Client_is_Company_and_Not_allowed_to_Register);
-                }
-                else if(objClient.Customer__r.Client_Is_Deceased__c == true)
-                {
-                    result.IsValid = false;
-                    result.Messages.add(System.Label.CP_Registration_Client_is_deceased);
-                }
-                else if(objClient.Customer__r.Client_Returned_Mail__c == true)
-                {
-                    result.IsValid = false;
-                    result.Messages.add(System.Label.CP_Registration_Client_mail_returned);
-                }
-                else if(objClient.Customer__r.Client_Zero_Balance__c == true)
-                {
-                    result.IsValid = false;
-                    result.Messages.add(System.Label.CP_Registration_Client_has_zero_balance);
-                }
-                else // Client is Eligible, proceed with other checks
+                else // Contact is not Locked, proceed with other checks
                 {
                     // Check if the returned Contact has Registered flag set 
-                    if(objClient.Customer__r.Portal_User_Is_Registered__c == true)
+                    if(objContact.Portal_User_Is_Registered__c == true)
                     {
                         // Client is already Registered
                         result.IsValid = false;
@@ -65,13 +65,13 @@ global class CP_RegistrationClass {
                     else
                     {
                         // Validate Contact Postal code and Date of birth with values entered by user
-                        if(!CP_Utility.PostalCodeMatched(IGUser.postalCode, objClient.Customer__r.MailingPostalCode))
+                        if(!CP_Utility.PostalCodeMatched(IGUser.postalCode, objContact.MailingPostalCode))
                         {
                             // Postatcode did not match the stored info in Salesforce.
                             result.IsValid = false;
                             result.Messages.add(System.Label.CP_Error_Registration_Step_1);
                         }
-                        else if(Date.valueOf(IGUser.dob) != objClient.Customer__r.Birthdate) 
+                        else if(Date.valueOf(IGUser.dob) != objContact.Birthdate) 
                         {
                             // Date of Birth did not match the stored info in Salesforce.
                             result.IsValid = false;
@@ -86,18 +86,21 @@ global class CP_RegistrationClass {
                                 result.Messages.add(System.Label.CP_Registration_Locked_h1);
                         }
                     }
-                }    
+                }
             }
-        }
+        /*}*/
 
         return result;
     }
  
-    public CP_Response.Result verifyProfile(CP_RegistrationClass.UserProfile IGUserProfile)
+    public CP_Response.Result verifyProfile(RegistrationForm regForm)
     {
         CP_Response.Result result = new CP_Response.Result();
         
-        if(IGUserProfile.UserNameAlreadyExist())
+        //Client objClient = getClientInfo(regForm.Identity.clientNUmber, regForm.Identity.dob, regForm.Identity.postalCode);
+        String clientBPID = '123456789';
+
+        if(IGClientUtils.UserNameExist(regForm.Profile.userName))
         {
             // User name already exists
             result.IsValid = false;
@@ -105,7 +108,7 @@ global class CP_RegistrationClass {
             result.Messages.add(System.Label.CP_Registration_User_Name_Already_Exist);
         }
         
-        if(IGUserProfile.EmailAlreadyRegistered())
+        if(IGClientUtils.EmailAlreadyRegistered(clientBPID, regForm.Profile.email))
         {
             // Email Is Already Registered
             result.IsValid = false;
@@ -125,7 +128,7 @@ global class CP_RegistrationClass {
         {
             result = this.verifyIdentity(regForm.Identity);
             if(result.IsValid)
-                result = verifyProfile(regForm.Profile);
+                result = verifyProfile(regForm);
         }
         else
         {
@@ -400,13 +403,25 @@ global class CP_RegistrationClass {
         }
 
         //CP_Registration_Email_Is_Already_Registered
-        public Boolean EmailAlreadyRegistered()
+        public Boolean EmailAlreadyRegistered(String clientNumber)
         {
-            List<contact> contactList = [select ID, Portal_User_Is_Registered__c, Email, Portal_User_ID__c, 
-                Portal_User_Name__c, MailingPostalCode, Birthdate, Business_Partner_ID__c 
-                from Contact 
-                where Email = : String.escapeSingleQuotes(this.email) limit 1];
-            if(contactList.isEmpty())
+            List<Financial_Asset__c> assetList = 
+                [ 
+                    SELECT 
+                           RecordType.Name, Asset_Type__c, Client__c, Customer__c,  
+                           Is_Registration_Eligibile__c,
+                           Policy_Number__c, Loan_Number__c, Client_Number__c, 
+                           Customer__r.Email
+                    FROM 
+                           Financial_Asset__c 
+                    WHERE
+                            Customer__r.Email = : String.escapeSingleQuotes(this.email) AND (
+                                  (RecordType.DeveloperName = 'Investment_Asset'  AND Client_Number__c != : String.escapeSingleQuotes(clientNumber))
+                                  OR (RecordType.DeveloperName = 'Loan_Asset'  AND Loan_Number__c != : String.escapeSingleQuotes(clientNumber))
+                                  OR (RecordType.DeveloperName = 'Policy_Asset'  AND Policy_Number__c != : String.escapeSingleQuotes(clientNumber))
+                                  )
+                    ]; 
+            if(assetList.isEmpty())
                 return false;
             else
                 return true;

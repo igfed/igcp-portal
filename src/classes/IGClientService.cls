@@ -236,6 +236,46 @@ public class IGClientService {
 		return rv;
 	}
 
+	public static DTO_MortgageDetail getMortgageDetails(String clientBpid, String loanNumber) {
+		DTO_MortgageDetail rv = null;
+		if (String.isBlank(clientBpid)) {
+			throw new IGClientServiceException('The client bpid can\'t be null or empty');
+		}
+		if (String.isBlank(loanNumber)) {
+			throw new IGClientServiceException('The loan number can\'t be null or empty');	
+		}
+		IGRestClient client = IGRestClientFactory.getIGRestClient('Mortgage', WEBSERVICE_NAMED_CREDENTIAL);
+		if (client != null) {
+			IGMortgageClient theClient = (IGMortgageClient)client;
+			theClient.bpid = clientBpid;
+			theClient.loanNumber = loanNumber;
+			IGRestClient.Response res = theClient.getServiceData();
+		    System.debug('=====> getMortgageDetails.res: ' + res);
+		    if (res != null) {
+		    	if (!res.success) {
+		    		System.debug('=====> getMortgageDetails.ERROR: ' + res.success + ', ' + res.code + ', ' + res.error);
+		            throw new IGClientServiceException('Service call failed: ' + res.success + ', ' + res.code + ', ' + res.error);
+	            } else {
+					IGMortgageClient.MortgageData data = (IGMortgageClient.MortgageData)res;
+		            System.debug('=====> getMortgageDetails.data: ' + data);
+		            if (data.Client != null && data.Client.Loans != null && !data.Client.Loans.isEmpty()) {
+		            	if (data.Client.Loans.size() == 1) {
+		            		rv = new DTO_MortgageDetail(data.Client.Loans.get(0));
+		            	} else {
+		            		for (IGMortgageClient.Loans loan : data.Client.Loans) {
+		            			if (loanNumber == loan.LOAN_NUM) {
+		            				rv = new DTO_MortgageDetail(loan);
+		            				break;
+		            			}
+		            		}
+		            	}
+		            }		            	
+	            }
+		    }
+		}
+		return rv;
+	}
+
 	public static List<DTO_AssetMixDetail> getAssetMixDetails(String clientBpid) {
 		List<DTO_AssetMixDetail> rv = new List<DTO_AssetMixDetail>();
 		if (String.isBlank(clientBpid)) {
@@ -373,6 +413,43 @@ public class IGClientService {
 	            				rv = new DTO_AccountPerformance(perf);
 	            				break;
 	            			}
+	            		}
+	            	}
+	            }
+		    }
+		}
+		return rv;
+	}
+
+	public static List<DTO_ClientRegistration> getClientRegistrations(String dateOfBirth, String postalCode, String identityNumber) {
+		List<DTO_ClientRegistration> rv = new List<DTO_ClientRegistration>();
+		if (String.isBlank(dateOfBirth)) {
+			throw new IGClientServiceException('The client date of birth can\'t be null or empty');
+		}
+		if (String.isBlank(postalCode)) {
+			throw new IGClientServiceException('The client postal code can\'t be null or empty');	
+		}
+		if (String.isBlank(identityNumber)) {
+			throw new IGClientServiceException('The client identity number can\'t be null or empty');	
+		}
+		IGRestClient client = IGRestClientFactory.getIGRestClient('ClientRegistration', WEBSERVICE_NAMED_CREDENTIAL);
+		if (client != null) {
+			IGClientRegistrationClient theClient = (IGClientRegistrationClient)client;
+			theClient.dateOfBirth 	 = dateOfBirth;
+			theClient.postalCode 	 = postalCode;
+			theClient.identityNumber = identityNumber;
+			IGRestClient.Response res = theClient.getServiceData();
+		    System.debug('=====> getClientRegistrations.res: ' + res);
+		    if (res != null) {
+		    	if (!res.success) {
+		    		System.debug('=====> getClientRegistrations.ERROR: ' + res.success + ', ' + res.code + ', ' + res.error);
+		            throw new IGClientServiceException('Service call failed: ' + res.success + ', ' + res.code + ', ' + res.error);
+	            } else {
+	            	IGClientRegistrationClient.ClientRegistrationData data = (IGClientRegistrationClient.ClientRegistrationData)res;
+	            	System.debug('=====> getClientRegistrations.data: ' + data);
+	            	if (data.client != null && data.client.registrationMatches != null && !data.client.registrationMatches.isEmpty()) {
+	            		for (IGClientRegistrationClient.RegistrationMatches aMatch : data.client.registrationMatches) {
+	            			rv.add(new DTO_ClientRegistration(aMatch));
 	            		}
 	            	}
 	            }

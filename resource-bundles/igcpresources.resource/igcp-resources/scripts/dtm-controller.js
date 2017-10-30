@@ -11,7 +11,7 @@
     $container;
   event.component = {};
   event.container = {};
-  event.template = {};
+  event.template = {}; 
 
 
   function init() {

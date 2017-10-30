@@ -1,4 +1,4 @@
-public with sharing class EmailPrefController {
+public class EmailPrefController {
 
 	/********************************************************************************************************
 	Return Type:		Void
@@ -17,7 +17,14 @@ public with sharing class EmailPrefController {
 
     	//EmailPrefResponse[] listOfFinancialAsset = (EmailPrefResponse[]) JSON.deserialize(payload, List<EmailPrefResponse>.class); 
         EmailDocumentPreferences listDocumentPrefs = (EmailDocumentPreferences) JSON.deserialize(payload,EmailDocumentPreferences.class);
-        
+        System.debug('listDocumentPrefs '+listDocumentPrefs);
+
+        listOfFinancialAssetsToupdate = new List<Financial_Asset__c>();
+        listOfFinancialAssetsToupdate.addAll(processLoanRecords(listDocumentPrefs.documentPreferencesLoan,listDocumentPrefs.allDocumentPreference));
+        listOfFinancialAssetsToupdate.addAll(processRecords(listDocumentPrefs.documentPreferences,listDocumentPrefs.allDocumentPreference));
+        listOfFinancialAssetsToupdate.addAll(processPolicyRecords(listDocumentPrefs.documentPreferencesPolicy,listDocumentPrefs.allDocumentPreference));
+        System.debug('listOfFinancialAssetsToupdate'+listOfFinancialAssetsToupdate);
+        /*
         List<EmailPrefResponse> tempTest = new List<EmailPrefResponse>();
         tempTest = listDocumentPrefs.documentPreferences;
         System.debug('list '+ tempTest);
@@ -25,7 +32,7 @@ public with sharing class EmailPrefController {
         
          
         System.debug('to update '+listOfFinancialAssetsToupdate);
-    
+    */
     	if(listOfFinancialAssetsToupdate.size() > 0){
     		updateFinancialAssets(listOfFinancialAssetsToupdate);
     	}
@@ -39,7 +46,7 @@ public with sharing class EmailPrefController {
 		1. Static method will process the Financial Assest records with field updates.
 		
     *******************************************************************************************************/
-    private static List<Financial_Asset__c> processRecords(EmailPrefResponse[] listOfFinancialAssetsResp , Boolean statusAllDocuments){
+    private static List<Financial_Asset__c> processRecords(EmailPrefResponse.DocumentPreferences[] listOfFinancialAssetsResp , Boolean statusAllDocuments){
 
         System.debug('list of Financial assets response '+listOfFinancialAssetsResp);
     	// get all the financial assets of the specific contact from the salesforce to update
@@ -58,13 +65,13 @@ public with sharing class EmailPrefController {
 
     	mapClientNumberFA = new Map<String,Financial_Asset__c>();
     	for(Financial_Asset__c eachFinancialAsset : [select Customer__r.Name,Client_Number__c,Pref_Investment_Statements__c,
-    												Pref_Tax_Receipts__c,Pref_Trade_Confirmation__c from Financial_Asset__c where Customer__c =: contextContactId]){
+    												Pref_Tax_Receipts__c,Pref_Trade_Confirmation__c from Financial_Asset__c where Customer__c =: contextContactId AND RecordType.Name = 'Investment Asset']){
     		mapClientNumberFA.put(eachFinancialAsset.Client_Number__c, eachFinancialAsset);
     	}
     	System.debug('mapClientNumberFA '+mapClientNumberFA);
     	Boolean updated;
 
-    	for(EmailPrefResponse eachRespObj : listOfFinancialAssetsResp){
+    	for(EmailPrefResponse.DocumentPreferences eachRespObj : listOfFinancialAssetsResp){
     		updated = false;
 
     		Financial_Asset__c tempFinancialAsset = mapClientNumberFA.get(eachRespObj.clientNumber);
@@ -116,12 +123,104 @@ public with sharing class EmailPrefController {
     	return listOfFinancialAssetsToupdate;
 
     }
+    private static List<Financial_Asset__c> processLoanRecords(EmailPrefResponse.DocumentPreferencesLoan[] listOfLoanFinancialAssetsResp , Boolean statusAllDocuments){
+        List<Financial_Asset__c> listOfFinancialAssetsToupdate;
+        List<Contact> contactToUse;
+        Id contextContactId;
+        Map<String,Financial_Asset__c> mapClientNumberFA;
+        Boolean updated;
+        
+
+        contactToUse = new List<Contact>();
+        contactToUse = [select Id, Business_Partner_ID__c from Contact where Id in (select ContactId from User where id=:UserInfo.getUserId())];
+        contextContactId = contactToUse.get(0).Id;
+
+         mapClientNumberFA = new Map<String,Financial_Asset__c>();
+        for(Financial_Asset__c eachFinancialAsset : [select Customer__r.Name,Loan_Number__c,Pref_Mortgage_Statements__c from Financial_Asset__c where Customer__c =: contextContactId AND RecordType.Name = 'Loan Asset']){
+            mapClientNumberFA.put(eachFinancialAsset.Loan_Number__c, eachFinancialAsset);
+
+        }
+        System.debug(' mapClientNumberFA '+mapClientNumberFA);
+        listOfFinancialAssetsToupdate = new List<Financial_Asset__c>();
+        for(EmailPrefResponse.DocumentPreferencesLoan eachRespObj : listOfLoanFinancialAssetsResp){
+            updated = false;
+            System.debug('eachRespObj'+eachRespObj);
+            Financial_Asset__c tempFinancialAsset = mapClientNumberFA.get(eachRespObj.loanNumber);
+            if(tempFinancialAsset.Loan_Number__c == eachRespObj.loanNumber){
+                if(eachRespObj.mortgageDocument == false 
+                        && (tempFinancialAsset.Pref_Mortgage_Statements__c == 'Online' ||  tempFinancialAsset.Pref_Mortgage_Statements__c == null)){
+                        tempFinancialAsset.Pref_Mortgage_Statements__c = 'Paper';
+                        updated = true;
+                } else if(eachRespObj.mortgageDocument == true 
+                    && (tempFinancialAsset.Pref_Mortgage_Statements__c == 'Paper' || tempFinancialAsset.Pref_Mortgage_Statements__c == null)){
+                    tempFinancialAsset.Pref_Mortgage_Statements__c = 'Online';
+                    updated = true;
+                }
+                if(statusAllDocuments == true){
+                    tempFinancialAsset.Pref_Mortgage_Statements__c = 'Online';
+                    updated = true;
+                }
+            }
+            if(updated == true){
+                listOfFinancialAssetsToupdate.add(tempFinancialAsset);
+
+            }
+
+        }
+        return listOfFinancialAssetsToupdate;
+    }
+     private static List<Financial_Asset__c> processPolicyRecords(EmailPrefResponse.DocumentPreferencesPolicy[] listOfPolicyFinancialAssetsResp , Boolean statusAllDocuments){
+        List<Financial_Asset__c> listOfFinancialAssetsToupdate;
+        List<Contact> contactToUse;
+        Map<String,Financial_Asset__c> mapClientNumberFA;
+        Id contextContactId;
+         Boolean updated;
+
+        
+
+        contactToUse = new List<Contact>();
+        contactToUse = [select Id, Business_Partner_ID__c from Contact where Id in (select ContactId from User where id=:UserInfo.getUserId())];
+        contextContactId = contactToUse.get(0).Id;
+        mapClientNumberFA = new Map<String,Financial_Asset__c>();
+        for(Financial_Asset__c eachFinancialAsset : [select Customer__r.Name,Policy_Number__c,Pref_Policy_Statements__c from Financial_Asset__c where Customer__c =: contextContactId AND RecordType.Name = 'Policy Asset']){
+            mapClientNumberFA.put(eachFinancialAsset.Policy_Number__c, eachFinancialAsset);
+        }
+        listOfFinancialAssetsToupdate = new List<Financial_Asset__c>();
+        for(EmailPrefResponse.DocumentPreferencesPolicy eachRespObj : listOfPolicyFinancialAssetsResp){
+            updated = false;
+            Financial_Asset__c tempFinancialAsset = mapClientNumberFA.get(eachRespObj.policyNumber);
+            if(tempFinancialAsset.Policy_Number__c == eachRespObj.policyNumber){
+                if(eachRespObj.policyDocument == false 
+                        && (tempFinancialAsset.Pref_Policy_Statements__c == 'Online' ||  tempFinancialAsset.Pref_Policy_Statements__c == null)){
+                        tempFinancialAsset.Pref_Policy_Statements__c = 'Paper';
+                        updated = true;
+                } else if(eachRespObj.policyDocument == true 
+                    && (tempFinancialAsset.Pref_Policy_Statements__c == 'Paper' || tempFinancialAsset.Pref_Policy_Statements__c == null)){
+                    tempFinancialAsset.Pref_Policy_Statements__c = 'Online';
+                    updated = true;
+                }
+                if(statusAllDocuments == true){
+                    tempFinancialAsset.Pref_Policy_Statements__c = 'Online';
+                    updated = true;
+                }
+            }
+            if(updated == true){
+                listOfFinancialAssetsToupdate.add(tempFinancialAsset);
+
+            }
+
+        }
+        return listOfFinancialAssetsToupdate;
+    }
+
+
     /*******************************************************************************************************
     Return Type: 		List<Financial_Asset__c>
 	Function details:
 		1. voic function will update the list of Financial asset records.
 		
     *******************************************************************************************************/
+
     private static void updateFinancialAssets(List<Financial_Asset__c> updateFA){
     	update updateFA;
 

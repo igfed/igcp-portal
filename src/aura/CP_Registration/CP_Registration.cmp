@@ -1,117 +1,110 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
-	
 	<!-- INCLUDES -->
 	<c:CP_CSS_Includes />
 	<c:CP_JS_Includes />
-
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
 	<c:CP_Validation aura:id="CP_Validation" />
 	<c:CP_Services aura:id="CP_Services" />
-	<c:CP_User_Info />
-
+	
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="registration"></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-utils__overflow--hidden"></aura:attribute>
-	<aura:attribute name="currentStep" type="Integer" default="0" ></aura:attribute>
-
+	<aura:attribute name="currentStep" type="Integer" default="0"></aura:attribute>
+	
 	<!-- Step 1 -->
-	<aura:attribute name="clientNum" type="String" default=""/>
-    <aura:attribute name="postalCode" type="String" default=""/>
-    <aura:attribute name="dob" type="String" default=""/>
-    <aura:attribute name="lang" type="String"></aura:attribute>
+	<aura:attribute name="clientNum" type="String" default="" />
+	<aura:attribute name="postalCode" type="String" default="" />
+	<aura:attribute name="dob" type="String" default="" />
+	<aura:attribute name="lang" type="String"></aura:attribute>
 
-    <!-- Step 2 -->
-    <aura:attribute name="username" type="String" default=""/>
-    <aura:attribute name="password" type="String" default=""/>
-    <aura:attribute name="confirmPassword" type="String" default=""/>
-    <aura:attribute name="email" type="String" default=""/>
-    <aura:attribute name="emailOptIn" type="Boolean" default="false" ></aura:attribute>
-    <aura:attribute name="mobilePhone" type="String" default=""/>
-    <aura:attribute name="securityQuestion1" type="String" default=""></aura:attribute>	
-    <aura:attribute name="answer1" type="String"></aura:attribute>
-    <aura:attribute name="securityQuestion2" type="String" default=""></aura:attribute>	
-    <aura:attribute name="answer2" type="String"></aura:attribute>
-    <aura:attribute name="securityQuestion3" type="String" default=""></aura:attribute>	
-    <aura:attribute name="answer3" type="String"></aura:attribute>
-    
-    <!-- Step 3 -->
-    <aura:attribute name="acceptTOS" type="Boolean" default="false" ></aura:attribute>
+	<!-- Step 2 -->
+	<aura:attribute name="username" type="String" default="" />
+	<aura:attribute name="password" type="String" default="" />
+	<aura:attribute name="confirmPassword" type="String" default="" />
+	<aura:attribute name="email" type="String" default="" />
+	<aura:attribute name="emailConfirm" type="String" default="" />
+	<aura:attribute name="emailOptIn" type="Boolean" default="false"></aura:attribute>
+	<aura:attribute name="mobilePhone" type="String" default="" />
+	<aura:attribute name="securityQuestion1" type="String" default=""></aura:attribute>
+	<aura:attribute name="answer1" type="String"></aura:attribute>
+	<aura:attribute name="securityQuestion2" type="String" default=""></aura:attribute>
+	<aura:attribute name="answer2" type="String"></aura:attribute>
+	<aura:attribute name="securityQuestion3" type="String" default=""></aura:attribute>
+	<aura:attribute name="answer3" type="String"></aura:attribute>
 
-    <!-- HANDLERS -->
-    <aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
-    <aura:handler event="c:CP_Evt_Start" action="{!c.onStartRegistration}"></aura:handler>
-    <aura:handler event="c:CP_Evt_Next_Step" action="{!c.onNextStep}"></aura:handler>
-    <aura:handler event="c:CP_Evt_Back_Step" action="{!c.onBackStep}"></aura:handler>
-    <aura:handler event="c:CP_Evt_Error_Locked_Out" action="{!c.onLockedOut}"></aura:handler>
-    <aura:handler event="c:CP_Evt_Error_Not_Completed" action="{!c.onNotCompleted}"></aura:handler>
+	<!-- Step 3 -->
+	<aura:attribute name="acceptTOS" type="Boolean" default="false"></aura:attribute>
 
-    <!-- COMPONENTS -->
-    <div class="{!v.class}">
-
-    	<aura:if isTrue="{!v.currentStep == 0}"  >
-    		<c:CP_Registration_Start />
-    	</aura:if>
-
-    	<aura:if isTrue="{!v.currentStep == 1}"  >
-    		<c:CP_Registration_Step_1 clientNum="{!v.clientNum}" 
-    			postalCode="{!v.postalCode}" 
-    			dob="{!v.dob}" />
-    	</aura:if>
-
-    	<aura:if isTrue="{!v.currentStep == 2}"  >
-    		<c:CP_Registration_Step_2 username="{!v.username}"
-    			password="{!v.password}"
-    			confirmPassword="{!v.confirmPassword}"
-    			email="{!v.email}"
-    			emailOptIn="{!v.emailOptIn}"
-    			mobilePhone="{!v.mobilePhone}"
-    			securityQuestion1="{!v.securityQuestion1}"
-    			answer1="{!v.answer1}"
-    			securityQuestion2="{!v.securityQuestion2}"
-    			answer2="{!v.answer2}"
-    			securityQuestion3="{!v.securityQuestion3}"
-    			answer3="{!v.answer3}"
-    			lang="{!v.lang}"/>
-    	</aura:if>
-
-    	<aura:if isTrue="{!v.currentStep == 3}"  >
-    		<c:CP_Registration_Step_3 clientNum="{!v.clientNum}" 
-    			postalCode="{!v.postalCode}" 
-    			dob="{!v.dob}"
-    			username="{!v.username}"
-    			password="{!v.password}"
-    			confirmPassword="{!v.confirmPassword}"
-    			email="{!v.email}"
-    			emailOptIn="{!v.emailOptIn}"
-    			mobilePhone="{!v.mobilePhone}"
-    			securityQuestion1="{!v.securityQuestion1}"
-    			answer1="{!v.answer1}"
-    			securityQuestion2="{!v.securityQuestion2}"
-    			answer2="{!v.answer2}"
-    			securityQuestion3="{!v.securityQuestion3}"
-    			answer3="{!v.answer3}"
-    			acceptTOS="{!v.acceptTOS}"
-    			lang="{!v.lang}"/>
-    	</aura:if>
-
-    	<aura:if isTrue="{!v.currentStep == 4}"  >
-    		<c:CP_Registration_Thank_You />
-    	</aura:if>
-
-    	<aura:if isTrue="{!v.currentStep == 5}"  >
-    		<c:CP_Registration_Locked_Out />
-    	</aura:if>
-
-    	<aura:if isTrue="{!v.currentStep == 6}"  >
-    		<c:CP_Registration_Not_Completed />
-    	</aura:if>
-
-    	<c:CP_Cmp_Modal id="registration-tos"/>
-    	<c:CP_Cmp_Modal id="view-sample" modalType="small"/>
-
-    	<!-- FOOTER -->	
+	<!-- HANDLERS -->
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
+	<aura:handler event="c:CP_Evt_Start" action="{!c.onStartRegistration}"></aura:handler>
+	<aura:handler event="c:CP_Evt_Next_Step" action="{!c.onNextStep}"></aura:handler>
+	<aura:handler event="c:CP_Evt_Back_Step" action="{!c.onBackStep}"></aura:handler>
+	<aura:handler event="c:CP_Evt_Error_Locked_Out" action="{!c.onLockedOut}"></aura:handler>
+	<aura:handler event="c:CP_Evt_Error_Not_Completed" action="{!c.onNotCompleted}"></aura:handler>
+	
+	<!-- COMPONENTS -->
+	<div class="{!v.class}">
+		<aura:if isTrue="{!v.currentStep == 0}">
+			<c:CP_Registration_Start />
+		</aura:if>
+		<aura:if isTrue="{!v.currentStep == 1}">
+			<c:CP_Registration_Step_1 clientNum="{!v.clientNum}" 
+				postalCode="{!v.postalCode}" 
+				dob="{!v.dob}" />
+		</aura:if>
+		<aura:if isTrue="{!v.currentStep == 2}">
+			<c:CP_Registration_Step_2 clientNum="{!v.clientNum}" 
+				postalCode="{!v.postalCode}" 
+				dob="{!v.dob}"
+				username="{!v.username}" 
+				password="{!v.password}" 
+				confirmPassword="{!v.confirmPassword}" 
+				email="{!v.email}"
+				emailConfirm="{!v.emailConfirm}" 
+				emailOptIn="{!v.emailOptIn}" 
+				mobilePhone="{!v.mobilePhone}" 
+				securityQuestion1="{!v.securityQuestion1}" 
+				answer1="{!v.answer1}" 
+				securityQuestion2="{!v.securityQuestion2}" 
+				answer2="{!v.answer2}" 
+				securityQuestion3="{!v.securityQuestion3}" 
+				answer3="{!v.answer3}" 
+				lang="{!v.lang}" />
+		</aura:if>
+		<aura:if isTrue="{!v.currentStep == 3}">
+			<c:CP_Registration_Step_3 clientNum="{!v.clientNum}" 
+				postalCode="{!v.postalCode}" 
+				dob="{!v.dob}" 
+				username="{!v.username}" 
+				password="{!v.password}" 
+				confirmPassword="{!v.confirmPassword}" 
+				email="{!v.email}" 
+				emailConfirm="{!v.emailConfirm}" 
+				emailOptIn="{!v.emailOptIn}" 
+				mobilePhone="{!v.mobilePhone}" 
+				securityQuestion1="{!v.securityQuestion1}" 
+				answer1="{!v.answer1}" 
+				securityQuestion2="{!v.securityQuestion2}" 
+				answer2="{!v.answer2}" 
+				securityQuestion3="{!v.securityQuestion3}" 
+				answer3="{!v.answer3}" 
+				acceptTOS="{!v.acceptTOS}" 
+				lang="{!v.lang}" />
+		</aura:if>
+		<aura:if isTrue="{!v.currentStep == 4}">
+			<c:CP_Registration_Thank_You />
+		</aura:if>
+		<aura:if isTrue="{!v.currentStep == 5}">
+			<c:CP_Registration_Locked_Out />
+		</aura:if>
+		<aura:if isTrue="{!v.currentStep == 6}">
+			<c:CP_Registration_Not_Completed />
+		</aura:if>
+		<c:CP_Cmp_Modal id="registration-tos" />
+		<c:CP_Cmp_Modal id="view-sample" modalType="small" />
+		<!-- FOOTER -->
 		<!-- <c:CP_Cmp_Footer /> -->
 	</div>
-    
 </aura:component>

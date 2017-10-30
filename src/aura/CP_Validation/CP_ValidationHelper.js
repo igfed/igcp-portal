@@ -1,60 +1,60 @@
 ({
-	isValid: function(errors) {
+	isValid: function (errors) {
 		if (errors.length === 0) {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	isSame: function(val1, val2) {
+	isSame: function (val1, val2) {
 		if (val1 === val2) {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	isEmail: function(value) {
+	isEmail: function (value) {
 		var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
 		return pattern.test(value);
 	},
-	lessThanOrEqual: function(val1, val2) {
+	lessThanOrEqual: function (val1, val2) {
 		return val1 <= val2 ? true : false;
 	},
-	greaterThanOrEqual: function(val1, val2) {
+	greaterThanOrEqual: function (val1, val2) {
 		return val1 >= val2 ? true : false;
 	},
-	min: function(length, param) {
+	min: function (length, param) {
 		return length >= param;
 	},
-	max: function(length, param) {
+	max: function (length, param) {
 		return length <= param;
 	},
-	alphanumeric: function(value) {
+	alphanumeric: function (value) {
 		return /^\w+$/i.test(value);
 	},
-	alphanumericSpecial: function(value) {
+	alphanumericSpecial: function (value) {
 		return /^[-@./+\w\s]*$/i.test(value);
 	},
-	hasUppercase: function(value) {
+	hasUppercase: function (value) {
 		return /[A-Z]/.test(value);
 	},
-	hasLowercase: function(value) {
+	hasLowercase: function (value) {
 		return /[a-z]/.test(value);
 	},
-	hasNumber: function(value) {
+	hasNumber: function (value) {
 		return /[0-9]/.test(value);
 	},
-	hasNumberOnly: function(value) {
+	hasNumberOnly: function (value) {
 		return /^\d+$/.test(value);
 	},
-	hasSpecialChar: function(value) {
+	hasSpecialChar: function (value) {
 		return /[^a-z\d]+/i.test(value);
 	},
-	isPhone: function(value) {
+	isPhone: function (value) {
 		value = value.replace(/\s+/g, "");
 		return /^(\+?1-?)?(\([2-9]([02-9]\d|1[02-9])\)|[2-9]([02-9]\d|1[02-9]))-?[2-9]([02-9]\d|1[02-9])-?\d{4}$/.test(value);
 	},
-	hasValidPostalCode: function(value) {
+	hasValidPostalCode: function (value) {
 
 		//validates space or no space
 		var isValid = /[a-zA-Z][0-9][a-zA-Z](-| |)[0-9][a-zA-Z][0-9]/.test(value) || /[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]/.test(value);
@@ -65,7 +65,7 @@
 			return isValid;
 		}
 	},
-	checkForErrors: function(valObj) {
+	checkForErrors: function (valObj) {
 		var
 			isValid = false,
 			errors = [],
@@ -82,7 +82,7 @@
 
 		return errors;
 	},
-	validateUsername: function(params, callBack, cmp, hlpr) {
+	validateUsername: function (params, callBack, cmp, hlpr) {
 		var
 			isValid = false,
 			errors = [],
@@ -104,7 +104,7 @@
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
-	validatePassword: function(params, callBack, cmp, hlpr) {
+	validatePassword: function (params, callBack, cmp, hlpr) {
 
 		var
 			value = params.value,
@@ -139,7 +139,7 @@
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 
-		errors.forEach(function(item, i) {
+		errors.forEach(function (item, i) {
 			if (item.type === "isEmpty") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Empty_Field");
 			}
@@ -147,7 +147,7 @@
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
-	validatePasswordConfirm: function(params, callBack, cmp, hlpr) {
+	validatePasswordConfirm: function (params, callBack, cmp, hlpr) {
 
 		var
 			value = params.value,
@@ -159,7 +159,7 @@
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 
-		errors.forEach(function(item, i) {
+		errors.forEach(function (item, i) {
 			if (item.type === "passwordsMatch") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Passwords_Match");
 			}
@@ -167,7 +167,7 @@
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
-	validateClientnumber: function(params, callBack, cmp, hlpr) {
+	validateClientnumber: function (params, callBack, cmp, hlpr) {
 
 		var
 			value = params.value,
@@ -185,7 +185,7 @@
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 
-		errors.forEach(function(item, i) {
+		errors.forEach(function (item, i) {
 			if (item.type === "hasNumberOnly") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Client_Number_Numbers_Only");
 			} else if (item.type === "isEmpty") {
@@ -195,7 +195,7 @@
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
-	validatePostalcode: function(params, callBack, cmp, hlpr) {
+	validatePostalcode: function (params, callBack, cmp, hlpr) {
 
 		var
 			value = params.value,
@@ -223,7 +223,7 @@
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 
-		errors.forEach(function(item, i) {
+		errors.forEach(function (item, i) {
 			if (item.type === "minLength") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Postal_Too_Short");
 			} else if (item.type === "hasValidZipcode") {
@@ -235,7 +235,7 @@
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
-	validateDate: function(params, callBack, cmp, hlpr) {
+	validateDate: function (params, callBack, cmp, hlpr) {
 
 		var
 			value = params.value,
@@ -270,7 +270,7 @@
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 
-		errors.forEach(function(item, i) {
+		errors.forEach(function (item, i) {
 			if (item.type === "monthValid") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Month_Invalid");
 			} else if (item.type === "dayValid") {
@@ -288,7 +288,7 @@
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
-	validateEmail: function(params, callBack, cmp, hlpr) {
+	validateEmail: function (params, callBack, cmp, hlpr) {
 
 		var
 			value = params.value,
@@ -306,7 +306,7 @@
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 
-		errors.forEach(function(item, i) {
+		errors.forEach(function (item, i) {
 			if (item.type === "isEmpty") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Email_Empty");
 			} else if (item.type === "isEmail") {
@@ -317,7 +317,64 @@
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
-	validatePhone: function(params, callBack, cmp, hlpr) {
+	validateEmailConfirm: function (params, callBack, cmp, hlpr) {
+		var
+			value = params.value,
+			id = params.id,
+			errors = [],
+			errorCheckObj = {},
+			isEmpty = value.length === 0 ? true : false,
+			isEmail = hlpr.isEmail(value);
+
+		if (isEmpty === true) {
+			errorCheckObj["isEmpty"] = isEmpty;
+		} else {
+			if(isEmail === false) {
+				errorCheckObj["isEmail"] = isEmail;
+			} else {
+				errorCheckObj["emailsMatch"] = hlpr.isSame(params.value, params.confirmValue);
+			}
+		}
+
+		errors = hlpr.checkForErrors(errorCheckObj);
+
+		errors.forEach(function (item, i) {
+			if (item.type === "isEmpty") {
+				item["msg"] = $A.get("$Label.c.CP_Error_Email_Empty");
+			} else if (item.type === "isEmail") {
+				item["msg"] = $A.get("$Label.c.CP_Error_Email_Invalid");
+			} else if (item.type === "emailsMatch") {
+				item["msg"] = $A.get("$Label.c.CP_Error_Emails_Match");
+			}
+		});
+
+		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+	},
+	validatePhone: function (params, callBack, cmp, hlpr) {
+
+		var
+			value = params.value,
+			id = params.id,
+			errors = [],
+			errorCheckObj = {},
+			isEmpty = value.length === 0 ? true : false,
+			isPhone = hlpr.isPhone(value);
+
+		if (isEmpty !== true) {
+			errorCheckObj["isPhone"] = isPhone;
+		}
+
+		errors = hlpr.checkForErrors(errorCheckObj);
+
+		errors.forEach(function (item, i) {
+			if (item.type === "isPhone") {
+				item["msg"] = $A.get("$Label.c.CP_Error_Phone_Invalid");
+			}
+		});
+
+		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+	},
+	validatePhoneRequired: function (params, callBack, cmp, hlpr) {
 
 		var
 			value = params.value,
@@ -335,7 +392,7 @@
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 
-		errors.forEach(function(item, i) {
+		errors.forEach(function (item, i) {
 			if (item.type === "isEmpty") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Phone_Empty");
 			} else if (item.type === "isPhone") {
@@ -346,7 +403,7 @@
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
-	validateText: function(params, callBack, cmp, hlpr) {
+	validateText: function (params, callBack, cmp, hlpr) {
 		var
 			value = params.value,
 			id = params.id,
@@ -363,7 +420,7 @@
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 
-		errors.forEach(function(item, i) {
+		errors.forEach(function (item, i) {
 			if (item.type === "isEmpty") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Empty_Field");
 			} else if (item.type === "minLength") {
@@ -373,7 +430,7 @@
 
 		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
-	validateQuestion: function(params, callBack, cmp, hlpr) {
+	validateQuestion: function (params, callBack, cmp, hlpr) {
 
 		var
 			value = params.value,
@@ -388,7 +445,7 @@
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 
-		errors.forEach(function(item, i) {
+		errors.forEach(function (item, i) {
 			if (item.type === "isEmpty") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Question_Empty");
 			}
