@@ -34,7 +34,7 @@
 		<div class="slds-p-vertical--small slds-p-horizontal--large slds-m-bottom--x-small slds-large-m-bottom--medium slds-size_12-of-12">
 			<h1 class="slds-m-top--medium">Documents</h1>
 	
-            <div class="slds-tabs_default">
+            <div class="igcp-document-tabs slds-tabs_default">
                 <ul class="slds-tabs_default__nav" role="tablist">
                     <li class="slds-tabs_default__item slds-is-active" title="Item One" role="presentation"><a onclick="{!c.switchTabs}" class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Investment Statements</a></li>
                     <li class="slds-tabs_default__item" title="Item Two" role="presentation"><a onclick="{!c.switchTabs}" class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" id="tab-default-2__item">Tax Receipts</a></li>
@@ -44,7 +44,7 @@
                 
                 <div id="tab-default-1" class="slds-tabs_default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">
                     
-                    <div class="igcp-documents-table">
+                    <div class="igcp-document-table">
                         <table class="slds-table slds-table_bordered slds-table_cell-buffer">
                         <thead>
                             <tr>
@@ -136,13 +136,13 @@
             </div>
 
             <div class="igcp-banner">
-            <div class="slds-size_12-of-12 slds-medium-size_6-of-12">
-               <div class="igcp-banner-text">
-                    <h3 class="igcp-banner-heading">Featured News</h3>
-                    <p>Here's news about your statement and other important information.</p>
-                    <c:CP_Cmp_Button id="learn-more" label="Learn More" class="igcp-button--complete"/>
+                <div class="slds-size_12-of-12 slds-medium-size_6-of-12">
+                <div class="igcp-banner-text">
+                        <h3 class="igcp-banner-heading">Featured News</h3>
+                        <p>Here's news about your statement and other important information.</p>
+                        <c:CP_Cmp_Button id="learn-more" label="Learn More" class="igcp-button--complete"/>
+                    </div>
                 </div>
-            </div>
       
                 <img class="" src="{!$Resource.igcpresources + '/igcp-resources/images/banner_image.png'}" alt="Banner Image" />
            
