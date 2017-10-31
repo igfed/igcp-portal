@@ -20,7 +20,6 @@
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 	<aura:handler event="c:CP_Evt_Complete" action="{!c.onComplete}" />
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />	
-	<aura:handler event="c:CP_Evt_Click" action="{!c.onClick}" />
 	<aura:handler event="c:CP_Evt_Input_Checkbox_Checked" action="{!c.onAgreeChecked}" />
 	<aura:handler event="c:CP_Evt_Input_Checkbox_Unchecked" action="{!c.onAgreeChecked}" />
 	<!-- <aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
