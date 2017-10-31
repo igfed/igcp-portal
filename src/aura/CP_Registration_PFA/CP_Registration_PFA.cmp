@@ -19,7 +19,7 @@
 					
 					<p class="slds-m-vertical--x-small slds-medium-p-right--medium slds-large-p-right--large slds-text-align_center slds-medium-text-align_left">{!$Label.c.CP_Registration_Start_Instructions}</p>
 					
-					<c:CP_Cmp_Button id="get-started-pfa" label="{!$Label.c.CP_Generic_Button_Get_Started}" class="igcp-utils__width--100 igcp-medium-utils__width--50 slds-m-top--medium slds-p-horizontal--large slds-medium-p-horizontal--zero" />
+					<c:CP_Cmp_Button id="get-started-pfa" label="{!$Label.c.CP_Generic_Button_Get_Started}" class="aa-click igcp-utils__width--100 igcp-medium-utils__width--50 slds-m-top--medium slds-p-horizontal--large slds-medium-p-horizontal--zero" />
 
 				</div>	
 			</div>

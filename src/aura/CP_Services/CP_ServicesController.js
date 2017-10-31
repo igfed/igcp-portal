@@ -717,10 +717,15 @@
 				component = params.component,
 				action;
 
+				
 			try {
 				action = component.get("c.UpdateAssets");
+
+
+				console.warn(params.payload);
+
 				action.setParams({
-					payload: ""
+					payload: params.payload
 				});
 
 				hlpr.setCallbackPromise(

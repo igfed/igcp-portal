@@ -142,11 +142,16 @@
 			var
 				component = params.component,
 				timer = setInterval(function () {
-					if (component.get(params.attr) !== null) {
+					if (component.get(params.attr) !== null || component.get(params.attr) !== undefined) {
 						params.callback(component.get(params.attr));
 						clearInterval(timer);
 					}
 				}, 500);
+
+			// setTimeout(function(){
+			// 	clearInterval(timer);
+			// 	params.timeoutCallback(params.attr + " is still not defined and has timed out after 15 seconds.");
+			// }, 15000);
 		}
 	},
 	onGetURLParams: function (cmp, evt, hlpr) {
