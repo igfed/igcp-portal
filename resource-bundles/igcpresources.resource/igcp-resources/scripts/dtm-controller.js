@@ -6,7 +6,6 @@
   window.digitalData.events = [];
 
   var $this,
-    adobeLoader,
     $component
 
   // Event object that will be pushed into events array
@@ -20,19 +19,22 @@
   event.download = {};
 
   // Handler for Direct calls
-  window.dcHandler = (function () {
+  // (function (window, document, undefined) {
+  //   var dcHandler = function (dcName, data) {
+  //     console.log('parse direct calls');
+  //     event.type = 'dc';
+  //     _constructEventObj(data);
+  //     _executeDirectCall(dcName);
+  //   }
+  //   window.dcHandler = dcHandler;
+  // })(window, document);
 
-    function parse(dcName, data) {
-      console.log('parse direct calls');
-      event.type = 'dc';
-      _constructEventObj();
-      _executeDirectCall(dcName);
-    }
-
-    return {
-      parse: parse
-    };
-  })();
+  window.dtmCall = function (dcName, data) {
+    console.log('parse direct call');
+    event.type = 'dc';
+    _constructEventObj(data);
+    _executeDirectCall(dcName);
+  }
 
 
   function init() {
@@ -47,11 +49,10 @@
     console.log(window.digitalData);
 
     // Only fire this in Salesforce
-    _adobeScriptLoader();
+    // window._satellite.pageBottom();
 
     // Register click event handlers
     $('.aa-click').on('click', function (e) {
-      e.preventDefault();
       event.type = 'click';
       _constructEventObj($(this));
       _executeDirectCall(event.dcName);
@@ -81,17 +82,8 @@
     return lang;
   }
 
-  function _adobeScriptLoader() {
-    adobeLoader = setInterval(function () {
-      if (window._satellite) {
-        window._satellite.pageBottom();
-        clearInterval(adobeLoader);
-      }
-    }, 500);
-  }
-
   function _constructEventObj($this) {
-    event.page.pageInfo.referrer = window.location.href;
+    event.page.referrer = window.location.href;
 
     if (event.type === 'click' || event.type === 'hover') {
       var topics,
@@ -106,9 +98,9 @@
       event.goal = $this.data('aa-goal');
       event.linkLabel = $this.data('aa-link-label');
       event.parentID = $this.data('aa-parent');
-      
+
       // Store component container node  
-      $component = $this.parents('.ig-analytics-component');
+      $component = $this.parents('.aa-component');
 
       // Capture component data
       if ($component.length > 0) {
@@ -142,7 +134,7 @@
 
     }
 
-    if (event.type = 'dc') {
+    if (event.type === 'dc') {
 
     }
 
@@ -151,7 +143,7 @@
   }
 
   function _executeDirectCall(name) {
-    _satellite.track(name);
+    window._satellite.track(name);
   }
 
   init();

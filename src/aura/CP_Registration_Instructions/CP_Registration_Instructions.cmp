@@ -7,7 +7,7 @@
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Click" action="{!c.onStart}"></aura:handler>
 	<!-- MARKUP -->
-	<div class="igcp-background">
+	<div data-aa-name="Registration_Instructions" class="igcp-background aa-component">
 		<div class="igcp-utils__max-width--large igcp-utils__margin--zero-auto slds-grid slds-wrap slds-grid--align-center">
 			<div class="slds-size_12-of-12 slds-m-top--large slds-m-bottom--small slds-text-align_center">
 				<h2>{!$Label.c.CP_Registration_Start_h2}</h2>
@@ -22,7 +22,7 @@
 			<div class="slds-size_12-of-12 slds-medium-size_7-of-12 slds-large-size_6-of-12 slds-m-top--large slds-m-bottom--small slds-text-align_center">
 				<h2 class="igcp-medium-utils__font-size--medium igcp-large-utils__font-size--medium-plus slds-m-bottom--zero">{!$Label.c.CP_Registration_Start_Get_Started}</h2>
 				<p class="slds-p-horizontal--medium slds-m-top--x-small">{!$Label.c.CP_Registration_Start_Requirements}<c:CP_Cmp_Link modalID="view-sample" label="{!$Label.c.CP_Generic_Label_View_Sample}"/></p>
-				<c:CP_Cmp_Button id="get-started-pfa-2" label="{!$Label.c.CP_Generic_Button_Get_Started}" class="slds-m-top--medium slds-p-horizontal--xx-large" buttonClass="igcp-medium-utils__width--50" />
+				<c:CP_Cmp_Button dcname="registration-instructions" id="get-started-pfa-2" label="{!$Label.c.CP_Generic_Button_Get_Started}" class="aa-click slds-m-top--medium slds-p-horizontal--xx-large" buttonClass="igcp-medium-utils__width--50" />
 			</div>
 		</div>
 	</div>
