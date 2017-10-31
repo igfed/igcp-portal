@@ -5,7 +5,6 @@
 		//13460563
 
 		var
-			// accountNumber = "180030728", 
 			services = cmp.find("CP_Services"),
 			utils = cmp.find("CP_Utils"),
 			events = cmp.find("CP_Events");
@@ -15,35 +14,29 @@
 				cmp.set("v.lang", params.language);
 			}
 
-			if(params.accEnc) {
+			if (params.accEnc) {
 				cmp.set("v.accountNumberEnc", params.accEnc);
+			} else {
+				console.warn("CP_Account: No account number passed.");
 			}
 		});
 
-		utils.waitForDefined(cmp, "v.accountNumberEnc", function(){
+		utils.waitForDefined(cmp, "v.accountNumberEnc", function () {
 
-			console.log("Account Number ready");
-			console.log(cmp.get("v.accountNumberEnc"));
+			hlpr.logReturned("Account Number Enc", cmp.get("v.accountNumberEnc"));
 
 			services.getAccountDetail(
 				cmp.get("v.accountNumberEnc"),
 				cmp,
 				function (success) {
-					console.info("*******");
-					console.info("Get Account Detail");
-					console.info(success);
-					console.info("*******");
-	
-					cmp.set("v.accountDetailObj", success);
-	
-					try {
-						utils.formatToCurrency(success.marketValueCad, function (returnedValue) {
-							cmp.set("v.marketValue", returnedValue);
-						}, cmp.get("v.lang"));
-					} catch (err) { console.error("CP_Account_Details: setAccountDetail: formatToCurrency did not work: " + err) }
-	
-					cmp.set("v.gainLossPercentage", "N/A");
-					cmp.set("v.change", "N/A");
+					hlpr.logReturned("Get Account Detail", success);
+
+					if (success) {
+
+						hlpr.setGeneralOverview(success, cmp);
+
+						hlpr.setDetailsList(success, cmp);
+					}
 				},
 				function (error) {
 					console.error("Account Detail");
@@ -55,10 +48,7 @@
 				cmp.get("v.accountNumberEnc"),
 				cmp,
 				function (success) {
-					console.info("*******");
-					console.info("Get Investment Profile");
-					console.info(success);
-					console.info("*******");
+					//hlpr.logReturned("Get Investment Profile", success);
 					cmp.set("v.investmentProfileObj", success);
 				},
 				function (error) {
@@ -71,22 +61,19 @@
 				cmp.get("v.accountNumberEnc"),
 				cmp,
 				function (success) {
-					console.info("############");
-					console.info("Get Holdings");
-					console.info(success);
-					console.info("############");
-	
+					//hlpr.logReturned("Get Holdings", success);
+
 					var
 						holdingsArr = success,
 						dataArr = [],
 						dataObjArr = [];
-	
+
 					holdingsArr.forEach(function (item, i) {
 						dataArr.push([item.productName, item.holdingNumber, "N/A", "N/A", item.marketValueCad]);
 						dataObjArr.push(item);
-	
+
 					});
-	
+
 					events.fire(
 						"CP_Evt_Set_Table", {
 							"id": "holdings-table",
@@ -112,21 +99,18 @@
 				cmp.get("v.accountNumberEnc"),
 				cmp,
 				function (success) {
-					console.log("*******");
-					console.log("Get Transactions");
-					console.log(success);
-					console.log("*******");
-	
+					//hlpr.logReturned("Get Transactions", success);
+
 					var
 						transactionsArr = success,
 						dataArr = [],
 						dataObjArr = [];
-	
+
 					transactionsArr.forEach(function (item, i) {
 						dataArr.push([]);
 						dataObjArr.push(item);
 					});
-	
+
 					events.fire(
 						"CP_Evt_Set_Table", {
 							"id": "transactions-table",
@@ -153,21 +137,18 @@
 				cmp.get("v.accountNumberEnc"),
 				cmp,
 				function (success) {
-					console.log("*******");
-					console.log("Get Instructions");
-					console.log(success);
-					console.log("*******");
-	
+					//hlpr.logReturned("Get Instructions", success);
+
 					var
 						instructionsArr = success,
 						dataArr = [],
 						dataObjArr = [];
-	
+
 					instructionsArr.forEach(function (item, i) {
 						dataArr.push([]);
 						dataObjArr.push(item);
 					});
-	
+
 					events.fire(
 						"CP_Evt_Set_Table", {
 							"id": "instructions-table",
@@ -193,56 +174,47 @@
 				cmp.get("v.accountNumberEnc"),
 				cmp,
 				function (success) {
-					console.log("*******");
-					console.log("Get Account Performance");
-					console.log(success);
-					console.log("*******");
+					hlpr.logReturned("Get Account Performance", success);
+
+					var
+						openingValues = [
+							success.openingValueYtd,
+							success.openingValue1Yr,
+							success.openingValue3Yr,
+							success.openingValue5Yr,
+							success.openingValueInception
+						],
+						closingValues = [
+							success.closingValueYtd,
+							success.closingValue1Yr,
+							success.closingValue3Yr,
+							success.closingValue5Yr,
+							success.closingValueInception
+						],
+						dataObj = {
+							"labels": ["YTD", "1yr", "3yr", "5yr", "Since"],
+							"datasets": [{
+								"label": $A.get("$Label.c.CP_Generic_Label_Opening_Value"),
+								"backgroundColor": "#1d5076",
+								"data": openingValues
+							}, {
+								"label": $A.get("$Label.c.CP_Generic_Label_Closing_Value"),
+								"backgroundColor": "#4dede7",
+								"data": closingValues
+							}]
+						};
+
+					events.fire(
+						"CP_Evt_Set_Graph", {
+							"id": "account-details-performance-chart",
+							"data": dataObj
+						});
 				},
 				function (error) {
 					console.error("Account Performance");
 					console.error(error);
 				}
 			);
-	
-			events.fire(
-				"CP_Evt_Set_List", {
-					"id": "account-list",
-					"values": [{
-							label: $A.get("$Label.c.CP_Generic_Label_Balance_Date"),
-							detail: 'Apr 13, 2017'
-						},
-						{
-							label: $A.get("$Label.c.CP_Generic_Label_Book_Cost"),
-							detail: '$153,954.57'
-						},
-						{
-							label: $A.get("$Label.c.CP_Generic_Label_YTD_Contribution"),
-							detail: '$3,500.00'
-						},
-						{
-							label: $A.get("$Label.c.CP_Generic_Label_RESP_Benificiary_Name"),
-							detail: 'Jamie Holmes'
-						},
-						{
-							label: $A.get("$Label.c.CP_Generic_Label_Net_Contributions"),
-							detail: '$10,393.43'
-						},
-						{
-							label: $A.get("$Label.c.CP_Generic_Label_2016_Contributions"),
-							detail: '$1,594.25'
-						},
-						{
-							label: $A.get("$Label.c.CP_Generic_Label_2017_Contributions"),
-							detail: '$6,430.00'
-						}
-					]
-				}
-			);
-	
-			events.fire(
-				"CP_Evt_Set_Graph", {
-					"id": "account-details-performance-chart"
-				});
 		});
 	},
 	doneRendering: function (cmp, evt, hlpr) {

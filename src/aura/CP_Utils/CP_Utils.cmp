@@ -65,12 +65,13 @@
 		<aura:attribute name="component" type="Aura.component[]" />
 		<aura:attribute name="attr" type="String" ></aura:attribute>
 		<aura:attribute name="callback" type="function" default="" />
+		<aura:attribute name="timeoutCallback" type="function" default="" />
 	</aura:method>
 
 	<!-- GET URL PARAMS -->
 	<!-- Gets all URL parameters and returns them in an object -->
 	<aura:method name="getURLParams" action="{!c.onGetURLParams}">
-		<aura:attribute name="callback" type="function" default="" />
+		<aura:attribute name="callback" type="function" default=""></aura:attribute>
 	</aura:method>
  
 	<!-- FOR EACH -->

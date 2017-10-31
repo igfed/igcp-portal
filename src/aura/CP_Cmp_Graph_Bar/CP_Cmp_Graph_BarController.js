@@ -1,10 +1,10 @@
 ({
-	doneRendering: function(cmp, evt, hlpr) {
-		 cmp.set("v.renderComplete", true);
+	doneRendering: function (cmp, evt, hlpr) {
+		cmp.set("v.renderComplete", true);
 	},
-	onSetGraph: function(cmp, evt, hlpr) {
+	onSetGraph: function (cmp, evt, hlpr) {
 
-		var 
+		var
 			payload = evt.getParam("payload"),
 			utils = cmp.find("CP_Utils");
 
@@ -13,8 +13,8 @@
 			utils.waitFor(
 				cmp,
 				"v.renderComplete",
-				function(ready){
-					hlpr.generateGraph(utils);
+				function () {
+					hlpr.generateGraph(payload);
 				}
 			);
 		}

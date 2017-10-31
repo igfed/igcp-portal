@@ -12,6 +12,7 @@
     <aura:attribute name="pageId" type="String" default="activity-details"></aura:attribute>
     <aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
     <aura:attribute name="currentTable" type="String" default="transactions"></aura:attribute>
+    <aura:attribute name="accountNumberEnc" type="String"></aura:attribute>
 
     <!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />

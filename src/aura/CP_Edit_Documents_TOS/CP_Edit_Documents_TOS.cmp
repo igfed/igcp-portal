@@ -43,10 +43,10 @@
 		<c:CP_Cmp_Input_Checkbox id="read_and_agree_checkbox" form="edit-docs-tos-desktop-form" class="slds-size_12-of-12 slds-m-bottom--large" copy="{!$Label.c.CP_Registration_TOS_Agree}" />
 
 			<aura:if isTrue="{!v.userAgrees == true}">
-				<c:CP_Cmp_Button id="tos_agree_button" label="{!$Label.c.CP_Generic_Label_Agree}" class="slds-m-right_medium slds-float_left igcp-large-utils__display--block slds-x-small-size--4-of-12 slds-medium-size--2-of-12 slds-m-left_x-small" />
+				<c:CP_Cmp_Submit id="tos_agree_button" label="{!$Label.c.CP_Generic_Label_Agree}" class="slds-m-right_medium slds-float_left igcp-large-utils__display--block slds-x-small-size--4-of-12 slds-medium-size--2-of-12 slds-m-left_x-small" />
 			</aura:if>
 			<aura:if isTrue="{!v.userAgrees == false}">
-				<c:CP_Cmp_Button id="tos_agree_button-disabled" disabled="true" label="{!$Label.c.CP_Generic_Label_Agree}" class="slds-m-right_medium slds-float_left igcp-large-utils__display--block slds-x-small-size--4-of-12 slds-medium-size--2-of-12 slds-m-left_x-small" />
+				<c:CP_Cmp_Submit id="tos_agree_button-disabled" disabled="true" label="{!$Label.c.CP_Generic_Label_Agree}" class="slds-m-right_medium slds-float_left igcp-large-utils__display--block slds-x-small-size--4-of-12 slds-medium-size--2-of-12 slds-m-left_x-small" />
 			</aura:if>
 
 			<c:CP_Cmp_Button id="tos_agree_button-cancel" label="{!$Label.c.CP_Generic_Label_Cancel}" class="igcp-large-utils__display--block slds-m-right_medium slds-float_left slds-x-small-size--4-of-12 slds-medium-size--2-of-12" buttonClass="slds-button slds-button--neutral"/>

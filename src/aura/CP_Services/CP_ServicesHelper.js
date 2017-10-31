@@ -7,6 +7,9 @@
 
 			var state = response.getState();
 
+			console.log("STATE: " + state);
+			console.log(response.returnValue);
+
 			if (state === "SUCCESS") {
 
 				// Alert the user with the value returned 

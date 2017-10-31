@@ -11,22 +11,37 @@
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="account-detail"></aura:attribute>
 	<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
-	<aura:attribute name="accountTitle" type="String" default=""></aura:attribute>
-	<aura:attribute name="accountNumber" type="String"></aura:attribute>
 	<aura:attribute name="accountNumberEnc" type="String"></aura:attribute>
 
 	<!-- RETURNED DATA FROM SALESFORCE -->
-	<aura:attribute name="accountDetailObj" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="investmentProfileObj" type="Map" default="{}" ></aura:attribute>
 	<aura:attribute name="holdingsObj" type="Map" default="{}" ></aura:attribute>
 	<aura:attribute name="transactionsArr" type="List" default="[]"></aura:attribute>
 	<aura:attribute name="instructionsArr" type="List" default="[]"></aura:attribute>
 	<aura:attribute name="accountPerformanceObj" type="Map" default="{}"></aura:attribute>
 
+	<!-- GENERAL OVERVIEW -->
+	<aura:attribute name="accountTitle" type="String" default=""></aura:attribute>
+	<aura:attribute name="accountNumber" type="String" default=""></aura:attribute>
 	<aura:attribute name="marketValue" type="String" default=""></aura:attribute>
-	<aura:attribute name="change" type="String" default=""></aura:attribute>
-	<aura:attribute name="gainLossType" type="String" default="positive" ></aura:attribute>
-	<aura:attribute name="gainLossPercentage" type="String" default="N/A"></aura:attribute>
+	<aura:attribute name="totalGainLoss" type="String" default=""></aura:attribute>
+	<aura:attribute name="totalGainLossPercentage" type="String" default=""></aura:attribute>
+	<aura:attribute name="gainLossType" type="String" default=""></aura:attribute>
+
+	<!-- ACCOUNT DETAILS -->
+	<!-- STANDARD -->
+	<aura:attribute name="bookCost" type="String" default=""></aura:attribute>
+	<aura:attribute name="clientNumber" type="String" default=""></aura:attribute>
+	<aura:attribute name="balanceDate" type="String" default=""></aura:attribute>
+	<aura:attribute name="netContributions" type="String" default=""></aura:attribute>
+
+	<!-- RDSP -->
+	<aura:attribute name="benificiaryNames" type="String" default=""></aura:attribute>
+
+	<!-- OTHER -->
+	<aura:attribute name="ytdContribution" type="String" default=""></aura:attribute>
+	<aura:attribute name="contributionsCurrentYear" type="String" default=""></aura:attribute>
+	<aura:attribute name="contributionsLastYear" type="String" default=""></aura:attribute>
 	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
