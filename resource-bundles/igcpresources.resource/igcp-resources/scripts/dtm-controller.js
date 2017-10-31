@@ -18,24 +18,13 @@
   event.advisor = {};
   event.download = {};
 
-  // Handler for Direct calls
-  // (function (window, document, undefined) {
-  //   var dcHandler = function (dcName, data) {
-  //     console.log('parse direct calls');
-  //     event.type = 'dc';
-  //     _constructEventObj(data);
-  //     _executeDirectCall(dcName);
-  //   }
-  //   window.dcHandler = dcHandler;
-  // })(window, document);
-
+  // Setup custom tracking handler for 'true' direct calls from JS
   window.dtmCall = function (dcName, data) {
     console.log('parse direct call');
     event.type = 'dc';
     _constructEventObj(data);
     _executeDirectCall(dcName);
   }
-
 
   function init() {
 
