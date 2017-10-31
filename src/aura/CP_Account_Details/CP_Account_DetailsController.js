@@ -30,13 +30,10 @@
 				cmp,
 				function (success) {
 					hlpr.logReturned("Get Account Detail", success);
-
 					if (success) {
-
 						hlpr.setGeneralOverview(success, cmp);
-
-						hlpr.setDetailsList(success, cmp);
-					}
+						hlpr.setDetailsList(success, cmp, hlpr);
+					}	
 				},
 				function (error) {
 					console.error("Account Detail");
@@ -61,7 +58,7 @@
 				cmp.get("v.accountNumberEnc"),
 				cmp,
 				function (success) {
-					//hlpr.logReturned("Get Holdings", success);
+					hlpr.logReturned("Get Holdings", success);
 
 					var
 						holdingsArr = success,
