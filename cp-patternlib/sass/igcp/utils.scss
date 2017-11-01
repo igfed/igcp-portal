@@ -352,5 +352,9 @@
 		.#{getNamespace($value)}-utils__position--static {
 			position: static;
 		}
+
+		.#{getNamespace($value)}-utils__cursor--pointer {
+			cursor: pointer;
+		}
 	}
 }

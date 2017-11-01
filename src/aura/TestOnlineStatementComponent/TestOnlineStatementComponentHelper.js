@@ -12,7 +12,7 @@
             urlEvent.fire();*/
 
 		var action = component.get("c.getOnlineStatementListFilter");
-        action.setParams({'filter':'2012'});
+        action.setParams({'filter':'Last 4 quarters'});
 		console.log(action);
 		action.setCallback(this,function(resp){
                 //get the response state
@@ -21,8 +21,7 @@
                 //check if result is successfull
                 if(state == "SUCCESS"){
                     var result = resp.getReturnValue();
-                    console.log("State : "+state);
-                    console.log("result : "+result);
+                    console.log("temp"+result);
                     	//component.set("v.lstPositions",result);
                     //
                 } else if(state == "ERROR"){
