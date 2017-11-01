@@ -30,7 +30,7 @@
   function init() {
 
     // Capture page data
-    window.digitalData.pageInstanceID = _getPageName() + window.location.hostname + "";
+    window.digitalData.pageInstanceID = _getPageName() + ":" + window.location.hostname + "";
     window.digitalData.page.pageInfo.pageName = _getPageName();
     window.digitalData.page.pageInfo.language = _getPageLanguage();
     window.digitalData.page.pageInfo.server = window.location.href;
