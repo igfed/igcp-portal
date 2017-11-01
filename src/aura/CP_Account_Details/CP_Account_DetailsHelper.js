@@ -5,9 +5,9 @@
 		console.log(obj);
 		console.log('%c ############', 'background: green; color: white; display: block;');
 	},
-	handleBarValue: function(val) {
-		if(val !== undefined) {
-			return val;			
+	handleBarValue: function (val) {
+		if (val !== undefined) {
+			return val;
 		} else {
 			return 0;
 		}
@@ -171,7 +171,7 @@
 			//ADDING ACCOUNT SPECIFIC DETAILS
 
 			//RDSP Specific
-			if (obj.accountTypeLabel === "RDSP" || 
+			if (obj.accountTypeLabel === "RDSP" ||
 				obj.accountTypeLabel === "Registered Disability Savings Plan") {
 				hlpr.setRDSPList(obj, cmp);
 			}
@@ -184,6 +184,7 @@
 			//RRSP specific
 			if (obj.accountTypeLabel === "RRSP" ||
 				obj.accountTypeLabel === "LIRA" ||
+				obj.accountTypeLabel === "RSP" ||
 				obj.accountTypeLabel === "Locked-RSP" ||
 				obj.accountTypeLabel === "Spousal RSP" ||
 				obj.accountTypeLabel === "RLSP") {
@@ -191,13 +192,32 @@
 			}
 
 			//RESP specific
-			if (obj.accountTypeLabel === "RESP" || 	
+			if (obj.accountTypeLabel === "RESP" ||
 				obj.accountTypeLabel === "RESP-Individual Plan" ||
 				obj.accountTypeLabel === "Family Plan" ||
 				obj.accountTypeLabel === "RESP-Individual Plan and Family Plan"
 			) {
 				hlpr.setRESPList(obj, cmp);
 			}
+
+			//RRIF
+			if (obj.accountTypeLabel === "RRIF" ||
+				obj.accountTypeLabel === "LIF" ||
+				obj.accountTypeLabel === "LRIF" ||
+				obj.accountTypeLabel === "PRIF" ||
+				obj.accountTypeLabel === "RLIF" ||
+				obj.accountTypeLabel === "Spousal RIF") {
+				hlpr.setRRIFList(obj, cmp);
+			}
+
+			//Group RRSP
+			if (obj.accountTypeLabel === "Group RRSP" ||
+				obj.accountTypeLabel === "Spousal Group RSP") {
+				hlpr.setGroupRRSPList(obj, cmp);
+			}
+
+			//GIF
+			hlpr.setGifList(obj, cmp);
 
 			//Populate account details list
 			events.fire(
@@ -384,7 +404,7 @@
 			console.error(err);
 		}
 	},
-	setRESPList: function(obj, cmp) {
+	setRESPList: function (obj, cmp) {
 		try {
 			var
 				utils = cmp.find("CP_Utils"),
@@ -425,9 +445,218 @@
 				"label": $A.get("$Label.c.CP_Generic_Label_Beneficiary"),
 				"detail": cmp.get("v.beneficiaryName")
 			});
-			
-		} catch(err) {
+
+		} catch (err) {
 			console.error("CP_Account_Details: setRESPList");
+			console.error(err);
+		}
+	},
+	setRRIFList: function (obj, cmp) {
+		try {
+			var
+				utils = cmp.find("CP_Utils"),
+				listArr = cmp.get("v.detailsListArr");
+
+			//RRIF YTD Withdrawal Amount
+			if (obj.rrifYtdWithdrawalAmount) {
+				utils.formatToCurrency(obj.rrifYtdWithdrawalAmount, function (formattedValue) {
+					cmp.set("v.rrifYtdWithdrawalAmount", formattedValue);
+				}, cmp.get("v.lang"), true);
+			} else {
+				cmp.set("v.rrifYtdWithdrawalAmount", $A.get("$Label.c.CP_Generic_Not_Available"));
+			}
+
+			listArr.push({
+				"label": $A.get("$Label.c.CP_Generic_Label_RRIF_YTD_Withdrawal"),
+				"detail": cmp.get("v.rrifYtdWithdrawalAmount")
+			});
+
+			//RRIF Minimum Withdrawal Amount
+			if (obj.rrifMinimumWithdrawalAmount) {
+				utils.formatToCurrency(obj.rrifMinimumWithdrawalAmount, function (formattedValue) {
+					cmp.set("v.rrifMinimumWithdrawalAmount", formattedValue);
+				}, cmp.get("v.lang"), true);
+			} else {
+				cmp.set("v.rrifMinimumWithdrawalAmount", $A.get("$Label.c.CP_Generic_Not_Available"));
+			}
+
+			listArr.push({
+				"label": $A.get("$Label.c.CP_Generic_Label_RRIF_Minimum_Withdrawal"),
+				"detail": cmp.get("v.rrifMinimumWithdrawalAmount")
+			});
+
+			//Spousal Contributor Name
+			if (obj.spousalContributorName) {
+				utils.formatToCurrency(obj.spousalContributorName, function (formattedValue) {
+					cmp.set("v.spousalContributorName", formattedValue);
+				}, cmp.get("v.lang"), true);
+			} else {
+				cmp.set("v.spousalContributorName", $A.get("$Label.c.CP_Generic_Not_Available"));
+			}
+
+			listArr.push({
+				"label": $A.get("$Label.c.CP_Generic_Label_Spousal_Contributor_Name"),
+				"detail": cmp.get("v.spousalContributorName")
+			});
+		} catch (err) {
+			console.error("CP_Account_Details: setRRIFList");
+			console.error(err);
+		}
+	},
+	setGroupRRSPList: function (obj, cmp) {
+		try {
+			var listArr = cmp.get("v.detailsListArr");
+
+			//Group Sponsor Name
+			if (obj.groupSponsorName) {
+				cmp.set("v.groupSponsorName", obj.groupSponsorName);
+			} else {
+				cmp.set("v.groupSponsorName", $A.get("$Label.c.CP_Generic_Not_Available"));
+			}
+
+			listArr.push({
+				"label": $A.get("$Label.c.CP_Generic_Label_Group_Sponsor_Name"),
+				"detail": cmp.get("v.groupSponsorName")
+			});
+
+			//Beneficiary Name
+			if (obj.beneficiaryName) {
+				cmp.set("v.beneficiaryName", obj.beneficiaryName);
+			} else {
+				cmp.set("v.beneficiaryName", $A.get("$Label.c.CP_Generic_Not_Available"));
+			}
+
+			listArr.push({
+				"label": $A.get("$Label.c.CP_Generic_Label_Beneficiary"),
+				"detail": cmp.get("v.beneficiaryName")
+			});
+
+			//Contributor Spouse Name
+			if (obj.contributorSpouseName) {
+				cmp.set("v.contributorSpouseName", obj.contributorSpouseName);
+			} else {
+				cmp.set("v.contributorSpouseName", $A.get("$Label.c.CP_Generic_Not_Available"));
+			}
+
+			listArr.push({
+				"label": $A.get("$Label.c.CP_Generic_Label_Contributor_Spouse_Name"),
+				"detail": cmp.get("v.contributorSpouseName")
+			});
+
+		} catch (err) {
+			console.error("CP_Account_Details: setGroupRRSP");
+			console.error(err);
+		}
+	},
+	setGifList: function (obj, cmp) {
+		try {
+
+			var
+				utils = cmp.find("CP_Utils"),
+				listArr = cmp.get("v.detailsListArr");
+
+			//Policy number
+			if (obj.policyNumber) {
+				cmp.set("v.policyNumber", obj.policyNumber);
+				
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Policy_Name"),
+					"detail": cmp.get("v.policyNumber")
+				});
+			}
+
+			//Annuitant/Joint annuitant
+			if (obj.jointAnnuitantName) {
+				cmp.set("v.jointAnnuitantName", obj.jointAnnuitantName);
+				
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Joint_Annuitant_Name"),
+					"detail": cmp.get("v.jointAnnuitantName")
+				});
+			}
+
+			//Lifetime Income Amount
+			if (obj.lifetimeIncomeAmount) {
+
+				utils.formatToCurrency(obj.lifetimeIncomeAmount, function (formattedValue) {
+					cmp.set("v.lifetimeIncomeAmount", formattedValue);
+				}, cmp.get("v.lang"), true);
+				
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Lifetime_Income_Amount"),
+					"detail": cmp.get("v.lifetimeIncomeAmount")
+				});
+			}
+
+			//Minimum Payment Amount
+			if (obj.libMinimumAmount) {
+
+				utils.formatToCurrency(obj.libMinimumAmount, function (formattedValue) {
+					cmp.set("v.libMinimumAmount", formattedValue);
+				}, cmp.get("v.lang"), true);
+				
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Minimum_Payment_Amount"),
+					"detail": cmp.get("v.libMinimumAmount")
+				});
+			}
+
+			//Maturity Guarantee Date
+			if (obj.maturityGuaranteeDate) {
+				
+				cmp.set("v.maturityGuaranteeDate", obj.maturityGuaranteeDate);
+				
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Maturity_Guarantee_Date"),
+					"detail": cmp.get("v.maturityGuaranteeDate")
+				});
+			}
+
+			//Maturity Guarantee Amount
+			if (obj.maturityGuaranteeAmount) {
+				utils.formatToCurrency(obj.maturityGuaranteeAmount, function (formattedValue) {
+					cmp.set("v.maturityGuaranteeAmount", formattedValue);
+				}, cmp.get("v.lang"), true);
+				
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Maturity_Guarantee_Amount"),
+					"detail": cmp.get("v.maturityGuaranteeAmount")
+				});
+			}
+
+			//Death Benefit Guarantee Amount
+			if (obj.deathBenefitGuaranteeAmount) {
+				utils.formatToCurrency(obj.deathBenefitGuaranteeAmount, function (formattedValue) {
+					cmp.set("v.deathBenefitGuaranteeAmount", formattedValue);
+				}, cmp.get("v.lang"), true);
+				
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Maturity_Guarantee_Amount"),
+					"detail": cmp.get("v.deathBenefitGuaranteeAmount")
+				});
+			}
+
+			//Guarantee Level
+			if (obj.guaranteeLevel) {
+				cmp.set("v.guaranteeLevel", obj.guaranteeLevel);
+				
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Guarantee_Level"),
+					"detail": cmp.get("v.guaranteeLevel")
+				});
+			}
+
+			//Beneficiary Name
+			if (obj.beneficiaryName) {
+				cmp.set("v.beneficiaryName", obj.beneficiaryName);
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Beneficiary"),
+					"detail": cmp.get("v.beneficiaryName")
+				});
+			} 
+
+		} catch (err) {
+			console.error("CP_Account_Details: setGifList");
 			console.error(err);
 		}
 	}

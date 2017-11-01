@@ -12,6 +12,7 @@
 	<aura:attribute name="pageId" type="String" default="account-detail"></aura:attribute>
 	<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
 	<aura:attribute name="accountNumberEnc" type="String"></aura:attribute>
+	<aura:attribute name="detailsListArr" type="List" default="[]"></aura:attribute>
 
 	<!-- RETURNED DATA FROM SALESFORCE -->
 	<aura:attribute name="investmentProfileObj" type="Map" default="{}" ></aura:attribute>
@@ -27,9 +28,6 @@
 	<aura:attribute name="totalGainLoss" type="String" default=""></aura:attribute>
 	<aura:attribute name="totalGainLossPercentage" type="String" default=""></aura:attribute>
 	<aura:attribute name="gainLossType" type="String" default=""></aura:attribute>
-
-	<!-- ACCOUNT DETAILS -->
-	<aura:attribute name="detailsListArr" type="List" default="[]"></aura:attribute>
 
 	<!-- STANDARD -->
 	<aura:attribute name="bookCost" type="String" default=""></aura:attribute>
@@ -59,8 +57,26 @@
 	<aura:attribute name="ytdContributionAmt" type="String" default=""></aura:attribute>
 	<aura:attribute name="craPlanId" type="String" default=""></aura:attribute>
 
+	<!-- RRIF -->
+	<aura:attribute name="rrifYtdWithdrawalAmount" type="String" default=""></aura:attribute>
+	<aura:attribute name="rrifMinimumWithdrawalAmount" type="String" default=""></aura:attribute>
+
+	<!-- GROUP RRSP -->
+	<aura:attribute name="groupSponsorName" type="String" default=""></aura:attribute>
+
+	<!-- GIF -->
+	<aura:attribute name="policyNumber" type="String" default=""></aura:attribute>
+	<aura:attribute name="jointAnnuitantName" type="String" default=""></aura:attribute>
+	<aura:attribute name="lifetimeIncomeAmount" type="String" default=""></aura:attribute>
+	<aura:attribute name="libMinimumAmount" type="String" default=""></aura:attribute>
+	<aura:attribute name="maturityGuaranteeDate" type="String" default=""></aura:attribute>
+	<aura:attribute name="maturityGuaranteeAmount" type="String" default=""></aura:attribute>
+	<aura:attribute name="deathBenefitGuaranteeAmount" type="String" default=""></aura:attribute>
+	<aura:attribute name="guaranteeLevel" type="String" default=""></aura:attribute>
+	
 	<!-- SHARED  -->
 	<aura:attribute name="beneficiaryName" type="String" default=""></aura:attribute>
+	<aura:attribute name="spousalContributorName" type="String" default=""></aura:attribute>
 
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />

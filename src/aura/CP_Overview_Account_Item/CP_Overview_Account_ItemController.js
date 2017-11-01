@@ -93,18 +93,17 @@
 
 	},
 	onItemClick: function(cmp, evt, hlpr) {
+
 		var 
 			utils = cmp.find("CP_Utils"),
-			accountNumEnc = cmp.get("v.account").accountNumberEnc;
+			accountNumEnc = cmp.get("v.account").accountNumberEnc,
+			loanEnc = "";
 
 		if(accountNumEnc) {
-			if(cmp.get("v.itemType") === "mortgage") {
-				utils.navigateToURL("/customers/s/mortgage-details?accEnc=" + accountNumEnc);
-			} else {
-				utils.navigateToURL("/customers/s/account-details?accEnc=" + accountNumEnc);
-			}
-		} else {
-			console.warn("CP_Overview_Account_Item: Account number is not encrypted.");
-		}
+			utils.navigateToURL("/customers/s/account-details?accEnc=" + accountNumEnc);
+		} else if(cmp.get("v.itemType") === "mortgage") {
+			loanEnc = cmp.get("v.account").loanNumber;
+			utils.navigateToURL("/customers/s/mortgage-details?loanEnc=" + loanEnc);
+		} 
 	}
 })

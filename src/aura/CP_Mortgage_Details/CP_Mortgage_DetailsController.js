@@ -3,7 +3,6 @@
 
 		//1210728500
 		var
-			mortgageNumber = "1210728500",
 			services = cmp.find("CP_Services"),
 			utils = cmp.find("CP_Utils"),
 			events = cmp.find("CP_Events");
@@ -12,15 +11,19 @@
 			if (params.language) {
 				cmp.set("v.lang", params.language);
 			}
+
+			if (params.loanEnc) {
+				cmp.set("v.loanNumberEnc", params.loanEnc);
+			} else {
+				console.warn("CP_Account: No loan number passed.");
+			}
 		});
 
 		services.getMortgageDetail(
-			mortgageNumber,
+			cmp.get("v.loanNumberEnc"),
 			cmp,
 			function (success) {
 				if (success !== null) {
-
-					console.log(success);
 					
 					utils.formatToCurrency(success.paymentAmount, function(returnedVal){
 						hlpr.setAttr("v.payment", returnedVal, cmp);
@@ -100,7 +103,7 @@
 			},
 			function (error) {
 				console.error("CP_Mortgage_Details");
-				console.log(error);
+				console.error(error);
 			}
 		);
 	},

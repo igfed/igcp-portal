@@ -23,7 +23,7 @@
 				cmp.get("v.accountNumberEnc"),
 				cmp,
 				function (success) {
-					hlpr.loggedReturned("Get Transactions", success);
+					hlpr.logReturned("Get Transactions", success);
 
 					if (success !== null) {
 
@@ -75,7 +75,7 @@
 				cmp.get("v.accountNumberEnc"),
 				cmp,
 				function (success) {
-					hlpr.loggedReturned("Get Instructions", success);
+					hlpr.logReturned("Get Instructions", success);
 
 					if (success !== null) {
 
