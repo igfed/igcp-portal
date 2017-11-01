@@ -1,3 +1,0 @@
-<design:component >
-	<design:attribute name="taxonomyPath" label="Taxonomy Path" default="" />
-</design:component>

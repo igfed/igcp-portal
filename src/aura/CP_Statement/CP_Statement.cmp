@@ -5,6 +5,9 @@
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 	
+    <!-- RETURNED DATA FROM SALESFORCE -->
+	<aura:attribute name="investmentStatements" type="Map[]" default="[]"></aura:attribute>
+
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
@@ -14,6 +17,7 @@
     <c:CP_JS_Includes />
 
 	<!-- HANDLERS -->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 
 	<!-- <aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
@@ -41,7 +45,6 @@
                     <li class="slds-tabs_default__item" title="Item Three" role="presentation"><a onclick="{!c.switchTabs}" class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-3" id="tab-default-3__item">Confirms</a></li>
                     <li class="slds-tabs_default__item" title="Item Three" role="presentation"><a onclick="{!c.switchTabs}" class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-4" id="tab-default-4__item">Mortgage Statements</a></li>
                 </ul>
-                
                 <div id="tab-default-1" class="slds-tabs_default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">
                     
                     <div class="igcp-document-table">
@@ -60,39 +63,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                            <th scope="row" data-label="Date">
-                                <div class="slds-truncate" title="Dec 31, 2016">Dec 31, 2016</div>
-                            </th>
-                            <td data-label="Documents">
-                                <div class="slds-truncate" title="Doc"><a href="#">Investors Group Financial Services Investment Statement (Year End)</a></div>
-                            </td>
-                            <td data-label="Client Number">
-                                <div class="slds-truncate" title="100-156-1">100-156-1</div>
-                            </td>
-                            </tr>
-                            <tr>
-                            <th scope="row" data-label="Date">
-                                <div class="slds-truncate" title="Nov 28, 2016">Nov 28, 2016</div>
-                            </th>
-                            <td data-label="Documents">
-                                <div class="slds-truncate" title="Doc"><a href="#">Investors Group Financial Services Investment Statement (Quarterly)</a></div>
-                            </td>
-                            <td data-label="Client Number">
-                                <div class="slds-truncate" title="123-432-1">123-432-1</div>
-                            </td>
-                            </tr>
-                            <tr>
-                            <th scope="row" data-label="Date">
-                                <div class="slds-truncate" title="June 30, 2016">June 30, 2016</div>
-                            </th>
-                            <td data-label="Documents">
-                                <div class="slds-truncate" title="Doc"><a href="#">Investors Group Financial Services Investment Statement (Quarterly)</a></div>
-                            </td>
-                            <td data-label="Client Number">
-                                <div class="slds-truncate" title="123-432-1">123-432-1</div>
-                            </td>
-                            </tr>
+                            <aura:iteration items="{!v.investmentStatements}" var="statement">
+                                <tr>
+                                    <th scope="row" data-label="Date">
+                                        <div class="slds-truncate" title="{!statement.statementDate}">{!statement.statementDate}</div>
+                                    </th>
+                                    <td data-label="Documents">
+                                        <div class="slds-truncate" title="{!statement.statementName}">
+                                            <a target="_blank" href="{!'https://igportaldev3--portaldev3--c.cs70.visual.force.com/apex/PDFRenderTest?docid=' + statement.docId}">{!statement.statementName}</a>
+                                        </div>
+                                    </td>
+                                    <td data-label="Client Number">
+                                        <div class="slds-truncate" title="{!statement.clientNumber}">{!statement.clientNumber}</div>
+                                    </td>
+                                </tr>
+                            </aura:iteration>
                         </tbody>
                         </table>
                     </div>
