@@ -1,0 +1,50 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    
+    <footer aura:id="igcp-footer" id="igcp-footer" class="igcp-footer site-footer" role="contentinfo">
+        
+        <div class="row footer-navigation">
+            
+            <li class="igcp-horizontal-rule"></li>
+            
+            <ul class="menu vertical float-left " data-responsive-menu="medium">
+                <li class="footer-link">
+                    <a href="#">Contact</a>
+                </li>
+                <li class="footer-link">
+                    <a href="#">Privacy</a>
+                </li>
+                <li class="footer-link">
+                    <a href="#">User Agreement</a>
+                </li>
+                <li class="footer-link">
+                    <a href="#">Investor Performance</a>
+                </li>
+                <li class="footer-link">
+                    <a href="#">Faq</a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="row footer-back-to-top-button">
+            <div class="columns">
+                <a class="float-right" href="#top">top</a>
+            </div>
+        </div>
+        
+        
+        <div class="row footer-copyright">
+            <div class="columns footer-copyright-border-top">
+                <div class="row">
+                    <div class="small-12 medium-12 large-3 columns float-left">
+                        <ul class="menu">
+                            <li>© 2017 Investors Group Inc. All rights Reserved</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1>Footer</h1>
+    </footer>
+
+</aura:component>

@@ -3,6 +3,7 @@
   window.digitalData = window.digitalData || {};
   window.digitalData.page = {};
   window.digitalData.page.pageInfo = {};
+  window.digitalData.page.category = {};
   window.digitalData.events = [];
 
   var $this,
@@ -34,8 +35,7 @@
     window.digitalData.page.pageInfo.language = _getPageLanguage();
     window.digitalData.page.pageInfo.server = window.location.href;
     window.digitalData.page.pageInfo.timezone = new Date().getTimezoneOffset() / 60;
-
-    console.log(window.digitalData);
+    window.digitalData.page.category.primaryCategory = _getSiteSection();
 
     // Only fire this in Salesforce
     // window._satellite.pageBottom();
@@ -69,6 +69,11 @@
     }
 
     return lang;
+  }
+
+
+  function _getSiteSection() {
+    return window.location.href.substr(window.location.href.lastIndexOf('/') + 1)
   }
 
   function _constructEventObj($this) {
@@ -128,7 +133,7 @@
     }
 
     window.digitalData.events.push(event);
-    console.log(window.digitalData.events);
+    console.log(window.digitalData);
   }
 
   function _executeDirectCall(name) {

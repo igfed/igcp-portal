@@ -1,0 +1,14 @@
+<aura:component >
+	<!-- ATTRS -->
+	<aura:attribute name="class" type="String" default="slds-size_6-of-12 slds-medium-p-left--small"></aura:attribute>
+	<aura:attribute name="label" type="String" default="Total Value"></aura:attribute>
+	<aura:attribute name="value" type="String"></aura:attribute>
+	<!-- MARKUP -->
+	<div class="{!'slds-grid slds-wrap ' + v.class}">
+		<div class="slds-size_12-of-12 slds-m-bottom--none slds-large-m-bottom--x-small">
+			<h3 class="igcp-label--small slds-m-bottom--zero slds-float_left">{!v.label}</h3>
+			<c:CP_Cmp_Tooltip class="igcp-tooltip__label--small slds-float_left" tooltip="{!$Label.c.CP_Tooltip_Total_Market_Value}"/>
+		</div>
+		<div class="igcp-value--large igcp-utils__width--100 igcp-utils__float--left igcp-large-utils__float--none slds-size_12-of-12 slds-m-bottom--small slds-large-m-bottom--none"><sup>$</sup>{!v.value}</div>
+	</div>
+</aura:component>

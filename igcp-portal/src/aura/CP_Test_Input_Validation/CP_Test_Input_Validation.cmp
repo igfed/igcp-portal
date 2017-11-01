@@ -1,0 +1,27 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+	<!-- INCLUDES -->
+	<c:CP_CSS_Includes />
+	<c:CP_JS_Includes />
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Validation aura:id="CP_Validation" />
+	<!-- HANDLERS -->
+	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
+	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
+	<!-- MARKUP -->
+	<div class="igcp-overview igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-around--xx-small slds-large-p-around--medium">
+		<h1 class="slds-size_12-of-12 slds-text-align_center">Input and Form Validation Test Page</h1>
+		<div class="slds-size_4-of-12">
+			ITS WORKIN
+			<form aura:id="testForm" id="testForm" method="get" action="">
+				
+				<c:CP_Cmp_Input_Text id="username_input" type="username" form="testForm" label="Username" placeholder="Please enter name" maxLength="32" errorText="Please enter a username"/>
+				
+				<c:CP_Cmp_Input_Password id="password_input" type="password" form="testForm" label="Password" maxLength="32" errorText="Please enter a password" />
+				
+				<div class="slds-grid slds-wrap ">
+					<c:CP_Cmp_Submit id="form_submit" for="testForm" label="Submit" buttonType="submit" class="slds-m-top--large slds-size_6-of-12" />
+				</div>
+			</form>
+		</div>
+	</div>
+</aura:component>

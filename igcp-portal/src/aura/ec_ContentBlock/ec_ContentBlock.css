@@ -1,0 +1,79 @@
+/*
+    ATTENTION!
+    • some of these rules may be too generic and cause unwanted side-effects!
+    • the CSS selectors should almost certainly be more specific
+ */
+
+
+.THIS {
+    position: relative;     /* for benefit of slds-spinner */
+    min-height: 10rem;      /* for benefit of slds-spinner */
+}
+
+.THIS.loaded {
+    min-height: 0;
+}
+
+.THIS .hidden {
+    display: none;
+}
+
+.THIS a {
+    text-decoration: none;
+}
+
+/* Featured News - .featured-news-item */
+
+.THIS .featured-news-item h1 {
+    color: token(colorTextLink);
+}
+
+.THIS .featured-news-item.slds-box:hover .slds-page-header {
+    background: token(colorBackgroundButtonDefaultHover);
+}
+
+.THIS .featured-news-item:hover .SummaryContent p {
+    background-color: token(colorBackgroundButtonDefaultHover);
+}
+
+.THIS .slds-icon-utility-announcement {
+    fill: token(colorTextLink);
+}
+
+/* list */
+.THIS .link-item:not(:last-child) {
+    border-bottom: 1px solid token(colorBorder);
+}
+
+.THIS .sliderContainer:hover {
+    background-color: token(colorBackgroundButtonDefaultHover)
+}
+
+/* Home Links */
+.THIS .contentBlockInner a.link-item-link:hover {
+    color: token(colorTextBrand);
+}
+
+/* --- optional, common header styling for components */
+
+.THIS .contentBlockHeading {
+    display: none;
+}
+
+/* common.css provides other style rules for .componentHeading */
+.THIS .componentHeading {
+    color: token(theColorTextLink);
+    border-color: token(theColorTextLink);
+}
+
+/* Policy Summary */
+
+.THIS .policySummary a:hover {
+    color: token(colorTextBrand);
+}
+
+/* detail layouts loaded by ContentBlock should not show the “<- Back” button */
+
+.THIS a.backButton {
+    display: none;
+}

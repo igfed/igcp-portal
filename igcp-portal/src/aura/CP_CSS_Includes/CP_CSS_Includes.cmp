@@ -1,0 +1,6 @@
+<aura:component >
+	<ltng:require styles="{!$Resource.slds + '/slds-lib/styles/salesforce-lightning-design-system.min.css'}"/>
+	<ltng:require styles="{!$Resource.igcpresources + '/igcp-resources/styles/vendor.css'}"/>
+	<ltng:require styles="{!$Resource.igcpresources + '/igcp-resources/styles/main.css'}"/>
+  <ltng:require styles="{!$Resource.cppatternlib + '/cp-patternlib/styles/igcp.css'}"/>
+</aura:component>

@@ -1,0 +1,482 @@
+.THIS .restrictWidthContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.THIS .pageHeaderToolbar {
+    display: flex;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.THIS #navigation {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.THIS .pageHeaderMenu > div.slds-context-bar {
+    border-top-width: 0;
+}
+
+
+.THIS .pageHeaderMenu {
+    width: 100%;
+}
+
+.THIS .newHeader {
+    background-color: #f4f4f4;
+    border-bottom: 3px solid token(colorBorderBrand);
+    position: fixed;
+    width: 100vw;
+    z-index: 9003; /* higher than app.css's questionable .slds-spinner_container's calc(9000 + 2) */
+    left: 0;
+    top: 0;
+}
+
+.THIS #mainContentArea {
+    padding-top: 100px;           /* appropriate for a single line main menu; if it wraps it should be ++42px since main menu li’s are ~42px tall (typeface dependent) */
+}
+
+.THIS .newHeader .restrictWidthContainer.toolbar_c {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.THIS [data-region-name="search"] {
+    width: 20rem;
+    margin-top: .4rem;
+}
+
+.THIS .forceCommunityOmniBox.selfServiceSearchWrapper .search-input-group {
+    height: 1.875rem;
+}
+
+.THIS .forceCommunityOmniBox.selfServiceSearchWrapper .search-field {
+    font-size: 1rem;
+    height: 1.875rem;
+    min-height: 1.875rem;
+    line-height: 1;
+    padding-right: 0.875rem;
+    /* Powered by OrchestraCMS logo provided within common.css */
+}
+
+.THIS .search-wrapper .search-container {
+    box-shadow: none;
+}
+
+.THIS .search-input-group button.search-button {
+/*, .THIS .search-input-group button.close-button { */
+    display: none;
+}
+
+
+.THIS .pageHeaderToolbar,
+.THIS .pageHeaderMenu .slds-context-bar {
+    background-color: #f4f4f4;
+    padding: 0 0.5rem;
+}
+
+
+.THIS .pageHeaderMenu .slds-context-bar {
+    height: auto;   /* app.css thinks .slds-context-bar should always be 2.5rem */
+}
+
+/* this contains the logo
+    div.pageHeaderBody.<cEc_PageHeader>
+        div.pageHeaderBackground
+            div
+                img.pageHeaderLogo
+*/
+
+/* NOT being used to hold a background image (ec_PageHeader.css provides background image styles) */
+.THIS .pageHeaderBackground {
+    overflow: hidden;
+    max-width: 150px;
+    padding: 0.5rem;
+}
+
+.THIS .pageHeaderMenu nav > ul.slds-grid {
+    flex-wrap: wrap;
+}
+
+.THIS .pageHeaderMenu nav > ul.slds-grid > li {
+    padding: 0.5rem 0;
+}
+
+.THIS .profileName,
+.THIS .triggerDownArrow {
+    color: black;
+}
+
+.THIS .selfServiceProfileMenuTrigger .profileIcon {
+    width: 32px;
+    height: 32px;
+}
+
+.THIS .selfServiceProfileMenuTrigger .profileName {
+    display: none;
+}
+
+.THIS .selfServiceProfileMenuTrigger .triggerDownArrow {
+    border-top-width: 10px;
+}
+
+.THIS .selfServiceProfileMenu .uiMenuList.visible {
+    left: initial;
+    right: 0.5rem;
+    margin-top: 1rem;
+    transform: none;        /* app.css gives us translateX(-50%); */
+}
+
+
+.THIS .big-search-container {
+    height: 30px;
+}
+
+.THIS .selfServiceSearchWrapper .search-wrapper {
+    padding: 0;
+}
+
+.THIS .forceCommunityOmniBox.selfServiceSearchWrapper .search-field {
+    padding-right: 200px;
+}
+
+.THIS.quickLinksOpen .notQuickLinks,
+.THIS.quickLinksOpen [data-region-name="search"],
+.THIS.quickLinksOpen [data-region-name="profileMenu"],
+.THIS.quickLinksOpen #navigation,
+.THIS.quickLinksOpen #mainContentArea,
+.THIS.quickLinksOpen #newFooter {
+    display: none !important; /* other components use ids which raise the specificity */
+}
+
+.THIS .quickLinksOpen .pageHeaderQuickLinks {
+    height: 100vh;
+}
+
+.THIS .quickLinksOpen #pageHeaderQuickLinks .tab-contents {
+    display: block;
+}
+
+.THIS .slds-context-bar {
+    /*border-bottom: 3px solid token(colorBorderBrand);*/
+    border-bottom-width: 0;
+}
+
+.THIS .selfServiceProfileMenuTrigger .trigger-link {
+    padding: 6px 5px 9px 5px;
+}
+
+.THIS .selfServiceProfileMenuTrigger {
+    padding: 0;     /* compact vertically */
+    height: 32px;   /* to match icon size */
+}
+
+
+.THIS [data-region-name="profileMenu"] {
+    min-width: 80px;
+}
+
+.THIS .selfServiceProfileMenu .selfServiceProfileMenuTrigger {
+    position: static !important;   /* keep this static, as opposed to absolute at the smaller screen widths */
+}
+
+/* ******** max-width: 64em (1024px) **************************************************************************************************** */
+
+@media only screen and (max-width: 64rem) {
+    .THIS [data-region-name="search"] {
+        width: 16rem;
+    }
+
+    .THIS [data-region-name="profileMenu"] {
+        padding-right: 10px;
+    }
+
+    .THIS .selfServiceProfileMenu {
+        margin-top: 0 !important;   /* override 44px and 60px (m-w 48em) top margin rules */
+    }
+
+    .THIS .pageHeaderLinksContainer {
+        padding-left: 0;
+    }
+
+    .THIS .pageHeaderLinks a {
+        padding-right: 0.5rem;
+    }
+
+    .THIS .slds-context-bar__icon-action h3,
+    .THIS .pageHeaderToolbar .pageHeaderLinksContainer h3.slds-text-heading--medium {
+        display: none;
+    }
+
+    .THIS .pageHeaderLinksContainer .slds-media__figure {
+        margin-right: 0;
+    }
+
+    /*.THIS .selfServiceProfileMenu .selfServiceProfileMenuTrigger {*/
+        /*padding-top: 1rem;*/
+    /*}*/
+}
+
+
+/* ******** max-width: 48em (768px) **************************************************************************************************** */
+
+@media only screen and (max-width: 48em) {
+    .THIS .newHeader {
+        position: static;   /* no longer fixed */
+    }
+
+    .THIS .slds-context-bar__icon-action > a svg {
+        margin-right: 0;        /* override QuickLinks default */
+    }
+
+    .THIS #mainContentArea {
+        padding-top: 0;
+    }
+
+    .THIS #pageHeaderToolbar {
+        width: calc(100% - 55px);   /* wide enough to push search to a new line */
+    }
+
+    .THIS [data-region-name="search"] {
+        margin: 0.5rem 0.5rem 0 auto;   /* leaving room at left for menu one row down to come up */
+    }
+
+    .THIS [data-region-name="profileMenu"] {
+        min-width: 40px;
+    }
+
+    .THIS .selfServiceProfileMenu {
+        margin-top: 0 !important;   /* override 44px and 60px (m-w 48em) top margin rules */
+    }
+
+    .THIS .selfServiceProfileMenu .selfServiceProfileMenuTrigger {
+        margin-top: 0;
+    }
+
+    .THIS .newHeader .restrictWidthContainer.toolbar_c {
+        flex-wrap: wrap;
+    }
+
+    .THIS .search-wrapper .search-container {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .THIS form-search-wrapper {
+        height: 1.875rem;
+    }
+
+    .THIS .forceCommunityOmniBox.selfServiceSearchWrapper .search-field {
+        width: 100%;
+        border-radius: 0;
+        padding-left: 14px;     /* until .focused added to wrapper this is an unwanted 40px */
+    }
+
+    .THIS .forceCommunityOmniBox.selfServiceSearchWrapper .search-field:focus {
+        background: white;
+        padding-right: 14px;
+    }
+
+    .THIS .forceCommunityOmniBox.selfServiceSearchWrapper .search-field:focus {
+        /* input.uiInput says link colour, but app.css below 47.9375rem says border colour for the bottom only! */
+        border: 1px solid token(theColorTextLink);
+    }
+
+    .THIS .pageHeaderMenu .show-menu {
+        display: block;
+    }
+
+    .THIS nav {
+        display: none;
+    }
+
+    .THIS .pageHeaderMenu nav > ul.slds-grid > li {
+        padding: 0.1rem 0 0.1rem 1rem;
+    }
+
+    .THIS .slds-context-bar__item .slds-dropdown {
+        background: transparent;    /* overrides app.css’s white for slds-dropdown */
+    }
+
+    .THIS .pageHeaderMenu nav > ul.slds-grid > li  ul {
+        margin-left: 1.5rem;
+    }
+
+
+    .THIS .selfServiceSearchWrapper .no-assigned-image {
+        position: static;   /* else see big grey box _after_ input field click */
+    }
+
+    .THIS .slds-context-bar .show-menu {    /* .cEc_ClassStyledMenu */
+        text-align: left;
+    }
+
+    .THIS .hdrLogo {
+        display: none;
+    }
+
+}
+
+
+/* ******** max-width: 47.9375em (767px) **************************************************************************************************** */
+
+/* override f'n app.css */
+@media only screen and (max-width: 47.9375em) {
+    .THIS .forceCommunityOmniBox.focused .body-search {
+        /*position: absolute;*/
+        position: static;
+        /*top: 0;*/
+        /*bottom: 0;*/
+        /*z-index: 50;*/
+        /*background: #fff;*/
+        /*width: 100%;*/
+        /*padding: 0;*/
+    }
+
+    .THIS .forceCommunityOmniBox.focused .close-button.uiButton,
+    .THIS .forceCommunityOmniBox.focused .zero-state-panel {
+        display: none;
+    }
+}
+
+
+/***************
+ * Quick Links
+ **************/
+
+.THIS .quickLinksContainer {
+    height: 40px;
+}
+
+.THIS .pageHeaderToolbar.quickLinksEnabled {
+    height: 100vh;
+}
+
+.THIS nav#tab-head {
+    display: inline-block;  /* so hover effect when quickLinksOpen is not full width of window */
+}
+
+.THIS .mainContentArea.hide,
+.THIS [data-region-name="search"].hide,
+.THIS .pageHeader.hide,
+.THIS .navigation.hide,
+.THIS .newFooter.hide,
+.THIS .notQuickLinks.hide {
+    display: none;
+}
+
+.THIS .pageHeaderQuickLinks.active {
+    display: block;
+}
+
+.THIS .pageHeaderQuickLinks nav a,
+.THIS .notQuickLinks a {
+    text-decoration: none;
+}
+
+.THIS .slds-context-bar__icon-action {  /* we want top and bottom, not just sides */
+    padding: 0.25rem 0.75rem;
+}
+
+/* top-most of the page, in the .pageHeaderToolbar */
+.THIS .pageHeaderLinks .slds-tile+.slds-tile {
+    margin-top: 0;
+}
+
+.THIS .quickLinkToggle,
+.THIS .pageHeaderLinks a {
+    padding: 0.5rem 0.75rem;
+}
+
+
+.THIS .pageHeaderLinks a:hover,
+.THIS .slds-context-bar__icon-action:hover {
+    background-color: white;
+}
+
+/******************
+ * Page Header Links
+ ******************/
+
+.THIS .pageHeaderLinksContainer {
+    flex: 1;
+    overflow-x: scroll;
+    white-space: nowrap;
+    margin-right: 1rem;
+}
+
+.THIS .pageHeaderLinks .slds-icon {
+    height: 24px;
+    width: 24px;
+}
+
+.THIS .pageHeaderLinks a.link-item-link {
+    /*display: inline-flex;*/
+    display: inline-block;
+    align-items: center;
+}
+
+.THIS .pageHeaderLinks a.link-item-link h3 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline;
+}
+
+.THIS .pageHeaderLinks a.link-item-link .slds-media__figure,
+.THIS .pageHeaderLinks a.link-item-link .slds-media__body {
+    display: inline;
+}
+
+/* ******** max-width: 600px **************************************************************************************************** */
+
+@media (max-width: 600px) {
+    .THIS .pageHeaderLinksContainer {
+        padding-left: 0;
+    }
+
+    .THIS .pageHeaderLinks{
+        padding-right: 0.5rem;
+    }
+
+    .THIS .slds-context-bar__icon-action h3,
+    .THIS .pageHeaderToolbar .notQuickLinks h3.slds-text-heading--medium {
+        display: none;
+    }
+}
+
+/* by default, Community Pages are printing the href immediately following the link text -- do not want! */
+@media print {
+    .THIS a:after {
+        content: '! ' !important;
+    }
+
+    .THIS .newHeader,
+    .THIS .newFooter {
+        display: none;
+    }
+
+    .THIS #mainContentArea {
+        padding-top: 0;
+    }
+
+    .THIS svg.slds-icon {
+        min-width: 2rem !important;
+        min-height: 2rem !important;
+        border: 2px solid #363;
+        background-color: #555555;
+    }
+
+    .THIS svg.slds-icon use {
+        background-color: #696 !important;
+        min-width: 2rem !important;
+        min-height: 2rem !important;
+    }
+}

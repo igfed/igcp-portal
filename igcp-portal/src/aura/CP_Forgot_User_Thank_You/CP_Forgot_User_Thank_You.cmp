@@ -1,0 +1,24 @@
+<aura:component >
+
+	<!-- INCLUDES -->
+	<c:CP_Utils aura:id="CP_Utils" />
+
+	<!-- ATTRS -->
+	<aura:attribute name="email" type="String"></aura:attribute>
+
+	<!-- HANDLERS -->
+	<aura:handler event="c:CP_Evt_Click" action="{!c.gotoLogin}" />
+
+	<!-- MARKUP -->
+	<div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
+		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_2-of-12"></div>
+		<div class="slds-p-around--small slds-medium-p-around--zero slds-size_12-of-12 slds-medium-size_8-of-12">
+			<h1>{!$Label.c.CP_Forgot_User_Name_Thank_You_h1}</h1>
+			<p class="igcp-utils__width--100 igcp-large-utils__width--75">{!$Label.c.CP_Forgot_User_Name_Thank_You_Instructions_1}<b class="slds-m-left--xxx-small">{!v.email}</b> {!$Label.c.CP_Forgot_User_Name_Thank_You_Instructions_2}</p>
+			<div class="slds-grid slds-wrap">
+				<c:CP_Cmp_Button id="return-to-login" class="slds-size_12-of-12 slds-medium-size_4-of-12 slds-m-horizontal--x-large slds-medium-m-horizontal--zero slds-grid slds-p-bottom--x-large slds-m-top--x-large" label="{!$Label.c.CP_Generic_Button_Return_To_Login}" />
+			</div>
+		</div>
+		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_2-of-12"></div>
+	</div>
+</aura:component>

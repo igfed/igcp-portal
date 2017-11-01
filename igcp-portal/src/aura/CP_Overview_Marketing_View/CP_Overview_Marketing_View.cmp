@@ -1,0 +1,11 @@
+<aura:component >
+
+	<aura:attribute name="tagline" type="String"></aura:attribute>
+	<aura:attribute name="cta" type="String"></aura:attribute>
+	<aura:attribute name="href" type="String"></aura:attribute>
+	
+	<!-- MARKUP -->
+	<div class="slds-size_10-of-12">{!v.tagline}</div>
+	<c:CP_Cmp_Link id="overview-marketing-view" href="{!v.href}" label="{!v.cta}" class="slds-size_2-of-12"/>
+
+</aura:component>

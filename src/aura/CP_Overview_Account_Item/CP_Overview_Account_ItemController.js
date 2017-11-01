@@ -91,5 +91,23 @@
 			}
 		}
 
+	},
+	onItemClick: function(cmp, evt, hlpr) {
+
+		console.log(cmp.get("v.account"));
+
+		var 
+			utils = cmp.find("CP_Utils"),
+			accountNumEnc = cmp.get("v.account").accountNumberEnc;
+
+		if(accountNumEnc) {
+			if(cmp.get("v.itemType") === "mortgage") {
+				utils.navigateToURL("/customers/s/mortgage-details?accEnc=" + accountNumEnc);
+			} else {
+				utils.navigateToURL("/customers/s/account-details?accEnc=" + accountNumEnc);
+			}
+		} else {
+			console.warn("CP_Overview_Account_Item: Account number is not encrypted.");
+		}
 	}
 })

@@ -1,0 +1,102 @@
+<aura:component controller="CP_RegistrationController">
+	
+	<!-- ATTRS	 -->
+	<aura:attribute name="pageId" type="String" default="registration-step-2"></aura:attribute>
+	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
+	<aura:attribute name="inputsReceived" type="Integer" default="2"></aura:attribute>
+	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
+	<aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
+	<aura:attribute name="errIdArr" type="List" default="[]"></aura:attribute>
+
+	<!-- Step 1 -->
+	<aura:attribute name="clientNum" type="String"></aura:attribute>
+	<aura:attribute name="postalCode" type="String"></aura:attribute>
+	<aura:attribute name="dob" type="String"></aura:attribute>
+	
+	<!-- Step 2 -->
+	<aura:attribute name="username" type="String" />
+	<aura:attribute name="password" type="String" />
+	<aura:attribute name="confirmPassword" type="String" />
+	<aura:attribute name="email" type="String" />
+	<aura:attribute name="emailConfirm" type="String" default="" />
+	<aura:attribute name="emailOptIn" type="Boolean"></aura:attribute>
+	<aura:attribute name="mobilePhone" type="String" default="" />
+	<aura:attribute name="securityQuestion1" type="String"></aura:attribute>
+	<aura:attribute name="answer1" type="String"></aura:attribute>
+	<aura:attribute name="securityQuestion2" type="String"></aura:attribute>
+	<aura:attribute name="answer2" type="String"></aura:attribute>
+	<aura:attribute name="securityQuestion3" type="String"></aura:attribute>
+	<aura:attribute name="answer3" type="String"></aura:attribute>
+	<aura:attribute name="lang" type="String"></aura:attribute>
+	
+	<!-- HANDLERS -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
+	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
+	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
+	<aura:handler event="c:CP_Evt_Input_Selector_Change" action="{!c.onInputSelectorReceived}" />
+	<aura:handler event="c:CP_Evt_Input_Checkbox_Checked" action="{!c.onOptClicked}" />
+	<aura:handler event="c:CP_Evt_Input_Checkbox_Unchecked" action="{!c.onOptClicked}" />
+	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
+	<aura:handler event="c:CP_Evt_Key" action="{!c.onKey}" />
+
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Validation aura:id="CP_Validation" />
+	<c:CP_Services aura:id="CP_Services" />
+	
+	<!-- METHODS-->
+	<aura:method name="onSubmitForm" action="{!c.submitForm}" description="Call submit form">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
+	
+	<aura:method name="onNextStep" action="{!c.gotoNextStep}" description="Called when ready to proceed to next step">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
+	
+	<!-- MARKUP -->
+	<div class="igcp-background">
+		<div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
+			<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
+			<div class="slds-p-around--small slds-medium-p-around--zero slds-size_12-of-12 slds-medium-size_6-of-12">
+				<h1>{!$Label.c.CP_Registration_Step_2_h1}</h1>
+				<c:CP_Cmp_Progress_Indicator currentStep="2" totalSteps="3" />
+				<div class="igcp-label--small">{!$Label.c.CP_Generic_Step_2}</div>
+				<h2>{!$Label.c.CP_Registration_Step_2_h2}</h2>
+				<p class="igcp-utils__width--100 igcp-large-utils__width--75">{!$Label.c.CP_Registration_Step_2_Instructions}</p>
+				<!-- TOAST ERROR -->
+				<c:CP_Cmp_Toast id="registration-step-2-toast-error" type="error" class="slds-m-top--x-small slds-m-bottom--xxx-small" />
+				
+				<!--FIELDS-->
+				<!-- USERNAME -->
+				<c:CP_Cmp_Input_Username id="username-input" form="{!v.pageId}" hasFocus="true" label="{!$Label.c.CP_Generic_Label_Username}" maxLength="32" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+				
+				<!-- PASSWORD -->
+				<c:CP_Cmp_Input_Password id="password-input" form="{!v.pageId}" type="password" confirmPassword="true" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Password}" />
+				
+				<!-- EMAIL -->
+				<c:CP_Cmp_Input_Email id="email-input" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Email}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Email}"/>
+				
+				<!-- NEWS OPT IN  -->
+				<c:CP_Cmp_Input_Checkbox id="news-offers-opt" form="{!v.pageId}" class="slds-size_12-of-12 slds-large-size_9-of-12" copy="{!$Label.c.CP_Registration_Step_2_Opt_In}" />
+				
+				<!-- PHONE -->
+				<c:CP_Cmp_Input_Text id="phone-input" form="{!v.pageId}" type="phone" label="{!$Label.c.CP_Generic_Label_Phone}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Phone}" />
+				
+				<!-- SECURITY QUESTIONS -->
+				<c:CP_Registration_Security_Questions securityQuestion1="{!v.securityQuestion1}" 
+					securityQuestion2="{!v.securityQuestion2}" 
+					securityQuestion3="{!v.securityQuestion3}" 
+					form="{!v.pageId}" 
+					lang="{!v.lang}"
+					tooltip="{!$Label.c.CP_Tooltip_Security}"/>
+				
+				<div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
+				
+				<c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" form="{!v.pageId}" />
+			</div>
+			<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
+		</div>
+	</div>
+</aura:component>

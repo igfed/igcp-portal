@@ -1,0 +1,45 @@
+<aura:component >
+    <aura:attribute name="title" type="String" />
+	<aura:attribute name="subtitle" type="String" default="" />
+	<aura:attribute name="image" type="String" default="{!$Resource.igcpresources + '/igcp-resources/images/mortgage/stoplight.png'}" />
+	<aura:attribute name="tiles" type="Map" default="{ tile1: {}, tile2: {}, tile3: {} }" />
+
+    <article class="igcp-container slds-card slds-grid slds-wrap slds-size_12-of-12 slds-p-top_xx-large slds-p-bottom_xx-large slds-p-left_medium slds-p-right_medium">
+		<div class="slds-card__header slds-size_12-of-12 slds-m-bottom_x-large">
+			<header class="">
+				<h3 class="slds-text-heading_large slds-align_absolute-center slds-m-bottom_x-small">{!v.title}</h3>
+            	<h4 class="slds-text-heading_small slds-align_absolute-center">{!v.subtitle}</h4>
+			</header>
+		</div>
+		<!--CARD BODY-->
+		<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-bottom_x-large">
+
+			<figure class="slds-size_1-of-3 slds-p-around--x-small">
+				<img class="igcp-utils__width--50" src="{!$Resource.igcpresources + v.tiles.tile1.image}" alt="{!v.tiles.tile1.title}" />
+				<figcaption>
+					<h3 class="slds-tile__title" title="{!v.tiles.tile1.title}">{!v.tiles.tile1.title}</h3>
+					<p class="slds-item_detail" title="{!v.tiles.tile1.description}">{!v.tiles.tile1.description}</p>
+				</figcaption>
+			</figure>
+
+			<figure class="slds-size_1-of-3 slds-p-around--x-small">
+				<img class="igcp-utils__width--50" src="{!$Resource.igcpresources + v.tiles.tile2.image}" alt="{!v.tiles.tile2.title}" />
+				<figcaption>
+					<h3 class="slds-tile__title" title="{!v.tiles.tile2.title}">{!v.tiles.tile2.title}</h3>
+					<p class="slds-item_detail" title="{!v.tiles.tile2.description}">{!v.tiles.tile2.description}</p>
+				</figcaption>
+			</figure>
+
+			<figure class="slds-size_1-of-3 slds-p-around--x-small">
+				<img class="igcp-utils__width--50" src="{!$Resource.igcpresources + v.tiles.tile3.image}" alt="{!v.tiles.tile3.title}" />
+				<figcaption>
+					<h3 class="slds-tile__title" title="{!v.tiles.tile3.title}">{!v.tiles.tile3.title}</h3>
+					<p class="slds-item_detail" title="{!v.tiles.tile3.description}">{!v.tiles.tile3.description}</p>
+				</figcaption>
+			</figure>
+        </div>
+		<div class="slds-size_12-of-12 slds-align_absolute-center slds-m-bottom_xx-large">
+			<c:CP_Cmp_Button class="slds-size_3-of-12 slds-text-body_small" label="Get More Advice" />
+		</div>
+	</article>
+</aura:component>

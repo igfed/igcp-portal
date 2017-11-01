@@ -1,0 +1,10 @@
+<aura:component >
+	<aura:attribute name="label" type="string" default=""/>
+    <aura:attribute name="url" type="string" default=""/>
+
+    <li onclick="{!c.goToURL}" class="">
+        <a href="" class="slds-context-bar__label-action" title="{!v.label}">
+            <span class="slds-truncate">{!v.label}</span>
+        </a>
+    </li>
+</aura:component>

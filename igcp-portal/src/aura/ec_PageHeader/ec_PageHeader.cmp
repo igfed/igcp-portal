@@ -1,0 +1,21 @@
+<aura:component controller="ec_PageHeaderController">
+    <aura:attribute name="logoURL" type="String" />
+    <aura:attribute name="backgroundColour" type="String" />
+    <aura:attribute name="backgroundURL" type="String" />
+    <aura:attribute name="styleString" type="String" />
+    <aura:attribute name="restrictWidth" type="Boolean" default="false" />
+    <aura:attribute name="backToHome" type="String" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <div class="pageHeaderBody">
+        <div class="pageHeaderBackground" style="{!if(v.styleString, v.styleString, '')}">
+            <div class="{!if(v.restrictWidth, 'restrictWidthContainer', '')}">
+                <a href="{!v.backToHome}">
+                    <img class="pageHeaderLogo" src="{!v.logoURL}" />
+               	</a>
+            </div>
+        </div>
+    </div>
+    
+</aura:component>

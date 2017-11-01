@@ -1,0 +1,30 @@
+<aura:component >
+	
+	<!-- ATTRS -->
+	<aura:attribute name="profile" type="Map"></aura:attribute>
+
+	<!-- Markup -->
+	<div class="igcp-container slds-p-around--small slds-m-bottom--medium">
+		<h3 class="slds-m-bottom--small">Investment Profile</h3>
+		<dl class="igcp-list slds-grid slds-wrap">
+			<div class="slds-size_12-of-12 slds-small-size_6-of-12 slds-large-size_3-of-12">
+				<dt class="igcp-list__item-label--c slds-item_label" title="Investment Profile">Investment Profile</dt>
+				<dd class="igcp-list__item-detail--c slds-item_detail" title="Value for investment profile">{!v.profile.investmentProfile}</dd>
+		  </div>
+		    <div class="slds-size_12-of-12 slds-small-size_6-of-12 slds-large-size_3-of-12 igcp-small-utils__text-align--right igcp-large-utils__text-align--left">
+				<dt class="igcp-list__item-label--c slds-item_label" title="Investment Objective">Investment Objective</dt>
+				<dd class="igcp-list__item-detail--c slds-item_detail" title="Value for investment objective">{!v.profile.investmentObjective}</dd>
+			</div>
+			<div class="slds-size_12-of-12 slds-small-size_6-of-12 slds-large-size_3-of-12">
+				<dt class="igcp-list__item-label--c slds-item_label" title="Risk Tolerancel">Risk Tolerance</dt>
+				<dd class="igcp-list__item-detail--c slds-item_detail" title="Value for risk tolerance">{!v.profile.riskTolerance}</dd>
+		    </div>
+		    <div class="slds-size_12-of-12 slds-small-size_6-of-12 slds-large-size_3-of-12 igcp-small-utils__text-align--right igcp-large-utils__text-align--left">
+				<dt class="igcp-list__item-label--c slds-item_label" title="Investment Time Horizon">Investment Time Horizon</dt>
+				<dd class="igcp-list__item-detail--c slds-item_detail" title="Value for Investment Time Horizon">{!v.profile.investmentTimeHorizon}</dd>
+			</div>
+		</dl>
+
+	</div>
+	
+</aura:component>
