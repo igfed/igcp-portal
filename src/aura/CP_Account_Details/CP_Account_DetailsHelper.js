@@ -199,6 +199,16 @@
 				hlpr.setRESPList(obj, cmp);
 			}
 
+			//RRIF
+			if (obj.accountTypeLabel === "RRIF" ||
+				obj.accountTypeLabel === "LIF" ||
+				obj.accountTypeLabel === "LRIF" ||
+				obj.accountTypeLabel === "PRIF" ||
+				obj.accountTypeLabel === "RLIF" ||
+				obj.accountTypeLabel === "Spousal RIF") {
+				hlpr.setRRIFList();
+			}
+
 			//Populate account details list
 			events.fire(
 				"CP_Evt_Set_List", {
@@ -429,6 +439,13 @@
 		} catch(err) {
 			console.error("CP_Account_Details: setRESPList");
 			console.error(err);
+		}
+	},
+	setRRIFList: function(obj, cmp) {
+		try {
+
+		} catch(err) {
+			
 		}
 	}
 })

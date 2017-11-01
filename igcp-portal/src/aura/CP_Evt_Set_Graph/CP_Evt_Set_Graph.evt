@@ -1,3 +1,0 @@
-<aura:event type="APPLICATION">
-    <aura:attribute name="payload" type="Map"></aura:attribute>
-</aura:event>
