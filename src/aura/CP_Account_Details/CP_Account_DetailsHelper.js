@@ -5,6 +5,13 @@
 		console.log(obj);
 		console.log('%c ############', 'background: green; color: white; display: block;');
 	},
+	handleBarValue: function(val) {
+		if(val !== undefined) {
+			return val;			
+		} else {
+			return 0;
+		}
+	},
 	setTitle: function (accountName) {
 		if (accountName === "TFSA") {
 			return $A.get("$Label.c.CP_Generic_Label_TFSA");
@@ -183,6 +190,15 @@
 				hlpr.setRRSPList(obj, cmp);
 			}
 
+			//RESP specific
+			if (obj.accountTypeLabel === "RESP" || 	
+				obj.accountTypeLabel === "RESP-Individual Plan" ||
+				obj.accountTypeLabel === "Family Plan" ||
+				obj.accountTypeLabel === "RESP-Individual Plan and Family Plan"
+			) {
+				hlpr.setRESPList(obj, cmp);
+			}
+
 			//Populate account details list
 			events.fire(
 				"CP_Evt_Set_List", {
@@ -311,8 +327,6 @@
 				utils = cmp.find("CP_Utils"),
 				listArr = cmp.get("v.detailsListArr");
 
-			console.log("setRRSPLIst")
-
 			//First 60 day contribution amount
 			if (obj.first60DayContributionAmount) {
 				utils.formatToCurrency(obj.first60DayContributionAmount, function (formattedValue) {
@@ -367,6 +381,53 @@
 
 		} catch (err) {
 			console.error("CP_Account_Details: setRRSPList");
+			console.error(err);
+		}
+	},
+	setRESPList: function(obj, cmp) {
+		try {
+			var
+				utils = cmp.find("CP_Utils"),
+				listArr = cmp.get("v.detailsListArr");
+
+			//YTD Contribution Amount
+			if (obj.ytdContributionAmt) {
+				cmp.set("v.ytdContributionAmt", obj.ytdContributionAmt);
+			} else {
+				cmp.set("v.ytdContributionAmt", $A.get("$Label.c.CP_Generic_Not_Available"));
+			}
+
+			listArr.push({
+				"label": $A.get("$Label.c.CP_Generic_Label_YTD_Contribution_Amount"),
+				"detail": cmp.get("v.ytdContributionAmt")
+			});
+
+			//CRA Plan Id
+			if (obj.craPlanId) {
+				cmp.set("v.craPlanId", obj.craPlanId);
+			} else {
+				cmp.set("v.craPlanId", $A.get("$Label.c.CP_Generic_Not_Available"));
+			}
+
+			listArr.push({
+				"label": $A.get("$Label.c.CP_Generic_Label_CRA_Plan_Id"),
+				"detail": cmp.get("v.craPlanId")
+			});
+
+			//Beneficiary Name
+			if (obj.beneficiaryName) {
+				cmp.set("v.beneficiaryName", obj.beneficiaryName);
+			} else {
+				cmp.set("v.beneficiaryName", $A.get("$Label.c.CP_Generic_Not_Available"));
+			}
+
+			listArr.push({
+				"label": $A.get("$Label.c.CP_Generic_Label_Beneficiary"),
+				"detail": cmp.get("v.beneficiaryName")
+			});
+			
+		} catch(err) {
+			console.error("CP_Account_Details: setRESPList");
 			console.error(err);
 		}
 	}

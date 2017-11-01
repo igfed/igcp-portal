@@ -3,15 +3,16 @@
 	<!-- ATTRS -->
 	<aura:attribute name="label" type="String" />
 	<aura:attribute name="class" type="String" default="" />
+	<aura:attribute name="href" type="String" default="#" />
 	<aura:attribute name="linkClass" type="String" default="igcp-link" />
 	<aura:attribute name="icon" type="String" />
-	<aura:attribute name="iconSize" Type="String" default="small"/>
+	<aura:attribute name="iconSize" Type="String" default="x-small"/>
 
 	<!-- MARKUP -->
 	<div class="{!v.class}">
-		<a class="{!v.linkClass}">
+		<a class="{!v.linkClass}" href="{!v.href}">
 			<aura:renderIf isTrue="{!v.icon}">
-                <lightning:icon iconName="{!v.icon}" size="{!v.iconSize}" alternativeText="{!v.label}" />
+                <lightning:icon iconName="{!v.icon}" size="{!v.iconSize}" alternativeText="{!v.label}" class="slds-p-right--xxx-small"/>
             </aura:renderIf> 
 			{!v.label}
 		</a>

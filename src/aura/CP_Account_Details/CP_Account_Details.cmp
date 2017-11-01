@@ -53,8 +53,14 @@
 	<!-- RRSP -->
 	<aura:attribute name="first60DayContributionAmount" type="String" default=""></aura:attribute>
 	<aura:attribute name="last10MonthContributionAmount" type="String" default=""></aura:attribute>
-	<aura:attribute name="beneficiaryName" type="String" default=""></aura:attribute>
 	<aura:attribute name="contributorSpouseName" type="String" default=""></aura:attribute>
+
+	<!-- RESP -->
+	<aura:attribute name="ytdContributionAmt" type="String" default=""></aura:attribute>
+	<aura:attribute name="craPlanId" type="String" default=""></aura:attribute>
+
+	<!-- SHARED  -->
+	<aura:attribute name="beneficiaryName" type="String" default=""></aura:attribute>
 
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
@@ -65,7 +71,7 @@
 		<div class="slds-size_12-of-12">
 			<div class="slds-m-top--medium slds-large-m-top--none slds-m-bottom--large">
 				
-				<c:CP_Cmp_Text_Link class="slds-float_left" linkClass="igcp-link__variant--a" icon="utility:chevronleft" label="{!$Label.c.CP_Generic_Label_Overview}" />
+				<c:CP_Cmp_Text_Link href="/customers/s/" class="slds-float_left" linkClass="igcp-link__variant--a" icon="utility:chevronleft" label="{!$Label.c.CP_Generic_Label_Overview}" />
 				
 				<c:CP_Cmp_Text_Link class="slds-float_right" linkClass="igcp-link__variant--a" icon="utility:table" label="{!$Label.c.CP_Generic_Label_View_Statement}" />
 

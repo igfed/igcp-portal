@@ -103,6 +103,8 @@
 			} else {
 				utils.navigateToURL("/customers/s/account-details?accEnc=" + accountNumEnc);
 			}
+		} else {
+			console.warn("CP_Overview_Account_Item: Account number is not encrypted.");
 		}
 	}
 })

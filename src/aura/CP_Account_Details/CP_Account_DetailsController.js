@@ -33,7 +33,7 @@
 					if (success) {
 						hlpr.setGeneralOverview(success, cmp);
 						hlpr.setDetailsList(success, cmp, hlpr);
-					}	
+					}
 				},
 				function (error) {
 					console.error("Account Detail");
@@ -173,39 +173,47 @@
 				function (success) {
 					hlpr.logReturned("Get Account Performance", success);
 
-					var
-						openingValues = [
-							success.openingValueYtd,
-							success.openingValue1Yr,
-							success.openingValue3Yr,
-							success.openingValue5Yr,
-							success.openingValueInception
-						],
-						closingValues = [
-							success.closingValueYtd,
-							success.closingValue1Yr,
-							success.closingValue3Yr,
-							success.closingValue5Yr,
-							success.closingValueInception
-						],
-						dataObj = {
-							"labels": ["YTD", "1yr", "3yr", "5yr", "Since"],
-							"datasets": [{
-								"label": $A.get("$Label.c.CP_Generic_Label_Opening_Value"),
-								"backgroundColor": "#1d5076",
-								"data": openingValues
-							}, {
-								"label": $A.get("$Label.c.CP_Generic_Label_Closing_Value"),
-								"backgroundColor": "#4dede7",
-								"data": closingValues
-							}]
-						};
+					if (success !== null) {
+						var
+							openingValues = [
+								hlpr.handleBarValue(success.openingValueYtd),
+								hlpr.handleBarValue(success.openingValue1Yr),
+								hlpr.handleBarValue(success.openingValue3Yr),
+								hlpr.handleBarValue(success.openingValue5Yr),
+								hlpr.handleBarValue(success.openingValueInception)
+							],
+							closingValues = [
+								hlpr.handleBarValue(success.closingValueYtd),
+								hlpr.handleBarValue(success.closingValue1Yr),
+								hlpr.handleBarValue(success.closingValue3Yr),
+								hlpr.handleBarValue(success.closingValue5Yr),
+								hlpr.handleBarValue(success.closingValueInception)
+							],
+							dataObj = {
+								"labels": [
+									$A.get("$Label.c.CP_Generic_Label_YTD"),
+									$A.get("$Label.c.CP_Generic_Label_1yr"),
+									$A.get("$Label.c.CP_Generic_Label_3yr"),
+									$A.get("$Label.c.CP_Generic_Label_5yr"),
+									$A.get("$Label.c.CP_Generic_Label_Since"),
+								],
+								"datasets": [{
+									"label": $A.get("$Label.c.CP_Generic_Label_Opening_Value"),
+									"backgroundColor": "#1d5076",
+									"data": openingValues
+								}, {
+									"label": $A.get("$Label.c.CP_Generic_Label_Closing_Value"),
+									"backgroundColor": "#4dede7",
+									"data": closingValues
+								}]
+							};
 
-					events.fire(
-						"CP_Evt_Set_Graph", {
-							"id": "account-details-performance-chart",
-							"data": dataObj
-						});
+						events.fire(
+							"CP_Evt_Set_Graph", {
+								"id": "account-details-performance-chart",
+								"data": dataObj
+							});
+					}
 				},
 				function (error) {
 					console.error("Account Performance");
