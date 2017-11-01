@@ -48,7 +48,7 @@
     });
 
     // Register hover event handlers
-    $('.aa-hover').on('click', function () {
+    $('.aa-hover').on('click', function (e) {
       event.type = 'hover';
       _constructEventObj($(this));
       _executeDirectCall(event.dcName);
