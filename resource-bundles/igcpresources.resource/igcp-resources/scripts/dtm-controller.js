@@ -67,7 +67,6 @@
     } else {
       lang = 'en'
     }
-
     return lang;
   }
 
@@ -129,7 +128,12 @@
     }
 
     if (event.type === 'dc') {
-
+      // Move 'data' props into event object
+      for (var prop in $this) {
+        if ($this.hasOwnProperty(prop)) {
+          event[prop] = $this[prop];
+        }
+      }
     }
 
     window.digitalData.events.push(event);
