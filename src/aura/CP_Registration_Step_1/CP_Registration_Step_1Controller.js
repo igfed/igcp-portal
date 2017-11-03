@@ -79,5 +79,12 @@
 		event.fire("CP_Evt_Next_Step", {
 			"id": cmp.get("v.pageId")
 		});
+	},
+	doneRendering: function(cmp, evt, hlpr) {
+		window.dtmRegisterHandlers();
+		console.log('done rendering');
+		if(cmp.get("v.renderComplete") === false) {
+			cmp.set("v.renderComplete", true);
+		}
 	}
 })

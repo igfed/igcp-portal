@@ -22,6 +22,7 @@
 			function(previewObj) {
 
 				var
+					events = cmp.find("CP_Events"),
 					accountPreviewsObj = previewObj.previewAggregatesByTypeAndReg,
 					accountTypeArr = [];
 
@@ -40,8 +41,6 @@
 				utils.forEach(accountPreviewsObj, function(key, value) {
 					accountTypeArr.push(value);
 				});
-
-				console.log(accountTypeArr);
 
 				hlpr.addAccounts(accountTypeArr, cmp);
 

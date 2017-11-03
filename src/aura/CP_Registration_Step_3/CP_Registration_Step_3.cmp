@@ -10,7 +10,7 @@
 	<aura:attribute name="postalCode" type="String" default="" />
 	<aura:attribute name="dob" type="String" default="" />
 	<aura:attribute name="lang" type="String"></aura:attribute>
-	
+
 	<!-- Step 2 -->
 	<aura:attribute name="username" type="String" default="" />
 	<aura:attribute name="password" type="String" default="" />
@@ -36,6 +36,7 @@
 	
 	<!-- HANDLER -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 	<aura:handler event="c:CP_Evt_Complete" action="{!c.onRegistrationComplete}" />
 	<aura:handler event="c:CP_Evt_Click" action="{!c.onAgreeTOS}" />
 	<aura:handler event="c:CP_Evt_Input_Checkbox_Checked" action="{!c.onAgreeChecked}" />
@@ -77,7 +78,7 @@
 					<c:CP_Cmp_Name_Value_List id="{!v.pageId}" class="slds-size_12-of-12 slds-m-vertical--medium" variant="a" />
 					<div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 					<!--CTAS-->
-					<c:CP_Cmp_Form_Back_Next dcname="" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Edit_Profile}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="complete" modalID="registration-tos" />
+					<c:CP_Cmp_Form_Back_Next dcname="register-cancel" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Edit_Profile}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="complete" modalID="registration-tos" />
 				</div>
 			</div>
 			<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
