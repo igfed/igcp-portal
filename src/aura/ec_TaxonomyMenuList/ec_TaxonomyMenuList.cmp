@@ -1,0 +1,16 @@
+<aura:component controller="ec_TaxonomyMenuController">
+    <aura:attribute name="depth" type="integer" default="0" description="" access="public" />
+    <aura:attribute name="maxDepth" type="integer" default="0" description="" access="public" />
+    <aura:attribute name="taxonomyList" type="TaxonomyBundle[]" description="array of taxonomy bundles" />
+    <aura:attribute name="tagPath" type="string" default="defaultTag"/>
+    <aura:attribute name="listClass" type="string" default="slds-has-dividers--bottom-space"/>
+    <aura:attribute name="taxonomyInstanceName" type="string" default="" access="public" />
+    <aura:attribute name="sitePrefix" type="string" default=""/>
+    <aura:attribute name="treeId" type="string" default=""/>
+    <aura:attribute name="urlPath" type="String" />
+    <aura:attribute name="ariaLevel" type="integer" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    {!v.body}
+</aura:component>

@@ -87,10 +87,11 @@
                 <div id="tab-default-3" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-3__item">Item Three Content</div>
                 <div id="tab-default-3" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-3__item">Item Four Content</div>
 
+                <!--
                 <div class="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open">
                     <button class="slds-button slds-button_icon slds-button_icon-border-filled" aria-haspopup="true" title="Show More">
                         
-                        <span class="slds-assistive-text">Show More</span>
+                    <span class="slds-assistive-text">Show More</span>
                     </button>
                     <div class="slds-dropdown slds-dropdown_left">
                         <ul class="slds-dropdown__list" role="menu">
@@ -117,11 +118,11 @@
                         </li>
                         </ul>
                     </div>
-                </div>
+                </div>-->
             </div>
 
             <div class="igcp-banner">
-                <div class="slds-size_12-of-12 slds-medium-size_6-of-12">
+                <div class="slds-size_12-of-12 slds-medium-size_6-of-12 slds-small-size_6-of-12">
                 <div class="igcp-banner-text">
                         <h3 class="igcp-banner-heading">Featured News</h3>
                         <p>Here's news about your statement and other important information.</p>

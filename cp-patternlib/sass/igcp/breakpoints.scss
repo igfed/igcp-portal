@@ -130,10 +130,10 @@
 		&.#{$namespace}-modal__details {
 			.#{$namespace}-modal__details--inner {
 				@include roundCorner();
-				top: 25%;
+				top: 10%;
 				left: 10%;
 				right: 10%;
-				bottom: 25%;
+				bottom: 10%;
 			}
 		}
 	} //FOOTER

@@ -47,16 +47,19 @@
 		validator.validate(payload, function(obj) {
 
 			if (obj.isValid === false) {
+				
 				events.fire("CP_Evt_Input_Error", {
 					"id": obj.id,
 					"errors": obj.errors
 				});
 
+				cmp.set("v.inputErrors", true);
+
 			} else {
 				events.fire("CP_Evt_Input_Valid", {
 					"id": obj.id
 				});
-
+				cmp.set("v.inputErrors", false);
 			}
 		});
 	}

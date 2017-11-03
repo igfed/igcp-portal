@@ -74,9 +74,13 @@
 		for (key in valObj) {
 
 			if (valObj[key] === false) {
-				errors.push({ type: key });
+				errors.push({
+					type: key
+				});
 			} else if (key === "isEmpty" && valObj[key] === true) {
-				errors.push({ type: key });
+				errors.push({
+					type: key
+				});
 			}
 		}
 
@@ -102,50 +106,71 @@
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 
-		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+		callBack({
+			"id": id,
+			"isValid": hlpr.isValid(errors),
+			"errors": errors
+		});
 	},
 	validatePassword: function (params, callBack, cmp, hlpr) {
 
-		var
-			value = params.value,
-			id = params.id,
-			errors = [],
-			errorCheckObj = {},
-			isEmpty = value.length === 0 ? true : false,
-			minLength = hlpr.min(value.length, cmp.get("v.passMinLength")),
-			hasUppercase = hlpr.hasUppercase(value),
-			hasNumber = hlpr.hasNumber(value),
-			hasSpecialChar = hlpr.hasSpecialChar(value);
+		try {
 
-		if (isEmpty === true) {
+			var
+				value = params.value,
+				id = params.id,
+				errors = [],
+				errorCheckObj = {},
+				isEmpty = value.length === 0 ? true : false,
+				minLength = hlpr.min(value.length, cmp.get("v.passMinLength")),
+				hasUppercase = hlpr.hasUppercase(value),
+				hasNumber = hlpr.hasNumber(value),
+				hasSpecialChar = hlpr.hasSpecialChar(value);
 
-			errorCheckObj["isEmpty"] = isEmpty;
+			if (isEmpty === true) {
 
-		} else {
+				errorCheckObj["isEmpty"] = isEmpty;
 
-			errorCheckObj["minLength"] = minLength;
-			errorCheckObj["hasUppercase"] = hasUppercase;
+			} else {
 
-			if (hasNumber !== true) {
-				//check if pass has special char
-				errorCheckObj["hasSpecialChar"] = hasSpecialChar;
+				errorCheckObj["minLength"] = minLength;
+				errorCheckObj["hasUppercase"] = hasUppercase;
+
+				if (hasNumber !== true) {
+					//check if pass has special char
+					errorCheckObj["hasSpecialChar"] = hasSpecialChar;
+				}
+
+				if (hasSpecialChar !== true) {
+					//Check if pass has number
+					errorCheckObj["hasNumber"] = hasNumber;
+				}
+
+				if (params.confirmValue !== undefined) {
+				
+					errorCheckObj["passwordsMatch"] = hlpr.isSame(params.value, params.confirmValue);
+				}
 			}
 
-			if (hasSpecialChar !== true) {
-				//Check if pass has number
-				errorCheckObj["hasNumber"] = hasNumber;
-			}
+			errors = hlpr.checkForErrors(errorCheckObj);
+
+			errors.forEach(function (item) {
+				if (item.type === "isEmpty") {
+					item["msg"] = $A.get("$Label.c.CP_Error_Empty_Field");
+				} else if (item.type === "passwordsMatch") {
+					item["msg"] = $A.get("$Label.c.CP_Error_Passwords_Match");
+				}
+			});
+
+			callBack({
+				"id": id,
+				"isValid": hlpr.isValid(errors),
+				"errors": errors
+			});
+		} catch (err) {
+			console.error("CP_Validation: validationPassword");
+			console.error(err);
 		}
-
-		errors = hlpr.checkForErrors(errorCheckObj);
-
-		errors.forEach(function (item, i) {
-			if (item.type === "isEmpty") {
-				item["msg"] = $A.get("$Label.c.CP_Error_Empty_Field");
-			}
-		});
-
-		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
 	},
 	validatePasswordConfirm: function (params, callBack, cmp, hlpr) {
 
@@ -165,7 +190,11 @@
 			}
 		});
 
-		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+		callBack({
+			"id": id,
+			"isValid": hlpr.isValid(errors),
+			"errors": errors
+		});
 	},
 	validateClientnumber: function (params, callBack, cmp, hlpr) {
 
@@ -193,7 +222,11 @@
 			}
 		});
 
-		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+		callBack({
+			"id": id,
+			"isValid": hlpr.isValid(errors),
+			"errors": errors
+		});
 	},
 	validatePostalcode: function (params, callBack, cmp, hlpr) {
 
@@ -233,7 +266,11 @@
 			}
 		});
 
-		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+		callBack({
+			"id": id,
+			"isValid": hlpr.isValid(errors),
+			"errors": errors
+		});
 	},
 	validateDate: function (params, callBack, cmp, hlpr) {
 
@@ -286,7 +323,11 @@
 			}
 		});
 
-		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+		callBack({
+			"id": id,
+			"isValid": hlpr.isValid(errors),
+			"errors": errors
+		});
 	},
 	validateEmail: function (params, callBack, cmp, hlpr) {
 
@@ -315,7 +356,11 @@
 		});
 
 
-		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+		callBack({
+			"id": id,
+			"isValid": hlpr.isValid(errors),
+			"errors": errors
+		});
 	},
 	validateEmailConfirm: function (params, callBack, cmp, hlpr) {
 		var
@@ -329,7 +374,7 @@
 		if (isEmpty === true) {
 			errorCheckObj["isEmpty"] = isEmpty;
 		} else {
-			if(isEmail === false) {
+			if (isEmail === false) {
 				errorCheckObj["isEmail"] = isEmail;
 			} else {
 				errorCheckObj["emailsMatch"] = hlpr.isSame(params.value, params.confirmValue);
@@ -348,7 +393,11 @@
 			}
 		});
 
-		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+		callBack({
+			"id": id,
+			"isValid": hlpr.isValid(errors),
+			"errors": errors
+		});
 	},
 	validatePhone: function (params, callBack, cmp, hlpr) {
 
@@ -372,7 +421,11 @@
 			}
 		});
 
-		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+		callBack({
+			"id": id,
+			"isValid": hlpr.isValid(errors),
+			"errors": errors
+		});
 	},
 	validatePhoneRequired: function (params, callBack, cmp, hlpr) {
 
@@ -401,7 +454,11 @@
 		});
 
 
-		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+		callBack({
+			"id": id,
+			"isValid": hlpr.isValid(errors),
+			"errors": errors
+		});
 	},
 	validateText: function (params, callBack, cmp, hlpr) {
 		var
@@ -428,7 +485,11 @@
 			}
 		});
 
-		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+		callBack({
+			"id": id,
+			"isValid": hlpr.isValid(errors),
+			"errors": errors
+		});
 	},
 	validateQuestion: function (params, callBack, cmp, hlpr) {
 
@@ -451,6 +512,10 @@
 			}
 		});
 
-		callBack({ "id": id, "isValid": hlpr.isValid(errors), "errors": errors });
+		callBack({
+			"id": id,
+			"isValid": hlpr.isValid(errors),
+			"errors": errors
+		});
 	},
 })
