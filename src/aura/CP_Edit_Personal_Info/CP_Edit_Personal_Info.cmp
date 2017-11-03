@@ -79,7 +79,7 @@
 				<!-- NEWS OPT IN  -->
 				<c:CP_Cmp_Input_Checkbox id="news-offers-opt" form="{!v.pageId}" class="slds-size_12-of-12 slds-large-size_9-of-12" copy="{!$Label.c.CP_Registration_Step_2_Opt_In}" />
 
-				<c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Change_Personal_Update}" nextType="submit" form="{!v.pageId}" />
+				<c:CP_Cmp_Form_Back_Next dcname="" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Change_Personal_Update}" nextType="submit" form="{!v.pageId}" />
 			</div>
 			<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
 		</div>

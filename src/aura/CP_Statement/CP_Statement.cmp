@@ -123,12 +123,10 @@
             </div>
 
             <div class="igcp-banner">
-                <!--<div class="slds-size_12-of-12 slds-medium-size_6-of-12 slds-small-size_1-of-2">-->
-                    <div class="igcp-banner-text">
-                        <h3 class="igcp-banner-heading">Featured News</h3>
-                        <p>Here's news about your statement and other important information.</p>
-                        <c:CP_Cmp_Button id="learn-more" label="Learn More" class="igcp-button--complete"/>
-                   <!-- </div> -->
+                <div class="igcp-banner-text">
+                    <h3 class="igcp-banner-heading">Featured News</h3>
+                    <p>Here's news about your statement and other important information.</p>
+                    <c:CP_Cmp_Button id="learn-more" label="Learn More" class="igcp-button--complete"/>
                 </div>
                 <img class="igcp-banner-img" src="{!$Resource.igcpresources + '/igcp-resources/images/banner_image.png'}" alt="Banner Image" />
             </div>

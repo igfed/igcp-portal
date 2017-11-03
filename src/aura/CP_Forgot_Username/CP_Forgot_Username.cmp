@@ -34,13 +34,15 @@
     <div class="{!v.class}">
 
     	<aura:if isTrue="{!v.currentStep == 0}"  >
-    		<c:CP_Forgot_User_Step_1 clientNum="{!v.clientNum}" 
+    		<c:CP_Forgot_User_Step_1 
+				clientNum="{!v.clientNum}" 
     			email="{!v.email}"
 				lang="{!v.lang}"/>
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 1}"  >
-    		<c:CP_Forgot_User_Step_2 clientNum="{!v.clientNum}" 
+    		<c:CP_Forgot_User_Step_2 
+				clientNum="{!v.clientNum}" 
     			email="{!v.email}" 
     			question="{!v.question}" 
     			answer="{!v.answer}"
@@ -50,7 +52,8 @@
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 2}"  >
-    		<c:CP_Forgot_User_Thank_You email="{!v.email}"
+    		<c:CP_Forgot_User_Thank_You 
+				email="{!v.email}"
 				lang="{!v.lang}"/>
     	</aura:if>
 

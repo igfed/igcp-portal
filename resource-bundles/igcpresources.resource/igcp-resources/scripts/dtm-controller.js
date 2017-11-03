@@ -3,50 +3,67 @@
   window.digitalData = window.digitalData || {};
   window.digitalData.page = {};
   window.digitalData.page.pageInfo = {};
+  window.digitalData.page.category = {};
+  window.digitalData.events = [];
 
-  var event = {},
-    $this,
-    adobeLoader,
-    $component,
-    $container;
+  var $this,
+    $component
+
+  // Event object that will be pushed into events array
+  var event = {};
   event.component = {};
-  event.container = {};
-  event.template = {}; 
+  event.page = {};
+  event.form = {};
+  event.search = {};
+  event.tool = {};
+  event.advisor = {};
+  event.download = {};
 
+  // Setup custom tracking handler for 'true' direct calls from JS
+  window.dtmCall = function (dcName, data) {
+    console.log('parse direct call');
+    event.type = 'dc';
+    _constructEventObj(data);
+    _executeDirectCall(dcName);
+  }
 
   function init() {
+
     // Capture page data
-    window.digitalData.pageInstanceID = getPageName() + window.location.hostname + "",
-      window.digitalData.page.pageInfo.pageName = getPageName(),
-      window.digitalData.page.pageInfo.language = getPageLanguage(),
-      window.digitalData.page.pageInfo.server = window.location.href,
-      window.digitalData.page.pageInfo.timezone = new Date().getTimezoneOffset() / 60
-
-
-    console.log(window.digitalData);
+    window.digitalData.pageInstanceID = _getPageName() + ":" + window.location.hostname + "";
+    window.digitalData.page.pageInfo.pageName = _getPageName();
+    window.digitalData.page.pageInfo.language = _getPageLanguage();
+    window.digitalData.page.pageInfo.server = window.location.href;
+    window.digitalData.page.pageInfo.timezone = new Date().getTimezoneOffset() / 60;
+    window.digitalData.page.category.primaryCategory = _getSiteSection();
 
     // Only fire this in Salesforce
-    adobeBottomLoader();
+    // window._satellite.pageBottom();
 
-    // Register click event handler
+    // Register click event handlers
     $('.aa-click').on('click', function (e) {
-      e.preventDefault();
-      event.type = 'click';
-      constructEventObj($(this));
+      if ($(this).data('aaDcname')) {
+        event.type = 'click';
+        _constructEventObj($(this));
+        _executeDirectCall(event.dcName);
+      }
     });
 
-    // Register hover event handler
-    $('.aa-hover').on('click', function () {
-      event.type = 'hover';
-      constructEventObj($(this));
+    // Register hover event handlers
+    $('.aa-hover').on('click', function (e) {
+      if ($(this).data('aaDcname')) {
+        event.type = 'hover';
+        _constructEventObj($(this));
+        _executeDirectCall(event.dcName);
+      }
     });
   }
 
-  function getPageName() {
+  function _getPageName() {
     return document.title;
   }
 
-  function getPageLanguage() {
+  function _getPageLanguage() {
     var lang;
 
     if (window.location.href.indexOf('groupe') > 0 || window.location.href.indexOf('/fr/') > 0) {
@@ -54,75 +71,84 @@
     } else {
       lang = 'en'
     }
-
     return lang;
-
   }
 
-  function adobeBottomLoader() {
-    adobeLoader = setInterval(function () {
-      if (window._satellite) {
-        window._satellite.pageBottom();
-        clearInterval(adobeLoader);
+
+  function _getSiteSection() {
+    return window.location.href.substr(window.location.href.lastIndexOf('/') + 1)
+  }
+
+  function _constructEventObj($this) {
+    event.page.referrer = window.location.href;
+
+    if (event.type === 'click' || event.type === 'hover') {
+      var topics,
+        tags = [],
+        keyValue;
+
+      event.component.topics = [];
+      event.component.tags = [];
+
+      // Capture trigger data
+      event.dcName = $this.data('aa-dcname');
+      event.goal = $this.data('aa-goal');
+      event.linkLabel = $this.data('aa-link-label');
+      event.parentID = $this.data('aa-parent');
+
+      // Store component container node  
+      $component = $this.parents('.aa-component');
+
+      // Capture component data
+      if ($component.length > 0) {
+        event.component.id = $component.data('aa-id');
+        event.component.name = $component.data('aa-name');
+        event.component.location = $component.data('aa-location');
+
+        // If there is no parentID set
+        if (!event.parentID) {
+          event.parentID = event.component.id;
+        }
+
+        // Topics ['topic1', 'topic2' ...]
+        topics = $component.data('aa-topics');
+        if (topics) {
+          event.component.topics = topics.split(',');
+        }
+
+        // Tags ['key1::value1', 'key2::value2' ...]
+        if ($component.data('aa-tags')) {
+          tags = $component.data('aa-tags').split(',');
+          tags.forEach(function (el) {
+            keyValue = el.split('::');
+            event.component.tags.push({
+              "name": keyValue[0],
+              "value": keyValue[1]
+            })
+          })
+        }
       }
-    }, 500);
-  }
 
-  function constructEventObj($this) {
-    var topics;
-    var tags = [];
-    var keyValue;
-
-    event.container.topics = [];
-    event.container.tags = [];
-
-    // Capture trigger data
-    event.goal = $this.data('aa-goal');
-    event.label = $this.data('aa-link-label');
-    event.parentID = $this.data('aa-parent');
-
-    // Is it a nested event or one connected via an ID?
-    if (event.parentID) {
-      $component = $('body').find('[data-aa-id="' + event.parentID + '"]');
-      $container = $component.parents('.ig-analytics-container');
-    } else {
-      $component = $this.parents('.ig-analytics-component');
-      $container = $this.parents('.ig-analytics-container');
     }
 
-    // Capture component data
-    event.component.id = $component.data('aa-id');
-    event.component.name = $component.data('aa-name');
-    event.component.location = $component.data('aa-location');
-    if (!event.parentID) {
-      event.parentID = event.component.id;
-    }
-
-    // Capture container data
-    event.container.id = $container.data('aa-id');
-    event.container.name = $container.data('aa-name');
-    event.container.category = $container.data('aa-category');
-    event.container.location = $container.data('aa-location');
-    event.container.product = $container.data('aa-product');
-    event.container.category = $container.data('aa-category');
-    topics = $container.data('aa-topics');
-    if (topics) {
-      event.container.topics = topics.split(',');
-    }
-    if ($container.data('aa-tags')) {
-      tags = $container.data('aa-tags').split(',');
-      tags.forEach(function (el) {
-        keyValue = el.split('::');
-        event.container.tags.push({
-          "name": keyValue[0],
-          "value": keyValue[1]
-        })
-      })
+    if (event.type === 'dc') {
+      // Move 'data' props into event object
+      for (var prop in $this) {
+        if ($this.hasOwnProperty(prop)) {
+          event[prop] = $this[prop];
+        }
+      }
     }
 
     window.digitalData.events.push(event);
-    console.log(window.digitalData.events);
+    console.log(window.digitalData);
+  }
+
+  function _executeDirectCall(name) {
+    window._satellite.track(name);
   }
 
   init();
+
+
 })(jQuery)
