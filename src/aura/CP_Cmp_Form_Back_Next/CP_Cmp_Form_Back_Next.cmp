@@ -9,6 +9,8 @@
 	<aura:attribute name="backLabel" type="String" default="Back" />
 	<aura:attribute name="nextLabel" type="String" default="Next" />
 	<aura:attribute name="modalID" type="String" default="igcp-modal" />
+	<aura:attribute name="dcname" type="String" default="null" />
+
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="c:CP_Evt_Click" action="{!c.onButtonClick}" />
@@ -30,8 +32,7 @@
 		<!--CTAS-->
 		<div class="igcp-utils__order--2 igcp-medium-utils__order--1 slds-m-horizontal--medium slds-medium-m-horizontal--zero slds-size_12-of-12 slds-medium-size_5-of-12">
 			<!--BACK /CANCEL -->
-			<c:CP_Cmp_Button id="back_button" label="{!v.backLabel}" class="igcp-button--back igcp-utils__width--100 slds-p-horizontal--medium slds-medium-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-float_none slds-medium-float_left" buttonClass="slds-button slds-button--neutral" />
-		
+			<c:CP_Cmp_Button dcname="{!v.dcname}" id="back_button" label="{!v.backLabel}" class="aa-click igcp-button--back igcp-utils__width--100 slds-p-horizontal--medium slds-medium-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-float_none slds-medium-float_left" buttonClass="slds-button slds-button--neutral" />
 		</div>
 
 		<div class="igcp-utils__display--none igcp-medium-utils__display--flex igcp-utils__order--2 slds-size_2-of-12"></div>
@@ -39,16 +40,16 @@
 		<div class="igcp-utils__order--1 igcp-medium-utils__order--3 slds-m-horizontal--medium slds-medium-m-horizontal--zero slds-size_12-of-12 slds-medium-size_5-of-12">
 			<aura:if isTrue="{!v.nextType == 'start'}">
 				<!--START-->
-				<c:CP_Cmp_Button id="start_button" label="{!v.nextLabel}" class="igcp-button--start igcp-utils__width--100 slds-p-horizontal--medium slds-medium-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-float_none slds-medium-float_right" />
+				<c:CP_Cmp_Button id="start_button" dcname="{!v.dcname}" label="{!v.nextLabel}" class="aa-click igcp-button--start igcp-utils__width--100 slds-p-horizontal--medium slds-medium-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-float_none slds-medium-float_right" />
 			</aura:if>
 			<aura:if isTrue="{!v.nextType == 'complete'}">
 				<!-- COMPLETE -->
-				<c:CP_Cmp_Button id="complete_button" label="{!v.nextLabel}" class="igcp-button--complete igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-float_none slds-medium-float_right slds-p-horizontal--medium slds-medium-p-horizontal--zero"/>
+				<c:CP_Cmp_Button id="complete_button" dcname="{!v.dcname}" label="{!v.nextLabel}" class="aa-click igcp-button--complete igcp-utils__width--100 slds-m-top--large slds-medium-m-top--zero slds-float_none slds-medium-float_right slds-p-horizontal--medium slds-medium-p-horizontal--zero"/>
 
 			</aura:if>
 			<aura:if isTrue="{!v.nextType == 'submit'}">
 				<!-- SUBMIT -->
-				<c:CP_Cmp_Submit id="form_submit" for="{!v.form}" label="{!v.nextLabel}" class="igcp-button--submit igcp-utils__width--100 slds-p-horizontal--medium slds-medium-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-float_none slds-medium-float_right"/>
+				<c:CP_Cmp_Submit id="form_submit" for="{!v.form}" dcname="{!v.dcname}" label="{!v.nextLabel}" class="aa-click igcp-button--submit igcp-utils__width--100 slds-p-horizontal--medium slds-medium-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-float_none slds-medium-float_right"/>
 			</aura:if>
 		</div>
 	</div>

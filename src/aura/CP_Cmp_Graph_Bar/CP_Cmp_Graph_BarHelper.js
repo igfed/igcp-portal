@@ -33,7 +33,10 @@
 
 			return colourArray;
 		},
-		generateGraph: function() {
+		generateGraph: function(payload) {
+
+			console.log("Generate Graph");
+			console.log(payload);
 
 			var
 				ctx = document.getElementById("bar-chart").getContext('2d'),
@@ -50,20 +53,7 @@
 
 			bar = new Chart(ctx, {
 				type: 'bar',
-				data: {
-					labels: ["YTD", "1yr", "3yr", "5yr", "Since"],
-					datasets: [{
-							label: "Opening value",
-							backgroundColor: darkBlue,
-							data: [10, 40, 35, 79, 10]
-						},
-						{
-							label: "Closing value",
-							backgroundColor: seafoamGreen,
-							data: [44, 33, 55, 66, 77]
-						}
-					]
-				},
+				data: payload.data,
 				options: {
 					scales: {
 						xAxes: [{

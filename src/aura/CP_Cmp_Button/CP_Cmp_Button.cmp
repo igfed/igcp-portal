@@ -5,6 +5,7 @@
 
     <!-- ATTRS -->
     <aura:attribute name="id" type="String" default="default"/>
+    <aura:attribute name="dcname" type="String" default="null"/>
     <aura:attribute name="label" type="String" default="default" />
     <aura:attribute name="buttonType" type="String" default="default"></aura:attribute>
     <aura:attribute name="icon" type="String" />
@@ -18,8 +19,9 @@
     <aura:handler event="c:CP_Evt_Button_Enable" action="{!c.onEnable}"></aura:handler>
     <aura:handler event="c:CP_Evt_Button_Disable" action="{!c.onDisable}"></aura:handler>
     
-    <div id="{!v.id}" aura:id="{!v.id}" class="{!v.class}">
-        <lightning:button label="{!v.label}" variant="brand" class="{!'aa-click igcp-utils__width--100 slds-p-vertical--xxx-small ' + v.buttonClass}" onclick="{!c.onClick}" disabled="{!v.disabled}">
+    <div id="{!v.id}" aura:id="{!v.id}" class="{!v.class}" data-aa-dcname="{!v.dcname}">
+        <lightning:button label="{!v.label}" variant="brand" class="{!'igcp-utils__width--100 slds-p-vertical--xxx-small ' + v.buttonClass}" onclick="{!c.onClick}" disabled="{!v.disabled}">
         </lightning:button>
     </div>
+    
 </aura:component>

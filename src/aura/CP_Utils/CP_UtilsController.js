@@ -198,21 +198,13 @@
 	},
 	onGoToLogin: function (cmp, evt, hlpr) {
 		try {
+			var params = evt.getParam("arguments");
 
-			var
-				params = evt.getParam("arguments"),
-				lang = "en";
-			if (params) {
-				//Capturing lang here
-				//so far not sure how login
-				//will handle language
-				//just keeping this here for the future
-				if (params.lang) {
-					lang = params.lang;
-				}
+			if(params.lang === "fr_CA") {
+				window.open("https://sso-fit.groupeinvestors.com/", "_self");
+			} else {
+				window.open("https://fitrp3-isam.investorsgroup.com/isam/sps/auth", "_self");
 			}
-
-			window.open("https://fitrp3-isam.investorsgroup.com/isam/sps/auth", "_self");
 		} catch (err) {
 			console.error("CP_Utils: gotoLogin: window not found.")
 			console.error(err);

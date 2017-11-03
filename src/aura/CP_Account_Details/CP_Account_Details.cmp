@@ -11,23 +11,57 @@
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="account-detail"></aura:attribute>
 	<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
-	<aura:attribute name="accountTitle" type="String" default=""></aura:attribute>
-	<aura:attribute name="accountNumber" type="String"></aura:attribute>
 	<aura:attribute name="accountNumberEnc" type="String"></aura:attribute>
 
 	<!-- RETURNED DATA FROM SALESFORCE -->
-	<aura:attribute name="accountDetailObj" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="investmentProfileObj" type="Map" default="{}" ></aura:attribute>
 	<aura:attribute name="holdingsObj" type="Map" default="{}" ></aura:attribute>
 	<aura:attribute name="transactionsArr" type="List" default="[]"></aura:attribute>
 	<aura:attribute name="instructionsArr" type="List" default="[]"></aura:attribute>
 	<aura:attribute name="accountPerformanceObj" type="Map" default="{}"></aura:attribute>
 
+	<!-- GENERAL OVERVIEW -->
+	<aura:attribute name="accountTitle" type="String" default=""></aura:attribute>
+	<aura:attribute name="accountNumber" type="String" default=""></aura:attribute>
 	<aura:attribute name="marketValue" type="String" default=""></aura:attribute>
-	<aura:attribute name="change" type="String" default=""></aura:attribute>
-	<aura:attribute name="gainLossType" type="String" default="positive" ></aura:attribute>
-	<aura:attribute name="gainLossPercentage" type="String" default="N/A"></aura:attribute>
+	<aura:attribute name="totalGainLoss" type="String" default=""></aura:attribute>
+	<aura:attribute name="totalGainLossPercentage" type="String" default=""></aura:attribute>
+	<aura:attribute name="gainLossType" type="String" default=""></aura:attribute>
+
+	<!-- ACCOUNT DETAILS -->
+	<aura:attribute name="detailsListArr" type="List" default="[]"></aura:attribute>
+
+	<!-- STANDARD -->
+	<aura:attribute name="bookCost" type="String" default=""></aura:attribute>
+	<aura:attribute name="clientNumber" type="String" default=""></aura:attribute>
+	<aura:attribute name="balanceDate" type="String" default=""></aura:attribute>
+	<aura:attribute name="netContributions" type="String" default=""></aura:attribute>
+
+	<!-- RDSP -->
+	<aura:attribute name="benificiaryNames" type="String" default=""></aura:attribute>
+
+	<!-- TFSA -->
+	<aura:attribute name="netContributionsYTD" type="String" default=""></aura:attribute>
+	<aura:attribute name="netRedemptionsYTD" type="String" default=""></aura:attribute>
+	<aura:attribute name="netContributionsInception" type="String" default=""></aura:attribute>
+	<aura:attribute name="netWithdrawalsInception" type="String" default=""></aura:attribute>
+	<aura:attribute name="successorHolder" type="String" default=""></aura:attribute>
+	<aura:attribute name="planSponsor" type="String" default=""></aura:attribute>
+	<aura:attribute name="canadianIncome" type="String" default=""></aura:attribute>
+	<aura:attribute name="foreignIncome" type="String" default=""></aura:attribute>
 	
+	<!-- RRSP -->
+	<aura:attribute name="first60DayContributionAmount" type="String" default=""></aura:attribute>
+	<aura:attribute name="last10MonthContributionAmount" type="String" default=""></aura:attribute>
+	<aura:attribute name="contributorSpouseName" type="String" default=""></aura:attribute>
+
+	<!-- RESP -->
+	<aura:attribute name="ytdContributionAmt" type="String" default=""></aura:attribute>
+	<aura:attribute name="craPlanId" type="String" default=""></aura:attribute>
+
+	<!-- SHARED  -->
+	<aura:attribute name="beneficiaryName" type="String" default=""></aura:attribute>
+
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
@@ -37,7 +71,7 @@
 		<div class="slds-size_12-of-12">
 			<div class="slds-m-top--medium slds-large-m-top--none slds-m-bottom--large">
 				
-				<c:CP_Cmp_Text_Link class="slds-float_left" linkClass="igcp-link__variant--a" icon="utility:chevronleft" label="{!$Label.c.CP_Generic_Label_Overview}" />
+				<c:CP_Cmp_Text_Link href="/customers/s/" class="slds-float_left" linkClass="igcp-link__variant--a" icon="utility:chevronleft" label="{!$Label.c.CP_Generic_Label_Overview}" />
 				
 				<c:CP_Cmp_Text_Link class="slds-float_right" linkClass="igcp-link__variant--a" icon="utility:table" label="{!$Label.c.CP_Generic_Label_View_Statement}" />
 
@@ -54,7 +88,7 @@
 
 					<c:CP_Cmp_Gain_Loss label="{!$Label.c.CP_Generic_Label_Change}" 
 						description="{!$Label.c.CP_Generic_Label_Year_To_Date}" 
-						value="{!v.change}" 
+						value="{!v.totalGainLoss}" 
 						percentage="{!v.gainLossPercentage}" 
 						gainLossType="{!v.gainLossType}" />
 					

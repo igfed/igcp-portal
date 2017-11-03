@@ -721,14 +721,11 @@
 			try {
 				action = component.get("c.UpdateAssets");
 
-
-				console.warn(params.payload);
-
 				action.setParams({
 					payload: params.payload
 				});
 
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
@@ -740,6 +737,34 @@
 				console.log(err);
 			}
 		}
+	},
+	onGetOnlineStatementListFilter: function (cmp, evt, hlpr) {
+		
+				var params = evt.getParam("arguments");
+				if (params) {
+					var
+						component = params.component,
+						action;
+		
+					try {
+						action = component.get("c.getOnlineStatementListFilter");
+		
+						action.setParams({
+							filter: params.filter
+						});
+		
+						hlpr.setCallback(
+							params,
+							action,
+							this,
+							"Assets failed to update.",
+							"unknown-error"
+						);
+					} catch (err) {
+						console.error("CP_Services: onGetOnlineStatementListFilter: controller not found, make sure it is attached to parent component.");
+						console.log(err);
+					}
+				}
 	},
 	onGetAllFinancialAssets: function (cmp, evt, hlpr) {
 

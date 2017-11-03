@@ -14,10 +14,10 @@
 				cmp.set("v.lang", params.language);
 			}
 
-			//hlpr.logReturned("LANG", cmp.get("v.lang"));
-
 			if (params.accEnc) {
 				cmp.set("v.accountNumberEnc", params.accEnc);
+			} else {
+				console.warn("CP_Account: No account number passed.");
 			}
 		});
 
@@ -30,20 +30,9 @@
 				cmp,
 				function (success) {
 					hlpr.logReturned("Get Account Detail", success);
-
 					if (success) {
-						cmp.set("v.accountDetailObj", success);
-
-						try {
-							utils.formatToCurrency(success.marketValueCad, function (returnedValue) {
-								cmp.set("v.marketValue", returnedValue);
-							}, cmp.get("v.lang"));
-						} catch (err) {
-							console.error("CP_Account_Details: setAccountDetail: formatToCurrency did not work: " + err)
-						}
-
-						cmp.set("v.gainLossPercentage", "N/A");
-						cmp.set("v.change", "N/A");
+						hlpr.setGeneralOverview(success, cmp);
+						hlpr.setDetailsList(success, cmp, hlpr);
 					}
 				},
 				function (error) {
@@ -56,7 +45,7 @@
 				cmp.get("v.accountNumberEnc"),
 				cmp,
 				function (success) {
-					hlpr.logReturned("Get Investment Profile", success);
+					//hlpr.logReturned("Get Investment Profile", success);
 					cmp.set("v.investmentProfileObj", success);
 				},
 				function (error) {
@@ -107,7 +96,7 @@
 				cmp.get("v.accountNumberEnc"),
 				cmp,
 				function (success) {
-					hlpr.logReturned("Get Transactions", success);
+					//hlpr.logReturned("Get Transactions", success);
 
 					var
 						transactionsArr = success,
@@ -145,7 +134,7 @@
 				cmp.get("v.accountNumberEnc"),
 				cmp,
 				function (success) {
-					hlpr.logReturned("Get Instructions", success);
+					//hlpr.logReturned("Get Instructions", success);
 
 					var
 						instructionsArr = success,
@@ -183,51 +172,54 @@
 				cmp,
 				function (success) {
 					hlpr.logReturned("Get Account Performance", success);
+
+					if (success !== null) {
+						var
+							openingValues = [
+								hlpr.handleBarValue(success.openingValueYtd),
+								hlpr.handleBarValue(success.openingValue1Yr),
+								hlpr.handleBarValue(success.openingValue3Yr),
+								hlpr.handleBarValue(success.openingValue5Yr),
+								hlpr.handleBarValue(success.openingValueInception)
+							],
+							closingValues = [
+								hlpr.handleBarValue(success.closingValueYtd),
+								hlpr.handleBarValue(success.closingValue1Yr),
+								hlpr.handleBarValue(success.closingValue3Yr),
+								hlpr.handleBarValue(success.closingValue5Yr),
+								hlpr.handleBarValue(success.closingValueInception)
+							],
+							dataObj = {
+								"labels": [
+									$A.get("$Label.c.CP_Generic_Label_YTD"),
+									$A.get("$Label.c.CP_Generic_Label_1yr"),
+									$A.get("$Label.c.CP_Generic_Label_3yr"),
+									$A.get("$Label.c.CP_Generic_Label_5yr"),
+									$A.get("$Label.c.CP_Generic_Label_Since"),
+								],
+								"datasets": [{
+									"label": $A.get("$Label.c.CP_Generic_Label_Opening_Value"),
+									"backgroundColor": "#1d5076",
+									"data": openingValues
+								}, {
+									"label": $A.get("$Label.c.CP_Generic_Label_Closing_Value"),
+									"backgroundColor": "#4dede7",
+									"data": closingValues
+								}]
+							};
+
+						events.fire(
+							"CP_Evt_Set_Graph", {
+								"id": "account-details-performance-chart",
+								"data": dataObj
+							});
+					}
 				},
 				function (error) {
 					console.error("Account Performance");
 					console.error(error);
 				}
 			);
-
-			events.fire(
-				"CP_Evt_Set_List", {
-					"id": "account-list",
-					"values": [{
-							label: $A.get("$Label.c.CP_Generic_Label_Balance_Date"),
-							detail: 'Apr 13, 2017'
-						},
-						{
-							label: $A.get("$Label.c.CP_Generic_Label_Book_Cost"),
-							detail: '$153,954.57'
-						},
-						{
-							label: $A.get("$Label.c.CP_Generic_Label_YTD_Contribution"),
-							detail: '$3,500.00'
-						},
-						{
-							label: $A.get("$Label.c.CP_Generic_Label_RESP_Benificiary_Name"),
-							detail: 'Jamie Holmes'
-						},
-						{
-							label: $A.get("$Label.c.CP_Generic_Label_Net_Contributions"),
-							detail: '$10,393.43'
-						},
-						{
-							label: $A.get("$Label.c.CP_Generic_Label_2016_Contributions"),
-							detail: '$1,594.25'
-						},
-						{
-							label: $A.get("$Label.c.CP_Generic_Label_2017_Contributions"),
-							detail: '$6,430.00'
-						}
-					]
-				}
-			);
-			events.fire(
-				"CP_Evt_Set_Graph", {
-					"id": "account-details-performance-chart"
-				});
 		});
 	},
 	doneRendering: function (cmp, evt, hlpr) {

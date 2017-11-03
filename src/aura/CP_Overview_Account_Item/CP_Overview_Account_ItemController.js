@@ -1,6 +1,6 @@
 ({
-	onInit: function(cmp, evt, hlpr) {
-		var 
+	onInit: function (cmp, evt, hlpr) {
+		var
 			account = cmp.get("v.account"),
 			utils = cmp.find("CP_Utils");
 
@@ -19,16 +19,16 @@
 				cmp.set("v.val1", $A.get("$Label.c.CP_Generic_Not_Available"));
 			}
 
-			if(account.signGainLoss) {
+			if (account.signGainLoss) {
 				cmp.set("v.gainLossType", account.signGainLoss);
 			}
 
 			if (account.marketValue) {
 				var marketValue = "";
-				utils.formatToCurrency(account.marketValue, function(formattedValue){
-					if(cmp.get("v.lang") === "en_US" || cmp.get("v.lang") === "en_CA") {
+				utils.formatToCurrency(account.marketValue, function (formattedValue) {
+					if (cmp.get("v.lang") === "en_US" || cmp.get("v.lang") === "en_CA") {
 						formattedValue = "$" + formattedValue;
-					} else if(cmp.get("v.lang") === "fr_CA") {
+					} else if (cmp.get("v.lang") === "fr_CA") {
 						formattedValue = formattedValue + " $";
 					} else {
 						formattedValue = "$" + formattedValue;
@@ -59,7 +59,7 @@
 
 				var loanBalance = "";
 
-				utils.formatToCurrency(account.loanBalance, function(formattedValue){
+				utils.formatToCurrency(account.loanBalance, function (formattedValue) {
 					loanBalance = "$" + formattedValue;
 				}, cmp.get("v.lang"));
 
@@ -78,13 +78,13 @@
 				cmp.set("v.accountName", $A.get("$Label.c.CP_Generic_Not_Available"));
 			}
 
-			if(account.companyCarrier) {
+			if (account.companyCarrier) {
 				cmp.set("v.val1", account.companyCarrier);
 			} else {
 				cmp.set("v.val1", $A.get("$Label.c.CP_Generic_Not_Available"));
 			}
 
-			if(account.policyNumber) {
+			if (account.policyNumber) {
 				cmp.set("v.val2", account.policyNumber);
 			} else {
 				cmp.set("v.val2", $A.get("$Label.c.CP_Generic_Not_Available"));
@@ -92,17 +92,21 @@
 		}
 
 	},
-	onItemClick: function(cmp, evt, hlpr) {
-		var 
-			utils = cmp.find("CP_Utils"),
-			accountNumEnc = cmp.get("v.account").accountNumberEnc;
+	onItemClick: function (cmp, evt, hlpr) {
 
-		if(accountNumEnc) {
-			if(cmp.get("v.itemType") === "mortgage") {
-				utils.navigateToURL("/customers/s/mortgage-details?accEnc=" + accountNumEnc);
-			} else {
-				utils.navigateToURL("/customers/s/account-details?accEnc=" + accountNumEnc);
-			}
+		var
+			utils = cmp.find("CP_Utils"),
+			accountNumEnc = cmp.get("v.account").accountNumberEnc,
+			loanEnc = "", policyEnc ="";
+
+		if (accountNumEnc) {
+			utils.navigateToURL("/customers/s/account-details?accEnc=" + accountNumEnc);
+		} else if (cmp.get("v.itemType") === "mortgage") {
+			loanEnc = cmp.get("v.account").loanNumber;
+			utils.navigateToURL("/customers/s/mortgage-details?loanEnc=" + loanEnc);
+		} else if (cmp.get("v.itemType") === "insurance") {
+			policyEnc = cmp.get("v.account").policyNumber;
+			utils.navigateToURL("/customers/s/insurance-details?policyEnc=" + policyEnc);
 		}
 	}
 })

@@ -68,7 +68,13 @@
 						hlpr.addToCurrentPayload(cmp, "question", questionObj.question);
 
 						cmp.set("v.isamStateId", questionObj.stateId);
+						hlpr.addToCurrentPayload(cmp, "stateId", questionObj.stateId);
+
 						cmp.set("v.questionId", questionObj.id);
+						hlpr.addToCurrentPayload(cmp, "id", questionObj.id);
+
+						console.log("CURRENT PAYLOAD");
+						console.log(cmp.get("v.payload"));
 
 					} else {
 						events.fire("CP_Evt_Toast_Error", {
@@ -82,14 +88,14 @@
 					console.error("Forgot Pass Step 2: get random question.");
 					console.error(error);
 
-					events.fire("CP_Evt_Toast_Error", {
-						"id": "forgot-pass-step-2-toast-error",
-						"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-					});
+					// events.fire("CP_Evt_Toast_Error", {
+					// 	"id": "forgot-pass-step-2-toast-error",
+					// 	"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
+					// });
 				}
 			);
 		} catch (err) {
-			console.log("GET RAD QUESITON")
+			console.log("GET RAND QUESITON")
 			console.error(err);
 		}
 

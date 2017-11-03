@@ -1,5 +1,5 @@
 ({
-	onInit: function(cmp, evt, hlpr) {
+	onInit: function (cmp, evt, hlpr) {
 		if (cmp.get("v.id") === "default") {
 			console.error("CP_Cmp_Input_Password: A unique 'id' is required.");
 		}
@@ -8,7 +8,7 @@
 			console.error("CP_Cmp_Input_Password: Input needs to be associated with a 'form'.")
 		}
 	},
-	onGetValue: function(cmp, evt, hlpr) {
+	onGetValue: function (cmp, evt, hlpr) {
 
 		var
 			events = cmp.find('CP_Events'),
@@ -29,19 +29,23 @@
 			events.fire("CP_Evt_Send_Input_Value", evtParams);
 		}
 	},
-	onValid: function(cmp, evt, hlpr) {
+	onValid: function (cmp, evt, hlpr) {
 
 		if (cmp.get("v.id") === evt.getParam("payload").id) {
-			var field = cmp.find("password-input");
+			var 
+				field = cmp.find("password-input"),
+				confirmField = cmp.find("confirm-password-input");
 
 			cmp.set("v.limitClass", "igcp-text__success igcp-utils__font-size--x-small");
 			cmp.set("v.upperClass", "igcp-text__success igcp-utils__font-size--x-small");
 			cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");
 
+			confirmField.set("v.errors", []);
+
 			field.set("v.errors", []);
 		}
 	},
-	onError: function(cmp, evt, hlpr) {
+	onError: function (cmp, evt, hlpr) {
 
 		var
 			utils = cmp.find("CP_Utils"),
@@ -60,7 +64,7 @@
 
 			if (errors.length > 0) {
 
-				errors.forEach(function(err, i) {
+				errors.forEach(function (err, i) {
 					errorTypeArr.push(err.type);
 				});
 
@@ -95,7 +99,7 @@
 					}
 				});
 
-				//passwordsMatch
+				passwordsMatch
 				utils.arrayContains(errorTypeArr, "passwordsMatch", function(hasValue) {
 					if (hasValue === false) {
 						passwordsMatch = true;
@@ -108,6 +112,7 @@
 					cmp.set("v.upperClass", "igcp-text__error igcp-utils__font-size--x-small");
 					cmp.set("v.charClass", "igcp-text__error igcp-utils__font-size--x-small");
 				} else {
+
 					if (minLength === true) {
 						cmp.set("v.limitClass", "igcp-text__error igcp-utils__font-size--x-small");
 					}
@@ -129,7 +134,12 @@
 					}
 
 					if (passwordsMatch === false) {
-						confirmPasswordInput.set("v.errors", [{ "message" : errors[0].msg}]);
+						
+						hlpr.checkForPassConfirm(errors, function(msg){
+							confirmPasswordInput.set("v.errors", [{
+								"message": msg
+							}]);
+						});
 					} else {
 						confirmPasswordInput.set("v.errors", []);
 					}
@@ -137,7 +147,7 @@
 			}
 		}
 	},
-	onHandleKey: function(cmp, evt, hlpr) {
+	onHandleKey: function (cmp, evt, hlpr) {
 
 		var events = cmp.find("CP_Events");
 		events.fire("CP_Evt_Key", {
@@ -146,7 +156,7 @@
 			"value": cmp.get("v.passcode")
 		});
 	},
-	onBlur: function(cmp, evt, hlpr) {
+	onBlur: function (cmp, evt, hlpr) {
 		var events = cmp.find("CP_Events");
 		events.fire("CP_Evt_Input_Blur", {
 			"id": cmp.get("v.id"),
@@ -154,22 +164,24 @@
 			"value": cmp.get("v.passcode")
 		});
 	},
-	onConfirmationBlur: function(cmp, evt, hlpr) {
+	onConfirmationBlur: function (cmp, evt, hlpr) {
+
+		console.log("ON CONFIRMATION BLUR");
 
 		var events = cmp.find("CP_Events");
 		events.fire("CP_Evt_Input_Blur", {
 			"id": cmp.get("v.id"),
-			"type": "password-confirm",
+			"type": cmp.get("v.type"),
 			"value": cmp.get("v.passcode"),
 			"confirmValue": cmp.get("v.passcodeConfirm")
 		});
 	},
-	doneRendering: function(cmp, evt, hlpr){
-		if(!cmp.get("v.isDoneRendering")){
+	doneRendering: function (cmp, evt, hlpr) {
+		if (!cmp.get("v.isDoneRendering")) {
 			if (cmp.get("v.hasFocus") === true) {
 				cmp.find("password-input").getElement().focus();
 			}
-			cmp.set("v.isDoneRendering", true);	
+			cmp.set("v.isDoneRendering", true);
 		}
 	}
 })

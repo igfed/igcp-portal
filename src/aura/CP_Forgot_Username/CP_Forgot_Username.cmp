@@ -4,6 +4,7 @@
 	<aura:attribute name="id" type="String" default="forgot-username"></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-utils__overflow--hidden"></aura:attribute>
 	<aura:attribute name="currentStep" type="Integer" default="0" ></aura:attribute>
+	<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
 
 	<!-- STEP 1 -->
 	<aura:attribute name="clientNum" type="String"></aura:attribute>
@@ -18,9 +19,11 @@
 	<!-- INCLUDES -->	
     <c:CP_CSS_Includes />
     <c:CP_JS_Includes />
-    <c:CP_User_Info />
+	<c:CP_Utils aura:id="CP_Utils"/>
+
 
     <!-- HANDLER -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
     <aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
     <aura:handler event="c:CP_Evt_Next_Step" action="{!c.onNextStep}"></aura:handler>
     <aura:handler event="c:CP_Evt_Back_Step" action="{!c.onBackStep}"></aura:handler>
@@ -32,7 +35,8 @@
 
     	<aura:if isTrue="{!v.currentStep == 0}"  >
     		<c:CP_Forgot_User_Step_1 clientNum="{!v.clientNum}" 
-    			email="{!v.email}"/>
+    			email="{!v.email}"
+				lang="{!v.lang}"/>
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 1}"  >
@@ -41,19 +45,21 @@
     			question="{!v.question}" 
     			answer="{!v.answer}"
     			isamStateId="{!v.isamStateId}"
-    			questionId="{!v.questionId}"/>
+    			questionId="{!v.questionId}"
+				lang="{!v.lang}"/>
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 2}"  >
-    		<c:CP_Forgot_User_Thank_You email="{!v.email}"/>
+    		<c:CP_Forgot_User_Thank_You email="{!v.email}"
+				lang="{!v.lang}"/>
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 3}"  >
-    		<c:CP_Forgot_User_Not_Completed />
+    		<c:CP_Forgot_User_Not_Completed lang="{!v.lang}"/>
     	</aura:if>
 
     	<aura:if isTrue="{!v.currentStep == 4}"  >
-    		<c:CP_Forgot_User_Locked_Out />
+    		<c:CP_Forgot_User_Locked_Out lang="{!v.lang}"/>
     	</aura:if>
     	
     </div>

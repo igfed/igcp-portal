@@ -10,8 +10,9 @@
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="mortgage-detail"></aura:attribute>
 	<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
-	<aura:attribute name="accountTitle" type="String" default="Fixed Rate Mortgage"></aura:attribute>
-	<aura:attribute name="accountNumber" type="String" default="1234567"></aura:attribute>
+	<aura:attribute name="accountTitle" type="String" default=""></aura:attribute>
+	<aura:attribute name="accountNumber" type="String" default=""></aura:attribute>
+	<aura:attribute name="loanNumberEnc" type="String" default=""></aura:attribute>
 
 	<!-- RETURNED DATA FROM SALESFORCE -->
 	<aura:attribute name="payment" type="String" default=""></aura:attribute>

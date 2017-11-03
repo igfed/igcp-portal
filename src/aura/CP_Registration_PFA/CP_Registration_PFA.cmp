@@ -7,7 +7,7 @@
 	<aura:handler event="c:CP_Evt_Click" action="{!c.onStart}"></aura:handler>
 
 	<!-- MARKUP -->
-	<div data-aa-name="registration-pfa" class="igcp-background__gradient ig-analytics-component">
+	<div data-aa-name="CP_Registration_PFA" class="igcp-background__gradient aa-component">
 		
 		<div class="igcp-utils__max-width--large igcp-utils__margin--zero-auto slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-around--large slds-medium-p-around--xx-large">
 			
@@ -19,11 +19,11 @@
 					
 					<p class="slds-m-vertical--x-small slds-medium-p-right--medium slds-large-p-right--large slds-text-align_center slds-medium-text-align_left">{!$Label.c.CP_Registration_Start_Instructions}</p>
 					
-					<c:CP_Cmp_Button id="get-started-pfa" label="{!$Label.c.CP_Generic_Button_Get_Started}" class="aa-click igcp-utils__width--100 igcp-medium-utils__width--50 slds-m-top--medium slds-p-horizontal--large slds-medium-p-horizontal--zero" />
+					<c:CP_Cmp_Button dcname="register-start" id="get-started-pfa" label="{!$Label.c.CP_Generic_Button_Get_Started}" class="aa-click igcp-utils__width--100 igcp-medium-utils__width--50 slds-m-top--medium slds-p-horizontal--large slds-medium-p-horizontal--zero" />
 
 				</div>	
 			</div>
-			
+
 			<div class="igcp-utils__text-align--center igcp-large-utils__text-align--left slds-size_12-of-12 slds-medium-size_5-of-12 slds-large-size_7-of-12 slds-m-top--large slds-large-m-top--zero">
 				<div>
 					<img class="igcp-medium-utils__max-width--none" src="{!$Resource.igcpresources + '/igcp-resources/images/registration/registration-hero.png'}" alt="{!$Label.c.CP_Registration_Img_Hero_Alt}"/>

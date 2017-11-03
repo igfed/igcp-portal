@@ -69,6 +69,16 @@
 			float: left;
 		}
 	}
+	.#{$namespace}-statement {
+		.#{$namespace}-banner {
+			align-items: center;
+			display: flex;
+			justify-content: space-around;
+			img {
+				margin: 0;
+			}
+		}
+	}
 }
 
 //Large
