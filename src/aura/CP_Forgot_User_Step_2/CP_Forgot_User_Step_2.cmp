@@ -64,7 +64,7 @@
 					<div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 				</div>
 				<!--CTAS-->
-				<c:CP_Cmp_Form_Back_Next id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" form="{!v.pageId}" />
+				<c:CP_Cmp_Form_Back_Next dcname="" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" form="{!v.pageId}" />
 			</div>
 		</div>
 		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>

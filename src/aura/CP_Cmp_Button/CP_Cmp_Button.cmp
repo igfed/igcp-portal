@@ -5,7 +5,7 @@
 
     <!-- ATTRS -->
     <aura:attribute name="id" type="String" default="default"/>
-    <aura:attribute name="dcname" type="String" default="default"/>
+    <aura:attribute name="dcname" type="String" default="null"/>
     <aura:attribute name="label" type="String" default="default" />
     <aura:attribute name="buttonType" type="String" default="default"></aura:attribute>
     <aura:attribute name="icon" type="String" />

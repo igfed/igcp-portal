@@ -42,16 +42,20 @@
 
     // Register click event handlers
     $('.aa-click').on('click', function (e) {
-      event.type = 'click';
-      _constructEventObj($(this));
-      _executeDirectCall(event.dcName);
+      if ($(this).data('aaDcname')) {
+        event.type = 'click';
+        _constructEventObj($(this));
+        _executeDirectCall(event.dcName);
+      }
     });
 
     // Register hover event handlers
     $('.aa-hover').on('click', function (e) {
-      event.type = 'hover';
-      _constructEventObj($(this));
-      _executeDirectCall(event.dcName);
+      if ($(this).data('aaDcname')) {
+        event.type = 'hover';
+        _constructEventObj($(this));
+        _executeDirectCall(event.dcName);
+      }
     });
   }
 
@@ -67,7 +71,6 @@
     } else {
       lang = 'en'
     }
-
     return lang;
   }
 
@@ -129,7 +132,12 @@
     }
 
     if (event.type === 'dc') {
-
+      // Move 'data' props into event object
+      for (var prop in $this) {
+        if ($this.hasOwnProperty(prop)) {
+          event[prop] = $this[prop];
+        }
+      }
     }
 
     window.digitalData.events.push(event);
