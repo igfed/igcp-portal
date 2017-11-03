@@ -35,7 +35,7 @@
 			currentStep = cmp.get("v.currentStep");
 
 		if (payload.id === "registration-step-1" || payload.id === "registration-step-2") {
-			utils.gotoLogin();
+			// utils.gotoLogin();
 		} else {
 
 			var backStep = currentStep -= 1;

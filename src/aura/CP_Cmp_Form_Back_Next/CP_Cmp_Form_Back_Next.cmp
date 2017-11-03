@@ -10,6 +10,8 @@
 	<aura:attribute name="backLabel" type="String" default="Back" />
 	<aura:attribute name="nextLabel" type="String" default="Next" />
 	<aura:attribute name="modalID" type="String" default="igcp-modal" />
+	<aura:attribute name="dcname" type="String" default="null" />
+
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="c:CP_Evt_Click" action="{!c.onButtonClick}" />

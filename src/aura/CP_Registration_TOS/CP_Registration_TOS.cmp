@@ -45,10 +45,10 @@
 				<c:CP_Cmp_Button dcname="terms-accept" id="tos_agree_button" label="{!$Label.c.CP_Generic_Label_Agree}" class="aa-click slds-m-right_medium slds-float_left igcp-large-utils__display--block slds-x-small-size--4-of-12 slds-medium-size--2-of-12 slds-m-left_x-small" />
 			</aura:if>
 			<aura:if isTrue="{!v.userAgrees == false}">
-				<c:CP_Cmp_Button id="tos_agree_button-disabled" disabled="true" label="{!$Label.c.CP_Generic_Label_Agree}" class="slds-m-right_medium slds-float_left igcp-large-utils__display--block slds-x-small-size--4-of-12 slds-medium-size--2-of-12 slds-m-left_x-small" />
+				<c:CP_Cmp_Button id="tos_agree_button-disabled" disabled="true" label="{!$Label.c.CP_Generic_Label_Agree}" class="aa-click slds-m-right_medium slds-float_left igcp-large-utils__display--block slds-x-small-size--4-of-12 slds-medium-size--2-of-12 slds-m-left_x-small" />
 			</aura:if>
 
-			<c:CP_Cmp_Button id="tos_agree_button-cancel" label="{!$Label.c.CP_Generic_Label_Cancel}" class="igcp-large-utils__display--block slds-m-right_medium slds-float_left slds-x-small-size--4-of-12 slds-medium-size--2-of-12" buttonClass="slds-button slds-button--neutral"/>
+			<c:CP_Cmp_Button dcname="register-cancel" id="tos_agree_button-cancel" label="{!$Label.c.CP_Generic_Label_Cancel}" class="aa-click igcp-large-utils__display--block slds-m-right_medium slds-float_left slds-x-small-size--4-of-12 slds-medium-size--2-of-12" buttonClass="slds-button slds-button--neutral"/>
 		</div>
 		</div>
 </aura:component>
