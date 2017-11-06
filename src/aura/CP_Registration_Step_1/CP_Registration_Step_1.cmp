@@ -6,6 +6,7 @@
 	<aura:attribute name="inputsReceived" type="Integer" default="0"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="dcname" type="String" default="none"></aura:attribute>
+    <aura:attribute name="dctype" type="String" default="click"></aura:attribute>
 
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String"></aura:attribute>

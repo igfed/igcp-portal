@@ -8,14 +8,14 @@
     <aura:attribute name="for" Type="String"></aura:attribute>
     <aura:attribute name="icon" Type="String" />
     <aura:attribute name="dcname" type="String" default="none"/>
-    <aura:attribute name="dctype" type="String" />
+    <aura:attribute name="dctype" type="String" default="click"/>
     <aura:attribute name="iconSize" Type="String" default="small"/>
     <aura:attribute name="class" type="String" />
     <aura:attribute name="disabled" type="Boolean" default="false"></aura:attribute>
     <aura:attribute name="buttonClass" type="String" default=""></aura:attribute>
     <aura:attribute name="label" type="String" default="Back" />
     <aura:attribute name="buttonType" type="String" default="default"></aura:attribute>
-
+    
     <!-- HANDLERS -->
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     

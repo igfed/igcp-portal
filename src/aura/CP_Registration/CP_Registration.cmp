@@ -53,7 +53,8 @@
 			<c:CP_Registration_Step_1 clientNum="{!v.clientNum}" 
 				postalCode="{!v.postalCode}" 
 				dob="{!v.dob}" 
-				dcname="{!v.dcname}"/>
+				dcname="{!v.dcname}"
+				dctype="{!v.dctype}"/>
 		</aura:if>
 		<aura:if isTrue="{!v.currentStep == 2}">
 			<c:CP_Registration_Step_2 clientNum="{!v.clientNum}" 
@@ -73,7 +74,8 @@
 				securityQuestion3="{!v.securityQuestion3}" 
 				answer3="{!v.answer3}" 
 				lang="{!v.lang}" 
-				dcname="{!v.dcname}"/>
+				dcname="{!v.dcname}"
+				dctype="{!v.dctype}"/>
 		</aura:if>
 		<aura:if isTrue="{!v.currentStep == 3}">
 			<c:CP_Registration_Step_3 clientNum="{!v.clientNum}" 
@@ -94,7 +96,8 @@
 				answer3="{!v.answer3}" 
 				acceptTOS="{!v.acceptTOS}" 
 				lang="{!v.lang}"
-				dcname="{!v.dcname}"/>
+				dcname="{!v.dcname}"
+				dctype="{!v.dctype}"/>
 		</aura:if>
 		<aura:if isTrue="{!v.currentStep == 4}">
 			<c:CP_Registration_Thank_You />

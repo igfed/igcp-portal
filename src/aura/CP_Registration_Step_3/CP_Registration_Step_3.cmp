@@ -5,7 +5,7 @@
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large"></aura:attribute>
 	<aura:attribute name="dcname" type="String" default="none"></aura:attribute>
-    <aura:attribute name="dctype" type="String"></aura:attribute>
+    <aura:attribute name="dctype" type="String" default="click"></aura:attribute>
 
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default="" />
@@ -62,6 +62,7 @@
 	<aura:method name="logPayloadVars" action="{!c.logPayloadVars}" description="A debugging method">
 		<aura:attribute name="payload" type="Map"></aura:attribute>
 	</aura:method>
+	
 	
 	<!-- MARKUP -->
 	<div class="igcp-background">

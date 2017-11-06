@@ -8,7 +8,7 @@
 	<aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="errIdArr" type="List" default="[]"></aura:attribute>
     <aura:attribute name="dcname" type="String" default="none"></aura:attribute>
-	<aura:attribute name="dctype" type="String"></aura:attribute>
+	<aura:attribute name="dctype" type="String" default="click"></aura:attribute>
 	
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String"></aura:attribute>
