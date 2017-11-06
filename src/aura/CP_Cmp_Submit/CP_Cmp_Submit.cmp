@@ -19,7 +19,7 @@
     <!-- HANDLERS -->
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     
-    <div id="{!v.id}" aura:id="{!v.id}" class="{!v.class}">
+    <div id="{!v.id}" aura:id="{!v.id}" class="{!v.class}" data-aa-dcname="{!v.dcname}" data-aa-type="{!v.dctype}">
         <lightning:button label="{!v.label}" variant="brand" class="{!'igcp-utils__width--100 slds-p-vertical--xxx-small ' + v.buttonClass}" onclick="{!c.onClick}" disabled="{!v.disabled}" >
         </lightning:button>
     </div>
