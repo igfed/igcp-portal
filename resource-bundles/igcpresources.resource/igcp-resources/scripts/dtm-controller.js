@@ -9,21 +9,10 @@
   var $this,
     $component
 
-  // Event object that will be pushed into events array
-  var event = {};
-  event.component = {};
-  event.page = {};
-  event.form = {};
-  event.search = {};
-  event.tool = {};
-  event.advisor = {};
-  event.download = {};
-
   // Setup custom tracking handler for 'true' direct calls from JS
   window.dtmCall = function (dcName, data) {
     console.log('parse direct call');
-    event.type = 'dc';
-    _constructEventObj(data);
+    _constructEventObj(data, 'dc');
     _executeDirectCall(dcName);
   }
 
@@ -69,20 +58,16 @@
       if ($(this).data('aaDcname') && $(this).data('aaDcname') !== 'none') {
         e.stopPropagation();
         e.stopImmediatePropagation();
-        event.type = 'click';
-        _constructEventObj($(this));
-        _executeDirectCall(event.dcName);
+        _constructEventObj($(this), 'click');
       }
     });
 
     // Register hover event handlers
-    $("[data-aa-type='hover']").on('click', function (e) {
+    $("[data-aa-type='hover']").on('hover', function (e) {
       if ($(this).data('aaDcname') && $(this).data('aaDcname') !== 'none') {
         e.stopPropagation();
         e.stopImmediatePropagation();
-        event.type = 'hover';
-        _constructEventObj($(this));
-        _executeDirectCall(event.dcName);
+        _constructEventObj($(this), 'hover');
       }
     });
   }
@@ -91,7 +76,17 @@
     return window.location.href.substr(window.location.href.lastIndexOf('/') + 1)
   }
 
-  function _constructEventObj($this) {
+  function _constructEventObj($this, type) {
+    // Event object that will be pushed into events array
+    var event = {};
+    event.component = {};
+    event.page = {};
+    event.form = {};
+    event.search = {};
+    event.tool = {};
+    event.advisor = {};
+    event.download = {};
+    event.type = type;
     event.page.referrer = window.location.href;
 
     if (event.type === 'click' || event.type === 'hover') {
@@ -110,7 +105,7 @@
 
       // Store component container node  
       $component = $this.parents('.aa-component');
-
+      console.log($component);
       // Capture component data
       if ($component.length > 0) {
         event.component.id = $component.data('aa-id');
@@ -152,8 +147,11 @@
       }
     }
 
+    console.log(event);
+
     window.digitalData.events.push(event);
     console.log(window.digitalData);
+    _executeDirectCall(event.dcName);
   }
 
   function _executeDirectCall(name) {
