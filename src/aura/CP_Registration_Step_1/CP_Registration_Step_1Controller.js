@@ -74,6 +74,7 @@
 			}
 		);
 	},
+	
 	gotoNextStep: function(cmp, evt, hlpr) {
 		var event = cmp.find("CP_Events");
 		event.fire("CP_Evt_Next_Step", {

@@ -15,8 +15,6 @@
 			services = cmp.find("CP_Services"),
 			payload = evt.getParam("payload");
 
-		console.log(payload);
-
 		if(payload.id === "tos_agree_button") {
 			var formData = JSON.stringify({
 				"allDocumentPreference" : false , 
@@ -24,8 +22,6 @@
 				"documentPreferencesLoan" : [{"loanNumber" : "76568", "mortgageDocument" : true},{"loanNumber" : "7656800", "mortgageDocument" : false}],
 				"documentPreferencesPolicy" : [{"policyNumber" : "7656811", "mortgageDocument" : true},{"policyNumber" : "765680022", "policyDocument" : false}]
 			});
-
-			console.log('onSubmit')
 
 			services.updateAssets(
 				formData,

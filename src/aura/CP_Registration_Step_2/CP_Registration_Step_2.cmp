@@ -7,7 +7,7 @@
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="errIdArr" type="List" default="[]"></aura:attribute>
-
+	
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String"></aura:attribute>
 	<aura:attribute name="postalCode" type="String"></aura:attribute>
@@ -56,7 +56,7 @@
 	</aura:method>
 	
 	<!-- MARKUP -->
-	<div class="igcp-background">
+	<div data-aa-component="CP_Registration_Step_2" class="igcp-background">
 		<div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
 			<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
 			<div class="slds-p-around--small slds-medium-p-around--zero slds-size_12-of-12 slds-medium-size_6-of-12">
@@ -94,7 +94,7 @@
 				
 				<div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 				
-				<c:CP_Cmp_Form_Back_Next dcname="register-cancel" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" form="{!v.pageId}" />
+				<c:CP_Cmp_Form_Back_Next dcname1="register-cancel" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" form="{!v.pageId}" />
 			</div>
 			<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
 		</div>

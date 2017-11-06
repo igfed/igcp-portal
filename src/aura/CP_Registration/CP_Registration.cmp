@@ -12,7 +12,6 @@
 	<aura:attribute name="class" type="String" default="igcp-utils__overflow--hidden"></aura:attribute>
 	<aura:attribute name="currentStep" type="Integer" default="0"></aura:attribute>
 
-
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default="" />
 	<aura:attribute name="postalCode" type="String" default="" />
@@ -53,7 +52,7 @@
 		<aura:if isTrue="{!v.currentStep == 1}">
 			<c:CP_Registration_Step_1 clientNum="{!v.clientNum}" 
 				postalCode="{!v.postalCode}" 
-				dob="{!v.dob}" />
+				dob="{!v.dob}"/>
 		</aura:if>
 		<aura:if isTrue="{!v.currentStep == 2}">
 			<c:CP_Registration_Step_2 clientNum="{!v.clientNum}" 
@@ -72,7 +71,7 @@
 				answer2="{!v.answer2}" 
 				securityQuestion3="{!v.securityQuestion3}" 
 				answer3="{!v.answer3}" 
-				lang="{!v.lang}" />
+				lang="{!v.lang}"/>
 		</aura:if>
 		<aura:if isTrue="{!v.currentStep == 3}">
 			<c:CP_Registration_Step_3 clientNum="{!v.clientNum}" 
