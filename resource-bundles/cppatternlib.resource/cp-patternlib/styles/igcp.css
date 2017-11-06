@@ -13,6 +13,9 @@
   font-weight: 400;
   text-rendering: optimizeLegibility;
   src: url(../fonts/whitney-light-webfont.woff2) format("woff2"), url(../fonts/whitney-light-webfont.woff) format("woff"), url(../fonts/whitney-light-webfont.ttf) format("truetype"); }
+html, body {
+  height: 100%; }
+
 h1,
 h2,
 h3,
@@ -124,7 +127,7 @@ table {
   top: -3px;
   position: relative; }
 
-.slds-spinner_brand.slds-spinner:before, .slds-spinner_brand.slds-spinner:after, .slds-spinner_brand.slds-spinner__dot-a:before, .slds-spinner_brand.slds-spinner__dot-a:after, .slds-spinner_brand.slds-spinner__dot-b:before, .slds-spinner_brand.slds-spinner__dot-b:after {
+.slds-spinner .slds-spinner_medium .slds-spinner_brand.slds-spinner:before, .slds-spinner .slds-spinner_medium .slds-spinner_brand.slds-spinner:after, .slds-spinner .slds-spinner_medium .slds-spinner_brand.slds-spinner__dot-a, .slds-spinner .slds-spinner_medium .slds-spinner_brand.slds-spinner__dot-b, .slds-spinner .slds-spinner_medium .slds-spinner_brand.slds-spinner__dot-a:before, .slds-spinner .slds-spinner_medium .slds-spinner_brand.slds-spinner__dot-a:after, .slds-spinner .slds-spinner_medium .slds-spinner_brand.slds-spinner__dot-b:before, .slds-spinner .slds-spinner_medium .slds-spinner_brand.slds-spinner__dot-b:after {
   background-color: #0d263c; }
 
 .slds-button {
@@ -3966,16 +3969,15 @@ table {
     border-top: 1px solid #ddd; }
 .igcp-statement .igcp-banner {
   background-color: #43c1bc;
-  height: 180px;
+  display: block;
+  padding: 15px;
+  overflow: hidden;
   position: relative;
   margin-top: -15px; }
   .igcp-statement .igcp-banner .igcp-banner-heading {
     color: #282828; }
   .igcp-statement .igcp-banner .igcp-banner-text {
-    z-index: 1000;
-    position: absolute;
-    top: 35px;
-    left: 40px; }
+    z-index: 1000; }
   .igcp-statement .igcp-banner button {
     background: transparent;
     border: 1px solid #282828;
@@ -3988,10 +3990,20 @@ table {
     font-family: "WhitneyBook", Arial, sans-serif; }
   .igcp-statement .igcp-banner img {
     width: auto;
-    position: absolute;
-    top: 0;
-    right: 0;
+    margin: 0 auto;
+    display: block;
     z-index: 1; }
+  .igcp-statement .igcp-banner .igcp-banner-text-img {
+    position: relative; }
+
+.igcp-loading-icon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  z-index: 100; }
+  .igcp-loading-icon.igcp-loading-icon__background {
+    background-color: rgba(248, 248, 249, 0.75); }
 
 @media (min-width: 768px) {
   .igcp-registration .igcp-registration__pfa h1 {
@@ -4027,7 +4039,14 @@ table {
     display: table-cell; }
 
   .igcp-footer .footer-link {
-    float: left; } }
+    float: left; }
+
+  .igcp-statement .igcp-banner {
+    align-items: center;
+    display: flex;
+    justify-content: space-around; }
+    .igcp-statement .igcp-banner img {
+      margin: 0; } }
 @media (min-width: 1024px) {
   .igcp-registration .igcp-registration__pfa--monitor {
     top: 23px;
@@ -4079,10 +4098,10 @@ table {
     /* useful if you don't want a bg color from leaking outside the border: */
     background-clip: padding-box;
     /* Android 2.2+, Chrome, Firefox 4+, IE 9+, iOS 4+, Opera 10.50+, Safari 4+ */
-    top: 25%;
+    top: 10%;
     left: 10%;
     right: 10%;
-    bottom: 25%; }
+    bottom: 10%; }
 
   .igcp-footer {
     padding-top: 0; }

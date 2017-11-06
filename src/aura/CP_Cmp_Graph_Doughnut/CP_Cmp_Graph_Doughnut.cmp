@@ -14,7 +14,8 @@
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 	
 	<!-- MARKUP -->
-	<div class="{!'slds-grid slds-wrap ' + v.class}">
+	<div class="{!'igcp-utils__position--relative slds-grid slds-wrap ' + v.class}">
+		<c:CP_Cmp_Loading_Icon id="graph-spinner" hasBG="true"/>
 		<div class="slds-size_12-of-12 slds-p-horizontal--small">
 			<h3 class="igcp-label--small">{!$Label.c.CP_Generic_Label_Asset_Mix}</h3>
 		</div>

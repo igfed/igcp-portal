@@ -1,0 +1,66 @@
+.THIS {
+    position: relative;     /* for benefit of slds-spinner */
+    min-height: 10rem;      /* for benefit of slds-spinner */
+}
+
+.THIS .hidden {
+    display: none;
+}
+
+/* common.css provides other style rules for .componentHeading */
+.THIS .componentHeading {
+    color: token(theColorTextLink);
+    border-color: token(theColorTextLink);
+}
+
+.THIS li.slds-is-active > div {
+    background-color: token(colorBackgroundButtonDefaultHover);
+}
+
+.THIS .slds-tree__item > button:hover {
+    background-color: token(colorBackgroundButtonDefaultHover);
+}
+
+/* the :focus styling removes the visual artifacts of having clicked on a expandy/collapsy or the category name */
+
+.THIS .slds-tree__item > button:focus {
+    box-shadow: none;
+}
+
+.THIS .slds-tree__item:hover,
+.THIS .slds-tree__item > a.slds-navigation-list--vertical__action:focus {
+    background: none;
+}
+
+.THIS li.slds-is-active .slds-tree__item:hover {
+    background-color: token(colorBackgroundButtonDefaultHover);
+}
+
+.THIS li.slds-is-active .slds-navigation-list--vertical__action:hover {
+    background: none;
+}
+
+.THIS .slds-navigation-list--vertical__action {
+    padding: 0.25rem;   /* tighten up from default 0.5rem 1.5rem */
+    width: 100%;
+}
+
+.THIS .editSubscriptions {
+    position: absolute;
+    right: 0;
+}
+
+.THIS .slds-popover {
+    display: none;
+    position: absolute;
+    top: -.5rem;
+    right: -.5rem;
+}
+
+.THIS .noHeading.slds-popover {
+    top: -4.3rem;
+}
+
+.THIS .editSubscriptions:hover + .slds-popover {
+    display: block;
+}

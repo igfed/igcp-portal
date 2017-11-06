@@ -35,3 +35,8 @@
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
+
+@mixin transparentBG($color, $alpha)
+{
+  background-color: rgba(red($color), green($color), blue($color), $alpha);
+}

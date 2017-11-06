@@ -1,8 +1,8 @@
 ({
-	doneRendering: function(cmp, evt, hlpr) {
-		 cmp.set("v.renderComplete", true);
+	doneRendering: function (cmp, evt, hlpr) {
+		cmp.set("v.renderComplete", true);
 	},
-	onSetGraph: function(cmp, evt, hlpr) {
+	onSetGraph: function (cmp, evt, hlpr) {
 
 		var payload = evt.getParam("payload");
 
@@ -15,10 +15,10 @@
 				graphArr = [];
 
 			//We need to convert the total amounts to percentages	
-			data.forEach(function(item, i) {
+			data.forEach(function (item, i) {
 				var itemObj = {};
 
-				utils.calculatePercentage(item.detail, total, function(returnedVal) {
+				utils.calculatePercentage(item.detail, total, function (returnedVal) {
 
 					itemObj["label"] = item.label;
 					itemObj["detail"] = returnedVal;
@@ -36,7 +36,7 @@
 				"values": graphArr
 			});
 
-			//events.fire("CP_Evt_Loading_Hide", { "id" : "doughnut-graph-loader" });
+			events.fire("CP_Evt_Loading_Hide", { "id" : "graph-spinner" });
 
 		}
 	}

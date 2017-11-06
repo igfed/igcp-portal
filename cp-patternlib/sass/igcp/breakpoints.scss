@@ -69,6 +69,16 @@
 			float: left;
 		}
 	}
+	.#{$namespace}-statement {
+		.#{$namespace}-banner {
+			align-items: center;
+			display: flex;
+			justify-content: space-around;
+			img {
+				margin: 0;
+			}
+		}
+	}
 }
 
 //Large
@@ -130,10 +140,10 @@
 		&.#{$namespace}-modal__details {
 			.#{$namespace}-modal__details--inner {
 				@include roundCorner();
-				top: 25%;
+				top: 10%;
 				left: 10%;
 				right: 10%;
-				bottom: 25%;
+				bottom: 10%;
 			}
 		}
 	} //FOOTER

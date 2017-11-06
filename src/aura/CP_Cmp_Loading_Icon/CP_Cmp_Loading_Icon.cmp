@@ -3,6 +3,8 @@
 	<aura:attribute name="id" type="String" default=""></aura:attribute>
 	<aura:attribute name="class" type="String" default=""></aura:attribute>
 	<aura:attribute name="show" type="Boolean" default="true"></aura:attribute>
+	<aura:attribute name="hasBG" type="Boolean" default="false"></aura:attribute>
+	<aura:attribute name="loadingIconClass" type="String" default="igcp-loading-icon"></aura:attribute>
 	<aura:attribute name="showHideClass" type="String" default="igcp-utils__display--block"></aura:attribute>
 
 	<!-- HANDLERS -->
@@ -11,11 +13,13 @@
 	<aura:handler event="c:CP_Evt_Loading_Hide" action="{!c.onHide}"></aura:handler>
 
 	<!-- MARKUP -->
-	<div aura:id="loading-icon" class="{!'igcp-utils__position--relative ' + v.class + ' ' + v.showHideClass}">
-		<div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
-			<span class="slds-assistive-text">Loading</span>
-			<div class="slds-spinner__dot-a"></div>
-			<div class="slds-spinner__dot-b"></div>
+	<div aura:id="loading-icon" class="{!v.loadingIconClass + ' ' + v.class + ' ' + v.showHideClass}">
+		<div class="igcp-loading-icon__spinner">
+			<div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+				<span class="slds-assistive-text">Loading</span>
+				<div class="slds-spinner__dot-a"></div>
+				<div class="slds-spinner__dot-b"></div>
+			</div>
 		</div>
 	</div>
 </aura:component>

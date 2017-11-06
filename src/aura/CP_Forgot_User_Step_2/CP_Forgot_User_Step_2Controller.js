@@ -1,10 +1,9 @@
 ({
 	onInit: function(cmp, evt, hlpr) {
-		var services = cmp.find("CP_Services");
-
 		//set client num
 		cmp.set("v.payload", {
-			"clientNum": cmp.get("v.clientNum")
+			"clientNum": cmp.get("v.clientNum"),
+			"email" : cmp.get("v.email")
 		});
 
 		hlpr.getRandomSecurityQuestion(cmp, hlpr);
@@ -88,6 +87,12 @@
 		var payload = evt.getParam("payload");
 		if (payload.id === "password-input") {
 			hlpr.validatePassword(cmp, payload);
+		}
+	},
+	onButtonClick: function(cmp, evt, hlpr){
+		if(evt.getParam("payload").id === "back_button") {
+			var utils = cmp.find("CP_Utils");
+			utils.gotoLogin(cmp.get("v.lang"));
 		}
 	}
 })

@@ -84,7 +84,7 @@
 	<!-- GO TO LOGIN -->
 	<!-- NAVIGATES TO LOGIN URL -->
 	<aura:method name="gotoLogin" action="{!c.onGoToLogin}">
-		<aura:attribute name="lang" type="String" ></aura:attribute>
+		<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
 	</aura:method>
 
 	<!-- NAVIGATE TO URL -->

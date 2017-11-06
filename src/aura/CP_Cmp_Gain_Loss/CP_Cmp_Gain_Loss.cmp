@@ -1,4 +1,8 @@
 <aura:component >
+
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events" />
+
 	<!-- ATTRS -->
 	<aura:attribute name="class" type="String" default="slds-size_6-of-12 slds-p-right--small"></aura:attribute>
 	<aura:attribute name="label" type="String" default="Gain / Loss"></aura:attribute>
@@ -6,9 +10,14 @@
 	<aura:attribute name="value" type="String"></aura:attribute>
 	<aura:attribute name="percentage" type="String"></aura:attribute>
 	<aura:attribute name="gainLossType" type="String" default="neutral"></aura:attribute>
+	<aura:attribute name="valueReceived" type="Boolean" default="false"></aura:attribute>
+
+	<!-- HANDLERS -->
+	<aura:handler name="change" value="{!v.value}" action="{!c.onValueChange}"/>
 	
 	<!-- MARKUP -->
-	<div class="{!v.class}">
+	<div class="{!'igcp-utils__position--relative ' + v.class}">
+		<c:CP_Cmp_Loading_Icon id="gain-loss-spinner" />
 		<h3 class="igcp-label--small slds-m-bottom--none slds-large-m-bottom--x-small">{!v.label}
          	<span class="igcp-utils__font--book igcp-utils__font-size--x-small igcp-utils__text--default slds-m-left--xxx-small">{!v.description}</span>
 		</h3>

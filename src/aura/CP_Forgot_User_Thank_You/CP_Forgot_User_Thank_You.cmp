@@ -5,6 +5,7 @@
 
 	<!-- ATTRS -->
 	<aura:attribute name="email" type="String"></aura:attribute>
+	<aura:attribute name="lang" type="String"></aura:attribute>
 
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Click" action="{!c.gotoLogin}" />

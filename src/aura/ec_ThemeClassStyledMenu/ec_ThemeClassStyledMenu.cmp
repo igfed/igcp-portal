@@ -1,0 +1,37 @@
+<aura:component implements="forceCommunity:themeLayout" access="global" description="Employee Community - Class Styled Menu">
+    <aura:attribute name="search" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="profileMenu" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="navBar" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="newHeader" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="newFooter" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="quickLinksOpen" type="Boolean" default="false"/>
+    
+    <aura:handler event="c:ec_ToggleQuickLinksEvt" action="{!c.toggleQuickLinks}"/>
+    
+    <div>
+        <div class="newHeader">
+            <div id="pageHeaderToolbar" class="pageHeaderToolbar">
+                <c:ec_QuickLinks taxonomyPath="{!$Label.c.ec_QuickLinks_Taxonomy}" className="quickLinksContainer" />
+                <c:ec_PageHeaderLinks className="pageHeaderLinksContainer notQuickLinks" />
+                {!v.profileMenu}
+            </div>
+            <div id="pageHeaderSearch" class="pageHeaderSearch">
+                {!v.search}
+            </div>
+            <div id="pageHeader" class="pageHeader">
+                <c:ec_PageHeader />
+            </div>
+        </div>
+        <div id="navigation" class="navigation">
+            <div class="pageHeaderMenu">
+                <c:ec_ClassStyledMenu />
+            </div>
+        </div>
+        <div id="mainContentArea" class="mainContentArea">
+            {!v.body}
+        </div>
+        <div id="newFooter" class="newFooter">
+            <c:ec_FooterClassStyledMenu />
+        </div>
+    </div>
+</aura:component>

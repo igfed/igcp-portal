@@ -4,9 +4,11 @@
 	position: relative;
 }
 
-.slds-spinner_brand {
+.slds-spinner .slds-spinner_medium .slds-spinner_brand {
 	&.slds-spinner:before,
 	&.slds-spinner:after,
+	&.slds-spinner__dot-a,
+	&.slds-spinner__dot-b,
 	&.slds-spinner__dot-a:before,
 	&.slds-spinner__dot-a:after,
 	&.slds-spinner__dot-b:before,

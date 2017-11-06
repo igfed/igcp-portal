@@ -1,10 +1,20 @@
 <aura:component >
+
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events" />
+	
 	<!-- ATTRS -->
 	<aura:attribute name="class" type="String" default="slds-size_6-of-12 slds-medium-p-left--small"></aura:attribute>
-	<aura:attribute name="label" type="String" default="Total Value"></aura:attribute>
-	<aura:attribute name="value" type="String"></aura:attribute>
+	<aura:attribute name="label" type="String" default=""></aura:attribute>
+	<aura:attribute name="value" type="String" default=""></aura:attribute>
+	<aura:attribute name="valueReceived" type="Boolean" default="false"></aura:attribute>
+
+	<!-- HANDLERS -->
+	<aura:handler name="change" value="{!v.value}" action="{!c.onValueChange}"/>
+
 	<!-- MARKUP -->
-	<div class="{!'slds-grid slds-wrap ' + v.class}">
+	<div class="{!'igcp-utils__position--relative slds-grid slds-wrap ' + v.class}">
+		<c:CP_Cmp_Loading_Icon id="total-value-spinner" />
 		<div class="slds-size_12-of-12 slds-m-bottom--none slds-large-m-bottom--x-small">
 			<h3 class="igcp-label--small slds-m-bottom--zero slds-float_left">{!v.label}</h3>
 			<c:CP_Cmp_Tooltip class="igcp-tooltip__label--small slds-float_left" tooltip="{!$Label.c.CP_Tooltip_Total_Market_Value}"/>

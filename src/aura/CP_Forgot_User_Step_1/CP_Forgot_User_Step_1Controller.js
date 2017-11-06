@@ -87,5 +87,11 @@
 		event.fire("CP_Evt_Next_Step", {
 			"id": cmp.get("v.pageId")
 		});
+	},
+	onButtonClick: function(cmp, evt, hlpr){
+		if(evt.getParam("payload").id === "back_button") {
+			var utils = cmp.find("CP_Utils");
+			utils.gotoLogin(cmp.get("v.lang"));
+		}
 	}
 })
