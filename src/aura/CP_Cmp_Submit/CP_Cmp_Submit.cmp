@@ -4,9 +4,11 @@
 	<c:CP_Events aura:id="CP_Events" />
 
     <!-- ATTRS -->
-    <aura:attribute name="id" Type="String" default=""/>
+    <aura:attribute name="id" Type="String" default="null"/>
     <aura:attribute name="for" Type="String"></aura:attribute>
     <aura:attribute name="icon" Type="String" />
+    <aura:attribute name="dcname" type="String" default="none"/>
+    <aura:attribute name="dctype" type="String" />
     <aura:attribute name="iconSize" Type="String" default="small"/>
     <aura:attribute name="class" type="String" />
     <aura:attribute name="disabled" type="Boolean" default="false"></aura:attribute>

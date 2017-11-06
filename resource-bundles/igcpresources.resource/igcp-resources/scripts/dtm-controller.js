@@ -27,6 +27,11 @@
     _executeDirectCall(dcName);
   }
 
+  // Certain Portal pages need to have click handlers attached on the fly
+  window.dtmRegisterHandlers = function () {
+    _registerClickHandlers();
+  }
+
   function init() {
 
     // Capture page data
@@ -41,22 +46,7 @@
     // window._satellite.pageBottom();
 
     // Register click event handlers
-    $('.aa-click').on('click', function (e) {
-      if ($(this).data('aaDcname')) {
-        event.type = 'click';
-        _constructEventObj($(this));
-        _executeDirectCall(event.dcName);
-      }
-    });
-
-    // Register hover event handlers
-    $('.aa-hover').on('click', function (e) {
-      if ($(this).data('aaDcname')) {
-        event.type = 'hover';
-        _constructEventObj($(this));
-        _executeDirectCall(event.dcName);
-      }
-    });
+    _registerClickHandlers();
   }
 
   function _getPageName() {
@@ -74,6 +64,28 @@
     return lang;
   }
 
+  function _registerClickHandlers() {
+    $("[data-aa-type='click']").on('click', function (e) {
+      if ($(this).data('aaDcname') && $(this).data('aaDcname') !== 'none') {
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        event.type = 'click';
+        _constructEventObj($(this));
+        _executeDirectCall(event.dcName);
+      }
+    });
+
+    // Register hover event handlers
+    $("[data-aa-type='hover']").on('click', function (e) {
+      if ($(this).data('aaDcname') && $(this).data('aaDcname') !== 'none') {
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        event.type = 'hover';
+        _constructEventObj($(this));
+        _executeDirectCall(event.dcName);
+      }
+    });
+  }
 
   function _getSiteSection() {
     return window.location.href.substr(window.location.href.lastIndexOf('/') + 1)

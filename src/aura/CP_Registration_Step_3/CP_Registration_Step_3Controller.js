@@ -234,5 +234,10 @@
 		logArray.forEach(function(item, i) {
 			//console.log(item);
 		});
+	},
+	doneRendering: function(cmp, evt, hlpr) {
+		if(cmp.get("v.renderComplete") === false) {
+			cmp.set("v.renderComplete", true);
+		}
 	}
 })
