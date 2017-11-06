@@ -7,7 +7,7 @@
 	<aura:handler event="c:CP_Evt_Click" action="{!c.onStart}"></aura:handler>
 
 	<!-- MARKUP -->
-	<div data-aa-name="CP_Registration_PFA" class="igcp-background__gradient aa-component">
+	<div data-aa-component="CP_Registration_PFA" class="igcp-background__gradient">
 		
 		<div class="igcp-utils__max-width--large igcp-utils__margin--zero-auto slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-around--large slds-medium-p-around--xx-large">
 			

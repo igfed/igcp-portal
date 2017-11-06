@@ -103,12 +103,12 @@
       event.parentID = $this.data('aa-parent');
 
       // Store component container node  
-      $component = $this.parents('.aa-component');
+      $component = $this.parents('[data-aa-component]');
 
       // Capture component data
       if ($component.length > 0) {
         event.component.id = $component.data('aa-id');
-        event.component.name = $component.data('aa-name');
+        event.component.name = $component.data('aa-component');
         event.component.location = $component.data('aa-location');
 
         // If there is no parentID set
