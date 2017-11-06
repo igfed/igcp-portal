@@ -9,22 +9,15 @@
   var $this,
     $component
 
-  // Event object that will be pushed into events array
-  var event = {};
-  event.component = {};
-  event.page = {};
-  event.form = {};
-  event.search = {};
-  event.tool = {};
-  event.advisor = {};
-  event.download = {};
-
   // Setup custom tracking handler for 'true' direct calls from JS
   window.dtmCall = function (dcName, data) {
-    console.log('parse direct call');
-    event.type = 'dc';
-    _constructEventObj(data);
+    _constructEventObj(data, 'dc');
     _executeDirectCall(dcName);
+  }
+
+  // Certain Portal pages need to have click handlers attached on the fly
+  window.dtmRegisterHandlers = function () {
+    _registerClickHandlers();
   }
 
   function init() {
@@ -41,22 +34,7 @@
     // window._satellite.pageBottom();
 
     // Register click event handlers
-    $('.aa-click').on('click', function (e) {
-      if ($(this).data('aaDcname')) {
-        event.type = 'click';
-        _constructEventObj($(this));
-        _executeDirectCall(event.dcName);
-      }
-    });
-
-    // Register hover event handlers
-    $('.aa-hover').on('click', function (e) {
-      if ($(this).data('aaDcname')) {
-        event.type = 'hover';
-        _constructEventObj($(this));
-        _executeDirectCall(event.dcName);
-      }
-    });
+    _registerClickHandlers();
   }
 
   function _getPageName() {
@@ -74,12 +52,40 @@
     return lang;
   }
 
+  function _registerClickHandlers() {
+    $("[data-aa-type='click']").on('click', function (e) {
+      if ($(this).data('aaDcname') && $(this).data('aaDcname') !== 'none') {
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        _constructEventObj($(this), 'click');
+      }
+    });
+
+    // Register hover event handlers
+    $("[data-aa-type='hover']").on('hover', function (e) {
+      if ($(this).data('aaDcname') && $(this).data('aaDcname') !== 'none') {
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        _constructEventObj($(this), 'hover');
+      }
+    });
+  }
 
   function _getSiteSection() {
     return window.location.href.substr(window.location.href.lastIndexOf('/') + 1)
   }
 
-  function _constructEventObj($this) {
+  function _constructEventObj($this, type) {
+    // Event object that will be pushed into events array
+    var event = {};
+    event.component = {};
+    event.page = {};
+    event.form = {};
+    event.search = {};
+    event.tool = {};
+    event.advisor = {};
+    event.download = {};
+    event.type = type;
     event.page.referrer = window.location.href;
 
     if (event.type === 'click' || event.type === 'hover') {
@@ -97,12 +103,12 @@
       event.parentID = $this.data('aa-parent');
 
       // Store component container node  
-      $component = $this.parents('.aa-component');
+      $component = $this.parents('[data-aa-component]');
 
       // Capture component data
       if ($component.length > 0) {
         event.component.id = $component.data('aa-id');
-        event.component.name = $component.data('aa-name');
+        event.component.name = $component.data('aa-component');
         event.component.location = $component.data('aa-location');
 
         // If there is no parentID set
@@ -127,6 +133,12 @@
             })
           })
         }
+
+        // Store new event
+        window.digitalData.events.push(event);
+
+        // Send to DTM
+        _executeDirectCall(event.dcName);
       }
 
     }
@@ -138,13 +150,14 @@
           event[prop] = $this[prop];
         }
       }
-    }
 
-    window.digitalData.events.push(event);
-    console.log(window.digitalData);
+      // Store new event
+      window.digitalData.events.push(event);
+    }
   }
 
   function _executeDirectCall(name) {
+    console.log(window.digitalData);
     window._satellite.track(name);
   }
 
