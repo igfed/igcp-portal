@@ -11,7 +11,6 @@
 
   // Setup custom tracking handler for 'true' direct calls from JS
   window.dtmCall = function (dcName, data) {
-    console.log('parse direct call');
     _constructEventObj(data, 'dc');
     _executeDirectCall(dcName);
   }
@@ -105,7 +104,7 @@
 
       // Store component container node  
       $component = $this.parents('.aa-component');
-      console.log($component);
+
       // Capture component data
       if ($component.length > 0) {
         event.component.id = $component.data('aa-id');
@@ -134,6 +133,12 @@
             })
           })
         }
+
+        // Store new event
+        window.digitalData.events.push(event);
+
+        // Send to DTM
+        _executeDirectCall(event.dcName);
       }
 
     }
@@ -145,16 +150,14 @@
           event[prop] = $this[prop];
         }
       }
+
+      // Store new event
+      window.digitalData.events.push(event);
     }
-
-    console.log(event);
-
-    window.digitalData.events.push(event);
-    console.log(window.digitalData);
-    _executeDirectCall(event.dcName);
   }
 
   function _executeDirectCall(name) {
+    console.log(window.digitalData);
     window._satellite.track(name);
   }
 
