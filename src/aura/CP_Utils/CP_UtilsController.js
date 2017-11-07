@@ -198,13 +198,7 @@
 	},
 	onGoToLogin: function (cmp, evt, hlpr) {
 		try {
-			var params = evt.getParam("arguments");
-
-			if(params.lang === "fr_CA") {
-				window.open("https://sso-fit.groupeinvestors.com/", "_self");
-			} else {
-				window.open("https://fitrp3-isam.investorsgroup.com/isam/sps/auth", "_self");
-			}
+			window.open($A.get("$Label.c.CP_URL_Login"), "_self");
 		} catch (err) {
 			console.error("CP_Utils: gotoLogin: window not found.")
 			console.error(err);
