@@ -236,6 +236,7 @@
 		});
 	},
 	doneRendering: function(cmp, evt, hlpr) {
+		window.dtmRegisterHandlers();
 		if(cmp.get("v.renderComplete") === false) {
 			cmp.set("v.renderComplete", true);
 		}

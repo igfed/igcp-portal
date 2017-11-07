@@ -5,12 +5,42 @@
 	},
 	onSubmit: function(cmp, evt, hlpr) {
 
+		var payload = evt.getParam("payload"),
+			services = cmp.find("CP_Services"),
+			isValid = cmp.get("v.inputErrors"),
+			events = cmp.find('CP_Events')
+			formData = null;
+
+		console.log(errors)
+
+		// if(isValid) {
+			formData = JSON.stringify({
+				"username" : "John Wall", 
+				"oldPassword": "1234",
+				"newPassword": "5678",
+				"verifyPassword": "5678"
+			});
+			
+			services.updatePassword(
+				formData,
+				cmp,
+				function (success) {
+					console.log('[CP_Change_Password] - onSubmit / Update():success = ', success)
+				},
+				function (error) {
+					console.log('[CP_Change_Password] - onSubmit / Update():Error = ', error)
+				}
+			);
+		//} else { 
+			// console.log('[CP_Change_Password] - onSubmit | The form has validation errors', errors)
+		// }
+
 		//Reset input errors	
 		cmp.set("v.inputErrors", false);
 		cmp.set("v.inputsReceived", 0);
 
-		var events = cmp.find('CP_Events');
 		events.fire("CP_Evt_Get_Input_Value", { 'formId': cmp.get("v.pageId") });
+
 	},
 	onInputValueReceived: function(cmp, evt, hlpr) {
 
