@@ -10,7 +10,7 @@
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="registration"></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-utils__overflow--hidden"></aura:attribute>
-	<aura:attribute name="currentStep" type="Integer" default="3"></aura:attribute>
+	<aura:attribute name="currentStep" type="Integer" default="0"></aura:attribute>
 
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default="" />

@@ -11,41 +11,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <title>IBM Security Access Manager</title>
+    <link rel="shortcut icon" href="https://www.investorsgroup.com/etc/designs/investorsgroup/clientlibs/global/images/logos/favicon1.ico">
     <!-- EXTERNAL INCLUDES-->
-    <link href="../../external_files/css/salesforce-lightning-design-system.min.css" type="text/css" rel="stylesheet"/>
-    <link href="../../external_files/css/igcp.css" type="text/css" rel="stylesheet"/>
+    <link href="../../external_files/css/salesforce-lightning-design-system.min.css" type="text/css" rel="stylesheet" />
+    <link href="../../external_files/css/igcp.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript">
-      function onLoadPage() {
-        showError();
-        setFocus();
-      }
-
-      function showError() {
-        var elem = document.getElementById("error-box");
-        if ("%ERROR%" == "") {
-        	elem.setAttribute("class", "error-box");
-        } else {
-        	elem.setAttribute("class", "error-box active");
+        function onLoadPage() {
+            var urlObj = urlMap();
+            showError();
+            setFocus();
+            passwordToggler();
+            getEnv(urlObj);
         }
-      }
 
-      function setFocus() {
-        document.getElementById("username").focus();
-      }
+        function getEnv(urlMap) {
+            var url = window.location.host;
+            var lang = url.indexOf('groupeinvestors') > 1 ? lang = 'fr' : lang = 'en';
+            var env;
 
-      function submitForm() {
-        document.getElementById("login-form").submit();
-        console.log('Submitting Form');
-      }
+            if (url.indexOf('sso-fit-isam') > 1) {
+                env = 0;
+            } else if (url.indexOf('uat2-isam') > 1) {
+                env = 1;
+            } else if (url.indexOf('sso.investorsgroup.com') > 1 || url.indexOf('sso.groupeinvestors.com') > 1) {
+                env = 2;
+            } else {
+                env = 0;
+            }
+
+            setUrls(urlMap, lang, env);
+        }
+
+        function setUrls(map, lang, env) {
+            var
+                langSwitch;
+            lang === 'en' ?
+                langSwitch = 'fr' : langSwitch = 'en';
+
+            var title = {
+                'en': 'Investors Group',
+                'fr': 'Groupe Investors'
+            }
+
+            document.getElementById('forgot-username').setAttribute("href", map[lang]['sfHost'][env] + map[lang]['targetUrls'][0]); // username
+            document.getElementById('forgot-password').setAttribute("href", map[lang]['sfHost'][env] + map[lang]['targetUrls'][1]); // password
+            document.getElementById('registration').setAttribute("href", map[lang]['sfHost'][env] + map[lang]['targetUrls'][2]); // rego
+
+            document.getElementById('privacy-footer').setAttribute("href", map[lang]['aemHost'][env] + map[lang]['targetUrls'][3]); // privacy
+            document.getElementById('user-agreement-footer').setAttribute("href", map[lang]['aemHost'][env] + map[lang]['targetUrls'][4]); // user agreement
+            document.getElementById('investor-performance-footer').setAttribute("href", map[lang]['aemHost'][env] + map[lang]['targetUrls'][5]); // investor performance
+            document.getElementById('help-footer').setAttribute("href", map[lang]['aemHost'][env] + map[lang]['targetUrls'][6]); // help
+
+            document.getElementById('user-agreement').setAttribute("href", map[lang]['aemHost'][env] + map[lang]['targetUrls'][4]); // user agreement
+
+            document.getElementById('switch-mobile').setAttribute("href", map[langSwitch]['isamHost'][env]); // switcher
+            document.getElementById('switch-desktop').setAttribute("href", map[langSwitch]['isamHost'][env]); // switcher
+
+            document.title = title[lang] // title
+
+
+        }
+
+        function showError() {
+            var elem = document.getElementById("error-box");
+            if ("%ERROR%" == "") {
+                elem.setAttribute("class", "error-box");
+            } else {
+                elem.setAttribute("class", "error-box active");
+            }
+        }
+
+        function setFocus() {
+            document.getElementById("username").focus();
+        }
+
+        function submitForm() {
+            document.getElementById("login-form").submit();
+            console.log('Submitting Form');
+        }
+
+        function passwordToggler() {
+            document.getElementById("password-toggle").addEventListener("click", function(e) {
+                e.preventDefault();
+                if (this.innerHTML == 'Show') {
+                    this.innerHTML = 'Hide'
+                    document.getElementById('password').type = "text";
+                } else {
+                    this.innerHTML = 'Show'
+                    document.getElementById('password').type = "password";
+                }
+            })
+        }
+
+        function urlMap() {
+            return urlMap = {
+                "en": {
+                    "sfHost": [
+                        'https://portalint-portalint.cs70.force.com/customers/s/', // QA
+                        'https://staging-igstaging.cs64.force.com/customers/s/', // UAT
+                        'https://secure.investorsgroup.com/' // PROD
+                    ],
+                    "isamHost": [
+                        'https://sso-fit.investorsgroup.com', // QA
+                        'https://uat2-isam.investorsgroup.com', // UAT
+                        'https://sso.investorsgroup.com' // PROD
+                    ],
+                    "aemHost": [
+                        'https://igfs-stage.adobecqms.net/en/portal/', // QA
+                        'https://igfs-stage.adobecqms.net/en/portal/', // UAT
+                        'https://www.investorsgroup.com/en/portal/' // PROD
+                    ],
+                    "targetUrls": [
+                        'forgot-username',
+                        'forgot-password',
+                        'registration',
+                        'privacy',
+                        'user-agreement',
+                        'investor-performance',
+                        'help'
+                    ]
+
+                },
+                "fr": {
+                    "sfHost": [
+                        'https://portalint-portalint.cs70.force.com/clients/s/', // QA
+                        'https://staging-igstaging.cs64.force.com/clients/s/', // UAT
+                        'https://secure.groupeinvestors.com' // PROD
+                    ],
+                    "isamHost": [
+                        'https://sso-fit.groupeinvestors.com', // QA
+                        'https://uat2-isam.groupeinvestors.com', // UAT
+                        'https://sso.groupeinvestors.com' // PROD
+                    ],
+                    "aemHost": [
+                        'https://igfs-stage.adobecqms.net/fr/', // QA
+                        'https://igfs-stage.adobecqms.net/fr/', // UAT
+                        'https://www.groupeinvestors.com/fr/' // PROD
+                    ],
+                    "targetUrls": [
+                        'forgot-username',
+                        'forgot-password',
+                        'registration',
+                        'privacy',
+                        'user-agreement',
+                        'investor-performance',
+                        'help'
+                    ]
+                }
+            }
+        }
     </script>
     <style>
-    	.error-box {
-    		display: none;
-    	}
-
-    	.error-box.active {
-    		display: block;
-    	}
+        .error-box {
+            display: none;
+        }
+        
+        .error-box.active {
+            display: block;
+        }
     </style>
     <!-- ClickJack projection from:
          https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet
@@ -56,235 +179,240 @@
         }
     </style>
     <script type="text/javascript">
-      if (self === top) {
-        var antiClickjack = document.getElementById("antiClickjack");
-        antiClickjack.parentNode.removeChild(antiClickjack);
-      } else {
-        top.location = self.location;
-      }
+        if (self === top) {
+            var antiClickjack = document.getElementById("antiClickjack");
+            antiClickjack.parentNode.removeChild(antiClickjack);
+        } else {
+            top.location = self.location;
+        }
     </script>
 </head>
 
 <body onload="onLoadPage()">
-<div class="content igcp-utils__overflow--hidden">
-    <!-- DO NOT TRANSLATE OR MODIFY any part of the hidden parameter(s) -->
-    <!--
+    <div class="content igcp-utils__overflow--hidden">
+        <!-- DO NOT TRANSLATE OR MODIFY any part of the hidden parameter(s) -->
+        <!--
     The following block of code provides users with a warning message
     if they do not have cookies configured on their browsers.
     If this environment does not use cookies to maintain login sessions,
     simply remove or comment out the block below.
   -->
-    <!-- BEGIN Cookie check block -->
-    <!--
+        <!-- BEGIN Cookie check block -->
+        <!--
   DO NOT TRANSLATE anything inside the SCRIPT tag except the quoted
   string warningString and the first line of the JavaScript redirection
   instruction beginning with "// Uncomment the following ..."
 
   i.e.	var warningString = "Translate this string";
   -->
-    <script type="text/javascript">
-      //var warningString = "%ERROR%";
-      //document.cookie = 'acceptsCookies=yes';
-      //if (document.cookie == '') {
-      //	document.write(warningString);
-      //} else {
-      ///	document.cookie = 'acceptsCookies=yes; expires=Fri, 13-Apr-1970 00:00:00 GMT';
-      // Uncomment the following line for JavaScript redirection
-      // document.cookie = 'ISAMOriginalURL=' + encodeURIComponent(window.location) + "; Path=/;";
-      //}
-    </script>
-    <noscript>
-        <b>WARNING:</b> To maintain your login session, make sure that
-        <br/> your browser is configured to accept Cookies.
-    </noscript>
-    <!-- END Cookie check block -->
+        <script type="text/javascript">
+            //var warningString = "%ERROR%";
+            //document.cookie = 'acceptsCookies=yes';
+            //if (document.cookie == '') {
+            //	document.write(warningString);
+            //} else {
+            ///	document.cookie = 'acceptsCookies=yes; expires=Fri, 13-Apr-1970 00:00:00 GMT';
+            // Uncomment the following line for JavaScript redirection
+            // document.cookie = 'ISAMOriginalURL=' + encodeURIComponent(window.location) + "; Path=/;";
+            //}
+        </script>
+        <noscript>
+            <b>WARNING:</b> To maintain your login session, make sure that
+            <br/> your browser is configured to accept Cookies.
+        </noscript>
+        <!-- END Cookie check block -->
 
-    <!-- MOBILE HEADER START -->
-    <header role="banner" class="igcp-header igcp-login-header igcp-medium-utils__display--none">
-        <nav class="igcp-nav">
-            <div class="top-bar centered">
-                <div class="top-bar-left">
-                    <div class="igcp-nav__logo">
-                        <a class="home-link" href="/">
-                            <img src="../../external_files/images/IG_EN_logo.png" alt=""/>
-                        </a>
+        <!-- MOBILE HEADER START -->
+        <header role="banner" class="igcp-header igcp-login-header igcp-medium-utils__display--none">
+            <nav class="igcp-nav">
+                <div class="top-bar centered">
+                    <div class="top-bar-left">
+                        <div class="igcp-nav__logo">
+                            <a class="home-link" href="/">
+                                <img src="../../external_files/images/IG_EN_logo.png" alt="" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="top-bar-right">
+                        <ul class="dropdown menu" data-dropdown-menu="">
+                            <li>
+                                <a id="switch-mobile" class="igcp-nav__link" href="#">Français</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
+            </nav>
+        </header>
+        <!-- MOBILE HEADER END -->
+
+        <!-- LOGIN START -->
+        <div class="igcp-login slds-grid slds-wrap">
+            <!-- SIGN IN -->
+            <div class="igcp-login--col1 slds-size--12-of-12 slds-large-size--4-of-12">
+
                 <div class="top-bar-right">
                     <ul class="dropdown menu" data-dropdown-menu="">
-                        <li><a class="igcp-nav__link" href="#">Français</a></li>
+                        <li>
+                            <a id="switch-desktop" class="igcp-nav__link" href="#">Français</a>
+                        </li>
                     </ul>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <!-- MOBILE HEADER END -->
 
-    <!-- LOGIN START -->
-    <div class="igcp-login slds-grid slds-wrap">
-        <!-- SIGN IN -->
-        <div class="igcp-login--col1 slds-size--12-of-12 slds-large-size--4-of-12">
-
-            <div class="top-bar-right">
-                <ul class="dropdown menu" data-dropdown-menu="">
-                    <li><a class="igcp-nav__link" href="#">Français</a></li>
-                </ul>
-            </div>
-
-            <div class="igcp-nav__logo">
-                <a class="home-link" href="/">
-                    <img src="../../external_files/images/IG_EN_logo.png" alt="">
-                </a>
-            </div>
-
-            <div class="igcp-login__sidebar-wrapper">
-                <h3 class="slds-m-bottom--large">Sign in to Online Access</h3>
-
-                <div id="error-box"class="igcp-login__error error-box">
-                    <div class="slds-notify_container slds-is-relative">
-                        <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
-                            <span class="slds-assistive-text">info</span>
-                            <span class="slds-icon_container slds-icon-utility-info slds-m-right_small slds-no-flex slds-align-top"
-                                  title="An error has occurred">
-                            </span>
-                            <div class="slds-notify__content">
-                                <p id="errId" class="slds-text-heading_small">%ERROR%</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="igcp-nav__logo">
+                    <a class="home-link" href="/">
+                        <img src="../../external_files/images/IG_EN_logo.png" alt="">
+                    </a>
                 </div>
 
-                <!--LOGIN FORM-->
-                <form id="login-form" class="slds-form slds-form_stacked" method="POST" action="/pkmslogin.form">
-                    <!--USERNAME-->
-                    <div class="slds-form-element slds-m-bottom--x-large">
-                        <label class="slds-form-element__label" for="username">
-								<span class="slds-icon_container slds-icon-utility-user" title="Description of icon when needed">
-							  <span class="slds-assistive-text">Username Icon</span>
-								</span>
-                            Username
-                        </label>
-                        <div class="slds-form-element__control">
-                            <input type="text" id="username" class="slds-input igcp-input input uiInput uiInputText uiInput--default uiInput--input"
-                                   required="true" name="username">
-                        </div>
-                        <div class="igcp-input__help-link slds-float--right">
-                            <a href="" class="igcp-link__variant--a">Forgot username</a>
-                        </div>
+                <div class="igcp-login__sidebar-wrapper">
+                    <h3 class="slds-m-bottom--large">FR--Sign in to Online Access</h3>
 
-                        <!--REMEMBER USERNAME -->
-                        <div class="slds-form-element">
-                            <div class="slds-form-element__control">
-							<span class="slds-checkbox">
-                    <input type="checkbox" name="options" id="checkbox-644"/>
-                    <label class="slds-checkbox__label" for="checkbox-644">
-                      <span class="slds-checkbox--faux"></span>
-							<span class="slds-form-element__label igcp-login__username-checkbox input-label">Remember username</span>
-							</label>
-							</span>
+                    <div id="error-box" class="igcp-login__error error-box">
+                        <div class="slds-notify_container slds-is-relative">
+                            <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
+                                <span class="slds-assistive-text">info</span>
+                                <span class="slds-icon_container slds-icon-utility-info slds-m-right_small slds-no-flex slds-align-top" title="An error has occurred">
+                                </span>
+                                <div class="slds-notify__content">
+                                    <p id="errId" class="slds-text-heading_small">%ERROR%</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!--PASSWORD-->
-                    <div class="igcp-input__password slds-form-element slds-clearfix slds-m-top--large slds-m-bottom--x-large">
-                        <label class="slds-form-element__label" for="password">
-								<span class="slds-icon_container slds-icon-utility-lock" title="Password Icon">
-							  <span class="slds-assistive-text">Password Icon</span>
-								</span>
-                            Password
-                        </label>
-                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
-                            <input type="password" id="password" class="igcp-input slds-input" name="password" autocomplete="off">
-                        </div>
-                        <div class="igcp-input__help-link slds-text-align--right">
-                            <a href="" class="igcp-link__variant--a">Forgot password</a>
-                        </div>
-                    </div>
-                    <!-- LEGAL -->
-                    <div class="igcp-login__legal">
-                        <p>I have read and agree to be bound by the  <a href="#">User Agreement</a> as of August 2017.</p>
-                    </div>
+                    <!--LOGIN FORM-->
+                    <form id="login-form" class="slds-form slds-form_stacked" method="POST" action="/pkmslogin.form">
+                        <!--USERNAME-->
+                        <div class="slds-form-element slds-m-bottom--x-large">
+                            <label class="slds-form-element__label" for="username">
+                                <span class="slds-icon_container slds-icon-utility-user" title="Description of icon when needed">
+                                    <span class="slds-assistive-text">Username Icon</span>
+                                </span>
+                                FR-Username
+                            </label>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="username" class="slds-input igcp-input input uiInput uiInputText uiInput--default uiInput--input" required="true" name="username">
+                            </div>
+                            <div class="igcp-input__help-link slds-float--right">
+                                <a id="forgot-username" href="https://portalint-portalint.cs70.force.com/customers/s/forgot-username" class="igcp-link__variant--a">Forgot username</a>
+                            </div>
 
-                    <!--SIGN IN-->
-                    <div class="slds-form-element slds-m-top--large slds-m-bottom--medium">
-                        <button class="slds-button slds-button--brand slds-p-vertical--xxx-small slds-p-horizontal--xx-large" onclick="submitForm()">Sign In
-                        </button>
-                    </div>
+                            <!--REMEMBER USERNAME -->
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control">
+                                    <span class="slds-checkbox">
+                                        <input type="checkbox" name="options" id="checkbox-644" />
+                                        <label class="slds-checkbox__label" for="checkbox-644">
+                                            <span class="slds-checkbox--faux"></span>
+                                    <span class="slds-form-element__label igcp-login__username-checkbox input-label">Remember username</span>
+                                    </label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
 
-                    <input TYPE="hidden" NAME="login-form-type" VALUE="pwd">
-                    <input TYPE="hidden" NAME="token" VALUE="%CREDATTR{tagvalue_session_index}%">
-                    <!-- <div class="error-box" id="error-box">
+                        <!--PASSWORD-->
+                        <div class="igcp-input__password slds-form-element slds-clearfix slds-m-top--large slds-m-bottom--x-large">
+                            <label class="slds-form-element__label" for="password">
+                                <span class="slds-icon_container slds-icon-utility-lock" title="Password Icon">
+                                    <span class="slds-assistive-text">Password Icon</span>
+                                </span>
+                                Password
+                            </label>
+                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+                                <input type="password" id="password" class="igcp-input slds-input" name="password" autocomplete="off">
+                                <span class="slds-icon_container slds-icon-show-password" id="password-toggle" title="Show Password Icon">Show</span>
+                            </div>
+                            <div class="igcp-input__help-link slds-text-align--right">
+                                <a id="forgot-password" href="https://portalint-portalint.cs70.force.com/customers/s/forgot-password" class="igcp-link__variant--a">Forgot password</a>
+                            </div>
+                        </div>
+                        <!-- LEGAL -->
+                        <div class="igcp-login__legal">
+                            <p>FR-I have read and agree to be bound by the
+                                <a id="user-agreement" href="#">User Agreement</a> as of August 2017.</p>
+                        </div>
+
+                        <!--SIGN IN-->
+                        <div class="slds-form-element slds-m-top--large slds-m-bottom--medium">
+                            <button class="slds-button slds-button--brand slds-p-vertical--xxx-small slds-p-horizontal--xx-large" onclick="submitForm()">Sign In
+                            </button>
+                        </div>
+
+                        <input TYPE="hidden" NAME="login-form-type" VALUE="pwd">
+                        <input TYPE="hidden" NAME="token" VALUE="%CREDATTR{tagvalue_session_index}%">
+                        <!-- <div class="error-box" id="error-box">
                         <img style="float:left" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAWCAMAAADpVnyHAAAAb1BMVEUAAADcAADeAADaAADdAADaAADMAADdAADeAADeAADcAADeAADdAADeAADdAADdAADcAADdAADeAADeAADdAADdAADdAADdAADKAADdAADeAADeAADcAADdAADcAADaAADdAADeAADdAADbAADeAAB3WaKjAAAAJHRSTlMAUPopZBQF6dhxDsWtqEo+MePQurWbiH8J8O3Ok41XIh5rW1b9BCPkAAAAxElEQVQoz3WR2RKDMAhFMcZ917rVte39/29sYurYaLwPwHAyQID+1Tp0I5vVd+gB5GaSwkdkJK7P7BizCQUYaWFFdyVO/3SIGrRXVCMQNvTYeiY5fFd6juSMIqRkVSJdItPJjIrohYIow6CRrmA20QeliGNwbXkYt36xsAvzwoOsTA5OIRoSajAdKEGweY+T+oC9k+w3OHXKcTx2NCBVC0neKlHKhHpUqcBCdJTRS7t87xGr5hMi66wAvSOvDqNqefUb5V/3/RGXZ5OWvQAAAABJRU5ErkJggg==" />
                         <div id="errId">%ERROR%</div>
                     </div> -->
-                </form>
+                    </form>
 
-                <div class="igcp-login__register-link slds-text-align--center">
-                    <a href="" class="igcp-link__variant--a">Register for Online Access</a>
+                    <div class="igcp-login__register-link slds-text-align--center">
+                        <a id="registration" href="https://portalint-portalint.cs70.force.com/customers/s/registration" class="igcp-link__variant--a">Register for Online Access</a>
+                    </div>
+
                 </div>
 
-            </div>
+                <!--MOBILE AD-->
+                <!-- Image will be authorable at some point -->
+                <div class="igcp-login__ad igcp-login__ad--mobile">
 
-            <!--MOBILE AD-->
-            <!-- Image will be authorable at some point -->
-            <div class="igcp-login__ad igcp-login__ad--mobile">
+                    <a href="#">
+                        <img src="../../external_files/images/login-banner-mobile.png" alt="" />
+                    </a>
 
-                <a href="#"><img src="../../external_files/images/login-banner-mobile.png" alt=""/></a>
+                </div>
+                <!--END MOBILE AD-->
 
-            </div>
-            <!--END MOBILE AD-->
+                <div class="igcp-login__footer" role="contentinfo">
 
-            <div class="igcp-login__footer" role="contentinfo">
-
-                <ul class="igcp-login__footer-menu">
-                    <li class="igcp-login__footer-link">
-                        <a href="#">Support</a>
-                    </li>
-                    <li class="igcp-login__footer-link">
-                        <a href="#">Privacy</a>
-                    </li>
-                    <li class="igcp-login__footer-link">
-                        <a href="#">User Agreement</a>
-                    </li>
-                    <li class="igcp-login__footer-link">
-                        <a href="#">Investor Performance</a>
-                    </li>
-                    <li class="igcp-login__footer-link">
-                        <a href="#">Help</a>
-                    </li>
-                </ul>
-
-                <div class="igcp-login__footer-copyright">
-                    <ul class="menu">
-                        <li>&copy; 2017 IGM Financial Inc. All rights Reserved</li>
+                    <ul class="igcp-login__footer-menu">
+                        <li class="igcp-login__footer-link">
+                            <a id="privacy-footer" href="#">Privacy</a>
+                        </li>
+                        <li class="igcp-login__footer-link">
+                            <a id="user-agreement-footer" href="#">User Agreement</a>
+                        </li>
+                        <li class="igcp-login__footer-link">
+                            <a id="investor-performance-footer" href="#">Investor Performance</a>
+                        </li>
+                        <li class="igcp-login__footer-link">
+                            <a id="help-footer" href="#">Help</a>
+                        </li>
                     </ul>
+
+                    <div class="igcp-login__footer-copyright">
+                        <ul class="menu">
+                            <li>&copy; 2017 IGM Financial Inc. All rights Reserved</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- DESKTOP AD-->
-        <!-- Background image and color need to be inline as we may eventually make these authorable -->
-        <div style="background-image: url('../../external_files/images/login-image-ad-bg.jpg'); background-color:#11517d"
-             class="igcp-login--col2 slds-size--12-of-12 slds-large-size--8-of-12 background-left-bottom">
+            <!-- DESKTOP AD-->
+            <!-- Background image and color need to be inline as we may eventually make these authorable -->
+            <div style="background-image: url('../../external_files/images/login-image-ad-bg.jpg'); background-color:#11517d" class="igcp-login--col2 slds-size--12-of-12 slds-large-size--8-of-12 background-left-bottom">
 
-            <div class="igcp-login__ad igcp-login__ad--desktop">
+                <div class="igcp-login__ad igcp-login__ad--desktop">
 
-                <h1 class="igcp-login__ad-heading">When it comes to RRSPs, the word “contribution” is key.</h1>
+                    <h1 class="igcp-login__ad-heading">When it comes to RRSPs, the word “contribution” is key.</h1>
 
-                <p class="igcp-login__ad-copy">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                    laborum.</p>
+                    <p class="igcp-login__ad-copy">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
 
-                <a class="igcp-login__ad-link" href="#">Learn More</a><span class="arrow">&gt;</span>
+                    <a class="igcp-login__ad-link" href="#">Learn More</a>
+                    <span class="arrow">&gt;</span>
+
+                </div>
 
             </div>
-
+            <!-- DESKTOP AD END -->
         </div>
-        <!-- DESKTOP AD END -->
-    </div>
-    <!-- LOGIN END -->
+        <!-- LOGIN END -->
 
-</div>
+    </div>
+    <script type="text/javascript" src="../../external_files/scripts/jquery-3.2.1.slim.min.js"></script>
+    <script type="text/javascript" src="../../external_files/scripts/dtm-controller.js"></script>
 </body>
 
 </html>

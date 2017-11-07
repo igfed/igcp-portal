@@ -143,6 +143,8 @@
 			"StepThree",
 			cmp,
 			function(evt) {
+				// console.log('register complete');
+				// window.dtmCall('register-complete', '{"data": "data"}')
 				cmp.onNextStep();
 			},
 			function(error) {

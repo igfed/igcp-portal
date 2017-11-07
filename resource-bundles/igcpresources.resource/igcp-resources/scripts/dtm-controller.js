@@ -145,6 +145,7 @@
 
     if (event.type === 'dc') {
       // Move 'data' props into event object
+      console.log($this);
       for (var prop in $this) {
         if ($this.hasOwnProperty(prop)) {
           event[prop] = $this[prop];
