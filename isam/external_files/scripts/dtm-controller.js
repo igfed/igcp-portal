@@ -11,14 +11,14 @@ $(document).ready(function () {
       $component
 
     // Setup custom tracking handler for 'true' direct calls from JS
-    window.dtmCall = function (dcName, data) {
+    window._aa.track = function (dcName, data) {
       _constructEventObj(data, 'dc');
       _executeDirectCall(dcName);
     }
 
     // Certain Portal pages need to have click handlers attached on the fly
-    window.dtmRegisterHandlers = function () {
-      _registerClickHandlers();
+    window._aa.registerHandlers = function () {
+      _registerHandlers();
     }
 
     function init() {
@@ -53,7 +53,7 @@ $(document).ready(function () {
       return lang;
     }
 
-    function _registerClickHandlers() {
+    function _registerHandlers() {
       $("[data-aa-type='click']").on('click', function (e) {
         if ($(this).data('aaDcname') && $(this).data('aaDcname') !== 'none') {
           e.stopPropagation();

@@ -1,22 +1,23 @@
 (function ($) {
 
   window.digitalData = window.digitalData || {};
+  window._aa = window._aa || {};
   window.digitalData.page = {};
   window.digitalData.page.pageInfo = {};
   window.digitalData.page.category = {};
   window.digitalData.events = [];
 
-  var $this,
-    $component
-
   // Setup custom tracking handler for 'true' direct calls from JS
-  window.dtmCall = function (dcName, data) {
+  //
+  // Sample: window._aatrack('register-cancel', '{"component":{"name":"the_component_name"}}');
+  //
+  window._aa.track = function (dcName, data) {
     _constructEventObj(data, 'dc');
     _executeDirectCall(dcName);
   }
 
   // Certain Portal pages need to have click handlers attached on the fly
-  window.dtmRegisterHandlers = function () {
+  window._aa.registerHandlers = function () {
     _registerClickHandlers();
   }
 
@@ -88,10 +89,12 @@
     event.type = type;
     event.page.referrer = window.location.href;
 
+    // Handle DOM events
     if (event.type === 'click' || event.type === 'hover') {
       var topics,
         tags = [],
-        keyValue;
+        keyValue,
+        $component;
 
       event.component.topics = [];
       event.component.tags = [];
@@ -143,12 +146,15 @@
 
     }
 
+    // Handle calls from JavaScript
     if (event.type === 'dc') {
+
       // Move 'data' props into event object
-      console.log($this);
-      for (var prop in $this) {
-        if ($this.hasOwnProperty(prop)) {
-          event[prop] = $this[prop];
+      var data = JSON.parse($this);
+
+      for (var prop in data) {
+        if (data.hasOwnProperty(prop)) {
+          event[prop] = data[prop];
         }
       }
 
