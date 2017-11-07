@@ -8,7 +8,7 @@
 			var state = response.getState();
 
 			console.log("STATE: " + state);
-			console.log(response.returnValue);
+			console.log(response);
 
 			if (state === "SUCCESS") {
 
