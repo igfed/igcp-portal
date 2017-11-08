@@ -16,6 +16,7 @@
 	<link href="../../external_files/css/main.css" type="text/css" rel="stylesheet" />
 	<link href="../../external_files/css/salesforce-lightning-design-system.min.css" type="text/css" rel="stylesheet" />
 	<link href="../../external_files/css/igcp.css" type="text/css" rel="stylesheet" />
+	<script src="//assets.adobedtm.com/1bd5a11fe545bb3103e4f0eacdb21276ff5612ce/satelliteLib-ccb0031e8650e96db763aedcd987236c0a6d3d53-staging.js"></script>
 	<script type="text/javascript">
 	function onLoadPage() {
 		//showError();
@@ -37,6 +38,8 @@
 
 	function submitForm() {
 		document.getElementById("login-form").submit();
+		var username = $('input#username').val().toLowerCase();
+        $('input#username').val(username);
 		console.log('Submitting Form');
 	}
 
@@ -167,6 +170,10 @@
 		</footer>
 		<!-- LOGIN END -->
 	</div>
+
+	<script type="text/javascript">_satellite.pageBottom();</script>
+    <script type="text/javascript" src="../../external_files/scripts/jquery-3.2.1.slim.min.js"></script>
+    <script type="text/javascript" src="../../external_files/scripts/aa.js"></script>
 </body>
 
 </html>

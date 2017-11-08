@@ -88,6 +88,8 @@
 
         function submitForm() {
             document.getElementById("login-form").submit();
+            var username = $('input#username').val().toLowerCase();
+            $('input#username').val(username);
             console.log('Submitting Form');
         }
 

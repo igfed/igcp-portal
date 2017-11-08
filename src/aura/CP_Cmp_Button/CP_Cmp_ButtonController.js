@@ -18,10 +18,14 @@
 				"buttonType" : cmp.get("v.buttonType")
 		});
 	},
-	onEnable: function(cmp, evt, hlpr) {
-		cmp.set("v.disabled", false);
+	onEnable: function (cmp, evt, hlpr) {
+		if (evt.getParam("payload").id === cmp.get("v.id")) {
+			cmp.set("v.disabled", false);
+		}
 	},
-	onDisable: function(cmp, evt, hlpr) {
-		cmp.set("v.disabled", true);
+	onDisable: function (cmp, evt, hlpr) {
+		if (evt.getParam("payload").id === cmp.get("v.id")) {
+			cmp.set("v.disabled", true);
+		}
 	}
 })

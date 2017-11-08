@@ -25,6 +25,8 @@
 				"email": cmp.get("v.email")
 			});
 
+			hlpr.disableSubmit(cmp);
+
 			cmp.onSubmitForm();
 		}
 	},
@@ -57,6 +59,7 @@
 					function(obj) {
 
 						if (obj.fields && obj.messages) {
+							console.log("TATATATATTATSFTST")
 							obj.fields.forEach(function(errorType, i) {
 								var msgArr = [];
 
@@ -90,8 +93,7 @@
 	},
 	onButtonClick: function(cmp, evt, hlpr){
 		if(evt.getParam("payload").id === "back_button") {
-			var utils = cmp.find("CP_Utils");
-			utils.gotoLogin(cmp.get("v.lang"));
+			cmp.find("CP_Utils").gotoLogin();
 		}
 	},
 	doneRendering: function(cmp, evt, hlpr) {
