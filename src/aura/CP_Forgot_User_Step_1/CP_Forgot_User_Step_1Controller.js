@@ -25,11 +25,7 @@
 				"email": cmp.get("v.email")
 			});
 
-<<<<<<< HEAD
 			hlpr.showLoading(cmp);
-=======
-			hlpr.disableSubmit(cmp);
->>>>>>> c8b9b6ae25b2a883e549a05be3e37dc26d3b593c
 
 			cmp.onSubmitForm();
 		}

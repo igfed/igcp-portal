@@ -53,7 +53,6 @@
 		cmp.find("CP_Events").fire("CP_Evt_Button_Enable", {
 			"id" : "form_submit"
 		});
-<<<<<<< HEAD
 	},
 	showLoading: function(cmp) {
 		cmp.find("CP_Events").fire("CP_Evt_Loading_Show", {
@@ -64,7 +63,5 @@
 		cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", {
 			"id" : "forgot-user-1-spinner"
 		});
-=======
->>>>>>> c8b9b6ae25b2a883e549a05be3e37dc26d3b593c
 	}
 })

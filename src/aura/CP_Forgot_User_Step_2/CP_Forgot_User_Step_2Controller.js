@@ -50,10 +50,7 @@
 			"StepTwo",
 			cmp,
 			function(evt) {
-<<<<<<< HEAD
 				hlpr.hideLoading(cmp);
-=======
->>>>>>> c8b9b6ae25b2a883e549a05be3e37dc26d3b593c
 				window._aa.track('forgot-username-success', '{"component": {"name": "CP_Forgot_User_Step_2Controller"}}');
 				cmp.gotoNextStep();
 			},
