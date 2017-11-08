@@ -52,6 +52,7 @@
 				function (evt) {
 					console.warn("SUCCESS!!!!!")
 					console.warn(evt);
+					window._aa.track('forgot-password-success', '{"component": {"name": "CP_Forgot_Pass_Step_3Controller"}}');
 					cmp.gotoNextStep();
 				},
 				function (error) {
@@ -102,7 +103,7 @@
 		}
 	},
 	doneRendering: function(cmp, evt, hlpr) {
-		window.dtmRegisterHandlers();
+		window._aa.registerHandlers();
 		if(cmp.get("v.renderComplete") === false) {
 			cmp.set("v.renderComplete", true);
 		}

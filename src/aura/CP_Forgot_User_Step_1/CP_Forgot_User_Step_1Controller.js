@@ -95,7 +95,7 @@
 		}
 	},
 	doneRendering: function(cmp, evt, hlpr) {
-		window.dtmRegisterHandlers();
+		window._aa.registerHandlers();
 		if(cmp.get("v.renderComplete") === false) {
 			cmp.set("v.renderComplete", true);
 		}

@@ -11,7 +11,6 @@
 		});
 	},
 	doneRendering: function (cmp, evt, hlpr) {
-
 		var body = document.querySelector("body");
 		body.className = "igcp-utils__display--block";
 	},
@@ -52,7 +51,10 @@
 		cmp.set("v.currentStep", 5);
 	},
 	onNotCompleted: function (cmp, evt, hlpr) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin
 		if (evt.getParam("payload").id === cmp.get("v.id")) {
 			cmp.set("v.currentStep", 6);
 		}

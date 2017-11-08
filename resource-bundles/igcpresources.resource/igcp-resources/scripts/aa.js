@@ -1,23 +1,28 @@
+/*! Adobe Analytics client-side controller 
+    Author: Dennis Erny 
+    Version: Salesforce v1.01 */
+
 (function ($) {
 
   window.digitalData = window.digitalData || {};
+  window._aa = window._aa || {};
   window.digitalData.page = {};
   window.digitalData.page.pageInfo = {};
   window.digitalData.page.category = {};
   window.digitalData.events = [];
 
-  var $this,
-    $component
-
   // Setup custom tracking handler for 'true' direct calls from JS
-  window.dtmCall = function (dcName, data) {
+  //
+  // Sample: window._aa.track('register-cancel', '{"component":{"name":"the_component_name"}}');
+  //
+  window._aa.track = function (dcName, data) {
     _constructEventObj(data, 'dc');
     _executeDirectCall(dcName);
   }
 
   // Certain Portal pages need to have click handlers attached on the fly
-  window.dtmRegisterHandlers = function () {
-    _registerClickHandlers();
+  window._aa.registerHandlers = function () {
+    _registerHandlers();
   }
 
   function init() {
@@ -34,7 +39,7 @@
     // window._satellite.pageBottom();
 
     // Register click event handlers
-    _registerClickHandlers();
+    _registerHandlers();
   }
 
   function _getPageName() {
@@ -52,7 +57,7 @@
     return lang;
   }
 
-  function _registerClickHandlers() {
+  function _registerHandlers() {
     $("[data-aa-type='click']").on('click', function (e) {
       if ($(this).data('aaDcname') && $(this).data('aaDcname') !== 'none') {
         e.stopPropagation();
@@ -88,10 +93,12 @@
     event.type = type;
     event.page.referrer = window.location.href;
 
+    // Handle DOM events
     if (event.type === 'click' || event.type === 'hover') {
       var topics,
         tags = [],
-        keyValue;
+        keyValue,
+        $component;
 
       event.component.topics = [];
       event.component.tags = [];
@@ -143,11 +150,15 @@
 
     }
 
+    // Handle calls from JavaScript
     if (event.type === 'dc') {
+
       // Move 'data' props into event object
-      for (var prop in $this) {
-        if ($this.hasOwnProperty(prop)) {
-          event[prop] = $this[prop];
+      var data = JSON.parse($this);
+
+      for (var prop in data) {
+        if (data.hasOwnProperty(prop)) {
+          event[prop] = data[prop];
         }
       }
 

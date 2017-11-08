@@ -143,9 +143,8 @@
 			"StepThree",
 			cmp,
 			function (success) {
-				console.log('register complete');
 				console.log(success);
-				// window.dtmCall('register-complete', '{"data": "data"}')
+				window._aa.track('register-complete', '{"component": {"name": "CP_Registration_Step_3Controller"}}');
 				cmp.onNextStep();
 			},
 			function (error) {
@@ -241,7 +240,11 @@
 		});
 	},
 	doneRendering: function (cmp, evt, hlpr) {
+<<<<<<< HEAD
 		window.dtmRegisterHandlers();
+=======
+		window._aa.registerHandlers();
+>>>>>>> origin
 		if (cmp.get("v.renderComplete") === false) {
 			cmp.set("v.renderComplete", true);
 		}

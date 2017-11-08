@@ -51,6 +51,7 @@
 			"StepTwo",
 			cmp,
 			function(evt) {
+				window._aa.track('forgot-username-success', '{"component": {"name": "CP_Forgot_User_Step_2Controller"}}');
 				cmp.gotoNextStep();
 			},
 			function(error) {
@@ -96,7 +97,7 @@
 		}
 	},
 	doneRendering: function(cmp, evt, hlpr) {
-		window.dtmRegisterHandlers();
+		window._aa.registerHandlers();
 		if(cmp.get("v.renderComplete") === false) {
 			cmp.set("v.renderComplete", true);
 		}
