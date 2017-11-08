@@ -25,6 +25,8 @@
 				"email": cmp.get("v.email")
 			});
 
+			hlpr.showLoading(cmp);
+
 			cmp.onSubmitForm();
 		}
 	},
@@ -39,11 +41,14 @@
 			"StepOne",
 			cmp,
 			function(evt) {
+				hlpr.hideLoading(cmp);
 				cmp.onNextStep();
 			},
 			function(error) {
 				console.error("Forgot User: Step 1: Error");
 				console.error(error);
+
+				hlpr.hideLoading(cmp);
 
 				var
 					events = cmp.find("CP_Events"),
@@ -90,8 +95,7 @@
 	},
 	onButtonClick: function(cmp, evt, hlpr){
 		if(evt.getParam("payload").id === "back_button") {
-			var utils = cmp.find("CP_Utils");
-			utils.gotoLogin(cmp.get("v.lang"));
+			cmp.find("CP_Utils").gotoLogin();
 		}
 	},
 	doneRendering: function(cmp, evt, hlpr) {

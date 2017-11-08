@@ -16,7 +16,6 @@
     <aura:attribute name="buttonClass" type="String" default="" ></aura:attribute>
 
     <!-- HANDLERS -->
-
     <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
     <aura:handler event="c:CP_Evt_Button_Enable" action="{!c.onEnable}"></aura:handler>
     <aura:handler event="c:CP_Evt_Button_Disable" action="{!c.onDisable}"></aura:handler>

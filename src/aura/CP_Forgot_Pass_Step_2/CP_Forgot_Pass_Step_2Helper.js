@@ -1,12 +1,12 @@
 ({
-	validateInput: function(cmp, payload) {
+	validateInput: function (cmp, payload) {
 
 		var
 			validator = cmp.find('CP_Validation'),
 			events = cmp.find('CP_Events');
 
 
-		validator.validate(payload, function(obj) {
+		validator.validate(payload, function (obj) {
 
 			if (obj.isValid === false) {
 
@@ -38,22 +38,25 @@
 			}
 		});
 	},
-	addToCurrentPayload: function(cmp, key, value) {
+	addToCurrentPayload: function (cmp, key, value) {
 		var currentPayload = cmp.get("v.payload");
 		currentPayload[key] = value;
 		cmp.set("v.payload", currentPayload);
 	},
-	getRandomSecurityQuestion: function(cmp, hlpr) {
-
-		console.log("getRandSecurityQuestion");
+	getRandomSecurityQuestion: function (cmp, hlpr) {
 
 		try {
+
+			hlpr.showLoading(cmp);
 
 			var services = cmp.find("CP_Services");
 
 			services.getRandSecurityQuestion(
 				cmp,
-				function(evt) {
+				function (evt) {
+
+					hlpr.hideLoading(cmp);
+
 					var
 						payload = evt.payload,
 						events = cmp.find("CP_Events"),
@@ -82,22 +85,28 @@
 							"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
 						});
 					}
-
 				},
-				function(error) {
+				function (error) {
 					console.error("Forgot Pass Step 2: get random question.");
 					console.error(error);
 
-					// events.fire("CP_Evt_Toast_Error", {
-					// 	"id": "forgot-pass-step-2-toast-error",
-					// 	"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
-					// });
+					hlpr.hideLoading(cmp);
 				}
 			);
 		} catch (err) {
-			console.log("GET RAND QUESITON")
+			console.log("CP_Forgot_Pass_Step_2: getRandomSecurityQuestion")
 			console.error(err);
 		}
 
+	},
+	showLoading: function (cmp) {
+		cmp.find("CP_Events").fire("CP_Evt_Loading_Show", {
+			"id": "forgot-pass-2-spinner"
+		});
+	},
+	hideLoading: function (cmp) {
+		cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", {
+			"id": "forgot-pass-2-spinner"
+		});
 	}
 })

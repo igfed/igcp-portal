@@ -28,10 +28,12 @@
 			});
 
 			cmp.set("v.payload", {
-				"username": cmp.get("v.username"),
+				"username": cmp.get("v.username").toLowerCase(),
 				"postalCode": cmp.get("v.postalCode"),
 				"dob": formattedDob
 			});
+
+			hlpr.showLoading(cmp);
 
 			cmp.onSubmitForm();
 		}
@@ -47,11 +49,14 @@
 			"StepOne",
 			cmp,
 			function(evt) {
+				hlpr.hideLoading(cmp);
 				cmp.gotoNextStep();
 			},
 			function(error) {
 				console.error("Step 1: Error");
 				console.error(error);
+
+				hlpr.hideLoading(cmp);
 
 				services.handleServerSideError({
 						"error": error,

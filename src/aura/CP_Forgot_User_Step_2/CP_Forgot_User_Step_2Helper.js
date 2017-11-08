@@ -46,6 +46,7 @@
 	getRandomSecurityQuestion: function(cmp, hlpr) {
 
 		console.log("getRandSecurityQuestion");
+		hlpr.showLoading(cmp);
 
 		try {
 
@@ -54,13 +55,14 @@
 			services.getRandSecurityQuestion(
 				cmp,
 				function(evt) {
+
+					hlpr.hideLoading(cmp);
+
 					var
 						payload = evt.payload,
 						events = cmp.find("CP_Events"),
 						isValid = payload.State.IsValid,
 						questionObj = {};
-
-					console.log(payload);
 
 					if (isValid === true) {
 
@@ -86,16 +88,28 @@
 					console.error("Forgot Username Step 2: get random question.");
 					console.error(error);
 
-					events.fire("CP_Evt_Toast_Error", {
+					hlpr.hideLoading(cmp);
+
+					cmp.find("CP_Events").fire("CP_Evt_Toast_Error", {
 						"id": "forgot-user-step-2-toast-error",
 						"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
 					});
 				}
 			);
 		} catch (err) {
-			console.log("GET RAD QUESITON")
+			console.log("CP_Forgot_User_Step_2: getRandomSecurityQuestion")
 			console.error(err);
 		}
 
+	},
+	showLoading: function(cmp) {
+		cmp.find("CP_Events").fire("CP_Evt_Loading_Show", {
+			"id" : "forgot-user-2-spinner"
+		});
+	}, 
+	hideLoading: function(cmp) {
+		cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", {
+			"id" : "forgot-user-2-spinner"
+		});
 	}
 })

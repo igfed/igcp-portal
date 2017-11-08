@@ -109,6 +109,8 @@
 					"id": "registration-tos"
 				});
 
+				hlpr.showLoading(cmp);
+
 				//Update acceptTOS
 				cmp.updateISAMPayload();
 
@@ -143,15 +145,15 @@
 			"StepThree",
 			cmp,
 			function (success) {
-				console.log(success);
+				hlpr.hideLoading(cmp);
 				window._aa.track('register-complete', '{"component": {"name": "CP_Registration_Step_3Controller"}}');
 				cmp.onNextStep();
 			},
 			function (error) {
 
-				var
-					events = cmp.find("CP_Events"),
-					services = cmp.find("CP_Services");
+				hlpr.hideLoading(cmp);
+
+				var services = cmp.find("CP_Services");
 
 				console.error(error);
 
@@ -185,7 +187,6 @@
 			utils = cmp.find("CP_Utils"),
 			formattedDob = "";
 
-
 		utils.convertToYMD(cmp.get("v.dob"), function (value) {
 			formattedDob = value;
 		});
@@ -198,7 +199,7 @@
 				"dob": formattedDob
 			},
 			"Profile": {
-				"username": cmp.get("v.username"),
+				"username": cmp.get("v.username").toLowerCase(),
 				"password": cmp.get("v.password"),
 				"confirmPassword": cmp.get("v.confirmPassword"),
 				"email": cmp.get("v.email"),

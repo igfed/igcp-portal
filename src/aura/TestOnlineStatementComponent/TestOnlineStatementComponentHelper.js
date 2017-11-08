@@ -19,12 +19,15 @@
 		console.log(action);
 		action.setCallback(this,function(resp){
                 //get the response state
+                console.log("hello world");
                 var state = resp.getState();
                 console.log("test"+state);
                 //check if result is successfull
                 if(state == "SUCCESS"){
                     var result = resp.getReturnValue();
-                    console.log("temp"+result);
+                    console.log("temp -> "+result);
+                    str = JSON.stringify(result);
+                   console.log(str);
                     	//component.set("v.lstPositions",result);
                     //
                 } else if(state == "ERROR"){

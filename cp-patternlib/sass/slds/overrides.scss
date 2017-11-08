@@ -74,6 +74,10 @@
 	border: 1px solid red;
 }
 
+.has-error.uiInputDefaultError.uiInput.uiInputText.uiInput--default.uiInput--input {
+	position: absolute;
+}
+
 .slds-checkbox {
 
 	.slds-form-element__label.input-label {

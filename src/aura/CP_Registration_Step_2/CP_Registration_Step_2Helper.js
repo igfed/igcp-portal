@@ -99,7 +99,7 @@
 			}
 		});
 	},
-	scrollToTop: function(){
+	scrollToTop: function(cmp){
 		var utils = cmp.find("CP_Utils");
 		if(cmp.get("v.renderComplete") === true) {
 			console.log("renderComplete: true")
@@ -116,22 +116,30 @@
 		}
 	},
 	scrollToError: function(id, cmp) {
-
 		var utils = cmp.find("CP_Utils");
 		if(cmp.get("v.renderComplete") === true) {
-			// console.log("renderComplete: true")
-			// $("html, body").animate({
-			// 	scrollTop: $(id).offset().top
-			// }, 500);
+			$("html, body").animate({
+				scrollTop: $(id).offset().top
+			}, 500);
 
 			utils.scrollTo("html, body");
 		} else {
-			console.log("renderComplete: false")
-			// utils.waitFor(cmp, "v.renderComplete", function(){
-			// 	$("html, body").animate({
-			// 		scrollTop: $(id).offset().top
-			// 	}, 500);
-			// });
+			utils.waitFor(cmp, "v.renderComplete", function(){
+				$("html, body").animate({
+					scrollTop: $(id).offset().top
+				}, 500);
+			});
 		}
+	},
+	showLoading: function(cmp) {
+		
+		cmp.find("CP_Events").fire("CP_Evt_Loading_Show", {
+			"id" : "registration-step-2-spinner"
+		});
+	}, 
+	hideLoading: function(cmp) {
+		cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", {
+			"id" : "registration-step-2-spinner"
+		});
 	}
 })

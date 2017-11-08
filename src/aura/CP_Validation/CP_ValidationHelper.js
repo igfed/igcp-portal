@@ -145,7 +145,7 @@
 					//Check if pass has number
 					errorCheckObj["hasNumber"] = hasNumber;
 				}
-
+				console.log(params.confirmValue);
 				if (params.confirmValue !== undefined) {
 				
 					errorCheckObj["passwordsMatch"] = hlpr.isSame(params.value, params.confirmValue);

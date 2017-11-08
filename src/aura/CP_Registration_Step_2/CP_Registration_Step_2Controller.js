@@ -139,7 +139,7 @@
 					"dob": formattedDob
 				},
 				"Profile": {
-					"username": cmp.get("v.username"),
+					"username": cmp.get("v.username").toLowerCase(),
 					"password": cmp.get("v.password"),
 					"confirmPassword": cmp.get("v.confirmPassword"),
 					"email": cmp.get("v.email"),
@@ -153,6 +153,8 @@
 					"answer3": cmp.get("v.answer3")
 				}
 			});
+
+			hlpr.showLoading(cmp);
 
 			cmp.onSubmitForm();
 		} else if (cmp.get("v.inputsReceived") === 11 && cmp.get("v.inputErrors") === true) {
@@ -173,9 +175,13 @@
 			"StepTwo",
 			cmp,
 			function(evt) {
+				hlpr.hideLoading(cmp);
 				cmp.onNextStep();
 			},
 			function(error) {
+
+				hlpr.hideLoading(cmp);
+				hlpr.scrollToTop(cmp);
 
 				var
 					events = cmp.find("CP_Events"),

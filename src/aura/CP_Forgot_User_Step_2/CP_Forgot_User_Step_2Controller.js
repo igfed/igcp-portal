@@ -31,8 +31,7 @@
 
 			hlpr.addToCurrentPayload(cmp, "answer", cmp.get("v.answer"));
 
-			console.log("Step 2: submit: payload: ");
-			console.log(cmp.get("v.payload"));
+			hlpr.showLoading(cmp);
 
 			cmp.onSubmitForm();
 		}
@@ -51,12 +50,16 @@
 			"StepTwo",
 			cmp,
 			function(evt) {
+				hlpr.hideLoading(cmp);
+				window._aa.track('forgot-username-success', '{"component": {"name": "CP_Forgot_User_Step_2Controller"}}');
 				cmp.gotoNextStep();
 			},
 			function(error) {
 				console.error("Forgot User: Step 2: Error");
 				console.error(error);
 
+				hlpr.hideLoading(cmp);
+				
 				services.handleServerSideError({
 						"error": error,
 						"id": cmp.get("v.pageId"),

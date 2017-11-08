@@ -24,8 +24,7 @@
 
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
-		if (cmp.get("v.inputsReceived") === 3 && cmp.get("v.inputErrors") === false) {
-
+		if (cmp.get("v.inputsReceived") === 3 && cmp.get("v.inputErrors") === false) {	
 
 			utils.convertToYMD(cmp.get("v.dob"), function(value) {
 				formattedDob = value;
@@ -36,6 +35,8 @@
 				"postalCode": cmp.get("v.postalCode"),
 				"dob": formattedDob
 			});
+
+			hlpr.showLoading(cmp);
 
 			cmp.onSubmitForm();
 		}
@@ -49,16 +50,15 @@
 			events = cmp.find("CP_Events"),
 			services = cmp.find("CP_Services");
 
-		//console.log("Step 1");
-
 		services.submitForm(
 			"StepOne",
 			cmp,
 			function(evt) {
-				//console.log("Step 1: Next step");
+				hlpr.hideLoading(cmp);
 				cmp.onNextStep();
 			},
 			function(error) {
+				hlpr.hideLoading(cmp);
 
 				var
 					events = cmp.find("CP_Events"),

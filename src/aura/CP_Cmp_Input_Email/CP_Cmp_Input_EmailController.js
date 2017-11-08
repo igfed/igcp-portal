@@ -98,6 +98,14 @@
 		events.fire("CP_Evt_Input_Blur", {
 			"id": cmp.get("v.id"),
 			"type": cmp.get("v.type"),
+			"value": cmp.get("v.inputValue") === undefined ? "" : cmp.get("v.inputValue")
+		});
+	},
+	onConfirmationBlur: function(cmp, evt, hlpr) {
+		var events = cmp.find("CP_Events");
+		events.fire("CP_Evt_Input_Blur", {
+			"id": cmp.get("v.id"),
+			"type": cmp.get("v.type"),
 			"value": cmp.get("v.inputValue") === undefined ? "" : cmp.get("v.inputValue"),
 			"confirmValue": cmp.get("v.inputValueConfirm")
 		});

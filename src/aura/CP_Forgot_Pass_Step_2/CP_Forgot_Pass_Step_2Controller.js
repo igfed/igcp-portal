@@ -47,6 +47,8 @@
 				"id": cmp.get("v.questionId")
 			});
 
+			hlpr.showLoading(cmp);
+
 			cmp.onSubmitForm();
 		}
 	},
@@ -63,12 +65,15 @@
 				"StepTwo",
 				cmp,
 				function (evt) {
+					hlpr.hideLoading(cmp);
 					cmp.gotoNextStep();
 				},
 				function (error) {
 					console.error("Forgot Pass: Step 2: Error");
 					console.error(error);
 
+					hlpr.hideLoading(cmp);
+					
 					services.handleServerSideError({
 							"error": error,
 							"id": cmp.get("v.pageId"),
