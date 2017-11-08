@@ -51,10 +51,6 @@
 		cmp.set("v.currentStep", 5);
 	},
 	onNotCompleted: function (cmp, evt, hlpr) {
-<<<<<<< HEAD
-
-=======
->>>>>>> origin
 		if (evt.getParam("payload").id === cmp.get("v.id")) {
 			cmp.set("v.currentStep", 6);
 		}

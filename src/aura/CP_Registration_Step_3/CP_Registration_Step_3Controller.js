@@ -240,11 +240,7 @@
 		});
 	},
 	doneRendering: function (cmp, evt, hlpr) {
-<<<<<<< HEAD
-		window.dtmRegisterHandlers();
-=======
 		window._aa.registerHandlers();
->>>>>>> origin
 		if (cmp.get("v.renderComplete") === false) {
 			cmp.set("v.renderComplete", true);
 		}
