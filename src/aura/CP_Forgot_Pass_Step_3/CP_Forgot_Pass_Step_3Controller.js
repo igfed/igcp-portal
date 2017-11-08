@@ -48,7 +48,12 @@
 				"StepThree",
 				cmp,
 				function (evt) {
+<<<<<<< HEAD
 					hlpr.hideLoading(cmp);
+=======
+					console.warn("SUCCESS!!!!!")
+					console.warn(evt);
+>>>>>>> c8b9b6ae25b2a883e549a05be3e37dc26d3b593c
 					window._aa.track('forgot-password-success', '{"component": {"name": "CP_Forgot_Pass_Step_3Controller"}}');
 					cmp.gotoNextStep();
 				},

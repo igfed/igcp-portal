@@ -2,8 +2,10 @@
 	getPosition : function(component) {
        // window.open("https://igportaldev3--portaldev3--c.cs70.visual.force.com/apex/PDFRenderTest?id=0693D000000DTnU");
         console.log("Test");
-        var temp2 = JSON.stringify({ "username" : "portalclient2@igext", "currentPassword" : "qwerty" , "newPassword" : "testPassword" , "verifyPassword" : "testPassword" }); 
-        console.log(temp2);
+        var tempData = JSON.stringify({ "username" : "portalclient2@igext", "currentPassword" : "qwerty" , "newPassword" : "testPassword" , "verifyPassword" : "testPassword" }); 
+        
+        
+        console.log(tempData);
       //window.open("https://www.w3schools.com");
         
 /*        var urlEvent = $A.get("e.force:navigateToURL");
@@ -13,9 +15,8 @@
             });
             urlEvent.fire();*/
        var action = component.get("c.updatePassword");
-        //var temp2 = JSON.stringify({ username : portalclient2@igext, currentPassword : qwerty,newPassword : testPassword,verifyPassword : testPassword }); 
-        //console.log(temp2);
-        action.setParams({payLoad : temp2});
+     
+        action.setParams({payLoad : tempData});
 		console.log(action);
 		action.setCallback(this,function(resp){
                 //get the response state
