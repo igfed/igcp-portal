@@ -1,3 +1,7 @@
+/*! Adobe Analytics client-side controller 
+    Author: Dennis Erny 
+    Version: Salesforce v1.0 */
+
 (function ($) {
 
   window.digitalData = window.digitalData || {};

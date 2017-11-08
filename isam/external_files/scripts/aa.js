@@ -1,16 +1,21 @@
+/*! Adobe Analytics client-side controller 
+    Author: Dennis Erny 
+    Version: ISAM v1.0 */
+
 $(document).ready(function () {
   (function () {
 
+    window._aa = window._aa || {};
     window.digitalData = window.digitalData || {};
     window.digitalData.page = {};
     window.digitalData.page.pageInfo = {};
     window.digitalData.page.category = {};
     window.digitalData.events = [];
 
-    var $this,
-      $component
-
     // Setup custom tracking handler for 'true' direct calls from JS
+    //
+    // Sample: window._aatrack('register-cancel', '{"component":{"name":"the_component_name"}}');
+    //
     window._aa.track = function (dcName, data) {
       _constructEventObj(data, 'dc');
       _executeDirectCall(dcName);
@@ -18,11 +23,11 @@ $(document).ready(function () {
 
     // Certain Portal pages need to have click handlers attached on the fly
     window._aa.registerHandlers = function () {
-      _registerHandlers();
+      _registerClickHandlers();
     }
 
     function init() {
-      console.log('init');
+
       // Capture page data
       window.digitalData.pageInstanceID = _getPageName() + ":" + window.location.hostname + "";
       window.digitalData.page.pageInfo.pageName = _getPageName();
@@ -53,7 +58,7 @@ $(document).ready(function () {
       return lang;
     }
 
-    function _registerHandlers() {
+    function _registerClickHandlers() {
       $("[data-aa-type='click']").on('click', function (e) {
         if ($(this).data('aaDcname') && $(this).data('aaDcname') !== 'none') {
           e.stopPropagation();
@@ -89,10 +94,12 @@ $(document).ready(function () {
       event.type = type;
       event.page.referrer = window.location.href;
 
+      // Handle DOM events
       if (event.type === 'click' || event.type === 'hover') {
         var topics,
           tags = [],
-          keyValue;
+          keyValue,
+          $component;
 
         event.component.topics = [];
         event.component.tags = [];
@@ -144,12 +151,15 @@ $(document).ready(function () {
 
       }
 
+      // Handle calls from JavaScript
       if (event.type === 'dc') {
+
         // Move 'data' props into event object
-        console.log($this);
-        for (var prop in $this) {
-          if ($this.hasOwnProperty(prop)) {
-            event[prop] = $this[prop];
+        var data = JSON.parse($this);
+
+        for (var prop in data) {
+          if (data.hasOwnProperty(prop)) {
+            event[prop] = data[prop];
           }
         }
 
