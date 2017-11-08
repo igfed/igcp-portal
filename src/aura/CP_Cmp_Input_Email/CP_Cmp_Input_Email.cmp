@@ -26,6 +26,7 @@
 	<aura:attribute name="example" type="String" default=""></aura:attribute>
 	<aura:attribute name="hasFocus" type="Boolean" default="false" />
 	<aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
+	<aura:attribute name="confirmInitialFocused" type="Boolean" default="false" />
 
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
@@ -71,7 +72,7 @@
 			</label>
 			<div class="slds-form-element__control">
 				<!-- INPUT -->
-				<ui:inputText aura:id="text-confirm-input" label="" value="{!v.inputValueConfirm}" class="slds-input igcp-input" required="{!v.required}" blur="{!c.onBlur}" />
+				<ui:inputText aura:id="text-confirm-input" label="" value="{!v.inputValueConfirm}" class="slds-input igcp-input" required="{!v.required}" blur="{!c.onConfirmationBlur}" />
 			</div>
 		</div>
 	</aura:renderIf>

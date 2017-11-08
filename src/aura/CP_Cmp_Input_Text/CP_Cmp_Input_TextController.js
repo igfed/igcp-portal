@@ -9,11 +9,19 @@
 		}
 	},
 	doneRendering: function (cmp, evt, hlpr) {
-		if (cmp.get("v.renderComplete") === false) {
-			if (cmp.get("v.hasFocus") === true) {
-				cmp.find("text-input").getElement().focus();
+		try {
+			if (cmp.get("v.renderComplete") === false) {
+				if (cmp.get("v.hasFocus") === true) {
+					//There is a conflict between this 
+					//line and adobe analytics
+					//
+					//cmp.find("text-input").getElement().focus();
+				}
+				cmp.set("v.renderComplete", true);
 			}
-			cmp.set("v.renderComplete", true);
+		} catch (err) {
+			console.error("CP_Cmp_Input_Text: doneRendering");
+			console.error(err);
 		}
 	},
 	onGetValue: function (cmp, evt, hlpr) {
@@ -71,7 +79,9 @@
 
 			if (errors.length > 0) {
 				errors.forEach(function (item, i) {
-					errorArr.push({ message: item.msg });
+					errorArr.push({
+						message: item.msg
+					});
 				});
 
 				field = cmp.find("text-input");
@@ -92,12 +102,15 @@
 		});
 	},
 	onConfirmationBlur: function (cmp, evt, hlpr) {
-		// var events = cmp.find("CP_Events");
-		// events.fire("CP_Evt_Input_Blur", {
-		// 	"id": cmp.get("v.id"),
-		// 	"type": "email-confirm",
-		// 	"value": cmp.get("v.inputValue"),
-		// 	"confirmValue": cmp.get("v.inputValueConfirm")
-		// });
+		var events = cmp.find("CP_Events");
+		events.fire("CP_Evt_Input_Blur", {
+			"id": cmp.get("v.id"),
+			"type": "email-confirm",
+			"value": cmp.get("v.inputValue"),
+			"confirmValue": cmp.get("v.inputValueConfirm")
+		});
+	},
+	onFocus: function (cmp, evt, hlpr) {
+		
 	}
 })

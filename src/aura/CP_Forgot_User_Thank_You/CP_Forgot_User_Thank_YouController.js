@@ -1,6 +1,5 @@
 ({
 	gotoLogin: function(cmp, evt, hlpr) {
-		var utils = cmp.find("CP_Utils");
-		utils.navigateToURL("/customers");
+		cmp.find("CP_Utils").gotoLogin();
 	}
 })

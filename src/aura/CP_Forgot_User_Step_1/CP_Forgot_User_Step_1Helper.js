@@ -40,7 +40,18 @@
 			}
 		});
 	},
-	handleErrors: function(cmp) {
+	disableSubmit: function(cmp) {
+		console.log("Disable Submit");
 		
+		cmp.find("CP_Events").fire("CP_Evt_Button_Disable", {
+			"id" : "form_submit"
+		});
+	},
+	enableSubmit: function(cmp) {
+		console.log("Enable Submit");
+		
+		cmp.find("CP_Events").fire("CP_Evt_Button_Enable", {
+			"id" : "form_submit"
+		});
 	}
 })

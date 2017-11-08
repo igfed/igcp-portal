@@ -1,5 +1,10 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
 
+	<!-- INCLUDES -->	
+    <c:CP_CSS_Includes />
+    <c:CP_JS_Includes />
+	<c:CP_Utils aura:id="CP_Utils"/>
+
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="forgot-username"></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-utils__overflow--hidden"></aura:attribute>
@@ -15,12 +20,6 @@
 	<aura:attribute name="answer" type="String"></aura:attribute>
 	<aura:attribute name="isamStateId" type="String"></aura:attribute>
 	<aura:attribute name="questionId" type="String"></aura:attribute>
-	
-	<!-- INCLUDES -->	
-    <c:CP_CSS_Includes />
-    <c:CP_JS_Includes />
-	<c:CP_Utils aura:id="CP_Utils"/>
-
 
     <!-- HANDLER -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
