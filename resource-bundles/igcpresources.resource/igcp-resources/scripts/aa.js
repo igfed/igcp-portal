@@ -1,6 +1,6 @@
 /*! Adobe Analytics client-side controller 
     Author: Dennis Erny 
-    Version: Salesforce v1.0 */
+    Version: Salesforce v1.01 */
 
 (function ($) {
 
@@ -13,7 +13,7 @@
 
   // Setup custom tracking handler for 'true' direct calls from JS
   //
-  // Sample: window._aatrack('register-cancel', '{"component":{"name":"the_component_name"}}');
+  // Sample: window._aa.track('register-cancel', '{"component":{"name":"the_component_name"}}');
   //
   window._aa.track = function (dcName, data) {
     _constructEventObj(data, 'dc');
@@ -22,7 +22,7 @@
 
   // Certain Portal pages need to have click handlers attached on the fly
   window._aa.registerHandlers = function () {
-    _registerClickHandlers();
+    _registerHandlers();
   }
 
   function init() {
@@ -39,7 +39,7 @@
     // window._satellite.pageBottom();
 
     // Register click event handlers
-    _registerClickHandlers();
+    _registerHandlers();
   }
 
   function _getPageName() {
@@ -57,7 +57,7 @@
     return lang;
   }
 
-  function _registerClickHandlers() {
+  function _registerHandlers() {
     $("[data-aa-type='click']").on('click', function (e) {
       if ($(this).data('aaDcname') && $(this).data('aaDcname') !== 'none') {
         e.stopPropagation();
