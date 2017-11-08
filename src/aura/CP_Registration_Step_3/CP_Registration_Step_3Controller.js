@@ -1,5 +1,5 @@
 ({
-	onInit: function(cmp, evt, hlpr) {
+	onInit: function (cmp, evt, hlpr) {
 		var
 			itemsArr = [],
 			utils = cmp.find("CP_Utils"),
@@ -63,10 +63,10 @@
 				formattedPhone = "";
 
 			utils.formatToPhone(
-				cmp.get("v.mobilePhone"), 
-				function(returnedVal){
+				cmp.get("v.mobilePhone"),
+				function (returnedVal) {
 					formattedPhone = returnedVal;
-				}, 
+				},
 				cmp.get("v.lang")
 			);
 
@@ -85,10 +85,10 @@
 			"values": itemsArr
 		});
 	},
-	onRegistrationComplete: function(cmp, evt, hlpr) {
+	onRegistrationComplete: function (cmp, evt, hlpr) {
 		cmp.showTOS();
 	},
-	onShowTOS: function(cmp, evt, hlpr) {
+	onShowTOS: function (cmp, evt, hlpr) {
 
 		var events = cmp.find("CP_Events");
 
@@ -96,7 +96,7 @@
 			"id": "registration-tos"
 		});
 	},
-	onAgreeTOS: function(cmp, evt, hlpr) {
+	onAgreeTOS: function (cmp, evt, hlpr) {
 		var
 			payload = evt.getParam("payload"),
 			events = cmp.find("CP_Events");
@@ -118,7 +118,7 @@
 			}
 		}
 	},
-	onAgreeChecked: function(cmp, evt, hlpr) {
+	onAgreeChecked: function (cmp, evt, hlpr) {
 
 		var payload = evt.getParam("payload");
 
@@ -126,7 +126,7 @@
 			cmp.set("v.acceptTOS", payload.checked);
 		}
 	},
-	onSubmitToISAM: function(cmp, evt, hlpr) {
+	onSubmitToISAM: function (cmp, evt, hlpr) {
 
 		var
 			events = cmp.find("CP_Events"),
@@ -142,47 +142,52 @@
 		services.submitForm(
 			"StepThree",
 			cmp,
-			function(evt) {
+			function (success) {
+				console.log('register complete');
+				console.log(success);
+				// window.dtmCall('register-complete', '{"data": "data"}')
 				cmp.onNextStep();
 			},
-			function(error) {
+			function (error) {
 
 				var
 					events = cmp.find("CP_Events"),
 					services = cmp.find("CP_Services");
+
+				console.error(error);
 
 				services.handleServerSideError({
 						"error": error,
 						"id": cmp.get("v.pageId"),
 						"toastId": "registration-step-3-toast-error"
 					},
-					function(obj) {}
+					function (obj) {}
 				);
 			}
 		);
 	},
-	gotoNextStep: function(cmp, evt, hlpr) {
+	gotoNextStep: function (cmp, evt, hlpr) {
 		var event = cmp.find("CP_Events");
 		event.fire("CP_Evt_Next_Step", {
 			"id": cmp.get("v.pageId")
 		});
 	},
-	onModalOpen: function(cmp, evt, hlpr) {
+	onModalOpen: function (cmp, evt, hlpr) {
 
 		var newClass = "igcp-wrapper igcp-utils__height--zero slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large";
 		cmp.set("v.class", newClass);
 	},
-	onModalClose: function(cmp, evt, hlpr) {
+	onModalClose: function (cmp, evt, hlpr) {
 
 		cmp.set("v.class", "igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large");
 	},
-	updateISAMPayload: function(cmp, evt, hlpr) {
+	updateISAMPayload: function (cmp, evt, hlpr) {
 		var
 			utils = cmp.find("CP_Utils"),
 			formattedDob = "";
 
 
-		utils.convertToYMD(cmp.get("v.dob"), function(value) {
+		utils.convertToYMD(cmp.get("v.dob"), function (value) {
 			formattedDob = value;
 		});
 
@@ -211,7 +216,7 @@
 			"lang": cmp.get("v.lang")
 		});
 	},
-	logPayloadVars: function(cmp, evt, hlpr) {
+	logPayloadVars: function (cmp, evt, hlpr) {
 		var logArray = [
 			cmp.get("v.clientNum"),
 			cmp.get("v.postalCode"),
@@ -231,12 +236,13 @@
 		];
 
 		//console.log("Registration Step 3: logPayloadVars");
-		logArray.forEach(function(item, i) {
+		logArray.forEach(function (item, i) {
 			//console.log(item);
 		});
 	},
-	doneRendering: function(cmp, evt, hlpr) {
-		if(cmp.get("v.renderComplete") === false) {
+	doneRendering: function (cmp, evt, hlpr) {
+		window.dtmRegisterHandlers();
+		if (cmp.get("v.renderComplete") === false) {
 			cmp.set("v.renderComplete", true);
 		}
 	}

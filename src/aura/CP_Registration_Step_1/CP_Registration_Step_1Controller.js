@@ -83,7 +83,6 @@
 	},
 	doneRendering: function(cmp, evt, hlpr) {
 		window.dtmRegisterHandlers();
-		console.log('done rendering');
 		if(cmp.get("v.renderComplete") === false) {
 			cmp.set("v.renderComplete", true);
 		}

@@ -5,6 +5,7 @@
 	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="inputsReceived" type="Integer" default="1"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
+	<aura:attribute name="lang" type="String"></aura:attribute>
 
 	<!-- STEP 1 -->
 	<aura:attribute name="clientNum" type="String"></aura:attribute>
@@ -18,6 +19,7 @@
 
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
 	
@@ -31,7 +33,7 @@
 	</aura:method>
 
 	<!-- MARKUP -->
-    <div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
+    <div data-aa-component="CP_Forgot_User_Step_1" class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
         <div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
         
         <div class="slds-p-around--small slds-medium-p-around--zero slds-size_12-of-12 slds-medium-size_6-of-12">
@@ -54,7 +56,7 @@
                     <c:CP_Cmp_Input_Text id="email-input" form="{!v.pageId}" type="email" label="{!$Label.c.CP_Generic_Label_Email}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Email_Address}" />
                 </div>
                 <!--CTAS-->
-                <c:CP_Cmp_Form_Back_Next dcname1="" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" form="{!v.pageId}" />
+                <c:CP_Cmp_Form_Back_Next dcname1="forgot-user-cancel" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" form="{!v.pageId}" />
             </div>
         </div>    
         <div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>

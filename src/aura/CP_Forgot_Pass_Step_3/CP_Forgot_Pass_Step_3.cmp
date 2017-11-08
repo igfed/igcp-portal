@@ -31,6 +31,7 @@
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Click" action="{!c.onButtonClick}" />
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
 	<aura:handler event="c:CP_Evt_Key" action="{!c.onKey}" />
@@ -44,7 +45,7 @@
 	</aura:method>
 	
 	<!-- MARKUP -->
-	<div class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
+	<div data-aa-component="CP_Forgot_Pass_Step_3" class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
 		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
 		<div class="slds-p-around--small slds-medium-p-around--zero slds-size_12-of-12 slds-medium-size_6-of-12">
 			<h1>{!$Label.c.CP_Forgot_Pass_h1}</h1>
@@ -63,7 +64,7 @@
 					<c:CP_Cmp_Input_Password id="password-input" form="{!v.pageId}" type="password" confirmPassword="true" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Password}" />
 				</div>
 				<!-- CTAS -->
-				<c:CP_Cmp_Form_Back_Next dcname1="" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Update}" nextType="submit" form="{!v.pageId}" />
+				<c:CP_Cmp_Form_Back_Next dcname1="forgot-password-cancel" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Update}" nextType="submit" form="{!v.pageId}" />
 			</div>
 		</div>
 		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>

@@ -37,7 +37,6 @@
 				formattedDob = value;
 			});
 
-
 			cmp.set("v.payload", {
 				"username": cmp.get("v.username"),
 				"postalCode": cmp.get("v.postalCode"),
@@ -47,8 +46,6 @@
 				"stateId": cmp.get("v.isamStateId"),
 				"id": cmp.get("v.questionId")
 			});
-
-			console.log(cmp.get("v.payload"));
 
 			cmp.onSubmitForm();
 		}
@@ -72,23 +69,23 @@
 					console.error("Forgot Pass: Step 2: Error");
 					console.error(error);
 
-					// services.handleServerSideError({
-					// 		"error": error,
-					// 		"id": cmp.get("v.pageId"),
-					// 		"toastId": "forgot-pass-step-2-toast-error"
-					// 	},
-					// 	function(obj) {
+					services.handleServerSideError({
+							"error": error,
+							"id": cmp.get("v.pageId"),
+							"toastId": "forgot-pass-step-2-toast-error"
+						},
+						function(obj) {
 
-					// 		if (obj.fields[0] === "answer" && obj.isLocked === false && obj.isValid === false) {
-					// 			hlpr.getRandomSecurityQuestion(cmp, hlpr);
+							if (obj.fields[0] === "answer" && obj.isLocked === false && obj.isValid === false) {
+								hlpr.getRandomSecurityQuestion(cmp, hlpr);
 
-					// 			events.fire("CP_Evt_Toast_Error", {
-					// 				"id": "forgot-pass-step-2-toast-error",
-					// 				"message": $A.get("$Label.c.CP_Error_Please_Try_Again")
-					// 			});
-					// 		}
-					// 	}
-					// );
+								// events.fire("CP_Evt_Toast_Error", {
+								// 	"id": "forgot-pass-step-2-toast-error",
+								// 	"message": $A.get("$Label.c.CP_Error_Please_Try_Again")
+								// });
+							}
+						}
+					);
 				}
 			);
 		} catch (err) {
@@ -105,6 +102,12 @@
 		if (evt.getParam("payload").id === "back_button") {
 			var utils = cmp.find("CP_Utils");
 			utils.gotoLogin(cmp.get("v.lang"));
+		}
+	},
+	doneRendering: function(cmp, evt, hlpr) {
+		window.dtmRegisterHandlers();
+		if(cmp.get("v.renderComplete") === false) {
+			cmp.set("v.renderComplete", true);
 		}
 	}
 })
