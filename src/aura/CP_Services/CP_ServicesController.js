@@ -795,11 +795,17 @@
 	},
 	onUpdatePassword: function (cmp, evt, hlpr) {
 
+		console.log('service_js_controller');
+		
 		var params = evt.getParam("arguments");
 		if (params) {
 			var
 				component = params.component,
 				action;
+
+			console.log('service_js_controller - component.get("v.payload") '+ JSON.stringify(component.get("v.payload")));
+
+			console.log('service_js_controller - params.payload'+ params.payload);
 
 			try {
 				action = component.get("c.updatePassword");
@@ -815,6 +821,16 @@
 					"Password failed to update.",
 					"unknown-error"
 				);
+				
+				/*
+				// These methods are already in the helpr function
+				action.setCallback(this, function (response){
+					console.log('server response: ', response.returnValue);
+				});
+
+				$A.enqueueAction(action);*/
+
+				
 			} catch (err) {
 				console.error("CP_Services: onUpdatePassword: controller not found, make sure it is attached to parent component.");
 				console.log(err);
@@ -829,10 +845,10 @@
 				component = params.component,
 				action;
 
+				console.log('[CP_Services] OnEmailChange params.payload', params.payload);
+
 			try {
 				action = component.get("c.emailChange");
-
-				console.log('services', params);
 
 				action.setParams({
 					payload: params.payload

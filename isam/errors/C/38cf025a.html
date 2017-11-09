@@ -11,31 +11,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>IBM Security Access Manager</title>
     <!-- EXTERNAL INCLUDES-->
-    <link href="../../external_files/css/salesforce-lightning-design-system.min.css" type="text/css" rel="stylesheet"/>
-    <link href="../../external_files/css/igcp.css" type="text/css" rel="stylesheet"/>
+    <link href="../../external_files/css/salesforce-lightning-design-system.min.css" type="text/css" rel="stylesheet" />
+    <link href="../../external_files/css/igcp.css" type="text/css" rel="stylesheet" />
+    <script src="//assets.adobedtm.com/1bd5a11fe545bb3103e4f0eacdb21276ff5612ce/satelliteLib-ccb0031e8650e96db763aedcd987236c0a6d3d53-staging.js"></script>
     <script type="text/javascript">
-      function onLoadPage() {
-        //showError();
-        //setFocus();
-      }
+        function onLoadPage() {
+            window.digitalData.error = {
+                "type": "login",
+                "code": "500",
+                "description": "User Has No Single Signon Information"
+            };
+            window._satellite.track('signin-error');
+            //showError();
+            //setFocus();
+        }
 
-      function showError() {
-        var elem = document.getElementById("error-box");
-        // if ("%ERROR%" == "") {
-        // 	elem.setAttribute("class", "error-box");
-        // } else {
-        // 	elem.setAttribute("class", "error-box active");
-        // }
-      }
+        function showError() {
+            var elem = document.getElementById("error-box");
+            // if ("%ERROR%" == "") {
+            // 	elem.setAttribute("class", "error-box");
+            // } else {
+            // 	elem.setAttribute("class", "error-box active");
+            // }
+        }
 
-      function setFocus() {
-        document.getElementById("username").focus();
-      }
+        function setFocus() {
+            document.getElementById("username").focus();
+        }
 
-      function submitForm() {
-        document.getElementById("login-form").submit();
-        console.log('Submitting Form');
-      }
+        function submitForm() {
+            document.getElementById("login-form").submit();
+            console.log('Submitting Form');
+        }
     </script>
     <!-- ClickJack projection from:
          https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet
@@ -46,239 +53,250 @@
         }
     </style>
     <script type="text/javascript">
-      if (self === top) {
-        var antiClickjack = document.getElementById("antiClickjack");
-        antiClickjack.parentNode.removeChild(antiClickjack);
-      } else {
-        top.location = self.location;
-      }
+        if (self === top) {
+            var antiClickjack = document.getElementById("antiClickjack");
+            antiClickjack.parentNode.removeChild(antiClickjack);
+        } else {
+            top.location = self.location;
+        }
     </script>
 </head>
 
 <body onload="onLoadPage()">
-<div class="content igcp-utils__overflow--hidden">
-    <!-- DO NOT TRANSLATE OR MODIFY any part of the hidden parameter(s) -->
-    <!--
+    <div class="content igcp-utils__overflow--hidden">
+        <!-- DO NOT TRANSLATE OR MODIFY any part of the hidden parameter(s) -->
+        <!--
     The following block of code provides users with a warning message
     if they do not have cookies configured on their browsers.
     If this environment does not use cookies to maintain login sessions,
     simply remove or comment out the block below.
   -->
-    <!-- BEGIN Cookie check block -->
-    <!--
+        <!-- BEGIN Cookie check block -->
+        <!--
   DO NOT TRANSLATE anything inside the SCRIPT tag except the quoted
   string warningString and the first line of the JavaScript redirection
   instruction beginning with "// Uncomment the following ..."
 
   i.e.	var warningString = "Translate this string";
   -->
-    <script type="text/javascript">
-      //var warningString = "%ERROR%";
-      //document.cookie = 'acceptsCookies=yes';
-      //if (document.cookie == '') {
-      //	document.write(warningString);
-      //} else {
-      ///	document.cookie = 'acceptsCookies=yes; expires=Fri, 13-Apr-1970 00:00:00 GMT';
-      // Uncomment the following line for JavaScript redirection
-      // document.cookie = 'ISAMOriginalURL=' + encodeURIComponent(window.location) + "; Path=/;";
-      //}
-    </script>
-    <noscript>
-        <b>WARNING:</b> To maintain your login session, make sure that
-        <br/> your browser is configured to accept Cookies.
-    </noscript>
-    <!-- END Cookie check block -->
+        <script type="text/javascript">
+            //var warningString = "%ERROR%";
+            //document.cookie = 'acceptsCookies=yes';
+            //if (document.cookie == '') {
+            //	document.write(warningString);
+            //} else {
+            ///	document.cookie = 'acceptsCookies=yes; expires=Fri, 13-Apr-1970 00:00:00 GMT';
+            // Uncomment the following line for JavaScript redirection
+            // document.cookie = 'ISAMOriginalURL=' + encodeURIComponent(window.location) + "; Path=/;";
+            //}
+        </script>
+        <noscript>
+            <b>WARNING:</b> To maintain your login session, make sure that
+            <br/> your browser is configured to accept Cookies.
+        </noscript>
+        <!-- END Cookie check block -->
 
-    <!-- MOBILE HEADER START -->
-    <header role="banner" class="igcp-header igcp-login-header igcp-medium-utils__display--none">
-        <nav class="igcp-nav">
-            <div class="top-bar centered">
-                <div class="top-bar-left">
-                    <div class="igcp-nav__logo">
-                        <a class="home-link" href="/">
-                            <img src="../../external_files/images/IG_EN_logo.png" alt=""/>
-                        </a>
+        <!-- MOBILE HEADER START -->
+        <header role="banner" class="igcp-header igcp-login-header igcp-medium-utils__display--none">
+            <nav class="igcp-nav">
+                <div class="top-bar centered">
+                    <div class="top-bar-left">
+                        <div class="igcp-nav__logo">
+                            <a class="home-link" href="/">
+                                <img src="../../external_files/images/IG_EN_logo.png" alt="" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="top-bar-right">
+                        <ul class="dropdown menu" data-dropdown-menu="">
+                            <li>
+                                <a class="igcp-nav__link" href="#">Français</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
+            </nav>
+        </header>
+        <!-- MOBILE HEADER END -->
+
+        <!-- LOGIN START -->
+        <div class="igcp-login slds-grid slds-wrap">
+            <!-- SIGN IN -->
+            <div class="igcp-login--col1 slds-size--12-of-12 slds-large-size--4-of-12">
+
                 <div class="top-bar-right">
                     <ul class="dropdown menu" data-dropdown-menu="">
-                        <li><a class="igcp-nav__link" href="#">Français</a></li>
+                        <li>
+                            <a class="igcp-nav__link" href="#">Français</a>
+                        </li>
                     </ul>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <!-- MOBILE HEADER END -->
 
-    <!-- LOGIN START -->
-    <div class="igcp-login slds-grid slds-wrap">
-        <!-- SIGN IN -->
-        <div class="igcp-login--col1 slds-size--12-of-12 slds-large-size--4-of-12">
-
-            <div class="top-bar-right">
-                <ul class="dropdown menu" data-dropdown-menu="">
-                    <li><a class="igcp-nav__link" href="#">Français</a></li>
-                </ul>
-            </div>
-
-            <div class="igcp-nav__logo">
-                <a class="home-link" href="/">
-                    <img src="../../external_files/images/IG_EN_logo.png" alt="">
-                </a>
-            </div>
-
-            <div class="igcp-login__sidebar-wrapper">
-                <h3 class="slds-m-bottom--large">Sign in to Online Access</h3>
-
-
-                <div class="demo-only">
-                    <div class="slds-notify_container slds-is-relative">
-                        <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
-                            <span class="slds-assistive-text">info</span>
-                            <span class="slds-icon_container slds-icon-utility-info slds-m-right_small slds-no-flex slds-align-top"
-                                  title="An error has occurred">
-                            </span>
-                            <div class="slds-notify__content">
-                                <p class="slds-text-heading_small">User Has No Single
-                                    Signon Information
-                                    (HTTP 500)</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="igcp-nav__logo">
+                    <a class="home-link" href="/">
+                        <img src="../../external_files/images/IG_EN_logo.png" alt="">
+                    </a>
                 </div>
 
+                <div class="igcp-login__sidebar-wrapper">
+                    <h3 class="slds-m-bottom--large">Sign in to Online Access</h3>
 
-                <!--LOGIN FORM-->
-                <form id="login-form" class="slds-form slds-form_stacked" method="POST" action="/pkmslogin.form">
-                    <!--USERNAME-->
-                    <div class="slds-form-element slds-m-bottom--x-large">
-                        <label class="slds-form-element__label" for="username">
-								<span class="slds-icon_container slds-icon-utility-user" title="Description of icon when needed">
-							  <span class="slds-assistive-text">Username Icon</span>
-								</span>
-                            Username
-                        </label>
-                        <div class="slds-form-element__control">
-                            <input type="text" id="username" class="slds-input igcp-input input uiInput uiInputText uiInput--default uiInput--input"
-                                   required="true" name="username">
-                        </div>
-                        <div class="igcp-input__help-link slds-float--right">
-                            <a href="" class="igcp-link__variant--a">Forgot username</a>
-                        </div>
 
-                        <!--REMEMBER USERNAME -->
-                        <div class="slds-form-element">
-                            <div class="slds-form-element__control">
-							<span class="slds-checkbox">
-                    <input type="checkbox" name="options" id="checkbox-644"/>
-                    <label class="slds-checkbox__label" for="checkbox-644">
-                      <span class="slds-checkbox--faux"></span>
-							<span class="slds-form-element__label igcp-login__username-checkbox input-label">Remember username</span>
-							</label>
-							</span>
+                    <div class="demo-only">
+                        <div class="slds-notify_container slds-is-relative">
+                            <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
+                                <span class="slds-assistive-text">info</span>
+                                <span class="slds-icon_container slds-icon-utility-info slds-m-right_small slds-no-flex slds-align-top" title="An error has occurred">
+                                </span>
+                                <div class="slds-notify__content">
+                                    <p class="slds-text-heading_small">User Has No Single Signon Information (HTTP 500)</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!--PASSWORD-->
-                    <div class="igcp-input__password slds-form-element slds-clearfix slds-m-top--large slds-m-bottom--x-large">
-                        <label class="slds-form-element__label" for="password">
-								<span class="slds-icon_container slds-icon-utility-lock" title="Password Icon">
-							  <span class="slds-assistive-text">Password Icon</span>
-								</span>
-                            Password
-                        </label>
-                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
-                            <input type="password" id="password" class="igcp-input slds-input" name="password" autocomplete="off">
-                        </div>
-                        <div class="igcp-input__help-link slds-text-align--right">
-                            <a href="" class="igcp-link__variant--a">Forgot password</a>
-                        </div>
-                    </div>
-                    <!-- LEGAL -->
-                    <div class="igcp-login__legal">
-                        <p>I have read and agree to be bound by the  <a href="#">User Agreement</a> as of August 2017.</p>
-                    </div>
 
-                    <!--SIGN IN-->
-                    <div class="slds-form-element slds-m-top--large slds-m-bottom--medium">
-                        <button class="slds-button slds-button--brand slds-p-vertical--xxx-small slds-p-horizontal--xx-large" onclick="submitForm()">Sign In
-                        </button>
-                    </div>
+                    <!--LOGIN FORM-->
+                    <form id="login-form" class="slds-form slds-form_stacked" method="POST" action="/pkmslogin.form">
+                        <!--USERNAME-->
+                        <div class="slds-form-element slds-m-bottom--x-large">
+                            <label class="slds-form-element__label" for="username">
+                                <span class="slds-icon_container slds-icon-utility-user" title="Description of icon when needed">
+                                    <span class="slds-assistive-text">Username Icon</span>
+                                </span>
+                                Username
+                            </label>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="username" class="slds-input igcp-input input uiInput uiInputText uiInput--default uiInput--input"
+                                    required="true" name="username">
+                            </div>
+                            <div class="igcp-input__help-link slds-float--right">
+                                <a href="" class="igcp-link__variant--a">Forgot username</a>
+                            </div>
 
-                    <input TYPE="hidden" NAME="login-form-type" VALUE="pwd">
-                    <input TYPE="hidden" NAME="token" VALUE="%CREDATTR{tagvalue_session_index}%">
-                    <!-- <div class="error-box" id="error-box">
+                            <!--REMEMBER USERNAME -->
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control">
+                                    <span class="slds-checkbox">
+                                        <input type="checkbox" name="options" id="checkbox-644" />
+                                        <label class="slds-checkbox__label" for="checkbox-644">
+                                            <span class="slds-checkbox--faux"></span>
+                                            <span class="slds-form-element__label igcp-login__username-checkbox input-label">Remember username</span>
+                                        </label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--PASSWORD-->
+                        <div class="igcp-input__password slds-form-element slds-clearfix slds-m-top--large slds-m-bottom--x-large">
+                            <label class="slds-form-element__label" for="password">
+                                <span class="slds-icon_container slds-icon-utility-lock" title="Password Icon">
+                                    <span class="slds-assistive-text">Password Icon</span>
+                                </span>
+                                Password
+                            </label>
+                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+                                <input type="password" id="password" class="igcp-input slds-input" name="password" autocomplete="off">
+                            </div>
+                            <div class="igcp-input__help-link slds-text-align--right">
+                                <a href="" class="igcp-link__variant--a">Forgot password</a>
+                            </div>
+                        </div>
+                        <!-- LEGAL -->
+                        <div class="igcp-login__legal">
+                            <p>I have read and agree to be bound by the
+                                <a href="#">User Agreement</a> as of August 2017.</p>
+                        </div>
+
+                        <!--SIGN IN-->
+                        <div class="slds-form-element slds-m-top--large slds-m-bottom--medium">
+                            <button class="slds-button slds-button--brand slds-p-vertical--xxx-small slds-p-horizontal--xx-large" onclick="submitForm()">Sign In
+                            </button>
+                        </div>
+
+                        <input TYPE="hidden" NAME="login-form-type" VALUE="pwd">
+                        <input TYPE="hidden" NAME="token" VALUE="%CREDATTR{tagvalue_session_index}%">
+                        <!-- <div class="error-box" id="error-box">
                         <img style="float:left" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAWCAMAAADpVnyHAAAAb1BMVEUAAADcAADeAADaAADdAADaAADMAADdAADeAADeAADcAADeAADdAADeAADdAADdAADcAADdAADeAADeAADdAADdAADdAADdAADKAADdAADeAADeAADcAADdAADcAADaAADdAADeAADdAADbAADeAAB3WaKjAAAAJHRSTlMAUPopZBQF6dhxDsWtqEo+MePQurWbiH8J8O3Ok41XIh5rW1b9BCPkAAAAxElEQVQoz3WR2RKDMAhFMcZ917rVte39/29sYurYaLwPwHAyQID+1Tp0I5vVd+gB5GaSwkdkJK7P7BizCQUYaWFFdyVO/3SIGrRXVCMQNvTYeiY5fFd6juSMIqRkVSJdItPJjIrohYIow6CRrmA20QeliGNwbXkYt36xsAvzwoOsTA5OIRoSajAdKEGweY+T+oC9k+w3OHXKcTx2NCBVC0neKlHKhHpUqcBCdJTRS7t87xGr5hMi66wAvSOvDqNqefUb5V/3/RGXZ5OWvQAAAABJRU5ErkJggg==" />
                         <div id="errId">%ERROR%</div>
                     </div> -->
-                </form>
+                    </form>
 
-                <div class="igcp-login__register-link slds-text-align--center">
-                    <a href="" class="igcp-link__variant--a">Register for Online Access</a>
+                    <div class="igcp-login__register-link slds-text-align--center">
+                        <a href="" class="igcp-link__variant--a">Register for Online Access</a>
+                    </div>
+
                 </div>
 
-            </div>
+                <!--MOBILE AD-->
+                <!-- Image will be authorable at some point -->
+                <div class="igcp-login__ad igcp-login__ad--mobile">
 
-            <!--MOBILE AD-->
-            <!-- Image will be authorable at some point -->
-            <div class="igcp-login__ad igcp-login__ad--mobile">
+                    <a href="#">
+                        <img src="../../external_files/images/login-banner-mobile.png" alt="" />
+                    </a>
 
-                <a href="#"><img src="../../external_files/images/login-banner-mobile.png" alt=""/></a>
+                </div>
+                <!--END MOBILE AD-->
 
-            </div>
-            <!--END MOBILE AD-->
+                <div class="igcp-login__footer" role="contentinfo">
 
-            <div class="igcp-login__footer" role="contentinfo">
-
-                <ul class="igcp-login__footer-menu">
-                    <li class="igcp-login__footer-link">
-                        <a href="#">Support</a>
-                    </li>
-                    <li class="igcp-login__footer-link">
-                        <a href="#">Privacy</a>
-                    </li>
-                    <li class="igcp-login__footer-link">
-                        <a href="#">User Agreement</a>
-                    </li>
-                    <li class="igcp-login__footer-link">
-                        <a href="#">Investor Performance</a>
-                    </li>
-                    <li class="igcp-login__footer-link">
-                        <a href="#">Help</a>
-                    </li>
-                </ul>
-
-                <div class="igcp-login__footer-copyright">
-                    <ul class="menu">
-                        <li>&copy; 2017 IGM Financial Inc. All rights Reserved</li>
+                    <ul class="igcp-login__footer-menu">
+                        <li class="igcp-login__footer-link">
+                            <a href="#">Support</a>
+                        </li>
+                        <li class="igcp-login__footer-link">
+                            <a href="#">Privacy</a>
+                        </li>
+                        <li class="igcp-login__footer-link">
+                            <a href="#">User Agreement</a>
+                        </li>
+                        <li class="igcp-login__footer-link">
+                            <a href="#">Investor Performance</a>
+                        </li>
+                        <li class="igcp-login__footer-link">
+                            <a href="#">Help</a>
+                        </li>
                     </ul>
+
+                    <div class="igcp-login__footer-copyright">
+                        <ul class="menu">
+                            <li>&copy; 2017 IGM Financial Inc. All rights Reserved</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- DESKTOP AD-->
-        <!-- Background image and color need to be inline as we may eventually make these authorable -->
-        <div style="background-image: url('../../external_files/images/login-image-ad-bg.jpg'); background-color:#11517d"
-             class="igcp-login--col2 slds-size--12-of-12 slds-large-size--8-of-12 background-left-bottom">
+            <!-- DESKTOP AD-->
+            <!-- Background image and color need to be inline as we may eventually make these authorable -->
+            <div style="background-image: url('../../external_files/images/login-image-ad-bg.jpg'); background-color:#11517d" class="igcp-login--col2 slds-size--12-of-12 slds-large-size--8-of-12 background-left-bottom">
 
-            <div class="igcp-login__ad igcp-login__ad--desktop">
+                <div class="igcp-login__ad igcp-login__ad--desktop">
 
-                <h1 class="igcp-login__ad-heading">When it comes to RRSPs, the word “contribution” is key.</h1>
+                    <h1 class="igcp-login__ad-heading">When it comes to RRSPs, the word “contribution” is key.</h1>
 
-                <p class="igcp-login__ad-copy">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                    laborum.</p>
+                    <p class="igcp-login__ad-copy">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                        laborum.
+                    </p>
 
-                <a class="igcp-login__ad-link" href="#">Learn More</a><span class="arrow">&gt;</span>
+                    <a class="igcp-login__ad-link" href="#">Learn More</a>
+                    <span class="arrow">&gt;</span>
+
+                </div>
 
             </div>
-
+            <!-- DESKTOP AD END -->
         </div>
-        <!-- DESKTOP AD END -->
-    </div>
-    <!-- LOGIN END -->
+        <!-- LOGIN END -->
 
-</div>
+    </div>
+    <script type="text/javascript">
+        _satellite.pageBottom();
+    </script>
+    <script type="text/javascript" src="../../external_files/scripts/jquery-3.2.1.slim.min.js"></script>
+    <script type="text/javascript" src="../../external_files/scripts/aa.js"></script>
+
 </body>
 
 </html>

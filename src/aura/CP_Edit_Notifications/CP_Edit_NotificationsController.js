@@ -2,6 +2,14 @@
 	doneRendering: function(cmp, evt, hlpr) {
 		var body = document.querySelector("body");
 		body.className = "igcp-utils__display--block";
+
+		var events = cmp.find('CP_Events');
+		events.fire("CP_Evt_Get_Input_Value", { 'formId': cmp.get("v.pageId") });
+
+
+	},
+	onInputValueReceived: function(cmp, evt, hlpr){
+		console.log('onInputValue', evt.getParam("payload"))
 	},
 	onSubmit: function(cmp, evt, hlpr){
 		
@@ -9,12 +17,11 @@
 			formData = null;
 
 		formData = JSON.stringify({
-			"username" : "portalclient2@igext", 
-			"newEmail": "test1@example.com",
-			"currentEmail": "test1@example.com"
+			username: "portalclient2@igext", 
+			newEmail: "test2@example.com",
+			currentEmail: "test@example.com",
+			mobilePhone: '4168882121'
 		});
-
-		console.log(formData)
 
 		services.emailChange(
 			formData,
@@ -26,7 +33,5 @@
 				console.log('[CP_Edit_Notification] - onSubmit / emailChange():Error = ', error)
 			}
 		);
-
-		console.log('submit edit notifications')
 	}
 })

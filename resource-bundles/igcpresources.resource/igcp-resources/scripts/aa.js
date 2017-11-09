@@ -91,7 +91,6 @@
     event.advisor = {};
     event.download = {};
     event.type = type;
-    event.page.referrer = window.location.href;
 
     // Handle DOM events
     if (event.type === 'click' || event.type === 'hover') {
