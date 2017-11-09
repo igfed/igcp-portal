@@ -5,6 +5,7 @@
 	},
 	onSubmit: function(cmp, evt, hlpr) {
 
+		console.log('change_password_js_controller onSubmit');
 		var events = cmp.find('CP_Events')
 
 		//Reset input errors	
@@ -39,6 +40,7 @@
 	},
 	submitForm: function(cmp, evt, hlpr) {
 
+		console.log('change_password_js_controller submitForm');
 		var
 			services = cmp.find("CP_Services"),
 			formData = null;
@@ -50,6 +52,7 @@
 				"verifyPassword": "testPassword"
 			});
 
+			console.log('change_password_js_controller - formData:'+ formData);
 			services.updatePassword(
 				formData,
 				cmp,
