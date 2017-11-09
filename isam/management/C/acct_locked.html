@@ -18,50 +18,56 @@
 	<link href="../../external_files/css/igcp.css" type="text/css" rel="stylesheet" />
 	<script src="//assets.adobedtm.com/1bd5a11fe545bb3103e4f0eacdb21276ff5612ce/satelliteLib-ccb0031e8650e96db763aedcd987236c0a6d3d53-staging.js"></script>
 	<script type="text/javascript">
-	function onLoadPage() {
-		//showError();
-		//setFocus();
-	}
+		function onLoadPage() {
+			window.digitalData.error = {
+				"type": "login",
+				"code": "000",
+				"description": "Account Locked"
+			};
+			window._aa.track('signin-error', '{"component": {"name": "ISAM_Account_Locked_Page"}}');
+			//showError();
+			//setFocus();
+		}
 
-	function showError() {
-		var elem = document.getElementById("error-box");
-		// if ("%ERROR%" == "") {
-		// 	elem.setAttribute("class", "error-box");
-		// } else {
-		// 	elem.setAttribute("class", "error-box active");
-		// }
-	}
+		function showError() {
+			var elem = document.getElementById("error-box");
+			// if ("%ERROR%" == "") {
+			// 	elem.setAttribute("class", "error-box");
+			// } else {
+			// 	elem.setAttribute("class", "error-box active");
+			// }
+		}
 
-	function setFocus() {
-		document.getElementById("username").focus();
-	}
+		function setFocus() {
+			document.getElementById("username").focus();
+		}
 
-	function submitForm() {
-		document.getElementById("login-form").submit();
-		var username = $('input#username').val().toLowerCase();
-        $('input#username').val(username);
-		console.log('Submitting Form');
-	}
+		function submitForm() {
+			document.getElementById("login-form").submit();
+			var username = $('input#username').val().toLowerCase();
+			$('input#username').val(username);
+			console.log('Submitting Form');
+		}
 
-	function gotoLogin() {
-		window.location.href = "./login.html";
-	}
+		function gotoLogin() {
+			window.location.href = "./login.html";
+		}
 	</script>
 	<!-- ClickJack projection from:
          https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet
       -->
 	<style id="antiClickjack">
-	body {
-		display: none !important;
-	}
+		body {
+			display: none !important;
+		}
 	</style>
 	<script type="text/javascript">
-	if (self === top) {
-		var antiClickjack = document.getElementById("antiClickjack");
-		antiClickjack.parentNode.removeChild(antiClickjack);
-	} else {
-		top.location = self.location;
-	}
+		if (self === top) {
+			var antiClickjack = document.getElementById("antiClickjack");
+			antiClickjack.parentNode.removeChild(antiClickjack);
+		} else {
+			top.location = self.location;
+		}
 	</script>
 </head>
 
@@ -83,15 +89,15 @@
   i.e.	var warningString = "Translate this string";
   -->
 		<script type="text/javascript">
-		//var warningString = "%ERROR%";
-		//document.cookie = 'acceptsCookies=yes';
-		//if (document.cookie == '') {
-		//	document.write(warningString);
-		//} else {
-		///	document.cookie = 'acceptsCookies=yes; expires=Fri, 13-Apr-1970 00:00:00 GMT';
-		// Uncomment the following line for JavaScript redirection
-		// document.cookie = 'ISAMOriginalURL=' + encodeURIComponent(window.location) + "; Path=/;";
-		//}
+			//var warningString = "%ERROR%";
+			//document.cookie = 'acceptsCookies=yes';
+			//if (document.cookie == '') {
+			//	document.write(warningString);
+			//} else {
+			///	document.cookie = 'acceptsCookies=yes; expires=Fri, 13-Apr-1970 00:00:00 GMT';
+			// Uncomment the following line for JavaScript redirection
+			// document.cookie = 'ISAMOriginalURL=' + encodeURIComponent(window.location) + "; Path=/;";
+			//}
 		</script>
 		<noscript>
 			<b>WARNING:</b> To maintain your login session, make sure that
@@ -105,8 +111,8 @@
 					<div class="top-bar-left">
 						<div class="igcp-nav__logo">
 							<a class="home-link" href="/">
-                       <img src="../../external_files/images/IG_EN_logo.png" alt=""/>
-                    </a>
+								<img src="../../external_files/images/IG_EN_logo.png" alt="" />
+							</a>
 						</div>
 					</div>
 					<div class="top-bar-right">
@@ -123,9 +129,13 @@
 			<div class="igcp-lock-screen slds-grid slds-grid--align-center slds-wrap">
 				<div class="slds-m-vertical--medium slds-m-bottom--xx-large slds-medium-m-vertical--xx-large slds-m-horizontal--small slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12">
 					<h1>Your online access has been locked.</h1>
-					<p class="slds-medium-p-right--large slds-m-vertical--medium">For security safety, this online access has been locked and you can no longer use your login credentials. To reset access, please contact our support at <b>1-800-555-5555.</b></p>
+					<p class="slds-medium-p-right--large slds-m-vertical--medium">For security safety, this online access has been locked and you can no longer use your login credentials. To reset access,
+						please contact our support at
+						<b>1-800-555-5555.</b>
+					</p>
 					<div class="slds-m-horizontal--large slds-medium-m-horizontal--zero">
-						<button class="igcp-utils__width--100 igcp-medium-utils__width--auto slds-button slds-button--brand slds-p-vertical--xxx-small slds-p-horizontal--small slds-medium-p-horizontal--xx-large" onclick="gotoLogin()">Return to Login</button>
+						<button class="igcp-utils__width--100 igcp-medium-utils__width--auto slds-button slds-button--brand slds-p-vertical--xxx-small slds-p-horizontal--small slds-medium-p-horizontal--xx-large"
+						    onclick="gotoLogin()">Return to Login</button>
 					</div>
 				</div>
 			</div>
@@ -171,9 +181,11 @@
 		<!-- LOGIN END -->
 	</div>
 
-	<script type="text/javascript">_satellite.pageBottom();</script>
-    <script type="text/javascript" src="../../external_files/scripts/jquery-3.2.1.slim.min.js"></script>
-    <script type="text/javascript" src="../../external_files/scripts/aa.js"></script>
+	<script type="text/javascript">
+		_satellite.pageBottom();
+	</script>
+	<script type="text/javascript" src="../../external_files/scripts/jquery-3.2.1.slim.min.js"></script>
+	<script type="text/javascript" src="../../external_files/scripts/aa.js"></script>
 </body>
 
 </html>
