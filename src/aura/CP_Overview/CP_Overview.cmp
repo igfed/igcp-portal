@@ -24,14 +24,16 @@
 				<h1 class="slds-p-left--small slds-medium-p-left--medium">{!$Label.c.CP_Generic_Salutation_Hi} {!v.clientName}{!$Label.c.CP_Overview_Greeting_h1}</h1>
 			</div>
 		</div>
-		<div class="slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_8-of-12">
+		<div class="slds-size_12-of-12 slds-large-size_8-of-12">
 			<c:CP_Overview_Investments lang="{!v.lang}"/>
 			<c:CP_Overview_Mortgages lang="{!v.lang}"/>
 			<c:CP_Overview_Insurance lang="{!v.lang}"/>
+			<p class="igcp-utils__font-size--x-mini igcp-utils__display--none igcp-large-utils__display--block slds-m-horizontal--x-small slds-large-p-bottom--zero">{!$Label.c.CP_Disclaimer_Overview}</p>
 		</div>
-		<div class="slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_4-of-12">
+		<div class="slds-size_12-of-12 slds-large-size_4-of-12">
 			<c:CP_Overview_Alerts lang="{!v.lang}"/>
 			<c:CP_Overview_CTA lang="{!v.lang}"/>
+			<p class="igcp-utils__font-size--x-mini igcp-large-utils__display--none slds-p-around--x-small slds-medium-p-bottom--zero">{!$Label.c.CP_Disclaimer_Overview}</p>
 		</div>
 	</div>
 </aura:component>

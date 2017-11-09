@@ -1,0 +1,32 @@
+<aura:component >
+
+    <!-- INCLUDES -->
+    <c:CP_Utils aura:id="CP_Utils" />
+
+    <!-- ATTRS -->
+    <aura:attribute name="groupTitle" type="String"></aura:attribute>
+    <aura:attribute name="accountGrandTotal" type="String"></aura:attribute>
+    <aura:attribute name="accounts" type="Map"></aura:attribute>
+
+    <!-- HANDLER -->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" /> 
+    
+    <!-- MARKUP -->
+    <div class="slds-size_12-of-12">
+        <h3 class="slds-m-top--x-small slds-m-bottom--small slds-large-m-bottom--large slds-p-horizontal--xx-small slds-medium-p-horizontal--small">{!v.groupTitle}</h3>
+    </div>
+    {!v.body}
+    <div class="igcp-account__grand-total slds-grid slds-grid_align-end">
+        <aura:if isTrue="{!v.accountGrandTotal}">
+            <div class="slds-p-top--small slds-p-left--xx-small slds-medium-p-left--small slds-large-p-vertical--small slds-size_12-of-12 slds-large-size_9-of-12">Total</div>
+            
+            <div class="slds-text-align_right slds-p-vertical--small slds-size_12-of-12 slds-large-size_3-of-12">
+                <div class="igcp-overview__grand-total">
+                    <span class="slds-p-horizontal--xx-small slds-medium-p-horizontal--small slds-p-bottom--xx-small">{!v.accountGrandTotal}</span>
+                    <div class="igcp-border--double"></div>
+                </div>
+            </div>
+            
+        </aura:if>
+    </div>
+</aura:component>
