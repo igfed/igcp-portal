@@ -23,11 +23,9 @@
 
 		var
 			services = cmp.find("CP_Services"),
-			utils = cmp.find("CP_Utils"),
-			bpid = "0001000265";
+			utils = cmp.find("CP_Utils");
 
 		services.getMortgagePreview(
-			bpid,
 			cmp,
 			function(previewObj) {
 
