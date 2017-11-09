@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="EmailChangeController">
 	
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="edit-notifications"></aura:attribute>
@@ -19,15 +19,15 @@
 
 	<!-- HANDLERS -->
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
-	<!-- <aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
-	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
-	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
+	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
+	<aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onInputValueReceived}" />
+	<!--<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
 	<aura:handler event="c:CP_Evt_Key" action="{!c.onKey}" /> -->
 	
 	<!-- METHODS-->
-	<!-- <aura:method name="onSubmitForm" action="{!c.submitForm}" description="Call submit form">
+	<aura:method name="onSubmitForm" action="{!c.submitForm}" description="Call submit form">
 		<aura:attribute name="payload" type="Map"></aura:attribute>
-	</aura:method> -->
+	</aura:method>
 	
 	<!-- MARKUP -->
 
@@ -64,7 +64,7 @@
 				<div class="slds-form slds-size_12-of-12 slds-m-top--large">
 			    	<span class="igcp-label--small">{!$Label.c.CP_Generic_Label_Language_Preference}<c:CP_Cmp_Tooltip tooltip="This is a tooltip about language"/></span>
 				</div>
-				<c:CP_Cmp_Radio_Group2 id="language-preference" form="{!v.pageId}" label1="English" label2="Franch" legend="{!$Label.c.CP_Manage_Notifications_Language_Preference_Details}" />
+				<c:CP_Cmp_Radio_Group2 id="language-preference" form="{!v.pageId}" label1="English" label2="French" legend="{!$Label.c.CP_Manage_Notifications_Language_Preference_Details}" />
 
 				<!--CTAS-->
 				<c:CP_Cmp_Form_Back_Next dcname1="" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Update}" nextType="submit" form="{!v.pageId}" />

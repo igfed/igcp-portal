@@ -24,6 +24,14 @@
 		<aura:attribute name="callback" type="function" default="" />
 	</aura:method>
 
+	<!-- CONVERT TO MDY -->
+	<!-- Converts a date to the format needed for display on the front end 
+	ex. 1969-06-06 becomes June 06, 1969 -->
+	<aura:method name="convertToMDY" action="{!c.convertToMDY}">
+		<aura:attribute name="date" type="String"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+
 	<!-- DELETE AT -->
 	<!-- Deletes an item in an array based on its index position
 	returns a new array minus the deleted item -->

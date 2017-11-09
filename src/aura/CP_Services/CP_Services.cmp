@@ -25,28 +25,24 @@
 	</aura:method>
 	<!-- GET INVESTMENTS PREVIEW -->
 	<aura:method name="getInvestmentsPreview" action="{!c.onGetInvestmentsPreview}">
-		<aura:attribute name="bpid" type="String"></aura:attribute>
 		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
 		<aura:attribute name="successCB" type="function" default="" />
 		<aura:attribute name="errorCB" type="function" default="" />
 	</aura:method>
 	<!-- GET MORTGAGE PREVIEW -->
 	<aura:method name="getMortgagePreview" action="{!c.onGetMortgagePreview}">
-		<aura:attribute name="bpid" type="String"></aura:attribute>
 		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
 		<aura:attribute name="successCB" type="function" default="" />
 		<aura:attribute name="errorCB" type="function" default="" />
 	</aura:method>
 	<!-- GET INSURANCE PREVIEW -->
 	<aura:method name="getInsurancePreview" action="{!c.onGetInsurancePreview}">
-		<aura:attribute name="bpid" type="String"></aura:attribute>
 		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
 		<aura:attribute name="successCB" type="function" default="" />
 		<aura:attribute name="errorCB" type="function" default="" />
 	</aura:method>
 	<!-- GET INSURANCE PREVIEW -->
 	<aura:method name="getAssetMix" action="{!c.onGetAssetMix}">
-		<aura:attribute name="bpid" type="String"></aura:attribute>
 		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
 		<aura:attribute name="successCB" type="function" default="" />
 		<aura:attribute name="errorCB" type="function" default="" />
@@ -159,6 +155,14 @@
 
 	<!-- UPDATE PASSWORD -->
 	<aura:method name="updatePassword" action="{!c.onUpdatePassword}">
+		<aura:attribute name="payload" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
+	<!-- CHANGE EMAIL -->
+	<aura:method name="emailChange" action="{!c.onEmailChange}">
 		<aura:attribute name="payload" type="String"></aura:attribute>
 		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
 		<aura:attribute name="successCB" type="function" default="" />

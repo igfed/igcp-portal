@@ -5,34 +5,8 @@
 	},
 	onSubmit: function(cmp, evt, hlpr) {
 
+		console.log('change_password_js_controller onSubmit');
 		var events = cmp.find('CP_Events')
-			// payload = evt.getParam("payload"),
-			// services = cmp.find("CP_Services"),
-			// isValid = cmp.get("v.inputErrors");
-			// formData = null;
-
-		/*if(isValid) {
-
-			formData = JSON.stringify({
-				"username" : "John Wall", 
-				"oldPassword": "1234",
-				"newPassword": "5678",
-				"verifyPassword": "5678"
-			});
-			
-			services.updatePassword(
-				formData,
-				cmp,
-				function (success) {
-					console.log('[CP_Change_Password] - onSubmit / Update():success = ', success)
-				},
-				function (error) {
-					console.log('[CP_Change_Password] - onSubmit / Update():Error = ', error)
-				}
-			);
-		} else { 
-			console.log('[CP_Change_Password] - onSubmit | The form has validation errors', isValid)
-		}*/
 
 		//Reset input errors	
 		cmp.set("v.inputErrors", false);
@@ -66,8 +40,8 @@
 	},
 	submitForm: function(cmp, evt, hlpr) {
 
+		console.log('change_password_js_controller submitForm');
 		var
-			// events = cmp.find("CP_Events"),
 			services = cmp.find("CP_Services"),
 			formData = null;
 
@@ -78,6 +52,7 @@
 				"verifyPassword": "testPassword"
 			});
 
+			console.log('change_password_js_controller - formData:'+ formData);
 			services.updatePassword(
 				formData,
 				cmp,

@@ -89,6 +89,36 @@
 			params.callback(splitArr[2] + "-" + splitArr[0] + "-" + splitArr[1]);
 		}
 	},
+	convertToMDY: function (cmp, evt, hlpr) {
+		var params = evt.getParam("arguments");
+		if (params) {
+			var
+				date = params.date,
+				splitArr = date.split("-"),
+				monthNames = [
+					$A.get("$Label.c.CP_Date_Month_January"), 
+					$A.get("$Label.c.CP_Date_Month_February"), 
+					$A.get("$Label.c.CP_Date_Month_March"), 
+					$A.get("$Label.c.CP_Date_Month_April"),  
+					$A.get("$Label.c.CP_Date_Month_May"), 
+					$A.get("$Label.c.CP_Date_Month_June"), 
+					$A.get("$Label.c.CP_Date_Month_July"), 
+					$A.get("$Label.c.CP_Date_Month_August"),  
+					$A.get("$Label.c.CP_Date_Month_September"), 
+					$A.get("$Label.c.CP_Date_Month_October"),  
+					$A.get("$Label.c.CP_Date_Month_November"), 
+					$A.get("$Label.c.CP_Date_Month_December")
+				];
+
+
+			params.callback({
+				"year" : splitArr[0],
+				"month" : monthNames[(splitArr[1] - 1)],
+				"day" : splitArr[2],
+				"formattedString" :  (monthNames[(splitArr[1] - 1)] + " " + splitArr[2] + ", " + splitArr[0])
+			});
+		}
+	},
 	onDeleteAt: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
@@ -329,25 +359,25 @@
 				$("html, body").animate({
 					scrollTop: pos
 				}, {
-					duration: speed,
-					complete: function () {
-						if (params.callback) {
-							params.callback();
+						duration: speed,
+						complete: function () {
+							if (params.callback) {
+								params.callback();
+							}
 						}
-					}
-				});
+					});
 			} else {
 				console.log(params.id);
 				$("html, body").animate({
 					scrollTop: $(params.id).offset().top
 				}, {
-					duration: speed,
-					complete: function () {
-						if (params.callback) {
-							params.callback();
+						duration: speed,
+						complete: function () {
+							if (params.callback) {
+								params.callback();
+							}
 						}
-					}
-				});
+					});
 			}
 		}
 	}

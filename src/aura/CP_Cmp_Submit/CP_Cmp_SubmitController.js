@@ -17,18 +17,12 @@
 
 		if (evt.getParam("payload").id === cmp.get("v.id")) {
 			cmp.set("v.disabled", false);
-			console.log("CP_Cmp_Submit: onEnable");
-			console.log(evt.getParam("payload").id);
-			console.log(cmp.get("v.id"));
 		}
 	},
 	onDisable: function (cmp, evt, hlpr) {
 
 		if (evt.getParam("payload").id === cmp.get("v.id")) {
 			cmp.set("v.disabled", true);
-			console.log("CP_Cmp_Submit: onDisable");
-			console.log(evt.getParam("payload").id);
-			console.log(cmp.get("v.id"));
 		}
 	}
 })

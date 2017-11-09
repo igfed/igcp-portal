@@ -23,11 +23,9 @@
 
 		var
 			services = cmp.find("CP_Services"),
-			utils = cmp.find("CP_Utils"),
-			bpid = "0002851019";
+			utils = cmp.find("CP_Utils");
 
 		services.getInsurancePreview(
-			bpid,
 			cmp,
 			function(previewObj) {
 

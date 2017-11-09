@@ -1,30 +1,22 @@
 ({
 	onInit: function(cmp, evt, hlpr) {
 
-		//Test BPIDs
-
-		// 0003173610
-		// 0003192111
-		// 0002505866
-		// 0003497138
-
 		var
-			events = cmp.find("CP_Events"),
 			services = cmp.find("CP_Services"),
-			utils = cmp.find("CP_Utils"),
-			bpid = "0003497138";
-
+			utils = cmp.find("CP_Utils");
 
 		//GET INVESTMENT PREVIEW
 		services.getInvestmentsPreview(
-			bpid,
 			cmp,
 			function(previewObj) {
 
 				var
-					events = cmp.find("CP_Events"),
 					accountPreviewsObj = previewObj.previewAggregatesByTypeAndReg,
 					accountTypeArr = [];
+
+				utils.convertToMDY(previewObj.asOfDate, function(obj){
+					cmp.set("v.asOfDate", obj.formattedString);
+				});
 
 				utils.formatToCurrency(previewObj.totalValue, function(formattedValue) {
 					cmp.set("v.totalValue", formattedValue);
@@ -53,7 +45,6 @@
 
 		//GET ASSET MIX
 		services.getAssetMix(
-			bpid,
 			cmp,
 			function(previewObj) {
 

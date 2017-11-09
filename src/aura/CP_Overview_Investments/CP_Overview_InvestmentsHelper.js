@@ -4,6 +4,9 @@
 		var utils = cmp.find("CP_Utils");
 
 		accArr.forEach(function(item, i) {
+
+			console.log(item);
+
 			utils.forEach(item, function(key, val) {
 
 				var
@@ -26,6 +29,8 @@
 					accountName = $A.get("$Label.c.CP_Overview_IGSI");
 				} else if (val.dealerName === "Investors Group Financial Services Inc.") {
 					accountName = $A.get("$Label.c.CP_Overview_IGFS");
+				} else if(val.dealerName === "NON IG") {
+					accountName = $A.get("$Label.c.CP_Overview_NON_IG");
 				}
 
 				if (key === "REGISTERED") {
@@ -35,6 +40,7 @@
 				}
 
 				if (i === 0) {
+					//First
 					utils.createComponent(
 						"CP_Overview_Account", {
 							"accountTitle": accountName,
@@ -47,6 +53,7 @@
 						function(evt) {}
 					);
 				} else if (i === (accArr.length - 1)) {
+					//Last
 					utils.createComponent(
 						"CP_Overview_Account", {
 							"accountTitle": accountName,
@@ -60,6 +67,7 @@
 						function(evt) {}
 					);
 				} else {
+					//Everything else
 					utils.createComponent(
 						"CP_Overview_Account", {
 							"accountTitle": accountName,

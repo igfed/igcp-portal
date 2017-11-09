@@ -10,9 +10,8 @@
 
 		if(cmp.get("v.hasBG") === true) {
 			var loadingClass = cmp.get("v.loadingIconClass");
-			console.log(loadingClass);
 			loadingClass += " igcp-loading-icon__background";
-			console.log(loadingClass);
+			
 			cmp.set("v.loadingIconClass", loadingClass);
 		}
 	},
@@ -24,7 +23,6 @@
 		}
 	},
 	onHide: function(cmp, evt, hlpr) {
-
 		var payload = evt.getParam("payload");
 
 		if (payload.id === cmp.get("v.id")) {

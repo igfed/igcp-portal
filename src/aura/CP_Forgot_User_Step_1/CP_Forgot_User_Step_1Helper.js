@@ -53,5 +53,15 @@
 		cmp.find("CP_Events").fire("CP_Evt_Button_Enable", {
 			"id" : "form_submit"
 		});
+	},
+	showLoading: function(cmp) {
+		cmp.find("CP_Events").fire("CP_Evt_Loading_Show", {
+			"id" : "forgot-user-1-spinner"
+		});
+	}, 
+	hideLoading: function(cmp) {
+		cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", {
+			"id" : "forgot-user-1-spinner"
+		});
 	}
 })

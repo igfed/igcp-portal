@@ -25,7 +25,7 @@
 				"email": cmp.get("v.email")
 			});
 
-			hlpr.disableSubmit(cmp);
+			hlpr.showLoading(cmp);
 
 			cmp.onSubmitForm();
 		}
@@ -41,11 +41,14 @@
 			"StepOne",
 			cmp,
 			function(evt) {
+				hlpr.hideLoading(cmp);
 				cmp.onNextStep();
 			},
 			function(error) {
 				console.error("Forgot User: Step 1: Error");
 				console.error(error);
+
+				hlpr.hideLoading(cmp);
 
 				var
 					events = cmp.find("CP_Events"),
