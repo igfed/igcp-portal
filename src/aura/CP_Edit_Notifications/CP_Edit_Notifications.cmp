@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="EmailChangeController">
 	
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="edit-notifications"></aura:attribute>
@@ -19,8 +19,8 @@
 
 	<!-- HANDLERS -->
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
-	<!-- <aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
-	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
+	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
+	<!--<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
 	<aura:handler event="c:CP_Evt_Key" action="{!c.onKey}" /> -->
 	
