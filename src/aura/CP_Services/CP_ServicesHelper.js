@@ -3,11 +3,15 @@
 		errorMsg = errorMsg || "Unset error message";
 		errorType = errorType || "unset-error";
 
+		console.log('setCallback', service);
+
 		action.setCallback(service, function (response) {
 
 			var state = response.getState();
 
 			console.log("STATE: " + state);
+			console.log("SERVICES PARAMS: ", params);
+			console.log("Callback: ", response);
 			console.log(response);
 
 			if (state === "SUCCESS") {

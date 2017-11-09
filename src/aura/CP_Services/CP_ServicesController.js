@@ -820,5 +820,35 @@
 				console.log(err);
 			}
 		}
+	},
+	onEmailChange: function (cmp, evt, hlpr) {
+
+		var params = evt.getParam("arguments");
+		if (params) {
+			var
+				component = params.component,
+				action;
+
+			try {
+				action = component.get("c.emailChange");
+
+				console.log('services', params);
+
+				action.setParams({
+					payload: params.payload
+				});
+
+				hlpr.setCallback(
+					params,
+					action,
+					this,
+					"Email failed to update.",
+					"unknown-error"
+				);
+			} catch (err) {
+				console.error("CP_Services: onEmailChange: controller not found, make sure it is attached to parent component.");
+				console.log(err);
+			}
+		}
 	}
 })
