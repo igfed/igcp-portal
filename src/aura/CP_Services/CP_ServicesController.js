@@ -861,7 +861,6 @@
 					"Email failed to update.",
 					"unknown-error"
 				);
-
 			} catch (err) {
 				console.error("CP_Services: onEmailChange: controller not found, make sure it is attached to parent component.");
 				console.log(err);

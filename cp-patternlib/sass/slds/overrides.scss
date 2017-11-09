@@ -70,8 +70,13 @@
 	border: none;
 }
 
-.slds-input.igcp-input.has-error.uiInput.uiInputText.uiInput--input {
+.slds-input.igcp-input.has-error.uiInput.uiInputText.uiInput--input,
+.slds-input.igcp-input.has-error.uiInput.uiInputSecret.uiInput--input {
 	border: 1px solid red;
+}
+
+.has-error.uiInputDefaultError.uiInput.uiInputText.uiInput--default.uiInput--input {
+	position: absolute;
 }
 
 .slds-checkbox {

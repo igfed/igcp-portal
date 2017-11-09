@@ -10,6 +10,8 @@
 			cmp,
 			function(previewObj) {
 
+				console.log(previewObj);
+
 				var
 					accountPreviewsObj = previewObj.previewAggregatesByTypeAndReg,
 					accountTypeArr = [];
