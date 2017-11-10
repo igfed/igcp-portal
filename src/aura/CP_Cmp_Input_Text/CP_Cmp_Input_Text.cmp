@@ -55,7 +55,7 @@
 		</aura:renderIf>
 		<div class="slds-form-element__control">
 			<!-- INPUT -->
-			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" keypress="{!c.onHandleKey}" keydown="{!c.onHandleKey}" keyup="{!c.onHandleKey}" focus="{!c.onFocus}" blur="{!c.onBlur}" />
+			<ui:inputText aura:id="{!v.id}" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" keypress="{!c.onHandleKey}" keydown="{!c.onHandleKey}" keyup="{!c.onHandleKey}" focus="{!c.onFocus}" blur="{!c.onBlur}" />
 		</div>
 		<aura:renderIf isTrue="{!v.helpText}">
 			<div class="igcp-input__help-link slds-float--right">
