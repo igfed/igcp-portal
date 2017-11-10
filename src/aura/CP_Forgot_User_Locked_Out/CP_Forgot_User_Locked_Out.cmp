@@ -5,8 +5,10 @@
 	<!-- ATTRS -->
 	<aura:attribute name="lang" type="String"></aura:attribute>
 	
-	<!-- HANDLER -->
+	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Click" action="{!c.gotoLogin}" />
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
+	
 	<!-- MARKUP -->
 	<div data-aa-component="CP_Forgot_User_Locked_Out" class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
 		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
