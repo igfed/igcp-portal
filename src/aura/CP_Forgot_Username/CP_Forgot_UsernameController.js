@@ -1,5 +1,6 @@
 ({
 	onInit: function (cmp, evt, hlpr) {
+
 		try {
 			var utils = cmp.find("CP_Utils");
 
@@ -15,8 +16,13 @@
 		}
 	},
 	doneRendering: function (cmp, evt, hlpr) {
-		var body = document.querySelector("body");
-		body.className = "igcp-utils__display--block";
+
+		if(cmp.get("v.renderComplete") === false) {
+			
+			var body = document.querySelector("body");
+			body.className = "igcp-utils__display--block";
+			cmp.set("v.renderComplete", true);
+		}
 	},
 	onNextStep: function (cmp, evt, hlpr) {
 		var

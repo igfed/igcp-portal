@@ -99,8 +99,8 @@
 		}
 	},
 	doneRendering: function(cmp, evt, hlpr) {
-		window._aa.registerHandlers();
 		if(cmp.get("v.renderComplete") === false) {
+			window._aa.registerHandlers();
 			cmp.set("v.renderComplete", true);
 		}
 	}

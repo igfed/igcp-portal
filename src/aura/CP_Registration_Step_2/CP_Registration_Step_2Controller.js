@@ -124,6 +124,11 @@
 
 		cmp.set("v.inputsReceived", (inputs += 1));
 
+		console.log("Received");
+		console.log(cmp.get("v.inputsReceived"));
+		console.log(cmp.get("v.inputErrors"))
+
+
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
 		if (cmp.get("v.inputsReceived") === 11 && cmp.get("v.inputErrors") === false) {
@@ -154,9 +159,12 @@
 				}
 			});
 
-			hlpr.showLoading(cmp);
+			cmp.onNextStep();
 
-			cmp.onSubmitForm();
+
+			// hlpr.showLoading(cmp);
+
+			// cmp.onSubmitForm();
 		} else if (cmp.get("v.inputsReceived") === 11 && cmp.get("v.inputErrors") === true) {
 			utils.scrollTo("#" + cmp.get("v.errIdArr")[0]);
 			cmp.set("v.errIdArr", []);

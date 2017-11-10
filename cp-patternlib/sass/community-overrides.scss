@@ -1,0 +1,7 @@
+//Overrides to neutralizes unwanted community theme styling
+.DESKTOP {
+	&.uiContainerManager.siteforcePanelsContainer,
+	&.uiPanelManager2.onePanelManager.siteforcePanelManager.siteforcePanelsContainer {
+		display: none;
+	}
+}
