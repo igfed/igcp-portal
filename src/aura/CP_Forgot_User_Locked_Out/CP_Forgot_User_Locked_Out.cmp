@@ -1,6 +1,7 @@
 <aura:component >
 	<!-- INCLUDES -->
 	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Events aura:id="CP_Events" />
 
 	<!-- ATTRS -->
 	<aura:attribute name="lang" type="String"></aura:attribute>

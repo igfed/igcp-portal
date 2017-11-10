@@ -1,9 +1,11 @@
 <aura:component >
 	<!-- INCLUDES -->
 	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Events aura:id="CP_Events" />
 
 	<!-- ATTRS -->
 	<aura:attribute name="lang" type="String"></aura:attribute>
+	<aura:attribute name="renderComplete" type="Boolean" default="false" />
 
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Click" action="{!c.gotoLogin}" />
