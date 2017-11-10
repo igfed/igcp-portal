@@ -13,11 +13,5 @@
 				"description": "Forgot Username Locked Out"
 			}
 		);
-		// window.digitalData.error = {
-		// 	"type": "server",
-		// 	"code": "500",
-		// 	"description": "Forgot Username Locked Out"
-		// };
-		// window._satellite('server-error');
 	}
 })

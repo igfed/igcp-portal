@@ -1,6 +1,6 @@
 /*! Adobe Analytics client-side controller 
     Author: Dennis Erny 
-    Version: Salesforce v1.01 */
+    Version: Salesforce v1.02 */
 
 (function ($) {
 
@@ -84,6 +84,7 @@
     // Event object that will be pushed into events array
     var event = {};
     event.component = {};
+    event.error = {};
     event.page = {};
     event.form = {};
     event.search = {};
@@ -150,7 +151,7 @@
     }
 
     // Handle calls from JavaScript
-    if (event.type === 'dc') {
+    if (event.type === 'javascript') {
 
       // Move 'data' props into event object
       var data = JSON.parse($this);
