@@ -14,5 +14,5 @@
     <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 
-    <aura:handler event="c:CP_Evt_Analytics_Error" action="{!c.onError}" />
+    <aura:handler event="c:CP_Evt_Analytics_Error" action="{!c.onServerError}" />
 </aura:component>

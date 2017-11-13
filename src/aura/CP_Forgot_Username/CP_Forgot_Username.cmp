@@ -6,7 +6,6 @@
 	<c:CP_Utils aura:id="CP_Utils"/>
 	<c:CP_Analytics aura:id="CP_Analytics"/>
 
-
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="forgot-username"></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-utils__overflow--hidden"></aura:attribute>

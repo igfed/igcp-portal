@@ -11,8 +11,8 @@
 			cmp,
 			function (success) {
 				cmp.set("v.userInfo", success);
-				console.log("CP_Analytics: USER INFO");
-				console.log(cmp.get("V.userInfo"));
+				// console.log("CP_Analytics: USER INFO");
+				// console.log(cmp.get("V.userInfo"));
 			},
 			function (error) {
 				console.error(error);
