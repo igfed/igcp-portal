@@ -10,7 +10,7 @@
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="registration"></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-utils__overflow--hidden"></aura:attribute>
-	<aura:attribute name="currentStep" type="Integer" default="2"></aura:attribute>
+	<aura:attribute name="currentStep" type="Integer" default="0"></aura:attribute>
 
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default="" />
@@ -37,6 +37,7 @@
 	<aura:attribute name="acceptTOS" type="Boolean" default="false"></aura:attribute>
 
 	<!-- HANDLERS -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 	<aura:handler event="c:CP_Evt_Start" action="{!c.onStartRegistration}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Next_Step" action="{!c.onNextStep}"></aura:handler>

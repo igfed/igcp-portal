@@ -7,13 +7,12 @@
 
 		if (cmp.get("v.renderComplete") === false) {
 			cmp.set("v.renderComplete", true);
-			
+
 			cmp.find("CP_Events").fire(
-				"CP_Evt_Analytics_Error", 
-				{
+				"CP_Evt_Analytics_Error", {
 					"type": "server",
 					"code": "500",
-					"description": "Forgot Username Locked Out"
+					"description": "Forgot Username Not Completed"
 				}
 			);
 		}
