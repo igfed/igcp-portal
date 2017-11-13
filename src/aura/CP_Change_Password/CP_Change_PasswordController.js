@@ -40,19 +40,17 @@
 	},
 	submitForm: function(cmp, evt, hlpr) {
 
-		console.log('change_password_js_controller submitForm');
 		var
 			services = cmp.find("CP_Services"),
-			formData = null;
-
 			formData = JSON.stringify({
-				"username" : "portalclient2@igext", 
-				"currentPassword": "qwerty",
-				"newPassword": "testPassword",
-				"verifyPassword": "testPassword"
+				"username" : cmp.get("v.username"), 
+				"currentPassword": cmp.get("v.currentPassword"),
+				"newPassword": cmp.get("v.password"),
+				"verifyPassword": cmp.get("v.confirmPassword")
 			});
 
 			console.log('change_password_js_controller - formData:'+ formData);
+			
 			services.updatePassword(
 				formData,
 				cmp,
