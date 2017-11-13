@@ -59,7 +59,7 @@
 
 			var
 				arrOne = itemsArr.slice(0, 3),
-				arrTwo = itemsArr.slice(3, itemsArr.length - 1),
+				arrTwo = itemsArr.slice(3, itemsArr.length),
 				formattedPhone = "";
 
 			utils.formatToPhone(
@@ -79,6 +79,9 @@
 			itemsArr = [];
 			itemsArr = arrOne.concat(arrTwo);
 		}
+
+		console.log("ITEMS");
+		console.log(itemsArr);
 
 		events.fire("CP_Evt_Set_List", {
 			"id": cmp.get("v.pageId"),

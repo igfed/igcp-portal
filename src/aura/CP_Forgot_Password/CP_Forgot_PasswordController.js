@@ -14,12 +14,7 @@
 			console.warn(err);
 		}
 	},
-	doneRendering: function(cmp, evt, hlpr) {
-		var body = document.querySelector("body");
-		body.className = "igcp-utils__display--block";
-	},
 	onNextStep: function(cmp, evt, hlpr) {
-
 		var
 			currentStep = cmp.get("v.currentStep"),
 			nextStep = currentStep += 1;
@@ -30,10 +25,10 @@
 	},
 	onNotCompleted: function(cmp, evt, hlpr) {
 		if(evt.getParam("payload").id === cmp.get("v.id")) {
-			cmp.set("v.currentStep", 5);
+			cmp.set("v.currentStep", 4);
 		}
 	},
 	onLockedOut: function(cmp, evt, hlpr) {
-		cmp.set("v.currentStep", 6);
+		cmp.set("v.currentStep", 5);
 	}
 })

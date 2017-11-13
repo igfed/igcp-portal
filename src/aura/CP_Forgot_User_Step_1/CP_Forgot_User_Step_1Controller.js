@@ -62,7 +62,7 @@
 					function(obj) {
 
 						if (obj.fields && obj.messages) {
-							console.log("TATATATATTATSFTST")
+							
 							obj.fields.forEach(function(errorType, i) {
 								var msgArr = [];
 

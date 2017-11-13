@@ -8,9 +8,8 @@
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="forgot-username"></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-utils__overflow--hidden"></aura:attribute>
-	<aura:attribute name="currentStep" type="Integer" default="3" ></aura:attribute>
+	<aura:attribute name="currentStep" type="Integer" default="0" ></aura:attribute>
 	<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
-	<aura:attribute name="renderComplete" type="Boolean" default="false" />
 
 	<!-- STEP 1 -->
 	<aura:attribute name="clientNum" type="String"></aura:attribute>

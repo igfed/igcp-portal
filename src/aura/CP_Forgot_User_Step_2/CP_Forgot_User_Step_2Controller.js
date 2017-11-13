@@ -58,6 +58,15 @@
 				console.error("Forgot User: Step 2: Error");
 				console.error(error);
 
+				if(error.payload.question.stateId) {
+					cmp.set("v.isamStateId", error.payload.question.stateId);
+					hlpr.addToCurrentPayload(cmp, "stateId", cmp.get("v.isamStateId"));
+				}
+
+				if(error.payload.State.isLocked === true) {
+					cmp.find("CP_Events").fire("CP_Evt_Error_Locked_Out", {});
+				}
+
 				hlpr.hideLoading(cmp);
 				
 				services.handleServerSideError({
@@ -67,9 +76,9 @@
 					},
 					function(obj) {
 
-						if (obj.fields[0] === "answer" && obj.isLocked === false && obj.isValid === false) {
-							// hlpr.getSecurityQuestion(cmp, hlpr);
+						console.log(obj);
 
+						if (obj.fields[0] === "answer" && obj.isLocked === false && obj.isValid === false) {
 							events.fire("CP_Evt_Toast_Error", {
 								"id": "forgot-user-step-2-toast-error",
 								"message": $A.get("$Label.c.CP_Error_Please_Try_Again")

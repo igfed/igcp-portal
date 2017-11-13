@@ -51,6 +51,8 @@
 
 			var services = cmp.find("CP_Services");
 
+			console.log("GET SECURITY QUESTION")
+
 			services.getSecurityQuestion(
 				cmp,
 				function(evt) {
@@ -84,7 +86,7 @@
 					}
 				},
 				function(error) {
-					console.error("Forgot Username Step 2: get random question.");
+					console.error("Forgot Username Step 2: get security question.");
 					console.error(error);
 
 					hlpr.hideLoading(cmp);
@@ -96,7 +98,7 @@
 				}
 			);
 		} catch (err) {
-			console.log("CP_Forgot_User_Step_2: getRandomSecurityQuestion")
+			console.log("CP_Forgot_User_Step_2: getSecurityQuestion")
 			console.error(err);
 		}
 

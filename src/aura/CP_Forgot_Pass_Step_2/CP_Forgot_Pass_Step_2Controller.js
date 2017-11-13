@@ -72,6 +72,15 @@
 					console.error("Forgot Pass: Step 2: Error");
 					console.error(error);
 
+					if(error.payload.question.stateId) {
+						cmp.set("v.isamStateId", error.payload.question.stateId);
+						hlpr.addToCurrentPayload(cmp, "stateId", cmp.get("v.isamStateId"));
+					}
+	
+					if(error.payload.State.isLocked === true) {
+						cmp.find("CP_Events").fire("CP_Evt_Error_Locked_Out", {});
+					}
+
 					hlpr.hideLoading(cmp);
 					
 					services.handleServerSideError({
@@ -82,9 +91,8 @@
 						function(obj) {
 
 							if (obj.fields[0] === "answer" && obj.isLocked === false && obj.isValid === false) {
-								//hlpr.getRandomSecurityQuestion(cmp, hlpr);
 
-								events.fire("CP_Evt_Toast_Error", {
+								cmp.find("CP_Events").fire("CP_Evt_Toast_Error", {
 									"id": "forgot-pass-step-2-toast-error",
 									"message": $A.get("$Label.c.CP_Error_Please_Try_Again")
 								});
@@ -107,12 +115,6 @@
 		if (evt.getParam("payload").id === "back_button") {
 			var utils = cmp.find("CP_Utils");
 			utils.gotoLogin(cmp.get("v.lang"));
-		}
-	},
-	doneRendering: function(cmp, evt, hlpr) {
-		window._aa.registerHandlers();
-		if(cmp.get("v.renderComplete") === false) {
-			cmp.set("v.renderComplete", true);
 		}
 	}
 })

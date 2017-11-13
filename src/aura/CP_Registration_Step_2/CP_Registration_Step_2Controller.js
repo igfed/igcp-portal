@@ -40,6 +40,9 @@
 			});
 		}
 
+		console.log("Reg step 2 init");
+		console.log(cmp.get("v.securityQuestion1"));
+
 		//Answer 1
 		if (cmp.get("v.answer1") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
@@ -58,6 +61,9 @@
 			});
 		}
 
+		console.log("Reg step 2 init");
+		console.log(cmp.get("v.securityQuestion2"));
+
 		//Answer 2
 		if (cmp.get("v.answer2") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
@@ -75,6 +81,9 @@
 				"selected": cmp.get("v.securityQuestion3")
 			});
 		}
+
+		console.log("Reg step 2 init");
+		console.log(cmp.get("v.securityQuestion3"));
 
 		//Answer
 		if (cmp.get("v.answer3") !== "") {
@@ -95,7 +104,6 @@
 	},
 	onInputSelectorReceived: function(cmp, evt, hlpr) {
 		var
-			validator = cmp.find('CP_Validation'),
 			inputId = evt.getParam("payload").id,
 			inputValue = evt.getParam("payload").selected;
 
@@ -110,8 +118,6 @@
 	onInputValueReceived: function(cmp, evt, hlpr) {
 
 		var
-			validator = cmp.find('CP_Validation'),
-			events = cmp.find('CP_Events'),
 			utils = cmp.find('CP_Utils'),
 			inputs = cmp.get("v.inputsReceived"),
 			formattedDob = "";
@@ -124,9 +130,9 @@
 
 		cmp.set("v.inputsReceived", (inputs += 1));
 
-		console.log("Received");
-		console.log(cmp.get("v.inputsReceived"));
-		console.log(cmp.get("v.inputErrors"))
+		// console.log("Received");
+		// console.log(cmp.get("v.inputsReceived"));
+		// console.log(cmp.get("v.inputErrors"))
 
 
 		//if all inputs received and inputErrors = false

@@ -2,13 +2,6 @@
 	onInit: function (cmp, evt, hlpr) {
 		cmp.set("v.options", cmp.get("v.defaultOptions"));
 	},
-	doneRendering: function (cmp, evt, hlpr) {
-		cmp.set("v.renderComplete", true);
-
-		if (cmp.get("v.currentSelectedValue") !== "") {
-			cmp.set("v.selectedValue", cmp.get("v.currentSelectedValue"));
-		}
-	},
 	onSetValue: function (cmp, evt, hlpr) {
 
 		var
@@ -24,8 +17,13 @@
 				cmp,
 				"v.renderComplete",
 				function () {
+					console.log(payload.selected);
 					cmp.set("v.selectedValue", payload.selected);
 					cmp.set("v.currentSelectedValue", cmp.get("v.selectedValue"));
+
+					console.log("SHSHHSHSHSHSH");
+					console.log(cmp.get("v.selectedValue"));
+					console.log(cmp.get("v.currentSelectedValue"));
 
 					options = cmp.get("v.options");
 

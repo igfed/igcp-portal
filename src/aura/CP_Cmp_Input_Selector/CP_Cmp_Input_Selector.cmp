@@ -20,7 +20,6 @@
 
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
-	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 	<aura:handler event="c:CP_Evt_Input_Selector_Change" action="{!c.onChangeReceived}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Selector_Send_Options" action="{!c.onOptionsReceived}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Set_Input_Value" action="{!c.onSetValue}"></aura:handler>

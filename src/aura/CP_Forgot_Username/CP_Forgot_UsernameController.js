@@ -15,15 +15,6 @@
 			console.warn(err);
 		}
 	},
-	doneRendering: function (cmp, evt, hlpr) {
-
-		if(cmp.get("v.renderComplete") === false) {
-			
-			var body = document.querySelector("body");
-			body.className = "igcp-utils__display--block";
-			cmp.set("v.renderComplete", true);
-		}
-	},
 	onNextStep: function (cmp, evt, hlpr) {
 		var
 			currentStep = cmp.get("v.currentStep"),

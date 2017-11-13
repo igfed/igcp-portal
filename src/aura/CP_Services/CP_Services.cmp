@@ -18,7 +18,7 @@
 		<aura:attribute name="errorCB" type="function" default="" />
 	</aura:method>
 	<!-- GET SECURITY QUESTION -->
-	<aura:method name="getSecurityQuestion" action="{!c.onGetRandSecurityQuestion}">
+	<aura:method name="getSecurityQuestion" action="{!c.onGetSecurityQuestion}">
 		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
 		<aura:attribute name="validCB" type="function" default="" />
 		<aura:attribute name="errorCB" type="function" default="" />

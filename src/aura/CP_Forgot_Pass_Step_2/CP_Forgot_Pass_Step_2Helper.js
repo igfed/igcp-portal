@@ -76,9 +76,6 @@
 						cmp.set("v.questionId", questionObj.id);
 						hlpr.addToCurrentPayload(cmp, "id", questionObj.id);
 
-						console.log("CURRENT PAYLOAD");
-						console.log(cmp.get("v.payload"));
-
 					} else {
 						events.fire("CP_Evt_Toast_Error", {
 							"id": "forgot-pass-step-2-toast-error",
