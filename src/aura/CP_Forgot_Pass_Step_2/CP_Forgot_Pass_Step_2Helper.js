@@ -43,7 +43,7 @@
 		currentPayload[key] = value;
 		cmp.set("v.payload", currentPayload);
 	},
-	getRandomSecurityQuestion: function (cmp, hlpr) {
+	getSecurityQuestion: function (cmp, hlpr) {
 
 		try {
 
@@ -51,7 +51,7 @@
 
 			var services = cmp.find("CP_Services");
 
-			services.getRandSecurityQuestion(
+			services.getSecurityQuestion(
 				cmp,
 				function (evt) {
 
@@ -94,7 +94,7 @@
 				}
 			);
 		} catch (err) {
-			console.log("CP_Forgot_Pass_Step_2: getRandomSecurityQuestion")
+			console.log("CP_Forgot_Pass_Step_2: getSecurityQuestion")
 			console.error(err);
 		}
 

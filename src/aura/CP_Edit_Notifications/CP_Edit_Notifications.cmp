@@ -3,6 +3,7 @@
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="edit-notifications"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
+	<aura:attribute name="formData" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="legend" type="String" />
     <aura:attribute name="label1" type="String" />
     <aura:attribute name="label2" type="String" />
@@ -20,10 +21,11 @@
 	<!-- HANDLERS -->
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
-	<aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onInputValueReceived}" />
-	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueSend}" />
-	<!--<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
-	<aura:handler event="c:CP_Evt_Key" action="{!c.onKey}" /> -->
+	<aura:handler event="c:CP_Evt_Complete" action="{!c.onComplete}" />
+	<!-- <aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onInputValueReceived}" /> -->
+	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
+	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
+	<aura:handler event="c:CP_Evt_Key" action="{!c.onKey}" />
 	
 	<!-- METHODS-->
 	<aura:method name="onSubmitForm" action="{!c.submitForm}" description="Call submit form">

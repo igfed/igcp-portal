@@ -5,7 +5,7 @@
 			"username": cmp.get("v.username")
 		});
 
-		hlpr.getRandomSecurityQuestion(cmp, hlpr);
+		hlpr.getSecurityQuestion(cmp, hlpr);
 	},
 	onSubmit: function (cmp, evt, hlpr) {
 
@@ -82,12 +82,12 @@
 						function(obj) {
 
 							if (obj.fields[0] === "answer" && obj.isLocked === false && obj.isValid === false) {
-								hlpr.getRandomSecurityQuestion(cmp, hlpr);
+								//hlpr.getRandomSecurityQuestion(cmp, hlpr);
 
-								// events.fire("CP_Evt_Toast_Error", {
-								// 	"id": "forgot-pass-step-2-toast-error",
-								// 	"message": $A.get("$Label.c.CP_Error_Please_Try_Again")
-								// });
+								events.fire("CP_Evt_Toast_Error", {
+									"id": "forgot-pass-step-2-toast-error",
+									"message": $A.get("$Label.c.CP_Error_Please_Try_Again")
+								});
 							}
 						}
 					);

@@ -1,10 +1,14 @@
 <aura:component >
+
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="registration-instructions"></aura:attribute>
+
 	<!-- IMPORTS -->
 	<c:CP_Events aura:id="CP_Events" />
+
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Click" action="{!c.onStart}"></aura:handler>
+
 	<!-- MARKUP -->
 	<div data-aa-component="CP_Registration_Instructions" class="igcp-background">
 		<div class="igcp-utils__max-width--large igcp-utils__margin--zero-auto slds-grid slds-wrap slds-grid--align-center">
