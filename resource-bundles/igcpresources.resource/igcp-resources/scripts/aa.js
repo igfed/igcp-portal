@@ -4,7 +4,6 @@
 
 jQuery(document).ready(function () {
   (function ($) {
-    console.log('loaded');
     window.digitalData = window.digitalData || {};
     window._aa = window._aa || {};
     window.digitalData.page = {};
@@ -27,7 +26,6 @@ jQuery(document).ready(function () {
     }
 
     function init() {
-      console.log('analytics init');
       // Capture page data
       window.digitalData.pageInstanceID = _getPageName() + ":" + window.location.hostname + "";
       window.digitalData.page.pageInfo.pageName = _getPageName();

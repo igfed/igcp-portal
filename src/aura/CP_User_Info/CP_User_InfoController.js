@@ -19,12 +19,9 @@
 
 			utils.waitForDefined(cmp, "v.userInfo", function(userInfo) {
 				utils.forEach(userInfo, function(key, val) {
-					if(key !== "clientBPID") {
-						$('head').append("<meta name=" + 'igcp:' + key + " content=" + val + ">");
-					} else {
-						console.log("BPID");
-						console.log(val);
-					}
+					hlpr.waitForJquery(function(){
+						$('head').append("<meta name=" + 'igcp:' + key + " content=" + val + ">");	
+					});
 				});
 			});
 
