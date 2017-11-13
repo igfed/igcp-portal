@@ -1,10 +1,10 @@
-<aura:component access="global" controller="CP_UserInfoController">
+<aura:component access="global" controller="CP_AnalyticsController">
     
     <c:CP_Services aura:id="CP_Services" />
     <c:CP_Utils aura:id="CP_Utils" />
     
-    <ltng:require scripts="{!$Resource.igcpresources + '/igcp-resources/scripts/aa.js'}"
-	afterScriptsLoaded="{!c.scriptsLoaded}"/>
+    <!-- <ltng:require scripts="{!$Resource.igcpresources + '/igcp-resources/scripts/aa.js'}"
+	afterScriptsLoaded="{!c.scriptsLoaded}"/> -->
 
     <!-- ATTRS -->
     <aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
@@ -14,5 +14,5 @@
     <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 
-    <aura:handler event="c:CP_Evt_Analytics_Error" action="{!c.onServerError}" />
+    <aura:handler event="c:CP_Evt_Analytics_Error" action="{!c.onError}" />
 </aura:component>

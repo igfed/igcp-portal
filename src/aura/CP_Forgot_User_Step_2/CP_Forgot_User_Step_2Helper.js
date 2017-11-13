@@ -44,8 +44,7 @@
 		cmp.set("v.payload", currentPayload);
 	},
 	getRandomSecurityQuestion: function(cmp, hlpr) {
-
-		console.log("getRandSecurityQuestion");
+		
 		hlpr.showLoading(cmp);
 
 		try {

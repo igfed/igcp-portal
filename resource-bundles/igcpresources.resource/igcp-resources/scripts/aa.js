@@ -2,9 +2,9 @@
     Author: Dennis Erny 
     Version: Salesforce v1.0.3 */
 
-document.addEventListener("DOMContentLoaded", function () {
-  (function () {
-
+jQuery(document).ready(function () {
+  (function ($) {
+    console.log('loaded');
     window.digitalData = window.digitalData || {};
     window._aa = window._aa || {};
     window.digitalData.page = {};
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function init() {
-
+      console.log('analytics init');
       // Capture page data
       window.digitalData.pageInstanceID = _getPageName() + ":" + window.location.hostname + "";
       window.digitalData.page.pageInfo.pageName = _getPageName();
@@ -150,6 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
       }
+      2
 
       // Handle calls from JavaScript
       if (event.type === 'javascript') {
@@ -176,5 +177,5 @@ document.addEventListener("DOMContentLoaded", function () {
     init();
 
 
-  })()
+  })(jQuery)
 })

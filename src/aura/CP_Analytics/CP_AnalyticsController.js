@@ -1,8 +1,6 @@
 ({
 	scriptsLoaded: function (cmp, evt) {
-		jQuery(document).ready(function ($) {
-			console.log('CP_Analytics: loaded');
-		});
+		
 	},
 	onInit: function (cmp, evt, hlpr) {
 		var services = cmp.find("CP_Services");
@@ -11,8 +9,8 @@
 			cmp,
 			function (success) {
 				cmp.set("v.userInfo", success);
-				// console.log("CP_Analytics: USER INFO");
-				// console.log(cmp.get("V.userInfo"));
+				console.log("CP_Analytics: USER INFO");
+				console.log(cmp.get("V.userInfo"));
 			},
 			function (error) {
 				console.error(error);
