@@ -3405,7 +3405,8 @@ table {
   background-repeat: repeat; }
 
 .igcp-container {
-  background-color: #fff; }
+  background-color: #fff;
+  overflow: hidden; }
   @media (max-width: 480px) {
     .igcp-container {
       margin: 0 10px; } }
