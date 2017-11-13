@@ -3,13 +3,21 @@
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="edit-notifications"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
-	<aura:attribute name="formData" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="legend" type="String" />
     <aura:attribute name="label1" type="String" />
     <aura:attribute name="label2" type="String" />
     <aura:attribute name="tooltip" type="String" />
 	<aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
-	
+	<aura:attribute name="formData" type="Map" default="{ 
+		'username': 'portalclient2@igext', 
+		'currentEmail': 'test@example.com',
+		'newEmail': '',
+		'mobilePhone': '416-555-1234',
+		'mobileNotifications': 'false',
+		'newsOffers': 'false',
+		'language': 'eng'
+	}"></aura:attribute>
+
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
@@ -21,20 +29,9 @@
 	<!-- HANDLERS -->
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
-	<aura:handler event="c:CP_Evt_Complete" action="{!c.onComplete}" />
-	<!-- <aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onInputValueReceived}" /> -->
-	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
-	<aura:handler event="c:CP_Evt_Key" action="{!c.onKey}" />
-	
-	<!-- METHODS-->
-	<aura:method name="onSubmitForm" action="{!c.submitForm}" description="Call submit form">
-		<aura:attribute name="payload" type="Map"></aura:attribute>
-	</aura:method>
 	
 	<!-- MARKUP -->
-
-
 <div class="igcp-background__tiled">
 	<div class="igcp-wrapper igcp-edit-notifications slds-grid slds-wrap slds-grid--align-center slds-p-around--small slds-large-p-around--medium">
 		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
@@ -47,7 +44,7 @@
 
                     <!--FIELDS-->
                     <!-- EMAIL -->
-			    	<c:CP_Cmp_Input_Text id="email-input" form="{!v.pageId}" type="email" label="{!$Label.c.CP_Generic_Label_Email}" placeholder="" class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" />
+			    	<c:CP_Cmp_Input_Text aura:id="email-input" id="email-input" inputValue="{!v.formData.newEmail}" form="{!v.pageId}" type="email" label="{!$Label.c.CP_Generic_Label_Email}" placeholder="" class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" />
                    
                     <!-- NEWS OPT IN-->
                     <c:CP_Cmp_Input_Checkbox id="news-offers-opt" form="{!v.pageId}" class="slds-size_12-of-12" copy="{!$Label.c.CP_Manage_Notifications_News_Opt_In}" />
@@ -56,11 +53,11 @@
  
                 <div class="slds-form slds-size_12-of-12 slds-medium-m-top--large">
 			    	<!-- PHONE -->
-			    	<c:CP_Cmp_Input_Text id="phone" form="{!v.pageId}" type="phone" label="{!$Label.c.CP_Generic_Label_Mobile_Phone_Optional}" placeholder="" class="slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
+			    	<c:CP_Cmp_Input_Text aura:id="phone" id="phone" inputValue="{!v.formData.mobilePhone}" form="{!v.pageId}" type="phone" label="{!$Label.c.CP_Generic_Label_Mobile_Phone_Optional}" placeholder="" class="slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
 
 				    <!-- PHONE OPT IN -->
                     <c:CP_Cmp_Input_Checkbox id="mobile-message-opt" form="{!v.pageId}" class="slds-size_12-of-12" copy="{!$Label.c.CP_Manage_Notifications_Mobile_Opt_In}" />
-                    <span class="igcp-mobile-number">416-555-1234</span>
+                    <span class="igcp-mobile-number">{!v.formData.mobilePhone}</span>
 				</div>
 
                <!-- LANGUAGE PREFERENCE -->

@@ -1,8 +1,6 @@
 ({
 	scriptsLoaded: function (cmp, evt) {
-		jQuery(document).ready(function ($) {
-			console.log('CP_Analytics: loaded');
-		});
+		
 	},
 	onInit: function (cmp, evt, hlpr) {
 		var services = cmp.find("CP_Services");
