@@ -4,7 +4,15 @@
 		body.className = "igcp-utils__display--block";
 
 	},
-	onSubmit: function(cmp, evt, hlpr){
+	onInputValueSend: function(cmp, evt, hlpr){
+		console.log('onInputValueSend', evt.getParam("payload"))
+	},
+	onSubmit: function(cmp, evt){
+		console.log('onSubmit', evt.getParam("payload"))
+		var events = cmp.find('CP_Events');
+		events.fire("CP_Evt_Get_Input_Value", { 'formId': cmp.get("v.pageId") });
+	},
+	onSubmitForm: function(cmp, evt, hlpr){
 		
 		var services = cmp.find("CP_Services"),
 			// emailInput = cmp.find("email-input").get("v.inputValue"), //ex. get child component value

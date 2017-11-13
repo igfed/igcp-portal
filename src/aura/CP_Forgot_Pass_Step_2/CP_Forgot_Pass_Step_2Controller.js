@@ -5,7 +5,7 @@
 			"username": cmp.get("v.username")
 		});
 
-		hlpr.getRandomSecurityQuestion(cmp, hlpr);
+		hlpr.getSecurityQuestion(cmp, hlpr);
 	},
 	onSubmit: function (cmp, evt, hlpr) {
 
@@ -82,7 +82,7 @@
 						function(obj) {
 
 							if (obj.fields[0] === "answer" && obj.isLocked === false && obj.isValid === false) {
-								hlpr.getRandomSecurityQuestion(cmp, hlpr);
+								//hlpr.getRandomSecurityQuestion(cmp, hlpr);
 
 								events.fire("CP_Evt_Toast_Error", {
 									"id": "forgot-pass-step-2-toast-error",

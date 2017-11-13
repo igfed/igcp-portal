@@ -42,11 +42,7 @@
 
 		var
 			services = cmp.find("CP_Services"),
-
-			passcodeConfirm = cmp.get("v.passcodeConfirm"),
-
 			formData = JSON.stringify({
-				"passcodeConfirm": passcodeConfirm,
 				"username" : cmp.get("v.username"), 
 				"currentPassword": cmp.get("v.currentPassword"),
 				"newPassword": cmp.get("v.password"),
@@ -54,6 +50,7 @@
 			});
 
 			console.log('change_password_js_controller - formData:'+ formData);
+			
 			services.updatePassword(
 				formData,
 				cmp,

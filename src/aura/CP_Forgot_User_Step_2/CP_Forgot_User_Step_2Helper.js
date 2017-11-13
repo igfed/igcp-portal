@@ -43,7 +43,7 @@
 		currentPayload[key] = value;
 		cmp.set("v.payload", currentPayload);
 	},
-	getRandomSecurityQuestion: function(cmp, hlpr) {
+	getSecurityQuestion: function(cmp, hlpr) {
 		
 		hlpr.showLoading(cmp);
 
@@ -51,7 +51,7 @@
 
 			var services = cmp.find("CP_Services");
 
-			services.getRandSecurityQuestion(
+			services.getSecurityQuestion(
 				cmp,
 				function(evt) {
 

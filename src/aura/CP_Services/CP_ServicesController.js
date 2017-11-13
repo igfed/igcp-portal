@@ -171,7 +171,7 @@
 
 		}
 	},
-	onGetRandSecurityQuestion: function (cmp, evt, hlpr) {
+	onGetSecurityQuestion: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
 
