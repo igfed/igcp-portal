@@ -39,14 +39,22 @@
 			<h1 class="slds-m-top--medium">Documents</h1>
 	
             <div class="igcp-document-tabs slds-tabs_default">
+                <!-- ToDo: this should be an imported component.  -->
+                <!--
                 <ul class="slds-tabs_default__nav" role="tablist">
                     <li class="slds-tabs_default__item slds-is-active" title="Item One" role="presentation"><a onclick="{!c.switchTabs}" class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Investment Statements</a></li>
-                    <!-- ToDo: Add tabs when data becomes available 
+                    ToDo: Add tabs when data becomes available 
                     <li class="slds-tabs_default__item" title="Item Two" role="presentation"><a onclick="{!c.switchTabs}" class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" id="tab-default-2__item">Tax Receipts</a></li>
                     <li class="slds-tabs_default__item" title="Item Three" role="presentation"><a onclick="{!c.switchTabs}" class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-3" id="tab-default-3__item">Confirms</a></li>
-                    <li class="slds-tabs_default__item" title="Item Three" role="presentation"><a onclick="{!c.switchTabs}" class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-4" id="tab-default-4__item">Mortgage Statements</a></li>-->
+                    <li class="slds-tabs_default__item" title="Item Three" role="presentation"><a onclick="{!c.switchTabs}" class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-4" id="tab-default-4__item">Mortgage Statements</a></li>
                 </ul>
+                -->
+                
                 <div id="tab-default-1" class="slds-tabs_default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">
+                    
+                    <div class="igcp-container">
+                        <h2 class="slds-p-around--medium slds-p-bottom_none">Investment Statements</h2>
+                    </div>
                     
                     <div class="igcp-document-table">
                         <table class="slds-table slds-table_bordered slds-table_cell-buffer">

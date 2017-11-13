@@ -9,7 +9,7 @@ Contents:
 
 2) Static Resources
 
-3) cp-patternlib - A static version of the client portal specific styling, contains overrides for the slds, and custom igcp styles, as well as element styling.
+3) [cp-patternlib](cp-patternlib/README.md) - A static version of the client portal specific styling, contains overrides for the slds, and custom igcp styles, as well as element styling.
 4) slds - A customized static version of the Salesforce Lightning Design System
 
 Environment Setup

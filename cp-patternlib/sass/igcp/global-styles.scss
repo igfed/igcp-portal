@@ -21,6 +21,7 @@
 
 .#{$namespace}-container {
 	background-color: #fff;
+	overflow: hidden;
 	@media (max-width: 480px) {
 		margin: 0 10px;
 	}
