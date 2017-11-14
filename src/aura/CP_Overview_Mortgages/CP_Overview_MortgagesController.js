@@ -49,6 +49,9 @@
 					//show marketing view
 					cmp.set("v.showMarketing", true);
 				}
+
+
+				cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", { "id" : "overview-mortgages-spinner" });
 			},
 			function(error) {
 				console.error("GET MORTGAGE PREVIEW");

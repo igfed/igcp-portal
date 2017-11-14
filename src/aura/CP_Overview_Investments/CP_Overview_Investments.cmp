@@ -32,7 +32,7 @@
 	</aura:method>
 	
 	<!-- MARKUP -->
-	<div class="igcp-container slds-p-around--small slds-large-p-around--small slds-m-bottom--x-small slds-large-m-bottom--medium slds-large-m-right--medium">
+	<div class="igcp-overview__investments igcp-container slds-p-around--small slds-large-p-around--small slds-m-bottom--x-small slds-large-m-bottom--medium slds-large-m-right--medium">
 		
 		<div class="slds-grid slds-wrap slds-m-bottom--xx-small">
 			<h2 class="slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-m-top--small slds-medium-p-left--small slds-m-bottom--zero">{!$Label.c.CP_Overview_Investments_h2}</h2>
@@ -43,9 +43,12 @@
 				<c:CP_Cmp_Total_Value label="{!$Label.c.CP_Generic_Label_Total_Market_Value}" value="{!v.totalValue}" />
 				<c:CP_Cmp_Gain_Loss label="{!$Label.c.CP_Generic_Label_Change}" value="{!v.totalGainLoss}" percentage="{!v.totalGainLossPercentage}" gainLossType="{!v.gainLossType}" /> 
 			
-			<div class="igcp-underline__thin--grey slds-m-vertical--medium slds-size_12-of-12"></div>
+			    <div class="igcp-underline__thin--grey slds-m-vertical--medium slds-size_12-of-12"></div>
 				<c:CP_Cmp_Graph_Doughnut id="investments-asset-mix"/>
-				{!v.body}
+				<div class="igcp-overview__table igcp-utils__position--relative slds-size_12-of-12">
+					<c:CP_Cmp_Loading_Icon id="overview-investments-spinner" />
+					{!v.body}
+				</div>
 		</div>
 	</div>
 </aura:component>

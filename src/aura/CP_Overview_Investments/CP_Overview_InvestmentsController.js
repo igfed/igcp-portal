@@ -38,6 +38,8 @@
 
 				hlpr.addAccounts(accountTypeArr, cmp);
 
+				cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", { "id" : "overview-investments-spinner" });
+
 			},
 			function(error) {
 				console.error("GET INVESTMENT PREVIEW");

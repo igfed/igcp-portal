@@ -799,19 +799,17 @@
 		display: block;
 		padding: 15px;
 		overflow: hidden;
-
-		// height: 180px;
 		position: relative;
 		margin-top: -15px;
+
 		.#{$namespace}-banner-heading {
 			color: $ig-black;
 		}
+
 		.#{$namespace}-banner-text {
 			z-index: 1000;
-			//position: absolute;
-			//top: 35px;
-			//left: 40px;
 		}
+
 		button {
 			background: transparent;
 			border: 1px solid $ig-black;
@@ -854,4 +852,13 @@
 //Forgot User Name
 .#{$namespace}-forgot-user__step--1 {
 	max-height: 240px;
+}
+
+//Investments/mortgages/insurance
+.#{$namespace}-overview__investments,
+.#{$namespace}-overview__mortgages,
+.#{$namespace}-overview__insurance {
+	.#{$namespace}-overview__table {
+		min-height: 100px;
+	}
 }

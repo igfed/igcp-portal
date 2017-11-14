@@ -15,7 +15,8 @@
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	
 	<!-- MARKUP -->
-	<div class="igcp-container slds-p-around--small slds-large-p-around--medium slds-m-bottom--x-small slds-large-m-bottom--medium slds-large-m-right--medium">
+	<div class="igcp-overview__insurance igcp-utils__position--relative igcp-container slds-p-around--small slds-large-p-around--medium slds-m-bottom--x-small slds-large-m-bottom--medium slds-large-m-right--medium">
+		<c:CP_Cmp_Loading_Icon id="overview-insurance-spinner" />
 		<h2 class="slds-m-top--small slds-m-bottom--medium slds-medium-p-horizontal--small">{!$Label.c.CP_Overview_Insurance_h2}</h2>
 		<div class="slds-grid slds-wrap">
 			<aura:if isTrue="{!v.showMarketing}">

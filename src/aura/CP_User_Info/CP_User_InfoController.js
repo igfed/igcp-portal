@@ -6,6 +6,10 @@
 			cmp,
 			function(success) {
 				cmp.set("v.userInfo", success);
+				console.log("******************");
+				console.log("USER INFO: ");
+				console.log(success);
+				console.log("******************");
 			},
 			function(error) {
 				console.error(error);
