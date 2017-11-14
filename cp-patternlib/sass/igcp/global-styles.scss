@@ -371,12 +371,13 @@
 .#{$namespace}-modal {
 	display: none;
 	position: fixed;
-	z-index: 100;
+	z-index: 1000;
 	overflow-y: scroll;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
+
 	&.#{$namespace}-modal--show {
 		display: inline-block;
 	}
@@ -386,7 +387,8 @@
 	}
 	.#{$namespace}-modal__wrapper--text {
 		max-width: $ig-modal-wrapper-text-width;
-		margin: 0 auto;
+		margin: 0 auto 200px;
+		z-index: 2000;
 	}
 	.#{$namespace}-modal__button--close {
 		position: relative;
@@ -422,6 +424,7 @@
 	}
 }
 
+//Footer
 .#{$namespace}-modal__footer {
 	background-color: #f8f8f8;
 	position: fixed;
@@ -429,6 +432,7 @@
 	bottom: 0;
 	margin: 0 0 0 -#{$ig-space--medium};
 	padding: $ig-space--small;
+	z-index: 3000;
 	.#{$namespace}-modal__footer-wrapper {
 		margin: 0 auto;
 		max-width: $ig-large;
@@ -825,9 +829,6 @@
 			width: auto;
 			margin: 0 auto;
 			display: block;
-			//position: absolute;
-			//top: 0;
-			// right: 0;
 			z-index: 1;
 		}
 		.#{$namespace}-banner-text-img {

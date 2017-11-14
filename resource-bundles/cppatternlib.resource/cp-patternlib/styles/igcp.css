@@ -3659,7 +3659,7 @@ table {
 .igcp-modal {
   display: none;
   position: fixed;
-  z-index: 100;
+  z-index: 1000;
   overflow-y: scroll;
   top: 0;
   left: 0;
@@ -3672,7 +3672,8 @@ table {
     margin: 0 auto; }
   .igcp-modal .igcp-modal__wrapper--text {
     max-width: 600px;
-    margin: 0 auto; }
+    margin: 0 auto 200px;
+    z-index: 2000; }
   .igcp-modal .igcp-modal__button--close {
     position: relative;
     float: right;
@@ -3706,7 +3707,8 @@ table {
   height: 175px;
   bottom: 0;
   margin: 0 0 0 -24px;
-  padding: 16px; }
+  padding: 16px;
+  z-index: 3000; }
   .igcp-modal__footer .igcp-modal__footer-wrapper {
     margin: 0 auto;
     max-width: 1024px; }

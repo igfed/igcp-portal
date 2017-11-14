@@ -8,14 +8,9 @@
 	onClose: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
 
-		console.log("CLOSE");
-		console.log(payload);
-
 		if (payload) {
-			
 			if (payload.id === cmp.get("v.id")) {
-				console.log("CLOSE after");
-				console.log(payload);
+				hlpr.releaseBody();
 				cmp.set("v.class", "igcp-modal slds-grid slds-wrap slds-p-around--xx-large");
 			}
 		} else {
@@ -25,11 +20,8 @@
 	onOpen: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
 
-		console.log(payload);
-		console.log(cmp.get("v.id"));
-
 		if (payload.id === cmp.get("v.id")) {
-
+			hlpr.lockBody();
 			var modalClass = cmp.get("v.class") + " igcp-modal--show";
 			cmp.set("v.class", modalClass);
 		}
@@ -38,7 +30,6 @@
 		var payload = evt.getParam("payload");
 
 		if (payload.id === "tos_agree_button") {
-
 			cmp.onClose();
 		}
 	}
