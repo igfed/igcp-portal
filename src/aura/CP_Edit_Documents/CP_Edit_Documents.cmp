@@ -17,7 +17,6 @@
     <c:CP_JS_Includes />
 
 	<!-- HANDLERS -->
-	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 	<aura:handler event="c:CP_Evt_Complete" action="{!c.onComplete}" />
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />	
 	<aura:handler event="c:CP_Evt_Input_Checkbox_Checked" action="{!c.onAgreeChecked}" />

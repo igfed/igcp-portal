@@ -1,8 +1,4 @@
 ({
-	doneRendering: function (cmp, evt, hlpr) {
-		var body = document.querySelector("body");
-		body.className = "igcp-utils__display--block";
-	},
 	onComplete: function (cmp, evt, hlpr) {
 		var events = cmp.find("CP_Events");
 

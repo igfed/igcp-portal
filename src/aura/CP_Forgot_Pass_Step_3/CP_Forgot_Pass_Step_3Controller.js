@@ -29,9 +29,8 @@
 			});
 
 			hlpr.showLoading(cmp);
-
 			cmp.onSubmitForm();
-		}
+		} 
 	},
 	onInputBlur: function (cmp, evt, hlpr) {
 		hlpr.validateInput(cmp, evt.getParam("payload"));
@@ -48,8 +47,12 @@
 				"StepThree",
 				cmp,
 				function (evt) {
+					try {
+						window._aa.track('forgot-password-success', '{"component": {"name": "CP_Forgot_Pass_Step_3Controller"}}');
+					} catch(err) {
+						console.error(err);
+					}
 					hlpr.hideLoading(cmp);
-					window._aa.track('forgot-password-success', '{"component": {"name": "CP_Forgot_Pass_Step_3Controller"}}');
 					cmp.gotoNextStep();
 				},
 				function (error) {

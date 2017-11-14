@@ -17,13 +17,8 @@
 				cmp,
 				"v.renderComplete",
 				function () {
-					console.log(payload.selected);
 					cmp.set("v.selectedValue", payload.selected);
 					cmp.set("v.currentSelectedValue", cmp.get("v.selectedValue"));
-
-					console.log("SHSHHSHSHSHSH");
-					console.log(cmp.get("v.selectedValue"));
-					console.log(cmp.get("v.currentSelectedValue"));
 
 					options = cmp.get("v.options");
 
