@@ -1,4 +1,10 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_RegistrationController">
+
+	<!-- INCLUDES -->
+	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Services aura:id="CP_Services" />
+
 	<!-- ATTRS -->
 	<aura:attribute name="form" type="String" default="default"></aura:attribute>
 	<aura:attribute name="options" type="String[]" default=""></aura:attribute>
@@ -12,13 +18,6 @@
 
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Set_Input_Value" action="{!c.onSetValue}" />
-
-	<!-- INCLUDES -->
-	<c:CP_Utils aura:id="CP_Utils" />
-	<c:CP_Events aura:id="CP_Events" />
-	<c:CP_Services aura:id="CP_Services" />
-
-	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	
 	<!-- MARKUP -->

@@ -1,35 +1,38 @@
 ({
-	onInit: function(cmp, evt, hlpr) {
+	onInit: function (cmp, evt, hlpr) {
 
 		var
 			events = cmp.find("CP_Events"),
-			services = cmp.find("CP_Services"),
-			utils = cmp.find("CP_Utils");
+			services = cmp.find("CP_Services");
 
 		cmp.set("v.payload", {
-			"lang" : cmp.get("v.lang")
+			"lang": cmp.get("v.lang")
 		});
 
-		services.getSecurityQuestions(
-			cmp,
-			function(res) {
+		try {
+			services.getSecurityQuestions(
+				cmp,
+				function (res) {
 
-				events.fire('CP_Evt_Selector_Send_Options', {
-					"id" : cmp.get("v.form"),
-					"options" : res.payload
-				});
+					events.fire('CP_Evt_Selector_Send_Options', {
+						"id": cmp.get("v.form"),
+						"options": res.payload
+					});
 
-				cmp.set("v.options", re.payload);
-			},
-			function(error) {
-				console.error("SecurityQuestions:");
-				console.error(error);
-			}
-		);
+					cmp.set("v.options", res.payload);
+				},
+				function (error) {
+					console.error("SecurityQuestions:");
+					console.error(error);
+				}
+			);
+		} catch (err) {
+			console.error("CP_Registration_Security_Questions: getSecurityQuestions");
+			console.error(err);
+		}
 	},
-	onSetValue: function(cmp, evt, hlpr) {
+	onSetValue: function (cmp, evt, hlpr) {
 		var
-			events = cmp.find("CP_Events"),
 			inputId = evt.getParam("payload").id,
 			inputValue = evt.getParam("payload").selected;
 

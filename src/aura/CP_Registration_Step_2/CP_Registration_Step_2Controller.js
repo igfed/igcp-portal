@@ -130,11 +130,6 @@
 
 		cmp.set("v.inputsReceived", (inputs += 1));
 
-		// console.log("Received");
-		// console.log(cmp.get("v.inputsReceived"));
-		// console.log(cmp.get("v.inputErrors"))
-
-
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
 		if (cmp.get("v.inputsReceived") === 11 && cmp.get("v.inputErrors") === false) {
@@ -181,9 +176,7 @@
 	},
 	submitForm: function(cmp, evt, hlpr) {
 
-		var
-			events = cmp.find("CP_Events"),
-			services = cmp.find("CP_Services");
+		var services = cmp.find("CP_Services");
 
 		services.submitForm(
 			"StepTwo",
@@ -255,12 +248,6 @@
 			hlpr.validateUsername(cmp, payload);
 		} else if (payload.id === "password-input") {
 			hlpr.validatePassword(cmp, payload);
-		}
-	},
-	doneRendering: function(cmp, evt, hlpr) {
-		window._aa.registerHandlers();
-		if(cmp.get("v.renderComplete") === false) {
-			cmp.set("v.renderComplete", true);
 		}
 	}
 })
