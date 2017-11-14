@@ -18,7 +18,7 @@
 		<aura:if isTrue="{!v.accountTitle}">
 			<h3 class="slds-m-top--x-small slds-m-bottom--small slds-large-m-bottom--large slds-p-horizontal--xx-small slds-medium-p-horizontal--small">{!v.accountTitle}</h3>
 		</aura:if>
-		<c:CP_Overview_Account_Heading col1Name="{!v.col1Name}" col2Name="{!v.col2Name}" accountType="{!v.accountType}" />
+		<c:CP_Overview_Account_Heading col1Name="{!v.col1Name}" col2Name="{!v.col2Name}" accountType="{!v.accountType}" itemType="{!v.itemType}"/>
 		<aura:iteration var="account" items="{!v.accounts}">
 			<c:CP_Overview_Account_Item account="{!account}" itemType="{!v.itemType}" lang="{!v.lang}" />
 		</aura:iteration>
