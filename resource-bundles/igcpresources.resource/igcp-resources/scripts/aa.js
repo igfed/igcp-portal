@@ -148,7 +148,6 @@ jQuery(document).ready(function () {
         }
 
       }
-      2
 
       // Handle calls from JavaScript
       if (event.type === 'javascript') {
