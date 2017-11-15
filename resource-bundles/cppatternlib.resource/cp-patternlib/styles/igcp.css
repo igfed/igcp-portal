@@ -3421,9 +3421,6 @@ table {
 .igcp-container {
   background-color: #fff;
   overflow: hidden; }
-  @media (max-width: 480px) {
-    .igcp-container {
-      margin: 0 10px; } }
 
 .igcp-wrapper-x-large {
   max-width: 1280px;
@@ -4034,9 +4031,9 @@ table {
 .igcp-forgot-user__step--1 {
   max-height: 240px; }
 
-.igcp-overview__investments .igcp-overview__table,
-.igcp-overview__mortgages .igcp-overview__table,
-.igcp-overview__insurance .igcp-overview__table {
+.igcp-overview .igcp-overview__investments .igcp-overview__table,
+.igcp-overview .igcp-overview__mortgages .igcp-overview__table,
+.igcp-overview .igcp-overview__insurance .igcp-overview__table {
   min-height: 100px; }
 
 @media (min-width: 768px) {

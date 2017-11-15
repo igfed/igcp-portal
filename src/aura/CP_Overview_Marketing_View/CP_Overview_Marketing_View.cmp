@@ -5,7 +5,7 @@
 	<aura:attribute name="href" type="String"></aura:attribute>
 	
 	<!-- MARKUP -->
-	<div class="slds-size_10-of-12">{!v.tagline}</div>
-	<c:CP_Cmp_Link id="overview-marketing-view" href="{!v.href}" label="{!v.cta}" class="slds-size_2-of-12"/>
+	<div class="slds-size_12-of-12 slds-medium-size_10-of-12 slds-medium-p-left--small slds-m-bottom--small slds-medium-m-bottom--medium">{!v.tagline}</div>
+	<c:CP_Cmp_Link id="overview-marketing-view" href="{!v.href}" label="{!v.cta}" class="slds-size_12-of-12 slds-medium-size_2-of-12"/>
 
 </aura:component>

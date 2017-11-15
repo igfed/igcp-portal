@@ -22,9 +22,13 @@
 .#{$namespace}-container {
 	background-color: #fff;
 	overflow: hidden;
-	@media (max-width: 480px) {
-		margin: 0 10px;
-	}
+
+	//Will have to talk to Erny 
+	//About what this does,
+	//commenting out for now
+	// @media (max-width: 480px) {
+	// 	margin: 0 10px;
+	// }
 }
 
 .#{$namespace}-wrapper-x-large {
@@ -860,10 +864,14 @@
 }
 
 //Investments/mortgages/insurance
-.#{$namespace}-overview__investments,
-.#{$namespace}-overview__mortgages,
-.#{$namespace}-overview__insurance {
-	.#{$namespace}-overview__table {
-		min-height: 100px;
+.#{$namespace}-overview {
+
+	.#{$namespace}-overview__investments,
+	.#{$namespace}-overview__mortgages,
+	.#{$namespace}-overview__insurance {
+	
+		.#{$namespace}-overview__table {
+			min-height: 100px;
+		}
 	}
 }

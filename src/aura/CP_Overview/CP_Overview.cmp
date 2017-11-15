@@ -26,8 +26,8 @@
 		</div>
 		<div class="slds-size_12-of-12 slds-large-size_8-of-12">
 			<c:CP_Overview_Investments lang="{!v.lang}"/>
-			<c:CP_Overview_Mortgages lang="{!v.lang}"/>
-			<c:CP_Overview_Insurance lang="{!v.lang}"/>
+			<c:CP_Overview_Mortgages lang="{!v.lang}" />
+			<c:CP_Overview_Insurance lang="{!v.lang}" />
 			<p class="igcp-utils__font-size--x-mini igcp-utils__display--none igcp-large-utils__display--block slds-m-horizontal--x-small slds-large-p-bottom--zero">{!$Label.c.CP_Disclaimer_Overview}</p>
 		</div>
 		<div class="slds-size_12-of-12 slds-large-size_4-of-12">
