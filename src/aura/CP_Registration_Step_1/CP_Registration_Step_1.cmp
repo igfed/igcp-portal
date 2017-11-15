@@ -33,7 +33,7 @@
 	</aura:method>
 	
 	<!-- MARKUP -->
-	<div data-aa-component="CP_Registration_Step_1" class="igcp-background igcp-utils__position--relative">
+	<div data-aa-component="CP_Registration_Step_1" class="igcp-background igcp-utils__position--relative" aria-live="assertive">
 	
 		<c:CP_Cmp_Loading_Icon id="registration-step-1-spinner" hasBG="true" show="false"/>
 		

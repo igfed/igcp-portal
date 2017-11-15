@@ -58,8 +58,8 @@
 		
 		<!-- INSTRUCTIONS -->
 		<ul class="igcp-utils__bullets--disc slds-m-vertical--xx-small">
-			<li class="{!v.limitClass}">{!$Label.c.CP_Generic_Username_Instruction_1}</li>
-			<li class="{!v.charClass}">{!$Label.c.CP_Generic_Username_Instruction_2}</li>
+			<li class="{!v.limitClass}" aria-labelledby="{!$Label.c.CP_Generic_Username_Instruction_1}">{!$Label.c.CP_Generic_Username_Instruction_1}</li>
+			<li class="{!v.charClass}" aria-labelledby="{!$Label.c.CP_Generic_Username_Instruction_2}">{!$Label.c.CP_Generic_Username_Instruction_2}</li>
 		</ul>
 		
 		<!-- HELP TEXT -->

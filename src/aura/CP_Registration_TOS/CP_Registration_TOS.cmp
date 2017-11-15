@@ -18,7 +18,7 @@
 	<aura:method name="close" action="{!c.onClose}" description="Close TOS window"></aura:method>
 	
 	<!-- MARKUP -->
-	<div id="tos-print-container" class="igcp-modal__wrapper--text">
+	<div id="tos-print-container" class="igcp-modal__wrapper--text" aria-live="assertive">
 		<div class="slds-size_12-of-12">
 			<button class="igcp-modal__button--close close-button" type="button" onclick="{!c.onClose}"></button>
 		</div>

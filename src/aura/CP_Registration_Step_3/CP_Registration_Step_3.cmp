@@ -62,7 +62,7 @@
 	
 	
 	<!-- MARKUP -->
-	<div data-aa-component="CP_Registration_Step_3" class="igcp-utils__position--relative igcp-background">
+	<div data-aa-component="CP_Registration_Step_3" class="igcp-utils__position--relative igcp-background" aria-live="assertive">
 
 		<c:CP_Cmp_Loading_Icon id="registration-step-3-spinner" hasBG="true" show="false" />
 
