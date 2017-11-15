@@ -126,11 +126,19 @@ table {
 .DESKTOP.uiContainerManager.siteforcePanelsContainer, .DESKTOP.uiPanelManager2.onePanelManager.siteforcePanelManager.siteforcePanelsContainer {
   display: none; }
 
+.slds-col .ui-widget,
+.slds-col--padded .ui-widget,
+.cb-drop-container .ui-widget {
+  margin: 0; }
+
 .slds-icon_container {
   top: -3px;
   position: relative; }
 
-.slds-spinner .slds-spinner_medium .slds-spinner_brand.slds-spinner:before, .slds-spinner .slds-spinner_medium .slds-spinner_brand.slds-spinner:after, .slds-spinner .slds-spinner_medium .slds-spinner_brand.slds-spinner__dot-a, .slds-spinner .slds-spinner_medium .slds-spinner_brand.slds-spinner__dot-b, .slds-spinner .slds-spinner_medium .slds-spinner_brand.slds-spinner__dot-a:before, .slds-spinner .slds-spinner_medium .slds-spinner_brand.slds-spinner__dot-a:after, .slds-spinner .slds-spinner_medium .slds-spinner_brand.slds-spinner__dot-b:before, .slds-spinner .slds-spinner_medium .slds-spinner_brand.slds-spinner__dot-b:after {
+.slds-spinner--brand .slds-spinner__dot-a:after, .slds-spinner--brand .slds-spinner__dot-a:before, .slds-spinner--brand .slds-spinner__dot-b:after, .slds-spinner--brand .slds-spinner__dot-b:before, .slds-spinner--brand.slds-spinner:after, .slds-spinner--brand.slds-spinner:before, .slds-spinner_brand .slds-spinner__dot-a:after, .slds-spinner_brand .slds-spinner__dot-a:before, .slds-spinner_brand .slds-spinner__dot-b:after, .slds-spinner_brand .slds-spinner__dot-b:before, .slds-spinner_brand.slds-spinner:after, .slds-spinner_brand.slds-spinner:before {
+  background-color: #0d263c; }
+
+.slds-spinner--brand.slds-spinner:before {
   background-color: #0d263c; }
 
 .slds-button {

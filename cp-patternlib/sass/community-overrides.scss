@@ -5,3 +5,11 @@
 		display: none;
 	}
 }
+
+.slds-col, 
+.slds-col--padded, 
+.cb-drop-container {
+	.ui-widget {
+		margin: 0;
+	}
+}
