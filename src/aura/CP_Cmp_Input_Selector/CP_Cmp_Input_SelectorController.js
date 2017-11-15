@@ -159,5 +159,19 @@
 			field.set("v.errors", errorArr);
 		}
 
+	},
+	onFocus: function (cmp, evt, hlpr) {
+		console.info(cmp.get("v.id") + " has focus.");
+		cmp.find('CP_Events').fire(
+			"CP_Evt_Input_Focus", {
+			"id": cmp.get("v.id")
+		});
+	},
+	onLabelClick: function (cmp, evt, hlpr) {
+		try {
+			cmp.find("selector-input").getElement().focus();
+		} catch (err) {
+			console.error(err);
+		}
 	}
 })

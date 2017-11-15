@@ -30,18 +30,18 @@
     
     <!-- MARKUP -->
     <div class="{!v.class}">
-        
+        <!-- ICON -->
         <aura:renderIf isTrue="{!v.icon}">
             <lightning:icon iconName="{!v.icon}" size="small" class="slds-m-right--xx-small" alternativeText="{!v.label}" />
         </aura:renderIf>
-        
-        <label class="slds-form-element__label input-label" for="date-input">{!v.label}<span>{!v.example}</span></label>
-        
+        <!-- LABEL -->
+        <label class="slds-form-element__label input-label" for="date-input" onclick="{!c.onLabelClick}">{!v.label}<span>{!v.example}</span></label>
+        <!-- TOOLTIP -->
         <aura:renderIf isTrue="{!v.tooltip}">
             <c:CP_Cmp_Tooltip tooltip="{!$Label.c.CP_Tooltip_DOB}"/>
         </aura:renderIf>
         
-        
+        <!-- INSTRUCTIONS -->
         <aura:renderIf isTrue="{!v.instructions}">
             <ul class="igcp-utils__bullets--disc slds-m-bottom--xx-small">
                 <aura:iteration items="{!v.instructions}" var="item">
@@ -51,16 +51,15 @@
         </aura:renderIf>
         
         <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
-
         	<!-- INPUT -->
-            <ui:inputText aura:id="date-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" updateOn="keyup" keyup="{!c.onType}" blur="{!c.onBlur}"/>
+            <ui:inputText aura:id="date-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" updateOn="keyup" keyup="{!c.onType}" focus="{!c.onFocus}" blur="{!c.onBlur}"/>
 
             <!-- ERROR ICON -->
 			<span class="{!v.errorIconClass}" title="An error has occurred">
      			<lightning:icon iconName="utility:error" size="small" class="slds-m-right--xx-small" alternativeText="Info" />
             </span>
         </div>
-        
+        <!-- HELP TEXT -->
         <aura:renderIf isTrue="{!v.helpText}">
             <div class="igcp-input__help-link slds-float--right">
                 <a class="igcp-link__variant--a igcp-underline" href="{!v.helpLink}">{!v.helpText}</a>

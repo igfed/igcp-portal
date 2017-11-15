@@ -109,5 +109,34 @@
 			"value": cmp.get("v.inputValue") === undefined ? "" : cmp.get("v.inputValue"),
 			"confirmValue": cmp.get("v.inputValueConfirm")
 		});
+	},
+	onFocus: function (cmp, evt, hlpr) {
+		console.info(cmp.get("v.id") + " has focus.");
+		cmp.find('CP_Events').fire(
+			"CP_Evt_Input_Focus", {
+				"id": cmp.get("v.id")
+			});
+	},
+	onConfirmationFocus: function (cmp, evt, hlpr) {
+		console.info(cmp.get("v.id") + " confirmation field has focus.");
+		cmp.find('CP_Events').fire(
+			"CP_Evt_Input_Focus", {
+				"id": cmp.get("v.id"),
+				"type": "confirmation"
+		});
+	},
+	onLabelClick: function (cmp, evt, hlpr) {
+		try {
+			cmp.find("text-input").getElement().focus();
+		} catch (err) {
+			console.error(err);
+		}
+	},
+	onConfirmationLabelClick: function (cmp, evt, hlpr) {
+		try {
+			cmp.find("text-confirm-input").getElement().focus();
+		} catch (err) {
+			console.error(err);
+		}
 	}
 })

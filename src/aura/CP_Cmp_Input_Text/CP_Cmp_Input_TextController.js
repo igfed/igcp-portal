@@ -27,12 +27,11 @@
 	onGetValue: function (cmp, evt, hlpr) {
 
 		var
-			events = cmp.find('CP_Events'),
 			formId = evt.getParam('payload').formId,
 			form = cmp.get('v.form');
 
 		if (formId === form) {
-			events.fire("CP_Evt_Send_Input_Value", {
+			cmp.find('CP_Events').fire("CP_Evt_Send_Input_Value", {
 				"id": cmp.get("v.id"),
 				"type": cmp.get("v.type"),
 				"value": cmp.get("v.inputValue") === undefined ? "" : cmp.get("v.inputValue"),
@@ -94,16 +93,14 @@
 		evt.preventDefault();
 	},
 	onBlur: function (cmp, evt, hlpr) {
-		var events = cmp.find("CP_Events");
-		events.fire("CP_Evt_Input_Blur", {
+		cmp.find("CP_Events").fire("CP_Evt_Input_Blur", {
 			"id": cmp.get("v.id"),
 			"type": cmp.get("v.type"),
 			"value": cmp.get("v.inputValue") === undefined ? "" : cmp.get("v.inputValue")
 		});
 	},
 	onConfirmationBlur: function (cmp, evt, hlpr) {
-		var events = cmp.find("CP_Events");
-		events.fire("CP_Evt_Input_Blur", {
+		cmp.find("CP_Events").fire("CP_Evt_Input_Blur", {
 			"id": cmp.get("v.id"),
 			"type": "email-confirm",
 			"value": cmp.get("v.inputValue"),
@@ -111,6 +108,17 @@
 		});
 	},
 	onFocus: function (cmp, evt, hlpr) {
-		
+		console.info(cmp.get("v.id") + " has focus.");
+		cmp.find('CP_Events').fire(
+			"CP_Evt_Input_Focus", {
+			"id": cmp.get("v.id")
+		});
+	},
+	onLabelClick: function (cmp, evt, hlpr) {
+		try {
+			cmp.find("text-input").getElement().focus();
+		} catch (err) {
+			console.error(err);
+		}
 	}
 })

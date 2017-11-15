@@ -70,7 +70,7 @@
 			year = inputValue.slice(6),
 			newInputValue = "";
 
-		
+
 
 
 		if (keyCode === 8) {
@@ -110,5 +110,18 @@
 			"type": cmp.get("v.type"),
 			"value": cmp.get("v.inputValue")
 		});
+	},
+	onFocus: function (cmp, evt, hlpr) {
+		console.info(cmp.get("v.id") + " has focus.");
+		cmp.find('CP_Events').fire("CP_Evt_Input_Focus", {
+			"id": cmp.get("v.id")
+		});
+	},
+	onLabelClick: function (cmp, evt, hlpr) {
+		try {
+			cmp.find("date-input").getElement().focus();
+		} catch (err) {
+			console.error(err);
+		}
 	}
 })

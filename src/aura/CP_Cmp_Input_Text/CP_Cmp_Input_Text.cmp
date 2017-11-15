@@ -40,7 +40,7 @@
 		<aura:renderIf isTrue="{!v.icon}">
 			<lightning:icon iconName="{!v.icon}" size="small" class="slds-m-right--xx-small" alternativeText="{!v.label}" />
 		</aura:renderIf>
-		<label class="slds-form-element__label input-label" for="text-input">{!v.label}
+		<label class="slds-form-element__label input-label" for="text-input" onclick="{!c.onLabelClick}">{!v.label}
 			<aura:renderIf isTrue="{!v.tooltip}">
 				<c:CP_Cmp_Tooltip tooltip="{!v.tooltip}" />
 			</aura:renderIf>

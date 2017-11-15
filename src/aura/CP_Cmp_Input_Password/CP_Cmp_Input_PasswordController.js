@@ -32,7 +32,7 @@
 	onValid: function (cmp, evt, hlpr) {
 
 		if (cmp.get("v.id") === evt.getParam("payload").id) {
-			var 
+			var
 				field = cmp.find("password-input"),
 				confirmField = cmp.find("confirm-password-input");
 
@@ -69,38 +69,38 @@
 				});
 
 				//isEmpty
-				utils.arrayContains(errorTypeArr, "isEmpty", function(hasValue) {
+				utils.arrayContains(errorTypeArr, "isEmpty", function (hasValue) {
 					isEmpty = hasValue;
 				});
 
 				//minLength
-				utils.arrayContains(errorTypeArr, "minLength", function(hasValue) {
+				utils.arrayContains(errorTypeArr, "minLength", function (hasValue) {
 					minLength = hasValue;
 				});
 
 				//hasUppercase
-				utils.arrayContains(errorTypeArr, "hasUppercase", function(hasValue) {
+				utils.arrayContains(errorTypeArr, "hasUppercase", function (hasValue) {
 					if (hasValue === false) {
 						hasUppercase = true;
 					}
 				});
 
 				//hasNumber
-				utils.arrayContains(errorTypeArr, "hasNumber", function(hasValue) {
+				utils.arrayContains(errorTypeArr, "hasNumber", function (hasValue) {
 					if (hasValue === false) {
 						hasNumber = true;
 					}
 				});
 
 				//hasSpecialChar
-				utils.arrayContains(errorTypeArr, "hasSpecialChar", function(hasValue) {
+				utils.arrayContains(errorTypeArr, "hasSpecialChar", function (hasValue) {
 					if (hasValue === false) {
 						hasSpecialChar = true;
 					}
 				});
 
 				passwordsMatch
-				utils.arrayContains(errorTypeArr, "passwordsMatch", function(hasValue) {
+				utils.arrayContains(errorTypeArr, "passwordsMatch", function (hasValue) {
 					if (hasValue === false) {
 						passwordsMatch = true;
 					}
@@ -134,8 +134,8 @@
 					}
 
 					if (passwordsMatch === false) {
-						
-						hlpr.checkForPassConfirm(errors, function(msg){
+
+						hlpr.checkForPassConfirm(errors, function (msg) {
 							confirmPasswordInput.set("v.errors", [{
 								"message": msg
 							}]);
@@ -180,6 +180,35 @@
 				cmp.find("password-input").getElement().focus();
 			}
 			cmp.set("v.isDoneRendering", true);
+		}
+	},
+	onFocus: function (cmp, evt, hlpr) {
+		console.info(cmp.get("v.id") + " has focus.");
+		cmp.find('CP_Events').fire(
+			"CP_Evt_Input_Focus", {
+				"id": cmp.get("v.id")
+			});
+	},
+	onConfirmationFocus: function (cmp, evt, hlpr) {
+		console.info(cmp.get("v.id") + " confirmation field has focus.");
+		cmp.find('CP_Events').fire(
+			"CP_Evt_Input_Focus", {
+				"id": cmp.get("v.id"),
+				"type": "confirmation"
+		});
+	},
+	onLabelClick: function (cmp, evt, hlpr) {
+		try {
+			cmp.find("password-input").getElement().focus();
+		} catch (err) {
+			console.error(err);
+		}
+	},
+	onConfirmationLabelClick: function (cmp, evt, hlpr) {
+		try {
+			cmp.find("confirm-password-input").getElement().focus();
+		} catch (err) {
+			console.error(err);
 		}
 	}
 })

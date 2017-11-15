@@ -43,7 +43,7 @@
 		</aura:renderIf>
 		
 		<!-- LABEL -->
-		<label class="slds-form-element__label input-label" for="text-input">{!v.label}</label>
+		<label class="slds-form-element__label input-label" for="text-input" onclick="{!c.onLabelClick}">{!v.label}</label>
 		
 		<!-- TOOLTIP -->
 		<aura:renderIf isTrue="{!v.tooltip}">
@@ -52,7 +52,7 @@
 		
 		<!-- INPUT -->
 		<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
-			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input igcp-input--error" required="{!v.required}" maxlength="{!v.maxLength}" keyup="{!c.onHandleKey}" updateOn="keyup" blur="{!c.onBlur}" />
+			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input igcp-input--error" required="{!v.required}" maxlength="{!v.maxLength}" keyup="{!c.onHandleKey}" updateOn="keyup" focus="{!c.onFocus}" blur="{!c.onBlur}" />
 			
 		</div>
 		

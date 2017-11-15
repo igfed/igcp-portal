@@ -38,15 +38,18 @@
 	
 	<!-- MARKUP -->
 	<div id="{!v.id}" class="{!v.class}">
+		<!-- ICON -->
 		<aura:renderIf isTrue="{!v.icon}">
 			<lightning:icon iconName="{!v.icon}" size="small" class="slds-m-right--xx-small" alternativeText="{!v.label}" />
 		</aura:renderIf>
-		<label class="slds-form-element__label input-label" for="text-input">{!v.label}
+		<!-- LABEL -->
+		<label class="slds-form-element__label input-label" for="text-input" onclick="{!c.onLabelClick}">{!v.label}
 			<aura:renderIf isTrue="{!v.tooltip}">
 				<c:CP_Cmp_Tooltip tooltip="{!v.tooltip}" />
 			</aura:renderIf>
 			<span>{!v.example}</span>
 		</label>
+		<!-- INSTRUCTIONS -->
 		<aura:renderIf isTrue="{!v.instructions}">
 			<ul class="igcp-utils__bullets--disc slds-m-bottom--xx-small">
 				<aura:iteration items="{!v.instructions}" var="item">
@@ -56,23 +59,24 @@
 		</aura:renderIf>
 		<div class="slds-form-element__control">
 			<!-- INPUT -->
-			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" keypress="{!c.onHandleKey}" keydown="{!c.onHandleKey}" keyup="{!c.onHandleKey}" blur="{!c.onBlur}" />
+			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" keypress="{!c.onHandleKey}" keydown="{!c.onHandleKey}" keyup="{!c.onHandleKey}" blur="{!c.onBlur}" focus="{!c.onFocus}"/>
 		</div>
+		<!-- HELP TEXT -->
 		<aura:renderIf isTrue="{!v.helpText}">
 			<div class="igcp-input__help-link slds-float--right">
 				<a class="igcp-link__variant--a igcp-underline" href="{!v.helpLink}">{!v.helpText}</a>
 			</div>
 		</aura:renderIf>
 	</div>
-
+	<!-- CONFIRM FIELD -->
 	<aura:renderIf isTrue="{!v.confirmField}">
 		<div class="{!v.class}">
-			<label class="slds-form-element__label input-label" for="text-confirm-input">Confirm {!v.label}
+			<label class="slds-form-element__label input-label" for="text-confirm-input" onclick="{!c.onConfirmationLabelClick}">Confirm {!v.label}
 				<span>{!v.example}</span>
 			</label>
 			<div class="slds-form-element__control">
 				<!-- INPUT -->
-				<ui:inputText aura:id="text-confirm-input" label="" value="{!v.inputValueConfirm}" class="slds-input igcp-input" required="{!v.required}" blur="{!c.onConfirmationBlur}" />
+				<ui:inputText aura:id="text-confirm-input" label="" value="{!v.inputValueConfirm}" class="slds-input igcp-input" required="{!v.required}" blur="{!c.onConfirmationBlur}" focus="{!c.onConfirmationFocus}" />
 			</div>
 		</div>
 	</aura:renderIf>
