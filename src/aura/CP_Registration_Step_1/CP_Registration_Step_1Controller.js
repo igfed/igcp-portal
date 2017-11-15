@@ -46,9 +46,7 @@
 	},
 	submitForm: function(cmp, evt, hlpr) {
 
-		var
-			events = cmp.find("CP_Events"),
-			services = cmp.find("CP_Services");
+		var services = cmp.find("CP_Services");
 
 		services.submitForm(
 			"StepOne",
@@ -60,9 +58,7 @@
 			function(error) {
 				hlpr.hideLoading(cmp);
 
-				var
-					events = cmp.find("CP_Events"),
-					services = cmp.find("CP_Services");
+				var services = cmp.find("CP_Services");
 
 				services.handleServerSideError({
 						"error": error,

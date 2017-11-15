@@ -34,6 +34,14 @@
 	}
 }
 
+.slds-button--brand[disabled] {
+	&:hover {
+		background: #e0e5ee;
+		border-color: transparent;
+		color: #fff;
+	}
+}
+
 .slds-button--neutral {
 	background-color: transparent;
 	color: $ig-blue;
@@ -133,6 +141,7 @@
 			height: $ig-space--medium;
 			border: none;
 			background: $ig-dark-grey;
+			cursor: auto;
 		}
 	}
 

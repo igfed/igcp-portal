@@ -18,7 +18,7 @@
 	<div class="{!'igcp-toast ' + v.class + ' ' + v.show}">
 		<div class="igcp-utils__text-align--left slds-notify_container slds-is-relative">
 			<div class="{!'slds-notify slds-notify_toast ' + v.notifyTheme}" role="alert">
-				<span class="slds-assistive-text">info</span>
+				<span class="slds-assistive-text show-for-sr" aria-live="polite">{!v.message}</span>
 				<span class="slds-icon_container slds-m-right_small slds-no-flex slds-align-top" title="An error has occurred">
 					<lightning:icon iconName="utility:info" size="small" class="igcp-toast__icon slds-m-right--xx-small" alternativeText="Info" />
                 </span>

@@ -397,6 +397,10 @@
 	}
 	&.#{$namespace}-modal__full {
 		background-color: $ig-white;
+
+		&:focus {
+			background-color: rgb(151, 21, 21);
+		}
 	}
 	&.#{$namespace}-modal__small {
 		background-color: $ig-dark-blue--90;

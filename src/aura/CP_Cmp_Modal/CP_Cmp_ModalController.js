@@ -11,6 +11,7 @@
 		if (payload) {
 			if (payload.id === cmp.get("v.id")) {
 				hlpr.releaseBody();
+				hlpr.removeFocus();
 				cmp.set("v.class", "igcp-modal slds-grid slds-wrap slds-p-around--xx-large");
 			}
 		} else {
@@ -22,6 +23,7 @@
 
 		if (payload.id === cmp.get("v.id")) {
 			hlpr.lockBody();
+			hlpr.drawFocus();
 			var modalClass = cmp.get("v.class") + " igcp-modal--show";
 			cmp.set("v.class", modalClass);
 		}
