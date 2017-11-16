@@ -8,11 +8,11 @@
 			console.error(err);
 		}
 
-		// try {
-		// 	window._aa.registerHandlers();
-		// } catch(err) {
-		// 	console.error(err);
-		// }
+		try {
+			window._aa.registerHandlers();
+		} catch(err) {
+			console.error(err);
+		}
 		return ret;
 	},
 	rerender: function (cmp, hlpr) {}

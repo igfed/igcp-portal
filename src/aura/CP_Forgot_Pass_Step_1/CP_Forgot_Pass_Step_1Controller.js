@@ -45,17 +45,24 @@
 
 		var services = cmp.find("CP_Services");
 
+		console.log('submit form')
+
 		services.submitForm(
 			"StepOne",
 			cmp,
 			function(evt) {
 				hlpr.hideLoading(cmp);
-				cmp.gotoNextStep();
+			
+				if (evt.payload.IsCAVUser){
+					console.log('isCAVUSer is true')
+					cmp.goToLastStep()
+				}else{
+					console.log('isCAVUser is false')
+					cmp.gotoNextStep();
+				}
 			},
 			function(error) {
-				console.error("Step 1: Error");
-				console.error(error);
-
+				console.error("Step 1: Error", error);
 				hlpr.hideLoading(cmp);
 
 				services.handleServerSideError({
@@ -65,6 +72,8 @@
 					},
 					function(obj) {
 
+
+		
 						if (obj.fields && obj.messages) {
 							obj.fields.forEach(function(errorType, i) {
 								var msgArr = [];
@@ -98,6 +107,13 @@
 				);
 			}
 		);
+	},
+	goToLastStep: function(cmp, evt, hlpr) {
+		var event = cmp.find("CP_Events");
+		event.fire("CP_Evt_Next_Step", {
+			"id": cmp.get("v.pageId"),
+			"step": 2
+		});
 	},
 	onNextStep: function(cmp, evt, hlpr) {
 		var event = cmp.find("CP_Events");

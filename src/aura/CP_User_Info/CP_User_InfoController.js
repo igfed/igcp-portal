@@ -20,7 +20,7 @@
 
 		function setCookies() {
 			var date = new Date()
-			sessionStorage.setItem('igcp_loggedIn', true);	
+			sessionStorage.setItem('igcp_loggedIn', true);
 			localStorage.setItem('igcp_lastLogin', date);
 			var analytics = setInterval(function () {
 				if (window) {
@@ -38,7 +38,11 @@
 			utils.waitForDefined(cmp, "v.userInfo", function (userInfo) {
 				utils.forEach(userInfo, function (key, val) {
 					hlpr.waitForJquery(function () {
+						if (!val) {
+							val = "Not Available";
+						}
 						sessionStorage.setItem('igcp_' + key, val)
+						console.log('key:' + key + 'val:' + val);
 					});
 				});
 			});

@@ -9,6 +9,14 @@
 			console.info = function(prop) {
 				console.log("%c " + prop, "background: green; color: white; display: block;");
 			}
+
+			//add console.fancy
+			console.data = function(name, objArr) {
+				console.log("%c ====================", "background: green; color: white; display: block;");
+				console.log("%c " + name, "background: green; color: white; display: block;");
+				console.log(objArr);
+				console.log("%c ====================", "background: green; color: white; display: block;");
+			}
 	    });
 	}
 })
