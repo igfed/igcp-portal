@@ -47,19 +47,19 @@
 
 		var services = cmp.find("CP_Services");
 
-		console.log('submit form')
+		console.log('[CP_Forgot_Pass_Step_1Controller] component submitForm()')
 
 		services.submitForm(
 			"StepOne",
 			cmp,
 			function (evt) {
 				hlpr.hideLoading(cmp);
-
-				if (evt.payload.IsCAVUser) {
-					console.log('isCAVUSer is true')
+			
+				if (evt.payload.State.IsCAVUser){
+					console.log('[CP_Forgot_Pass_Step_1Controller] IsCAVUSer is true')
 					cmp.goToLastStep()
-				} else {
-					console.log('isCAVUser is false')
+				}else{
+					console.log('[CP_Forgot_Pass_Step_1Controller] IsCAVUSer is false')
 					cmp.gotoNextStep();
 				}
 			},
