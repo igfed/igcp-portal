@@ -27,7 +27,8 @@
 
 						res = JSON.parse(response.getReturnValue());
 
-						console.log(res);
+						console.log('[CP_ServicesController] onSubmitForm response:', res);
+
 						valid = res["State"]["IsValid"];
 
 						if (valid === true) {
