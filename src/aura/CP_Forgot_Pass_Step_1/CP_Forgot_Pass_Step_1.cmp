@@ -32,6 +32,9 @@
 	<aura:method name="gotoNextStep" action="{!c.onNextStep}" description="Called when ready to proceed to next step">
 		<aura:attribute name="payload" type="Map"></aura:attribute>
 	</aura:method>
+	<aura:method name="goToLastStep" action="{!c.goToLastStep}" description="Called when ready to proceed to last step">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
 	<!-- MARKUP -->
 	<div data-aa-component="CP_Forgot_Pass_Step_1" class="igcp-wrapper igcp-utils__position--relative slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
 
