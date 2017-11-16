@@ -16,9 +16,18 @@
 		}
 	},
 	onNextStep: function (cmp, evt, hlpr) {
-		var
-			currentStep = cmp.get("v.currentStep"),
+		var currentStep = cmp.get("v.currentStep");
+		var nextStep = currentStep;
+		var payloadStep = evt.getParam("payload").step;
+
+		console.log('current Step', currentStep)
+
+		if (payloadStep) {
+			nextStep = payloadStep;
+		} else {
 			nextStep = currentStep += 1;
+		}
+		console.log('nextStep', nextStep);
 		cmp.set("v.currentStep", nextStep);
 	},
 	onBackStep: function (cmp, evt, hlpr) {

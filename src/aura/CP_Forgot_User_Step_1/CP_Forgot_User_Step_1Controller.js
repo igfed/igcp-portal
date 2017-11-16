@@ -42,7 +42,13 @@
 			cmp,
 			function(evt) {
 				hlpr.hideLoading(cmp);
-				cmp.onNextStep();
+				if (evt.payload.IsCAVUser){
+					console.log('isCAVUSer is true')
+					cmp.goToLastStep();
+				} else {
+					console.log('isCAVUSer is false')
+					cmp.onNextStep();
+				}
 			},
 			function(error) {
 				console.error("Forgot User: Step 1: Error");
@@ -87,6 +93,13 @@
 				);
 			}
 		);
+	},
+	goToLastStep: function(cmp, evt, hlpr) {
+		var event = cmp.find("CP_Events");
+		event.fire("CP_Evt_Next_Step", {
+			"id": cmp.get("v.pageId"),
+			"step": 2
+		});
 	},
 	gotoNextStep: function(cmp, evt, hlpr) {
 		var event = cmp.find("CP_Events");
