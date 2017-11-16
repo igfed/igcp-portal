@@ -5,6 +5,7 @@
 		services.getAllFinancialAssets(
 			cmp,
 			function (success) {
+				// isCAVUser
 				console.log('CP_Edit_Documents onInit():', success)
 				cmp.set('v.formData2', success.investAssetDocuments)
 			},
