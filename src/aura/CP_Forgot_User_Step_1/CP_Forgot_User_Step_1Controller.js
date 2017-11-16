@@ -111,11 +111,5 @@
 		if(evt.getParam("payload").id === "back_button") {
 			cmp.find("CP_Utils").gotoLogin();
 		}
-	},
-	doneRendering: function(cmp, evt, hlpr) {
-		window._aa.registerHandlers();
-		if(cmp.get("v.renderComplete") === false) {
-			cmp.set("v.renderComplete", true);
-		}
 	}
 })

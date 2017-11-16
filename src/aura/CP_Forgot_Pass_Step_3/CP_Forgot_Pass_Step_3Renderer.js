@@ -1,12 +1,27 @@
 ({
-	validateInput : function(cmp, payload) {
+	render: function (cmp, hlpr) {
+		var ret = this.superRender();
+		return ret;
+	},
+	rerender: function (cmp, hlpr) {},
+	afterRender: function (component, helper) {
+		this.superAfterRender();
+
+		var analytics = setInterval(function () {
+			if (window) {
+				window._aa.registerHandlers();
+				clearInterval(analytics);
+			}
+		}, 500);
+	},
+	validateInput: function (cmp, payload) {
 
 		var
 			validator = cmp.find('CP_Validation'),
 			events = cmp.find('CP_Events');
 
 
-		validator.validate(payload, function(obj) {
+		validator.validate(payload, function (obj) {
 
 			if (obj.isValid === false) {
 
