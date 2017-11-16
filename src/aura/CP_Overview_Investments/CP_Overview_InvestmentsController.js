@@ -10,11 +10,10 @@
 			cmp,
 			function(previewObj) {
 
-				console.log(previewObj);
-
 				var
 					accountPreviewsObj = previewObj.previewAggregatesByTypeAndReg,
-					accountTypeArr = [];
+					accountTypeArr = [], sortedAccountObj = {};
+
 
 				utils.convertToMDY(previewObj.asOfDate, function(obj){
 					cmp.set("v.asOfDate", obj.formattedString);
@@ -32,11 +31,42 @@
 				cmp.set("v.gainLossType", previewObj.signGainLoss);
 
 				//cycle through account types
-				utils.forEach(accountPreviewsObj, function(key, value) {
-					accountTypeArr.push(value);
+				//Group them according to dealername and registration type
+				utils.forEachSort(accountPreviewsObj, function(key, value) {
+
+					services.getInvestmentsPreviewRegistered(
+						key,
+						cmp,
+						function (success) {
+							// console.info("REGISTERED");
+							// console.log(success)
+							// console.info(success.dealerName);
+							// console.data("getInvestmentsPreviewRegistered", success.previewItems);
+
+							sortedAccountObj[success.dealerName] = { "REGISTERED" : success.previewItems };
+						},
+						function (error) {
+							console.error(error);
+						}
+					);
+
+					services.getInvestmentsPreviewNonRegistered(
+						key,
+						cmp,
+						function (success) {
+							// console.info("UNREGISTERED");
+							// console.info(success.dealerName);
+							// console.data("getInvestmentsPreviewNonRegistered", success.previewItems);
+
+							sortedAccountObj[success.dealerName]["UNREGISTERED"] = success.previewItems;
+						},
+						function (error) {
+							console.error(error);
+						}
+					);
 				});
 
-				hlpr.addAccounts(accountTypeArr, cmp);
+				hlpr.addAccounts(sortedAccountObj, cmp);
 
 				cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", { "id" : "overview-investments-spinner" });
 
@@ -46,6 +76,28 @@
 				console.error(error);
 			}
 		);
+
+		// services.getInvestmentsPreviewRegistered(
+		// 	cmp, 
+		// 	function (success){
+		// 		console.info(success);
+		// 	},
+		// 	function (error){
+		// 		console.log("getInvestmentsPreviewRegistered");
+		// 		console.error(error);
+		// 	}
+		// );
+
+		// services.getInvestmentsPreviewNonRegistered(
+		// 	cmp, 
+		// 	function (success){
+		// 		console.info(success);
+		// 	},
+		// 	function (error){
+		// 		console.log("getInvestmentsPreviewNonRegistered");
+		// 		console.error(error);
+		// 	}
+		// );
 
 		//GET ASSET MIX
 		services.getAssetMix(

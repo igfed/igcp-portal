@@ -221,6 +221,24 @@
 				for (key in obj) {
 					params.callback(key, obj[key]);
 				}
+
+			} else {
+				console.error("CP_Utils: forEach: this method only accepts objects.");
+			}
+		}
+	},
+	onForEachSort: function (cmp, evt, hlpr) {
+		var params = evt.getParam("arguments");
+		if (params) {
+
+			if (typeof (params.obj) === "object") {
+
+				Object.keys(params.obj)
+					.sort()
+					.forEach(function (v, i) {
+						params.callback(v, params.obj[v]);
+					});
+
 			} else {
 				console.error("CP_Utils: forEach: this method only accepts objects.");
 			}

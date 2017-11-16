@@ -106,11 +106,5 @@
 			var utils = cmp.find("CP_Utils");
 			utils.gotoLogin(cmp.get("v.lang"));
 		}
-	},
-	doneRendering: function(cmp, evt, hlpr) {
-		if(cmp.get("v.renderComplete") === false) {
-			window._aa.registerHandlers();
-			cmp.set("v.renderComplete", true);
-		}
 	}
 })
