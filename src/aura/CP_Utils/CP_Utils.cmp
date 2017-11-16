@@ -154,6 +154,8 @@
 	<!-- Matches a character in a string and replaces it with another char-->
 	<aura:method name="stringMatchReplace" action="{!c.onStringMatchReplace}">
 		<aura:attribute name="rawValue" type="String"></aura:attribute>
+		<aura:attribute name="match" type="String"></aura:attribute>
+		<aura:attribute name="replace" type="String"></aura:attribute>
 		<aura:attribute name="callback" type="function" default="" />
 	</aura:method>
 	

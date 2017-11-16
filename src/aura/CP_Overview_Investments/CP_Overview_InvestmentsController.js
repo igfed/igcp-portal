@@ -34,39 +34,43 @@
 				//Group them according to dealername and registration type
 				utils.forEachSort(accountPreviewsObj, function(key, value) {
 
-					services.getInvestmentsPreviewRegistered(
-						key,
-						cmp,
-						function (success) {
-							// console.info("REGISTERED");
-							// console.log(success)
-							// console.info(success.dealerName);
-							// console.data("getInvestmentsPreviewRegistered", success.previewItems);
+					accountTypeArr.push(value);
 
-							sortedAccountObj[success.dealerName] = { "REGISTERED" : success.previewItems };
-						},
-						function (error) {
-							console.error(error);
-						}
-					);
+					// services.getInvestmentsPreviewRegistered(
+					// 	key,
+					// 	cmp,
+					// 	function (success) {
+					// 		// console.info("REGISTERED");
+					// 		// console.log(success)
+					// 		// console.info(success.dealerName);
+					// 		// console.data("getInvestmentsPreviewRegistered", success.previewItems);
 
-					services.getInvestmentsPreviewNonRegistered(
-						key,
-						cmp,
-						function (success) {
-							// console.info("UNREGISTERED");
-							// console.info(success.dealerName);
-							// console.data("getInvestmentsPreviewNonRegistered", success.previewItems);
+					// 		sortedAccountObj[utils.stringMatchReplace(success.dealerName, " ", "_")] = { "REGISTERED" : success.previewItems };
+					// 	},
+					// 	function (error) {
+					// 		console.error(error);
+					// 	}
+					// );
 
-							sortedAccountObj[success.dealerName]["UNREGISTERED"] = success.previewItems;
-						},
-						function (error) {
-							console.error(error);
-						}
-					);
+					// services.getInvestmentsPreviewNonRegistered(
+					// 	key,
+					// 	cmp,
+					// 	function (success) {
+					// 		// console.info("UNREGISTERED");
+					// 		// console.info(success.dealerName);
+					// 		// console.data("getInvestmentsPreviewNonRegistered", success.previewItems);
+
+					// 		sortedAccountObj[utils.stringMatchReplace(success.dealerName, " ", "_")]["UNREGISTERED"] = success.previewItems;
+					// 	},
+					// 	function (error) {
+					// 		console.error(error);
+					// 	}
+					// );
 				});
 
-				hlpr.addAccounts(sortedAccountObj, cmp);
+				console.log(JSON.stringify(sortedAccountObj));
+
+				hlpr.addAccounts(accountTypeArr, cmp);
 
 				cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", { "id" : "overview-investments-spinner" });
 
