@@ -20,7 +20,7 @@
 
 		function setCookies() {
 			var date = new Date()
-			sessionStorage.setItem('igcp_loggedIn', true);
+			sessionStorage.setItem('igcp_loggedIn', true); 
 			localStorage.setItem('igcp_lastLogin', date);
 			var analytics = setInterval(function () {
 				if (window) {
@@ -41,7 +41,7 @@
 						if (!val) {
 							val = "Not Available";
 						}
-						sessionStorage.setItem('igcp_' + key, val)
+						localStorage.setItem('igcp_' + key, val)
 						console.log('key:' + key + 'val:' + val);
 					});
 				});
