@@ -42,11 +42,11 @@
 			cmp,
 			function(evt) {
 				hlpr.hideLoading(cmp);
-				if (evt.payload.IsCAVUser){
-					console.log('isCAVUSer is true')
+				if (evt.payload.State.IsCAVUser){
+					console.log('[CP_Forgot_User_Step_1Controller] IsCAVUSer is true')
 					cmp.goToLastStep();
 				} else {
-					console.log('isCAVUSer is false')
+					console.log('[CP_Forgot_User_Step_1Controller] IsCAVUSer is true')
 					cmp.onNextStep();
 				}
 			},
@@ -110,6 +110,12 @@
 	onButtonClick: function(cmp, evt, hlpr){
 		if(evt.getParam("payload").id === "back_button") {
 			cmp.find("CP_Utils").gotoLogin();
+		}
+	},
+	doneRendering: function(cmp, evt, hlpr) {
+		window._aa.registerHandlers();
+		if(cmp.get("v.renderComplete") === false) {
+			cmp.set("v.renderComplete", true);
 		}
 	}
 })

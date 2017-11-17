@@ -23,7 +23,7 @@
 			sessionStorage.setItem('igcp_loggedIn', true);
 			localStorage.setItem('igcp_lastLogin', date);
 			var analytics = setInterval(function () {
-				if (window) {
+				if (window._aa) {
 					window._aa.track('signin-start', '{"component": {"name": "CP_User_InfoController"}}');
 					clearInterval(analytics);
 				}

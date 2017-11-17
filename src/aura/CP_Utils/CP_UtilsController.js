@@ -219,7 +219,9 @@
 				obj = params.obj;
 
 				for (key in obj) {
-					params.callback(key, obj[key]);
+					if (obj.hasOwnProperty(key)) {
+						params.callback(key, obj[key]);
+					}
 				}
 
 			} else {
