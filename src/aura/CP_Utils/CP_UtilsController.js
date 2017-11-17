@@ -219,7 +219,9 @@
 				obj = params.obj;
 
 				for (key in obj) {
-					params.callback(key, obj[key]);
+					if (obj.hasOwnProperty(key)) {
+						params.callback(key, obj[key]);
+					}
 				}
 
 			} else {
@@ -398,5 +400,17 @@
 					});
 			}
 		}
-	}
+	},
+	onStringMatchReplace: function (cmp, evt, hlpr) {
+		var params = evt.getParam("arguments");
+
+		if (params) {
+
+			if(!params.match || !params.replace) {
+				console.warn("CP_Utils: stringMatchReplace: either match or replace parameter is missing.");
+			} else {
+				return params.rawValue.split(params.match).join(params.replace);
+			}
+		}
+	},
 })

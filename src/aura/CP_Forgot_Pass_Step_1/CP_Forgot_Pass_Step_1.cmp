@@ -35,7 +35,7 @@
 		<aura:attribute name="payload" type="Map"></aura:attribute>
 	</aura:method>
 	<!-- MARKUP -->
-	<div data-aa-component="CP_Forgot_Pass_Step_1" class="igcp-wrapper igcp-utils__position--relative slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
+	<div data-aa-component="CP_Forgot_Pass_Step_1" class="igcp-wrapper igcp-utils__position--relative slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large" aria-live="assertive">
 
 		<c:CP_Cmp_Loading_Icon id="forgot-pass-1-spinner" hasBG="true" show="false"/>
 

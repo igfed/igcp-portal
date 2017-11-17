@@ -3,15 +3,6 @@
 
 		var utils = cmp.find("CP_Utils");
 
-		console.data("ADD ACCOUNTS: ", accObj);
-
-		console.log(Object.keys(accObj));
-
-		// utils.forEach(accObj, function(key, value) {
-		// 	console.info(key);
-		// 	console.info(value);
-		// });
-
 
 		// accArr.forEach(function(item, i) {
 

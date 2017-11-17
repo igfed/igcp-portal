@@ -4,6 +4,7 @@
 	<aura:attribute name="pageId" type="String" default="statement"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+    
 	
     <!-- RETURNED DATA FROM SALESFORCE -->
 	<aura:attribute name="investmentStatements" type="Map[]" default="[]"></aura:attribute>
