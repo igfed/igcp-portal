@@ -10,7 +10,7 @@
 		this.superAfterRender();
 
 		var analytics = setInterval(function () {
-			if (window) {
+			if (window && window._aa) {
 				window.digitalData.error = {
 					"type": "server",
 					"code": "500",

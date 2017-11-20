@@ -8,7 +8,7 @@
 		this.superAfterRender();
 
 		var analytics = setInterval(function () {
-			if (window) {
+			if (window && window._aa) {
 				window._aa.registerHandlers();
 				clearInterval(analytics);
 			}
