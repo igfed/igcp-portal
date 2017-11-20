@@ -528,10 +528,7 @@
 
 //BORDER
 .#{$namespace}-border--double {
-	height: 3px;
-	width: auto;
-	border-top: 1px solid $ig-grey;
-	border-bottom: 1px solid $ig-grey;
+	border-bottom: 4px double $ig-grey;
 }
 
 //EDIT PAGES

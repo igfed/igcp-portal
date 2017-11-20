@@ -3788,10 +3788,7 @@ table {
   color: #fff; }
 
 .igcp-border--double {
-  height: 3px;
-  width: auto;
-  border-top: 1px solid #e9ecee;
-  border-bottom: 1px solid #e9ecee; }
+  border-bottom: 4px double #e9ecee; }
 
 .igcp-edit-notifications .slds-checkbox--faux {
   position: absolute;
