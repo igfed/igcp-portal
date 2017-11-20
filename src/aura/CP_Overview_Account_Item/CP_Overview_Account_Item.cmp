@@ -12,8 +12,12 @@
 	<aura:attribute name="account" type="Map"></aura:attribute>
 	<!-- HANDLER -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+	<!-- METHODS-->
+	<aura:method name="onItemClick" action="{!c.onItemClick}" description=""></aura:method>
+
 	<!-- MARKUP -->
-	<div class="igcp-account__item igcp-underline__thin--grey slds-grid slds-wrap slds-p-horizontal--xx-small slds-medium-p-horizontal--small slds-p-bottom-x-small" onclick="{!c.onItemClick}">
+	<div aura:id="account-item" class="igcp-account__item igcp-underline__thin--grey slds-grid slds-wrap slds-p-horizontal--xx-small slds-medium-p-horizontal--small slds-p-bottom-x-small" onclick="{!c.onItemClick}" tabindex="0" onkeyup="{!c.onKey}">
 		
 		<div class="slds-p-vertical--small slds-size_6-of-12"><span class="igcp-utils__colour--link-blue">{!v.accountName}</span></div>
 		

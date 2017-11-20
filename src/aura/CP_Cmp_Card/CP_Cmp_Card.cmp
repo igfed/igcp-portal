@@ -1,5 +1,6 @@
 <aura:component >
 	<aura:attribute name="image" type="String" />
+	<aura:attribute name="imageAlt" type="String" />
 	<aura:attribute name="title" type="String" />
 	<aura:attribute name="copy" type="String" />
 	<aura:attribute name="buttonCopy" type="String" />
@@ -9,7 +10,7 @@
 		<div class="slds-card__header slds-size_6-of-12 slds-medium-size_4-of-12 slds-large-size_12-of-12 slds-m-bottom--zero slds-large-m-bottom--x-small slds-p-around--none">
 			<header class="slds-media slds-media_center">
 				<div class="slds-media__figure">
-					<img class="igcp-card__image" src="{!v.image}" />
+					<img class="igcp-card__image" src="{!v.image}" alt="{!v.imageAlt}" />
 				</div>
 			</header>
 		</div>
