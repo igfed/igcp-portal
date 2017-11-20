@@ -20,10 +20,10 @@
 
 		function setCookies() {
 			var date = new Date()
-			sessionStorage.setItem('igcp_loggedIn', true);
+			sessionStorage.setItem('igcp_loggedIn', true); 
 			localStorage.setItem('igcp_lastLogin', date);
 			var analytics = setInterval(function () {
-				if (window._aa) {
+				if (window && window._aa) {
 					window._aa.track('signin-start', '{"component": {"name": "CP_User_InfoController"}}');
 					clearInterval(analytics);
 				}
@@ -41,7 +41,7 @@
 						if (!val) {
 							val = "Not Available";
 						}
-						sessionStorage.setItem('igcp_' + key, val)
+						localStorage.setItem('igcp_' + key, val)
 						console.log('key:' + key + 'val:' + val);
 					});
 				});
