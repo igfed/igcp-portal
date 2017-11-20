@@ -246,6 +246,12 @@ table {
   margin: 0;
   min-width: 100%; }
 
+.slds-media.slds-media__figure {
+  margin: 0; }
+
+@-moz-document url-prefix() {
+  .slds-media__figure {
+    margin-right: 16px; } }
 .slds-m-around--xx-large {
   margin: 60px; }
 
@@ -1828,7 +1834,11 @@ table {
 
   .slds-large-p-left--zero,
   .slds-large-p-horizontal--zero {
-    padding-left: 0; } }
+    padding-left: 0; }
+
+  @-moz-document url-prefix() {
+    .slds-media__figure {
+      margin-right: 0; } } }
 .igcp-header {
   background-color: #fff;
   background-image: none;
@@ -2452,6 +2462,10 @@ table {
   .igcp-utils__max-width--480px {
     max-width: 480px; }
 
+  .igcp-utils__max-width--100,
+  .igcp-utils__max-width--full {
+    max-width: 100%; }
+
   .igcp-utils__max-width--none {
     max-width: none; }
 
@@ -2721,6 +2735,10 @@ table {
   .igcp-small-utils__max-width--small,
   .igcp-small-utils__max-width--480px {
     max-width: 480px; }
+
+  .igcp-small-utils__max-width--100,
+  .igcp-small-utils__max-width--full {
+    max-width: 100%; }
 
   .igcp-small-utils__max-width--none {
     max-width: none; }
@@ -2992,6 +3010,10 @@ table {
   .igcp-medium-utils__max-width--480px {
     max-width: 480px; }
 
+  .igcp-medium-utils__max-width--100,
+  .igcp-medium-utils__max-width--full {
+    max-width: 100%; }
+
   .igcp-medium-utils__max-width--none {
     max-width: none; }
 
@@ -3262,6 +3284,10 @@ table {
   .igcp-large-utils__max-width--480px {
     max-width: 480px; }
 
+  .igcp-large-utils__max-width--100,
+  .igcp-large-utils__max-width--full {
+    max-width: 100%; }
+
   .igcp-large-utils__max-width--none {
     max-width: none; }
 
@@ -3487,6 +3513,16 @@ table {
   .igcp-link__cta .slds-icon_container.slds-icon-utility-chevronleft .slds-icon-text-default {
     fill: #0e75d5; }
 
+.igcp-link__standalone {
+  font-family: "WhitneySemibold", Arial, sans-serif;
+  font-size: 14px; }
+  .igcp-link__standalone .slds-icon_container.slds-icon-utility-chevronright,
+  .igcp-link__standalone .slds-icon_container.slds-icon-utility-chevronleft {
+    top: -1px; }
+    .igcp-link__standalone .slds-icon_container.slds-icon-utility-chevronright .slds-icon-text-default,
+    .igcp-link__standalone .slds-icon_container.slds-icon-utility-chevronleft .slds-icon-text-default {
+      fill: #0e75d5; }
+
 .igcp-link__variant--a {
   font-family: "WhitneySemibold", Arial, sans-serif;
   font-size: 12px;
@@ -3619,9 +3655,6 @@ table {
 .igcp-card__link {
   position: relative;
   top: -4px; }
-
-.igcp-card__image {
-  width: 50%; }
 
 .igcp-progress-indicator .igcp-progress-indicator__step {
   position: absolute;
@@ -4039,9 +4072,6 @@ table {
     line-height: 32px; }
   .igcp-registration .igcp-registration__pfa--monitor {
     width: 360px; }
-
-  .igcp-card__image {
-    width: 75%; }
 
   .igcp-figure .igcp-figure__caption h3,
   .igcp-figure .igcp-figure__caption p {

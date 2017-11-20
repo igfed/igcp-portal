@@ -9,10 +9,6 @@
 				regNonRegTotal = 0,
 				regNonRegTotalFormatted = "";
 
-			console.log("******************")
-			console.log("Account GROUP");
-			console.log(cmp.get("v.groupTitle"));
-
 			utils.forEach(accounts, function (key, val) {
 
 				var

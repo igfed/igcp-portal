@@ -4,7 +4,9 @@
 		cmp.find("CP_Services").getInsurancePreview(
 			cmp,
 			function (previewObj) {
-				var
+
+				if(previewObj) {
+					var
 					insuranceItemsArr = previewObj.previewItemsList,
 					insuranceAccountsArr = [];
 
@@ -28,6 +30,9 @@
 				cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", {
 					"id": "overview-insurance-spinner"
 				});
+				} else {
+					console.warn("CP_Overview_Insurance: getInsurancePreview: previewObj was null.");
+				}
 			},
 			function (error) {
 				console.error("GET INSURANCE PREVIEW");
