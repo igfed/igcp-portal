@@ -18,7 +18,6 @@
 									val = "Not Available";
 								}
 								localStorage.setItem('igcp_' + key, val)
-								console.log('key:' + key + 'val:' + val);
 							});
 						});
 						var date = new Date()
