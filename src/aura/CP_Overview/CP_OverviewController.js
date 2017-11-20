@@ -21,6 +21,8 @@
 				console.error(error);
 			}
 		);
+
+		
 	},
 	doneRendering: function(cmp, evt, hlpr) {
 		var body = document.querySelector("body");
