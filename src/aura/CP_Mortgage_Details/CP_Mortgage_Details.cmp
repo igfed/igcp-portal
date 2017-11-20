@@ -36,7 +36,7 @@
 		<div class="slds-size_12-of-12">
 			<div class="slds-m-top--medium slds-large-m-top--none slds-m-bottom--large">
 				<c:CP_Cmp_Text_Link class="slds-float_left" linkClass="igcp-link__variant--a igcp-utils__text--uppercase" icon="utility:left"
-				    label="{!$Label.c.CP_Generic_Label_Overview}" />
+				    label="{!$Label.c.CP_Generic_Label_Overview}" href="/customers/s/"/>
 				<c:CP_Cmp_Text_Link class="slds-float_right" linkClass="igcp-link__variant--a igcp-utils__text--uppercase" icon="utility:table"
 				    label="{!$Label.c.CP_Generic_Label_View_Statement}" />
 			</div>

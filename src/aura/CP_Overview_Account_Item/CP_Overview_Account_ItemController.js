@@ -97,7 +97,7 @@
 		var
 			utils = cmp.find("CP_Utils"),
 			accountNumEnc = cmp.get("v.account").accountNumberEnc,
-			loanEnc = "", policyEnc ="";
+			loanEnc = "", policyEnc ="";			
 
 		if (accountNumEnc) {
 			utils.navigateToURL("/customers/s/account-details?accEnc=" + accountNumEnc);
@@ -107,6 +107,11 @@
 		} else if (cmp.get("v.itemType") === "insurance") {
 			policyEnc = cmp.get("v.account").policyNumber;
 			utils.navigateToURL("/customers/s/insurance-details?policyEnc=" + policyEnc);
+		}
+	},
+	onKey: function(cmp, evt, hlpr) {
+		if(evt.key === "Enter") {
+			cmp.onItemClick();
 		}
 	}
 })

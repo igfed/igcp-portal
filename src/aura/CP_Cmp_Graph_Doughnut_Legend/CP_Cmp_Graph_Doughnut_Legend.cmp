@@ -12,7 +12,7 @@
 	<aura:handler event="c:CP_Evt_Set_List" action="{!c.onSetList}" />
 	
 	<!-- MARKUP -->
-	<div class="{!'igcp-graph__doughnut-legend ' + v.class}">
+	<div class="{!'igcp-graph__doughnut-legend slds-p-top--medium' + v.class}">
 		<dl class="slds-grid slds-wrap">
 			{!v.body}
 		</dl>

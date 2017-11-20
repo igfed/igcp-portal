@@ -20,6 +20,8 @@
 	<aura:attribute name="totalGainLossPercentage" type="String"></aura:attribute>
 	<aura:attribute name="gainLossType" type="String"></aura:attribute>
 	<aura:attribute name="accounts" type="List"></aura:attribute>
+	<aura:attribute name="investmentsObj" type="Map" default="{}"></aura:attribute>
+	
 
 	<aura:attribute name="graphArr" type="List"></aura:attribute>
 	<aura:attribute name="graphTotal" type="String"></aura:attribute>
@@ -41,7 +43,7 @@
 		
 		<div class="slds-grid slds-wrap">
 				<c:CP_Cmp_Total_Value label="{!$Label.c.CP_Generic_Label_Total_Market_Value}" value="{!v.totalValue}" />
-				<c:CP_Cmp_Gain_Loss label="{!$Label.c.CP_Generic_Label_Change}" value="{!v.totalGainLoss}" percentage="{!v.totalGainLossPercentage}" gainLossType="{!v.gainLossType}" /> 
+				<!-- <c:CP_Cmp_Gain_Loss label="{!$Label.c.CP_Generic_Label_Change}" value="{!v.totalGainLoss}" percentage="{!v.totalGainLossPercentage}" gainLossType="{!v.gainLossType}" />  -->
 			
 			    <div class="igcp-underline__thin--grey slds-m-vertical--medium slds-size_12-of-12"></div>
 				<c:CP_Cmp_Graph_Doughnut id="investments-asset-mix"/>
