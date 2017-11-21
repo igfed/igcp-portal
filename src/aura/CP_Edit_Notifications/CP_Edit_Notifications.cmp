@@ -8,15 +8,19 @@
     <aura:attribute name="label2" type="String" />
     <aura:attribute name="tooltip" type="String" />
 	<aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
-	<aura:attribute name="formData" type="Map" default="{ 
-		'username': 'portalclient2@igext', 
-		'currentEmail': 'test@example.com',
-		'newEmail': '',
-		'mobilePhone': '416-555-1234',
-		'mobileNotifications': 'false',
-		'newsOffers': 'false',
-		'language': 'eng'
-	}"></aura:attribute>
+	<aura:attribute name="formData" type="Map" default="{}"></aura:attribute>
+	<aura:attribute name="radios" type="Map" default="{ 
+        radios: [
+            {
+                label: 'English',
+				checked: false
+            },
+            {
+                label: 'French',
+				checked: false
+            },
+        ]
+    }"/>
 
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
@@ -27,9 +31,17 @@
     <c:CP_JS_Includes />
 
 	<!-- HANDLERS -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
-	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
+	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />  
+	<aura:handler event="c:CP_Evt_Input_Focus" action="{!c.onInputFocus}" />
+	<aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetInput}" />
+	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onSendInput}" />	 
+	
+	<aura:method name="onSubmitForm" action="{!c.submitForm}" description="Call submit form">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
 	
 	<!-- MARKUP -->
 <div class="igcp-background__tiled">
@@ -64,8 +76,8 @@
 				<div class="slds-form slds-size_12-of-12 slds-m-top--large">
 			    	<span class="igcp-label--small">{!$Label.c.CP_Generic_Label_Language_Preference}<c:CP_Cmp_Tooltip tooltip="This is a tooltip about language"/></span>
 				</div>
-				<c:CP_Cmp_Radio_Group2 id="language-preference" form="{!v.pageId}" label1="English" label2="French" legend="{!$Label.c.CP_Manage_Notifications_Language_Preference_Details}" />
-
+					<c:CP_Cmp_Radio_Group2 aura:id="language-preference" id="language-preference" radios="{!v.radios}" legend="{!$Label.c.CP_Manage_Notifications_Language_Preference_Details}" />
+				
 				<!--CTAS-->
 				<c:CP_Cmp_Form_Back_Next dcname1="" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Update}" nextType="submit" form="{!v.pageId}" />
 			</div>

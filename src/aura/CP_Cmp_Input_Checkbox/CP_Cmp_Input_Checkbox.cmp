@@ -14,8 +14,10 @@
 
     <!-- HANDLERS -->
     <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:handler event="c:CP_Evt_Input_Checkbox_Checked" action="{!c.onChecked}" />
+    <aura:handler event="c:CP_Evt_Input_Checkbox_Unchecked" action="{!c.onUnChecked}" />
     <aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}" />
-    
+        
     <!-- MARKUP -->
     <div class="{!v.class}">
         <div class="slds-form-element">
