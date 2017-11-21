@@ -1,7 +1,5 @@
 ({
 	onSetList: function(cmp, evt, hlpr) {
-		console.warn("CP_Cmp_Graph_Doughnut_Legend: onSetList");
-
 		var 
 			utils = cmp.find("CP_Utils"),
 			payload = evt.getParam("payload");
@@ -20,9 +18,7 @@
 						"colour" : item.colour
 					},
 					cmp,
-					function(success){
-						//console.log(success)
-					}
+					function(success){}
 				);
 			});
 		}

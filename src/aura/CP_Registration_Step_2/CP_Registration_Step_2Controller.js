@@ -160,12 +160,9 @@
 				}
 			});
 
-			cmp.onNextStep();
+			hlpr.showLoading(cmp);
 
-
-			// hlpr.showLoading(cmp);
-
-			// cmp.onSubmitForm();
+			cmp.onSubmitForm();
 		} else if (cmp.get("v.inputsReceived") === 11 && cmp.get("v.inputErrors") === true) {
 			utils.scrollTo("#" + cmp.get("v.errIdArr")[0]);
 			cmp.set("v.errIdArr", []);
@@ -181,9 +178,11 @@
 		services.submitForm(
 			"StepTwo",
 			cmp,
-			function(evt) {
+			function(success) {
 				hlpr.hideLoading(cmp);
 				cmp.onNextStep();
+				console.info("CP_Registration_Step_2: submitForm: SUCCESS");
+				console.log(success);
 			},
 			function(error) {
 

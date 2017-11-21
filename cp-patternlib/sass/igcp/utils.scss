@@ -170,6 +170,11 @@
 			max-width: $ig-small;
 		}
 
+		.#{getNamespace($value)}-utils__max-width--100,
+		.#{getNamespace($value)}-utils__max-width--full {
+			max-width: 100%;
+		}
+
 		.#{getNamespace($value)}-utils__max-width--none {
 			max-width: none;
 		} 

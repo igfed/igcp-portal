@@ -1,8 +1,6 @@
 ({
 	addAccounts: function (title, accounts, cmp) {
 
-		// console.info(title);
-		// console.log(accounts);
 		var dealerName = "";
 
 		if (title === "Investors Group Securities Inc.") {
@@ -11,6 +9,8 @@
 			dealerName = $A.get("$Label.c.CP_Overview_IGFS");
 		} else if (title === "NON IG") {
 			dealerName = $A.get("$Label.c.CP_Overview_NON_IG");
+		} else if (title === "I.G. Insurance Services Inc.") {
+			dealerName = $A.get("$Label.c.CP_Overview_Insurance_Services");
 		}
 
 		cmp.find("CP_Utils").createComponent(
