@@ -30,7 +30,7 @@
 		<aura:if isTrue="{!v.accountTotal}">
 			<div class="igcp-account__total slds-grid slds-grid_align-end">
 				
-				<div class="slds-p-top--small slds-p-left--xx-small slds-medium-p-left--small slds-large-p-vertical--small slds-size_6-of-12">{!v.accountType + ' Total'}</div>
+				<div class="slds-p-top--small slds-p-left--xx-small slds-medium-p-left--small slds-large-p-vertical--small slds-size_6-of-12">{!v.accountType + ' ' + $Label.c.CP_Generic_Label_Total}</div>
 				
 				<div class="slds-text-align_right slds-p-vertical--small slds-size_6-of-12"><span class="slds-p-horizontal--xx-small slds-medium-p-horizontal--small slds-p-bottom--xx-small">{!v.accountTotal}</span></div>
 			</div>
@@ -40,7 +40,7 @@
 		<aura:if isTrue="{!v.accountGrandTotal != ''}">
 			<div class="igcp-account__grand-total slds-grid slds-grid_align-end">
 				
-				<div class="slds-p-top--small slds-p-left--xx-small slds-medium-p-left--small slds-large-p-vertical--small slds-size_6-of-12">Total</div>
+				<div class="slds-p-top--small slds-p-left--xx-small slds-medium-p-left--small slds-large-p-vertical--small slds-size_6-of-12">{!$Label.c.CP_Generic_Label_Total}</div>
 				
 				<div class="slds-text-align_right slds-p-vertical--small slds-size_6-of-12">
 					<div class="igcp-overview__grand-total">
