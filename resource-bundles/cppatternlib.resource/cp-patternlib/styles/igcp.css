@@ -3724,8 +3724,6 @@ table {
     border-radius: 50px; }
   .igcp-modal.igcp-modal__full {
     background-color: #fff; }
-    .igcp-modal.igcp-modal__full:focus {
-      background-color: #971515; }
   .igcp-modal.igcp-modal__small {
     background-color: rgba(13, 38, 60, 0.9); }
     .igcp-modal.igcp-modal__small .igcp-modal__small--inner {

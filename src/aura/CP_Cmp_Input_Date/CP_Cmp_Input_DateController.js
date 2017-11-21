@@ -112,10 +112,13 @@
 		});
 	},
 	onFocus: function (cmp, evt, hlpr) {
-		console.info(cmp.get("v.id") + " has focus.");
+		//console.info(cmp.get("v.id") + " has focus.");
 		cmp.find('CP_Events').fire("CP_Evt_Input_Focus", {
 			"id": cmp.get("v.id")
 		});
+	},
+	onInputFocus: function(cmp, evt, hlpr) {
+		//console.info(cmp.get("v.id") + " has focus.");
 	},
 	onLabelClick: function (cmp, evt, hlpr) {
 		try {

@@ -37,16 +37,18 @@
 					registrationType = $A.get("$Label.c.CP_Generic_Label_Non_Registered");
 				}
 
-				utils.createComponent(
-					"CP_Overview_Account", {
-						"accountType": registrationType,
-						"accountTotal": formattedValue,
-						"accounts": val,
-						"lang": cmp.get("v.lang")
-					},
-					cmp,
-					function (evt) {}
-				);
+				if (val.length > 0) {
+					utils.createComponent(
+						"CP_Overview_Account", {
+							"accountType": registrationType,
+							"accountTotal": formattedValue,
+							"accounts": val,
+							"lang": cmp.get("v.lang")
+						},
+						cmp,
+						function (evt) {}
+					);
+				}
 			});
 
 			utils.formatToCurrency(regNonRegTotal, function (val) {

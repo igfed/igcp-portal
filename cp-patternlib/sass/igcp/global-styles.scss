@@ -403,9 +403,6 @@
 	}
 	&.#{$namespace}-modal__full {
 		background-color: $ig-white;
-		&:focus {
-			background-color: rgb(151, 21, 21);
-		}
 	}
 	&.#{$namespace}-modal__small {
 		background-color: $ig-dark-blue--90;
@@ -419,7 +416,9 @@
 			border: 10px solid $ig-grey;
 			overflow-y: scroll;
 		}
-	} //details
+	} 
+	
+	//details
 	&.#{$namespace}-modal__details {
 		background-color: $ig-dark-blue--90;
 		.#{$namespace}-modal__details--inner {

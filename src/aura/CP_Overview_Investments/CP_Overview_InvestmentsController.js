@@ -48,6 +48,10 @@
 				function (previewObj) {
 
 					if (previewObj) {
+
+						console.info(previewObj);
+						console.log(JSON.parse(previewObj));
+
 						utils.forEach(JSON.parse(previewObj), function (key, value) {
 							hlpr.addAccounts(key, value, cmp);
 						})
@@ -78,29 +82,33 @@
 			function (previewObj) {
 
 				if (previewObj) {
+
+					console.info("CP_Overview_Investments: getAssetMix");
+					console.log(previewObj);
+
 					var graphArr = [{
 							"label": $A.get("$Label.c.CP_Generic_Label_Cash"),
-							"detail": previewObj.totalCashAmount
+							"detail": previewObj.percCashAmount
 
 						},
 						{
 							"label": $A.get("$Label.c.CP_Generic_Label_Fixed_Income"),
-							"detail": previewObj.totalFixedIncomeAmount
+							"detail": previewObj.percFixedIncomeAmount
 
 						},
 						{
 							"label": $A.get("$Label.c.CP_Generic_Label_Balanced"),
-							"detail": previewObj.totalBalancedAmount
+							"detail": previewObj.percBalancedAmount
 
 						},
 						{
 							"label": $A.get("$Label.c.CP_Generic_Label_Equity"),
-							"detail": previewObj.totalEquityAmount
+							"detail": previewObj.percEquityAmount
 
 						},
 						{
 							"label": $A.get("$Label.c.CP_Generic_Label_Specialty"),
-							"detail": previewObj.totalSpecialtyAmount
+							"detail": previewObj.percSpecialtyAmount
 
 						}
 					];
@@ -111,7 +119,7 @@
 							"id": "investments-asset-mix",
 							"type": "doughnut",
 							"data": graphArr,
-							"total": previewObj.totalAllAmounts
+							"total": previewObj.percAllAmounts
 						}
 					);
 				} else {
