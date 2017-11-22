@@ -33,7 +33,7 @@
 		return /^\w+$/i.test(value);
 	},
 	alphanumericSpecial: function (value) {
-		return /^[-@./+\w\s]*$/i.test(value);
+		return /^[-@.\w\s]*$/i.test(value);
 	},
 	hasUppercase: function (value) {
 		return /[A-Z]/.test(value);

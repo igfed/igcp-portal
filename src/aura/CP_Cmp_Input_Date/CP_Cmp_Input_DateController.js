@@ -70,9 +70,6 @@
 			year = inputValue.slice(6),
 			newInputValue = "";
 
-
-
-
 		if (keyCode === 8) {
 			//backspace
 			newInputValue = inputValue.slice(0, inputValue.length);
@@ -98,7 +95,6 @@
 			if (inputValue.length >= 7) {
 				newInputValue += year;
 			}
-
 		}
 
 		cmp.set("v.inputValue", newInputValue);

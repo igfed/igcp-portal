@@ -83,12 +83,20 @@
 	font-size: $ig-font-size--base;
 }
 
-.#{$namespace}-input__password {
-	//Have to put this here because 
-	//I don't have access to the ui component 
-	//to give it a unique igcp class name
-	.slds-icon-utility-info {
-		top: 0;
+.#{$namespace}-input__password-icon {
+	cursor: pointer;
+	.#{$namespace}-input__password-icon--preview {
+		&.slds-icon.slds-input__icon.slds-input__icon_right {
+			top: 19%;
+		}
+	}
+	&:focus {
+		.#{$namespace}-input__password-icon--preview {
+			background-color: rgb(255, 255, 255);
+			box-shadow: rgb(0, 112, 210) 0px 0px 3px;
+			outline: 0px;
+			border-color: rgb(21, 137, 238);
+		}
 	}
 }
 
