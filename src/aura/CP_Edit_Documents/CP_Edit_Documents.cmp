@@ -6,25 +6,7 @@
     <aura:attribute name="tooltip" type="String" />
 	<aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 	<aura:attribute name="acceptTOS" type="Boolean" default="false"/>
-	<aura:attribute name="formData2" type="Map[]" default="[]" />
-
-	<aura:attribute name="formData" type="Map" default="{
-		'allDocumentPreference' : false,
-		'financialServices': {
-			'clientNumber': 123456,
-			'accounts': ['GTFSA: *0896'],
-			'statements': true
-		},
-		'security': {
-			'clientNumber': 123456,
-			'accounts': ['TFSA *4732', 'Joint RESP *4831'],
-			'statements': false
-		},
-		'mortgage': {
-			'loanNumber': 143212,
-			'statements': true
-		}
-	}"/>
+	<aura:attribute name="formData" type="Map" default="{}" />
 	
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
@@ -56,145 +38,187 @@
 				<h1 class="slds-m-top--medium">{!$Label.c.CP_Statement_Preference_Title}</h1>
 
 				<p class="slds-medium-p-top--small slds-m-bottom--large">{!$Label.c.CP_Statement_Preference_Page_Summary} &nbsp;<a href="#"> {!$Label.c.CP_Generic_Label_Explore_The_Benefits}</a></p>
-				
-				<!-- <div class="slds-form-element slds-size_12-of-12 slds-medium-size_7-of-12 slds-align_absolute-center slds-m-top{double-dash}medium slds-m-bottom{double-dash}medium">
-					<label class="slds-checkbox_toggle slds-grid">
-						<input type="checkbox" name="checkbox" aria-describedby="toggle-desc" value="on" />
-						<span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
-							<span class="slds-checkbox_faux"></span>
-							<span class="slds-checkbox_on">{!$Label.c.CP_Statement_Preference_Global_Setting_Online}</span>
-							<span class="slds-checkbox_off">{!$Label.c.CP_Statement_Preference_Global_Setting_Paper}</span>
-						</span>
-					</label>		
-				</div> -->
 
-				<div class="slds-size_12-of-12 igcp-document-section">
-					<h3>{!$Label.c.CP_Generic_Label_Investors_Group_Financial_Services}</h3>
-					<p class="igcp-client-details">{!$Label.c.CP_Generic_Label_Client_Number}: {!v.formData.financialServices.clientNumber}</p>
-					<p class="igcp-client-details">{!v.formData.financialServices.accounts[0]}</p>
+				<!-- investmentGroup -->
+				<aura:iteration items="{!v.formData.investAssetDocuments.investmentGroup}" var="doc" indexVar="index">
+					<div class="slds-size_12-of-12 igcp-document-section">
+						<h3>{!doc.dealerName}</h3>
+						<p class="igcp-client-details">{!$Label.c.CP_Generic_Label_Client_Number}: {!doc.clientNumber}</p>
+						<p class="igcp-client-details">{!doc.accountTypeLabel}</p>
 
-					<hr />
+						<hr />
 
-					<div class="slds-grid">
-						<div class="slds-col slds-size_7-of-12">{!$Label.c.CP_Generic_Label_Investment_Statements}</div>
-						<div class="slds-form-element slds-col slds-size_5-of-12">
-							<label class="slds-checkbox_toggle slds-grid">
-								<ui:inputCheckbox name="checkbox" value="{!v.formData.financialServices.statements}"/>
-								<span id="toggle-statements" class="slds-checkbox_faux_container" aria-live="assertive">
-									<span class="slds-checkbox_faux"></span>
-									<span class="slds-checkbox_on">{!$Label.c.CP_Generic_Label_Online}</span>
-									<span class="slds-checkbox_off">{!$Label.c.CP_Generic_Label_Paper}</span>
-								</span>
-							</label>		
+						<div class="slds-grid">
+							<div class="slds-col slds-size_7-of-12">{!$Label.c.CP_Generic_Label_Investment_Statements}</div>
+							<div class="slds-form-element slds-col slds-size_5-of-12">
+								<label class="slds-checkbox_toggle slds-grid">
+									<ui:inputCheckbox name="checkbox" value="{!doc.prefInvestmentStatements}"/>
+									<span id="toggle-statements" class="slds-checkbox_faux_container" aria-live="assertive">
+										<span class="slds-checkbox_faux"></span>
+										<span class="slds-checkbox_on">{!$Label.c.CP_Generic_Label_Online}</span>
+										<span class="slds-checkbox_off">{!$Label.c.CP_Generic_Label_Paper}</span>
+									</span>
+								</label>		
+							</div>
 						</div>
-					</div>
 
-					<div class="slds-grid">
-						<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">{!$Label.c.CP_Generic_Label_Tax_Receipts}</div>
-						<div class="slds-size_5-of-12 slds-medium-size_3-of-12">
-							<div class="igcp-label--with-tooltip">
-								<span class="igcp-label--small">{!$Label.c.CP_Generic_Label_Paper}<c:CP_Cmp_Tooltip tooltip="This is a tooltip"/></span>
+						<div class="slds-grid">
+							<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">{!$Label.c.CP_Generic_Label_Tax_Receipts}</div>
+							<div class="slds-size_5-of-12 slds-medium-size_3-of-12">
+								<div class="igcp-label--with-tooltip">
+									<span class="igcp-label--small">{!$Label.c.CP_Generic_Label_Paper}<c:CP_Cmp_Tooltip tooltip="This is a tooltip"/></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="slds-grid">
+							<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">{!$Label.c.CP_Generic_Label_Trade_Confirmations}</div>
+							<div class="slds-size_5-of-12 slds-medium-size_3-of-12">
+								<div class="igcp-label--with-tooltip">
+									<span class="igcp-label--small">{!$Label.c.CP_Generic_Label_Paper}<c:CP_Cmp_Tooltip tooltip="This is a tooltip"/></span>
+								</div>
 							</div>
 						</div>
 					</div>
 
-					<div class="slds-grid">
-						<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">{!$Label.c.CP_Generic_Label_Trade_Confirmations}</div>
-						<div class="slds-size_5-of-12 slds-medium-size_3-of-12">
-							<div class="igcp-label--with-tooltip">
-								<span class="igcp-label--small">{!$Label.c.CP_Generic_Label_Paper}<c:CP_Cmp_Tooltip tooltip="This is a tooltip"/></span>
+					<hr class="slds-m-bottom--x-large"/>
+				</aura:iteration>
+
+				<!-- investmentGroupFinancialServices -->
+				<aura:iteration items="{!v.formData.investAssetDocuments.investmentGroupFinancialServices}" var="doc" indexVar="index">
+					<div class="slds-size_12-of-12 igcp-document-section">
+						<h3>{!doc.dealerName}</h3>
+						<p class="igcp-client-details">{!$Label.c.CP_Generic_Label_Client_Number}: {!doc.clientNumber}</p>
+						<p class="igcp-client-details">{!doc.accountTypeLabel}</p>
+
+						<hr />
+
+						<div class="slds-grid">
+							<div class="slds-col slds-size_7-of-12">{!$Label.c.CP_Generic_Label_Investment_Statements}</div>
+							<div class="slds-form-element slds-col slds-size_5-of-12">
+								<label class="slds-checkbox_toggle slds-grid">
+									<ui:inputCheckbox name="checkbox" value="{!doc.prefInvestmentStatements}"/>
+									<span id="toggle-statements" class="slds-checkbox_faux_container" aria-live="assertive">
+										<span class="slds-checkbox_faux"></span>
+										<span class="slds-checkbox_on">{!$Label.c.CP_Generic_Label_Online}</span>
+										<span class="slds-checkbox_off">{!$Label.c.CP_Generic_Label_Paper}</span>
+									</span>
+								</label>		
+							</div>
+						</div>
+
+						<div class="slds-grid">
+							<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">{!$Label.c.CP_Generic_Label_Tax_Receipts}</div>
+							<div class="slds-size_5-of-12 slds-medium-size_3-of-12">
+								<div class="igcp-label--with-tooltip">
+									<span class="igcp-label--small">{!$Label.c.CP_Generic_Label_Paper}<c:CP_Cmp_Tooltip tooltip="This is a tooltip"/></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="slds-grid">
+							<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">{!$Label.c.CP_Generic_Label_Trade_Confirmations}</div>
+							<div class="slds-size_5-of-12 slds-medium-size_3-of-12">
+								<div class="igcp-label--with-tooltip">
+									<span class="igcp-label--small">{!$Label.c.CP_Generic_Label_Paper}<c:CP_Cmp_Tooltip tooltip="This is a tooltip"/></span>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 
-				<hr class="slds-m-bottom--x-large"/>
+					<hr class="slds-m-bottom--x-large"/>
+				</aura:iteration>
 
-				<div class="slds-size_12-of-12 igcp-document-section">
-					<h3>{!$Label.c.CP_Generic_Label_Investors_Group_Security_Inc}</h3>
-					<p class="igcp-client-details">{!$Label.c.CP_Generic_Label_Client_Number}: {!v.formData.security.clientNumber}</p>
-					<p class="igcp-client-details">{!v.formData.security.accounts[0]}, {!v.formData.security.accounts[1]}</p>
+				<!-- investmentGroupSecurityServices -->
+				<aura:iteration items="{!v.formData.investAssetDocuments.investmentGroupSecurityServices}" var="doc" indexVar="index">
+					<div class="slds-size_12-of-12 igcp-document-section">
+						<h3>{!doc.dealerName}</h3>
+						<p class="igcp-client-details">{!$Label.c.CP_Generic_Label_Client_Number}: {!doc.clientNumber}</p>
+						<p class="igcp-client-details">{!doc.accountTypeLabel}</p>
+
+						<hr />
+
+						<div class="slds-grid">
+							<div class="slds-col slds-size_7-of-12">{!$Label.c.CP_Generic_Label_Investment_Statements}</div>
+							<div class="slds-form-element slds-col slds-size_5-of-12">
+								<label class="slds-checkbox_toggle slds-grid">
+									<ui:inputCheckbox name="checkbox" value="{!doc.prefInvestmentStatements}"/>
+									<span id="toggle-statements" class="slds-checkbox_faux_container" aria-live="assertive">
+										<span class="slds-checkbox_faux"></span>
+										<span class="slds-checkbox_on">{!$Label.c.CP_Generic_Label_Online}</span>
+										<span class="slds-checkbox_off">{!$Label.c.CP_Generic_Label_Paper}</span>
+									</span>
+								</label>		
+							</div>
+						</div>
+
+						<div class="slds-grid">
+							<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">{!$Label.c.CP_Generic_Label_Tax_Receipts}</div>
+							<div class="slds-size_5-of-12 slds-medium-size_3-of-12">
+								<div class="igcp-label--with-tooltip">
+									<span class="igcp-label--small">{!$Label.c.CP_Generic_Label_Paper}<c:CP_Cmp_Tooltip tooltip="This is a tooltip"/></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="slds-grid">
+							<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">{!$Label.c.CP_Generic_Label_Trade_Confirmations}</div>
+							<div class="slds-size_5-of-12 slds-medium-size_3-of-12">
+								<div class="igcp-label--with-tooltip">
+									<span class="igcp-label--small">{!$Label.c.CP_Generic_Label_Paper}<c:CP_Cmp_Tooltip tooltip="This is a tooltip"/></span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<hr class="slds-m-bottom--x-large"/>
+				</aura:iteration>
+
+				<!-- loanAssetDocuments -->
+				<aura:iteration items="{!v.formData.loanAssetDocuments}" var="doc" indexVar="index">
+					<div class="slds-size_12-of-12 igcp-document-section">
+						<h3>{!$Label.c.CP_Generic_Label_Mortgage}</h3>
+						<p class="igcp-client-details">{!$Label.c.CP_Generic_Label_Loan_Number}: {!doc.loanNumber}</p>
+						<hr/>
+
+						<div class="slds-grid">
+							<div class="slds-col slds-size_7-of-12">{!$Label.c.CP_Generic_Label_Mortgage_Statements}</div>
+							<div class="slds-form-element slds-col slds-size_5-of-12">
+								<label class="slds-checkbox_toggle slds-grid">
+									<ui:inputCheckbox name="checkbox" value="{!doc.mortgageStatement}"/>
+									<span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
+										<span class="slds-checkbox_faux"></span>
+										<span class="slds-checkbox_on">{!$Label.c.CP_Generic_Label_Online}</span>
+										<span class="slds-checkbox_off">{!$Label.c.CP_Generic_Label_Paper}</span>
+									</span>
+								</label>		
+							</div>
+						</div>
+
+						<div class="slds-grid">
+							<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">{!$Label.c.CP_Generic_Label_Tax_Receipts}</div>
+							<div class="slds-size_5-of-12 slds-medium-size_3-of-12">
+								<div class="igcp-label--with-tooltip">
+									<span class="igcp-label--small">{!$Label.c.CP_Generic_Label_Paper}<c:CP_Cmp_Tooltip tooltip="This is a tooltip"/></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="slds-grid">
+							<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">{!$Label.c.CP_Generic_Label_Trade_Confirmations}</div>
+							<div class="slds-size_5-of-12 slds-medium-size_3-of-12">
+								<div class="igcp-label--with-tooltip">
+									<span class="igcp-label--small">{!$Label.c.CP_Generic_Label_Paper}<c:CP_Cmp_Tooltip tooltip="This is a tooltip"/></span>
+								</div>
+							</div>
+						</div>
+
+					</div>
 
 					<hr/>
-
-					<div class="slds-grid">
-						<div class="slds-col slds-size_7-of-12">{!$Label.c.CP_Generic_Label_Investment_Statements}</div>
-						<div class="slds-form-element slds-col slds-size_5-of-12">
-							<label class="slds-checkbox_toggle slds-grid">
-								<ui:inputCheckbox name="checkbox" value="{!v.formData.security.statements}"/>
-								<span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
-									<span class="slds-checkbox_faux"></span>
-									<span class="slds-checkbox_on">{!$Label.c.CP_Generic_Label_Online}</span>
-									<span class="slds-checkbox_off">{!$Label.c.CP_Generic_Label_Paper}</span>
-								</span>
-							</label>		
-						</div>
-					</div>
-
-					<div class="slds-grid">
-						<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">{!$Label.c.CP_Generic_Label_Tax_Receipts}</div>
-						<div class="slds-size_5-of-12 slds-medium-size_3-of-12">
-							<div class="igcp-label--with-tooltip">
-								<span class="igcp-label--small">{!$Label.c.CP_Generic_Label_Paper}<c:CP_Cmp_Tooltip tooltip="This is a tooltip"/></span>
-							</div>
-						</div>
-					</div>
-
-					<div class="slds-grid">
-						<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">{!$Label.c.CP_Generic_Label_Trade_Confirmations}</div>
-						<div class="slds-size_5-of-12 slds-medium-size_3-of-12">
-							<div class="igcp-label--with-tooltip">
-								<span class="igcp-label--small">{!$Label.c.CP_Generic_Label_Paper}<c:CP_Cmp_Tooltip tooltip="This is a tooltip"/></span>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<hr class="slds-m-bottom--x-large"/>
-			
-				<div class="slds-size_12-of-12 igcp-document-section">
-					<h3>{!$Label.c.CP_Generic_Label_Mortgage}</h3>
-					<p class="igcp-client-details">{!$Label.c.CP_Generic_Label_Loan_Number}: {!v.formData.mortgage.loanNumber}</p>
-					<hr/>
-
-					<div class="slds-grid">
-						<div class="slds-col slds-size_7-of-12">{!$Label.c.CP_Generic_Label_Mortgage_Statements}</div>
-						<div class="slds-form-element slds-col slds-size_5-of-12">
-							<label class="slds-checkbox_toggle slds-grid">
-								<ui:inputCheckbox name="checkbox" value="{!v.formData.mortgage.statements}"/>
-								<span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
-									<span class="slds-checkbox_faux"></span>
-									<span class="slds-checkbox_on">{!$Label.c.CP_Generic_Label_Online}</span>
-									<span class="slds-checkbox_off">{!$Label.c.CP_Generic_Label_Paper}</span>
-								</span>
-							</label>		
-						</div>
-					</div>
-
-					<div class="slds-grid">
-						<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">{!$Label.c.CP_Generic_Label_Tax_Receipts}</div>
-						<div class="slds-size_5-of-12 slds-medium-size_3-of-12">
-							<div class="igcp-label--with-tooltip">
-								<span class="igcp-label--small">{!$Label.c.CP_Generic_Label_Paper}<c:CP_Cmp_Tooltip tooltip="This is a tooltip"/></span>
-							</div>
-						</div>
-					</div>
-
-					<div class="slds-grid">
-						<div class="slds-col slds-size_7-of-12 slds-medium-size_9-of-12">{!$Label.c.CP_Generic_Label_Trade_Confirmations}</div>
-						<div class="slds-size_5-of-12 slds-medium-size_3-of-12">
-							<div class="igcp-label--with-tooltip">
-								<span class="igcp-label--small">{!$Label.c.CP_Generic_Label_Paper}<c:CP_Cmp_Tooltip tooltip="This is a tooltip"/></span>
-							</div>
-						</div>
-					</div>
-
-				</div>
-
-				<hr/>
+				</aura:iteration>
 
 				<div class="slds-grid slds-wrap">
-
 					<!--CTAS-->
 					<c:CP_Cmp_Form_Back_Next dcname1="" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Update}" nextType="complete" modalId="editDocument-tos" form="{!v.pageId}" />
 				</div>

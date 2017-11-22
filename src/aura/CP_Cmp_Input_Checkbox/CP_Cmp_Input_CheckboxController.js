@@ -9,8 +9,11 @@
 			console.error("CP_Cmp_Input_Checkbox: Input needs to be associated with a 'form'.");
 		}
 	},
+	onchange: function (cmp, evt, hlpr) {
+		cmp.set('v.checked', evt.target.checked)
+	},
 	onGetValue: function (cmp, evt, hlpr) {
-
+		// ToDo: Deprecate. onchange will handle this. Bind checked attr to parent instead
 		var
 			events = cmp.find("CP_Events"),
 			formId = evt.getParam("payload").formId,
@@ -25,7 +28,7 @@
 		}
 	},
 	onCheck: function (cmp, evt, hlpr) {
-
+		// ToDo: Deprecate. onchange will handle this. Bind checked attr to parent instead
 		var
 			checkbox = cmp.find("checkbox-input"),
 			events = cmp.find("CP_Events"),
