@@ -32,6 +32,7 @@
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 	<aura:handler event="c:CP_Evt_Set_Input_Value" action="{!c.onSetValue}" />
 	<aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}" />
+	<aura:handler event="c:CP_Evt_Input_Focus" action="{!c.onInputFocus}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Input_Valid" action="{!c.onValid}" />
 	<aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}" />
 	

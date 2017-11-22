@@ -70,9 +70,6 @@
 			year = inputValue.slice(6),
 			newInputValue = "";
 
-
-
-
 		if (keyCode === 8) {
 			//backspace
 			newInputValue = inputValue.slice(0, inputValue.length);
@@ -98,7 +95,6 @@
 			if (inputValue.length >= 7) {
 				newInputValue += year;
 			}
-
 		}
 
 		cmp.set("v.inputValue", newInputValue);
@@ -112,10 +108,13 @@
 		});
 	},
 	onFocus: function (cmp, evt, hlpr) {
-		console.info(cmp.get("v.id") + " has focus.");
+		//console.info(cmp.get("v.id") + " has focus.");
 		cmp.find('CP_Events').fire("CP_Evt_Input_Focus", {
 			"id": cmp.get("v.id")
 		});
+	},
+	onInputFocus: function(cmp, evt, hlpr) {
+		//console.info(cmp.get("v.id") + " has focus.");
 	},
 	onLabelClick: function (cmp, evt, hlpr) {
 		try {

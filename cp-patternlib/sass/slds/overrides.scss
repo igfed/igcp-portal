@@ -172,3 +172,16 @@
 	margin: 0;
 	min-width: 100%;
 }
+
+.slds-media {
+	&.slds-media__figure {
+		margin: 0;
+	}
+}
+
+//FIREFOX
+@-moz-document url-prefix() {
+	.slds-media__figure {
+		margin-right: $ig-space--small;
+	}
+}

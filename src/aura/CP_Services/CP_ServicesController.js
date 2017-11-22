@@ -331,6 +331,31 @@
 
 		}
 	},
+	onGetInvestmentAccounts: function (cmp, evt, hlpr) {
+		var params = evt.getParam("arguments");
+		if (params) {
+			var
+				component = params.component,
+				action;
+
+			try {
+
+				action = component.get("c.getInvestmentPreviewJSON");
+
+				hlpr.setCallbackPromise(
+					params,
+					action,
+					this,
+					"No BPID was found in Salesforce",
+					"no-record"
+				);
+			} catch (err) {
+				console.error("CP_Services: onGetInvestmentAccounts: controller not found, make sure it is attached to parent component.");
+				console.log(err);
+			}
+
+		}
+	},
 	onGetInvestmentsPreviewRegistered: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {

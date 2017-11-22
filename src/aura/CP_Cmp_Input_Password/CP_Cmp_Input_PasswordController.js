@@ -32,17 +32,13 @@
 	onValid: function (cmp, evt, hlpr) {
 
 		if (cmp.get("v.id") === evt.getParam("payload").id) {
-			var
-				field = cmp.find("password-input"),
-				confirmField = cmp.find("confirm-password-input");
+			var confirmField = cmp.find("confirm-password-input");
 
 			cmp.set("v.limitClass", "igcp-text__success igcp-utils__font-size--x-small");
 			cmp.set("v.upperClass", "igcp-text__success igcp-utils__font-size--x-small");
 			cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");
 
 			confirmField.set("v.errors", []);
-
-			field.set("v.errors", []);
 		}
 	},
 	onError: function (cmp, evt, hlpr) {
@@ -148,7 +144,6 @@
 		}
 	},
 	onHandleKey: function (cmp, evt, hlpr) {
-
 		var events = cmp.find("CP_Events");
 		events.fire("CP_Evt_Key", {
 			"id": cmp.get("v.id"),
@@ -183,19 +178,22 @@
 		}
 	},
 	onFocus: function (cmp, evt, hlpr) {
-		console.info(cmp.get("v.id") + " has focus.");
+		//console.info(cmp.get("v.id") + " has focus.");
 		cmp.find('CP_Events').fire(
 			"CP_Evt_Input_Focus", {
 				"id": cmp.get("v.id")
 			});
 	},
 	onConfirmationFocus: function (cmp, evt, hlpr) {
-		console.info(cmp.get("v.id") + " confirmation field has focus.");
+		//console.info(cmp.get("v.id") + " confirmation field has focus.");
 		cmp.find('CP_Events').fire(
 			"CP_Evt_Input_Focus", {
 				"id": cmp.get("v.id"),
 				"type": "confirmation"
-		});
+			});
+	},
+	onInputFocus: function (cmp, evt, hlpr) {
+		//console.info(cmp.get("v.id") + " has focus.");
 	},
 	onLabelClick: function (cmp, evt, hlpr) {
 		try {
@@ -208,6 +206,26 @@
 		try {
 			cmp.find("confirm-password-input").getElement().focus();
 		} catch (err) {
+			console.error(err);
+		}
+	},
+	onShowPassword: function (cmp, evt, hlpr) {
+		if (cmp.get("v.showPassword") === false) {
+			cmp.set("v.showPassword", true);
+		} else {
+			cmp.set("v.showPassword", false);
+		}
+	},
+	onShowPasswordKey: function (cmp, evt, hlpr) {
+		try {
+			if (evt.key === "Enter") {
+				if (cmp.get("v.showPassword") === false) {
+					cmp.set("v.showPassword", true);
+				} else {
+					cmp.set("v.showPassword", false);
+				}
+			}
+		} catch(err) {
 			console.error(err);
 		}
 	}

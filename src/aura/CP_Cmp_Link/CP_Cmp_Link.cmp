@@ -6,6 +6,7 @@
 	<aura:attribute name="label" type="String" default="Default"></aura:attribute>
 	<aura:attribute name="hasChevron" type="Boolean" default="true"></aura:attribute>
 	<aura:attribute name="modalID" type="String" default="none"></aura:attribute>
+	<aura:attribute name="standalone" type="Boolean"></aura:attribute>
 
 	<!-- IMPORTS -->
 	<c:CP_Events aura:id="CP_Events" />
@@ -14,10 +15,20 @@
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}"></aura:handler>
 
 	<!-- MARKUP -->
-	<div class="{!'igcp-link__cta igcp-utils__display--inline-block ' + v.class}">
-		<a id="{!v.id}" href="{!v.href}" onclick="{!c.onClick}">{!v.label}</a>
-		<aura:if isTrue="{!v.hasChevron}">
-			<lightning:icon iconName="utility:chevronright" size="x-small" class="slds-p-left--xxx-small"/>
-		</aura:if>
-	</div>
+	<aura:if isTrue="{!v.standalone}">
+			<div class="{!'igcp-link__standalone igcp-utils__display--inline-block ' + v.class}">
+				<a id="{!v.id}" href="{!v.href}" onclick="{!c.onClick}">{!v.label}</a>
+				<aura:if isTrue="{!v.hasChevron}">
+					<lightning:icon iconName="utility:chevronright" size="x-small" class="slds-p-left--xxx-small"/>
+				</aura:if>
+			</div>
+		<aura:set attribute="else">
+			<div class="{!'igcp-link__cta igcp-utils__display--inline-block ' + v.class}">
+				<a id="{!v.id}" href="{!v.href}" onclick="{!c.onClick}">{!v.label}</a>
+				<aura:if isTrue="{!v.hasChevron}">
+					<lightning:icon iconName="utility:chevronright" size="x-small" class="slds-p-left--xxx-small"/>
+				</aura:if>
+			</div>
+    	</aura:set>
+	</aura:if>
 </aura:component>

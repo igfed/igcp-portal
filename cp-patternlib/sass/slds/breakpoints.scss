@@ -377,4 +377,11 @@
             padding-left: #{nth($value, 2)};
         }
     }
+
+    //FIREFOX
+    @-moz-document url-prefix() {
+        .slds-media__figure {
+            margin-right: 0;
+        }
+    }
 }

@@ -83,12 +83,20 @@
 	font-size: $ig-font-size--base;
 }
 
-.#{$namespace}-input__password {
-	//Have to put this here because 
-	//I don't have access to the ui component 
-	//to give it a unique igcp class name
-	.slds-icon-utility-info {
-		top: 0;
+.#{$namespace}-input__password-icon {
+	cursor: pointer;
+	.#{$namespace}-input__password-icon--preview {
+		&.slds-icon.slds-input__icon.slds-input__icon_right {
+			top: 19%;
+		}
+	}
+	&:focus {
+		.#{$namespace}-input__password-icon--preview {
+			background-color: rgb(255, 255, 255);
+			box-shadow: rgb(0, 112, 210) 0px 0px 3px;
+			outline: 0px;
+			border-color: rgb(21, 137, 238);
+		}
 	}
 }
 
@@ -115,12 +123,22 @@
 	}
 }
 
+.#{$namespace}-link__standalone {
+	font-family: $ig-whitney-semibold;
+	font-size: $ig-font-size--mini;
+	.slds-icon_container.slds-icon-utility-chevronright,
+	.slds-icon_container.slds-icon-utility-chevronleft {
+		top: -1px;
+		.slds-icon-text-default {
+			fill: $ig-link-blue;
+		}
+	}
+}
+
 .#{$namespace}-link__variant--a {
 	font-family: $ig-whitney-semibold;
 	font-size: $ig-space--x-small;
 	letter-spacing: $ig-letter-spacing;
-
-	
 	.slds-icon-text-default {
 		fill: $ig-link-blue;
 	}
@@ -299,9 +317,9 @@
 	top: -4px;
 }
 
-.#{$namespace}-card__image {
-	width: 50%;
-}
+// .#{$namespace}-card__image {
+// 	height: 190px;
+// }
 
 //PROGRESS INDICATOR
 .#{$namespace}-progress-indicator {
@@ -374,7 +392,6 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-
 	&.#{$namespace}-modal--show {
 		display: inline-block;
 	}
@@ -394,10 +411,6 @@
 	}
 	&.#{$namespace}-modal__full {
 		background-color: $ig-white;
-
-		&:focus {
-			background-color: rgb(151, 21, 21);
-		}
 	}
 	&.#{$namespace}-modal__small {
 		background-color: $ig-dark-blue--90;
@@ -411,7 +424,9 @@
 			border: 10px solid $ig-grey;
 			overflow-y: scroll;
 		}
-	} //details
+	} 
+	
+	//details
 	&.#{$namespace}-modal__details {
 		background-color: $ig-dark-blue--90;
 		.#{$namespace}-modal__details--inner {
@@ -528,10 +543,7 @@
 
 //BORDER
 .#{$namespace}-border--double {
-	height: 3px;
-	width: auto;
-	border-top: 1px solid $ig-grey;
-	border-bottom: 1px solid $ig-grey;
+	border-bottom: 4px double $ig-grey;
 }
 
 //EDIT PAGES
@@ -758,7 +770,6 @@
 	.#{$namespace}-document-tabs {
 		background: transparent;
 		position: relative;
-
 		.slds-tabs--default__nav,
 		.slds-tabs_default__nav {
 			list-style-type: none;
@@ -806,15 +817,12 @@
 		overflow: hidden;
 		position: relative;
 		margin-top: -15px;
-
 		.#{$namespace}-banner-heading {
 			color: $ig-black;
 		}
-
 		.#{$namespace}-banner-text {
 			z-index: 1000;
 		}
-
 		button {
 			background: transparent;
 			border: 1px solid $ig-black;
@@ -843,11 +851,11 @@
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	min-height:	100%;
+	min-height: 100%;
 	z-index: 15000;
-
 	&.#{$namespace}-loading-icon__background {
-		@include transparentBG($ig-light-grey, 0.75);
+		@include transparentBG($ig-light-grey,
+		0.75);
 	}
 }
 
@@ -858,11 +866,9 @@
 
 //Investments/mortgages/insurance
 .#{$namespace}-overview {
-
 	.#{$namespace}-overview__investments,
 	.#{$namespace}-overview__mortgages,
 	.#{$namespace}-overview__insurance {
-	
 		.#{$namespace}-overview__table {
 			min-height: 100px;
 		}

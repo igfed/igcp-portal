@@ -29,6 +29,12 @@
 		<aura:attribute name="successCB" type="function" default="" />
 		<aura:attribute name="errorCB" type="function" default="" />
 	</aura:method>
+	<!-- GET INVESTMENT ACCOUNTS -->
+	<aura:method name="getInvestmentAccounts" action="{!c.onGetInvestmentAccounts}">
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
 	<!-- GET INVESTMENTS PREVIEW Registered-->
 	<aura:method name="getInvestmentsPreviewRegistered" action="{!c.onGetInvestmentsPreviewRegistered}">
 		<aura:attribute name="dealerName" type="String"></aura:attribute>

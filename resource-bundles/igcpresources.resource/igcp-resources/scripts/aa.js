@@ -35,7 +35,7 @@ jQuery(document).ready(function () {
       window.digitalData.page.category.primaryCategory = _getSiteSection();
 
       // Only fire this in Salesforce
-      // window._satellite.pageBottom();
+      window._satellite.pageBottom();
 
       // Register click event handlers
       _registerHandlers();
