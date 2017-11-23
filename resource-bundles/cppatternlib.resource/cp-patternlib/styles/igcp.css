@@ -4143,6 +4143,9 @@ table {
 .igcp-forgot-user__step--1 {
   max-height: 240px; }
 
+.igcp-icon use {
+  fill: #0E75D5; }
+
 .igcp-overview .igcp-overview__investments .igcp-overview__table,
 .igcp-overview .igcp-overview__mortgages .igcp-overview__table,
 .igcp-overview .igcp-overview__insurance .igcp-overview__table {

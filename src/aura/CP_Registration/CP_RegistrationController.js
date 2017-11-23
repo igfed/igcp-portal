@@ -37,23 +37,20 @@
 	onBackStep: function (cmp, evt, hlpr) {
 		try {
 			var
-				utils = cmp.find("CP_Utils"),
-				payload = evt.getParam("payload"),
-				currentStep = cmp.get("v.currentStep");
+				currentStep = cmp.get("v.currentStep"),
+				backStep = currentStep -= 1;
 
-			if (payload.id === "registration-step-1" || payload.id === "registration-step-2") {
-				utils.gotoLogin();
-			} else {
-
-				var backStep = currentStep -= 1;
-
-				if (backStep < 0) {
-					backStep = 0;
-				}
-
-				cmp.set("v.currentStep", backStep);
-
+			if (backStep < 0) {
+				backStep = 0;
 			}
+			cmp.set("v.currentStep", backStep);
+		} catch (err) {
+			console.error(err);
+		}
+	},
+	onCancel: function (cmp, evt, hlpr) {
+		try {
+			cmp.find("CP_Utils").gotoLogin();
 		} catch (err) {
 			console.error(err);
 		}

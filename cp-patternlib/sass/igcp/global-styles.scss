@@ -889,6 +889,13 @@
 	max-height: 240px;
 }
 
+//ICON
+.#{$namespace}-icon {
+	use {
+		fill: $ig-system-informational;
+	}
+}
+
 //Investments/mortgages/insurance
 .#{$namespace}-overview {
 	.#{$namespace}-overview__investments,
