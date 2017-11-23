@@ -35,7 +35,7 @@
 	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
 	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />  
-	
+	<aura:handler event="c:CP_Evt_Input_Focus" action="{!c.onInputFocus}" />
 	<aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetInput}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onSendInput}" />	 
 	
