@@ -1,4 +1,8 @@
 <aura:component >
+
+	<!-- INCLUDES -->
+	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Events aura:id="CP_Events" />
 	
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" />
@@ -15,9 +19,8 @@
 	<aura:attribute name="type" type="String" default="selector"></aura:attribute>
 	<aura:attribute name="hasFocus" type="Boolean" default="false" />
 
-	<!-- INCLUDES -->
-	<c:CP_Utils aura:id="CP_Utils" />
-	<c:CP_Events aura:id="CP_Events" />
+	<aura:attribute name="hasErrors" type="Boolean" default="false" />
+	<aura:attribute name="labelClass" type="String" default="slds-form-element__label input-label"/>
 
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
@@ -33,7 +36,7 @@
 	<div id="{!v.id}" class="{!v.class}">
 		<div class="slds-form-element">
 			<!-- LABEL -->
-			<label class="slds-form-element__label input-label" for="{!v.id}" onclick="{!c.onLabelClick}">{!v.label}</label>
+			<label class="{!v.labelClass}" for="{!v.id}" onclick="{!c.onLabelClick}">{!v.label}</label>
 
 			<!-- TOOLTIP -->
 			<aura:renderIf isTrue="{!v.tooltip}">

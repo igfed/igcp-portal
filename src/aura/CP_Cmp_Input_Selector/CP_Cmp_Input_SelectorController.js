@@ -131,10 +131,21 @@
 			"type": cmp.get("v.type"),
 			"value": cmp.get("v.currentSelectedValue")
 		});
+
+		if(cmp.get("v.hasErrors") === true) {
+			//show title and border in red
+			cmp.set("v.labelClass", "igcp-input__label--error slds-form-element__label input-label");
+		} else {
+			cmp.set("v.labelClass", "slds-form-element__label input-label");
+		}
 	},
 	onValid: function (cmp, evt, hlpr) {
 
 		if (cmp.get("v.id") === evt.getParam("payload").id) {
+
+			//Used to set the label red
+			cmp.set("v.hasErrors", false);
+
 			var field = cmp.find("selector-input");
 			field.set("v.errors", []);
 		}
@@ -147,6 +158,9 @@
 			errorArr = [];
 
 		if (cmp.get("v.id") === payload.id) {
+
+			//Used to set the label red
+			cmp.set("v.hasErrors", true);
 
 			if (errors.length > 0) {
 				errors.forEach(function (item, i) {

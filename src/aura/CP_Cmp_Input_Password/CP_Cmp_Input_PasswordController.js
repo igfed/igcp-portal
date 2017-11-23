@@ -144,6 +144,7 @@
 						});
 					} else {
 						confirmPasswordInput.set("v.errors", []);
+						cmp.set("v.confirmationLabelClass", "slds-form-element__label input-label");
 					}
 				}
 			}
@@ -183,6 +184,13 @@
 			"value": cmp.get("v.passcode"),
 			"confirmValue": cmp.get("v.passcodeConfirm")
 		});
+
+		if(cmp.get("v.hasErrors") === true) {
+			//show title and border in red
+			cmp.set("v.confirmationLabelClass", "igcp-input__label--error slds-form-element__label input-label");
+		} else {
+			cmp.set("v.confirmationLabelClass", "slds-form-element__label input-label");
+		}
 	},
 	onFocus: function (cmp, evt, hlpr) {
 		//console.info(cmp.get("v.id") + " has focus.");

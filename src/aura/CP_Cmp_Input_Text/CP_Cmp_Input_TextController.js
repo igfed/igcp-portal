@@ -39,6 +39,9 @@
 			var field = cmp.find("text-input");
 			var confirmField = cmp.find("text-confirm-input");
 
+			//Used to set the label
+			cmp.set("v.hasErrors", false);
+
 			field.set("v.errors", []);
 			confirmField.set("v.errors", []);
 
@@ -56,6 +59,9 @@
 			field;
 
 		if (cmp.get("v.id") === payload.id) {
+
+			//Used to set the label
+			cmp.set("v.hasErrors", true);
 
 			//show error icon
 			cmp.set("v.errorIconClass", "igcp-utils__display--block slds-input__icon slds-input__icon--error");
@@ -82,6 +88,13 @@
 			"type": cmp.get("v.type"),
 			"value": cmp.get("v.inputValue") === undefined ? "" : cmp.get("v.inputValue")
 		});
+
+		if(cmp.get("v.hasErrors") === true) {
+			//show title and border in red
+			cmp.set("v.labelClass", "igcp-input__label--error slds-form-element__label input-label");
+		} else {
+			cmp.set("v.labelClass", "slds-form-element__label input-label");
+		}
 	},
 	onConfirmationBlur: function (cmp, evt, hlpr) {
 		cmp.find("CP_Events").fire("CP_Evt_Input_Blur", {
@@ -90,6 +103,13 @@
 			"value": cmp.get("v.inputValue"),
 			"confirmValue": cmp.get("v.inputValueConfirm")
 		});
+
+		if(cmp.get("v.hasErrors") === true) {
+			//show title and border in red
+			cmp.set("v.confirmationLabelClass", "igcp-input__label--error slds-form-element__label input-label");
+		} else {
+			cmp.set("v.confirmationLabelClass", "slds-form-element__label input-label");
+		}
 	},
 	onFocus: function (cmp, evt, hlpr) {
 		//console.info(cmp.get("v.id") + " has focus.");
