@@ -23,12 +23,12 @@
 	<aura:attribute name="limitClass" type="String" default="igcp-utils__font-size--x-small"></aura:attribute>
 	<aura:attribute name="charClass" type="String" default="igcp-utils__font-size--x-small"></aura:attribute>
 	<aura:attribute name="hasFocus" type="Boolean" default="false" />
-	<aura:attribute name="inputClass" type="String" default="slds-input igcp-input igcp-input--error"></aura:attribute>
-	<aura:attribute name="isDoneRendering" type="Boolean" default="false" ></aura:attribute>
+	<aura:attribute name="inputClass" type="String" default="igcp-input igcp-input__username slds-form-element__control"></aura:attribute>
+	<aura:attribute name="hasErrors" type="Boolean" default="false" ></aura:attribute>
+	<aura:attribute name="labelClass" type="String" default="slds-form-element__label input-label"></aura:attribute>
 	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
-	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 	<aura:handler event="c:CP_Evt_Input_Focus" action="{!c.onInputFocus}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}" />
 	<aura:handler event="c:CP_Evt_Set_Input_Value" action="{!c.onSetValue}" />
@@ -44,7 +44,7 @@
 		</aura:renderIf>
 		
 		<!-- LABEL -->
-		<label class="slds-form-element__label input-label" for="text-input" onclick="{!c.onLabelClick}">{!v.label}</label>
+		<label class="{!v.labelClass}" for="text-input" onclick="{!c.onLabelClick}">{!v.label}</label>
 		
 		<!-- TOOLTIP -->
 		<aura:renderIf isTrue="{!v.tooltip}">
@@ -52,8 +52,8 @@
 		</aura:renderIf>
 		
 		<!-- INPUT -->
-		<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
-			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input igcp-input--error" required="{!v.required}" maxlength="{!v.maxLength}" keyup="{!c.onHandleKey}" updateOn="keyup" focus="{!c.onFocus}" blur="{!c.onBlur}" />
+		<div class="{!v.inputClass}">
+			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input" required="{!v.required}" maxlength="{!v.maxLength}" keyup="{!c.onHandleKey}" updateOn="keyup" focus="{!c.onFocus}" blur="{!c.onBlur}" />
 			
 		</div>
 		

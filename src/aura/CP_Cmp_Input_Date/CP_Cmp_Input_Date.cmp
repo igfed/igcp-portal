@@ -21,6 +21,7 @@
     <aura:attribute name="maxLength" type="Integer" default="10"></aura:attribute>
     <aura:attribute name="type" type="String" default="default"></aura:attribute>
     <aura:attribute name="example" type="String" default=""></aura:attribute>
+    <aura:attribute name="hasFocus" type="Boolean" default="false" />
     
     <!-- HANDLERS -->
     <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
@@ -51,9 +52,9 @@
             </ul>
         </aura:renderIf>
         
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+        <div class="igcp-input slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
         	<!-- INPUT -->
-            <ui:inputText aura:id="date-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input igcp-input" required="{!v.required}" maxlength="{!v.maxLength}" updateOn="keyup" keyup="{!c.onType}" focus="{!c.onFocus}" blur="{!c.onBlur}"/>
+            <ui:inputText aura:id="date-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input" required="{!v.required}" maxlength="{!v.maxLength}" updateOn="keyup" keyup="{!c.onType}" focus="{!c.onFocus}" blur="{!c.onBlur}"/>
         </div>
         <!-- HELP TEXT -->
         <aura:renderIf isTrue="{!v.helpText}">

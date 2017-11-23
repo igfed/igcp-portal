@@ -8,22 +8,6 @@
 			console.error("CP_Cmp_Input_Text: Input needs to be associated with a 'form'.")
 		}
 	},
-	doneRendering: function (cmp, evt, hlpr) {
-		try {
-			if (cmp.get("v.renderComplete") === false) {
-				if (cmp.get("v.hasFocus") === true) {
-					//There is a conflict between this 
-					//line and adobe analytics
-					//
-					//cmp.find("text-input").getElement().focus();
-				}
-				cmp.set("v.renderComplete", true);
-			}
-		} catch (err) {
-			console.error("CP_Cmp_Input_Text: doneRendering");
-			console.error(err);
-		}
-	},
 	onGetValue: function (cmp, evt, hlpr) {
 
 		var

@@ -185,11 +185,12 @@ table {
 .uiInput.has-error {
   border: none; }
 
-.slds-input.igcp-input.has-error.uiInput.uiInputText.uiInput--input,
-.slds-input.igcp-input.has-error.uiInput.uiInputSecret.uiInput--input {
-  border: 1px solid red; }
+.slds-input.has-error.uiInput.uiInputText.uiInput--input,
+.slds-input.has-error.uiInput.uiInputSecret.uiInput--input {
+  border: 1px solid #D42F1A; }
 
-.has-error.uiInputDefaultError.uiInput.uiInputText.uiInput--default.uiInput--input {
+.has-error.uiInputDefaultError.uiInput.uiInputText.uiInput--default.uiInput--input,
+.has-error.uiInputDefaultError.uiInput.uiInputText.uiInput--default.uiInput--select {
   position: absolute; }
 
 .slds-checkbox .slds-form-element__label.input-label {
@@ -2575,6 +2576,22 @@ table {
   .igcp-utils__color--white {
     color: #fff; }
 
+  .igcp-utils__colour--green,
+  .igcp-utils__color--green,
+  .igcp-utils__color--ok,
+  .igcp-utils__color--success,
+  .igcp-utils__colour--ok,
+  .igcp-utils__colour--success {
+    color: #00855F; }
+
+  .igcp-utils__colour--red,
+  .igcp-utils__color--red,
+  .igcp-utils__color--error,
+  .igcp-utils__color--alert,
+  .igcp-utils__colour--error,
+  .igcp-utils__colour--alert {
+    color: #D42F1A; }
+
   .igcp-utils__float--left {
     float: left; }
 
@@ -2848,6 +2865,22 @@ table {
   .igcp-small-utils__colour--white,
   .igcp-small-utils__color--white {
     color: #fff; }
+
+  .igcp-small-utils__colour--green,
+  .igcp-small-utils__color--green,
+  .igcp-small-utils__color--ok,
+  .igcp-small-utils__color--success,
+  .igcp-small-utils__colour--ok,
+  .igcp-small-utils__colour--success {
+    color: #00855F; }
+
+  .igcp-small-utils__colour--red,
+  .igcp-small-utils__color--red,
+  .igcp-small-utils__color--error,
+  .igcp-small-utils__color--alert,
+  .igcp-small-utils__colour--error,
+  .igcp-small-utils__colour--alert {
+    color: #D42F1A; }
 
   .igcp-small-utils__float--left {
     float: left; }
@@ -3123,6 +3156,22 @@ table {
   .igcp-medium-utils__color--white {
     color: #fff; }
 
+  .igcp-medium-utils__colour--green,
+  .igcp-medium-utils__color--green,
+  .igcp-medium-utils__color--ok,
+  .igcp-medium-utils__color--success,
+  .igcp-medium-utils__colour--ok,
+  .igcp-medium-utils__colour--success {
+    color: #00855F; }
+
+  .igcp-medium-utils__colour--red,
+  .igcp-medium-utils__color--red,
+  .igcp-medium-utils__color--error,
+  .igcp-medium-utils__color--alert,
+  .igcp-medium-utils__colour--error,
+  .igcp-medium-utils__colour--alert {
+    color: #D42F1A; }
+
   .igcp-medium-utils__float--left {
     float: left; }
 
@@ -3397,6 +3446,22 @@ table {
   .igcp-large-utils__color--white {
     color: #fff; }
 
+  .igcp-large-utils__colour--green,
+  .igcp-large-utils__color--green,
+  .igcp-large-utils__color--ok,
+  .igcp-large-utils__color--success,
+  .igcp-large-utils__colour--ok,
+  .igcp-large-utils__colour--success {
+    color: #00855F; }
+
+  .igcp-large-utils__colour--red,
+  .igcp-large-utils__color--red,
+  .igcp-large-utils__color--error,
+  .igcp-large-utils__color--alert,
+  .igcp-large-utils__colour--error,
+  .igcp-large-utils__colour--alert {
+    color: #D42F1A; }
+
   .igcp-large-utils__float--left {
     float: left; }
 
@@ -3479,16 +3544,28 @@ table {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafd', endColorstr='#fefefe', GradientType=0);
   /* IE6-9 */ }
 
-.igcp-input {
+.igcp-input .slds-input {
   border-radius: 0;
-  margin-bottom: 0;
-  border: 1px solid #282828; }
-  .igcp-input.input, .igcp-input.uiInput--input.input, .igcp-input.uiInput--select.select {
+  margin-bottom: 0; }
+  .igcp-input .slds-input.input, .igcp-input .slds-input.uiInput--input.input, .igcp-input .slds-input.uiInput--select.select {
     border-radius: 0;
     margin-bottom: 0;
     border: 1px solid #282828; }
-  .igcp-input.uiInput--select.has-error.select {
+  .igcp-input .slds-input.uiInput--select.has-error.select {
     border: none; }
+
+.igcp-input__label--error.slds-form-element__label.input-label {
+  color: #D42F1A; }
+
+.igcp-input__username .has-error.uiInputDefaultError.uiInput.uiInputText.uiInput--default.uiInput--input,
+.igcp-input__password .has-error.uiInputDefaultError.uiInput.uiInputText.uiInput--default.uiInput--input {
+  position: relative; }
+
+.igcp-input__username--error .slds-input.input.uiInput.uiInputText.uiInput--default.uiInput--input,
+.igcp-input__username--error .slds-input.input.uiInput.uiInputSecret.uiInput--default.uiInput--input,
+.igcp-input__password--error .slds-input.input.uiInput.uiInputText.uiInput--default.uiInput--input,
+.igcp-input__password--error .slds-input.input.uiInput.uiInputSecret.uiInput--default.uiInput--input {
+  border: 1px solid #D42F1A; }
 
 .igcp-input__help-link {
   font-family: "WhitneyBook", Arial, sans-serif;

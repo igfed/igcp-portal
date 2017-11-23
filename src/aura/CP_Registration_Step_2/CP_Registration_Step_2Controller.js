@@ -40,9 +40,6 @@
 			});
 		}
 
-		console.log("Reg step 2 init");
-		console.log(cmp.get("v.securityQuestion1"));
-
 		//Answer 1
 		if (cmp.get("v.answer1") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
@@ -61,9 +58,6 @@
 			});
 		}
 
-		console.log("Reg step 2 init");
-		console.log(cmp.get("v.securityQuestion2"));
-
 		//Answer 2
 		if (cmp.get("v.answer2") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
@@ -81,9 +75,6 @@
 				"selected": cmp.get("v.securityQuestion3")
 			});
 		}
-
-		console.log("Reg step 2 init");
-		console.log(cmp.get("v.securityQuestion3"));
 
 		//Answer
 		if (cmp.get("v.answer3") !== "") {

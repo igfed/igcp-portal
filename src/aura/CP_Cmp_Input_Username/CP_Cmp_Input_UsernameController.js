@@ -8,16 +8,6 @@
 			console.error("CP_Cmp_Input_Text: Input needs to be associated with a 'form'.")
 		}
 	},
-	doneRendering: function(cmp, evt, hlpr){
-		if(!cmp.get("v.isDoneRendering")){
-			if (cmp.get("v.hasFocus") === true) {
-				cmp.find("text-input").getElement().focus();
-			}
-
-			cmp.set("v.isDoneRendering", true);	
-		}
-		
-	},
 	onGetValue: function(cmp, evt, hlpr) {
 
 		var
@@ -46,6 +36,9 @@
 
 		if (cmp.get("v.id") === evt.getParam("payload").id) {
 
+			//Used to set the label and border red
+			cmp.set("v.hasErrors", false);
+
 			//hide error icon
 			cmp.set("v.errorIconClass", "igcp-utils__display--none slds-input__icon slds-input__icon--error");
 
@@ -65,12 +58,14 @@
 			userNameInput = cmp.find("text-input"),
 			errors = payload.errors,
 			errorTypeArr = [],
-			errorArr = [],
 			isEmpty = false,
 			minLength = false,
 			isAlphanumeric = false;
 
 		if (cmp.get("v.id") === payload.id) {
+
+			//Used to set the label and border red
+			cmp.set("v.hasErrors", true);
 
 			//show error icon
 			cmp.set("v.errorIconClass", "igcp-utils__display--block slds-input__icon slds-input__icon--error");
@@ -138,6 +133,15 @@
 			"type": cmp.get("v.type"),
 			"value": cmp.get("v.inputValue")
 		});
+
+		if(cmp.get("v.hasErrors") === true) {
+			//show title and border in red
+			cmp.set("v.inputClass", "igcp-input igcp-input__username igcp-input__username--error slds-form-element__control");
+			cmp.set("v.labelClass", "igcp-input__label--error slds-form-element__label input-label");
+		} else {
+			cmp.set("v.inputClass", "igcp-input igcp-input__username slds-form-element__control");
+			cmp.set("v.labelClass", "slds-form-element__label input-label");
+		}
 	},
 	onFocus: function (cmp, evt, hlpr) {
 		//console.info(cmp.get("v.id") + " has focus.");

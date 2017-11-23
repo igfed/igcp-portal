@@ -13,6 +13,7 @@
 	<aura:attribute name="options" type="String[]"></aura:attribute>
 	<aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="type" type="String" default="selector"></aura:attribute>
+	<aura:attribute name="hasFocus" type="Boolean" default="false" />
 
 	<!-- INCLUDES -->
 	<c:CP_Utils aura:id="CP_Utils" />
@@ -38,9 +39,9 @@
 			<aura:renderIf isTrue="{!v.tooltip}">
 				<c:CP_Cmp_Tooltip tooltip="{!v.tooltip}" />
 			</aura:renderIf>
-			<div class="slds-form-element__control">
+			<div class="igcp-input slds-form-element__control">
 				<!-- INPUT SELECT -->
-				<ui:inputSelect aura:id="selector-input" class="igcp-input igcp-input__selector" change="{!c.onChange}" value="{!v.selectedValue}" blur="{!c.onBlur}" focus="{!c.onFocus}">
+				<ui:inputSelect aura:id="selector-input" class="igcp-input__selector slds-input" change="{!c.onChange}" value="{!v.selectedValue}" blur="{!c.onBlur}" focus="{!c.onFocus}">
 
 					<aura:renderIf isTrue="{!v.currentSelectedValue == ''}"> 
 						<ui:inputSelectOption text="Select a security question" label="{!v.placeholder}" disabled="true" value="true" />

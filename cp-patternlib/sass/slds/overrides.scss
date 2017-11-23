@@ -73,12 +73,13 @@
 	border: none;
 }
 
-.slds-input.igcp-input.has-error.uiInput.uiInputText.uiInput--input,
-.slds-input.igcp-input.has-error.uiInput.uiInputSecret.uiInput--input {
-	border: 1px solid red;
+.slds-input.has-error.uiInput.uiInputText.uiInput--input,
+.slds-input.has-error.uiInput.uiInputSecret.uiInput--input {
+	border: 1px solid $ig-system-error;
 }
 
-.has-error.uiInputDefaultError.uiInput.uiInputText.uiInput--default.uiInput--input {
+.has-error.uiInputDefaultError.uiInput.uiInputText.uiInput--default.uiInput--input,
+.has-error.uiInputDefaultError.uiInput.uiInputText.uiInput--default.uiInput--select {
 	position: absolute;
 }
 

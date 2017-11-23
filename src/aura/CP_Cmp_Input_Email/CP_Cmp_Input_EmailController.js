@@ -8,14 +8,6 @@
 			console.error("CP_Cmp_Input_Text: Input needs to be associated with a 'form'.")
 		}
 	},
-	doneRendering: function (cmp, evt, hlpr) {
-		if (cmp.get("v.renderComplete") === false) {
-			if (cmp.get("v.hasFocus") === true) {
-				cmp.find("text-input").getElement().focus();
-			}
-			cmp.set("v.renderComplete", true);
-		}
-	},
 	onGetValue: function (cmp, evt, hlpr) {
 
 		var
@@ -97,7 +89,7 @@
 		var events = cmp.find("CP_Events");
 		events.fire("CP_Evt_Input_Blur", {
 			"id": cmp.get("v.id"),
-			"type": cmp.get("v.type"),
+			"type": "email",
 			"value": cmp.get("v.inputValue") === undefined ? "" : cmp.get("v.inputValue")
 		});
 	},
@@ -105,7 +97,7 @@
 		var events = cmp.find("CP_Events");
 		events.fire("CP_Evt_Input_Blur", {
 			"id": cmp.get("v.id"),
-			"type": cmp.get("v.type"),
+			"type": "email-confirm",
 			"value": cmp.get("v.inputValue") === undefined ? "" : cmp.get("v.inputValue"),
 			"confirmValue": cmp.get("v.inputValueConfirm")
 		});
@@ -118,7 +110,7 @@
 			});
 	},
 	onConfirmationFocus: function (cmp, evt, hlpr) {
-		// console.info(cmp.get("v.id") + " confirmation field has focus.");
+		//console.info(cmp.get("v.id") + " confirmation field has focus.");
 		cmp.find('CP_Events').fire(
 			"CP_Evt_Input_Focus", {
 				"id": cmp.get("v.id"),

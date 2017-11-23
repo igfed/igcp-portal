@@ -62,18 +62,43 @@
 
 //INPUT
 .#{$namespace}-input {
-	border-radius: 0;
-	margin-bottom: 0;
-	border: 1px solid $ig-black;
-	&.input,
-	&.uiInput--input.input,
-	&.uiInput--select.select {
+
+	.slds-input {
 		border-radius: 0;
 		margin-bottom: 0;
-		border: 1px solid $ig-black;
+		//border: 1px solid $ig-black;
+		&.input,
+		&.uiInput--input.input,
+		&.uiInput--select.select {
+			border-radius: 0;
+			margin-bottom: 0;
+			border: 1px solid $ig-black;
+		}
+		&.uiInput--select.has-error.select {
+			border: none;
+		}
 	}
-	&.uiInput--select.has-error.select {
-		border: none;
+}
+
+.#{$namespace}-input__label--error {
+	&.slds-form-element__label.input-label {
+		color: $ig-system-error;
+	}
+}
+
+.#{$namespace}-input__username,
+.#{$namespace}-input__password {
+	.has-error.uiInputDefaultError.uiInput.uiInputText.uiInput--default.uiInput--input {
+		position: relative;
+	}
+}
+
+.#{$namespace}-input__username--error,
+.#{$namespace}-input__password--error {
+
+	.slds-input.input.uiInput.uiInputText.uiInput--default.uiInput--input,
+	.slds-input.input.uiInput.uiInputSecret.uiInput--default.uiInput--input {
+		border: 1px solid $ig-system-error;
 	}
 }
 

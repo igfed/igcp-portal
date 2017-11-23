@@ -34,6 +34,9 @@
 		if (cmp.get("v.id") === evt.getParam("payload").id) {
 			var confirmField = cmp.find("confirm-password-input");
 
+			//Used to set the label and border red
+			cmp.set("v.hasErrors", false);
+
 			cmp.set("v.limitClass", "igcp-text__success igcp-utils__font-size--x-small");
 			cmp.set("v.upperClass", "igcp-text__success igcp-utils__font-size--x-small");
 			cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");
@@ -57,6 +60,9 @@
 			passwordsMatch = false;
 
 		if (cmp.get("v.id") === payload.id) {
+
+			//Used to set the label and border red
+			cmp.set("v.hasErrors", true);
 
 			if (errors.length > 0) {
 
@@ -158,6 +164,15 @@
 			"type": cmp.get("v.type"),
 			"value": cmp.get("v.passcode")
 		});
+
+		if(cmp.get("v.hasErrors") === true) {
+			//show title and border in red
+			cmp.set("v.inputClass", "igcp-input igcp-input__password igcp-input__password--error slds-form-element__control slds-input-has-icon slds-input-has-icon--right");
+			cmp.set("v.labelClass", "igcp-input__label--error slds-form-element__label input-label");
+		} else {
+			cmp.set("v.inputClass", "igcp-input igcp-input__password slds-form-element__control slds-input-has-icon slds-input-has-icon--right");
+			cmp.set("v.labelClass", "slds-form-element__label input-label");
+		}
 	},
 	onConfirmationBlur: function (cmp, evt, hlpr) {
 
@@ -168,14 +183,6 @@
 			"value": cmp.get("v.passcode"),
 			"confirmValue": cmp.get("v.passcodeConfirm")
 		});
-	},
-	doneRendering: function (cmp, evt, hlpr) {
-		if (!cmp.get("v.isDoneRendering")) {
-			if (cmp.get("v.hasFocus") === true) {
-				cmp.find("password-input").getElement().focus();
-			}
-			cmp.set("v.isDoneRendering", true);
-		}
 	},
 	onFocus: function (cmp, evt, hlpr) {
 		//console.info(cmp.get("v.id") + " has focus.");

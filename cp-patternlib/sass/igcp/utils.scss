@@ -17,7 +17,9 @@
 
 		.#{getNamespace($value)}-utils__font--book {
 			font-family: $ig-whitney-book;
-		} //Font Sizes
+		} 
+		
+		//Font Sizes
 		.#{getNamespace($value)}-utils__font-size--x-small,
 		.#{getNamespace($value)}-utils__font-size--x-mini {
 			font-size: $ig-font-size--x-mini;
@@ -211,10 +213,14 @@
 			display: -webkit-flex;
 			display: -ms-flexbox;
 			display: flex;
-		} //Bullets
+		} 
+		
+		//Bullets
 		.#{getNamespace($value)}-utils__bullets--disc {
 			list-style: disc;
-		} //Animations
+		} 
+		
+		//Animations
 		.#{getNamespace($value)}-utils__fade--in {
 			@include fadeTo();
 		}
@@ -310,6 +316,24 @@
 		.#{getNamespace($value)}-utils__color--white {
 			color: $ig-white;
 		} 
+
+		.#{getNamespace($value)}-utils__colour--green,
+		.#{getNamespace($value)}-utils__color--green,
+		.#{getNamespace($value)}-utils__color--ok,
+		.#{getNamespace($value)}-utils__color--success,
+		.#{getNamespace($value)}-utils__colour--ok,
+		.#{getNamespace($value)}-utils__colour--success {
+			color: $ig-system-success;
+		}
+
+		.#{getNamespace($value)}-utils__colour--red,
+		.#{getNamespace($value)}-utils__color--red,
+		.#{getNamespace($value)}-utils__color--error,
+		.#{getNamespace($value)}-utils__color--alert,
+		.#{getNamespace($value)}-utils__colour--error,
+		.#{getNamespace($value)}-utils__colour--alert {
+			color: $ig-system-error;
+		}
 		
 		//Float
 		.#{getNamespace($value)}-utils__float--left {
