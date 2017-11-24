@@ -32,10 +32,13 @@
 	onValid: function (cmp, evt, hlpr) {
 
 		if (cmp.get("v.id") === evt.getParam("payload").id) {
-			var confirmField = cmp.find("confirm-password-input");
 
-			//Used to set the label and border red
-			cmp.set("v.hasErrors", false);
+			hlpr.setValidStyle(cmp);
+			hlpr.setConfirmationValidStyle(cmp);
+
+			cmp.set("v.inputHasErrors", false);
+
+			var confirmField = cmp.find("confirm-password-input");
 
 			cmp.set("v.limitClass", "igcp-text__success igcp-utils__font-size--x-small");
 			cmp.set("v.upperClass", "igcp-text__success igcp-utils__font-size--x-small");
@@ -61,10 +64,16 @@
 
 		if (cmp.get("v.id") === payload.id) {
 
-			//Used to set the label and border red
-			cmp.set("v.hasErrors", true);
+			console.log(cmp.get("v.passcode").toString().length);
+			console.log(cmp.get("v.passcodeConfirm").toString().length);
 
 			if (errors.length > 0) {
+
+				//If both fields are empty show error highlighting for both
+				if(cmp.get("v.passcode").toString().length === 0 && cmp.get("v.passcodeConfirm").toString().length === 0) {
+					hlpr.setErrorStyle(cmp);
+					hlpr.setConfirmationErrorStyle(cmp);
+				}
 
 				errors.forEach(function (err, i) {
 					errorTypeArr.push(err.type);
@@ -101,7 +110,7 @@
 					}
 				});
 
-				passwordsMatch
+				//passwordsMatch
 				utils.arrayContains(errorTypeArr, "passwordsMatch", function (hasValue) {
 					if (hasValue === false) {
 						passwordsMatch = true;
@@ -113,10 +122,13 @@
 					cmp.set("v.limitClass", "igcp-text__error igcp-utils__font-size--x-small");
 					cmp.set("v.upperClass", "igcp-text__error igcp-utils__font-size--x-small");
 					cmp.set("v.charClass", "igcp-text__error igcp-utils__font-size--x-small");
+
+					cmp.set("v.inputHasErrors", true);
 				} else {
 
 					if (minLength === true) {
 						cmp.set("v.limitClass", "igcp-text__error igcp-utils__font-size--x-small");
+						cmp.set("v.inputHasErrors", true);
 					}
 
 					if (minLength === false) {
@@ -125,12 +137,14 @@
 
 					if (hasUppercase === false) {
 						cmp.set("v.upperClass", "igcp-text__error igcp-utils__font-size--x-small");
+						cmp.set("v.inputHasErrors", true);
 					} else {
 						cmp.set("v.upperClass", "igcp-text__success igcp-utils__font-size--x-small");
 					}
 
 					if (hasSpecialChar === false && hasNumber === false) {
 						cmp.set("v.charClass", "igcp-text__error igcp-utils__font-size--x-small");
+						cmp.set("v.inputHasErrors", true);
 					} else {
 						cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");
 					}
@@ -141,10 +155,11 @@
 							confirmPasswordInput.set("v.errors", [{
 								"message": msg
 							}]);
+							hlpr.setConfirmationErrorStyle(cmp);
 						});
 					} else {
 						confirmPasswordInput.set("v.errors", []);
-						cmp.set("v.confirmationLabelClass", "slds-form-element__label input-label");
+						hlpr.setConfirmationValidStyle(cmp);
 					}
 				}
 			}
@@ -166,17 +181,13 @@
 			"value": cmp.get("v.passcode")
 		});
 
-		if(cmp.get("v.hasErrors") === true) {
-			//show title and border in red
-			cmp.set("v.inputClass", "igcp-input igcp-input__password igcp-input__password--error slds-form-element__control slds-input-has-icon slds-input-has-icon--right");
-			cmp.set("v.labelClass", "igcp-input__label--error slds-form-element__label input-label");
+		if(cmp.get("v.inputHasErrors") === true) {
+			hlpr.setErrorStyle(cmp);
 		} else {
-			cmp.set("v.inputClass", "igcp-input igcp-input__password slds-form-element__control slds-input-has-icon slds-input-has-icon--right");
-			cmp.set("v.labelClass", "slds-form-element__label input-label");
+			hlpr.setValidStyle(cmp);
 		}
 	},
 	onConfirmationBlur: function (cmp, evt, hlpr) {
-
 		var events = cmp.find("CP_Events");
 		events.fire("CP_Evt_Input_Blur", {
 			"id": cmp.get("v.id"),
@@ -184,13 +195,6 @@
 			"value": cmp.get("v.passcode"),
 			"confirmValue": cmp.get("v.passcodeConfirm")
 		});
-
-		if(cmp.get("v.hasErrors") === true) {
-			//show title and border in red
-			cmp.set("v.confirmationLabelClass", "igcp-input__label--error slds-form-element__label input-label");
-		} else {
-			cmp.set("v.confirmationLabelClass", "slds-form-element__label input-label");
-		}
 	},
 	onFocus: function (cmp, evt, hlpr) {
 		//console.info(cmp.get("v.id") + " has focus.");
