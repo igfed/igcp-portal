@@ -46,5 +46,8 @@
 				"checked": false
 			});
 		}
+	},
+	onInputFocus: function(cmp, evt, hlpr) {
+		//console.info(cmp.get("v.id") + " has focus.");
 	}
 })

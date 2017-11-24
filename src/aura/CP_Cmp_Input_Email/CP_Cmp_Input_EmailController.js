@@ -8,14 +8,6 @@
 			console.error("CP_Cmp_Input_Text: Input needs to be associated with a 'form'.")
 		}
 	},
-	doneRendering: function (cmp, evt, hlpr) {
-		if (cmp.get("v.renderComplete") === false) {
-			if (cmp.get("v.hasFocus") === true) {
-				cmp.find("text-input").getElement().focus();
-			}
-			cmp.set("v.renderComplete", true);
-		}
-	},
 	onGetValue: function (cmp, evt, hlpr) {
 
 		var
@@ -49,6 +41,10 @@
 				field = cmp.find("text-input"),
 				confirmField = cmp.find("text-confirm-input");
 
+			cmp.set("v.hasErrors", false);
+			//Used to set the label red on the confirmation field
+			cmp.set("v.hasConfirmErrors", false);
+
 			field.set("v.errors", []);
 			confirmField.set("v.errors", []);
 
@@ -63,8 +59,7 @@
 			payload = evt.getParam("payload"),
 			errors = payload.errors,
 			errorArr = [],
-			confirmErrorArr = [],
-			field;
+			confirmErrorArr = [];
 
 		if (cmp.get("v.id") === payload.id) {
 
@@ -78,8 +73,11 @@
 			if (errors.length > 0) {
 				errors.forEach(function (item, i) {
 					if (item.type === "emailsMatch") {
+						//Used to set the label red
+						cmp.set("v.hasConfirmErrors", true);
 						confirmErrorArr.push({ message: item.msg });
 					} else {
+						cmp.set("v.hasErrors", true);
 						errorArr.push({ message: item.msg });
 					}
 				});
@@ -97,33 +95,50 @@
 		var events = cmp.find("CP_Events");
 		events.fire("CP_Evt_Input_Blur", {
 			"id": cmp.get("v.id"),
-			"type": cmp.get("v.type"),
+			"type": "email",
 			"value": cmp.get("v.inputValue") === undefined ? "" : cmp.get("v.inputValue")
 		});
+
+		if(cmp.get("v.hasErrors") === true) {
+			//show title and border in red
+			cmp.set("v.labelClass", "igcp-input__label--error slds-form-element__label input-label");
+		} else {
+			cmp.set("v.labelClass", "slds-form-element__label input-label");
+		}
 	},
 	onConfirmationBlur: function(cmp, evt, hlpr) {
 		var events = cmp.find("CP_Events");
 		events.fire("CP_Evt_Input_Blur", {
 			"id": cmp.get("v.id"),
-			"type": cmp.get("v.type"),
+			"type": "email-confirm",
 			"value": cmp.get("v.inputValue") === undefined ? "" : cmp.get("v.inputValue"),
 			"confirmValue": cmp.get("v.inputValueConfirm")
 		});
+
+		if(cmp.get("v.hasConfirmErrors") === true) {
+			//show title and border in red
+			cmp.set("v.confirmationLabelClass", "igcp-input__label--error slds-form-element__label input-label");
+		} else {
+			cmp.set("v.confirmationLabelClass", "slds-form-element__label input-label");
+		}
 	},
 	onFocus: function (cmp, evt, hlpr) {
-		console.info(cmp.get("v.id") + " has focus.");
+		//console.info(cmp.get("v.id") + " has focus.");
 		cmp.find('CP_Events').fire(
 			"CP_Evt_Input_Focus", {
 				"id": cmp.get("v.id")
 			});
 	},
 	onConfirmationFocus: function (cmp, evt, hlpr) {
-		console.info(cmp.get("v.id") + " confirmation field has focus.");
+		//console.info(cmp.get("v.id") + " confirmation field has focus.");
 		cmp.find('CP_Events').fire(
 			"CP_Evt_Input_Focus", {
 				"id": cmp.get("v.id"),
 				"type": "confirmation"
 		});
+	},
+	onInputFocus: function(cmp, evt, hlpr) {
+		//console.info(cmp.get("v.id") + " has focus.");
 	},
 	onLabelClick: function (cmp, evt, hlpr) {
 		try {

@@ -33,7 +33,7 @@
 		return /^\w+$/i.test(value);
 	},
 	alphanumericSpecial: function (value) {
-		return /^[-@./+\w\s]*$/i.test(value);
+		return /^[-@.\w\s]*$/i.test(value);
 	},
 	hasUppercase: function (value) {
 		return /[A-Z]/.test(value);
@@ -50,9 +50,27 @@
 	hasSpecialChar: function (value) {
 		return /[^a-z\d]+/i.test(value);
 	},
+	hasCharacter: function(value, character) {
+		var 
+			returnObj = { "detected" : false }, 
+			regEx = new RegExp('\\' + character, 'g'), 
+			test = value.match(regEx);
+        if(test !== null) {
+			returnObj["index"] = value.indexOf(character.toString());
+            returnObj["detected"] = true;
+        }
+        return returnObj;
+	},
 	isPhone: function (value) {
+		// console.info("IS PHONE");
+		// console.info(value);
 		value = value.replace(/\s+/g, "");
 		return /^(\+?1-?)?(\([2-9]([02-9]\d|1[02-9])\)|[2-9]([02-9]\d|1[02-9]))-?[2-9]([02-9]\d|1[02-9])-?\d{4}$/.test(value);
+	},
+	isInternationalPhone: function(value) {
+		// console.info("IS INTERNATIONAL PHONE");
+		// console.info(value);
+		return /^\+(?:[0-9]●?){6,14}[0-9]$/.test(value);
 	},
 	hasValidPostalCode: function (value) {
 
@@ -67,7 +85,6 @@
 	},
 	checkForErrors: function (valObj) {
 		var
-			isValid = false,
 			errors = [],
 			key;
 
@@ -88,7 +105,6 @@
 	},
 	validateUsername: function (params, callBack, cmp, hlpr) {
 		var
-			isValid = false,
 			errors = [],
 			errorCheckObj = {},
 			value = params.value,
@@ -175,7 +191,6 @@
 	validatePasswordConfirm: function (params, callBack, cmp, hlpr) {
 
 		var
-			value = params.value,
 			id = params.id,
 			errors = [],
 			errorCheckObj = {};
@@ -236,9 +251,7 @@
 			errors = [],
 			errorCheckObj = {},
 			minLength = hlpr.min(value.length, 5),
-			numbersOnly = hlpr.hasNumberOnly(value),
-			hasValidZipcode,
-			hasValidPostalCode;
+			numbersOnly = hlpr.hasNumberOnly(value);
 
 		errorCheckObj["minLength"] = minLength;
 
@@ -355,7 +368,6 @@
 			}
 		});
 
-
 		callBack({
 			"id": id,
 			"isValid": hlpr.isValid(errors),
@@ -407,7 +419,18 @@
 			errors = [],
 			errorCheckObj = {},
 			isEmpty = value.length === 0 ? true : false,
+			isPhone = false,
+			hasPlus = hlpr.hasCharacter(value, "+");
+
+		if (value.length <= 14 && hasPlus.detected === false) {
+			//Phone number is North American
 			isPhone = hlpr.isPhone(value);
+		} else if(value.length <= 14 && (hasPlus.detected === true && hasPlus.index === 0) || value.length > 14) {
+			//International Phone Number
+			isPhone = hlpr.isInternationalPhone(value);
+		} else {
+			console.warn("CP_Validation: validatePhone: unable to recognize number: " + value);
+		}
 
 		if (isEmpty !== true) {
 			errorCheckObj["isPhone"] = isPhone;

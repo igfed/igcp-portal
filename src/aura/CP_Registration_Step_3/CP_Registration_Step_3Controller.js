@@ -148,8 +148,14 @@
 			"StepThree",
 			cmp,
 			function (success) {
+				console.info("CP_Registration_Step_3: submitForm: SUCCESS");
+				console.log(success);
 				hlpr.hideLoading(cmp);
-				window._aa.track('register-complete', '{"component": {"name": "CP_Registration_Step_3Controller"}}');
+				try {
+					window._aa.track('register-complete', '{"component": {"name": "CP_Registration_Step_3Controller"}}');
+				} catch(err) {
+					console.error(err);
+				}
 				cmp.onNextStep();
 			},
 			function (error) {

@@ -42,6 +42,7 @@
 	<aura:handler event="c:CP_Evt_Start" action="{!c.onStartRegistration}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Next_Step" action="{!c.onNextStep}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Back_Step" action="{!c.onBackStep}"></aura:handler>
+	<aura:handler event="c:CP_Evt_Cancel" action="{!c.onCancel}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Error_Locked_Out" action="{!c.onLockedOut}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Error_Not_Completed" action="{!c.onNotCompleted}"></aura:handler>
 	

@@ -75,16 +75,16 @@
 				<c:CP_Cmp_Input_Username id="username-input" form="{!v.pageId}" hasFocus="true" label="{!$Label.c.CP_Generic_Label_Username}" maxLength="32" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 				
 				<!-- PASSWORD -->
-				<c:CP_Cmp_Input_Password id="password-input" form="{!v.pageId}" type="password" confirmPassword="true" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Password}" />
+				<c:CP_Cmp_Input_Password id="password-input" form="{!v.pageId}" type="password" confirmPassword="true" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 				
 				<!-- EMAIL -->
-				<c:CP_Cmp_Input_Email id="email-input" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Email}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Email}"/>
+				<c:CP_Cmp_Input_Email id="email-input" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Email}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Email_Address}"/>
 				
 				<!-- NEWS OPT IN  -->
 				<c:CP_Cmp_Input_Checkbox id="news-offers-opt" form="{!v.pageId}" class="slds-size_12-of-12 slds-large-size_9-of-12" copy="{!$Label.c.CP_Registration_Step_2_Opt_In}" />
 				
 				<!-- PHONE -->
-				<c:CP_Cmp_Input_Text id="phone-input" form="{!v.pageId}" type="phone" label="{!$Label.c.CP_Generic_Label_Phone}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Phone}" />
+				<c:CP_Cmp_Input_Text id="phone-input" form="{!v.pageId}" type="phone" label="{!$Label.c.CP_Generic_Label_Phone}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Phone}" maxLength="20" />
 				
 				<!-- SECURITY QUESTIONS -->
 				<c:CP_Registration_Security_Questions securityQuestion1="{!v.securityQuestion1}" 
@@ -92,7 +92,7 @@
 					securityQuestion3="{!v.securityQuestion3}" 
 					form="{!v.pageId}" 
 					lang="{!v.lang}"
-					tooltip="{!$Label.c.CP_Tooltip_Security}"/>
+					tooltip="{!$Label.c.CP_Tooltip_Security_Question}"/>
 				
 				<div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 				

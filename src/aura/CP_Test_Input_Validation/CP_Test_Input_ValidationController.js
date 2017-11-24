@@ -22,5 +22,8 @@
 				});
 			}
 		});
+	},
+	onRadioChange: function(cmp, evt, hlpr) {
+		console.log("kjhadshjkasdkhjdsa")
 	}
 })

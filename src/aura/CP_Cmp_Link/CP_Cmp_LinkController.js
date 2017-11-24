@@ -12,6 +12,13 @@
 				"id" : modalID
 			});
 			
-		}		
+		} else {
+			events.fire(
+				"CP_Evt_Click",
+				{
+					"id" : cmp.get("v.id")
+				}	
+			);
+		}	
 	}
 })

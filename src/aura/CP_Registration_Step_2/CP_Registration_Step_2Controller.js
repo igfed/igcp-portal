@@ -40,9 +40,6 @@
 			});
 		}
 
-		console.log("Reg step 2 init");
-		console.log(cmp.get("v.securityQuestion1"));
-
 		//Answer 1
 		if (cmp.get("v.answer1") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
@@ -61,9 +58,6 @@
 			});
 		}
 
-		console.log("Reg step 2 init");
-		console.log(cmp.get("v.securityQuestion2"));
-
 		//Answer 2
 		if (cmp.get("v.answer2") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
@@ -81,9 +75,6 @@
 				"selected": cmp.get("v.securityQuestion3")
 			});
 		}
-
-		console.log("Reg step 2 init");
-		console.log(cmp.get("v.securityQuestion3"));
 
 		//Answer
 		if (cmp.get("v.answer3") !== "") {
@@ -160,12 +151,9 @@
 				}
 			});
 
-			cmp.onNextStep();
+			hlpr.showLoading(cmp);
 
-
-			// hlpr.showLoading(cmp);
-
-			// cmp.onSubmitForm();
+			cmp.onSubmitForm();
 		} else if (cmp.get("v.inputsReceived") === 11 && cmp.get("v.inputErrors") === true) {
 			utils.scrollTo("#" + cmp.get("v.errIdArr")[0]);
 			cmp.set("v.errIdArr", []);
@@ -181,9 +169,11 @@
 		services.submitForm(
 			"StepTwo",
 			cmp,
-			function(evt) {
+			function(success) {
 				hlpr.hideLoading(cmp);
 				cmp.onNextStep();
+				console.info("CP_Registration_Step_2: submitForm: SUCCESS");
+				console.log(success);
 			},
 			function(error) {
 

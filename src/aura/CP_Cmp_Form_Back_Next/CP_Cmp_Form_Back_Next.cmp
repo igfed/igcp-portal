@@ -5,6 +5,7 @@
 	<aura:attribute name="id" type="String" default="default"></aura:attribute>
 	<aura:attribute name="form" type="String" default="default"></aura:attribute>
 	<aura:attribute name="nextType" type="String" default="start"></aura:attribute>
+	<aura:attribute name="backType" type="String" default="back"></aura:attribute>
 	<aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-grid slds-wrap slds-grid--align-center slds-p-bottom--x-large slds-m-top--large slds-medium-m-top--xx-large" />
 	<aura:attribute name="backLabel" type="String" default="Back" />
 	<aura:attribute name="nextLabel" type="String" default="Next" />
@@ -23,6 +24,9 @@
 	<aura:method name="onBackStep" action="{!c.onBack}" description="Go to previous step">
 		<aura:attribute name="payload" type="Map"></aura:attribute>
 	</aura:method>
+	<aura:method name="onCancel" action="{!c.onCancel}" description="Cancel Action">
+		<aura:attribute name="payload" type="Map"></aura:attribute>
+	</aura:method>
 	<aura:method name="onStart" action="{!c.onStart}" description="Start">
 		<aura:attribute name="payload" type="Map"></aura:attribute>
 	</aura:method>
@@ -34,7 +38,14 @@
 		<!--CTAS-->
 		<div class="igcp-utils__order--2 igcp-medium-utils__order--1 slds-m-horizontal--medium slds-medium-m-horizontal--zero slds-size_12-of-12 slds-medium-size_5-of-12">
 			<!--BACK /CANCEL -->
-			<c:CP_Cmp_Button dcname="{!v.dcname1}" dctype="{!v.dctype}" id="back_button" label="{!v.backLabel}" class="igcp-button--back igcp-utils__width--100 slds-p-horizontal--medium slds-medium-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-float_none slds-medium-float_left" buttonClass="slds-button slds-button--neutral" />
+
+			<aura:if isTrue="{!v.backType == 'back'}">
+				<c:CP_Cmp_Button dcname="{!v.dcname1}" dctype="{!v.dctype}" id="back_button" label="{!v.backLabel}" class="igcp-button--back igcp-utils__width--100 slds-p-horizontal--medium slds-medium-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-float_none slds-medium-float_left" buttonClass="slds-button slds-button--neutral" />
+			</aura:if>
+
+			<aura:if isTrue="{!v.backType == 'cancel'}">
+				<c:CP_Cmp_Button dcname="{!v.dcname1}" dctype="{!v.dctype}" id="cancel_button" label="{!v.backLabel}" class="igcp-button--back igcp-utils__width--100 slds-p-horizontal--medium slds-medium-p-horizontal--zero slds-m-top--large slds-medium-m-top--zero slds-float_none slds-medium-float_left" buttonClass="slds-button slds-button--neutral" />
+			</aura:if>
 		</div>
 
 		<div class="igcp-utils__display--none igcp-medium-utils__display--flex igcp-utils__order--2 slds-size_2-of-12"></div>

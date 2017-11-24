@@ -5,12 +5,14 @@
 
 	<!-- MARKUP -->
     <div class="igcp-cta igcp-container slds-p-around--medium slds-m-bottom--zero slds-large-m-bottom--medium slds-m-right_none">
+    
         <c:CP_Cmp_Card 
             image="{!$Resource.igcpresources + '/igcp-resources/images/overview/painting-man.png'}"
             imageAlt="An illustration of a man painting."
             title="Tax Season 2017"
             copy="Get quick access to your tax documents. Opt-in for eStatements today."
             buttonCopy="Learn More" 
-            buttonLink="#"/>
+            buttonLink="#"
+            standalone="true" />
     </div>
 </aura:component>

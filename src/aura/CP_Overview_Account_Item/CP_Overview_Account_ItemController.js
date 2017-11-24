@@ -43,8 +43,8 @@
 
 		//Mortgages
 		if (cmp.get("v.itemType") === "mortgage") {
-			if (account.product && account.loanNumber) {
-				cmp.set("v.accountName", (account.product + " - " + account.loanNumber));
+			if (account.rateType) {
+				cmp.set("v.accountName", (account.rateType));
 			} else {
 				cmp.set("v.accountName", $A.get("$Label.c.CP_Generic_Not_Available"));
 			}

@@ -73,12 +73,13 @@
 	border: none;
 }
 
-.slds-input.igcp-input.has-error.uiInput.uiInputText.uiInput--input,
-.slds-input.igcp-input.has-error.uiInput.uiInputSecret.uiInput--input {
-	border: 1px solid red;
+.slds-input.has-error.uiInput.uiInputText.uiInput--input,
+.slds-input.has-error.uiInput.uiInputSecret.uiInput--input {
+	border: 1px solid $ig-system-error;
 }
 
-.has-error.uiInputDefaultError.uiInput.uiInputText.uiInput--default.uiInput--input {
+.has-error.uiInputDefaultError.uiInput.uiInputText.uiInput--default.uiInput--input,
+.has-error.uiInputDefaultError.uiInput.uiInputText.uiInput--default.uiInput--select {
 	position: absolute;
 }
 
@@ -171,4 +172,17 @@
 .slds-notify_toast {
 	margin: 0;
 	min-width: 100%;
+}
+
+.slds-media {
+	&.slds-media__figure {
+		margin: 0;
+	}
+}
+
+//FIREFOX
+@-moz-document url-prefix() {
+	.slds-media__figure {
+		margin-right: $ig-space--small;
+	}
 }

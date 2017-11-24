@@ -1,4 +1,8 @@
 <aura:component >
+
+	<!-- INCLUDES -->
+	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Events aura:id="CP_Events" />
 	
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" />
@@ -13,13 +17,14 @@
 	<aura:attribute name="options" type="String[]"></aura:attribute>
 	<aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="type" type="String" default="selector"></aura:attribute>
+	<aura:attribute name="hasFocus" type="Boolean" default="false" />
 
-	<!-- INCLUDES -->
-	<c:CP_Utils aura:id="CP_Utils" />
-	<c:CP_Events aura:id="CP_Events" />
+	<aura:attribute name="hasErrors" type="Boolean" default="false" />
+	<aura:attribute name="labelClass" type="String" default="slds-form-element__label input-label"/>
 
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="c:CP_Evt_Input_Focus" action="{!c.onInputFocus}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Input_Selector_Change" action="{!c.onChangeReceived}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Selector_Send_Options" action="{!c.onOptionsReceived}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Set_Input_Value" action="{!c.onSetValue}"></aura:handler>
@@ -31,15 +36,15 @@
 	<div id="{!v.id}" class="{!v.class}">
 		<div class="slds-form-element">
 			<!-- LABEL -->
-			<label class="slds-form-element__label input-label" for="{!v.id}" onclick="{!c.onLabelClick}">{!v.label}</label>
+			<label class="{!v.labelClass}" for="{!v.id}" onclick="{!c.onLabelClick}">{!v.label}</label>
 
 			<!-- TOOLTIP -->
 			<aura:renderIf isTrue="{!v.tooltip}">
 				<c:CP_Cmp_Tooltip tooltip="{!v.tooltip}" />
 			</aura:renderIf>
-			<div class="slds-form-element__control">
+			<div class="igcp-input slds-form-element__control">
 				<!-- INPUT SELECT -->
-				<ui:inputSelect aura:id="selector-input" class="igcp-input igcp-input__selector" change="{!c.onChange}" value="{!v.selectedValue}" blur="{!c.onBlur}" focus="{!c.onFocus}">
+				<ui:inputSelect aura:id="selector-input" class="igcp-input__selector slds-input" change="{!c.onChange}" value="{!v.selectedValue}" blur="{!c.onBlur}" focus="{!c.onFocus}">
 
 					<aura:renderIf isTrue="{!v.currentSelectedValue == ''}"> 
 						<ui:inputSelectOption text="Select a security question" label="{!v.placeholder}" disabled="true" value="true" />
