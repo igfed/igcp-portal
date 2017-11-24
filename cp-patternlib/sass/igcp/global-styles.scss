@@ -94,7 +94,8 @@
 }
 
 .#{$namespace}-input__username--error,
-.#{$namespace}-input__password--error {
+.#{$namespace}-input__password--error,
+.#{$namespace}-input__email--error {
 
 	.slds-input.input.uiInput.uiInputText.uiInput--default.uiInput--input,
 	.slds-input.input.uiInput.uiInputSecret.uiInput--default.uiInput--input {
