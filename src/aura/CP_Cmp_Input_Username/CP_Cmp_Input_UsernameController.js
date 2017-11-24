@@ -120,11 +120,13 @@
 	onHandleKey: function(cmp, evt, hlpr) {
 
 		var events = cmp.find("CP_Events");
-		events.fire("CP_Evt_Key", {
-			"id": cmp.get("v.id"),
-			"type": cmp.get("v.type"),
-			"value": cmp.get("v.inputValue")
-		});
+		if(evt.getParams("arguments").domEvent.key !== "Tab") {
+			events.fire("CP_Evt_Key", {
+				"id": cmp.get("v.id"),
+				"type": cmp.get("v.type"),
+				"value": cmp.get("v.inputValue")
+			});
+		}
 	},
 	onBlur: function(cmp, evt, hlpr) {
 		var events = cmp.find("CP_Events");

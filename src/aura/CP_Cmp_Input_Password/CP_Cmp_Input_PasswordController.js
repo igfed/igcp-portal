@@ -48,7 +48,7 @@
 		}
 	},
 	onError: function (cmp, evt, hlpr) {
-
+		
 		var
 			utils = cmp.find("CP_Utils"),
 			payload = evt.getParam("payload"),
@@ -63,6 +63,8 @@
 			passwordsMatch = false;
 
 		if (cmp.get("v.id") === payload.id) {
+
+			console.error(payload)
 
 			console.log(cmp.get("v.passcode").toString().length);
 			console.log(cmp.get("v.passcodeConfirm").toString().length);
@@ -167,11 +169,13 @@
 	},
 	onHandleKey: function (cmp, evt, hlpr) {
 		var events = cmp.find("CP_Events");
-		events.fire("CP_Evt_Key", {
-			"id": cmp.get("v.id"),
-			"type": cmp.get("v.type"),
-			"value": cmp.get("v.passcode")
-		});
+		if(evt.getParams("arguments").domEvent.key !== "Tab") {
+			events.fire("CP_Evt_Key", {
+				"id": cmp.get("v.id"),
+				"type": cmp.get("v.type"),
+				"value": cmp.get("v.passcode")
+			});
+		}
 	},
 	onBlur: function (cmp, evt, hlpr) {
 		var events = cmp.find("CP_Events");
@@ -197,7 +201,7 @@
 		});
 	},
 	onFocus: function (cmp, evt, hlpr) {
-		//console.info(cmp.get("v.id") + " has focus.");
+		console.info(cmp.get("v.id") + " has focus.");
 		cmp.find('CP_Events').fire(
 			"CP_Evt_Input_Focus", {
 				"id": cmp.get("v.id")
