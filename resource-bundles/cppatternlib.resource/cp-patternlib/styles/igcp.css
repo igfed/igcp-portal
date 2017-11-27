@@ -185,13 +185,14 @@ table {
 .uiInput.has-error {
   border: none; }
 
+.uiInput--select.select:not([multiple]),
+.uiInput--select .select:not([multiple]) {
+  padding-right: 32px;
+  background-position-x: 106.5%; }
+
 .slds-input.has-error.uiInput.uiInputText.uiInput--input,
 .slds-input.has-error.uiInput.uiInputSecret.uiInput--input {
   border: 1px solid #D42F1A; }
-
-.has-error.uiInputDefaultError.uiInput.uiInputText.uiInput--default.uiInput--input,
-.has-error.uiInputDefaultError.uiInput.uiInputText.uiInput--default.uiInput--select {
-  position: absolute; }
 
 .slds-checkbox .slds-form-element__label.input-label {
   font-family: "WhitneyBook", Arial, sans-serif;
@@ -3564,7 +3565,9 @@ table {
 .igcp-input__username--error .slds-input.input.uiInput.uiInputText.uiInput--default.uiInput--input,
 .igcp-input__username--error .slds-input.input.uiInput.uiInputSecret.uiInput--default.uiInput--input,
 .igcp-input__password--error .slds-input.input.uiInput.uiInputText.uiInput--default.uiInput--input,
-.igcp-input__password--error .slds-input.input.uiInput.uiInputSecret.uiInput--default.uiInput--input {
+.igcp-input__password--error .slds-input.input.uiInput.uiInputSecret.uiInput--default.uiInput--input,
+.igcp-input__email--error .slds-input.input.uiInput.uiInputText.uiInput--default.uiInput--input,
+.igcp-input__email--error .slds-input.input.uiInput.uiInputSecret.uiInput--default.uiInput--input {
   border: 1px solid #D42F1A; }
 
 .igcp-input__help-link {

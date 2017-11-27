@@ -24,10 +24,6 @@
 			evtParams["type"] = cmp.get("v.type");
 			evtParams["value"] = cmp.get("v.passcode");
 
-			// if (cmp.get("v.confirmPassword") === true) {
-			// 	evtParams["confirmValue"] = cmp.get("v.passcodeConfirm");
-			// }
-
 			events.fire("CP_Evt_Send_Input_Value", evtParams);
 
 			//If confirm password fire second event

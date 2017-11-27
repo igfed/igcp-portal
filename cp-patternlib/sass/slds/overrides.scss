@@ -73,6 +73,12 @@
 	border: none;
 }
 
+.uiInput--select.select:not([multiple]), 
+.uiInput--select .select:not([multiple]) {
+	padding-right: 32px;
+	background-position-x: 106.5%;
+}
+
 .slds-input.has-error.uiInput.uiInputText.uiInput--input,
 .slds-input.has-error.uiInput.uiInputSecret.uiInput--input {
 	border: 1px solid $ig-system-error;

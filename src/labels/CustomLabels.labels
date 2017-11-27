@@ -1686,7 +1686,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Username Instruction 1</shortDescription>
-        <value>Must be 6-32 characters</value>
+        <value>Must be 6-30 characters</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Username_Instruction_2</fullName>

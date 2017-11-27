@@ -39,10 +39,9 @@
 			//Used to set the label and border red
 			cmp.set("v.hasErrors", false);
 
-			//hide error icon
-			cmp.set("v.errorIconClass", "igcp-utils__display--none slds-input__icon slds-input__icon--error");
-
 			var field = cmp.find("text-input");
+
+			hlpr.showValidStyle(cmp);
 
 			cmp.set("v.limitClass", "igcp-text__success igcp-utils__font-size--x-small");
 			cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");
@@ -66,9 +65,6 @@
 
 			//Used to set the label and border red
 			cmp.set("v.hasErrors", true);
-
-			//show error icon
-			cmp.set("v.errorIconClass", "igcp-utils__display--block slds-input__icon slds-input__icon--error");
 
 			if (errors.length > 0) {
 
@@ -94,7 +90,7 @@
 
 				if (isEmpty === true) {
 					cmp.set("v.limitClass", "igcp-text__error igcp-utils__font-size--x-small");
-					cmp.set("v.charClass", "igcp-utils__font-size--x-small");
+					cmp.set("v.charClass", "igcp-text__error igcp-utils__font-size--x-small");
 				} else {
 					if (minLength === true) {
 						cmp.set("v.limitClass", "igcp-text__error igcp-utils__font-size--x-small");
@@ -138,11 +134,9 @@
 
 		if(cmp.get("v.hasErrors") === true) {
 			//show title and border in red
-			cmp.set("v.inputClass", "igcp-input igcp-input__username igcp-input__username--error slds-form-element__control");
-			cmp.set("v.labelClass", "igcp-input__label--error slds-form-element__label input-label");
+			hlpr.showErrorStyle(cmp);
 		} else {
-			cmp.set("v.inputClass", "igcp-input igcp-input__username slds-form-element__control");
-			cmp.set("v.labelClass", "slds-form-element__label input-label");
+			hlpr.showValidStyle(cmp);
 		}
 	},
 	onFocus: function (cmp, evt, hlpr) {

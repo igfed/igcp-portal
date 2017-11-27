@@ -13,13 +13,12 @@
 	<aura:attribute name="placeholder" type="String" default="" />
 	<aura:attribute name="helpText" type="String" />
 	<aura:attribute name="helpLink" type="String" default="#" />
-	<aura:attribute name="errorIconClass" type="String" default="igcp-utils__display--none slds-input__icon slds-input__icon--error"></aura:attribute>
 	<aura:attribute name="errorText" type="String" default="This is a required field" />
 	<aura:attribute name="required" type="Boolean" default="false" />
 	<aura:attribute name="class" type="String" default="slds-form-element slds-clearfix" />
 	<aura:attribute name="tooltip" type="String" />
 	<aura:attribute name="inputValue" type="String" default=""></aura:attribute>
-	<aura:attribute name="maxLength" type="Integer" default="100"></aura:attribute>
+	<aura:attribute name="maxLength" type="Integer" default="30"></aura:attribute>
 	<aura:attribute name="limitClass" type="String" default="igcp-utils__font-size--x-small"></aura:attribute>
 	<aura:attribute name="charClass" type="String" default="igcp-utils__font-size--x-small"></aura:attribute>
 	<aura:attribute name="hasFocus" type="Boolean" default="false" />
