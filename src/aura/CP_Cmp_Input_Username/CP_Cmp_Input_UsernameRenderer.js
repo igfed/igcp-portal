@@ -9,7 +9,6 @@
 		try {
 			if (cmp.get("v.hasFocus") === true) {
 				cmp.find("text-input").getElement().focus();
-				console.log(document.activeElement);
 			}
 		} catch (err) {
 			console.error("CP_Cmp_Input_Username: render: could not set focus on input.");

@@ -15,6 +15,7 @@
 			form = cmp.get('v.form');
 
 		if (formId === form) {
+
 			cmp.find('CP_Events').fire("CP_Evt_Send_Input_Value", {
 				"id": cmp.get("v.id"),
 				"type": cmp.get("v.type"),

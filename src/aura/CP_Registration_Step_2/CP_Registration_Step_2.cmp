@@ -9,7 +9,8 @@
 	<!-- ATTRS	 -->
 	<aura:attribute name="pageId" type="String" default="registration-step-2"></aura:attribute>
 	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
-	<aura:attribute name="inputsReceived" type="Integer" default="2"></aura:attribute>
+	<aura:attribute name="inputsReceived" type="Integer" default="0"></aura:attribute>
+	<aura:attribute name="numberOfInputs" type="Integer" default="0"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="errIdArr" type="List" default="[]"></aura:attribute>
