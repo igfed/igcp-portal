@@ -11,13 +11,15 @@
 
 				cmp.set("v.inputErrors", true);
 
-				events.fire("CP_Evt_Input_Error", {
-					"id": obj.id,
-					"errors": obj.errors
-				});
-
-				if(errorCallback) {
-					errorCallback(obj.id, obj.errors);
+				if(obj.id !== "username-input" || obj.id !== "password-input") {
+					events.fire("CP_Evt_Input_Error", {
+						"id": obj.id,
+						"errors": obj.errors
+					});
+	
+					if(errorCallback) {
+						errorCallback(obj.id, obj.errors);
+					}
 				}
 			} else {
 
@@ -88,6 +90,30 @@
 			if (obj.isValid === false) {
 				events.fire("CP_Evt_Input_Error", {
 					"id": obj.id,
+					"type" : obj.type,
+					"errors": obj.errors
+				});
+
+			} else {
+				events.fire("CP_Evt_Input_Valid", {
+					"id": obj.id
+				});
+
+			}
+		});
+	},
+	validateConfirmPassword: function(cmp, payload){
+
+		var
+			validator = cmp.find('CP_Validation'),
+			events = cmp.find('CP_Events');
+
+		validator.validate(payload, function(obj) {
+
+			if (obj.isValid === false) {
+				events.fire("CP_Evt_Input_Error", {
+					"id": obj.id,
+					"type" : obj.type,
 					"errors": obj.errors
 				});
 

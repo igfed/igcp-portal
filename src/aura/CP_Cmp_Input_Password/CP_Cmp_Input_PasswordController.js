@@ -14,19 +14,31 @@
 			events = cmp.find('CP_Events'),
 			formId = evt.getParam('payload').formId,
 			form = cmp.get('v.form'),
-			evtParams = {};
+			evtParams = {},
+			confirmEvtParams = {};
 
 		if (formId === form) {
 
+			//Fire event for first input
 			evtParams["id"] = cmp.get("v.id");
 			evtParams["type"] = cmp.get("v.type");
 			evtParams["value"] = cmp.get("v.passcode");
 
-			if (cmp.get("v.confirmPassword") === true) {
-				evtParams["confirmValue"] = cmp.get("v.passcodeConfirm");
-			}
+			// if (cmp.get("v.confirmPassword") === true) {
+			// 	evtParams["confirmValue"] = cmp.get("v.passcodeConfirm");
+			// }
 
 			events.fire("CP_Evt_Send_Input_Value", evtParams);
+
+			//If confirm password fire second event
+			if (cmp.get("v.confirmPassword") === true) {
+				//fire event for confirmation input
+				confirmEvtParams["id"] = cmp.get("v.id");
+				confirmEvtParams["type"] = "password-confirm";
+				confirmEvtParams["value"] = cmp.get("v.passcode");
+				confirmEvtParams["confirmValue"] = cmp.get("v.passcodeConfirm");
+				events.fire("CP_Evt_Send_Input_Value", confirmEvtParams);
+			}
 		}
 	},
 	onValid: function (cmp, evt, hlpr) {
@@ -48,7 +60,7 @@
 		}
 	},
 	onError: function (cmp, evt, hlpr) {
-		
+
 		var
 			utils = cmp.find("CP_Utils"),
 			payload = evt.getParam("payload"),
@@ -64,18 +76,7 @@
 
 		if (cmp.get("v.id") === payload.id) {
 
-			console.error(payload)
-
-			console.log(cmp.get("v.passcode").toString().length);
-			console.log(cmp.get("v.passcodeConfirm").toString().length);
-
 			if (errors.length > 0) {
-
-				//If both fields are empty show error highlighting for both
-				if(cmp.get("v.passcode").toString().length === 0 && cmp.get("v.passcodeConfirm").toString().length === 0) {
-					hlpr.setErrorStyle(cmp);
-					hlpr.setConfirmationErrorStyle(cmp);
-				}
 
 				errors.forEach(function (err, i) {
 					errorTypeArr.push(err.type);
@@ -119,39 +120,51 @@
 					}
 				});
 
+				//HANDLE PASSWORD ERRORS
+				if (payload.type === "password") {
 
-				if (isEmpty === true) {
-					cmp.set("v.limitClass", "igcp-text__error igcp-utils__font-size--x-small");
-					cmp.set("v.upperClass", "igcp-text__error igcp-utils__font-size--x-small");
-					cmp.set("v.charClass", "igcp-text__error igcp-utils__font-size--x-small");
-
-					cmp.set("v.inputHasErrors", true);
-				} else {
-
-					if (minLength === true) {
+					if (isEmpty === true) {
 						cmp.set("v.limitClass", "igcp-text__error igcp-utils__font-size--x-small");
-						cmp.set("v.inputHasErrors", true);
-					}
-
-					if (minLength === false) {
-						cmp.set("v.limitClass", "igcp-text__success igcp-utils__font-size--x-small");
-					}
-
-					if (hasUppercase === false) {
 						cmp.set("v.upperClass", "igcp-text__error igcp-utils__font-size--x-small");
-						cmp.set("v.inputHasErrors", true);
-					} else {
-						cmp.set("v.upperClass", "igcp-text__success igcp-utils__font-size--x-small");
-					}
-
-					if (hasSpecialChar === false && hasNumber === false) {
 						cmp.set("v.charClass", "igcp-text__error igcp-utils__font-size--x-small");
+
+						//hlpr.setBothErrorStyles(cmp, hlpr);
+						hlpr.setErrorStyle(cmp);
+
 						cmp.set("v.inputHasErrors", true);
 					} else {
-						cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");
-					}
 
-					if (passwordsMatch === false) {
+						if (minLength === true) {
+							cmp.set("v.limitClass", "igcp-text__error igcp-utils__font-size--x-small");
+							cmp.set("v.inputHasErrors", true);
+						}
+
+						if (minLength === false) {
+							cmp.set("v.limitClass", "igcp-text__success igcp-utils__font-size--x-small");
+						}
+
+						if (hasUppercase === false) {
+							cmp.set("v.upperClass", "igcp-text__error igcp-utils__font-size--x-small");
+							cmp.set("v.inputHasErrors", true);
+						} else {
+							cmp.set("v.upperClass", "igcp-text__success igcp-utils__font-size--x-small");
+						}
+
+						if (hasSpecialChar === false && hasNumber === false) {
+							cmp.set("v.charClass", "igcp-text__error igcp-utils__font-size--x-small");
+							cmp.set("v.inputHasErrors", true);
+						} else {
+							cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");
+						}
+
+					}
+				} else if (payload.type === "password-confirm") {
+
+					if (passwordsMatch === false || isEmpty === true) {
+
+						if (isEmpty === true) {
+							hlpr.setConfirmationErrorStyle(cmp);
+						}
 
 						hlpr.checkForPassConfirm(errors, function (msg) {
 							confirmPasswordInput.set("v.errors", [{
@@ -164,12 +177,13 @@
 						hlpr.setConfirmationValidStyle(cmp);
 					}
 				}
+
 			}
 		}
 	},
 	onHandleKey: function (cmp, evt, hlpr) {
 		var events = cmp.find("CP_Events");
-		if(evt.getParams("arguments").domEvent.key !== "Tab") {
+		if (evt.getParams("arguments").domEvent.key !== "Tab") {
 			events.fire("CP_Evt_Key", {
 				"id": cmp.get("v.id"),
 				"type": cmp.get("v.type"),
@@ -185,7 +199,7 @@
 			"value": cmp.get("v.passcode")
 		});
 
-		if(cmp.get("v.inputHasErrors") === true) {
+		if (cmp.get("v.inputHasErrors") === true) {
 			hlpr.setErrorStyle(cmp);
 		} else {
 			hlpr.setValidStyle(cmp);
@@ -195,13 +209,13 @@
 		var events = cmp.find("CP_Events");
 		events.fire("CP_Evt_Input_Blur", {
 			"id": cmp.get("v.id"),
-			"type": cmp.get("v.type"),
+			"type": "password-confirm",
 			"value": cmp.get("v.passcode"),
 			"confirmValue": cmp.get("v.passcodeConfirm")
 		});
 	},
 	onFocus: function (cmp, evt, hlpr) {
-		console.info(cmp.get("v.id") + " has focus.");
+		//console.info(cmp.get("v.id") + " has focus.");
 		cmp.find('CP_Events').fire(
 			"CP_Evt_Input_Focus", {
 				"id": cmp.get("v.id")
@@ -248,7 +262,7 @@
 					cmp.set("v.showPassword", false);
 				}
 			}
-		} catch(err) {
+		} catch (err) {
 			console.error(err);
 		}
 	}

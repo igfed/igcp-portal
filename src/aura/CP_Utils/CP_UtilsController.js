@@ -219,9 +219,7 @@
 				obj = params.obj;
 
 				for (key in obj) {
-					if (obj.hasOwnProperty(key)) {
-						params.callback(key, obj[key]);
-					}
+					params.callback(key, obj[key]);
 				}
 
 			} else {
@@ -387,7 +385,6 @@
 						}
 					});
 			} else {
-				console.log(params.id);
 				$("html, body").animate({
 					scrollTop: $(params.id).offset().top
 				}, {

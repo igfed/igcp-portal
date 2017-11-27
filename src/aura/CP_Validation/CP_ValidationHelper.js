@@ -131,7 +131,6 @@
 	validatePassword: function (params, callBack, cmp, hlpr) {
 
 		try {
-
 			var
 				value = params.value,
 				id = params.id,
@@ -144,9 +143,7 @@
 				hasSpecialChar = hlpr.hasSpecialChar(value);
 
 			if (isEmpty === true) {
-
 				errorCheckObj["isEmpty"] = isEmpty;
-
 			} else {
 
 				errorCheckObj["minLength"] = minLength;
@@ -162,10 +159,10 @@
 					errorCheckObj["hasNumber"] = hasNumber;
 				}
 				
-				if (params.confirmValue !== undefined) {
+				// if (params.confirmValue !== undefined) {
 				
-					errorCheckObj["passwordsMatch"] = hlpr.isSame(params.value, params.confirmValue);
-				}
+				// 	errorCheckObj["passwordsMatch"] = hlpr.isSame(params.value, params.confirmValue);
+				// }
 			}
 
 			errors = hlpr.checkForErrors(errorCheckObj);
@@ -173,13 +170,12 @@
 			errors.forEach(function (item) {
 				if (item.type === "isEmpty") {
 					item["msg"] = $A.get("$Label.c.CP_Error_Empty_Field");
-				} else if (item.type === "passwordsMatch") {
-					item["msg"] = $A.get("$Label.c.CP_Error_Passwords_Match");
 				}
 			});
 
 			callBack({
 				"id": id,
+				"type" : params.type,
 				"isValid": hlpr.isValid(errors),
 				"errors": errors
 			});
@@ -191,22 +187,31 @@
 	validatePasswordConfirm: function (params, callBack, cmp, hlpr) {
 
 		var
+			value = params.confirmValue,
 			id = params.id,
+			isEmpty = value.length === 0 ? true : false,
 			errors = [],
 			errorCheckObj = {};
 
-		errorCheckObj["passwordsMatch"] = hlpr.isSame(params.value, params.confirmValue);
+		if (isEmpty === true) {
+			errorCheckObj["isEmpty"] = isEmpty;
+		} else {
+			errorCheckObj["passwordsMatch"] = hlpr.isSame(params.value, params.confirmValue);
+		}
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 
 		errors.forEach(function (item, i) {
-			if (item.type === "passwordsMatch") {
+			if (item.type === "isEmpty") {
+				item["msg"] = $A.get("$Label.c.CP_Error_Empty_Field");
+			} else if (item.type === "passwordsMatch") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Passwords_Match");
 			}
 		});
 
 		callBack({
 			"id": id,
+			"type" : params.type,
 			"isValid": hlpr.isValid(errors),
 			"errors": errors
 		});

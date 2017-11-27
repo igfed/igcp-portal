@@ -111,19 +111,28 @@
 		var
 			utils = cmp.find('CP_Utils'),
 			inputs = cmp.get("v.inputsReceived"),
+			payload = evt.getParam("payload"),
 			formattedDob = "";
 
-		hlpr.validateInput(cmp, evt.getParam("payload"), function(id){
-			var errIdArr = cmp.get("v.errIdArr");
-			errIdArr.push(id);
-			cmp.set("v.errIdArr", errIdArr);
-		});
+		//console.log(evt.getParam("payload"));
+
+		if (payload.type === "password") {
+			hlpr.validatePassword(cmp, payload);
+		} else if(payload.type === "password-confirm") {
+			hlpr.validateConfirmPassword(cmp, payload);
+		} else {
+			hlpr.validateInput(cmp, payload, function(id){
+				var errIdArr = cmp.get("v.errIdArr");
+				errIdArr.push(id);
+				cmp.set("v.errIdArr", errIdArr);
+			});
+		}
 
 		cmp.set("v.inputsReceived", (inputs += 1));
 
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
-		if (cmp.get("v.inputsReceived") === 11 && cmp.get("v.inputErrors") === false) {
+		if (cmp.get("v.inputsReceived") === 12 && cmp.get("v.inputErrors") === false) {
 
 			utils.convertToYMD(cmp.get("v.dob"), function(value) {
 				formattedDob = value;
@@ -151,16 +160,27 @@
 				}
 			});
 
-			hlpr.showLoading(cmp);
+			// hlpr.showLoading(cmp);
 
-			cmp.onSubmitForm();
-		} else if (cmp.get("v.inputsReceived") === 11 && cmp.get("v.inputErrors") === true) {
+			// cmp.onSubmitForm();
+		} else if (cmp.get("v.inputsReceived") === 12 && cmp.get("v.inputErrors") === true) {
+
 			utils.scrollTo("#" + cmp.get("v.errIdArr")[0]);
 			cmp.set("v.errIdArr", []);
 		}
 	},
 	onInputBlur: function(cmp, evt, hlpr) {
-		hlpr.validateInput(cmp, evt.getParam("payload"));
+		// console.info("onInputBlur");
+		// console.log(evt.getParam("payload"));
+		var payload = evt.getParam("payload");
+
+		if(payload.type === "password") {
+			hlpr.validatePassword(cmp, evt.getParam("payload"));
+		} else if(payload.type === "password-confirm") {
+			hlpr.validateConfirmPassword(cmp, evt.getParam("payload"));
+		} else {
+			hlpr.validateInput(cmp, evt.getParam("payload"));
+		}
 	},
 	submitForm: function(cmp, evt, hlpr) {
 

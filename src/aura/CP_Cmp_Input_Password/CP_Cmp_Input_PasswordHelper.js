@@ -1,9 +1,11 @@
 ({
 	checkForPassConfirm : function(errors, callback) {
 		errors.forEach(function(item){
-			if (item.type === "passwordsMatch") {
+			if (item.type === "isEmpty") {
 				callback(item.msg);
-			}
+			} else if (item.type === "passwordsMatch") {
+				callback(item.msg);
+			} 
 		});
 	},
 	setValidStyle: function(cmp) {
@@ -21,5 +23,11 @@
 	setConfirmationErrorStyle: function(cmp) {
 		cmp.set("v.confirmationInputClass", "igcp-input igcp-input__password--error slds-form-element__control");
 		cmp.set("v.confirmationLabelClass", "igcp-input__label--error slds-form-element__label input-label");
+	},
+	setBothErrorStyles: function(cmp, hlpr){
+		if(cmp.get("v.passcode").toString().length === 0 && cmp.get("v.passcodeConfirm").toString().length === 0) {
+			hlpr.setErrorStyle(cmp);
+			hlpr.setConfirmationErrorStyle(cmp);
+		}
 	}
 })
