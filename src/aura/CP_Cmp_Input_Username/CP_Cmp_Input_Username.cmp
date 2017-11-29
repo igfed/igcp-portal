@@ -51,7 +51,7 @@
 		</aura:renderIf>
 		
 		<!-- INPUT -->
-		<div class="{!v.inputClass}">
+		<div id="username-input-field" class="{!v.inputClass}">
 			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input" required="{!v.required}" maxlength="{!v.maxLength}" keyup="{!c.onHandleKey}" updateOn="keyup" focus="{!c.onFocus}" blur="{!c.onBlur}" />
 			
 		</div>

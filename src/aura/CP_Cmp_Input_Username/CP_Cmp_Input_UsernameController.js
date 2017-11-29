@@ -66,6 +66,10 @@
 			//Used to set the label and border red
 			cmp.set("v.hasErrors", true);
 
+			if(cmp.get("v.inputValue") === "") {
+				hlpr.showErrorStyle(cmp);
+			}
+
 			if (errors.length > 0) {
 
 				errors.forEach(function(err, i) {
@@ -135,6 +139,7 @@
 		if(cmp.get("v.hasErrors") === true) {
 			//show title and border in red
 			hlpr.showErrorStyle(cmp);
+			hlpr.showAllInstructionsErrorStyle(cmp);
 		} else {
 			hlpr.showValidStyle(cmp);
 		}
