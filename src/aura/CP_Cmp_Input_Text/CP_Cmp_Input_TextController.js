@@ -57,6 +57,7 @@
 
 			//Used to set the label
 			cmp.set("v.hasErrors", true);
+			hlpr.setErrorStyle(cmp);
 
 			if (errors.length > 0) {
 				errors.forEach(function (item, i) {
@@ -82,10 +83,9 @@
 		});
 
 		if (cmp.get("v.hasErrors") === true) {
-			//show title and border in red
-			cmp.set("v.labelClass", "igcp-utils__float--left igcp-input__label--error slds-form-element__label input-label");
+			hlpr.setErrorStyle(cmp);
 		} else {
-			cmp.set("v.labelClass", "igcp-utils__float--left slds-form-element__label input-label");
+			hlpr.setValidStyle(cmp);
 		}
 	},
 	onConfirmationBlur: function (cmp, evt, hlpr) {
@@ -98,9 +98,9 @@
 
 		if (cmp.get("v.hasErrors") === true) {
 			//show title and border in red
-			cmp.set("v.confirmationLabelClass", "igcp-utils__float--left igcp-input__label--error slds-form-element__label input-label");
+			hlpr.setConfirmationErrorStyle(cmp);
 		} else {
-			cmp.set("v.confirmationLabelClass", "igcp-utils__float--left slds-form-element__label input-label");
+			hlpr.setConfirmationValidStyle(cmp);
 		}
 	},
 	onFocus: function (cmp, evt, hlpr) {

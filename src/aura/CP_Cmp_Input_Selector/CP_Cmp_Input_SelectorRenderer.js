@@ -18,8 +18,9 @@
 		this.superAfterRender();
 		try {
 			if (cmp.get("v.hasFocus") === true) {
-				cmp.find("selector-input").getElement().focus();
-				console.log(document.activeElement);
+				cmp.find("CP_Utils").waitForJQuery(function($) {
+					$("#" + cmp.get("v.id") +  "-field .slds-input").focus();
+				});
 			}
 		} catch (err) {
 			console.error("CP_Cmp_Input_Selector: render: could not set focus on input.");

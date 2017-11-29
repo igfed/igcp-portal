@@ -62,7 +62,7 @@
 				</aura:iteration>
 			</ul>
 		</aura:renderIf>
-		<div class="{!v.inputClass}">
+		<div id="{!v.id + '-field'}" class="{!v.inputClass}">
 			<!-- INPUT -->
 			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input" required="{!v.required}" maxlength="{!v.maxLength}" keypress="{!c.onHandleKey}" keydown="{!c.onHandleKey}" keyup="{!c.onHandleKey}" blur="{!c.onBlur}" focus="{!c.onFocus}"/>
 		</div>

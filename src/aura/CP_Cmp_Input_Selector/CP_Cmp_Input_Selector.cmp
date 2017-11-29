@@ -42,7 +42,7 @@
 			<aura:renderIf isTrue="{!v.tooltip}">
 				<c:CP_Cmp_Tooltip tooltip="{!v.tooltip}" />
 			</aura:renderIf>
-			<div class="igcp-input slds-form-element__control">
+			<div id="{!v.id + '-field'}" class="igcp-input slds-form-element__control">
 				<!-- INPUT SELECT -->
 				<ui:inputSelect aura:id="selector-input" class="igcp-input__selector slds-input" change="{!c.onChange}" value="{!v.selectedValue}" blur="{!c.onBlur}" focus="{!c.onFocus}">
 
