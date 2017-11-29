@@ -1,7 +1,6 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
     <!-- INCLUDES -->
-	<c:CP_CSS_Includes />
 	<c:CP_JS_Includes />
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
