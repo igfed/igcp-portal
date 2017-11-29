@@ -9,29 +9,28 @@
 
 		try {
 			cmp.find("CP_Utils").waitForJQuery(function ($) {
-				// console.info("READY");
-				// console.log($);
 				//MAIN
-				$('.slider-for').slick({
+				$('.slider-main').slick({
 					slidesToShow: 1,
 					slidesToScroll: 1,
-					arrows: false,
-					fade: true,
+					arrows: true,
+					fade: false,
+					infinite: false,
 					asNavFor: '.slider-nav'
 				});
 
 				//NAV
 				$('.slider-nav').slick({
-					slidesToShow: 3,
+					slidesToShow: 5,
 					slidesToScroll: 1,
-					asNavFor: '.slider-for',
-					dots: true,
-					centerMode: true,
+					asNavFor: '.slider-main',
+					dots: false,
+					arrows: false,
 					focusOnSelect: true
 				});
 			});
 		} catch (err) {
-			console.error("CP_Registration_View_Sample: afterRender");
+			console.error("CP_Cmp_Carousel: afterRender");
 			console.error(err);
 		}
 	}

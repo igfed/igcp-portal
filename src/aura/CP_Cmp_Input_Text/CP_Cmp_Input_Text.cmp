@@ -15,7 +15,6 @@
 	<aura:attribute name="placeholder" type="String" default="" />
 	<aura:attribute name="helpText" type="String" />
 	<aura:attribute name="helpLink" type="String" default="#" />
-	<aura:attribute name="errorIconClass" type="String" default="igcp-utils__display--none slds-input__icon slds-input__icon--error"></aura:attribute>
 	<aura:attribute name="errorText" type="String" default="This is a required field" />
 	<aura:attribute name="required" type="Boolean" default="false" />
 	<aura:attribute name="class" type="String" default="slds-form-element slds-clearfix" />
@@ -29,9 +28,15 @@
 
 	<aura:attribute name="hasErrors" type="Boolean" default="false" />
 
-	<aura:attribute name="labelClass" type="String" default="slds-form-element__label input-label"></aura:attribute>
+	<aura:attribute name="labelClass" type="String" default="igcp-utils__float--left slds-form-element__label input-label"></aura:attribute>
 	<aura:attribute name="confirmationLabelClass" type="String" default="slds-form-element__label input-label"></aura:attribute>
 	
+
+	<aura:attribute name="modalID" type="String" default=""></aura:attribute>
+	<aura:attribute name="modalLabel" type="String" default=""></aura:attribute>
+
+
+
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="c:CP_Evt_Set_Input_Value" action="{!c.onSetValue}" />
@@ -45,12 +50,18 @@
 		<aura:renderIf isTrue="{!v.icon}">
 			<lightning:icon iconName="{!v.icon}" size="small" class="slds-m-right--xx-small" alternativeText="{!v.label}" />
 		</aura:renderIf>
+
 		<label class="{!v.labelClass}" for="text-input" onclick="{!c.onLabelClick}">{!v.label}
 			<aura:renderIf isTrue="{!v.tooltip}">
 				<c:CP_Cmp_Tooltip tooltip="{!v.tooltip}" />
 			</aura:renderIf>
 			<span>{!v.example}</span>
 		</label>
+
+		<aura:renderIf isTrue="{!v.modalID != ''}">
+			<c:CP_Cmp_Link hasChevron="false" class="igcp-medium-utils__float--right" modalID="{!v.modalID}" label="{!v.modalLabel}"/>
+		</aura:renderIf>
+
 		<aura:renderIf isTrue="{!v.instructions}">
 			<ul class="igcp-utils__bullets--disc slds-m-bottom--xx-small">
 				<aura:iteration items="{!v.instructions}" var="item">
