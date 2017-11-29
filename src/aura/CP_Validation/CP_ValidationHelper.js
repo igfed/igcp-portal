@@ -158,11 +158,6 @@
 					//Check if pass has number
 					errorCheckObj["hasNumber"] = hasNumber;
 				}
-				
-				// if (params.confirmValue !== undefined) {
-				
-				// 	errorCheckObj["passwordsMatch"] = hlpr.isSame(params.value, params.confirmValue);
-				// }
 			}
 
 			errors = hlpr.checkForErrors(errorCheckObj);
@@ -365,7 +360,7 @@
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 
-		errors.forEach(function (item, i) {
+		errors.forEach(function (item) {
 			if (item.type === "isEmpty") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Email_Empty");
 			} else if (item.type === "isEmail") {
@@ -375,36 +370,30 @@
 
 		callBack({
 			"id": id,
+			"type" : params.type,
 			"isValid": hlpr.isValid(errors),
 			"errors": errors
 		});
 	},
 	validateEmailConfirm: function (params, callBack, cmp, hlpr) {
 		var
-			value = params.value,
+			value = params.confirmValue,
 			id = params.id,
 			errors = [],
 			errorCheckObj = {},
-			isEmpty = value.length === 0 ? true : false,
-			isEmail = hlpr.isEmail(value);
+			isEmpty = value.length === 0 ? true : false;
 
 		if (isEmpty === true) {
 			errorCheckObj["isEmpty"] = isEmpty;
 		} else {
-			if (isEmail === false) {
-				errorCheckObj["isEmail"] = isEmail;
-			} else {
-				errorCheckObj["emailsMatch"] = hlpr.isSame(params.value, params.confirmValue);
-			}
+			errorCheckObj["emailsMatch"] = hlpr.isSame(params.value, params.confirmValue);
 		}
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 
 		errors.forEach(function (item, i) {
 			if (item.type === "isEmpty") {
-				item["msg"] = $A.get("$Label.c.CP_Error_Email_Empty");
-			} else if (item.type === "isEmail") {
-				item["msg"] = $A.get("$Label.c.CP_Error_Email_Invalid");
+				item["msg"] = $A.get("$Label.c.CP_Error_Empty_Field");
 			} else if (item.type === "emailsMatch") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Emails_Match");
 			}
@@ -412,6 +401,7 @@
 
 		callBack({
 			"id": id,
+			"type" : params.type,
 			"isValid": hlpr.isValid(errors),
 			"errors": errors
 		});

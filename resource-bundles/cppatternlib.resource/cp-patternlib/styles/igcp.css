@@ -185,13 +185,14 @@ table {
 .uiInput.has-error {
   border: none; }
 
+.uiInput--select.select:not([multiple]),
+.uiInput--select .select:not([multiple]) {
+  padding-right: 32px;
+  background-position-x: 106.5%; }
+
 .slds-input.has-error.uiInput.uiInputText.uiInput--input,
 .slds-input.has-error.uiInput.uiInputSecret.uiInput--input {
   border: 1px solid #D42F1A; }
-
-.has-error.uiInputDefaultError.uiInput.uiInputText.uiInput--default.uiInput--input,
-.has-error.uiInputDefaultError.uiInput.uiInputText.uiInput--default.uiInput--select {
-  position: absolute; }
 
 .slds-checkbox .slds-form-element__label.input-label {
   font-family: "WhitneyBook", Arial, sans-serif;
@@ -3564,7 +3565,9 @@ table {
 .igcp-input__username--error .slds-input.input.uiInput.uiInputText.uiInput--default.uiInput--input,
 .igcp-input__username--error .slds-input.input.uiInput.uiInputSecret.uiInput--default.uiInput--input,
 .igcp-input__password--error .slds-input.input.uiInput.uiInputText.uiInput--default.uiInput--input,
-.igcp-input__password--error .slds-input.input.uiInput.uiInputSecret.uiInput--default.uiInput--input {
+.igcp-input__password--error .slds-input.input.uiInput.uiInputSecret.uiInput--default.uiInput--input,
+.igcp-input__email--error .slds-input.input.uiInput.uiInputText.uiInput--default.uiInput--input,
+.igcp-input__email--error .slds-input.input.uiInput.uiInputSecret.uiInput--default.uiInput--input {
   border: 1px solid #D42F1A; }
 
 .igcp-input__help-link {
@@ -4150,6 +4153,92 @@ table {
 .igcp-overview .igcp-overview__mortgages .igcp-overview__table,
 .igcp-overview .igcp-overview__insurance .igcp-overview__table {
   min-height: 100px; }
+
+.igcp-carousel {
+  /* Slider */ }
+  .igcp-carousel .igcp-carousel__thumb {
+    -webkit-box-shadow: 0px 0px 0px 1px #d3d8dc;
+    /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
+    box-shadow: 0px 0px 0px 1px #d3d8dc;
+    /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */
+    margin: 4px; }
+  .igcp-carousel .slick-current {
+    -webkit-box-shadow: inset 0px 0px 0px 1px #0e75d5;
+    /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
+    box-shadow: inset 0px 0px 0px 1px #0e75d5;
+    /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */ }
+  .igcp-carousel .slick-slider {
+    position: relative;
+    display: block;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+    height: 100%;
+    margin: 0;
+    background-color: #fff; }
+  .igcp-carousel .slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0; }
+  .igcp-carousel .slick-list:focus {
+    outline: none; }
+  .igcp-carousel .slick-list.dragging {
+    cursor: pointer;
+    cursor: hand; }
+  .igcp-carousel .slick-slider .slick-track,
+  .igcp-carousel .slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  .igcp-carousel .slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block; }
+  .igcp-carousel .slick-track:before,
+  .igcp-carousel .slick-track:after {
+    display: table;
+    content: ''; }
+  .igcp-carousel .slick-track:after {
+    clear: both; }
+  .igcp-carousel .slick-loading .slick-track {
+    visibility: hidden; }
+  .igcp-carousel .slick-slide {
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px; }
+  .igcp-carousel [dir='rtl'] .slick-slide {
+    float: right; }
+  .igcp-carousel .slick-slide img {
+    display: block;
+    width: 100%; }
+  .igcp-carousel .slick-slide.slick-loading img {
+    display: none; }
+  .igcp-carousel .slick-slide.dragging img {
+    pointer-events: none; }
+  .igcp-carousel .slick-initialized .slick-slide {
+    display: block; }
+  .igcp-carousel .slick-loading .slick-slide {
+    visibility: hidden; }
+  .igcp-carousel .slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent; }
+  .igcp-carousel .slick-arrow.slick-hidden {
+    display: none; }
 
 @media (min-width: 768px) {
   .igcp-registration .igcp-registration__pfa h1 {

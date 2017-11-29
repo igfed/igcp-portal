@@ -24,10 +24,6 @@
 			evtParams["type"] = cmp.get("v.type");
 			evtParams["value"] = cmp.get("v.passcode");
 
-			// if (cmp.get("v.confirmPassword") === true) {
-			// 	evtParams["confirmValue"] = cmp.get("v.passcodeConfirm");
-			// }
-
 			events.fire("CP_Evt_Send_Input_Value", evtParams);
 
 			//If confirm password fire second event
@@ -124,13 +120,8 @@
 				if (payload.type === "password") {
 
 					if (isEmpty === true) {
-						cmp.set("v.limitClass", "igcp-text__error igcp-utils__font-size--x-small");
-						cmp.set("v.upperClass", "igcp-text__error igcp-utils__font-size--x-small");
-						cmp.set("v.charClass", "igcp-text__error igcp-utils__font-size--x-small");
-
-						//hlpr.setBothErrorStyles(cmp, hlpr);
 						hlpr.setErrorStyle(cmp);
-
+						hlpr.setAllInstructionsErrorStyle(cmp);
 						cmp.set("v.inputHasErrors", true);
 					} else {
 
@@ -172,6 +163,14 @@
 							}]);
 							hlpr.setConfirmationErrorStyle(cmp);
 						});
+
+						//check if first input is empty 
+						//if so then trigger firsst input error style as well
+						if(cmp.get("v.passcode") === "") {
+							hlpr.setErrorStyle(cmp);
+							hlpr.setAllInstructionsErrorStyle(cmp);
+						}
+
 					} else {
 						confirmPasswordInput.set("v.errors", []);
 						hlpr.setConfirmationValidStyle(cmp);

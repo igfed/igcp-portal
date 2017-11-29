@@ -4,8 +4,15 @@
 		return ret;
 	},
 	rerender: function (cmp, hlpr) {},
-	afterRender: function (component, helper) {
+	afterRender: function (cmp, hlpr) {
 		this.superAfterRender();
+
+		try {
+			cmp.set("v.numberOfInputs", document.querySelectorAll("input").length);
+		} catch (err) {
+			console.error("CP_Registration_Step_2: afterRender");
+			console.error(err);
+		}
 
 		var analytics = setInterval(function () {
 			if (window && window._aa) {

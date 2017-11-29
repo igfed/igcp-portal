@@ -9,6 +9,10 @@
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<types>
+		<members>CustomLabels</members>
+		<name>CustomLabels</name>
+	</types>
+	<types>
 		<members>*</members>
 		<name>StaticResource</name>
 	</types>

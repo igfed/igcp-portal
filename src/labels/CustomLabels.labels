@@ -1686,7 +1686,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Username Instruction 1</shortDescription>
-        <value>Must be 6-32 characters</value>
+        <value>Must be 6-30 characters</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Username_Instruction_2</fullName>
@@ -1999,6 +1999,14 @@
         <protected>false</protected>
         <shortDescription>CP Overview Total Market Value</shortDescription>
         <value>Total Market Value</value>
+    </labels>
+    <labels>
+        <fullName>CP_Registration_Where_Do_I_Find_This</fullName>
+        <categories>CP Registration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Registration Where Do I Find This</shortDescription>
+        <value>Where do I find this?</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Client_Already_Registered</fullName>

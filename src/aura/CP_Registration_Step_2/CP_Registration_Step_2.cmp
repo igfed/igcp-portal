@@ -9,7 +9,8 @@
 	<!-- ATTRS	 -->
 	<aura:attribute name="pageId" type="String" default="registration-step-2"></aura:attribute>
 	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
-	<aura:attribute name="inputsReceived" type="Integer" default="2"></aura:attribute>
+	<aura:attribute name="inputsReceived" type="Integer" default="0"></aura:attribute>
+	<aura:attribute name="numberOfInputs" type="Integer" default="0"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="errIdArr" type="List" default="[]"></aura:attribute>
@@ -72,7 +73,7 @@
 				
 				<!--FIELDS-->
 				<!-- USERNAME -->
-				<c:CP_Cmp_Input_Username id="username-input" form="{!v.pageId}" hasFocus="true" label="{!$Label.c.CP_Generic_Label_Username}" maxLength="32" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+				<c:CP_Cmp_Input_Username id="username-input" form="{!v.pageId}" hasFocus="true" label="{!$Label.c.CP_Generic_Label_Username}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 				
 				<!-- PASSWORD -->
 				<c:CP_Cmp_Input_Password id="password-input" form="{!v.pageId}" type="password" confirmPassword="true" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
