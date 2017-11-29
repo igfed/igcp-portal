@@ -10,7 +10,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <title>IBM Security Access Manager</title>
+    <title>Client Login</title>
     <link rel="shortcut icon" href="https://www.investorsgroup.com/etc/designs/investorsgroup/clientlibs/global/images/logos/favicon1.ico">
     <!-- EXTERNAL INCLUDES-->
     <link href="../../external_files/css/salesforce-lightning-design-system.min.css" type="text/css" rel="stylesheet" />
@@ -19,27 +19,37 @@
     <script type="text/javascript">
         function onLoadPage() {
             var urlObj = urlMap();
+            showusername();
             showError();
             setFocus();
             passwordToggler();
             getEnv(urlObj);
         }
 
+        function showusername() {
+            var uStorage = localStorage.getItem('usernameStorage');
+            if (uStorage && uStorage.length > 0) {
+                document.getElementById("username").value = uStorage;
+                document.getElementById("checkbox-644").checked = true;
+            }
+        }
+
         function getEnv(urlMap) {
             var url = window.location.host;
+            console.log('url', url)
             var lang = url.indexOf('groupeinvestors') > 1 ? lang = 'fr' : lang = 'en';
             var env;
-
-            if (url.indexOf('sso-fit-isam') > 1) {
+            console.log('sso-fit-indexOf', url.indexOf('sso-fit'))
+            if (url.indexOf('fit') > -1) {
                 env = 0;
-            } else if (url.indexOf('uat2-isam') > 1) {
+            } else if (url.indexOf('uat') > -1) {
                 env = 1;
-            } else if (url.indexOf('sso.investorsgroup.com') > 1 || url.indexOf('sso.groupeinvestors.com') > 1) {
+            } else if (url.indexOf('sso.investorsgroup.com') > -1 || url.indexOf('sso.groupeinvestors.com') > -1) {
                 env = 2;
             } else {
                 env = 0;
             }
-
+            console.log('env', env)
             setUrls(urlMap, lang, env);
         }
 
@@ -53,7 +63,10 @@
                 'en': 'Investors Group',
                 'fr': 'Groupe Investors'
             }
-
+            console.log('set-urls-map', map)
+            console.log('set-urls-lang', lang)
+            console.log('set-urls-env', env)
+            console.log('test', map[lang]['sfHost'][env] + map[lang]['targetUrls'][0])
             document.getElementById('forgot-username').setAttribute("href", map[lang]['sfHost'][env] + map[lang]['targetUrls'][0]); // username
             document.getElementById('forgot-password').setAttribute("href", map[lang]['sfHost'][env] + map[lang]['targetUrls'][1]); // password
             document.getElementById('registration').setAttribute("href", map[lang]['sfHost'][env] + map[lang]['targetUrls'][2]); // rego
@@ -87,6 +100,14 @@
         }
 
         function submitForm() {
+            var usernameValue = document.getElementById("username").value;
+
+            if (document.getElementById("checkbox-644").checked && usernameValue.length > 0) {
+                localStorage.setItem('usernameStorage', usernameValue);
+            } else {
+                localStorage.removeItem('usernameStorage');
+            }
+
             document.getElementById("login-form").submit();
             var username = $('input#username').val().toLowerCase();
             $('input#username').val(username);
@@ -106,17 +127,18 @@
             })
         }
 
+
         function urlMap() {
             return urlMap = {
                 "en": {
                     "sfHost": [
                         'https://portalint-portalint.cs70.force.com/customers/s/', // QA
-                        'https://staging-igstaging.cs64.force.com/customers/s/', // UAT
+                        'https://staging-igclientportal.cs97.force.com/customers/s/', // UAT
                         'https://secure.investorsgroup.com/' // PROD
                     ],
                     "isamHost": [
                         'https://sso-fit.investorsgroup.com', // QA
-                        'https://uat2-isam.investorsgroup.com', // UAT
+                        'https://sso-uat.investorsgroup.com', // UAT
                         'https://sso.investorsgroup.com' // PROD
                     ],
                     "aemHost": [
@@ -138,12 +160,12 @@
                 "fr": {
                     "sfHost": [
                         'https://portalint-portalint.cs70.force.com/clients/s/', // QA
-                        'https://staging-igstaging.cs64.force.com/clients/s/', // UAT
+                        'https://staging-igclientportal.cs97.force.com/clients/s/', // UAT
                         'https://secure.groupeinvestors.com' // PROD
                     ],
                     "isamHost": [
                         'https://sso-fit.groupeinvestors.com', // QA
-                        'https://uat2-isam.groupeinvestors.com', // UAT
+                        'https://sso-uat.groupeinvestors.com', // UAT
                         'https://sso.groupeinvestors.com' // PROD
                     ],
                     "aemHost": [
@@ -405,7 +427,9 @@
         <!-- LOGIN END -->
 
     </div>
-    <script type="text/javascript">_satellite.pageBottom();</script>
+    <script type="text/javascript">
+        _satellite.pageBottom();
+    </script>
     <script type="text/javascript" src="../../external_files/scripts/jquery-3.2.1.slim.min.js"></script>
     <script type="text/javascript" src="../../external_files/scripts/aa.js"></script>
 </body>
