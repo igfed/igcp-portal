@@ -29,6 +29,7 @@
 	<aura:handler event="c:CP_Evt_Selector_Send_Options" action="{!c.onOptionsReceived}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Set_Input_Value" action="{!c.onSetValue}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}"></aura:handler>
+	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onBlur}" />
 	<aura:handler event="c:CP_Evt_Input_Valid" action="{!c.onValid}" />
 	<aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}" />
 

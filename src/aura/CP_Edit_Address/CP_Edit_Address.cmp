@@ -1,29 +1,110 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 
     <!-- ATTRS -->
-    <aura:attribute name="pageId" type="String" default="edit-address"></aura:attribute>
-    <aura:attribute name="formData" type="Map" default="{}" />
+	<aura:attribute name="countries" type="String[]" default="[]" />
+	<aura:attribute name="formData" type="Map" default="{}" />
+	<aura:attribute name="pageId" type="String" default="edit-address" />
+	<aura:attribute name="provinces" type="String[]" default="[]" />
 	
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
-	<c:CP_Utils aura:id="CP_Utils" />
-	<c:CP_Validation aura:id="CP_Validation" />
 	<c:CP_Services aura:id="CP_Services" />
-    <c:CP_CSS_Includes />
-    <c:CP_JS_Includes />
+	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Validation aura:id="CP_Validation" />	
 
 	<!-- HANDLERS -->
     <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
-	<aura:handler name="change" value="{!v.formData}" action="{!c.onChange}"/>
-	<aura:handler event="c:CP_Evt_Complete" action="{!c.onComplete}" />
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
 
     <div class="igcp-background__tiled ">
-    test
         <div class="igcp-wrapper igcp-edit-documents slds-grid slds-wrap slds-grid--align-center slds-p-around--small slds-large-p-around--medium">
-			<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
+			<div class="igcp-utils__display--none igcp-utils__display--block"></div>
 			<div class="igcp-container slds-p-vertical--small slds-p-horizontal--large slds-m-bottom--x-small slds-large-m-bottom--medium slds-size_12-of-12 slds-medium-size_6-of-12">
-				<h1 class="slds-m-top--medium">Edit Address{!$Label.c.CP_Statement_Preference_Title}</h1>
+				<h1 class="slds-m-top--medium">Edit Client Address <!--{!$Label.c.CP_Edit_Address_Title} --></h1>
+
+				<div class="slds-grid slds-wrap">
+					<div class="slds-form slds-size_12-of-12">
+                    	
+						<!-- ADDRESS {!$Label.c.CP_Generic_Label_Text} -->
+			    		<c:CP_Cmp_Input_Text 
+							aura:id="address-input" 
+							id="address-input" 
+							inputValue="{!v.formData.address}" 
+							form="{!v.pageId}" 
+							type="text" 
+							label="Street Address" 
+							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
+						/>
+						<!-- CITY -->
+						<c:CP_Cmp_Input_Text 
+							aura:id="city-input" 
+							id="city-input" 
+							inputValue="{!v.formData.city}" 
+							form="{!v.pageId}" 
+							type="text" 
+							label="City" 
+							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
+						/>
+						<!-- PROVINCE -->
+						<c:CP_Cmp_Input_Selector
+							aura:id="province-selector" 
+							id="province-selector"
+							form="{!v.form}" 
+							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
+							label="Province/State" 
+							placeholder=""
+							options="{!v.provinces}"
+							defaultOptions="{!v.formData.province}"
+						/>
+						<!-- POSTAL/ZIP -->
+						<c:CP_Cmp_Input_Text 
+							aura:id="postal-input" 
+							id="postal-input" 
+							inputValue="{!v.formData.postal}" 
+							form="{!v.pageId}" 
+							type="text" 
+							label="Postal/Zip" 
+							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
+						/>
+						<!-- COUNTRY {!$Label.c.CP_Registration_Step_2_Security_Question_1} -->
+						<c:CP_Cmp_Input_Selector
+							aura:id="country-selector" 
+							id="country-selector"
+							form="{!v.form}" 
+							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
+							label="Country" 
+							placeholder="{!$Label.c.CP_Registration_Step_2_Security_Question_Placeholder}"
+							options="{!v.countries}"
+							defaultOptions="{!v.formData.country}" 
+							type="question"
+						/>
+
+						<!-- HOME PHONE -->
+						<c:CP_Cmp_Input_Text 
+							aura:id="phone-input" 
+							id="phone-input" 
+							inputValue="{!v.formData.phone}" 
+							form="{!v.pageId}" 
+							type="text" 
+							label="Home Phone" 
+							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
+						/>                   
+					</div>
+                </div>
+
+				<div class="slds-grid slds-wrap">
+					<!--CTAS-->
+					<c:CP_Cmp_Form_Back_Next 
+						dcname1="" 
+						dcname2=""
+						dctype="click"
+						id="{!v.pageId}"
+						backLabel="{!$Label.c.CP_Generic_Button_Cancel}"
+						nextLabel="{!$Label.c.CP_Generic_Button_Update}"
+						nextType="submit"
+						form="{!v.pageId}"
+					/>
+				</div>
             </div>
         </div>    
     </div>
