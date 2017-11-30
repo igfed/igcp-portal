@@ -52,8 +52,7 @@
 		
 		<!-- INPUT -->
 		<div id="{!v.id + '-field'}" class="{!v.inputClass}">
-			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input" required="{!v.required}" maxlength="{!v.maxLength}" keyup="{!c.onHandleKey}" updateOn="keyup" focus="{!c.onFocus}" blur="{!c.onBlur}" />
-			
+			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input" required="{!v.required}" maxlength="{!v.maxLength}" keyup="{!c.onHandleKey}" updateOn="keyup" focus="{!c.onFocus}" blur="{!c.onBlur}" />	
 		</div>
 		
 		<!-- INSTRUCTIONS -->

@@ -129,19 +129,25 @@
 		}
 	},
 	onBlur: function(cmp, evt, hlpr) {
-		var events = cmp.find("CP_Events");
-		events.fire("CP_Evt_Input_Blur", {
-			"id": cmp.get("v.id"),
-			"type": cmp.get("v.type"),
-			"value": cmp.get("v.inputValue")
-		});
+		try {
+			
+			console.log("BLUR");
+			var events = cmp.find("CP_Events");
+			events.fire("CP_Evt_Input_Blur", {
+				"id": cmp.get("v.id"),
+				"type": cmp.get("v.type"),
+				"value": cmp.get("v.inputValue")
+			});
 
-		if(cmp.get("v.hasErrors") === true) {
-			//show title and border in red
-			hlpr.showErrorStyle(cmp);
-			hlpr.showAllInstructionsErrorStyle(cmp);
-		} else {
-			hlpr.showValidStyle(cmp);
+			if (cmp.get("v.hasErrors") === true) {
+				//show title and border in red
+				hlpr.showErrorStyle(cmp);
+				hlpr.showAllInstructionsErrorStyle(cmp);
+			} else {
+				hlpr.showValidStyle(cmp);
+			}
+		} catch (err) {
+			console.error(err);
 		}
 	},
 	onFocus: function (cmp, evt, hlpr) {

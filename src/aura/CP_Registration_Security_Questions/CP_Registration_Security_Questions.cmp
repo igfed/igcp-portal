@@ -22,6 +22,7 @@
 	
 	<!-- MARKUP -->
 	<div aura:id="security-questions-container">
+	
 		<!-- MARKUP -->
 		<!-- QUESTION ONE -->
 		<c:CP_Cmp_Input_Selector id="security-1-selector" tooltip="{!v.tooltip}" form="{!v.form}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" label="{!$Label.c.CP_Registration_Step_2_Security_Question_1}" placeholder="{!$Label.c.CP_Registration_Step_2_Security_Question_Placeholder}" defaultOptions="{!v.options}" type="question"/>

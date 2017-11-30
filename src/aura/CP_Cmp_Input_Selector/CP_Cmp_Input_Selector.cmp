@@ -38,6 +38,7 @@
 			<!-- LABEL -->
 			<label class="{!v.labelClass}" for="{!v.id}" onclick="{!c.onLabelClick}">{!v.label}</label>
 
+
 			<!-- TOOLTIP -->
 			<aura:renderIf isTrue="{!v.tooltip}">
 				<c:CP_Cmp_Tooltip tooltip="{!v.tooltip}" />

@@ -163,6 +163,9 @@
 				}
 			});
 
+			console.info("PAYLOAD");
+			console.log(cmp.get("v.payload"));
+
 			hlpr.showLoading(cmp);
 
 			cmp.onSubmitForm();
@@ -173,7 +176,13 @@
 		}
 	},
 	onInputBlur: function(cmp, evt, hlpr) {
-		hlpr.validateInput(cmp, evt.getParam("payload"));
+		try {
+			console.info("BLUR");
+			console.log(evt.getParam("payload"));
+			hlpr.validateInput(cmp, evt.getParam("payload"));
+		} catch(err) {
+			console.error(err);
+		}
 	},
 	submitForm: function(cmp, evt, hlpr) {
 
@@ -242,6 +251,7 @@
 	onOptClicked: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
 		if (payload.id === "news-offers-opt") {
+			console.info(payload.checked);
 			cmp.set("v.emailOptIn", payload.checked);
 		}
 	},
