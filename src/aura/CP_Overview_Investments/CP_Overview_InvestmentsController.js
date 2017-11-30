@@ -84,7 +84,7 @@
 				if (previewObj) {
 
 					console.info("CP_Overview_Investments: getAssetMix");
-					console.log(previewObj);
+					console.log(JSON.stringify(previewObj));
 
 					var graphArr = [{
 							"label": $A.get("$Label.c.CP_Generic_Label_Cash"),

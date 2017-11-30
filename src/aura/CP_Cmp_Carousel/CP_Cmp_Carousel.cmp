@@ -5,11 +5,13 @@
 
     <!-- ATTRS -->
     <aura:attribute name="id" type="String" default=""></aura:attribute>
+    <aura:attribute name="numOfSlides" type="Integer" default="5"></aura:attribute>
+    <aura:attribute name="data" type="Map" default="{}"></aura:attribute>
 
     <!-- MARKUP -->
     <div id="{!v.id}" aura:id="{!v.id}" class="igcp-carousel">
         <!-- MAIN -->
-        <div class="slider slider-main">
+        <div class="igcp-carousel__main slider slider-main">
             <div>
                 <img src="{!$Resource.igcpresources + '/igcp-resources/images/carousel/statement-samples/large/igfs-sample.jpg'}" alt="" />
             </div>
@@ -27,29 +29,29 @@
             </div>
         </div>
         <!-- NAVIGATION -->
-        <div class="slider slider-nav">
+        <div class="igcp-carousel__nav slider slider-nav">
             <div> 
-                <div class="igcp-carousel__thumb">
+                <div class="igcp-carousel__nav--thumb">
                     <img src="{!$Resource.igcpresources + '/igcp-resources/images/carousel/statement-samples/thumbs/igfs-thumb.jpg'}" alt="" />
                 </div>
             </div>
             <div> 
-                <div class="igcp-carousel__thumb">
+                <div class="igcp-carousel__nav--thumb">
                     <img src="{!$Resource.igcpresources + '/igcp-resources/images/carousel/statement-samples/thumbs/igsi-thumb.jpg'}" alt="" />
                 </div>
             </div>
             <div> 
-                <div class="igcp-carousel__thumb">
+                <div class="igcp-carousel__nav--thumb">
                     <img src="{!$Resource.igcpresources + '/igcp-resources/images/carousel/statement-samples/thumbs/mortgage-thumb.jpg'}" alt="" />
                 </div>
             </div>
             <div> 
-                <div class="igcp-carousel__thumb">
+                <div class="igcp-carousel__nav--thumb">
                     <img src="{!$Resource.igcpresources + '/igcp-resources/images/carousel/statement-samples/thumbs/insurance-thumb.jpg'}" alt="" />
                 </div>
             </div>
             <div> 
-                <div class="igcp-carousel__thumb">
+                <div class="igcp-carousel__nav--thumb">
                     <img src="{!$Resource.igcpresources + '/igcp-resources/images/carousel/statement-samples/thumbs/iprofile-thumb.jpg'}" alt="" />
                 </div>
             </div>

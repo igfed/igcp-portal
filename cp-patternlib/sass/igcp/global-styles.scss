@@ -485,6 +485,24 @@
 	}
 }
 
+//FOUNDATION MODAL
+.#{$namespace}-modal-foundation {
+	border-radius: 3px;
+	background-clip: padding-box;
+	border: 10px solid $ig-grey;
+	
+	.#{$namespace}-modal-foundation__button--close {
+		position: relative;
+		float: right;
+		border-radius: 50px;
+		z-index: 2000;
+	}
+}
+
+.#{$namespace}-modal-foundation__overlay {
+	background-color: $ig-dark-blue--90;
+}
+
 //TOOLTIP
 .#{$namespace}-tooltip {
 	position: relative;

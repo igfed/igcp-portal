@@ -10,6 +10,7 @@
 		var payload = evt.getParam("payload");
 
 		if(payload.id === "read_and_agree_checkbox") {
+			console.log(payload);
 			cmp.set("v.userAgrees", payload.checked);			
 		}
 	},

@@ -38,8 +38,7 @@
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="c:CP_Evt_Complete" action="{!c.onRegistrationComplete}" />
 	<aura:handler event="c:CP_Evt_Click" action="{!c.onAgreeTOS}" />
-	<aura:handler event="c:CP_Evt_Input_Checkbox_Checked" action="{!c.onAgreeChecked}" />
-	<aura:handler event="c:CP_Evt_Input_Checkbox_Unchecked" action="{!c.onAgreeChecked}" />
+	<aura:handler event="c:CP_Evt_Input_Checkbox" action="{!c.onAgreeChecked}" />
 	<aura:handler event="c:CP_Evt_Modal_Open" action="{!c.onModalOpen}" />
 	<aura:handler event="c:CP_Evt_Modal_Close" action="{!c.onModalClose}" />
 	

@@ -11,8 +11,7 @@
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="c:CP_Evt_Click" action="{!c.onCancel}" />
-	<aura:handler event="c:CP_Evt_Input_Checkbox_Checked" action="{!c.onAgreeChecked}" />
-	<aura:handler event="c:CP_Evt_Input_Checkbox_Unchecked" action="{!c.onAgreeChecked}" />
+	<aura:handler event="c:CP_Evt_Input_Checkbox" action="{!c.onAgreeChecked}" />
 
 	<!-- METHOD -->
 	<aura:method name="close" action="{!c.onClose}" description="Close TOS window"></aura:method>
@@ -40,7 +39,7 @@
 
 	<div class="igcp-modal__footer slds-size_12-of-12" data-aa-component="CP_Registration_TOS">
 		<div class="igcp-modal__footer-wrapper--text">
-		<c:CP_Cmp_Input_Checkbox id="read_and_agree_checkbox" form="registration-tos-desktop-form" class="slds-size_12-of-12 slds-m-bottom--large" copy="{!$Label.c.CP_Registration_TOS_Agree}" />
+		<c:CP_Cmp_Input_Checkbox id="read_and_agree_checkbox" class="slds-size_12-of-12 slds-m-bottom--large" copy="{!$Label.c.CP_Registration_TOS_Agree}" checked="false"/>
 
 			<aura:if isTrue="{!v.userAgrees == true}">
 				<c:CP_Cmp_Button dcname="terms-accept" dctype="click" id="tos_agree_button" label="{!$Label.c.CP_Generic_Label_Agree}" class="slds-m-right_medium slds-float_left igcp-large-utils__display--block slds-x-small-size--4-of-12 slds-medium-size--2-of-12 slds-m-left_x-small" />

@@ -9,7 +9,8 @@
 		<div class="slds-size_12-of-12">
 			<button class="igcp-modal__button--close close-button" type="button" onclick="{!c.onClose}"></button>
 			<h3 class="slds-p-left--small slds-p-top--large">Investment Statement</h3>
-			<div class="igcp-carousel">
+			<c:CP_Cmp_Carousel />
+			<!-- <div class="igcp-carousel">
 				<div class="slider slider-for">
 					<div><h3>1</h3></div>
 					<div><h3>2</h3></div>
@@ -24,7 +25,7 @@
 					<div><h3>4</h3></div>
 					<div><h3>5</h3></div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </aura:component>

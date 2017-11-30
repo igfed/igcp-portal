@@ -5,21 +5,12 @@
     <aura:attribute name="checked" type="String" default="true" />
     <aura:attribute name="copy" type="String" />
     <aura:attribute name="class" type="String" default="" />
-    <!-- ToDo: Deprecate all attrs below -->
-    <aura:attribute name="form" type="String" default="default" ></aura:attribute>
-    <aura:attribute name="type" type="String" default="checkbox" ></aura:attribute>
-    <aura:attribute name="isChecked" type="Boolean" default="false" ></aura:attribute>
     
-
     <!-- INCLUDES -->
     <c:CP_Events aura:id="CP_Events" />
 
     <!-- HANDLERS -->
     <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
-
-    <!-- ToDo: Deprecate all Handlers below -->
-    <aura:handler event="c:CP_Evt_Input_Checkbox_Checked" action="{!c.onChecked}" />
-    <aura:handler event="c:CP_Evt_Input_Checkbox_Unchecked" action="{!c.onUnChecked}" />
     <aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}" />
 
     <!-- MARKUP -->
@@ -28,8 +19,8 @@
             <div class="slds-form-element__control">
                 <span class="slds-checkbox">
 
-                <input aura:id="checkbox-input" id="{!v.id}" type="checkbox" name="checkbox" checked="{!v.checked}" onchange="{!c.onchange}" />
-                <label class="slds-checkbox__label" for="{!v.id}" onclick="{!c.onCheck}">
+                <input aura:id="checkbox-input" id="{!v.id}" type="checkbox" name="checkbox" checked="{!v.checked}" onchange="{!c.onChange}" />
+                <label class="slds-checkbox__label" for="{!v.id}">
                   <span class="slds-checkbox--faux"></span>
                   <span class="slds-form-element__label input-label">{!v.copy}</span>
                 </label>

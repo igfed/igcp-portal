@@ -1,16 +1,26 @@
 .#{$namespace}-carousel {
 
-    .#{$namespace}-carousel__thumb {
-        -webkit-box-shadow:  0px 0px 0px 1px $ig-dark-grey; /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
-        box-shadow: 0px 0px 0px 1px $ig-dark-grey; /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */
-        margin: $ig-space--xxx-small;
+    .#{$namespace}-carousel__main {
+        .slick-list {
+            -webkit-box-shadow:  0px 0px 0px 1px $ig-dark-grey; /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
+            box-shadow: 0px 0px 0px 1px $ig-dark-grey; /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */
+        }
+    }
+
+    .#{$namespace}-carousel__nav {
+        
+        .#{$namespace}-carousel__nav--thumb {
+            -webkit-box-shadow:  0px 0px 0px 1px $ig-dark-grey; /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
+            box-shadow: 0px 0px 0px 1px $ig-dark-grey; /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */
+            margin: $ig-space--xxx-small;
+        }
     }   
 
     .slick-current {
         -webkit-box-shadow: inset 0px 0px 0px 1px $ig-medium-blue; /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
         box-shadow: inset 0px 0px 0px 1px $ig-medium-blue; /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */
-        // -webkit-box-shadow:  0px 0px 0px 1px rgba(red($ig-medium-blue), green($ig-medium-blue), blue($ig-medium-blue), 0.5); /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
-        // box-shadow: 0px 0px 0px 1px rgba(red($ig-medium-blue), green($ig-medium-blue), blue($ig-medium-blue), 0.5); /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */
+
+        outline: none;
     }
 
     /* Slider */
@@ -29,7 +39,6 @@
         touch-action: pan-y;
         -webkit-tap-highlight-color: transparent;
         height: 100%;
-        margin: 0;
         background-color: $ig-white;
     }
 
@@ -104,5 +113,33 @@
     }
     .slick-arrow.slick-hidden {
         display: none;
+    }
+
+    .slick-next:after {
+        content: "";
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border: none;
+        border-top: 3px solid $ig-medium-blue;
+        border-right: 3px solid $ig-medium-blue;
+        -webkit-transform-origin: top left;
+        transform-origin: top left;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .slick-prev:before {
+        content: "";
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border: none;
+        border-top: 3px solid $ig-medium-blue;
+        border-left: 3px solid $ig-medium-blue;
+        -webkit-transform-origin: top right;
+        transform-origin: top right;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
     }
 }

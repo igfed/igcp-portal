@@ -80,9 +80,6 @@
 			itemsArr = arrOne.concat(arrTwo);
 		}
 
-		console.log("ITEMS");
-		console.log(itemsArr);
-
 		events.fire("CP_Evt_Set_List", {
 			"id": cmp.get("v.pageId"),
 			"values": itemsArr

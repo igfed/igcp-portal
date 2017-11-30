@@ -62,8 +62,7 @@ p {
 body {
   font-family: "WhitneyBook", Arial, sans-serif;
   background-color: #f8f8f9;
-  color: #282828;
-  display: none; }
+  color: #282828; }
 
 a {
   color: #0e75d5;
@@ -3847,6 +3846,19 @@ table {
     margin: 0 auto;
     max-width: 600px; }
 
+.igcp-modal-foundation {
+  border-radius: 3px;
+  background-clip: padding-box;
+  border: 10px solid #e9ecee; }
+  .igcp-modal-foundation .igcp-modal-foundation__button--close {
+    position: relative;
+    float: right;
+    border-radius: 50px;
+    z-index: 2000; }
+
+.igcp-modal-foundation__overlay {
+  background-color: rgba(13, 38, 60, 0.9); }
+
 .igcp-tooltip {
   position: relative;
   display: inline-block;
@@ -4156,7 +4168,12 @@ table {
 
 .igcp-carousel {
   /* Slider */ }
-  .igcp-carousel .igcp-carousel__thumb {
+  .igcp-carousel .igcp-carousel__main .slick-list {
+    -webkit-box-shadow: 0px 0px 0px 1px #d3d8dc;
+    /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
+    box-shadow: 0px 0px 0px 1px #d3d8dc;
+    /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */ }
+  .igcp-carousel .igcp-carousel__nav .igcp-carousel__nav--thumb {
     -webkit-box-shadow: 0px 0px 0px 1px #d3d8dc;
     /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
     box-shadow: 0px 0px 0px 1px #d3d8dc;
@@ -4166,7 +4183,8 @@ table {
     -webkit-box-shadow: inset 0px 0px 0px 1px #0e75d5;
     /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
     box-shadow: inset 0px 0px 0px 1px #0e75d5;
-    /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */ }
+    /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */
+    outline: none; }
   .igcp-carousel .slick-slider {
     position: relative;
     display: block;
@@ -4182,7 +4200,6 @@ table {
     touch-action: pan-y;
     -webkit-tap-highlight-color: transparent;
     height: 100%;
-    margin: 0;
     background-color: #fff; }
   .igcp-carousel .slick-list {
     position: relative;
@@ -4239,6 +4256,30 @@ table {
     border: 1px solid transparent; }
   .igcp-carousel .slick-arrow.slick-hidden {
     display: none; }
+  .igcp-carousel .slick-next:after {
+    content: "";
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-top: 3px solid #0e75d5;
+    border-right: 3px solid #0e75d5;
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg); }
+  .igcp-carousel .slick-prev:before {
+    content: "";
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-top: 3px solid #0e75d5;
+    border-left: 3px solid #0e75d5;
+    -webkit-transform-origin: top right;
+    transform-origin: top right;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg); }
 
 @media (min-width: 768px) {
   .igcp-registration .igcp-registration__pfa h1 {
