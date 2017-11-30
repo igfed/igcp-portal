@@ -1,5 +1,13 @@
 ({
 	onInit: function (cmp, evt, hlpr) {
+		if (cmp.get("v.id") === "default") {
+			console.error("CP_Cmp_Input_Selector: A unique 'id' is required.");
+		}
+
+		if (cmp.get("v.form") === "default") {
+			console.error("CP_Cmp_Input_Selector: Input needs to be associated with a 'form'.")
+		}
+
 		cmp.set("v.options", cmp.get("v.defaultOptions"));
 	},
 	onSetValue: function (cmp, evt, hlpr) {
@@ -38,7 +46,6 @@
 					});
 				}
 			)
-
 		}
 	},
 	onGetValue: function (cmp, evt, hlpr) {
@@ -59,7 +66,6 @@
 	onChange: function (cmp, evt, hlpr) {
 
 		var
-			utils = cmp.find("CP_Utils"),
 			events = cmp.find("CP_Events"),
 			options = cmp.get("v.options"),
 			newOptions = [];
@@ -134,9 +140,9 @@
 
 		if(cmp.get("v.hasErrors") === true) {
 			//show title and border in red
-			cmp.set("v.labelClass", "igcp-input__label--error slds-form-element__label input-label");
+			hlpr.setErrorStyle(cmp);
 		} else {
-			cmp.set("v.labelClass", "slds-form-element__label input-label");
+			hlpr.setValidStyle(cmp);
 		}
 	},
 	onValid: function (cmp, evt, hlpr) {
@@ -161,6 +167,8 @@
 
 			//Used to set the label red
 			cmp.set("v.hasErrors", true);
+
+			hlpr.setErrorStyle(cmp);
 
 			if (errors.length > 0) {
 				errors.forEach(function (item, i) {

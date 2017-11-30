@@ -37,13 +37,16 @@
 	onSetValue: function (cmp, evt) {
 
 		var payload = evt.getParam("payload");
-
 		if (cmp.get("v.id") === payload.id && payload.formId === cmp.get("v.form")) {
-			cmp.set("v.inputValue", payload.value);
+			
+			if(payload.confirmValue) {
+				cmp.set("v.inputValueConfirm", payload.confirmValue);
+			} else {
+				cmp.set("v.inputValue", payload.value);
+			}
 		}
-
 	},
-	onValid: function (cmp, evt) {
+	onValid: function (cmp, evt, hlpr) {
 		if (cmp.get("v.id") === evt.getParam("payload").id) {
 			var
 				field = cmp.find("text-input"),
@@ -67,19 +70,13 @@
 		if (cmp.get("v.id") === payload.id) {
 
 			try {
-
 				var
 					field = cmp.find("text-input"),
 					confirmField = cmp.find("text-confirm-input");
 
-				console.info("EMAIL ON ERROR");
-				console.log(payload);
-
 				if (errors.length > 0) {
 					errors.forEach(function (item, i) {
 						if (payload.type === "email") {
-
-							console.info("PAYLOAD TYPE EMAIL");
 							
 							errorArr.push({
 								message: item.msg
@@ -87,7 +84,6 @@
 							field.set("v.errors", errorArr);
 							hlpr.setErrorStyle(cmp);
 						} else if (payload.type === "email-confirm") {
-							console.info("PAYLOAD TYPE EMAIL");
 							
 							confirmErrorArr.push({
 								message: item.msg
@@ -107,12 +103,18 @@
 		evt.preventDefault();
 	},
 	onBlur: function (cmp, evt, hlpr) {
-		var events = cmp.find("CP_Events");
-		events.fire("CP_Evt_Input_Blur", {
-			"id": cmp.get("v.id"),
-			"type": "email",
-			"value": cmp.get("v.inputValue") === undefined ? "" : cmp.get("v.inputValue")
-		});
+		try {
+			var events = cmp.find("CP_Events");
+			events.fire("CP_Evt_Input_Blur", {
+				"id": cmp.get("v.id"),
+				"type": "email",
+				"value": cmp.get("v.inputValue") === undefined ? "" : cmp.get("v.inputValue")
+			});
+	
+			console.log("BLUR")
+		} catch (err) {
+			console.error(err);
+		}
 	},
 	onConfirmationBlur: function (cmp, evt, hlpr) {
 		var events = cmp.find("CP_Events");

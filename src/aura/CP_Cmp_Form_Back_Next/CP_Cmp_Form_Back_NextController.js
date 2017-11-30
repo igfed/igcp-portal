@@ -15,6 +15,7 @@
 	},
 	onButtonClick: function (cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
+		
 
 		if (payload.id === "start_button") {
 			cmp.onStart();

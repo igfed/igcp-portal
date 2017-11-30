@@ -22,6 +22,15 @@
 			});
 		}
 
+		//E-mail confirm
+		if (cmp.get("v.emailConfirm") !== "") {
+			events.fire("CP_Evt_Set_Input_Value", {
+				"id": "email-input",
+				"formId": cmp.get("v.pageId"),
+				"confirmValue": cmp.get("v.emailConfirm")
+			});
+		}
+
 		//Phone
 		if (cmp.get("v.mobilePhone") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
@@ -154,9 +163,9 @@
 				}
 			});
 
-			// hlpr.showLoading(cmp);
+			hlpr.showLoading(cmp);
 
-			// cmp.onSubmitForm();
+			cmp.onSubmitForm();
 		} else if (cmp.get("v.inputsReceived") === cmp.get("v.numberOfInputs") && cmp.get("v.inputErrors") === true) {
 
 			utils.scrollTo("#" + cmp.get("v.errIdArr")[0]);
@@ -164,7 +173,11 @@
 		}
 	},
 	onInputBlur: function(cmp, evt, hlpr) {
-		hlpr.validateInput(cmp, evt.getParam("payload"));
+		try {
+			hlpr.validateInput(cmp, evt.getParam("payload"));
+		} catch(err) {
+			console.error(err);
+		}
 	},
 	submitForm: function(cmp, evt, hlpr) {
 
@@ -233,6 +246,7 @@
 	onOptClicked: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
 		if (payload.id === "news-offers-opt") {
+			console.info(payload.checked);
 			cmp.set("v.emailOptIn", payload.checked);
 		}
 	},

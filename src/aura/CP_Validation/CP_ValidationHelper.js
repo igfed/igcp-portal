@@ -158,11 +158,6 @@
 					//Check if pass has number
 					errorCheckObj["hasNumber"] = hasNumber;
 				}
-				
-				// if (params.confirmValue !== undefined) {
-				
-				// 	errorCheckObj["passwordsMatch"] = hlpr.isSame(params.value, params.confirmValue);
-				// }
 			}
 
 			errors = hlpr.checkForErrors(errorCheckObj);
@@ -208,8 +203,6 @@
 				item["msg"] = $A.get("$Label.c.CP_Error_Passwords_Match");
 			}
 		});
-
-		console.log(errors)
 
 		callBack({
 			"id": id,
@@ -359,11 +352,6 @@
 			isEmpty = value.length === 0 ? true : false,
 			isEmail = hlpr.isEmail(value);
 
-		console.info("VALIDATE EMIAL")
-		console.info(value);
-		console.log(isEmpty);
-		console.log(isEmail);
-
 		if (isEmpty === true) {
 			errorCheckObj["isEmpty"] = isEmpty;
 		} else {
@@ -380,7 +368,6 @@
 			}
 		});
 
-	
 		callBack({
 			"id": id,
 			"type" : params.type,
@@ -395,8 +382,6 @@
 			errors = [],
 			errorCheckObj = {},
 			isEmpty = value.length === 0 ? true : false;
-
-		console.info("VALIDATE EMAIL CONFIRM");
 
 		if (isEmpty === true) {
 			errorCheckObj["isEmpty"] = isEmpty;

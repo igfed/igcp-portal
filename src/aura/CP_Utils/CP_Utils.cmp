@@ -1,5 +1,11 @@
 <aura:component >
 
+	<!-- WAIT FOR JQUERY -->
+	<!-- Waits until JQuery is defined and fires a callback -->
+	<aura:method name="waitForJQuery" action="{!c.onWaitForJQuery}">
+		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+
 	<!-- CREATE COMPONENT -->
 	<!-- Creates a component dynamically -->
 	<aura:method name="createComponent" action="{!c.onCreateComponent}">

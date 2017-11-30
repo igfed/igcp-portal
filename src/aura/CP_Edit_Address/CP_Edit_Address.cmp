@@ -26,8 +26,7 @@
 					<div class="slds-form slds-size_12-of-12">
                     	
 						<!-- ADDRESS {!$Label.c.CP_Generic_Label_Text} -->
-			    		<c:CP_Cmp_Input_Text 
-							aura:id="address-input" 
+			    		<c:CP_Cmp_Input_Text aura:id="address-input" 
 							id="address-input" 
 							inputValue="{!v.formData.address}" 
 							form="{!v.pageId}" 
@@ -36,8 +35,7 @@
 							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
 						/>
 						<!-- CITY -->
-						<c:CP_Cmp_Input_Text 
-							aura:id="city-input" 
+						<c:CP_Cmp_Input_Text aura:id="city-input" 
 							id="city-input" 
 							inputValue="{!v.formData.city}" 
 							form="{!v.pageId}" 
@@ -46,8 +44,7 @@
 							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
 						/>
 						<!-- PROVINCE -->
-						<c:CP_Cmp_Input_Selector
-							aura:id="province-selector" 
+						<c:CP_Cmp_Input_Selector aura:id="province-selector" 
 							id="province-selector"
 							form="{!v.form}" 
 							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
@@ -57,8 +54,7 @@
 							defaultOptions="{!v.formData.province}"
 						/>
 						<!-- POSTAL/ZIP -->
-						<c:CP_Cmp_Input_Text 
-							aura:id="postal-input" 
+						<c:CP_Cmp_Input_Text aura:id="postal-input" 
 							id="postal-input" 
 							inputValue="{!v.formData.postal}" 
 							form="{!v.pageId}" 
@@ -67,8 +63,7 @@
 							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
 						/>
 						<!-- COUNTRY {!$Label.c.CP_Registration_Step_2_Security_Question_1} -->
-						<c:CP_Cmp_Input_Selector
-							aura:id="country-selector" 
+						<c:CP_Cmp_Input_Selector aura:id="country-selector" 
 							id="country-selector"
 							form="{!v.form}" 
 							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
@@ -80,8 +75,7 @@
 						/>
 
 						<!-- HOME PHONE -->
-						<c:CP_Cmp_Input_Text 
-							aura:id="phone-input" 
+						<c:CP_Cmp_Input_Text aura:id="phone-input" 
 							id="phone-input" 
 							inputValue="{!v.formData.phone}" 
 							form="{!v.pageId}" 
@@ -94,8 +88,7 @@
 
 				<div class="slds-grid slds-wrap">
 					<!--CTAS-->
-					<c:CP_Cmp_Form_Back_Next 
-						dcname1="" 
+					<c:CP_Cmp_Form_Back_Next dcname1="" 
 						dcname2=""
 						dctype="click"
 						id="{!v.pageId}"

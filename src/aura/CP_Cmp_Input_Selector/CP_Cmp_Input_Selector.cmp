@@ -29,13 +29,13 @@
 	<aura:handler event="c:CP_Evt_Selector_Send_Options" action="{!c.onOptionsReceived}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Set_Input_Value" action="{!c.onSetValue}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}"></aura:handler>
-	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onBlur}" />
 	<aura:handler event="c:CP_Evt_Input_Valid" action="{!c.onValid}" />
 	<aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}" />
 
 	<!-- MARKUP -->
 	<div id="{!v.id}" class="{!v.class}">
 		<div class="slds-form-element">
+		
 			<!-- LABEL -->
 			<label class="{!v.labelClass}" for="{!v.id}" onclick="{!c.onLabelClick}">{!v.label}</label>
 
@@ -43,12 +43,12 @@
 			<aura:renderIf isTrue="{!v.tooltip}">
 				<c:CP_Cmp_Tooltip tooltip="{!v.tooltip}" />
 			</aura:renderIf>
-			<div class="igcp-input slds-form-element__control">
+			<div id="{!v.id + '-field'}" class="igcp-input slds-form-element__control">
 				<!-- INPUT SELECT -->
 				<ui:inputSelect aura:id="selector-input" class="igcp-input__selector slds-input" change="{!c.onChange}" value="{!v.selectedValue}" blur="{!c.onBlur}" focus="{!c.onFocus}">
 
 					<aura:renderIf isTrue="{!v.currentSelectedValue == ''}"> 
-						<ui:inputSelectOption text="Select a security question" label="{!v.placeholder}" disabled="true" value="true" />
+						<ui:inputSelectOption text="Select a security question" label="{!v.placeholder}" disabled="true" value="true" class="slds-p-right--small"/>
 					</aura:renderIf>
 
 					<aura:iteration items="{!v.options}" var="opt" indexVar="index">
