@@ -9,51 +9,12 @@
 
 		try {
 			cmp.find("CP_Utils").waitForJQuery(function ($) {
-				//MAIN
-				$('.slider-main').slick({
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					arrows: true,
-					fade: false,
-					infinite: false,
-					asNavFor: '.slider-nav'
-				});
 
-				//NAV
-				$('.slider-nav').slick({
-					slidesToShow: 4,
-					slidesToScroll: 1,
-					asNavFor: '.slider-main',
-					dots: false,
-					arrows: false,
-					focusOnSelect: true
-				});
+				hlpr.initCarousel(cmp);
 
 				$(window).on(
 					'open.zf.reveal', function () {
-						//Destroy old slicks
-						$('.slider-main').slick("unslick");
-						$('.slider-nav').slick("unslick");
-
-						//Create new slicks
-						$('.slider-main').slick({
-							slidesToShow: 1,
-							slidesToScroll: 1,
-							arrows: true,
-							fade: false,
-							infinite: false,
-							asNavFor: '.slider-nav'
-						});
-		
-						//NAV
-						$('.slider-nav').slick({
-							slidesToShow: 4,
-							slidesToScroll: 1,
-							asNavFor: '.slider-main',
-							dots: false,
-							arrows: false,
-							focusOnSelect: true
-						});
+						hlpr.initCarousel(cmp);
 					}
 				);
 			});

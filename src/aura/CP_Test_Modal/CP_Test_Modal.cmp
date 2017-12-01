@@ -7,8 +7,14 @@
 	<c:CP_Validation aura:id="CP_Validation" />
 	<c:CP_Services aura:id="CP_Services" />
 
+    <!-- ATTRS -->
+    <aura:attribute name="data" type="Map" default="{}"></aura:attribute>
+
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+    <!-- MARKUP -->
     <div>
-        <c:CP_Cmp_Modal_Carousel id="carousel-modal"/>
+        <c:CP_Cmp_Modal_Carousel id="carousel-modal" data="{!v.data}" />
          <p><button class="button" data-open="carousel-modal">Click me for a modal</button></p>
     </div>
 

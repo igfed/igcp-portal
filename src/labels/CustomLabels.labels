@@ -1088,6 +1088,26 @@
         <shortDescription>CP_Generic_Label_Investors Group Financial Services</shortDescription>
         <value>Investors Group Financial Services</value>
     </labels>
+
+    <labels>
+        <fullName>CP_Generic_Label_Insurance</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Insurance</shortDescription>
+        <value>Insurance</value>
+    </labels>
+
+    <labels>
+        <fullName>CP_Generic_Label_iProfile</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label iProfile</shortDescription>
+        <value>iProfile</value>
+    </labels>
+
+
     <labels>
         <fullName>CP_Generic_Label_Investors_Group_Security_Inc</fullName>
         <categories>CP Generic</categories>
