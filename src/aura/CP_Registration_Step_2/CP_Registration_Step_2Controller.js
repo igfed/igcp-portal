@@ -163,9 +163,6 @@
 				}
 			});
 
-			console.info("PAYLOAD");
-			console.log(cmp.get("v.payload"));
-
 			hlpr.showLoading(cmp);
 
 			cmp.onSubmitForm();
@@ -177,8 +174,6 @@
 	},
 	onInputBlur: function(cmp, evt, hlpr) {
 		try {
-			console.info("BLUR");
-			console.log(evt.getParam("payload"));
 			hlpr.validateInput(cmp, evt.getParam("payload"));
 		} catch(err) {
 			console.error(err);

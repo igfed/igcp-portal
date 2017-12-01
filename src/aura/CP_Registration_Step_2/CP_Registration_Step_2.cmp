@@ -96,7 +96,7 @@
 
 				<div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 				
-				<c:CP_Cmp_Form_Back_Next dcname1="register-cancel" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" form="{!v.pageId}" />
+				<c:CP_Cmp_Form_Back_Next dcname1="register-cancel" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" backType="cancel" form="{!v.pageId}" />
 				
 				
 			</div>

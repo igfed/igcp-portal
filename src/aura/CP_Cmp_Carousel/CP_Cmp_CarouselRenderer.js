@@ -21,7 +21,7 @@
 
 				//NAV
 				$('.slider-nav').slick({
-					slidesToShow: 5,
+					slidesToShow: 4,
 					slidesToScroll: 1,
 					asNavFor: '.slider-main',
 					dots: false,
@@ -47,7 +47,7 @@
 		
 						//NAV
 						$('.slider-nav').slick({
-							slidesToShow: 5,
+							slidesToShow: 4,
 							slidesToScroll: 1,
 							asNavFor: '.slider-main',
 							dots: false,

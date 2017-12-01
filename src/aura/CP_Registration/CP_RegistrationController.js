@@ -36,6 +36,7 @@
 	},
 	onBackStep: function (cmp, evt, hlpr) {
 		try {
+			console.log("BACK");
 			var
 				currentStep = cmp.get("v.currentStep"),
 				backStep = currentStep -= 1;

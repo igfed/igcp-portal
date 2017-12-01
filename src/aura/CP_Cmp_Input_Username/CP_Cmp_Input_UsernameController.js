@@ -130,8 +130,6 @@
 	},
 	onBlur: function(cmp, evt, hlpr) {
 		try {
-			
-			console.log("BLUR");
 			var events = cmp.find("CP_Events");
 			events.fire("CP_Evt_Input_Blur", {
 				"id": cmp.get("v.id"),

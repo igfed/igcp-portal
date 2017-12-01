@@ -35,9 +35,9 @@
 	<!-- MARKUP -->
 	<div id="{!v.id}" class="{!v.class}">
 		<div class="slds-form-element">
+		
 			<!-- LABEL -->
 			<label class="{!v.labelClass}" for="{!v.id}" onclick="{!c.onLabelClick}">{!v.label}</label>
-
 
 			<!-- TOOLTIP -->
 			<aura:renderIf isTrue="{!v.tooltip}">

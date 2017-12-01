@@ -28,8 +28,7 @@
 
 		if (cmp.get("v.id") === evt.getParam("payload").id) {
 
-			//hide error icon
-			cmp.set("v.errorIconClass", "igcp-utils__display--none slds-input__icon slds-input__icon--error");
+			hlpr.setValidStyle(cmp);
 
 			var field = cmp.find("date-input");
 			field.set("v.errors", []);
@@ -44,10 +43,10 @@
 
 		if (cmp.get("v.id") === payload.id) {
 
-			//show error icon
-			cmp.set("v.errorIconClass", "igcp-utils__display--block slds-input__icon slds-input__icon--error");
-
 			if (errors.length > 0) {
+
+				hlpr.setErrorStyle(cmp);
+
 				errors.forEach(function (item, i) {
 					errorArr.push({
 						message: item.msg
@@ -60,44 +59,15 @@
 		}
 	},
 	onType: function (cmp, evt, hlpr) {
+		try {
+			new Cleave('.igcp-input__date', {
+				date: true,
+				datePattern: ['m', 'd', 'Y']
+			});
+		} catch(err) {
 
-		var
-			keyCode = evt.getParams("arguments").keyCode,
-			inputValue = cmp.get("v.inputValue"),
-			hasBackslash = inputValue.indexOf('/') > -1 ? true : false,
-			month = inputValue.slice(0, 2),
-			day = inputValue.slice(3, 5),
-			year = inputValue.slice(6),
-			newInputValue = "";
-
-		if (keyCode === 8) {
-			//backspace
-			newInputValue = inputValue.slice(0, inputValue.length);
-		} else if (keyCode === 191) {
-			//Remove backslash if typed
-			//as it is added automatically below
-			newInputValue = inputValue.slice(0, inputValue.length - 1);
-		} else {
-			newInputValue += month;
-
-			if (inputValue.length >= 2) {
-				newInputValue += '/';
-			}
-
-			if (inputValue.length >= 3) {
-				newInputValue += day;
-			}
-
-			if (inputValue.length >= 5) {
-				newInputValue += '/';
-			}
-
-			if (inputValue.length >= 7) {
-				newInputValue += year;
-			}
+			console.error(err)
 		}
-
-		cmp.set("v.inputValue", newInputValue);
 	},
 	onBlur: function (cmp, evt, hlpr) {
 		var events = cmp.find("CP_Events");

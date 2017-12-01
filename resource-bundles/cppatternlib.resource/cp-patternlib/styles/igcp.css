@@ -3846,18 +3846,14 @@ table {
     margin: 0 auto;
     max-width: 600px; }
 
-.igcp-modal-foundation {
-  border-radius: 3px;
-  background-clip: padding-box;
-  border: 10px solid #e9ecee; }
-  .igcp-modal-foundation .igcp-modal-foundation__button--close {
-    position: relative;
-    float: right;
-    border-radius: 50px;
-    z-index: 2000; }
+.igcp-modal-foundation .igcp-modal-foundation__button--close {
+  position: relative;
+  float: right;
+  border-radius: 50px;
+  z-index: 2000; }
 
 .igcp-modal-foundation__overlay {
-  background-color: rgba(13, 38, 60, 0.9); }
+  background-color: rgba(43, 77, 115, 0.3); }
 
 .igcp-tooltip {
   position: relative;

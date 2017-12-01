@@ -295,6 +295,7 @@
 			monthValid = false,
 			dayValid = false,
 			yearValid = false,
+			yearFormat = false,
 			errors = [],
 			errorCheckObj = {};
 
@@ -304,7 +305,8 @@
 			splitValues = value.split("/");
 			monthValid = hlpr.lessThanOrEqual(splitValues[0], 12);
 			dayValid = hlpr.lessThanOrEqual(splitValues[1], 31);
-			yearValid = hlpr.lessThanOrEqual(splitValues[2], (new Date()).getFullYear());
+			yearValid = hlpr.lessThanOrEqual(splitValues[2], (new Date()).getFullYear()),
+			yearFormat = splitValues[2].length === 4 ? true : false;
 
 			if (splitValues[1] === "") {
 				errorCheckObj["hasDay"] = false;
@@ -315,6 +317,7 @@
 				errorCheckObj["monthValid"] = monthValid;
 				errorCheckObj["dayValid"] = dayValid;
 				errorCheckObj["yearValid"] = yearValid;
+				errorCheckObj["yearFormat"] = yearFormat;
 			}
 		}
 
@@ -333,6 +336,8 @@
 				item["msg"] = $A.get("$Label.c.CP_Error_Date_No_Year");
 			} else if (item.type === "isEmpty") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Date_Empty");
+			} else if(item.type === "yearFormat") {
+				item["msg"] = "The format YYYY is required.";
 			}
 		});
 

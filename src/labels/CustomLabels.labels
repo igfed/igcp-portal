@@ -2001,14 +2001,6 @@
         <value>Total Market Value</value>
     </labels>
     <labels>
-        <fullName>CP_Registration_Where_Do_I_Find_This</fullName>
-        <categories>CP Registration</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Registration Where Do I Find This</shortDescription>
-        <value>Where do I find this?</value>
-    </labels>
-    <labels>
         <fullName>CP_Registration_Client_Already_Registered</fullName>
         <categories>CP Registration</categories>
         <language>en_US</language>
@@ -2503,6 +2495,14 @@
         <protected>false</protected>
         <shortDescription>CP Registration User Name Is Empty</shortDescription>
         <value>User Name is Required</value>
+    </labels>
+    <labels>
+        <fullName>CP_Registration_Where_Do_I_Find_This</fullName>
+        <categories>CP Registration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Registration Where Do I Find This</shortDescription>
+        <value>Where do I find this?</value>
     </labels>
     <labels>
         <fullName>CP_Statement_Preference_Global_Setting_Online</fullName>

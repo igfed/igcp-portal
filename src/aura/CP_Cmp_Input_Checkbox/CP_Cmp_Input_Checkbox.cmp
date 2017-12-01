@@ -5,6 +5,9 @@
     <aura:attribute name="checked" type="String" default="true" />
     <aura:attribute name="copy" type="String" />
     <aura:attribute name="class" type="String" default="" />
+
+    <!-- FOR SOME REASON SF WON'T LET ME PROMOTE TO QA WITHOUT THIS LINE -->
+    <aura:attribute name="form" type="String" default="" />
     
     <!-- INCLUDES -->
     <c:CP_Events aura:id="CP_Events" />
