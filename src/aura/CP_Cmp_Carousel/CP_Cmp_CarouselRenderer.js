@@ -3,7 +3,9 @@
 		var ret = this.superRender();
 		return ret;
 	},
-	rerender: function (cmp, hlpr) { },
+	rerender: function (cmp, hlpr) { 
+		console.log("re-render");
+	},
 	afterRender: function (cmp, hlpr) {
 		this.superAfterRender();
 
@@ -14,6 +16,7 @@
 
 				$(window).on(
 					'open.zf.reveal', function () {
+
 						hlpr.initCarousel(cmp);
 					}
 				);

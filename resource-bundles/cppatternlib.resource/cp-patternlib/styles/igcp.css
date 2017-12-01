@@ -2497,6 +2497,12 @@ table {
     display: -ms-flexbox;
     display: flex; }
 
+  .igcp-utils__visibility--hidden {
+    visibility: hidden; }
+
+  .igcp-utils__visibility--visible {
+    visibility: visible; }
+
   .igcp-utils__bullets--disc {
     list-style: disc; }
 
@@ -2786,6 +2792,12 @@ table {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex; }
+
+  .igcp-small-utils__visibility--hidden {
+    visibility: hidden; }
+
+  .igcp-small-utils__visibility--visible {
+    visibility: visible; }
 
   .igcp-small-utils__bullets--disc {
     list-style: disc; }
@@ -3077,6 +3089,12 @@ table {
     display: -ms-flexbox;
     display: flex; }
 
+  .igcp-medium-utils__visibility--hidden {
+    visibility: hidden; }
+
+  .igcp-medium-utils__visibility--visible {
+    visibility: visible; }
+
   .igcp-medium-utils__bullets--disc {
     list-style: disc; }
 
@@ -3366,6 +3384,12 @@ table {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex; }
+
+  .igcp-large-utils__visibility--hidden {
+    visibility: hidden; }
+
+  .igcp-large-utils__visibility--visible {
+    visibility: visible; }
 
   .igcp-large-utils__bullets--disc {
     list-style: disc; }
@@ -3846,6 +3870,9 @@ table {
     margin: 0 auto;
     max-width: 600px; }
 
+.igcp-modal-foundation.large.reveal {
+  width: 75%;
+  max-width: 75rem; }
 .igcp-modal-foundation .igcp-modal-foundation__button--close {
   position: relative;
   float: right;

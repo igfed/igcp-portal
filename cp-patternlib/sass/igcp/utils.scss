@@ -214,6 +214,15 @@
 			display: -ms-flexbox;
 			display: flex;
 		} 
+
+		//Visibility
+		.#{getNamespace($value)}-utils__visibility--hidden {
+			visibility: hidden;
+		}
+
+		.#{getNamespace($value)}-utils__visibility--visible {
+			visibility: visible;
+		}
 		
 		//Bullets
 		.#{getNamespace($value)}-utils__bullets--disc {

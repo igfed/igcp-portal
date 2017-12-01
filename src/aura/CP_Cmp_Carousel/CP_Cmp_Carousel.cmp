@@ -5,6 +5,7 @@
 
     <!-- ATTRS -->
     <aura:attribute name="id" type="String" default=""></aura:attribute>
+    <aura:attribute name="class" type="String" default="igcp-carousel igcp-utils__visibility--hidden"></aura:attribute>
     <aura:attribute name="numOfSlides" type="Integer" default="5"></aura:attribute>
     <aura:attribute name="data" type="Map" default="{}"></aura:attribute>
     <aura:attribute name="titles" type="List" default="[]"></aura:attribute>
@@ -18,7 +19,7 @@
     <aura:handler name="change" value="{!v.data}" action="{!c.onDataChange}"/>
 
     <!-- MARKUP -->
-    <div id="{!v.id}" aura:id="{!v.id}" class="igcp-carousel">
+    <div id="{!v.id}" aura:id="{!v.id}" class="{!v.class}">
         <!-- TITLES -->
         <div class="igcp-carousel__titles slider slider-titles">
             <aura:iteration items="{!v.titles}" var="item">
@@ -32,7 +33,7 @@
         <div class="{!v.mainClass}">
             <aura:iteration items="{!v.larges}" var="item">
                 <div>
-                    <img src="{!$Resource.igcpresources + '/igcp-resources/images/carousel/' + item.url}" alt="{item.alt}" />
+                    <img data-lazy="{!$Resource.igcpresources + '/igcp-resources/images/carousel/' + item.url}" alt="{!item.alt}" />
                 </div>
             </aura:iteration>
         </div>
@@ -41,7 +42,7 @@
             <aura:iteration items="{!v.larges}" var="item">
                 <div>
                     <div class="igcp-carousel__nav--thumb">
-                        <img src="{!$Resource.igcpresources + '/igcp-resources/images/carousel/' + item.url}" alt="{item.alt}" />
+                        <img data-lazy="{!$Resource.igcpresources + '/igcp-resources/images/carousel/' + item.url}" alt="{!item.alt}" />
                     </div>
                 </div>
             </aura:iteration>

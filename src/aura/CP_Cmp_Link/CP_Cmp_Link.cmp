@@ -21,7 +21,7 @@
 				<aura:if isTrue="{!v.icon != 'none'}">
 					<lightning:icon iconName="{!v.icon}" size="x-small" class="igcp-icon slds-p-right--xxx-small" />
 				</aura:if>
-				<a id="{!v.id}" href="{!v.href}" onclick="{!c.onClick}">{!v.label}</a>
+				<a id="{!v.id}" href="{!v.href}" onclick="{!c.onClick}" data-open="{!v.modalID}">{!v.label}</a>
 				<aura:if isTrue="{!v.hasChevron}">
 					<lightning:icon iconName="utility:chevronright" size="x-small" class="slds-p-left--xxx-small"/>
 				</aura:if>
@@ -31,7 +31,7 @@
 				<aura:if isTrue="{!v.icon != 'none'}">
 					<lightning:icon iconName="{!v.icon}" size="x-small" class="igcp-icon slds-p-right--xxx-small" />
 				</aura:if>
-				<a id="{!v.id}" href="{!v.href}" onclick="{!c.onClick}">{!v.label}</a>
+				<a id="{!v.id}" href="{!v.href}" onclick="{!c.onClick}" data-open="{!v.modalID}">{!v.label}</a>
 				<aura:if isTrue="{!v.hasChevron}">
 					<lightning:icon iconName="utility:chevronright" size="x-small" class="slds-p-left--xxx-small"/>
 				</aura:if>

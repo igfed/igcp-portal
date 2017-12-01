@@ -3,8 +3,6 @@
 
 		cmp.find("CP_Utils").waitForJQuery(function ($) {
 
-			cmp.set("v.mainClass", "igcp-carousel__main slider slider-main");
-
 			try {
 				//Destroy old slicks
 				$('.slider-titles').slick("unslick");
@@ -28,6 +26,7 @@
 
 				//MAIN
 				$('.slider-main').slick({
+					lazyLoad: 'progressive',
 					slidesToShow: 1,
 					slidesToScroll: 1,
 					arrows: true,
@@ -44,6 +43,7 @@
 
 				//NAV
 				$('.slider-nav').slick({
+					lazyLoad: 'progressive',
 					slidesToShow: 4,
 					slidesToScroll: 1,
 					asNavFor: '.slider-main',
@@ -54,9 +54,9 @@
 				});
 
 				
-				$('.slider-main').on("init", function(){
-					//cmp.set("v.mainClass", "igcp-carousel__main slider slider-main");
-					console.log("INIT");
+				$('.slider-main').on("lazyLoaded", function(){
+					console.log("LOADED");
+					cmp.set("v.class", "igcp-carousel");
 				});
 
 
