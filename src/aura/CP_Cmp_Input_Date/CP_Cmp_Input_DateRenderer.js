@@ -8,8 +8,8 @@
 		this.superAfterRender();
 		try {
 			if (cmp.get("v.hasFocus") === true) {
-				cmp.find("CP_Utils").waitForJQuery(function($) {
-					$("#" + cmp.get("v.id") +  "-field .slds-input").focus();
+				cmp.find("CP_Utils").waitForJQuery(function ($) {
+					$("#" + cmp.get("v.id") + "-field .slds-input").focus();
 				});
 			}
 		} catch (err) {

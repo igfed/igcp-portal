@@ -79,39 +79,47 @@
 		//GET ASSET MIX
 		services.getAssetMix(
 			cmp,
-			function (previewObj) {
+			function (previewArr) {
 
-				if (previewObj) {
+				if (previewArr) {
 
 					console.info("CP_Overview_Investments: getAssetMix");
-					console.log(JSON.stringify(previewObj));
+					console.log(previewArr);
 
-					var graphArr = [{
-							"label": $A.get("$Label.c.CP_Generic_Label_Cash"),
-							"detail": previewObj.percCashAmount
+					var graphArr = [];
 
-						},
-						{
-							"label": $A.get("$Label.c.CP_Generic_Label_Fixed_Income"),
-							"detail": previewObj.percFixedIncomeAmount
+					previewArr.forEach(function (item, i) {
+						console.log(item);
 
-						},
-						{
-							"label": $A.get("$Label.c.CP_Generic_Label_Balanced"),
-							"detail": previewObj.percBalancedAmount
+						//graphArr.push({ "label" : item.theLabel, "detail" : item.theValue });
 
-						},
-						{
-							"label": $A.get("$Label.c.CP_Generic_Label_Equity"),
-							"detail": previewObj.percEquityAmount
-
-						},
-						{
-							"label": $A.get("$Label.c.CP_Generic_Label_Specialty"),
-							"detail": previewObj.percSpecialtyAmount
-
+						if (item.theLabel === "Equity") {
+							graphArr.push({ 
+								"label": $A.get("$Label.c.CP_Generic_Label_Equity"), 
+								"detail" : item.theValue 
+							});
+						} else if (item.theLabel === "Fixed_Income") {
+							graphArr.push({ 
+								"label": $A.get("$Label.c.CP_Generic_Label_Fixed_Income"), 
+								"detail" : item.theValue 
+							});
+						} else if (item.theLabel === "Balanced") {
+							graphArr.push({ 
+								"label": $A.get("$Label.c.CP_Generic_Label_Balanced"), 
+								"detail" : item.theValue 
+							});
+						} else if (item.theLabel === "Cash") {
+							graphArr.push({ 
+								"label": $A.get("$Label.c.CP_Generic_Label_Cash"), 
+								"detail" : item.theValue 
+							});
+						} else if (item.theLabel === "Specialty") {
+							graphArr.push({ 
+								"label": $A.get("$Label.c.CP_Generic_Label_Specialty"), 
+								"detail" : item.theValue 
+							});
 						}
-					];
+					});
 
 					var events = cmp.find("CP_Events");
 					events.fire(
@@ -119,7 +127,7 @@
 							"id": "investments-asset-mix",
 							"type": "doughnut",
 							"data": graphArr,
-							"total": previewObj.percAllAmounts
+							"total": 100
 						}
 					);
 				} else {

@@ -484,7 +484,7 @@
 
 			try {
 
-				action = component.get("c.getAssetMixAggregate");
+				action = component.get("c.getAssetMixSortedList");
 
 				hlpr.setCallbackPromise(
 					params,

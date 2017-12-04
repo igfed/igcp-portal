@@ -3,57 +3,21 @@
 		var ret = this.superRender();
 		return ret;
 	},
-	rerender: function (cmp, hlpr) { },
+	rerender: function (cmp, hlpr) { 
+		console.log("re-render");
+	},
 	afterRender: function (cmp, hlpr) {
 		this.superAfterRender();
 
 		try {
 			cmp.find("CP_Utils").waitForJQuery(function ($) {
-				//MAIN
-				$('.slider-main').slick({
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					arrows: true,
-					fade: false,
-					infinite: false,
-					asNavFor: '.slider-nav'
-				});
 
-				//NAV
-				$('.slider-nav').slick({
-					slidesToShow: 5,
-					slidesToScroll: 1,
-					asNavFor: '.slider-main',
-					dots: false,
-					arrows: false,
-					focusOnSelect: true
-				});
+				hlpr.initCarousel(cmp);
 
 				$(window).on(
 					'open.zf.reveal', function () {
-						//Destroy old slicks
-						$('.slider-main').slick("unslick");
-						$('.slider-nav').slick("unslick");
 
-						//Create new slicks
-						$('.slider-main').slick({
-							slidesToShow: 1,
-							slidesToScroll: 1,
-							arrows: true,
-							fade: false,
-							infinite: false,
-							asNavFor: '.slider-nav'
-						});
-		
-						//NAV
-						$('.slider-nav').slick({
-							slidesToShow: 5,
-							slidesToScroll: 1,
-							asNavFor: '.slider-main',
-							dots: false,
-							arrows: false,
-							focusOnSelect: true
-						});
+						hlpr.initCarousel(cmp);
 					}
 				);
 			});

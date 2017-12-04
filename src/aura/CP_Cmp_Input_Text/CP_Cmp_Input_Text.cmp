@@ -70,8 +70,6 @@
 			</ul>
 		</aura:renderIf>
 		<div id="{!v.id + '-field'}" class="igcp-input slds-form-element__control">
-		
-		
 			<!-- INPUT -->
 			<ui:inputText aura:id="text-input" label="" value="{!v.inputValue}" placeholder="{!v.placeholder}" class="slds-input" required="{!v.required}" maxlength="{!v.maxLength}" keypress="{!c.onHandleKey}" keydown="{!c.onHandleKey}" keyup="{!c.onHandleKey}" focus="{!c.onFocus}" blur="{!c.onBlur}" />
 		</div>

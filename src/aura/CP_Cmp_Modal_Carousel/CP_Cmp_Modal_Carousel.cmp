@@ -1,13 +1,18 @@
 <aura:component >
     <!-- ATTRS -->
-    <aura:attribute name="id" type="String" default="default"></aura:attribute>
+    <aura:attribute name="id" type="String" default=""></aura:attribute>
 	<aura:attribute name="size" type="String" default="large"></aura:attribute>
+    <aura:attribute name="data" type="Map" default="{}"></aura:attribute>
+    <aura:attribute name="topOffset" type="String" default="0px"></aura:attribute>
+
+     <!-- HANDLERS -->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 
     <!-- MARKUP -->
-    <div aura:id="{!v.id}" id="{!v.id}" class="{!'igcp-modal-foundation ' + v.size + ' reveal'}" data-reveal="" data-additional-overlay-classes="igcp-modal-foundation__overlay">
+    <div aura:id="{!v.id}" id="{!v.id}" class="{!'igcp-modal-foundation ' + v.size + ' reveal'}" data-reveal="" data-additional-overlay-classes="igcp-modal-foundation__overlay" data-v-offset="{!v.topOffset}">
          <button class="igcp-modal-foundation__button--close close-button" data-close="" aria-label="Close modal" type="button">
             <span class="igcp-utils__display--none" aria-hidden="true">&times;</span>
         </button>
-        <c:CP_Cmp_Carousel />
+        <c:CP_Cmp_Carousel data="{!v.data}"/>
     </div>
 </aura:component>

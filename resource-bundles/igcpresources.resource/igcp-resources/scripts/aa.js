@@ -34,9 +34,6 @@ jQuery(document).ready(function () {
       window.digitalData.page.pageInfo.timezone = new Date().getTimezoneOffset() / 60;
       window.digitalData.page.category.primaryCategory = _getSiteSection();
 
-      // Only fire this in Salesforce
-      window._satellite.pageBottom();
-
       // Register click event handlers
       _registerHandlers();
     }

@@ -11,6 +11,7 @@
 	<aura:attribute name="id" type="String" default="registration"></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-utils__overflow--hidden"></aura:attribute>
 	<aura:attribute name="currentStep" type="Integer" default="0"></aura:attribute>
+	<aura:attribute name="carouselData" type="Map" default="{}"></aura:attribute>
 	
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default="" />
@@ -104,6 +105,6 @@
 			<c:CP_Registration_Not_Completed />
 		</aura:if>
 		<c:CP_Cmp_Modal id="registration-tos" />
-		<c:CP_Cmp_Modal id="view-sample" modalType="small" />
+		<c:CP_Cmp_Modal_Carousel id="view-sample" data="{!v.carouselData}" />
 	</div>
 </aura:component>
