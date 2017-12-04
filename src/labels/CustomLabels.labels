@@ -17,6 +17,14 @@
         <value>Instructions</value>
     </labels>
     <labels>
+        <fullName>CP_Account_Title_Instructions_2</fullName>
+        <categories>CP Account</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Account Title Instructions 2</shortDescription>
+        <value>Instructions</value>
+    </labels>
+    <labels>
         <fullName>CP_Account_Title_Transactions</fullName>
         <categories>CP Account</categories>
         <language>en_US</language>
@@ -49,6 +57,14 @@
         <value>Country</value>
     </labels>
     <labels>
+        <fullName>CP_Change_Personal_Country_Placeholder</fullName>
+        <categories>CP Change Personal</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Change_Personal_Country_Placeholder</shortDescription>
+        <value>Select a country</value>
+    </labels>
+    <labels>
         <fullName>CP_Change_Personal_Phone</fullName>
         <categories>CP Change Personal</categories>
         <language>en_US</language>
@@ -71,6 +87,14 @@
         <protected>false</protected>
         <shortDescription>CP_Change_Personal_Province</shortDescription>
         <value>Province/State</value>
+    </labels>
+    <labels>
+        <fullName>CP_Change_Personal_Province_Placeholder</fullName>
+        <categories>CP Change Personal</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Change_Personal_Province_Placeholder</shortDescription>
+        <value>Select a province/State</value>
     </labels>
     <labels>
         <fullName>CP_Change_Personal_Street</fullName>
@@ -215,6 +239,14 @@
         <protected>false</protected>
         <shortDescription>CP Disclaimer Overview</shortDescription>
         <value>Values shown reflect transactions appearing in transaction history. All prices and market values are based upon available information, but can vary from actual prices and market values.</value>
+    </labels>
+    <labels>
+        <fullName>CP_Edit_Address_Title</fullName>
+        <categories>CP Change Personal</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Edit_Address_Title</shortDescription>
+        <value>Edit Client Address</value>
     </labels>
     <labels>
         <fullName>CP_Error_Client_Number_Numbers_Only</fullName>
@@ -1065,6 +1097,14 @@
         <value>Holdings</value>
     </labels>
     <labels>
+        <fullName>CP_Generic_Label_Insurance</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Insurance</shortDescription>
+        <value>Insurance</value>
+    </labels>
+    <labels>
         <fullName>CP_Generic_Label_International</fullName>
         <categories>CP Generic</categories>
         <language>en_US</language>
@@ -1583,6 +1623,14 @@
         <protected>false</protected>
         <shortDescription>CP Generic Label Year To Date</shortDescription>
         <value>Year to date</value>
+    </labels>
+    <labels>
+        <fullName>CP_Generic_Label_iProfile</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label iProfile</shortDescription>
+        <value>iProfile</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Link_Learn_More</fullName>
