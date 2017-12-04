@@ -17,6 +17,14 @@
         <value>Instructions</value>
     </labels>
     <labels>
+        <fullName>CP_Account_Title_Instructions_2</fullName>
+        <categories>CP Account</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Account Title Instructions 2</shortDescription>
+        <value>Instructions</value>
+    </labels>
+    <labels>
         <fullName>CP_Account_Title_Transactions</fullName>
         <categories>CP Account</categories>
         <language>en_US</language>
@@ -49,12 +57,20 @@
         <value>Country</value>
     </labels>
     <labels>
+        <fullName>CP_Change_Personal_Country_Placeholder</fullName>
+        <categories>CP Change Personal</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Change_Personal_Country_Placeholder</shortDescription>
+        <value>Select a country</value>
+    </labels>
+    <labels>
         <fullName>CP_Change_Personal_Phone</fullName>
         <categories>CP Change Personal</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP_Change_Personal_Phone</shortDescription>
-        <value>Phone</value>
+        <value>Mobile phone (optional)</value>
     </labels>
     <labels>
         <fullName>CP_Change_Personal_Postal</fullName>
@@ -62,7 +78,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP_Change_Personal_Postal</shortDescription>
-        <value>Postal/Zip</value>
+        <value>Postal or zip code</value>
     </labels>
     <labels>
         <fullName>CP_Change_Personal_Province</fullName>
@@ -71,6 +87,14 @@
         <protected>false</protected>
         <shortDescription>CP_Change_Personal_Province</shortDescription>
         <value>Province/State</value>
+    </labels>
+    <labels>
+        <fullName>CP_Change_Personal_Province_Placeholder</fullName>
+        <categories>CP Change Personal</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Change_Personal_Province_Placeholder</shortDescription>
+        <value>Select a province/State</value>
     </labels>
     <labels>
         <fullName>CP_Change_Personal_Street</fullName>
@@ -95,30 +119,6 @@
         <protected>false</protected>
         <shortDescription>CP_Change_Personal_h1</shortDescription>
         <value>Edit Personal Information</value>
-    </labels>
-        <labels>
-        <fullName>CP_Change_Personal_Province_Placeholder</fullName>
-        <categories>CP Change Personal</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP_Change_Personal_Province_Placeholder</shortDescription>
-        <value>Select a province/State</value>
-    </labels>
-    <labels>
-        <fullName>CP_Change_Personal_Country_Placeholder</fullName>
-        <categories>CP Change Personal</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP_Change_Personal_Country_Placeholder</shortDescription>
-        <value>Select a country</value>
-    </labels>
-    <labels>
-        <fullName>CP_Edit_Address_Title</fullName>
-        <categories>CP Change Personal</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP_Edit_Address_Title</shortDescription>
-        <value>Edit Client Address</value>
     </labels>
     <labels>
         <fullName>CP_Change_Questions_h1</fullName>
@@ -241,12 +241,36 @@
         <value>Values shown reflect transactions appearing in transaction history. All prices and market values are based upon available information, but can vary from actual prices and market values.</value>
     </labels>
     <labels>
+        <fullName>CP_Edit_Address_Title</fullName>
+        <categories>CP Change Personal</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Edit_Address_Title</shortDescription>
+        <value>Edit Client Address</value>
+    </labels>
+    <labels>
+        <fullName>CP_Error_Username_No_Space</fullName>
+        <categories>CP Error</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Error Username No Space</shortDescription>
+        <value>The username cannot contain spaces.</value>
+    </labels>
+    <labels>
+        <fullName>CP_Error_Password_No_Space</fullName>
+        <categories>CP Error</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Error Password No Space</shortDescription>
+        <value>The password cannot contain spaces.</value>
+    </labels>
+    <labels>
         <fullName>CP_Error_Client_Number_Numbers_Only</fullName>
         <categories>CP Error</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Client Number Numbers Only</shortDescription>
-        <value>The client number must only be numbers</value>
+        <value>Client number must contain only numbers.</value>
     </labels>
     <labels>
         <fullName>CP_Error_Client_Number_Too_Short_1</fullName>
@@ -270,7 +294,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Confirm Password Match</shortDescription>
-        <value>Password and Confirm Password did not match.</value>
+        <value>Passwords do not match. Try again.</value>
     </labels>
     <labels>
         <fullName>CP_Error_Date_Empty</fullName>
@@ -310,7 +334,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Email Empty</shortDescription>
-        <value>Email field is empty</value>
+        <value>Email address is required</value>
     </labels>
     <labels>
         <fullName>CP_Error_Email_Invalid</fullName>
@@ -318,7 +342,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Email Invalid</shortDescription>
-        <value>Email format is invalid</value>
+        <value>Email address is not valid. Try again.</value>
     </labels>
     <labels>
         <fullName>CP_Error_Emails_Match</fullName>
@@ -326,7 +350,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Emails Match</shortDescription>
-        <value>Emails did not match.</value>
+        <value>Email addresses entered do not match. Try again</value>
     </labels>
     <labels>
         <fullName>CP_Error_Empty_Field</fullName>
@@ -342,7 +366,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Forgot Password Step 1</shortDescription>
-        <value>One of the fields is incorrect, please make sure you are using the correct user name, postal/zip code, and/or date of birth.</value>
+        <value>One or more of your entries below is incorrect. Try again.</value>
     </labels>
     <labels>
         <fullName>CP_Error_General</fullName>
@@ -398,7 +422,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Postal Invalid</shortDescription>
-        <value>Not a valid postal code format.</value>
+        <value>Postal/zip code is not valid. Try again.</value>
     </labels>
     <labels>
         <fullName>CP_Error_Postal_Too_Short</fullName>
@@ -710,7 +734,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Button Get Started</shortDescription>
-        <value>Get Started</value>
+        <value>Start</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Button_Next</fullName>
@@ -718,7 +742,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Button Next</shortDescription>
-        <value>Next</value>
+        <value>Continue</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Button_Ok</fullName>
@@ -1014,7 +1038,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Label Email</shortDescription>
-        <value>Email</value>
+        <value>Email Address</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Equity</fullName>
@@ -1574,7 +1598,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Label View Sample</shortDescription>
-        <value>View Sample</value>
+        <value>Where do I find this?</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_View_Statement</fullName>
@@ -1646,7 +1670,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Password Instruction 1</shortDescription>
-        <value>Must be 8-12 characters</value>
+        <value>Between 6-12 characters</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Password_Instruction_2</fullName>
@@ -1654,7 +1678,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Password Instruction 2</shortDescription>
-        <value>At least one uppercase letter</value>
+        <value>With at least one uppercase letter</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Password_Instruction_3</fullName>
@@ -1662,7 +1686,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Password Instruction 3</shortDescription>
-        <value>At least one number or special character</value>
+        <value>With at least one number or special character (#, $ %, etc.)</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Salutation_Hi</fullName>
@@ -1726,7 +1750,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Username Instruction 1</shortDescription>
-        <value>Must be 6-30 characters</value>
+        <value>Between be 6-30 characters</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Username_Instruction_2</fullName>
@@ -1734,7 +1758,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Username Instruction 2</shortDescription>
-        <value>Can only contain the following special characters: - @ _ .</value>
+        <value>No special characters (#, $ %, etc.)</value>
     </labels>
     <labels>
         <fullName>CP_Manage_Notifications_Language_Preference_Details</fullName>
@@ -2142,7 +2166,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Email Is Already Registered</shortDescription>
-        <value>This email is already Registered with Investors Group. Please use another email to register.</value>
+        <value>That email is already in use. Please enter a different email address.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Email_Is_Invalid</fullName>
@@ -2286,7 +2310,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Start Figure Convenience Desc</shortDescription>
-        <value>View, download or print statements going back as far as seven years.</value>
+        <value>View, download or print statements from upto seven years</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Start_Figure_Safe</fullName>
@@ -2294,7 +2318,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Start Figure Safe</shortDescription>
-        <value>Safe and Secure</value>
+        <value>Security</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Start_Figure_Safe_Desc</fullName>
@@ -2302,7 +2326,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Start Figure Safe Desc</shortDescription>
-        <value>Securely view investment performance, mortgage, and insurance.</value>
+        <value>Securely view investment performance, mortgage and insurance details</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Start_Get_Started</fullName>
@@ -2310,7 +2334,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Start Get Started</shortDescription>
-        <value>Here&apos;s what you need to get started</value>
+        <value>Here&apos;s what you need to start</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Start_Instructions</fullName>
@@ -2318,7 +2342,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Start Instructions</shortDescription>
-        <value>View all of your accounts at your convenience anytime and on any device.</value>
+        <value>View all your accounts at your convenience, anytime and on any device</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Start_Requirements</fullName>
@@ -2326,7 +2350,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Start Requirements</shortDescription>
-        <value>Your client number, loan number, or policy number that appears on your statements.</value>
+        <value>You will need the client, loan or policy number that appears on your statements.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Start_h1</fullName>
@@ -2334,7 +2358,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Start h1</shortDescription>
-        <value>Register for Online Access in 3 easy steps</value>
+        <value>Register for online account access in 3 easy steps</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Start_h2</fullName>
@@ -2350,7 +2374,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Step 1 Instructions</shortDescription>
-        <value>Enter your Investors Group information to link your account to your online profile.</value>
+        <value>Enter your Investors Group information to verify your identity</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Step_1_h1</fullName>
@@ -2358,7 +2382,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Step 1 h1</shortDescription>
-        <value>Register for Online Access</value>
+        <value>Register for online account access</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Step_1_h2</fullName>
@@ -2366,7 +2390,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Step 1 h2</shortDescription>
-        <value>Link You Account</value>
+        <value>Verify your identity</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Step_2_Instructions</fullName>
@@ -2374,7 +2398,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Step 2 Instructions</shortDescription>
-        <value>You&apos;ll use your online profile to securely access your account online.</value>
+        <value>Your online profile lets you securely access your account information.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Step_2_Opt_In</fullName>
@@ -2382,7 +2406,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Step 2 Opt In</shortDescription>
-        <value>I&apos;d like to receive the latest news and offers from Investors Group to my email address (optional)</value>
+        <value>Yes, I&apos;d like to have the latest news and offers from Investors Group sent to my email address (optional)</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Step_2_Security_Answer_1</fullName>
@@ -2446,7 +2470,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Step 2 h1</shortDescription>
-        <value>Register for Online Access</value>
+        <value>Register for online account access</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Step_2_h2</fullName>
@@ -2462,7 +2486,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Step 3 Instructions</shortDescription>
-        <value>You’re almost finished! Please ensure your online profile information listed below is correct.</value>
+        <value>You’re almost finished! Check if the information below is correct before proceeding.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Step_3_h1</fullName>
@@ -2470,7 +2494,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Step 3 h1</shortDescription>
-        <value>Register for Online Access</value>
+        <value>Register for online account access</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Step_3_h2</fullName>
@@ -2478,7 +2502,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Step 3 h2</shortDescription>
-        <value>Review and Accept</value>
+        <value>Review and accept user agreement</value>
     </labels>
     <labels>
         <fullName>CP_Registration_TOS_Agree</fullName>
@@ -2510,7 +2534,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Thank You Instructions</shortDescription>
-        <value>Your Online Access profile is now activated. You can now sign in to view activity and information for your Investors Group accounts.</value>
+        <value>Your online account access profile is ready to use. Sign in now to see activity and information for all your Investors Group accounts.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Thank_You_h1</fullName>
@@ -2590,7 +2614,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Tooltip Email Address</shortDescription>
-        <value>Tooltip for e-mail address</value>
+        <value>Your email address is used for registration and to establish your identity if you forget your username or password.</value>
     </labels>
     <labels>
         <fullName>CP_Tooltip_Password</fullName>
@@ -2606,7 +2630,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Tooltip Phone</shortDescription>
-        <value>Please enter a phone number.</value>
+        <value>Your mobile number will be used only for important notifications.</value>
     </labels>
     <labels>
         <fullName>CP_Tooltip_Security_Question</fullName>
@@ -2614,7 +2638,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Tooltip Security Question</shortDescription>
-        <value>Tooltip for security question</value>
+        <value>Your security questions and answers are used to verify your identity if you forget your username or password, or if you sign in using a different device.</value>
     </labels>
     <labels>
         <fullName>CP_Tooltip_Total_Market_Value</fullName>
