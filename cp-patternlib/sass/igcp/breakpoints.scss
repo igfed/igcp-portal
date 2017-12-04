@@ -4,7 +4,6 @@
 //Breakpoints - contains any igcp classes that are breakpoint sensitive
 //Medium
 @media (min-width: $ig-medium) {
-
 	//REGISTRATION
 	.#{$namespace}-registration {
 		.#{$namespace}-registration__pfa {
@@ -13,51 +12,34 @@
 				line-height: $ig-line-height--medium-plus;
 			}
 		}
-
 		.#{$namespace}-registration__pfa--monitor {
 			width: 360px;
 		}
-	} 
-	
-	//CARD
-	// .#{$namespace}-card__image {
-	// 	width: 75%;
-	// } 
-	
-	//FIGURE
+	} //FIGURE
 	.#{$namespace}-figure {
-
 		.#{$namespace}-figure__caption {
 			h3,
 			p {
 				text-align: left;
 			}
 		}
-	} 
-	
-	//MODAL
+	} //MODAL
 	.#{$namespace}-modal__footer {
 		margin: 0 0 0 -#{$ig-space--xx-large};
 		padding-top: 32px;
 		padding-left: 0px;
 		padding-right: 0px;
 		padding-bottom: 0px;
-	} 
-
-	//VALUES
+	} //VALUES
 	.#{$namespace}-value--large {
 		font-size: $ig-font-size--large;
-	} 
-	
-	//TOOLTIP
+	} //TOOLTIP
 	.#{$namespace}-tooltip {
 		&.#{$namespace}-tooltip__label--small {
 			padding-left: 0;
 			padding-top: 6px;
 		}
-	} 
-	
-	//TABLES
+	} //TABLES
 	.#{$namespace}-table {
 		&.#{$namespace}-table__holdings,
 		&.#{$namespace}-table__transactions,
@@ -66,15 +48,12 @@
 				.#{$namespace}-table__header {
 					display: table-cell;
 				}
-
 				.#{$namespace}-table__data {
 					display: table-cell;
 				}
 			}
 		}
-	} 
-	
-	//FOOTER
+	} //FOOTER
 	.#{$namespace}-footer {
 		.footer-link {
 			float: left;
@@ -90,11 +69,14 @@
 			}
 		}
 	}
+	//MODAL
+	.#{$namespace}-modal-foundation {
+		margin-top: $ig-space--medium;
+	}
 }
 
 //Large
 @media (min-width: $ig-large) {
-
 	//REGISTRATION
 	.#{$namespace}-registration {
 		.#{$namespace}-registration__pfa--monitor {
@@ -102,53 +84,38 @@
 			height: 282px;
 			overflow: visible;
 		}
-	} 
-	
-	//BUTTON
+	} //BUTTON
 	.#{$namespace}-button__chat {
 		float: none;
 		position: fixed;
 		right: 40px;
 		bottom: 40px;
 	}
-
 	.#{$namespace}-button__chat--sticky {
 		position: absolute;
 		right: -200px;
 		top: -160px;
-	} 
-	
-	//VALUES
+	} //VALUES
 	.#{$namespace}-value--medium {
 		line-height: $ig-line-height--base;
 		font-size: $ig-font-size--medium-plus;
 	}
-
 	.#{$namespace}-value--small {
 		line-height: $ig-line-height--base;
 		font-size: $ig-font-size--medium;
 	}
-
 	.#{$namespace}-value--x-small {
 		line-height: $ig-line-height--base;
 		font-size: $ig-font-size--base;
-	} 
-	
-	//SEPARATOR
+	} //SEPARATOR
 	.#{$namespace}-separator--large {
 		height: $ig-space--x-small;
-	} 
-	
-	//CARD
+	} //CARD
 	.#{$namespace}-card__image {
 		width: 100%;
-	} 
-	
-	//MODAL
+	} //MODAL
 	.#{$namespace}-modal {
-
 		&.#{$namespace}-modal__small {
-
 			.#{$namespace}-modal__small--inner {
 				@include roundCorner();
 				top: 25%;
@@ -157,7 +124,6 @@
 				bottom: 25%;
 			}
 		}
-
 		&.#{$namespace}-modal__details {
 			.#{$namespace}-modal__details--inner {
 				@include roundCorner();
@@ -167,24 +133,37 @@
 				bottom: 10%;
 			}
 		}
-	} 
-	
-	//FOOTER
+	} //FOOTER
 	.#{$namespace}-footer {
 		padding-top: 0;
-
 		.footer-copyright {
 			.footer-copyright-border-top .row {
 				border-top: none;
-
 				.columns ul li {
 					border-right: none;
 				}
 			}
 		}
-
 		.footer-navigation .columns {
 			text-align: left;
+		}
+	} //CAROUSEL
+	.#{$namespace}-carousel {
+		.#{$namespace}-carousel__main {
+			&.slick-slider {
+				margin-bottom: 0;
+			}
+		}
+		.#{$namespace}-carousel__nav {
+			&.slick-slider {
+				margin-top: 0;
+			}
+		}
+	} //MODAL
+	.#{$namespace}-modal-foundation {
+		&.large.reveal {
+			width: 75%;
+			max-width: 960px;
 		}
 	}
 }

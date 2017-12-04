@@ -487,11 +487,6 @@
 
 //FOUNDATION MODAL
 .#{$namespace}-modal-foundation {
-
-	&.large.reveal {
-		width: 75%;
-		max-width: 75rem;
-	}
 	
 	.#{$namespace}-modal-foundation__button--close {
 		position: relative;
