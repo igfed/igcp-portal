@@ -3870,9 +3870,6 @@ table {
     margin: 0 auto;
     max-width: 600px; }
 
-.igcp-modal-foundation.large.reveal {
-  width: 75%;
-  max-width: 75rem; }
 .igcp-modal-foundation .igcp-modal-foundation__button--close {
   position: relative;
   float: right;
@@ -4351,7 +4348,10 @@ table {
     display: flex;
     justify-content: space-around; }
     .igcp-statement .igcp-banner img {
-      margin: 0; } }
+      margin: 0; }
+
+  .igcp-modal-foundation {
+    margin-top: 24px; } }
 @media (min-width: 1024px) {
   .igcp-registration .igcp-registration__pfa--monitor {
     top: 23px;
@@ -4415,6 +4415,15 @@ table {
       .igcp-footer .footer-copyright .footer-copyright-border-top .row .columns ul li {
         border-right: none; }
     .igcp-footer .footer-navigation .columns {
-      text-align: left; } }
+      text-align: left; }
+
+  .igcp-carousel .igcp-carousel__main.slick-slider {
+    margin-bottom: 0; }
+  .igcp-carousel .igcp-carousel__nav.slick-slider {
+    margin-top: 0; }
+
+  .igcp-modal-foundation.large.reveal {
+    width: 75%;
+    max-width: 960px; } }
 
 /*# sourceMappingURL=igcp.css.map */
