@@ -1,5 +1,5 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
-
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="EmailPrefController">
+ 
     <!-- ATTRS -->
 	<aura:attribute name="countries" type="String[]" default="[]" />
 	<aura:attribute name="formData" type="Map" default="{}" />
@@ -25,13 +25,13 @@
 				<div class="slds-grid slds-wrap">
 					<div class="slds-form slds-size_12-of-12">
                     	
-						<!-- ADDRESS {!$Label.c.CP_Generic_Label_Text} -->
+						<!-- ADDRESS -->
 			    		<c:CP_Cmp_Input_Text aura:id="address-input" 
 							id="address-input" 
 							inputValue="{!v.formData.address}" 
 							form="{!v.pageId}" 
 							type="text" 
-							label="Street Address" 
+							label="{!$Label.c.CP_Change_Personal_Street}" 
 							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
 						/>
 						<!-- CITY -->
@@ -40,7 +40,7 @@
 							inputValue="{!v.formData.city}" 
 							form="{!v.pageId}" 
 							type="text" 
-							label="City" 
+							label="{!$Label.c.CP_Change_Personal_City}" 
 							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
 						/>
 						<!-- PROVINCE -->
@@ -48,7 +48,7 @@
 							id="province-selector"
 							form="{!v.form}" 
 							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
-							label="Province/State" 
+							label="{!$Label.c.CP_Change_Personal_Province}" 
 							placeholder=""
 							options="{!v.provinces}"
 							defaultOptions="{!v.formData.province}"
@@ -59,15 +59,15 @@
 							inputValue="{!v.formData.postal}" 
 							form="{!v.pageId}" 
 							type="text" 
-							label="Postal/Zip" 
+							label="{!$Label.c.CP_Change_Personal_Postal}" 
 							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
 						/>
-						<!-- COUNTRY {!$Label.c.CP_Registration_Step_2_Security_Question_1} -->
+						<!-- COUNTRY -->
 						<c:CP_Cmp_Input_Selector aura:id="country-selector" 
 							id="country-selector"
 							form="{!v.form}" 
 							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
-							label="Country" 
+							label="{!$Label.c.CP_Change_Personal_Country}" 
 							placeholder="{!$Label.c.CP_Registration_Step_2_Security_Question_Placeholder}"
 							options="{!v.countries}"
 							defaultOptions="{!v.formData.country}" 
@@ -80,7 +80,7 @@
 							inputValue="{!v.formData.phone}" 
 							form="{!v.pageId}" 
 							type="text" 
-							label="Home Phone" 
+							label="{!$Label.c.CP_Change_Personal_Phone}" 
 							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
 						/>                   
 					</div>
