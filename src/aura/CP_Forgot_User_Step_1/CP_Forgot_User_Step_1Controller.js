@@ -22,15 +22,12 @@
 			hlpr.validateInput(cmp, evt.getParam("payload"));
 
 			cmp.set("v.inputsReceived", (inputs += 1));
-			console.log(cmp.get("v.inputsReceived"));
-			console.log(cmp.get("v.inputErrors"));
 
 			//if all inputs received and inputErrors = false
 			//we are ready to submit to the backend
 			if (cmp.get("v.inputsReceived") === 2 && cmp.get("v.inputErrors") === false) {
 
 				try {
-					console.log("CHEKCING SUBMIT FORM?????????");
 					cmp.set("v.payload", {
 						"clientNum": cmp.get("v.clientNum"),
 						"email": cmp.get("v.email")
@@ -57,8 +54,6 @@
 	submitForm: function (cmp, evt, hlpr) {
 
 		try {
-
-			console.log("SUBMITTTING FORM!!!!!JK!JK!JK!JK!");
 
 			var services = cmp.find("CP_Services");
 
