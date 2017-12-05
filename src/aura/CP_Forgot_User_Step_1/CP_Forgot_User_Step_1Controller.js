@@ -43,10 +43,10 @@
 			function(evt) {
 				hlpr.hideLoading(cmp);
 				if (evt.payload.State.IsCAVUser){
-					console.log('[CP_Forgot_User_Step_1Controller] IsCAVUSer is true')
+					//console.log('[CP_Forgot_User_Step_1Controller] IsCAVUSer is true')
 					cmp.goToLastStep();
 				} else {
-					console.log('[CP_Forgot_User_Step_1Controller] IsCAVUSer is true')
+					//console.log('[CP_Forgot_User_Step_1Controller] IsCAVUSer is true')
 					cmp.onNextStep();
 				}
 			},

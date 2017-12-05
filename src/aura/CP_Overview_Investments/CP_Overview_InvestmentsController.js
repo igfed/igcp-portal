@@ -83,40 +83,34 @@
 
 				if (previewArr) {
 
-					console.info("CP_Overview_Investments: getAssetMix");
-					console.log(previewArr);
-
 					var graphArr = [];
 
 					previewArr.forEach(function (item, i) {
-						console.log(item);
-
-						//graphArr.push({ "label" : item.theLabel, "detail" : item.theValue });
 
 						if (item.theLabel === "Equity") {
-							graphArr.push({ 
-								"label": $A.get("$Label.c.CP_Generic_Label_Equity"), 
-								"detail" : item.theValue 
+							graphArr.push({
+								"label": $A.get("$Label.c.CP_Generic_Label_Equity"),
+								"detail": item.theValue
 							});
 						} else if (item.theLabel === "Fixed_Income") {
-							graphArr.push({ 
-								"label": $A.get("$Label.c.CP_Generic_Label_Fixed_Income"), 
-								"detail" : item.theValue 
+							graphArr.push({
+								"label": $A.get("$Label.c.CP_Generic_Label_Fixed_Income"),
+								"detail": item.theValue
 							});
 						} else if (item.theLabel === "Balanced") {
-							graphArr.push({ 
-								"label": $A.get("$Label.c.CP_Generic_Label_Balanced"), 
-								"detail" : item.theValue 
+							graphArr.push({
+								"label": $A.get("$Label.c.CP_Generic_Label_Balanced"),
+								"detail": item.theValue
 							});
 						} else if (item.theLabel === "Cash") {
-							graphArr.push({ 
-								"label": $A.get("$Label.c.CP_Generic_Label_Cash"), 
-								"detail" : item.theValue 
+							graphArr.push({
+								"label": $A.get("$Label.c.CP_Generic_Label_Cash"),
+								"detail": item.theValue
 							});
 						} else if (item.theLabel === "Specialty") {
-							graphArr.push({ 
-								"label": $A.get("$Label.c.CP_Generic_Label_Specialty"), 
-								"detail" : item.theValue 
+							graphArr.push({
+								"label": $A.get("$Label.c.CP_Generic_Label_Specialty"),
+								"detail": item.theValue
 							});
 						}
 					});
