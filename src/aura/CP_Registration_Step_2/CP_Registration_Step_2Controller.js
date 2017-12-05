@@ -252,7 +252,6 @@
 	onOptClicked: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
 		if (payload.id === "news-offers-opt") {
-			console.info(payload.checked);
 			cmp.set("v.emailOptIn", payload.checked);
 		}
 	},

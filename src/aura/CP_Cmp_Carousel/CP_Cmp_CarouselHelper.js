@@ -55,7 +55,6 @@
 
 				
 				$('.slider-main').on("lazyLoaded", function(){
-					console.log("LOADED");
 					cmp.set("v.class", "igcp-carousel");
 				});
 

@@ -31,7 +31,6 @@
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Click" action="{!c.onButtonClick}" />
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
-	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
 	<aura:handler event="c:CP_Evt_Key" action="{!c.onKey}" />

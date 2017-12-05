@@ -249,22 +249,6 @@
         <value>Edit Client Address</value>
     </labels>
     <labels>
-        <fullName>CP_Error_Username_No_Space</fullName>
-        <categories>CP Error</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Error Username No Space</shortDescription>
-        <value>The username cannot contain spaces.</value>
-    </labels>
-    <labels>
-        <fullName>CP_Error_Password_No_Space</fullName>
-        <categories>CP Error</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Error Password No Space</shortDescription>
-        <value>The password cannot contain spaces.</value>
-    </labels>
-    <labels>
         <fullName>CP_Error_Client_Number_Numbers_Only</fullName>
         <categories>CP Error</categories>
         <language>en_US</language>
@@ -302,7 +286,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Date Empty</shortDescription>
-        <value>Please enter a valid date</value>
+        <value>Enter your date of birth</value>
     </labels>
     <labels>
         <fullName>CP_Error_Date_No_Day</fullName>
@@ -310,7 +294,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Date No Day</shortDescription>
-        <value>Please enter a valid day</value>
+        <value>The date of birth you entered is not valid. Try again,  using MMDDYYYY format.</value>
     </labels>
     <labels>
         <fullName>CP_Error_Date_No_Year</fullName>
@@ -318,7 +302,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Date No Year</shortDescription>
-        <value>Please enter a valid year</value>
+        <value>The date of birth you entered is not valid. Try again,  using MMDDYYYY format.</value>
     </labels>
     <labels>
         <fullName>CP_Error_Day_Invalid</fullName>
@@ -326,7 +310,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Day Invalid</shortDescription>
-        <value>Day must be 1 - 31</value>
+        <value>The date of birth you entered is not valid. Try again,  using MMDDYYYY format.</value>
     </labels>
     <labels>
         <fullName>CP_Error_Email_Empty</fullName>
@@ -383,6 +367,14 @@
         <protected>false</protected>
         <shortDescription>CP Error Month Invalid</shortDescription>
         <value>Month must be 1 - 12</value>
+    </labels>
+    <labels>
+        <fullName>CP_Error_Password_No_Space</fullName>
+        <categories>CP Error</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Error Password No Space</shortDescription>
+        <value>The password cannot contain spaces.</value>
     </labels>
     <labels>
         <fullName>CP_Error_Passwords_Match</fullName>
@@ -473,6 +465,14 @@
         <value>characters.</value>
     </labels>
     <labels>
+        <fullName>CP_Error_Username_No_Space</fullName>
+        <categories>CP Error</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Error Username No Space</shortDescription>
+        <value>The username cannot contain spaces.</value>
+    </labels>
+    <labels>
         <fullName>CP_Error_Year_Invalid</fullName>
         <categories>CP Error</categories>
         <language>en_US</language>
@@ -494,7 +494,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot Pass Instructions</shortDescription>
-        <value>Enter your profile credentials to verify your identity.</value>
+        <value>Please provide the following information to verify your identity</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_Pass_Locked_Instructions</fullName>
@@ -542,7 +542,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot Pass Step 3 Instructions</shortDescription>
-        <value>You can now reset your password below. Ensure your new password is difficult to guess.</value>
+        <value>Enter a new password that follows the rules below and is hard for someone else to guess.</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_Pass_Step_3_h2</fullName>
@@ -550,7 +550,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot Pass Step 3 h2</shortDescription>
-        <value>Create a new password</value>
+        <value>Forgot your password?</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_Pass_Thank_You_Instructions</fullName>
@@ -558,7 +558,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot Pass Thank You Instructions</shortDescription>
-        <value>You can now return to the login screen and enter your updated login information.</value>
+        <value>You can now sign in with your new password.</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_Pass_Thank_You_h1</fullName>
@@ -582,7 +582,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot Pass h1</shortDescription>
-        <value>Change your password</value>
+        <value>Forgot your password?</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_Pass_h2</fullName>
@@ -606,7 +606,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot UserName Incorrect Answer</shortDescription>
-        <value>The answer is incorrect</value>
+        <value>You entered an incorrect answer. Please try again</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid</fullName>
@@ -614,7 +614,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot User Name Client Number or Email is not Valid</shortDescription>
-        <value>Client Number or Email is not valid</value>
+        <value>The information you entered could not be validated. Please ensure the information you provided is correct and try again.</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_User_Name_Locked_Instructions</fullName>
@@ -638,7 +638,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot User Name Step 1 Instructions</shortDescription>
-        <value>Enter your profile credentials to verify your identity.</value>
+        <value>Please provide the following information to verify your identity</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_User_Name_Step_1_h1</fullName>
@@ -646,7 +646,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot User Name Step 1 h1</shortDescription>
-        <value>Forgot your username</value>
+        <value>Forgot your username?</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_User_Name_Step_1_h2</fullName>
@@ -662,7 +662,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot User Name Step 2 h1</shortDescription>
-        <value>Forgot your username</value>
+        <value>Forgot your username?</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_User_Name_Step_2_h2</fullName>
@@ -678,7 +678,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot User Name Thank You Instructions 1</shortDescription>
-        <value>An email with your username has been sent to</value>
+        <value>An email with your username has been sent to name@domain.com. If it does not arrive in the next few minutes, check your spam folder.</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_User_Name_Thank_You_Instructions_2</fullName>
@@ -694,7 +694,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot User Name Thank You h1</shortDescription>
-        <value>Success!</value>
+        <value>You have successfully retrieved your username!</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_User_Not_Completed_Instructions</fullName>
@@ -1382,7 +1382,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Label Postal Zip Code</shortDescription>
-        <value>Postal Code/Zip Code</value>
+        <value>Postal or zip code</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Print</fullName>
@@ -1663,6 +1663,22 @@
         <protected>false</protected>
         <shortDescription>CP Generic Not Available</shortDescription>
         <value>N/A</value>
+    </labels>
+    <labels>
+        <fullName>CP_Generic_Opted_In</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Opted In</shortDescription>
+        <value>I&apos;ve opted in to receive the latest news and offers from Investors Group to my email address (optional)</value>
+    </labels>
+    <labels>
+        <fullName>CP_Generic_Opted_Out</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Opted Out</shortDescription>
+        <value>I&apos;ve opted to not receive the latest news and offers from Investors Group to my email address (optional)</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Password_Instruction_1</fullName>
@@ -2070,7 +2086,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Client Already Registered</shortDescription>
-        <value>Provided Client number is already Registered</value>
+        <value>The specified client number cannot be used for registration, since it has already been used for another online account access profile. Try recovering your username or changing your password. If you are still having difficulty, please contact our support centre at 1-877-796-3788 (Monday - Friday, 7 a.m. to 7 p.m. CT) or email onlineaccess@investorsgroup.com.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Client_Number_Is_Empty</fullName>
@@ -2094,7 +2110,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Client has zero balance</shortDescription>
-        <value>Client has zero balance. To get more information, please contact our client support at 1-800-555-5555</value>
+        <value>The specified client number cannot be used for registration, since it is not associated with an active product. For more information, please contact our support centre at 1-877-796-3788 (Monday - Friday, 7 a.m. to 7 p.m. CT) or email onlineaccess@investorsgroup.com.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Client_is_Company_and_Not_allowed_to_Register</fullName>
@@ -2102,7 +2118,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Client is Company and Not allowed to Register</shortDescription>
-        <value>Client number is of Company account and can not be used for online registration.</value>
+        <value>The specified client number cannot be used for registration without additional authorization, since it is a corporate account. Please contact our support centre at 1-877-796-3788 (Monday - Friday, 7 a.m. to 7 p.m. CT) or email onlineaccess@investorsgroup.com.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Client_is_Joint_and_Not_allowed_to_Register</fullName>
@@ -2110,7 +2126,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Client is Joint and Not allowed to Register</shortDescription>
-        <value>Client number is of JOINT account and can not be used for online registration.</value>
+        <value>The specified client number cannot be used for registration, since it is a joint account. Please use your individual client number instead. For more information, please contact our support centre at 1-877-796-3788 (Monday - Friday, 7 a.m. to 7 p.m. CT) or email onlineaccess@investorsgroup.com.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Client_is_deceased</fullName>
@@ -2118,7 +2134,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Client is deceased</shortDescription>
-        <value>Associated Client is deceased.To get more information, please contact our client support at 1-800-555-5555</value>
+        <value>The specified client number cannot be used for registration. For more information, please contact our support centre at 1-877-796-3788 (Monday - Friday, 7 a.m. to 7 p.m. CT) or email onlineaccess@investorsgroup.com.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Client_mail_returned</fullName>
@@ -2126,7 +2142,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Client mail returned</shortDescription>
-        <value>Client mail is returned. To get more information, please contact our client support at 1-800-555-5555</value>
+        <value>Postal mail being sent to you by Investors Group is currently being returned. To protect your account security, you cannot register for online account  access until you update your mailing address. Please contact your Investors Group Consultant or our support centre at 1-877-796-3788 (Monday - Friday, 7 a.m. to 7 p.m. CT) or email onlineaccess@investorsgroup.com.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Confirm_Email_Not_Matched</fullName>
@@ -2214,7 +2230,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Locked Instructions</shortDescription>
-        <value>For security purposes, you have been temporarily locked out from registering online. To continue registration, please contact our support at 1-800-555-5555.</value>
+        <value>For security reasons, your ability to register has been suspended at this time. To continue registration, please contact our support centre at 1-877-796-3788 (Monday - Friday, 7 a.m. to 7 p.m. CT) or email onlineaccess@investorsgroup.com.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Locked_h1</fullName>
@@ -2222,7 +2238,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Locked h1</shortDescription>
-        <value>Registration is blocked for security purposes</value>
+        <value>Registration blocked for security reasons</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Not_Completed_Instructions</fullName>
@@ -2230,7 +2246,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Not Completed Instructions</shortDescription>
-        <value>Something has prevented us from creating your Online Access account. To get more information, please contact our client support at 1-800-555-5555.</value>
+        <value>Something has prevented us from registering you. Please try again later or contact our support centre at 1-877-796-3788 (Monday - Friday, 7 a.m. to 7 p.m. CT) or email onlineaccess@investorsgroup.com. [Error code]</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Not_Completed_h1</fullName>
@@ -2238,7 +2254,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Not Completed h1</shortDescription>
-        <value>Registration could not be completed.</value>
+        <value>Registration incomplete</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Password_Is_Empty</fullName>
@@ -2654,7 +2670,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Tooltip Username</shortDescription>
-        <value>Pick a username.</value>
+        <value>Enter the email address you used when you created your profile.</value>
     </labels>
     <labels>
         <fullName>CP_URL_Login</fullName>

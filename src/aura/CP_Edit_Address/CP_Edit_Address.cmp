@@ -1,0 +1,105 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="EmailPrefController">
+ 
+    <!-- ATTRS -->
+	<aura:attribute name="countries" type="String[]" default="[]" />
+	<aura:attribute name="formData" type="Map" default="{}" />
+	<aura:attribute name="pageId" type="String" default="edit-address" />
+	<aura:attribute name="provinces" type="String[]" default="[]" />
+	
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Services aura:id="CP_Services" />
+	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Validation aura:id="CP_Validation" />	
+
+	<!-- HANDLERS -->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
+
+    <div class="igcp-background__tiled ">
+        <div class="igcp-wrapper igcp-edit-documents slds-grid slds-wrap slds-grid--align-center slds-p-around--small slds-large-p-around--medium">
+			<div class="igcp-utils__display--none igcp-utils__display--block"></div>
+			<div class="igcp-container slds-p-vertical--small slds-p-horizontal--large slds-m-bottom--x-small slds-large-m-bottom--medium slds-size_12-of-12 slds-medium-size_6-of-12">
+				<h1 class="slds-m-top--medium">{!$Label.c.CP_Edit_Address_Title}</h1>
+
+				<div class="slds-grid slds-wrap">
+					<div class="slds-form slds-size_12-of-12">
+                    	
+						<!-- ADDRESS -->
+			    		<c:CP_Cmp_Input_Text aura:id="address-input" 
+							id="address-input" 
+							inputValue="{!v.formData.address}" 
+							form="{!v.pageId}" 
+							type="text" 
+							label="{!$Label.c.CP_Change_Personal_Street}" 
+							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
+						/>
+						<!-- CITY -->
+						<c:CP_Cmp_Input_Text aura:id="city-input" 
+							id="city-input" 
+							inputValue="{!v.formData.city}" 
+							form="{!v.pageId}" 
+							type="text" 
+							label="{!$Label.c.CP_Change_Personal_City}" 
+							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
+						/>
+						<!-- PROVINCE -->
+						<c:CP_Cmp_Input_Selector aura:id="province-selector" 
+							id="province-selector"
+							form="{!v.form}" 
+							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
+							label="{!$Label.c.CP_Change_Personal_Province}" 
+							placeholder="{!$Label.c.CP_Change_Personal_Province_Placeholder}"
+							options="{!v.provinces}"
+							defaultOptions="{!v.formData.province}"
+						/>
+						<!-- POSTAL/ZIP -->
+						<c:CP_Cmp_Input_Text aura:id="postal-input" 
+							id="postal-input" 
+							inputValue="{!v.formData.postal}" 
+							form="{!v.pageId}" 
+							type="text" 
+							label="{!$Label.c.CP_Change_Personal_Postal}" 
+							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
+						/>
+						<!-- COUNTRY -->
+						<c:CP_Cmp_Input_Selector aura:id="country-selector" 
+							id="country-selector"
+							form="{!v.form}" 
+							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
+							label="{!$Label.c.CP_Change_Personal_Country}" 
+							placeholder="{!$Label.c.CP_Change_Personal_Country_Placeholder}"
+							options="{!v.countries}"
+							defaultOptions="{!v.formData.country}" 
+							type="question"
+						/>
+
+						<!-- HOME PHONE -->
+						<c:CP_Cmp_Input_Text aura:id="phone-input" 
+							id="phone-input" 
+							inputValue="{!v.formData.phone}" 
+							form="{!v.pageId}" 
+							type="text" 
+							label="{!$Label.c.CP_Change_Personal_Phone}" 
+							class="slds-size_12-of-12 slds-medium-size_8-of-12 slds-m-vertical--medium" 
+						/>                   
+					</div>
+                </div>
+
+				<div class="slds-grid slds-wrap">
+					<!--CTAS-->
+					<c:CP_Cmp_Form_Back_Next dcname1="" 
+						dcname2=""
+						dctype="click"
+						id="{!v.pageId}"
+						backLabel="{!$Label.c.CP_Generic_Button_Cancel}"
+						nextLabel="{!$Label.c.CP_Generic_Button_Update}"
+						nextType="submit"
+						form="{!v.pageId}"
+					/>
+				</div>
+            </div>
+        </div>    
+    </div>
+
+</aura:component>
