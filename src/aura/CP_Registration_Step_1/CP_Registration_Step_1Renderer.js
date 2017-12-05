@@ -4,9 +4,16 @@
 		return ret;
 	},
 	rerender: function (cmp, hlpr) {},
-	afterRender: function (component, helper) {
+	afterRender: function (cmp, helper) {
 		this.superAfterRender();
 
+		try {
+			var parent = document.querySelector(".igcp-registration__step-1");
+			cmp.set("v.numberOfInputs", parent.querySelectorAll("input").length);
+		} catch (err) {
+			console.error("CP_Registration_Step_1: afterRender");
+			console.error(err);
+		}
 
 		try {
 			var analytics = setInterval(function () {

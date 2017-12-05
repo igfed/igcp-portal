@@ -10,6 +10,7 @@
 	<aura:attribute name="pageId" type="String" default="forgot-user-step-3"></aura:attribute>
 	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="inputsReceived" type="Integer" default="0"></aura:attribute>
+	<aura:attribute name="numberOfInputs" type="Integer" default="0"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="lang" type="String"></aura:attribute>
 	
@@ -44,7 +45,7 @@
 	</aura:method>
 	
 	<!-- MARKUP -->
-	<div data-aa-component="CP_Forgot_Pass_Step_3" class="igcp-wrapper igcp-utils__position--relative slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large" aria-live="assertive">
+	<div data-aa-component="CP_Forgot_Pass_Step_3" class="igcp-forgot-pass__step-3 igcp-wrapper igcp-utils__position--relative slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large" aria-live="assertive">
 
 		<c:CP_Cmp_Loading_Icon id="forgot-pass-3-spinner" hasBG="true" show="false"/>
 
@@ -63,7 +64,7 @@
                 		class="slds-m-top--x-small slds-m-bottom--xxx-small"/>
 					<!-- FIELDS -->
 					<!-- PASSWORD -->
-					<c:CP_Cmp_Input_Password id="password-input" form="{!v.pageId}" type="password" confirmPassword="true" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Password}" />
+					<c:CP_Cmp_Input_Password id="password-input" form="{!v.pageId}" type="password" hasFocus="true" confirmPassword="true" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Password}" />
 				</div>
 				<!-- CTAS -->
 				<c:CP_Cmp_Form_Back_Next dcname1="forgot-password-cancel" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Update}" nextType="submit" backType="cancel" form="{!v.pageId}" />

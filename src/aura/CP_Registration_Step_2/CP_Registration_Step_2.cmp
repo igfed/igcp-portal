@@ -55,7 +55,7 @@
 	</aura:method>
 	
 	<!-- MARKUP -->
-	<div data-aa-component="CP_Registration_Step_2" class="igcp-background igcp-utils__position--relative" aria-live="assertive">
+	<div data-aa-component="CP_Registration_Step_2" class="igcp-registration__step-2 igcp-background igcp-utils__position--relative" aria-live="assertive">
 
 		<c:CP_Cmp_Loading_Icon id="registration-step-2-spinner" hasBG="true" show="false" />
 
