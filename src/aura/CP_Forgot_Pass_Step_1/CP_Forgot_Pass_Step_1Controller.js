@@ -129,10 +129,9 @@
 			"id": cmp.get("v.pageId")
 		});
 	},
-	onButtonClick: function (cmp, evt, hlpr) {
-		if (evt.getParam("payload").id === "back_button") {
-			var utils = cmp.find("CP_Utils");
-			utils.gotoLogin(cmp.get("v.lang"));
+	onButtonClick: function(cmp, evt, hlpr){
+		if(evt.getParam("payload").id === "cancel_button") {
+			cmp.find("CP_Utils").gotoLogin();
 		}
 	}
 })

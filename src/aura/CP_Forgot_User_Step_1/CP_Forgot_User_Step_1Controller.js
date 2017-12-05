@@ -136,7 +136,8 @@
 		});
 	},
 	onButtonClick: function (cmp, evt, hlpr) {
-		if (evt.getParam("payload").id === "back_button") {
+		console.log(evt.getParam("payload"))
+		if (evt.getParam("payload").id === "cancel_button") {
 			cmp.find("CP_Utils").gotoLogin();
 		}
 	}
