@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
-        <fullName>CP_Access_Denied</fullName>
-        <categories>SSO</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP_Access_Denied</shortDescription>
-        <value>You do not have access to this system. Please contact your administrator.</value>
-    </labels>
-    <labels>
         <fullName>CP_Account_Title_Holdings</fullName>
         <categories>CP Account</categories>
         <language>en_US</language>
@@ -25,28 +17,12 @@
         <value>Instructions</value>
     </labels>
     <labels>
-        <fullName>CP_Account_Title_Instructions_2</fullName>
-        <categories>CP Account</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Account Title Instructions 2</shortDescription>
-        <value>Instructions</value>
-    </labels>
-    <labels>
         <fullName>CP_Account_Title_Transactions</fullName>
         <categories>CP Account</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Account Title Transactions</shortDescription>
         <value>Recent Transactions</value>
-    </labels>
-    <labels>
-        <fullName>CP_Bad_Configuration</fullName>
-        <categories>SSO</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP_Bad_Configuration</shortDescription>
-        <value>Internal server error. Please contact your system administrator.</value>
     </labels>
     <labels>
         <fullName>CP_Change_Password_Current</fullName>
@@ -73,20 +49,12 @@
         <value>Country</value>
     </labels>
     <labels>
-        <fullName>CP_Change_Personal_Country_Placeholder</fullName>
-        <categories>CP Change Personal</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP_Change_Personal_Country_Placeholder</shortDescription>
-        <value>Select a country</value>
-    </labels>
-    <labels>
         <fullName>CP_Change_Personal_Phone</fullName>
         <categories>CP Change Personal</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP_Change_Personal_Phone</shortDescription>
-        <value>Mobile phone (optional)</value>
+        <value>Phone</value>
     </labels>
     <labels>
         <fullName>CP_Change_Personal_Postal</fullName>
@@ -94,7 +62,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP_Change_Personal_Postal</shortDescription>
-        <value>Postal or zip code</value>
+        <value>Postal/Zip</value>
     </labels>
     <labels>
         <fullName>CP_Change_Personal_Province</fullName>
@@ -103,14 +71,6 @@
         <protected>false</protected>
         <shortDescription>CP_Change_Personal_Province</shortDescription>
         <value>Province/State</value>
-    </labels>
-    <labels>
-        <fullName>CP_Change_Personal_Province_Placeholder</fullName>
-        <categories>CP Change Personal</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP_Change_Personal_Province_Placeholder</shortDescription>
-        <value>Select a province/State</value>
     </labels>
     <labels>
         <fullName>CP_Change_Personal_Street</fullName>
@@ -257,20 +217,12 @@
         <value>Values shown reflect transactions appearing in transaction history. All prices and market values are based upon available information, but can vary from actual prices and market values.</value>
     </labels>
     <labels>
-        <fullName>CP_Edit_Address_Title</fullName>
-        <categories>CP Change Personal</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP_Edit_Address_Title</shortDescription>
-        <value>Edit Client Address</value>
-    </labels>
-    <labels>
         <fullName>CP_Error_Client_Number_Numbers_Only</fullName>
         <categories>CP Error</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Client Number Numbers Only</shortDescription>
-        <value>Client number must contain only numbers.</value>
+        <value>The client number must only be numbers</value>
     </labels>
     <labels>
         <fullName>CP_Error_Client_Number_Too_Short_1</fullName>
@@ -294,7 +246,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Confirm Password Match</shortDescription>
-        <value>Passwords do not match. Try again.</value>
+        <value>Password and Confirm Password did not match.</value>
     </labels>
     <labels>
         <fullName>CP_Error_Date_Empty</fullName>
@@ -302,7 +254,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Date Empty</shortDescription>
-        <value>Enter your date of birth</value>
+        <value>Please enter a valid date</value>
     </labels>
     <labels>
         <fullName>CP_Error_Date_No_Day</fullName>
@@ -310,7 +262,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Date No Day</shortDescription>
-        <value>The date of birth you entered is not valid. Try again,  using MMDDYYYY format.</value>
+        <value>Please enter a valid day</value>
     </labels>
     <labels>
         <fullName>CP_Error_Date_No_Year</fullName>
@@ -318,7 +270,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Date No Year</shortDescription>
-        <value>The date of birth you entered is not valid. Try again,  using MMDDYYYY format.</value>
+        <value>Please enter a valid year</value>
     </labels>
     <labels>
         <fullName>CP_Error_Day_Invalid</fullName>
@@ -326,7 +278,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Day Invalid</shortDescription>
-        <value>The date of birth you entered is not valid. Try again,  using MMDDYYYY format.</value>
+        <value>Day must be 1 - 31</value>
     </labels>
     <labels>
         <fullName>CP_Error_Email_Empty</fullName>
@@ -334,7 +286,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Email Empty</shortDescription>
-        <value>Email address is required</value>
+        <value>Email field is empty</value>
     </labels>
     <labels>
         <fullName>CP_Error_Email_Invalid</fullName>
@@ -342,7 +294,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Email Invalid</shortDescription>
-        <value>Email address is not valid. Try again.</value>
+        <value>Email format is invalid</value>
     </labels>
     <labels>
         <fullName>CP_Error_Emails_Match</fullName>
@@ -350,7 +302,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Emails Match</shortDescription>
-        <value>Email addresses entered do not match. Try again</value>
+        <value>Emails did not match.</value>
     </labels>
     <labels>
         <fullName>CP_Error_Empty_Field</fullName>
@@ -366,7 +318,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Forgot Password Step 1</shortDescription>
-        <value>One or more of your entries below is incorrect. Try again.</value>
+        <value>One of the fields is incorrect, please make sure you are using the correct user name, postal/zip code, and/or date of birth.</value>
     </labels>
     <labels>
         <fullName>CP_Error_General</fullName>
@@ -383,14 +335,6 @@
         <protected>false</protected>
         <shortDescription>CP Error Month Invalid</shortDescription>
         <value>Month must be 1 - 12</value>
-    </labels>
-    <labels>
-        <fullName>CP_Error_Password_No_Space</fullName>
-        <categories>CP Error</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Error Password No Space</shortDescription>
-        <value>The password cannot contain spaces.</value>
     </labels>
     <labels>
         <fullName>CP_Error_Passwords_Match</fullName>
@@ -430,7 +374,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Error Postal Invalid</shortDescription>
-        <value>Postal/zip code is not valid. Try again.</value>
+        <value>Not a valid postal code format.</value>
     </labels>
     <labels>
         <fullName>CP_Error_Postal_Too_Short</fullName>
@@ -481,22 +425,6 @@
         <value>characters.</value>
     </labels>
     <labels>
-        <fullName>CP_Error_Username_Invalid_Characters</fullName>
-        <categories>CP Error</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Error Username Invalid Characters</shortDescription>
-        <value>Username contains invalid characters</value>
-    </labels>
-    <labels>
-        <fullName>CP_Error_Username_No_Space</fullName>
-        <categories>CP Error</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Error Username No Space</shortDescription>
-        <value>The username cannot contain spaces.</value>
-    </labels>
-    <labels>
         <fullName>CP_Error_Year_Invalid</fullName>
         <categories>CP Error</categories>
         <language>en_US</language>
@@ -518,7 +446,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot Pass Instructions</shortDescription>
-        <value>Please provide the following information to verify your identity</value>
+        <value>Enter your profile credentials to verify your identity.</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_Pass_Locked_Instructions</fullName>
@@ -566,7 +494,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot Pass Step 3 Instructions</shortDescription>
-        <value>Enter a new password that follows the rules below and is hard for someone else to guess.</value>
+        <value>You can now reset your password below. Ensure your new password is difficult to guess.</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_Pass_Step_3_h2</fullName>
@@ -574,7 +502,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot Pass Step 3 h2</shortDescription>
-        <value>Forgot your password?</value>
+        <value>Create a new password</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_Pass_Thank_You_Instructions</fullName>
@@ -582,7 +510,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot Pass Thank You Instructions</shortDescription>
-        <value>You can now sign in with your new password.</value>
+        <value>You can now return to the login screen and enter your updated login information.</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_Pass_Thank_You_h1</fullName>
@@ -606,7 +534,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot Pass h1</shortDescription>
-        <value>Forgot your password?</value>
+        <value>Change your password</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_Pass_h2</fullName>
@@ -630,7 +558,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot UserName Incorrect Answer</shortDescription>
-        <value>You entered an incorrect answer. Please try again</value>
+        <value>The answer is incorrect</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_User_Name_Client_Number_or_Email_is_not_Valid</fullName>
@@ -638,7 +566,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot User Name Client Number or Email is not Valid</shortDescription>
-        <value>The information you entered could not be validated. Please ensure the information you provided is correct and try again.</value>
+        <value>Client Number or Email is not valid</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_User_Name_Locked_Instructions</fullName>
@@ -662,7 +590,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot User Name Step 1 Instructions</shortDescription>
-        <value>Please provide the following information to verify your identity</value>
+        <value>Enter your profile credentials to verify your identity.</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_User_Name_Step_1_h1</fullName>
@@ -670,7 +598,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot User Name Step 1 h1</shortDescription>
-        <value>Forgot your username?</value>
+        <value>Forgot your username</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_User_Name_Step_1_h2</fullName>
@@ -686,7 +614,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot User Name Step 2 h1</shortDescription>
-        <value>Forgot your username?</value>
+        <value>Forgot your username</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_User_Name_Step_2_h2</fullName>
@@ -702,7 +630,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot User Name Thank You Instructions 1</shortDescription>
-        <value>An email with your username has been sent to name@domain.com. If it does not arrive in the next few minutes, check your spam folder.</value>
+        <value>An email with your username has been sent to</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_User_Name_Thank_You_Instructions_2</fullName>
@@ -718,7 +646,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Forgot User Name Thank You h1</shortDescription>
-        <value>You have successfully retrieved your username!</value>
+        <value>Success!</value>
     </labels>
     <labels>
         <fullName>CP_Forgot_User_Not_Completed_Instructions</fullName>
@@ -758,7 +686,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Button Get Started</shortDescription>
-        <value>Start</value>
+        <value>Get Started</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Button_Next</fullName>
@@ -766,7 +694,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Button Next</shortDescription>
-        <value>Continue</value>
+        <value>Next</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Button_Ok</fullName>
@@ -993,36 +921,12 @@
         <value>Change</value>
     </labels>
     <labels>
-        <fullName>CP_Generic_Label_Client_Information</fullName>
-        <categories>CP Generic</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP_Generic_Label_Client_Information</shortDescription>
-        <value>Client Information</value>
-    </labels>
-    <labels>
         <fullName>CP_Generic_Label_Client_Number</fullName>
         <categories>CP Generic</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Label Client Number</shortDescription>
         <value>Client Number</value>
-    </labels>
-    <labels>
-        <fullName>CP_Generic_Label_Client_Policy_Loan</fullName>
-        <categories>CP Generic</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Generic Label Client Policy Loan</shortDescription>
-        <value>Client, Policy, or Loan Number</value>
-    </labels>
-    <labels>
-        <fullName>CP_Generic_Label_Client_Policy_Loan_Number</fullName>
-        <categories>CP Generic</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP_Generic_Label_Client_Policy_Loan_Number</shortDescription>
-        <value>Client, Policy and/or Loan Number(s)</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Closing_Value</fullName>
@@ -1039,14 +943,6 @@
         <protected>false</protected>
         <shortDescription>CP Generic Label Confirm Password</shortDescription>
         <value>Confirm Password</value>
-    </labels>
-    <labels>
-        <fullName>CP_Generic_Label_Confirmations</fullName>
-        <categories>CP Generic</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP_Generic_Label_Confirmations</shortDescription>
-        <value>Confirmations</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Contributor_Spouse_Name</fullName>
@@ -1081,28 +977,12 @@
         <value>Date of Birth</value>
     </labels>
     <labels>
-        <fullName>CP_Generic_Label_Documents</fullName>
-        <categories>CP Generic</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP_Generic_Label_Documents</shortDescription>
-        <value>Documents</value>
-    </labels>
-    <labels>
         <fullName>CP_Generic_Label_Email</fullName>
         <categories>CP Generic</categories>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>CP_Generic_Label_Email</shortDescription>
+        <shortDescription>CP Generic Label Email</shortDescription>
         <value>Email</value>
-    </labels>
-    <labels>
-        <fullName>CP_Generic_Label_Email_Address</fullName>
-        <categories>CP Generic</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Generic Label Email Address</shortDescription>
-        <value>Email Address</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Equity</fullName>
@@ -1175,22 +1055,6 @@
         <protected>false</protected>
         <shortDescription>CP Generic Label Holdings</shortDescription>
         <value>Holdings</value>
-    </labels>
-    <labels>
-        <fullName>CP_Generic_Label_Insurance</fullName>
-        <categories>CP Generic</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Generic Label Insurance</shortDescription>
-        <value>Insurance</value>
-    </labels>
-    <labels>
-        <fullName>CP_Generic_Label_Insurance_Statements</fullName>
-        <categories>CP Generic</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP_Generic_Label_Insurance_Statements</shortDescription>
-        <value>Insurance Statements</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_International</fullName>
@@ -1430,7 +1294,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Label Phone</shortDescription>
-        <value>Home Phone</value>
+        <value>Phone</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Plan_Sponsor</fullName>
@@ -1454,7 +1318,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Label Postal Zip Code</shortDescription>
-        <value>Postal or zip code</value>
+        <value>Postal Code/Zip Code</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Print</fullName>
@@ -1537,22 +1401,6 @@
         <value>RRSP</value>
     </labels>
     <labels>
-        <fullName>CP_Generic_Label_Receive_Email_Promotions</fullName>
-        <categories>CP Generic</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP_Generic_Label_Receive_Email_Promotions</shortDescription>
-        <value>Receive Email Promotions</value>
-    </labels>
-    <labels>
-        <fullName>CP_Generic_Label_Receive_SMS_Promotions</fullName>
-        <categories>CP Generic</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP_Generic_Label_Receive_SMS_Promotions</shortDescription>
-        <value>Receive SMS Promotions</value>
-    </labels>
-    <labels>
         <fullName>CP_Generic_Label_Registered</fullName>
         <categories>CP Generic</categories>
         <language>en_US</language>
@@ -1567,22 +1415,6 @@
         <protected>false</protected>
         <shortDescription>CP Generic Label Security Question</shortDescription>
         <value>Security Question</value>
-    </labels>
-    <labels>
-        <fullName>CP_Generic_Label_Security_Questions</fullName>
-        <categories>CP Generic</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Generic Label Security Questions</shortDescription>
-        <value>Security Questions</value>
-    </labels>
-    <labels>
-        <fullName>CP_Generic_Label_Show_Password</fullName>
-        <categories>CP Generic</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Generic Label Show Password</shortDescription>
-        <value>Show Password</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Since</fullName>
@@ -1623,14 +1455,6 @@
         <protected>false</protected>
         <shortDescription>CP Generic Label TFSA</shortDescription>
         <value>TFSA</value>
-    </labels>
-    <labels>
-        <fullName>CP_Generic_Label_Tax_Documents</fullName>
-        <categories>CP Generic</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP_Generic_Label_Tax_Documents</shortDescription>
-        <value>Tax Documents</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Tax_Receipts</fullName>
@@ -1702,7 +1526,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Label View Sample</shortDescription>
-        <value>Where do I find this?</value>
+        <value>View Sample</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_View_Statement</fullName>
@@ -1745,14 +1569,6 @@
         <value>Year to date</value>
     </labels>
     <labels>
-        <fullName>CP_Generic_Label_iProfile</fullName>
-        <categories>CP Generic</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Generic Label iProfile</shortDescription>
-        <value>iProfile</value>
-    </labels>
-    <labels>
         <fullName>CP_Generic_Link_Learn_More</fullName>
         <categories>CP Generic</categories>
         <language>en_US</language>
@@ -1769,28 +1585,12 @@
         <value>N/A</value>
     </labels>
     <labels>
-        <fullName>CP_Generic_Opted_In</fullName>
-        <categories>CP Generic</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Generic Opted In</shortDescription>
-        <value>I&apos;ve opted in to receive the latest news and offers from Investors Group to my email address (optional)</value>
-    </labels>
-    <labels>
-        <fullName>CP_Generic_Opted_Out</fullName>
-        <categories>CP Generic</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Generic Opted Out</shortDescription>
-        <value>I&apos;ve opted to not receive the latest news and offers from Investors Group to my email address (optional)</value>
-    </labels>
-    <labels>
         <fullName>CP_Generic_Password_Instruction_1</fullName>
         <categories>CP Generic</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Password Instruction 1</shortDescription>
-        <value>Between 6-12 characters</value>
+        <value>Must be 8-32 characters</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Password_Instruction_2</fullName>
@@ -1798,7 +1598,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Password Instruction 2</shortDescription>
-        <value>With at least one uppercase letter</value>
+        <value>At least one uppercase letter</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Password_Instruction_3</fullName>
@@ -1806,7 +1606,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Password Instruction 3</shortDescription>
-        <value>With at least one number or special character (#, $ %, etc.)</value>
+        <value>At least one number or special character</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Salutation_Hi</fullName>
@@ -1870,7 +1670,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Username Instruction 1</shortDescription>
-        <value>Between be 6-30 characters</value>
+        <value>Must be 6-32 characters</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Username_Instruction_2</fullName>
@@ -1878,7 +1678,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Username Instruction 2</shortDescription>
-        <value>No special characters (#, $ %, etc.)</value>
+        <value>Can only contain the following special characters: - @ _ .</value>
     </labels>
     <labels>
         <fullName>CP_Manage_Notifications_Language_Preference_Details</fullName>
@@ -2089,14 +1889,6 @@
         <value>Find the insurance coverage that best fits your needs.</value>
     </labels>
     <labels>
-        <fullName>CP_Overview_Insurance_Services</fullName>
-        <categories>CP Overview</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Overview Insurance Services</shortDescription>
-        <value>I.G. Insurance Services Inc.</value>
-    </labels>
-    <labels>
         <fullName>CP_Overview_Insurance_h2</fullName>
         <categories>CP Overview</categories>
         <language>en_US</language>
@@ -2185,20 +1977,12 @@
         <value>Total Market Value</value>
     </labels>
     <labels>
-        <fullName>CP_Profile_Settings_Title</fullName>
-        <categories>CP Account</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Profile Settings Title</shortDescription>
-        <value>Profile Settings</value>
-    </labels>
-    <labels>
         <fullName>CP_Registration_Client_Already_Registered</fullName>
         <categories>CP Registration</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Client Already Registered</shortDescription>
-        <value>The specified client number cannot be used for registration, since it has already been used for another online account access profile. Try recovering your username or changing your password. If you are still having difficulty, please contact our support centre at 1-877-796-3788 (Monday - Friday, 7 a.m. to 7 p.m. CT) or email onlineaccess@investorsgroup.com.</value>
+        <value>Provided Client number is already Registered</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Client_Number_Is_Empty</fullName>
@@ -2222,7 +2006,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Client has zero balance</shortDescription>
-        <value>The specified client number cannot be used for registration, since it is not associated with an active product. For more information, please contact our support centre at 1-877-796-3788 (Monday - Friday, 7 a.m. to 7 p.m. CT) or email onlineaccess@investorsgroup.com.</value>
+        <value>Client has zero balance. To get more information, please contact our client support at 1-800-555-5555</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Client_is_Company_and_Not_allowed_to_Register</fullName>
@@ -2230,7 +2014,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Client is Company and Not allowed to Register</shortDescription>
-        <value>The specified client number cannot be used for registration without additional authorization, since it is a corporate account. Please contact our support centre at 1-877-796-3788 (Monday - Friday, 7 a.m. to 7 p.m. CT) or email onlineaccess@investorsgroup.com.</value>
+        <value>Client number is of Company account and can not be used for online registration.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Client_is_Joint_and_Not_allowed_to_Register</fullName>
@@ -2238,7 +2022,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Client is Joint and Not allowed to Register</shortDescription>
-        <value>The specified client number cannot be used for registration, since it is a joint account. Please use your individual client number instead. For more information, please contact our support centre at 1-877-796-3788 (Monday - Friday, 7 a.m. to 7 p.m. CT) or email onlineaccess@investorsgroup.com.</value>
+        <value>Client number is of JOINT account and can not be used for online registration.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Client_is_deceased</fullName>
@@ -2246,7 +2030,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Client is deceased</shortDescription>
-        <value>The specified client number cannot be used for registration. For more information, please contact our support centre at 1-877-796-3788 (Monday - Friday, 7 a.m. to 7 p.m. CT) or email onlineaccess@investorsgroup.com.</value>
+        <value>Associated Client is deceased.To get more information, please contact our client support at 1-800-555-5555</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Client_mail_returned</fullName>
@@ -2254,7 +2038,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Client mail returned</shortDescription>
-        <value>Postal mail being sent to you by Investors Group is currently being returned. To protect your account security, you cannot register for online account  access until you update your mailing address. Please contact your Investors Group Consultant or our support centre at 1-877-796-3788 (Monday - Friday, 7 a.m. to 7 p.m. CT) or email onlineaccess@investorsgroup.com.</value>
+        <value>Client mail is returned. To get more information, please contact our client support at 1-800-555-5555</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Confirm_Email_Not_Matched</fullName>
@@ -2294,7 +2078,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Email Is Already Registered</shortDescription>
-        <value>That email is already in use. Please enter a different email address.</value>
+        <value>This email is already Registered with Investors Group. Please use another email to register.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Email_Is_Invalid</fullName>
@@ -2342,7 +2126,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Locked Instructions</shortDescription>
-        <value>For security reasons, your ability to register has been suspended at this time. To continue registration, please contact our support centre at 1-877-796-3788 (Monday - Friday, 7 a.m. to 7 p.m. CT) or email onlineaccess@investorsgroup.com.</value>
+        <value>For security purposes, you have been temporarily locked out from registering online. To continue registration, please contact our support at 1-800-555-5555.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Locked_h1</fullName>
@@ -2350,7 +2134,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Locked h1</shortDescription>
-        <value>Registration blocked for security reasons</value>
+        <value>Registration is blocked for security purposes</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Not_Completed_Instructions</fullName>
@@ -2358,7 +2142,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Not Completed Instructions</shortDescription>
-        <value>Something has prevented us from registering you. Please try again later or contact our support centre at 1-877-796-3788 (Monday - Friday, 7 a.m. to 7 p.m. CT) or email onlineaccess@investorsgroup.com. [Error code]</value>
+        <value>Something has prevented us from creating your Online Access account. To get more information, please contact our client support at 1-800-555-5555.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Not_Completed_h1</fullName>
@@ -2366,7 +2150,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Not Completed h1</shortDescription>
-        <value>Registration incomplete</value>
+        <value>Registration could not be completed.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Password_Is_Empty</fullName>
@@ -2438,7 +2222,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Start Figure Convenience Desc</shortDescription>
-        <value>View, download or print statements from upto seven years</value>
+        <value>View, download or print statements going back as far as seven years.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Start_Figure_Safe</fullName>
@@ -2446,7 +2230,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Start Figure Safe</shortDescription>
-        <value>Security</value>
+        <value>Safe and Secure</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Start_Figure_Safe_Desc</fullName>
@@ -2454,7 +2238,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Start Figure Safe Desc</shortDescription>
-        <value>Securely view investment performance, mortgage and insurance details</value>
+        <value>Securely view investment performance, mortgage, and insurance.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Start_Get_Started</fullName>
@@ -2462,7 +2246,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Start Get Started</shortDescription>
-        <value>Here&apos;s what you need to start</value>
+        <value>Here&apos;s what you need to get started</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Start_Instructions</fullName>
@@ -2470,7 +2254,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Start Instructions</shortDescription>
-        <value>View all your accounts at your convenience, anytime and on any device</value>
+        <value>View all of your accounts at your convenience anytime and on any device.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Start_Requirements</fullName>
@@ -2478,7 +2262,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Start Requirements</shortDescription>
-        <value>You will need the client, loan or policy number that appears on your statements.</value>
+        <value>Your client number, loan number, or policy number that appears on your statements.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Start_h1</fullName>
@@ -2486,7 +2270,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Start h1</shortDescription>
-        <value>Register for online account access in 3 easy steps</value>
+        <value>Register for Online Access in 3 easy steps</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Start_h2</fullName>
@@ -2502,7 +2286,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Step 1 Instructions</shortDescription>
-        <value>Enter your Investors Group information to verify your identity</value>
+        <value>Enter your Investors Group information to link your account to your online profile.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Step_1_h1</fullName>
@@ -2510,7 +2294,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Step 1 h1</shortDescription>
-        <value>Register for online account access</value>
+        <value>Register for Online Access</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Step_1_h2</fullName>
@@ -2518,7 +2302,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Step 1 h2</shortDescription>
-        <value>Verify your identity</value>
+        <value>Link You Account</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Step_2_Instructions</fullName>
@@ -2526,7 +2310,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Step 2 Instructions</shortDescription>
-        <value>Your online profile lets you securely access your account information.</value>
+        <value>You&apos;ll use your online profile to securely access your account online.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Step_2_Opt_In</fullName>
@@ -2534,7 +2318,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Step 2 Opt In</shortDescription>
-        <value>Yes, I&apos;d like to have the latest news and offers from Investors Group sent to my email address (optional)</value>
+        <value>I&apos;d like to receive the latest news and offers from Investors Group to my email address (optional)</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Step_2_Security_Answer_1</fullName>
@@ -2598,7 +2382,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Step 2 h1</shortDescription>
-        <value>Register for online account access</value>
+        <value>Register for Online Access</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Step_2_h2</fullName>
@@ -2614,7 +2398,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Step 3 Instructions</shortDescription>
-        <value>You’re almost finished! Check if the information below is correct before proceeding.</value>
+        <value>You’re almost finished! Please ensure your online profile information listed below is correct.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Step_3_h1</fullName>
@@ -2622,7 +2406,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Step 3 h1</shortDescription>
-        <value>Register for online account access</value>
+        <value>Register for Online Access</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Step_3_h2</fullName>
@@ -2630,7 +2414,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Step 3 h2</shortDescription>
-        <value>Review and accept user agreement</value>
+        <value>Review and Accept</value>
     </labels>
     <labels>
         <fullName>CP_Registration_TOS_Agree</fullName>
@@ -2662,7 +2446,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Registration Thank You Instructions</shortDescription>
-        <value>Your online account access profile is ready to use. Sign in now to see activity and information for all your Investors Group accounts.</value>
+        <value>Your Online Access profile is now activated. You can now sign in to view activity and information for your Investors Group accounts.</value>
     </labels>
     <labels>
         <fullName>CP_Registration_Thank_You_h1</fullName>
@@ -2687,14 +2471,6 @@
         <protected>false</protected>
         <shortDescription>CP Registration User Name Is Empty</shortDescription>
         <value>User Name is Required</value>
-    </labels>
-    <labels>
-        <fullName>CP_Registration_Where_Do_I_Find_This</fullName>
-        <categories>CP Registration</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Registration Where Do I Find This</shortDescription>
-        <value>Where do I find this?</value>
     </labels>
     <labels>
         <fullName>CP_Statement_Preference_Global_Setting_Online</fullName>
@@ -2742,7 +2518,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Tooltip Email Address</shortDescription>
-        <value>Your email address is used for registration and to establish your identity if you forget your username or password.</value>
+        <value>Tooltip for e-mail address</value>
     </labels>
     <labels>
         <fullName>CP_Tooltip_Password</fullName>
@@ -2753,20 +2529,12 @@
         <value>Please select a password.</value>
     </labels>
     <labels>
-        <fullName>CP_Tooltip_Phone</fullName>
-        <categories>CP Tooltip</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Tooltip Phone</shortDescription>
-        <value>Your mobile number will be used only for important notifications.</value>
-    </labels>
-    <labels>
         <fullName>CP_Tooltip_Security_Question</fullName>
         <categories>CP Tooltip</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Tooltip Security Question</shortDescription>
-        <value>Your security questions and answers are used to verify your identity if you forget your username or password, or if you sign in using a different device.</value>
+        <value>Tooltip for security question</value>
     </labels>
     <labels>
         <fullName>CP_Tooltip_Total_Market_Value</fullName>
@@ -2782,7 +2550,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Tooltip Username</shortDescription>
-        <value>Enter the email address you used when you created your profile.</value>
+        <value>Pick a username.</value>
     </labels>
     <labels>
         <fullName>CP_URL_Login</fullName>
