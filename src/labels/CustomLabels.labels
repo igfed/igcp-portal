@@ -1569,6 +1569,14 @@
         <value>Security Question</value>
     </labels>
     <labels>
+        <fullName>CP_Generic_Label_Security_Questions</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Security Questions</shortDescription>
+        <value>Security Questions</value>
+    </labels>
+    <labels>
         <fullName>CP_Generic_Label_Show_Password</fullName>
         <categories>CP Generic</categories>
         <language>en_US</language>

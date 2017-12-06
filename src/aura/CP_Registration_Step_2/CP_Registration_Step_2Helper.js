@@ -60,36 +60,18 @@
 		});
 	},
 	scrollToTop: function (cmp) {
-		var utils = cmp.find("CP_Utils");
-		if (cmp.get("v.renderComplete") === true) {
-			console.log("renderComplete: true")
+		cmp.find("CP_Utils").waitForJQuery(function($){
 			$("html, body").animate({
 				scrollTop: 0
 			}, 500);
-		} else {
-			console.log("renderComplete: false")
-			utils.waitFor(cmp, "v.renderComplete", function () {
-				$("html, body").animate({
-					scrollTop: 0
-				}, 500);
-			});
-		}
+		});
 	},
 	scrollToError: function (id, cmp) {
-		var utils = cmp.find("CP_Utils");
-		if (cmp.get("v.renderComplete") === true) {
+		cmp.find("CP_Utils").waitForJQuery(function($){
 			$("html, body").animate({
 				scrollTop: $(id).offset().top
 			}, 500);
-
-			utils.scrollTo("html, body");
-		} else {
-			utils.waitFor(cmp, "v.renderComplete", function () {
-				$("html, body").animate({
-					scrollTop: $(id).offset().top
-				}, 500);
-			});
-		}
+		});
 	},
 	showLoading: function (cmp) {
 

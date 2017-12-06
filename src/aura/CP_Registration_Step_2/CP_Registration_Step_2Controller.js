@@ -122,8 +122,6 @@
 			inputs = cmp.get("v.inputsReceived"),
 			payload = evt.getParam("payload"),
 			formattedDob = "";
-		// console.info("CP_Registration_Step_2: onInputValueReceived");
-		// console.log(evt.getParam("payload"));
 
 		hlpr.validateInput(cmp, payload, function(obj){
 			var errIdArr = cmp.get("v.errIdArr");
@@ -167,7 +165,6 @@
 
 			cmp.onSubmitForm();
 		} else if (cmp.get("v.inputsReceived") === cmp.get("v.numberOfInputs") && cmp.get("v.inputErrors") === true) {
-
 			utils.scrollTo("#" + cmp.get("v.errIdArr")[0]);
 			cmp.set("v.errIdArr", []);
 		}
@@ -230,6 +227,15 @@
 										"errors": msgArr
 									});
 								}
+
+								if(errorType === "password") {
+									msgArr.push({ "msg": obj.messages[i] });
+									events.fire("CP_Evt_Input_Error", {
+										"id": "password-input",
+										"type": "no-spaces",
+										"errors": msgArr
+									});
+								}
 							});
 						}
 					}
@@ -246,7 +252,6 @@
 	onOptClicked: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
 		if (payload.id === "news-offers-opt") {
-			console.info(payload.checked);
 			cmp.set("v.emailOptIn", payload.checked);
 		}
 	},

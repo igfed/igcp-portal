@@ -41,17 +41,25 @@
 
 		if (cmp.get("v.id") === evt.getParam("payload").id) {
 
+			var 
+				field = cmp.find("password-input") || cmp.find("password-secret-input"), 
+				confirmField = cmp.find("confirm-password-input");
+
 			hlpr.setValidStyle(cmp);
 			hlpr.setConfirmationValidStyle(cmp);
 
 			cmp.set("v.inputHasErrors", false);
 
-			var confirmField = cmp.find("confirm-password-input");
-
 			cmp.set("v.limitClass", "igcp-text__success igcp-utils__font-size--x-small");
 			cmp.set("v.upperClass", "igcp-text__success igcp-utils__font-size--x-small");
 			cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");
 
+			try {
+				field.set("v.errors", []);
+			} catch(err) {
+				console.error(err);
+			}
+			
 			confirmField.set("v.errors", []);
 		}
 	},
@@ -174,6 +182,19 @@
 					} else {
 						confirmPasswordInput.set("v.errors", []);
 						hlpr.setConfirmationValidStyle(cmp);
+					}
+				} else if (payload.type === "no-spaces") {
+					hlpr.setErrorStyle(cmp);
+					hlpr.setConfirmationErrorStyle(cmp);
+					hlpr.setAllInstructionsErrorStyle(cmp);
+
+					try {
+						var passwordInput = cmp.find("password-input") || cmp.find("password-secret-input");
+						passwordInput.set("v.errors", [{
+							"message": payload.errors[0].msg
+						}]);
+					} catch (err) {
+						console.error(err);
 					}
 				}
 

@@ -111,6 +111,7 @@
 				
 				if(payload.type === "userName") {
 					userNameInput.set("v.errors", [{ "message" : errors[0].msg}]);
+					hlpr.showAllInstructionsErrorStyle(cmp);
 				} else {
 					userNameInput.set("v.errors", []);
 				}

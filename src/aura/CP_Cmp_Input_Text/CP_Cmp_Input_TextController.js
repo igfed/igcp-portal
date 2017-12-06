@@ -41,8 +41,12 @@
 			//Used to set the label
 			cmp.set("v.hasErrors", false);
 
-			field.set("v.errors", []);
-			confirmField.set("v.errors", []);
+			try {
+				field.set("v.errors", []);
+				confirmField.set("v.errors", []);
+			} catch (err) {
+				console.error(err);
+			}
 		}
 	},
 	onError: function (cmp, evt, hlpr) {
@@ -50,8 +54,7 @@
 		var
 			payload = evt.getParam("payload"),
 			errors = payload.errors,
-			errorArr = [],
-			field;
+			errorArr = [];
 
 		if (cmp.get("v.id") === payload.id) {
 
@@ -66,8 +69,11 @@
 					});
 				});
 
-				field = cmp.find("text-input");
-				field.set("v.errors", errorArr);
+				try {
+					cmp.find("text-input").set("v.errors", errorArr);
+				} catch (err) {
+					console.error(err)
+				}
 			}
 		}
 	},

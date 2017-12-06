@@ -1,5 +1,11 @@
 <aura:component controller="CP_ForgotUserNameController">
 
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Validation aura:id="CP_Validation" />
+	<c:CP_Services aura:id="CP_Services" />
+
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="forgot-user-step-1"></aura:attribute>
 	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
@@ -11,15 +17,9 @@
 	<aura:attribute name="clientNum" type="String"></aura:attribute>
 	<aura:attribute name="email" type="String" default=""/>
 
-	<!-- INCLUDES -->
-	<c:CP_Events aura:id="CP_Events" />
-	<c:CP_Utils aura:id="CP_Utils" />
-	<c:CP_Validation aura:id="CP_Validation" />
-	<c:CP_Services aura:id="CP_Services" />
-
 	<!-- HANDLERS -->
+	<aura:handler event="c:CP_Evt_Click" action="{!c.onButtonClick}" />
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
-	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
 	
@@ -56,13 +56,13 @@
                 		class="slds-m-top--x-small slds-m-bottom--xxx-small"/>
                     <!--FIELDS-->
                     <!-- CLIENT NUMBER -->
-                    <c:CP_Cmp_Input_Text id="client-number" maxLength="13" type="client-number" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Client_Policy_Loan}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-top--medium slds-m-bottom--large" hasFocus="true" tooltip="{!$Label.c.CP_Tooltip_Client_Number}"/>
+                    <c:CP_Cmp_Input_Text id="client-number" maxLength="13" type="client-number" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Client_Policy_Loan}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" hasFocus="true" modalID="view-sample" modalLabel="{!$Label.c.CP_Registration_Where_Do_I_Find_This}"/>
 
                     <!-- EMAIL ADDRESS -->
                     <c:CP_Cmp_Input_Text id="email-input" form="{!v.pageId}" type="email" label="{!$Label.c.CP_Generic_Label_Email}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Email_Address}" />
                 </div>
                 <!--CTAS-->
-                <c:CP_Cmp_Form_Back_Next dcname1="forgot-username-cancel" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" form="{!v.pageId}" />
+                <c:CP_Cmp_Form_Back_Next dcname1="forgot-username-cancel" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" backType="cancel" form="{!v.pageId}" />
             </div>
         </div>    
         <div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>

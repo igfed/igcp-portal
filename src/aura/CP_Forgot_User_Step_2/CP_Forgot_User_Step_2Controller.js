@@ -51,8 +51,12 @@
 			cmp,
 			function(evt) {
 				hlpr.hideLoading(cmp);
-				window._aa.track('forgot-username-success', '{"component": {"name": "CP_Forgot_User_Step_2Controller"}}');
 				cmp.gotoNextStep();
+				try {
+					window._aa.track('forgot-username-success', '{"component": {"name": "CP_Forgot_User_Step_2Controller"}}');
+				} catch (err) {
+					console.error(err);
+				}
 			},
 			function(error) {
 				console.error("Forgot User: Step 2: Error");
@@ -102,9 +106,8 @@
 		}
 	},
 	onButtonClick: function(cmp, evt, hlpr){
-		if(evt.getParam("payload").id === "back_button") {
-			var utils = cmp.find("CP_Utils");
-			utils.gotoLogin(cmp.get("v.lang"));
+		if(evt.getParam("payload").id === "cancel_button") {
+			cmp.find("CP_Utils").gotoLogin();
 		}
 	}
 })

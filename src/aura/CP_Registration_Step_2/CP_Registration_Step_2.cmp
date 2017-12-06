@@ -55,7 +55,7 @@
 	</aura:method>
 	
 	<!-- MARKUP -->
-	<div data-aa-component="CP_Registration_Step_2" class="igcp-background igcp-utils__position--relative" aria-live="assertive">
+	<div data-aa-component="CP_Registration_Step_2" class="igcp-registration__step-2 igcp-background igcp-utils__position--relative" aria-live="assertive">
 
 		<c:CP_Cmp_Loading_Icon id="registration-step-2-spinner" hasBG="true" show="false" />
 
@@ -81,7 +81,7 @@
 				<c:CP_Cmp_Input_Email id="email-input" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Email}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Email_Address}"/>
 
 				<!-- NEWS OPT IN  -->
-				<c:CP_Cmp_Input_Checkbox id="news-offers-opt" class="slds-size_12-of-12 slds-large-size_9-of-12" copy="{!$Label.c.CP_Registration_Step_2_Opt_In}" checked="false" />
+				<c:CP_Cmp_Input_Checkbox id="news-offers-opt" class="slds-size_12-of-12 slds-large-size_9-of-12" copy="{!$Label.c.CP_Registration_Step_2_Opt_In}" checked="{!v.emailOptIn}" />
 
 				<!-- PHONE -->
 				<c:CP_Cmp_Input_Text id="phone-input" form="{!v.pageId}" type="phone" label="{!$Label.c.CP_Generic_Label_Phone}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Phone}" maxLength="20" />

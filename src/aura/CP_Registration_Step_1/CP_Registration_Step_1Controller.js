@@ -1,7 +1,4 @@
 ({
-	onInit: function(cmp, evt, hlpr) {
-
-	},
 	onSubmit: function(cmp, evt, hlpr) {
 
 		//Reset input errors	
@@ -24,7 +21,7 @@
 
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
-		if (cmp.get("v.inputsReceived") === 3 && cmp.get("v.inputErrors") === false) {	
+		if (cmp.get("v.inputsReceived") === cmp.get("v.numberOfInputs") && cmp.get("v.inputErrors") === false) {	
 
 			utils.convertToYMD(cmp.get("v.dob"), function(value) {
 				formattedDob = value;
@@ -70,7 +67,6 @@
 			}
 		);
 	},
-	
 	gotoNextStep: function(cmp, evt, hlpr) {
 		var event = cmp.find("CP_Events");
 		event.fire("CP_Evt_Next_Step", {

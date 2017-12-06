@@ -112,7 +112,6 @@
 	},
 	onCancel: function (cmp, evt, hlpr) {
 		try {
-			console.warn("CANCEL");
 			cmp.find("CP_Utils").gotoLogin();
 		} catch (err) {
 			console.error(err);

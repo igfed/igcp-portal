@@ -1,9 +1,16 @@
 <aura:component controller="CP_ForgotPasswordController">
+
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Validation aura:id="CP_Validation" />
+	<c:CP_Services aura:id="CP_Services" />
 	
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="forgot-password-step-1"></aura:attribute>
 	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
-	<aura:attribute name="inputsReceived" type="Integer" default="3"></aura:attribute>
+	<aura:attribute name="inputsReceived" type="Integer" default="0"></aura:attribute>
+	<aura:attribute name="numberOfInputs" type="Integer" default="0"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="lang" type="String"></aura:attribute>
 	
@@ -11,12 +18,6 @@
 	<aura:attribute name="username" type="String"></aura:attribute>
 	<aura:attribute name="postalCode" type="String"></aura:attribute>
 	<aura:attribute name="dob" type="String"></aura:attribute>
-	
-	<!-- INCLUDES -->
-	<c:CP_Events aura:id="CP_Events" />
-	<c:CP_Utils aura:id="CP_Utils" />
-	<c:CP_Validation aura:id="CP_Validation" />
-	<c:CP_Services aura:id="CP_Services" />
 	
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Click" action="{!c.onButtonClick}" />
@@ -35,7 +36,7 @@
 		<aura:attribute name="payload" type="Map"></aura:attribute>
 	</aura:method>
 	<!-- MARKUP -->
-	<div data-aa-component="CP_Forgot_Pass_Step_1" class="igcp-wrapper igcp-utils__position--relative slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large" aria-live="assertive">
+	<div data-aa-component="CP_Forgot_Pass_Step_1" class="igcp-forgot-pass__step-1 igcp-wrapper igcp-utils__position--relative slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large" aria-live="assertive">
 
 		<c:CP_Cmp_Loading_Icon id="forgot-pass-1-spinner" hasBG="true" show="false"/>
 
@@ -51,7 +52,7 @@
 					<!-- TOAST ERROR -->
 					<c:CP_Cmp_Toast id="forgot-pass-step-1-toast-error" type="error" class="slds-m-top--x-small slds-m-bottom--xxx-small" />
 					<!--FIELDS-->
-					<!-- CLIENT NUMBER -->
+					<!-- USERNAME -->
 					<c:CP_Cmp_Input_Text id="username-input" type="text" maxLength="32" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Username}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" hasFocus="true" />
 					<!-- POSTAL CODE -->
 					<c:CP_Cmp_Input_Text id="postal-code" maxLength="7" type="postal" label="{!$Label.c.CP_Generic_Label_Postal_Zip_Code}" form="{!v.pageId}" class="slds-size_12-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
@@ -59,7 +60,7 @@
 					<c:CP_Cmp_Input_Date id="dob" label="{!$Label.c.CP_Generic_Label_Date_of_Birth}" form="{!v.pageId}" type="date" example="{!$Label.c.CP_Generic_Label_DOB_Example}" class="slds-size_12-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
 				</div>
 				<!--CTAS-->
-				<c:CP_Cmp_Form_Back_Next dcname1="forgot-password-cancel" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" form="{!v.pageId}" />
+				<c:CP_Cmp_Form_Back_Next dcname1="forgot-password-cancel" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" backType="cancel" form="{!v.pageId}" />
 			</div>
 		</div>
 		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
