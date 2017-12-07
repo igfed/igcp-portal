@@ -53,7 +53,7 @@
 					<c:CP_Cmp_Toast id="forgot-pass-step-1-toast-error" type="error" class="slds-m-top--x-small slds-m-bottom--xxx-small" />
 					<!--FIELDS-->
 					<!-- USERNAME -->
-					<c:CP_Cmp_Input_Text id="username-input" type="text" maxLength="32" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Username}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" hasFocus="true" />
+					<c:CP_Cmp_Input_Text id="username-input" type="text" maxLength="32" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Username}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 					<!-- POSTAL CODE -->
 					<c:CP_Cmp_Input_Text id="postal-code" maxLength="7" type="postal" label="{!$Label.c.CP_Generic_Label_Postal_Zip_Code}" form="{!v.pageId}" class="slds-size_12-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
 					<!-- DATE OF BIRTH -->

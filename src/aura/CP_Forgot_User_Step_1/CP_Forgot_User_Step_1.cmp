@@ -56,7 +56,7 @@
                 		class="slds-m-top--x-small slds-m-bottom--xxx-small"/>
                     <!--FIELDS-->
                     <!-- CLIENT NUMBER -->
-                    <c:CP_Cmp_Input_Text id="client-number" maxLength="13" type="client-number" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Client_Policy_Loan}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" hasFocus="true" modalID="view-sample" modalLabel="{!$Label.c.CP_Registration_Where_Do_I_Find_This}"/>
+                    <c:CP_Cmp_Input_Text id="client-number" maxLength="13" type="client-number" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Client_Policy_Loan}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" modalID="view-sample" modalLabel="{!$Label.c.CP_Registration_Where_Do_I_Find_This}"/>
 
                     <!-- EMAIL ADDRESS -->
                     <c:CP_Cmp_Input_Text id="email-input" form="{!v.pageId}" type="email" label="{!$Label.c.CP_Generic_Label_Email}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Email_Address}" />

@@ -40,15 +40,6 @@
 			});
 		}
 
-		//Question 1
-		if (cmp.get("v.securityQuestion1") !== "") {
-			events.fire("CP_Evt_Set_Input_Value", {
-				"id": "security-1-selector",
-				"formId": cmp.get("v.pageId"),
-				"selected": cmp.get("v.securityQuestion1")
-			});
-		}
-
 		//Answer 1
 		if (cmp.get("v.answer1") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
@@ -58,30 +49,12 @@
 			});
 		}
 
-		//Question 2
-		if (cmp.get("v.securityQuestion2") !== "") {
-			events.fire("CP_Evt_Set_Input_Value", {
-				"id": "security-2-selector",
-				"formId": cmp.get("v.pageId"),
-				"selected": cmp.get("v.securityQuestion2")
-			});
-		}
-
 		//Answer 2
 		if (cmp.get("v.answer2") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
 				"id": "security-2-answer",
 				"formId": cmp.get("v.pageId"),
 				"value": cmp.get("v.answer2")
-			});
-		}
-
-		//Question 3
-		if (cmp.get("v.securityQuestion3") !== "") {
-			events.fire("CP_Evt_Set_Input_Value", {
-				"id": "security-3-selector",
-				"formId": cmp.get("v.pageId"),
-				"selected": cmp.get("v.securityQuestion3")
 			});
 		}
 
@@ -101,19 +74,6 @@
 
 		var events = cmp.find('CP_Events');
 		events.fire("CP_Evt_Get_Input_Value", { 'formId': cmp.get("v.pageId") });
-	},
-	onInputSelectorReceived: function(cmp, evt, hlpr) {
-		var
-			inputId = evt.getParam("payload").id,
-			inputValue = evt.getParam("payload").selected;
-
-		if (inputId === "security-1-selector") {
-			cmp.set("v.securityQuestion1", inputValue);
-		} else if (inputId === "security-2-selector") {
-			cmp.set("v.securityQuestion2", inputValue);
-		} else if (inputId === "security-3-selector") {
-			cmp.set("v.securityQuestion3", inputValue);
-		}
 	},
 	onInputValueReceived: function(cmp, evt, hlpr) {
 

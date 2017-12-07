@@ -35,12 +35,13 @@
 	<aura:attribute name="securityQuestion3" type="String"></aura:attribute>
 	<aura:attribute name="answer3" type="String"></aura:attribute>
 	<aura:attribute name="lang" type="String"></aura:attribute>
+
+	<aura:attribute name="securityQuestions" type="String[]" />
 	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
-	<aura:handler event="c:CP_Evt_Input_Selector_Change" action="{!c.onInputSelectorReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
 	<aura:handler event="c:CP_Evt_Key" action="{!c.onKey}" />
 	<aura:handler event="c:CP_Evt_Input_Checkbox" action="{!c.onOptClicked}" />
@@ -72,7 +73,7 @@
 				
 				<!--FIELDS-->
 				<!-- USERNAME -->
-				<c:CP_Cmp_Input_Username id="username-input" form="{!v.pageId}" hasFocus="true" label="{!$Label.c.CP_Generic_Label_Username}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
+				<c:CP_Cmp_Input_Username id="username-input" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Username}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 
 				<!-- PASSWORD -->
 				<c:CP_Cmp_Input_Password id="password-input" form="{!v.pageId}" type="password" confirmPassword="true" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
@@ -87,7 +88,8 @@
 				<c:CP_Cmp_Input_Text id="phone-input" form="{!v.pageId}" type="phone" label="{!$Label.c.CP_Generic_Label_Phone}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Phone}" maxLength="20" />
 
 				<!-- SECURITY QUESTIONS -->
-				<c:CP_Registration_Security_Questions securityQuestion1="{!v.securityQuestion1}" 
+				<c:CP_Registration_Security_Questions
+					securityQuestion1="{!v.securityQuestion1}" 
 					securityQuestion2="{!v.securityQuestion2}" 
 					securityQuestion3="{!v.securityQuestion3}" 
 					form="{!v.pageId}" 

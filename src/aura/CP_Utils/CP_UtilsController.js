@@ -421,5 +421,40 @@
 				}
 			}, 500);
 		}
+	},
+	onFilterArray: function (cmp, evt, hlpr) {
+		var
+			params = evt.getParam("arguments"),
+			filteredArr = [];
+
+		if (params) {
+			var
+				array = params.array,
+				values = params.values;
+
+			array.forEach(function (item, index) {
+				var hasValue = false;
+				values.forEach(function (itm, i) {
+					if (item === itm) {
+						hasValue = true;
+					}
+				});
+
+				if (hasValue === false) {
+					filteredArr.push(item);
+				}
+			});
+
+			params.callback(filteredArr);
+		}
+	},
+	onDebounce: function (cmp, evt, hlpr) {
+		var
+			params = evt.getParam("arguments");
+
+			if (params) {
+				//var timeout;
+				
+			}
 	}
 })
