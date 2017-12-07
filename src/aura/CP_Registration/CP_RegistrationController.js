@@ -97,7 +97,7 @@
 	},
 	onBackStep: function (cmp, evt, hlpr) {
 		try {
-			console.log("BACK");
+
 			var
 				currentStep = cmp.get("v.currentStep"),
 				backStep = currentStep -= 1;
@@ -112,7 +112,6 @@
 	},
 	onCancel: function (cmp, evt, hlpr) {
 		try {
-			console.warn("CANCEL");
 			cmp.find("CP_Utils").gotoLogin();
 		} catch (err) {
 			console.error(err);

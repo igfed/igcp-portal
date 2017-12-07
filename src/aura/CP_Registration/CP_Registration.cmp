@@ -10,7 +10,7 @@
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="registration"></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-utils__overflow--hidden"></aura:attribute>
-	<aura:attribute name="currentStep" type="Integer" default="0"></aura:attribute>
+	<aura:attribute name="currentStep" type="Integer" default="2"></aura:attribute>
 	<aura:attribute name="carouselData" type="Map" default="{}"></aura:attribute>
 	
 	<!-- Step 1 -->
@@ -33,6 +33,7 @@
 	<aura:attribute name="answer2" type="String"></aura:attribute>
 	<aura:attribute name="securityQuestion3" type="String" default=""></aura:attribute>
 	<aura:attribute name="answer3" type="String"></aura:attribute>
+	<aura:attribute name="securityQuestions" type="String[]" default="[]" />
 
 	<!-- Step 3 -->
 	<aura:attribute name="acceptTOS" type="Boolean" default="false"></aura:attribute>

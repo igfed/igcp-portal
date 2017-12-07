@@ -8,17 +8,22 @@
 		this.superAfterRender();
 
 		try {
-			cmp.set("v.numberOfInputs", document.querySelectorAll("input").length);
+			var parent = document.querySelector(".igcp-registration__step-2");
+			cmp.set("v.numberOfInputs", parent.querySelectorAll("input").length);
 		} catch (err) {
 			console.error("CP_Registration_Step_2: afterRender");
 			console.error(err);
 		}
 
-		var analytics = setInterval(function () {
-			if (window && window._aa) {
-				window._aa.registerHandlers();
-				clearInterval(analytics);
-			}
-		}, 500);
+		try {
+			var analytics = setInterval(function () {
+				if (window && window._aa) {
+					window._aa.registerHandlers();
+					clearInterval(analytics);
+				}
+			}, 500);
+		} catch (err) {
+			console.error(err);
+		}
 	}
 })

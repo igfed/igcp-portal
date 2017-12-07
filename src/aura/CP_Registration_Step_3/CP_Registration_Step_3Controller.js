@@ -19,7 +19,7 @@
 			},
 			{
 				"label": $A.get("$Label.c.CP_Generic_Label_Notification"),
-				"detail": cmp.get("v.emailOptIn"),
+				"detail": cmp.get("v.emailOptIn") === true ? $A.get("$Label.c.CP_Generic_Opted_In") : $A.get("$Label.c.CP_Generic_Opted_Out"),
 				"type": ""
 			},
 			{

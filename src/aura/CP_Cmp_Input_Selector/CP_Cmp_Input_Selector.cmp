@@ -13,7 +13,6 @@
 	<aura:attribute name="placeholder" type="String" />
 	<aura:attribute name="class" type="String" />
 	<aura:attribute name="tooltip" type="String" />
-	<aura:attribute name="defaultOptions" type="String[]" />
 	<aura:attribute name="options" type="String[]"></aura:attribute>
 	<aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="type" type="String" default="selector"></aura:attribute>
@@ -25,9 +24,6 @@
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="c:CP_Evt_Input_Focus" action="{!c.onInputFocus}"></aura:handler>
-	<aura:handler event="c:CP_Evt_Input_Selector_Change" action="{!c.onChangeReceived}"></aura:handler>
-	<aura:handler event="c:CP_Evt_Selector_Send_Options" action="{!c.onOptionsReceived}"></aura:handler>
-	<aura:handler event="c:CP_Evt_Set_Input_Value" action="{!c.onSetValue}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Get_Input_Value" action="{!c.onGetValue}"></aura:handler>
 	<aura:handler event="c:CP_Evt_Input_Valid" action="{!c.onValid}" />
 	<aura:handler event="c:CP_Evt_Input_Error" action="{!c.onError}" />
@@ -46,19 +42,12 @@
 			<div id="{!v.id + '-field'}" class="igcp-input slds-form-element__control">
 				<!-- INPUT SELECT -->
 				<ui:inputSelect aura:id="selector-input" class="igcp-input__selector slds-input" change="{!c.onChange}" value="{!v.selectedValue}" blur="{!c.onBlur}" focus="{!c.onFocus}">
-
-					<aura:renderIf isTrue="{!v.currentSelectedValue == ''}"> 
-						<ui:inputSelectOption text="Select a security question" label="{!v.placeholder}" disabled="true" value="true" class="slds-p-right--small"/>
-					</aura:renderIf>
+					<ui:inputSelectOption text="{!v.placeholder}" label="{!v.placeholder}" disabled="true" value="false" class="slds-p-right--small"/>
 
 					<aura:iteration items="{!v.options}" var="opt" indexVar="index">
-						<aura:if isTrue="{!opt == 'v.currentSelectedValue'}"> 
-							<ui:inputSelectOption text="{!opt}" label="{!opt }" value="true"/>
-							<aura:set attribute="else">
-        						<ui:inputSelectOption text="{!opt}" label="{!opt }" value="false"/>
-    						</aura:set>
-						</aura:if>
+						<ui:inputSelectOption text="{!opt}" label="{!opt}" value="false"/>	
 					</aura:iteration>
+
 				</ui:inputSelect>
 			</div>
 		</div>

@@ -1,8 +1,4 @@
 ({
-	doneRendering: function(cmp, evt, hlpr) {
-		var body = document.querySelector("body");
-		body.className = "igcp-utils__display--block";
-	},
 	onSubmit: function(cmp, evt, hlpr) {
 
 		console.log('change_password_js_controller onSubmit');

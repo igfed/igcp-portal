@@ -56,11 +56,11 @@
 		<aura:attribute name="callback" type="function" default="" />
 	</aura:method>
 
-	<!-- DELETE IN ARRAY -->
-	<!-- Deletes a specified element from an array -->
-	<aura:method name="deleteInArray" action="{!c.onDeleteInArray}">
+	<!-- FILTER ARRAY -->
+	<!-- Filters out specific elements in an array and returns the filtered array -->
+	<aura:method name="filterArray" action="{!c.onFilterArray}">
 		<aura:attribute name="array" type="String[]"></aura:attribute>
-		<aura:attribute name="value" type="String"></aura:attribute>
+		<aura:attribute name="values" type="String[]"></aura:attribute>
 		<aura:attribute name="callback" type="function" default="" />
 	</aura:method>
 
@@ -163,6 +163,14 @@
 		<aura:attribute name="match" type="String"></aura:attribute>
 		<aura:attribute name="replace" type="String"></aura:attribute>
 		<aura:attribute name="callback" type="function" default="" />
+	</aura:method>
+
+	<!-- DEBOUNCE -->
+	<!-- Debounce function-->
+	<aura:method name="debounce" action="{!c.onDebounce}">
+		<aura:attribute name="func" type="function" default="" />
+		<aura:attribute name="wait" type="Int" default="2000"></aura:attribute>
+		<aura:attribute name="immediate" type="Boolean" default="true" />
 	</aura:method>
 	
 </aura:component>

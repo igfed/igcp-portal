@@ -23,7 +23,7 @@
 
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
-		if (cmp.get("v.inputsReceived") === 3 && cmp.get("v.inputErrors") === false) {
+		if (cmp.get("v.inputsReceived") === cmp.get("v.numberOfInputs") && cmp.get("v.inputErrors") === false) {
 
 			utils.convertToYMD(cmp.get("v.dob"), function (value) {
 				formattedDob = value;
@@ -34,6 +34,9 @@
 				"postalCode": cmp.get("v.postalCode"),
 				"dob": formattedDob
 			});
+
+			console.info("Step 1");
+			console.log(cmp.get("v.username"));
 
 			hlpr.showLoading(cmp);
 
@@ -129,10 +132,9 @@
 			"id": cmp.get("v.pageId")
 		});
 	},
-	onButtonClick: function (cmp, evt, hlpr) {
-		if (evt.getParam("payload").id === "back_button") {
-			var utils = cmp.find("CP_Utils");
-			utils.gotoLogin(cmp.get("v.lang"));
+	onButtonClick: function(cmp, evt, hlpr){
+		if(evt.getParam("payload").id === "cancel_button") {
+			cmp.find("CP_Utils").gotoLogin();
 		}
 	}
 })
