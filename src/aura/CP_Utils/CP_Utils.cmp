@@ -28,6 +28,7 @@
 	<aura:method name="convertToYMD" action="{!c.convertToYMD}">
 		<aura:attribute name="date" type="String"></aura:attribute>
 		<aura:attribute name="callback" type="function" default="" />
+		<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
 	</aura:method>
 
 	<!-- CONVERT TO MDY -->
@@ -36,6 +37,7 @@
 	<aura:method name="convertToMDY" action="{!c.convertToMDY}">
 		<aura:attribute name="date" type="String"></aura:attribute>
 		<aura:attribute name="callback" type="function" default="" />
+		<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
 	</aura:method>
 
 	<!-- DELETE AT -->

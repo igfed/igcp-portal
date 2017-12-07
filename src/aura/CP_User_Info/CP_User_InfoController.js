@@ -24,12 +24,17 @@
 						sessionStorage.setItem('igcp_loggedIn', true);
 						localStorage.setItem('igcp_lastLogin', date);
 
-						var analytics = setInterval(function () {
-							if (window && window._aa) {
-								window._aa.track('signin-start', '{"component": {"name": "CP_User_InfoController"}}');
-								clearInterval(analytics);
-							}
-						}, 500);
+						try {
+							var analytics = setInterval(function () {
+								if (window._aa) {
+									window._aa.track('signin-start', '{"component": {"name": "CP_User_InfoController"}}');
+									clearInterval(analytics);
+								}
+							}, 500);
+						} catch(err) {
+							console.error("CP_User_Info: onInit: analytics");
+							console.error(err);
+						}
 					});
 
 				},

@@ -12,6 +12,16 @@
 	rerender: function (cmp, hlpr) {},
 	afterRender: function (cmp, hlpr) {
 		this.superAfterRender();
+
+		try {
+			if(document.documentElement.lang === "fr") {
+				cmp.set("v.lang", "fr_CA");
+			}
+		} catch (err) {
+			console.error("CP_Overview: renderer: afterRender: get lang");
+			console.error(err);
+		}
+
 		//Disable back button due ISAM bug
 		try {
 			history.pushState(null, null, document.URL);

@@ -10,14 +10,14 @@
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="registration"></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-utils__overflow--hidden"></aura:attribute>
-	<aura:attribute name="currentStep" type="Integer" default="2"></aura:attribute>
+	<aura:attribute name="currentStep" type="Integer" default="0"></aura:attribute>
 	<aura:attribute name="carouselData" type="Map" default="{}"></aura:attribute>
 	
 	<!-- Step 1 -->
 	<aura:attribute name="clientNum" type="String" default="" />
 	<aura:attribute name="postalCode" type="String" default="" />
 	<aura:attribute name="dob" type="String" default="" />
-	<aura:attribute name="lang" type="String"></aura:attribute>
+	<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
 
 	<!-- Step 2 -->
 	<aura:attribute name="username" type="String" default="" />

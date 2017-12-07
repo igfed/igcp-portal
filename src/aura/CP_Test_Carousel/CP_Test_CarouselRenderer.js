@@ -5,7 +5,7 @@
 	rerender: function (cmp, hlpr) {
 		//console.warn('Registration was re-rendered');
 	},
-	afterRender: function (component, helper) {
+	afterRender: function (cmp, hlpr) {
 		this.superAfterRender();
 
 		try {

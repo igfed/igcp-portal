@@ -14,7 +14,7 @@
 					if (previewObj) {
 						utils.convertToMDY(previewObj.asOfDate, function (obj) {
 							cmp.set("v.asOfDate", obj.formattedString);
-						});
+						}, cmp.get("v.lang"));
 
 						utils.formatToCurrency(previewObj.totalValue, function (formattedValue) {
 							cmp.set("v.totalValue", formattedValue);
@@ -82,9 +82,6 @@
 			function (previewArr) {
 
 				if (previewArr) {
-
-					console.info("CP_Overview_Investments: getAssetMix");
-					console.log(previewArr);
 
 					var graphArr = [];
 

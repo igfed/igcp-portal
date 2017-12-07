@@ -94,7 +94,9 @@
 		if (params) {
 			var
 				date = params.date,
+				lang = params.lang,
 				splitArr = date.split("-"),
+				formattedString = "",
 				monthNames = [
 					$A.get("$Label.c.CP_Date_Month_January"),
 					$A.get("$Label.c.CP_Date_Month_February"),
@@ -110,12 +112,17 @@
 					$A.get("$Label.c.CP_Date_Month_December")
 				];
 
+			if(params.lang === "fr_CA") {
+				formattedString = (splitArr[2] + " " + monthNames[(splitArr[1] - 1)] + " " + splitArr[0]);
+			} else {
+				formattedString = (monthNames[(splitArr[1] - 1)] + " " + splitArr[2] + ", " + splitArr[0]);
+			}
 
 			params.callback({
 				"year": splitArr[0],
 				"month": monthNames[(splitArr[1] - 1)],
 				"day": splitArr[2],
-				"formattedString": (monthNames[(splitArr[1] - 1)] + " " + splitArr[2] + ", " + splitArr[0])
+				"formattedString": formattedString
 			});
 		}
 	},
@@ -453,7 +460,8 @@
 			params = evt.getParam("arguments");
 
 			if (params) {
-				//var timeout;
+				//No working debounce method yet
+				//Sorry
 				
 			}
 	}

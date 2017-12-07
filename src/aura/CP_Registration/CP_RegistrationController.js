@@ -1,18 +1,5 @@
 ({
 	onInit: function (cmp, evt, hlpr) {
-		try {
-			var utils = cmp.find("CP_Utils");
-
-			utils.getURLParams(function (urlParams) {
-				if (urlParams.language) {
-					cmp.set("v.lang", urlParams.language);
-				} else {
-					cmp.set("v.lang", "en_CA");
-				}
-			});
-		} catch (err) {
-			console.error(err);
-		}
 
 		try {
 			var data = {};
