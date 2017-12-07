@@ -62,8 +62,6 @@
 			}, cmp.get("v.lang"));
 
 			cmp.set("v.accountGrandTotal", regNonRegTotalFormatted);
-
-			// console.log("******************")
 		} catch (err) {
 			console.error(err);
 		}

@@ -49,8 +49,8 @@
 
 					if (previewObj) {
 
-						console.info(previewObj);
-						console.log(JSON.parse(previewObj));
+						// console.info(previewObj);
+						// console.log(JSON.parse(previewObj));
 
 						utils.forEach(JSON.parse(previewObj), function (key, value) {
 							hlpr.addAccounts(key, value, cmp);
