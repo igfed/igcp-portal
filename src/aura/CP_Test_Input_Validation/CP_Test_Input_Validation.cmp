@@ -1,5 +1,6 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 	<!-- INCLUDES -->
+	<c:CP_CSS_Includes />
 	<c:CP_JS_Includes />
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Validation aura:id="CP_Validation" />
@@ -10,6 +11,7 @@
 	<div class="igcp-overview igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-around--xx-small slds-large-p-around--medium">
 		<h1 class="slds-size_12-of-12 slds-text-align_center">Input and Form Validation Test Page</h1>
 		<div class="slds-size_4-of-12">
+			ITS WORKIN
 			<form aura:id="testForm" id="testForm" method="get" action="">
 				
 				<c:CP_Cmp_Input_Text id="username_input" type="username" form="testForm" label="Username" placeholder="Please enter name" maxLength="32" errorText="Please enter a username"/>
@@ -20,26 +22,6 @@
 					<c:CP_Cmp_Submit id="form_submit" for="testForm" label="Submit" buttonType="submit" class="slds-m-top--large slds-size_6-of-12" />
 				</div>
 			</form>
-
-			<fieldset class="slds-form-element">
-				<legend class="slds-form-element__legend slds-form-element__label">Radio Group Label</legend>
-				<div class="slds-form-element__control">
-					<span class="slds-radio">
-						<input type="radio" id="radio-3" name="options" value="on" onchange="{!c.onRadioChange}"/>
-						<label class="slds-radio__label" for="radio-3">
-						<span class="slds-radio_faux"></span>
-						<span class="slds-form-element__label">Radio Label One</span>
-						</label>
-					</span>
-					<span class="slds-radio">
-						<input type="radio" id="radio-4" name="options" value="on" onchange="{!c.onRadioChange}"/>
-						<label class="slds-radio__label" for="radio-4">
-						<span class="slds-radio_faux"></span>
-						<span class="slds-form-element__label">Radio Label Two</span>
-						</label>
-					</span>
-				</div>
-			</fieldset>
 		</div>
 	</div>
 </aura:component>

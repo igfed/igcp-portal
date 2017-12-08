@@ -1,8 +1,8 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_OverviewController">
 
 	<!-- INCLUDES -->
+	<c:CP_CSS_Includes />
 	<c:CP_JS_Includes />
-    <c:CP_User_Info />
 
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
@@ -15,9 +15,10 @@
 
 	<!-- HANDLERS -->
     <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+    <aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 	
 	<!-- MARKUP -->
-	<div class="igcp-overview igcp-wrapper igcp-background__tiled slds-grid slds-wrap slds-grid--align-center slds-p-horizontal--xx-small slds-large-p-horizontal--medium slds-p-bottom--xx-small slds-large-p-bottom--medium">
+	<div class="igcp-overview igcp-wrapper igcp-background__tiled slds-grid slds-wrap slds-grid--align-center slds-p-around--xx-small slds-large-p-around--medium">
 		<div class="slds-size_12-of-12">
 			<div class="slds-m-top--medium slds-large-m-top--none slds-m-bottom--large">
 				<h1 class="slds-p-left--small slds-medium-p-left--medium">{!$Label.c.CP_Generic_Salutation_Hi} {!v.clientName}{!$Label.c.CP_Overview_Greeting_h1}</h1>
@@ -25,8 +26,8 @@
 		</div>
 		<div class="slds-size_12-of-12 slds-large-size_8-of-12">
 			<c:CP_Overview_Investments lang="{!v.lang}"/>
-			<c:CP_Overview_Mortgages lang="{!v.lang}" />
-			<c:CP_Overview_Insurance lang="{!v.lang}" />
+			<c:CP_Overview_Mortgages lang="{!v.lang}"/>
+			<c:CP_Overview_Insurance lang="{!v.lang}"/>
 			<p class="igcp-utils__font-size--x-mini igcp-utils__display--none igcp-large-utils__display--block slds-m-horizontal--x-small slds-large-p-bottom--zero">{!$Label.c.CP_Disclaimer_Overview}</p>
 		</div>
 		<div class="slds-size_12-of-12 slds-large-size_4-of-12">

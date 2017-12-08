@@ -8,20 +8,17 @@
 	},
 	afterRender: function (component, helper) {
 		this.superAfterRender();
-		try {
-			var analytics = setInterval(function () {
-				if (window && window._aa) {
-					window.digitalData.error = {
-						"type": "server",
-						"code": "500",
-						"description": "Forgot Password Not Completed"
-					};
-					window._satellite.track('salesforce-error');
-					clearInterval(analytics);
-				}
-			}, 500);
-		} catch (err) {
-			console.error(err);
-		}
+
+		var analytics = setInterval(function () {
+			if (window) {
+				window.digitalData.error = {
+					"type": "server",
+					"code": "500",
+					"description": "Forgot Password Not Completed"
+				};
+				window._satellite.track('salesforce-error');
+				clearInterval(analytics);
+			}
+		}, 500);
 	}
 })

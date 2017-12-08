@@ -22,15 +22,6 @@
 			});
 		}
 
-		//E-mail confirm
-		if (cmp.get("v.emailConfirm") !== "") {
-			events.fire("CP_Evt_Set_Input_Value", {
-				"id": "email-input",
-				"formId": cmp.get("v.pageId"),
-				"confirmValue": cmp.get("v.emailConfirm")
-			});
-		}
-
 		//Phone
 		if (cmp.get("v.mobilePhone") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
@@ -48,6 +39,9 @@
 				"selected": cmp.get("v.securityQuestion1")
 			});
 		}
+
+		console.log("Reg step 2 init");
+		console.log(cmp.get("v.securityQuestion1"));
 
 		//Answer 1
 		if (cmp.get("v.answer1") !== "") {
@@ -67,6 +61,9 @@
 			});
 		}
 
+		console.log("Reg step 2 init");
+		console.log(cmp.get("v.securityQuestion2"));
+
 		//Answer 2
 		if (cmp.get("v.answer2") !== "") {
 			events.fire("CP_Evt_Set_Input_Value", {
@@ -84,6 +81,9 @@
 				"selected": cmp.get("v.securityQuestion3")
 			});
 		}
+
+		console.log("Reg step 2 init");
+		console.log(cmp.get("v.securityQuestion3"));
 
 		//Answer
 		if (cmp.get("v.answer3") !== "") {
@@ -120,20 +120,19 @@
 		var
 			utils = cmp.find('CP_Utils'),
 			inputs = cmp.get("v.inputsReceived"),
-			payload = evt.getParam("payload"),
 			formattedDob = "";
 
-		hlpr.validateInput(cmp, payload, function(obj){
+		hlpr.validateInput(cmp, evt.getParam("payload"), function(id){
 			var errIdArr = cmp.get("v.errIdArr");
-			errIdArr.push(obj.id);
+			errIdArr.push(id);
 			cmp.set("v.errIdArr", errIdArr);
 		});
-	
+
 		cmp.set("v.inputsReceived", (inputs += 1));
 
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
-		if (cmp.get("v.inputsReceived") === cmp.get("v.numberOfInputs") && cmp.get("v.inputErrors") === false) {
+		if (cmp.get("v.inputsReceived") === 11 && cmp.get("v.inputErrors") === false) {
 
 			utils.convertToYMD(cmp.get("v.dob"), function(value) {
 				formattedDob = value;
@@ -161,20 +160,19 @@
 				}
 			});
 
-			hlpr.showLoading(cmp);
+			cmp.onNextStep();
 
-			cmp.onSubmitForm();
-		} else if (cmp.get("v.inputsReceived") === cmp.get("v.numberOfInputs") && cmp.get("v.inputErrors") === true) {
+
+			// hlpr.showLoading(cmp);
+
+			// cmp.onSubmitForm();
+		} else if (cmp.get("v.inputsReceived") === 11 && cmp.get("v.inputErrors") === true) {
 			utils.scrollTo("#" + cmp.get("v.errIdArr")[0]);
 			cmp.set("v.errIdArr", []);
 		}
 	},
 	onInputBlur: function(cmp, evt, hlpr) {
-		try {
-			hlpr.validateInput(cmp, evt.getParam("payload"));
-		} catch(err) {
-			console.error(err);
-		}
+		hlpr.validateInput(cmp, evt.getParam("payload"));
 	},
 	submitForm: function(cmp, evt, hlpr) {
 
@@ -183,11 +181,9 @@
 		services.submitForm(
 			"StepTwo",
 			cmp,
-			function(success) {
+			function(evt) {
 				hlpr.hideLoading(cmp);
 				cmp.onNextStep();
-				console.info("CP_Registration_Step_2: submitForm: SUCCESS");
-				console.log(success);
 			},
 			function(error) {
 
@@ -227,15 +223,6 @@
 										"errors": msgArr
 									});
 								}
-
-								if(errorType === "password") {
-									msgArr.push({ "msg": obj.messages[i] });
-									events.fire("CP_Evt_Input_Error", {
-										"id": "password-input",
-										"type": "no-spaces",
-										"errors": msgArr
-									});
-								}
 							});
 						}
 					}
@@ -257,8 +244,10 @@
 	},
 	onKey: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
-		if (payload.id === "username-input" || payload.id === "password-input") {
-			hlpr.validateInput(cmp, payload);
+		if (payload.id === "username-input") {
+			hlpr.validateUsername(cmp, payload);
+		} else if (payload.id === "password-input") {
+			hlpr.validatePassword(cmp, payload);
 		}
 	}
 })

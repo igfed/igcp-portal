@@ -1,4 +1,6 @@
 ({
-	myAction : function(component, event, helper) {
+	doneRendering: function(cmp, evt, hlpr) {
+		var body = document.querySelector("body");
+		body.className = "igcp-utils__display--block";
 	}
 })

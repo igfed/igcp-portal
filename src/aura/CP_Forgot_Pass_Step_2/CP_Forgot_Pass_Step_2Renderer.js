@@ -1,29 +1,15 @@
 ({
 	render: function (cmp, hlpr) {
 		var ret = this.superRender();
+		//console.warn('Registration was rendered.')
+		try {
+			window._aa.registerHandlers();
+		} catch (err) {
+			console.error(err);
+		}
 		return ret;
 	},
-	rerender: function (cmp, hlpr) {},
-	afterRender: function (cmp, helper) {
-		this.superAfterRender();
-
-		try {
-			var parent = document.querySelector(".igcp-forgot-pass__step-2");
-			cmp.set("v.numberOfInputs", parent.querySelectorAll("input").length);
-		} catch (err) {
-			console.error("CP_Forgot_Pass_Step_2: afterRender");
-			console.error(err);
-		}
-
-		try {
-			var analytics = setInterval(function () {
-				if (window && window._aa) {
-					window._aa.registerHandlers();
-					clearInterval(analytics);
-				}
-			}, 500);
-		} catch (err) {
-			console.error(err);
-		}
+	rerender: function (cmp, hlpr) {
+		//console.warn('Registration was re-rendered');
 	}
 })

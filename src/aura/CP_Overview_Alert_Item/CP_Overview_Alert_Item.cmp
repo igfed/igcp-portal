@@ -10,6 +10,6 @@
     <div class="igcp-alert--item slds-p-bottom--medium slds-m-bottom--medium">
         <div class="igcp-label--small">{!v.date}</div>
         <p>{!v.message}</p>
-        <c:CP_Cmp_Link label="{!v.cta}" standalone="true" href="#" hasChevron="true" class="igcp-utils__font--semibold igcp-utils__font-size--mini" />
+        <c:CP_Cmp_Link label="{!v.cta}" href="#" hasChevron="true" class="igcp-utils__font--semibold igcp-utils__font-size--mini" />
     </div>
 </aura:component>

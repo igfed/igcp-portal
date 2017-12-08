@@ -1,6 +1,7 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CP_AccountDetailController">
 	
 	<!-- INCLUDES -->
+	<c:CP_CSS_Includes />
 	<c:CP_JS_Includes />
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
@@ -63,6 +64,7 @@
 
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 	
 	<!-- MARKUP -->
 	<div class="igcp-overview igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-around--xx-small slds-large-p-around--medium">

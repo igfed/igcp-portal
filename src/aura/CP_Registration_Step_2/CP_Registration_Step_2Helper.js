@@ -1,11 +1,11 @@
 ({
-	validateInput: function (cmp, payload, errorCallback) {
+	validateInput : function(cmp, payload, errorCallback) {
 
 		var
 			validator = cmp.find('CP_Validation'),
 			events = cmp.find('CP_Events');
 
-		validator.validate(payload, function (obj) {
+		validator.validate(payload, function(obj) {
 
 			if (obj.isValid === false) {
 
@@ -13,14 +13,12 @@
 
 				events.fire("CP_Evt_Input_Error", {
 					"id": obj.id,
-					"type" : obj.type !== undefined ? obj.type : "",
 					"errors": obj.errors
 				});
 
-				if (errorCallback) {
-					errorCallback(obj);
+				if(errorCallback) {
+					errorCallback(obj.id, obj.errors);
 				}
-				
 			} else {
 
 				var
@@ -59,29 +57,89 @@
 			}
 		});
 	},
-	scrollToTop: function (cmp) {
-		cmp.find("CP_Utils").waitForJQuery(function($){
-			$("html, body").animate({
-				scrollTop: 0
-			}, 500);
+	validateUsername: function(cmp, payload){
+		var
+			validator = cmp.find('CP_Validation'),
+			events = cmp.find('CP_Events');
+
+		validator.validate(payload, function(obj) {
+
+			if (obj.isValid === false) {
+				events.fire("CP_Evt_Input_Error", {
+					"id": obj.id,
+					"errors": obj.errors
+				});
+
+			} else {
+				events.fire("CP_Evt_Input_Valid", {
+					"id": obj.id
+				});
+
+			}
 		});
 	},
-	scrollToError: function (id, cmp) {
-		cmp.find("CP_Utils").waitForJQuery(function($){
+	validatePassword: function(cmp, payload){
+		var
+			validator = cmp.find('CP_Validation'),
+			events = cmp.find('CP_Events');
+
+		validator.validate(payload, function(obj) {
+
+			if (obj.isValid === false) {
+				events.fire("CP_Evt_Input_Error", {
+					"id": obj.id,
+					"errors": obj.errors
+				});
+
+			} else {
+				events.fire("CP_Evt_Input_Valid", {
+					"id": obj.id
+				});
+
+			}
+		});
+	},
+	scrollToTop: function(cmp){
+		var utils = cmp.find("CP_Utils");
+		if(cmp.get("v.renderComplete") === true) {
+			console.log("renderComplete: true")
+			$("html, body").animate({
+				scrollTop:0
+			}, 500);
+		} else {
+			console.log("renderComplete: false")
+			utils.waitFor(cmp, "v.renderComplete", function(){
+				$("html, body").animate({
+					scrollTop: 0
+				}, 500);
+			});
+		}
+	},
+	scrollToError: function(id, cmp) {
+		var utils = cmp.find("CP_Utils");
+		if(cmp.get("v.renderComplete") === true) {
 			$("html, body").animate({
 				scrollTop: $(id).offset().top
 			}, 500);
-		});
-	},
-	showLoading: function (cmp) {
 
-		cmp.find("CP_Events").fire("CP_Evt_Loading_Show", {
-			"id": "registration-step-2-spinner"
-		});
+			utils.scrollTo("html, body");
+		} else {
+			utils.waitFor(cmp, "v.renderComplete", function(){
+				$("html, body").animate({
+					scrollTop: $(id).offset().top
+				}, 500);
+			});
+		}
 	},
-	hideLoading: function (cmp) {
+	showLoading: function(cmp) {
+		
+		cmp.find("CP_Events").fire("CP_Evt_Loading_Show", {
+			"id" : "registration-step-2-spinner"
+		});
+	}, 
+	hideLoading: function(cmp) {
 		cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", {
-			"id": "registration-step-2-spinner"
+			"id" : "registration-step-2-spinner"
 		});
 	}
 })

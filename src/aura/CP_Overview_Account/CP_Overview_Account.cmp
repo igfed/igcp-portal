@@ -15,39 +15,32 @@
 	<aura:attribute name="itemType" type="String" default="investments"></aura:attribute>
 	<!-- MARKUP -->
 	<div class="igcp-overview--account slds-size_12-of-12 slds-m-bottom--small slds-large-m-bottom--large">
-		<!-- ACCOUNT TITLE -->
 		<aura:if isTrue="{!v.accountTitle}">
 			<h3 class="slds-m-top--x-small slds-m-bottom--small slds-large-m-bottom--large slds-p-horizontal--xx-small slds-medium-p-horizontal--small">{!v.accountTitle}</h3>
 		</aura:if>
-		<!-- HEADING -->
-		<c:CP_Overview_Account_Heading col1Name="{!v.col1Name}" col2Name="{!v.col2Name}" accountType="{!v.accountType}" itemType="{!v.itemType}"/>
-		<!-- ACCOUNT LINES -->
+		<c:CP_Overview_Account_Heading col1Name="{!v.col1Name}" col2Name="{!v.col2Name}" accountType="{!v.accountType}" />
 		<aura:iteration var="account" items="{!v.accounts}">
 			<c:CP_Overview_Account_Item account="{!account}" itemType="{!v.itemType}" lang="{!v.lang}" />
 		</aura:iteration>
-
-		<!-- ACCOUNT TOTAL -->
-		<aura:if isTrue="{!v.accountTotal}">
-			<div class="igcp-account__total slds-grid slds-grid_align-end">
+		<div class="igcp-account__total slds-grid slds-grid_align-end">
+			
+			<div class="slds-p-top--small slds-p-left--xx-small slds-medium-p-left--small slds-large-p-vertical--small slds-size_12-of-12 slds-large-size_6-of-12">{!v.accountType + ' Total'}</div>
+			
+			<div class="slds-text-align_right slds-p-vertical--small slds-size_12-of-12 slds-large-size_6-of-12"><span class="slds-p-horizontal--xx-small slds-medium-p-horizontal--small slds-p-bottom--xx-small">{!v.accountTotal}</span></div>
+		</div>
+		<div class="igcp-account__grand-total slds-grid slds-grid_align-end">
+			<aura:if isTrue="{!v.accountGrandTotal != ''}">
 				
-				<div class="slds-p-top--small slds-p-left--xx-small slds-medium-p-left--small slds-large-p-vertical--small slds-size_6-of-12">{!v.accountType + ' ' + $Label.c.CP_Generic_Label_Total}</div>
+				<div class="slds-p-top--small slds-p-left--xx-small slds-medium-p-left--small slds-large-p-vertical--small slds-size_12-of-12 slds-large-size_9-of-12">Total</div>
 				
-				<div class="slds-text-align_right slds-p-vertical--small slds-size_6-of-12"><span class="slds-p-horizontal--xx-small slds-medium-p-horizontal--small slds-p-bottom--xx-small">{!v.accountTotal}</span></div>
-			</div>
-		</aura:if>
-
-		<!-- GRAND TOTAL -->
-		<aura:if isTrue="{!v.accountGrandTotal != ''}">
-			<div class="igcp-account__grand-total slds-grid slds-grid_align-end">
-				
-				<div class="slds-p-top--small slds-p-left--xx-small slds-medium-p-left--small slds-large-p-vertical--small slds-size_6-of-12">{!$Label.c.CP_Generic_Label_Total}</div>
-				
-				<div class="slds-text-align_right slds-p-vertical--small slds-size_6-of-12">
+				<div class="slds-text-align_right slds-p-vertical--small slds-size_12-of-12 slds-large-size_3-of-12">
 					<div class="igcp-overview__grand-total">
-						<span class="igcp-border--double slds-p-horizontal--xx-small slds-medium-p-horizontal--small slds-p-bottom--xx-small">{!v.accountGrandTotal}</span>
+						<span class="slds-p-horizontal--xx-small slds-medium-p-horizontal--small slds-p-bottom--xx-small">{!v.accountGrandTotal}</span>
+						<div class="igcp-border--double"></div>
 					</div>
 				</div>
-			</div>
-		</aura:if>
+				
+			</aura:if>
+		</div>
 	</div>
 </aura:component>

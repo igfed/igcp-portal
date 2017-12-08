@@ -4,23 +4,11 @@
     <aura:attribute name="col1Name" type="String" />
     <aura:attribute name="col2Name" type="String" />
     <aura:attribute name="accountType" type="String" />
-    <aura:attribute name="itemType" type="String" default="investments"></aura:attribute>
     
     <!-- MARKUP -->
     <div class="igcp-underline__thin--blue slds-grid slds-p-horizontal--xx-small slds-medium-p-horizontal--small slds-p-bottom--xx-small slds-large-p-bottom--x-small">
         <div class="igcp-label--small slds-size_6-of-12">{!v.accountType}</div>
-
-        <aura:if isTrue="{!v.itemType == 'investments'}">
-
-                <div class="igcp-label--small slds-text-align_right slds-size_6-of-12">{!v.col2Name}</div>
-
-			<aura:set attribute="else">
-				
-                <div class="igcp-label--small slds-text-align_right slds-size_3-of-12 slds-show_small">{!v.col1Name}</div>
-
-                <div class="igcp-label--small slds-text-align_right slds-size_6-of-12 slds-medium-size_3-of-12">{!v.col2Name}</div>
-
-			</aura:set>
-		</aura:if>
+        <div class="igcp-label--small slds-text-align_right slds-size_3-of-12 slds-show_small">{!v.col1Name}</div>
+        <div class="igcp-label--small slds-text-align_right slds-size_6-of-12 slds-medium-size_3-of-12">{!v.col2Name}</div>
     </div>
 </aura:component>

@@ -1,4 +1,7 @@
 ({
+	doneRendering: function (cmp, evt, hlpr) {
+		cmp.set("v.renderComplete", true);
+	},
 	onSetGraph: function (cmp, evt, hlpr) {
 
 		var

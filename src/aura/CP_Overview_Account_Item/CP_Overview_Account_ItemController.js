@@ -43,8 +43,8 @@
 
 		//Mortgages
 		if (cmp.get("v.itemType") === "mortgage") {
-			if (account.rateType) {
-				cmp.set("v.accountName", (account.rateType));
+			if (account.product && account.loanNumber) {
+				cmp.set("v.accountName", (account.product + " - " + account.loanNumber));
 			} else {
 				cmp.set("v.accountName", $A.get("$Label.c.CP_Generic_Not_Available"));
 			}
@@ -97,7 +97,7 @@
 		var
 			utils = cmp.find("CP_Utils"),
 			accountNumEnc = cmp.get("v.account").accountNumberEnc,
-			loanEnc = "", policyEnc ="";			
+			loanEnc = "", policyEnc ="";
 
 		if (accountNumEnc) {
 			utils.navigateToURL("/customers/s/account-details?accEnc=" + accountNumEnc);
@@ -107,11 +107,6 @@
 		} else if (cmp.get("v.itemType") === "insurance") {
 			policyEnc = cmp.get("v.account").policyNumber;
 			utils.navigateToURL("/customers/s/insurance-details?policyEnc=" + policyEnc);
-		}
-	},
-	onKey: function(cmp, evt, hlpr) {
-		if(evt.key === "Enter") {
-			cmp.onItemClick();
 		}
 	}
 })

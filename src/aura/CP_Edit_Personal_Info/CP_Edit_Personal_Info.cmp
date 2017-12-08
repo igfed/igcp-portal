@@ -1,12 +1,5 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
-
-	<!-- INCLUDES -->
-	<c:CP_JS_Includes />
-	<c:CP_Events aura:id="CP_Events" />
-	<c:CP_Utils aura:id="CP_Utils" />
-	<c:CP_Validation aura:id="CP_Validation" />
-	<c:CP_Services aura:id="CP_Services" />
-
+	
 	<!-- ATTRS	 -->
 	<aura:attribute name="pageId" type="String" default="registration-step-2"></aura:attribute>
 	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
@@ -27,6 +20,17 @@
 	<aura:attribute name="securityQuestion3" type="String"></aura:attribute>
 	<aura:attribute name="answer3" type="String"></aura:attribute>
 	<aura:attribute name="lang" type="String"></aura:attribute>
+
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Validation aura:id="CP_Validation" />
+	<c:CP_Services aura:id="CP_Services" />
+	<c:CP_CSS_Includes />
+    <c:CP_JS_Includes />
+
+    <!-- HANDLERS -->
+    <aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 	
 	<!-- METHODS-->
 	<aura:method name="onSubmitForm" action="{!c.submitForm}" description="Call submit form">
@@ -64,7 +68,7 @@
 				<!-- PROVINCE/STATE -->
 				<c:CP_Cmp_Input_Selector id="province" form="{!v.pageId}" type="phone" label="{!$Label.c.CP_Change_Personal_Province}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
 
-				<c:CP_Cmp_Input_Selector id="security-1-selector" form="{!v.form}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" label="{!$Label.c.CP_Registration_Step_2_Security_Question_1}" placeholder="{!$Label.c.CP_Registration_Step_2_Security_Question_Placeholder}" defaultOptions="{!v.options}" type="question"/>
+	<c:CP_Cmp_Input_Selector id="security-1-selector" form="{!v.form}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" label="{!$Label.c.CP_Registration_Step_2_Security_Question_1}" placeholder="{!$Label.c.CP_Registration_Step_2_Security_Question_Placeholder}" defaultOptions="{!v.options}" type="question"/>
 	
 				<!-- COUNTRY -->
 				<c:CP_Cmp_Input_Selector id="country" form="{!v.pageId}" type="phone" label="{!$Label.c.CP_Change_Personal_Country}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />

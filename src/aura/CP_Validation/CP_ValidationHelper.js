@@ -33,7 +33,7 @@
 		return /^\w+$/i.test(value);
 	},
 	alphanumericSpecial: function (value) {
-		return /^[-@.\w\s]*$/i.test(value);
+		return /^[-@./+\w\s]*$/i.test(value);
 	},
 	hasUppercase: function (value) {
 		return /[A-Z]/.test(value);
@@ -50,27 +50,9 @@
 	hasSpecialChar: function (value) {
 		return /[^a-z\d]+/i.test(value);
 	},
-	hasCharacter: function(value, character) {
-		var 
-			returnObj = { "detected" : false }, 
-			regEx = new RegExp('\\' + character, 'g'), 
-			test = value.match(regEx);
-        if(test !== null) {
-			returnObj["index"] = value.indexOf(character.toString());
-            returnObj["detected"] = true;
-        }
-        return returnObj;
-	},
 	isPhone: function (value) {
-		// console.info("IS PHONE");
-		// console.info(value);
 		value = value.replace(/\s+/g, "");
 		return /^(\+?1-?)?(\([2-9]([02-9]\d|1[02-9])\)|[2-9]([02-9]\d|1[02-9]))-?[2-9]([02-9]\d|1[02-9])-?\d{4}$/.test(value);
-	},
-	isInternationalPhone: function(value) {
-		// console.info("IS INTERNATIONAL PHONE");
-		// console.info(value);
-		return /^\+(?:[0-9]●?){6,14}[0-9]$/.test(value);
 	},
 	hasValidPostalCode: function (value) {
 
@@ -85,6 +67,7 @@
 	},
 	checkForErrors: function (valObj) {
 		var
+			isValid = false,
 			errors = [],
 			key;
 
@@ -105,6 +88,7 @@
 	},
 	validateUsername: function (params, callBack, cmp, hlpr) {
 		var
+			isValid = false,
 			errors = [],
 			errorCheckObj = {},
 			value = params.value,
@@ -131,6 +115,7 @@
 	validatePassword: function (params, callBack, cmp, hlpr) {
 
 		try {
+
 			var
 				value = params.value,
 				id = params.id,
@@ -143,7 +128,9 @@
 				hasSpecialChar = hlpr.hasSpecialChar(value);
 
 			if (isEmpty === true) {
+
 				errorCheckObj["isEmpty"] = isEmpty;
+
 			} else {
 
 				errorCheckObj["minLength"] = minLength;
@@ -158,6 +145,11 @@
 					//Check if pass has number
 					errorCheckObj["hasNumber"] = hasNumber;
 				}
+				
+				if (params.confirmValue !== undefined) {
+				
+					errorCheckObj["passwordsMatch"] = hlpr.isSame(params.value, params.confirmValue);
+				}
 			}
 
 			errors = hlpr.checkForErrors(errorCheckObj);
@@ -165,12 +157,13 @@
 			errors.forEach(function (item) {
 				if (item.type === "isEmpty") {
 					item["msg"] = $A.get("$Label.c.CP_Error_Empty_Field");
+				} else if (item.type === "passwordsMatch") {
+					item["msg"] = $A.get("$Label.c.CP_Error_Passwords_Match");
 				}
 			});
 
 			callBack({
 				"id": id,
-				"type" : params.type,
 				"isValid": hlpr.isValid(errors),
 				"errors": errors
 			});
@@ -182,31 +175,23 @@
 	validatePasswordConfirm: function (params, callBack, cmp, hlpr) {
 
 		var
-			value = params.confirmValue,
+			value = params.value,
 			id = params.id,
-			isEmpty = value.length === 0 ? true : false,
 			errors = [],
 			errorCheckObj = {};
 
-		if (isEmpty === true) {
-			errorCheckObj["isEmpty"] = isEmpty;
-		} else {
-			errorCheckObj["passwordsMatch"] = hlpr.isSame(params.value, params.confirmValue);
-		}
+		errorCheckObj["passwordsMatch"] = hlpr.isSame(params.value, params.confirmValue);
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 
 		errors.forEach(function (item, i) {
-			if (item.type === "isEmpty") {
-				item["msg"] = $A.get("$Label.c.CP_Error_Empty_Field");
-			} else if (item.type === "passwordsMatch") {
+			if (item.type === "passwordsMatch") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Passwords_Match");
 			}
 		});
 
 		callBack({
 			"id": id,
-			"type" : params.type,
 			"isValid": hlpr.isValid(errors),
 			"errors": errors
 		});
@@ -251,7 +236,9 @@
 			errors = [],
 			errorCheckObj = {},
 			minLength = hlpr.min(value.length, 5),
-			numbersOnly = hlpr.hasNumberOnly(value);
+			numbersOnly = hlpr.hasNumberOnly(value),
+			hasValidZipcode,
+			hasValidPostalCode;
 
 		errorCheckObj["minLength"] = minLength;
 
@@ -295,7 +282,6 @@
 			monthValid = false,
 			dayValid = false,
 			yearValid = false,
-			yearFormat = false,
 			errors = [],
 			errorCheckObj = {};
 
@@ -305,8 +291,7 @@
 			splitValues = value.split("/");
 			monthValid = hlpr.lessThanOrEqual(splitValues[0], 12);
 			dayValid = hlpr.lessThanOrEqual(splitValues[1], 31);
-			yearValid = hlpr.lessThanOrEqual(splitValues[2], (new Date()).getFullYear()),
-			yearFormat = splitValues[2].length === 4 ? true : false;
+			yearValid = hlpr.lessThanOrEqual(splitValues[2], (new Date()).getFullYear());
 
 			if (splitValues[1] === "") {
 				errorCheckObj["hasDay"] = false;
@@ -317,7 +302,6 @@
 				errorCheckObj["monthValid"] = monthValid;
 				errorCheckObj["dayValid"] = dayValid;
 				errorCheckObj["yearValid"] = yearValid;
-				errorCheckObj["yearFormat"] = yearFormat;
 			}
 		}
 
@@ -336,8 +320,6 @@
 				item["msg"] = $A.get("$Label.c.CP_Error_Date_No_Year");
 			} else if (item.type === "isEmpty") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Date_Empty");
-			} else if(item.type === "yearFormat") {
-				item["msg"] = "The format YYYY is required.";
 			}
 		});
 
@@ -365,7 +347,7 @@
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 
-		errors.forEach(function (item) {
+		errors.forEach(function (item, i) {
 			if (item.type === "isEmpty") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Email_Empty");
 			} else if (item.type === "isEmail") {
@@ -373,32 +355,39 @@
 			}
 		});
 
+
 		callBack({
 			"id": id,
-			"type" : params.type,
 			"isValid": hlpr.isValid(errors),
 			"errors": errors
 		});
 	},
 	validateEmailConfirm: function (params, callBack, cmp, hlpr) {
 		var
-			value = params.confirmValue,
+			value = params.value,
 			id = params.id,
 			errors = [],
 			errorCheckObj = {},
-			isEmpty = value.length === 0 ? true : false;
+			isEmpty = value.length === 0 ? true : false,
+			isEmail = hlpr.isEmail(value);
 
 		if (isEmpty === true) {
 			errorCheckObj["isEmpty"] = isEmpty;
 		} else {
-			errorCheckObj["emailsMatch"] = hlpr.isSame(params.value, params.confirmValue);
+			if (isEmail === false) {
+				errorCheckObj["isEmail"] = isEmail;
+			} else {
+				errorCheckObj["emailsMatch"] = hlpr.isSame(params.value, params.confirmValue);
+			}
 		}
 
 		errors = hlpr.checkForErrors(errorCheckObj);
 
 		errors.forEach(function (item, i) {
 			if (item.type === "isEmpty") {
-				item["msg"] = $A.get("$Label.c.CP_Error_Empty_Field");
+				item["msg"] = $A.get("$Label.c.CP_Error_Email_Empty");
+			} else if (item.type === "isEmail") {
+				item["msg"] = $A.get("$Label.c.CP_Error_Email_Invalid");
 			} else if (item.type === "emailsMatch") {
 				item["msg"] = $A.get("$Label.c.CP_Error_Emails_Match");
 			}
@@ -406,7 +395,6 @@
 
 		callBack({
 			"id": id,
-			"type" : params.type,
 			"isValid": hlpr.isValid(errors),
 			"errors": errors
 		});
@@ -419,18 +407,7 @@
 			errors = [],
 			errorCheckObj = {},
 			isEmpty = value.length === 0 ? true : false,
-			isPhone = false,
-			hasPlus = hlpr.hasCharacter(value, "+");
-
-		if (value.length <= 14 && hasPlus.detected === false) {
-			//Phone number is North American
 			isPhone = hlpr.isPhone(value);
-		} else if(value.length <= 14 && (hasPlus.detected === true && hasPlus.index === 0) || value.length > 14) {
-			//International Phone Number
-			isPhone = hlpr.isInternationalPhone(value);
-		} else {
-			console.warn("CP_Validation: validatePhone: unable to recognize number: " + value);
-		}
 
 		if (isEmpty !== true) {
 			errorCheckObj["isPhone"] = isPhone;

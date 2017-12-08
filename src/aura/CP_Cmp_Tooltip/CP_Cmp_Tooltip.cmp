@@ -2,8 +2,7 @@
 	<!-- ATTRS -->
 	<aura:attribute name="class" type="String" />
 	<aura:attribute name="tooltip" type="String" />
-	<aura:attribute name="tabIndex" type="Integer" default="0" />
-	
+	<aura:attribute name="tabIndex" type="Integer" default="2" />
 	<!-- MARKUP -->
 	<div class="{!'igcp-tooltip ' + v.class}">
 		<div class="igcp-tooltip-container"></div>

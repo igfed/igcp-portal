@@ -3,13 +3,15 @@
 	},
 	onClick: function(cmp, evt, hlpr) {
 
-		var events = cmp.find("CP_Events");
+		var 
+			modalID = cmp.get("v.modalID"),
+			events = cmp.find("CP_Events");
 
-		events.fire(
-			"CP_Evt_Click",
-			{
-				"id" : cmp.get("v.id")
-			}	
-		);
+		if(modalID != "none") {
+			events.fire("CP_Evt_Modal_Open", {
+				"id" : modalID
+			});
+			
+		}		
 	}
 })

@@ -10,23 +10,16 @@
 		var payload = evt.getParam("payload");
 
 		if(payload.id === "read_and_agree_checkbox") {
-			console.log(payload);
 			cmp.set("v.userAgrees", payload.checked);			
 		}
 	},
 	onClose: function(cmp, evt, hlpr){
 
 		var events = cmp.find("CP_Events");
+
 		events.fire("CP_Evt_Modal_Close", {
 			"id" : cmp.get("v.id")
 		});
-
-		try {
-			var modal = document.querySelector('.igcp-modal');
-			modal.scrollTop = 0;
-		} catch(err) {
-			console.error(err);
-		}
 
 	},
 	onCancel: function(cmp, evt, hlpr) {
@@ -34,6 +27,12 @@
 
 		if(payload.id === "tos_agree_button-cancel") {
 			cmp.close();
+		}
+	},
+	doneRendering: function(cmp, evt, hlpr) {
+		window._aa.registerHandlers();
+		if(cmp.get("v.renderComplete") === false) {
+			cmp.set("v.renderComplete", true);
 		}
 	}
 })

@@ -1,11 +1,5 @@
 <aura:component >
 
-	<!-- WAIT FOR JQUERY -->
-	<!-- Waits until JQuery is defined and fires a callback -->
-	<aura:method name="waitForJQuery" action="{!c.onWaitForJQuery}">
-		<aura:attribute name="callback" type="function" default="" />
-	</aura:method>
-
 	<!-- CREATE COMPONENT -->
 	<!-- Creates a component dynamically -->
 	<aura:method name="createComponent" action="{!c.onCreateComponent}">
@@ -95,13 +89,6 @@
 		<aura:attribute name="callback" type="function" default="" />
 	</aura:method>
 
-	<!-- FOR EACH SORT -->
-	<!-- A Lodash style forEach loop that returns keys in alphabetical/numerical order-->
-	<aura:method name="forEachSort" action="{!c.onForEachSort}">
-		<aura:attribute name="obj" type="Map" ></aura:attribute>
-		<aura:attribute name="callback" type="function" default="" />
-	</aura:method>
-
 	<!-- GO TO LOGIN -->
 	<!-- NAVIGATES TO LOGIN URL -->
 	<aura:method name="gotoLogin" action="{!c.onGoToLogin}">
@@ -154,15 +141,6 @@
 		<aura:attribute name="pos" type="String" default="0"></aura:attribute>
 		<aura:attribute name="callback" type="function" default="" />
 		<aura:attribute name="speed" type="String" default="500"></aura:attribute>
-	</aura:method>
-
-	<!-- STRING MATCH AND REPLACE -->
-	<!-- Matches a character in a string and replaces it with another char-->
-	<aura:method name="stringMatchReplace" action="{!c.onStringMatchReplace}">
-		<aura:attribute name="rawValue" type="String"></aura:attribute>
-		<aura:attribute name="match" type="String"></aura:attribute>
-		<aura:attribute name="replace" type="String"></aura:attribute>
-		<aura:attribute name="callback" type="function" default="" />
 	</aura:method>
 	
 </aura:component>

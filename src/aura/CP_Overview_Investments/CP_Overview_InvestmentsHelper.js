@@ -1,25 +1,34 @@
 ({
-	addAccounts: function (title, accounts, cmp) {
+	addAccounts: function(accArr, cmp) {
 
-		var dealerName = "";
+		var utils = cmp.find("CP_Utils");
 
-		if (title === "Investors Group Securities Inc.") {
-			dealerName = $A.get("$Label.c.CP_Overview_IGSI");
-		} else if (title === "Investors Group Financial Services Inc.") {
-			dealerName = $A.get("$Label.c.CP_Overview_IGFS");
-		} else if (title === "NON IG") {
-			dealerName = $A.get("$Label.c.CP_Overview_NON_IG");
-		} else if (title === "I.G. Insurance Services Inc.") {
-			dealerName = $A.get("$Label.c.CP_Overview_Insurance_Services");
-		}
+		accArr.forEach(function(item, i) {
 
-		cmp.find("CP_Utils").createComponent(
-			"CP_Overview_Account_Group", {
-				"groupTitle": dealerName,
-				"accounts": accounts
-			},
-			cmp,
-			function (success) {}
-		);
+			var 
+				groupTitle = "", 
+				accountGrandTotal,
+				groupName = item[Object.keys(item)[0]].dealerName; 
+
+			if (groupName === "Investors Group Securities Inc.") {
+				groupTitle = $A.get("$Label.c.CP_Overview_IGSI");
+			} else if (groupName === "Investors Group Financial Services Inc.") {
+				groupTitle = $A.get("$Label.c.CP_Overview_IGFS");
+			} else if (groupName === "NON IG") {
+				groupTitle = $A.get("$Label.c.CP_Overview_NON_IG");
+			}
+
+			//Get Dealer Name
+			utils.createComponent(
+				"CP_Overview_Account_Group",
+				{
+					"groupTitle" : groupTitle,
+					"accountGrandTotal" : accountGrandTotal,
+					"accounts" : item
+				},
+				cmp,
+				function(success){}
+			);
+		});
 	}
 })

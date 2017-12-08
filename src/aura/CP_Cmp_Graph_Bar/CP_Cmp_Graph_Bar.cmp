@@ -2,6 +2,7 @@
 	
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="" ></aura:attribute>
+	<aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-utils__width--100"></aura:attribute>
 
 	<!-- INCLUDES -->
@@ -10,6 +11,7 @@
 	
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Set_Graph" action="{!c.onSetGraph}"></aura:handler>
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 	
 	<!-- MARKUP -->
 	<div class="{!'slds-grid slds-wrap ' + v.class}">

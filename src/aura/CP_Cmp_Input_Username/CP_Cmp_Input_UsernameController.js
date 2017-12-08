@@ -8,6 +8,16 @@
 			console.error("CP_Cmp_Input_Text: Input needs to be associated with a 'form'.")
 		}
 	},
+	doneRendering: function(cmp, evt, hlpr){
+		if(!cmp.get("v.isDoneRendering")){
+			if (cmp.get("v.hasFocus") === true) {
+				cmp.find("text-input").getElement().focus();
+			}
+
+			cmp.set("v.isDoneRendering", true);	
+		}
+		
+	},
 	onGetValue: function(cmp, evt, hlpr) {
 
 		var
@@ -36,12 +46,10 @@
 
 		if (cmp.get("v.id") === evt.getParam("payload").id) {
 
-			//Used to set the label and border red
-			cmp.set("v.hasErrors", false);
+			//hide error icon
+			cmp.set("v.errorIconClass", "igcp-utils__display--none slds-input__icon slds-input__icon--error");
 
 			var field = cmp.find("text-input");
-
-			hlpr.showValidStyle(cmp);
 
 			cmp.set("v.limitClass", "igcp-text__success igcp-utils__font-size--x-small");
 			cmp.set("v.charClass", "igcp-text__success igcp-utils__font-size--x-small");
@@ -57,18 +65,15 @@
 			userNameInput = cmp.find("text-input"),
 			errors = payload.errors,
 			errorTypeArr = [],
+			errorArr = [],
 			isEmpty = false,
 			minLength = false,
 			isAlphanumeric = false;
 
 		if (cmp.get("v.id") === payload.id) {
 
-			//Used to set the label and border red
-			cmp.set("v.hasErrors", true);
-
-			if(cmp.get("v.inputValue") === "") {
-				hlpr.showErrorStyle(cmp);
-			}
+			//show error icon
+			cmp.set("v.errorIconClass", "igcp-utils__display--block slds-input__icon slds-input__icon--error");
 
 			if (errors.length > 0) {
 
@@ -94,7 +99,7 @@
 
 				if (isEmpty === true) {
 					cmp.set("v.limitClass", "igcp-text__error igcp-utils__font-size--x-small");
-					cmp.set("v.charClass", "igcp-text__error igcp-utils__font-size--x-small");
+					cmp.set("v.charClass", "igcp-utils__font-size--x-small");
 				} else {
 					if (minLength === true) {
 						cmp.set("v.limitClass", "igcp-text__error igcp-utils__font-size--x-small");
@@ -111,7 +116,6 @@
 				
 				if(payload.type === "userName") {
 					userNameInput.set("v.errors", [{ "message" : errors[0].msg}]);
-					hlpr.showAllInstructionsErrorStyle(cmp);
 				} else {
 					userNameInput.set("v.errors", []);
 				}
@@ -121,49 +125,18 @@
 	onHandleKey: function(cmp, evt, hlpr) {
 
 		var events = cmp.find("CP_Events");
-		if(evt.getParams("arguments").domEvent.key !== "Tab") {
-			events.fire("CP_Evt_Key", {
-				"id": cmp.get("v.id"),
-				"type": cmp.get("v.type"),
-				"value": cmp.get("v.inputValue")
-			});
-		}
-	},
-	onBlur: function(cmp, evt, hlpr) {
-		try {
-			var events = cmp.find("CP_Events");
-			events.fire("CP_Evt_Input_Blur", {
-				"id": cmp.get("v.id"),
-				"type": cmp.get("v.type"),
-				"value": cmp.get("v.inputValue")
-			});
-
-			if (cmp.get("v.hasErrors") === true) {
-				//show title and border in red
-				hlpr.showErrorStyle(cmp);
-				hlpr.showAllInstructionsErrorStyle(cmp);
-			} else {
-				hlpr.showValidStyle(cmp);
-			}
-		} catch (err) {
-			console.error(err);
-		}
-	},
-	onFocus: function (cmp, evt, hlpr) {
-		//console.info(cmp.get("v.id") + " has focus.");
-		cmp.find('CP_Events').fire(
-			"CP_Evt_Input_Focus", {
-			"id": cmp.get("v.id")
+		events.fire("CP_Evt_Key", {
+			"id": cmp.get("v.id"),
+			"type": cmp.get("v.type"),
+			"value": cmp.get("v.inputValue")
 		});
 	},
-	onInputFocus: function(cmp, evt, hlpr) {
-		//console.info(cmp.get("v.id") + " has focus.");
-	},
-	onLabelClick: function (cmp, evt, hlpr) {
-		try {
-			cmp.find("text-input").getElement().focus();
-		} catch (err) {
-			console.error(err);
-		}
+	onBlur: function(cmp, evt, hlpr) {
+		var events = cmp.find("CP_Events");
+		events.fire("CP_Evt_Input_Blur", {
+			"id": cmp.get("v.id"),
+			"type": cmp.get("v.type"),
+			"value": cmp.get("v.inputValue")
+		});
 	}
 })

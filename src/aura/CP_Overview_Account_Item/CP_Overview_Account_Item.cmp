@@ -12,31 +12,23 @@
 	<aura:attribute name="account" type="Map"></aura:attribute>
 	<!-- HANDLER -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
-
-	<!-- METHODS-->
-	<aura:method name="onItemClick" action="{!c.onItemClick}" description=""></aura:method>
-
 	<!-- MARKUP -->
-	<div aura:id="account-item" class="igcp-account__item igcp-underline__thin--grey slds-grid slds-wrap slds-p-horizontal--xx-small slds-medium-p-horizontal--small slds-p-bottom-x-small" onclick="{!c.onItemClick}" tabindex="0" onkeyup="{!c.onKey}">
+	<div class="igcp-account__item igcp-underline__thin--grey slds-grid slds-wrap slds-p-horizontal--xx-small slds-medium-p-horizontal--small slds-p-bottom-x-small" onclick="{!c.onItemClick}">
 		
 		<div class="slds-p-vertical--small slds-size_6-of-12"><span class="igcp-utils__colour--link-blue">{!v.accountName}</span></div>
 		
-		<aura:if isTrue="{!v.itemType == 'investments'}">
-			<div class="slds-p-vertical--small slds-text-align_right slds-size_6-of-12">
-				{!v.val2}
-			</div>
-
-			<aura:set attribute="else">
-
-				<div class="slds-p-vertical--small slds-text-align_right slds-show_small slds-size_3-of-12">
-					{!v.val1}
-				</div>
-
-				<div class="slds-p-vertical--small slds-text-align_right slds-size_6-of-12 slds-medium-size_3-of-12">
-					{!v.val2}
-				</div>
-			</aura:set>
-
-		</aura:if>
+		<div class="slds-p-vertical--small slds-text-align_right slds-show_small slds-size_3-of-12">
+			<aura:if isTrue="{!v.gainLossType == 'positive'}">
+				<sup><lightning:icon iconName="utility:arrowup" size="x-small" class="igcp-value--gain slds-m-right--xxx-small" /></sup>
+			</aura:if>
+			<aura:if isTrue="{!v.gainLossType == 'negative'}">
+				<sup><lightning:icon iconName="utility:arrowdown" size="x-small" class="igcp-value--loss slds-m-right--xxx-small" /></sup>
+			</aura:if>
+			{!v.val1}
+		</div>
+		
+		<div class="slds-p-vertical--small slds-text-align_right slds-size_6-of-12 slds-medium-size_3-of-12">
+			{!v.val2}
+		</div>
 	</div>
 </aura:component>

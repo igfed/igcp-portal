@@ -1,6 +1,9 @@
 <aura:component implements="forceCommunity:themeLayout" access="global" description="Client Portal Theme Layout">
 
-     <c:CP_CSS_Includes />
+    <!-- INCLUDES -->
+    <c:CP_User_Info />
+    <c:CP_CSS_Includes />
+	<c:CP_JS_Includes />
 
     <!-- ATTRS -->
     <aura:attribute name="blueBackground" type="Boolean" default="false"/> 

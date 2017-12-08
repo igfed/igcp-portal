@@ -4,7 +4,6 @@
 	<aura:attribute name="pageId" type="String" default="statement"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="class" type="String" default="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" />
-    
 	
     <!-- RETURNED DATA FROM SALESFORCE -->
 	<aura:attribute name="investmentStatements" type="Map[]" default="[]"></aura:attribute>
@@ -14,10 +13,12 @@
 	<c:CP_Utils aura:id="CP_Utils" />
 	<c:CP_Validation aura:id="CP_Validation" />
 	<c:CP_Services aura:id="CP_Services" />
+    <c:CP_CSS_Includes />
     <c:CP_JS_Includes />
 
 	<!-- HANDLERS -->
     <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 
 	<!-- <aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />

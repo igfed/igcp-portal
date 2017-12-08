@@ -45,7 +45,23 @@
 								["April 13, 2017", "Buy", "TFS*1234", "IG Mackenzie Canadian Equity Growth", "14.56 x 7.03", "102.38"]
 							]
 						}
-					} else {
+
+						// events.fire(
+						// 	"CP_Evt_Set_Table", {
+						// 		"id": "transactions-table",
+						// 		"headers": [
+						// 			$A.get("$Label.c.CP_Generic_Label_Date"),
+						// 			$A.get("$Label.c.CP_Generic_Label_Activity"),
+						// 			$A.get("$Label.c.CP_Generic_Label_Accounts"),
+						// 			$A.get("$Label.c.CP_Generic_Label_Holdings"),
+						// 			$A.get("$Label.c.CP_Generic_Label_Unit_Price"),
+						// 			$A.get("$Label.c.CP_Generic_Label_Total")
+						// 		],
+						// 		"data": dataArr,
+						// 		"dataObj": dataObjArr
+						// 	}
+						// );
+					} else {	
 
 						dataArr = [
 							["April 13, 2017", "Buy", "TFS*1234", "IG Mackenzie Canadian Equity Growth", "14.56 x 7.03", "102.38"],
@@ -154,5 +170,9 @@
 				}
 			);
 		});
+	},
+	doneRendering: function (cmp, evt, hlpr) {
+		var body = document.querySelector("body");
+		body.className = "igcp-background__tiled igcp-utils__display--block";
 	}
 })

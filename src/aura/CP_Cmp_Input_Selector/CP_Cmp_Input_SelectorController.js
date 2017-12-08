@@ -1,13 +1,5 @@
 ({
 	onInit: function (cmp, evt, hlpr) {
-		if (cmp.get("v.id") === "default") {
-			console.error("CP_Cmp_Input_Selector: A unique 'id' is required.");
-		}
-
-		if (cmp.get("v.form") === "default") {
-			console.error("CP_Cmp_Input_Selector: Input needs to be associated with a 'form'.")
-		}
-
 		cmp.set("v.options", cmp.get("v.defaultOptions"));
 	},
 	onSetValue: function (cmp, evt, hlpr) {
@@ -46,6 +38,7 @@
 					});
 				}
 			)
+
 		}
 	},
 	onGetValue: function (cmp, evt, hlpr) {
@@ -66,6 +59,7 @@
 	onChange: function (cmp, evt, hlpr) {
 
 		var
+			utils = cmp.find("CP_Utils"),
 			events = cmp.find("CP_Events"),
 			options = cmp.get("v.options"),
 			newOptions = [];
@@ -90,6 +84,7 @@
 	onChangeReceived: function (cmp, evt, hlpr) {
 
 		var
+			utils = cmp.find("CP_Utils"),
 			payload = evt.getParam("payload"),
 			newOptions = [];
 
@@ -137,21 +132,10 @@
 			"type": cmp.get("v.type"),
 			"value": cmp.get("v.currentSelectedValue")
 		});
-
-		if(cmp.get("v.hasErrors") === true) {
-			//show title and border in red
-			hlpr.setErrorStyle(cmp);
-		} else {
-			hlpr.setValidStyle(cmp);
-		}
 	},
 	onValid: function (cmp, evt, hlpr) {
 
 		if (cmp.get("v.id") === evt.getParam("payload").id) {
-
-			//Used to set the label red
-			cmp.set("v.hasErrors", false);
-
 			var field = cmp.find("selector-input");
 			field.set("v.errors", []);
 		}
@@ -165,11 +149,6 @@
 
 		if (cmp.get("v.id") === payload.id) {
 
-			//Used to set the label red
-			cmp.set("v.hasErrors", true);
-
-			hlpr.setErrorStyle(cmp);
-
 			if (errors.length > 0) {
 				errors.forEach(function (item, i) {
 					errorArr.push({ message: item.msg });
@@ -180,22 +159,5 @@
 			field.set("v.errors", errorArr);
 		}
 
-	},
-	onFocus: function (cmp, evt, hlpr) {
-		//console.info(cmp.get("v.id") + " has focus.");
-		cmp.find('CP_Events').fire(
-			"CP_Evt_Input_Focus", {
-			"id": cmp.get("v.id")
-		});
-	},
-	onInputFocus: function(cmp, evt, hlpr) {
-		//console.info(cmp.get("v.id") + " has focus.");
-	},
-	onLabelClick: function (cmp, evt, hlpr) {
-		try {
-			cmp.find("selector-input").getElement().focus();
-		} catch (err) {
-			console.error(err);
-		}
 	}
 })

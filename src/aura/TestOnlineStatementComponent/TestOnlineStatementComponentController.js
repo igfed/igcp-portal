@@ -2,8 +2,7 @@
 	 doInit : function(component, event, helper) {
           
         // var action = component.get("c.updatePassword");
-        //helper.getPosition(component);
-        helper.getRecords(component);
+        helper.getPosition(component);
         /* var urlEvent = $A.get("e.force:navigateToURL");
             urlEvent.setParams({
                 "url":"https://www.google.com",

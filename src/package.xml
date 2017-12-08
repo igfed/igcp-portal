@@ -16,9 +16,5 @@
         <members>*</members>
         <name>StaticResource</name>
     </types>
-    <types>
-        <members>*</members>
-        <name>Translations</name>
-    </types>
     <version>36.0</version>
 </Package>

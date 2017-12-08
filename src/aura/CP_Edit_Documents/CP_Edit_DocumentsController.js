@@ -1,24 +1,7 @@
 ({
-	onInit: function (cmp, evt, hlpr) {
-		var services = cmp.find("CP_Services");
-
-		services.getAllFinancialAssets(
-			cmp,
-			function (success) {
-				success = JSON.parse(success)
-				cmp.set('v.formData', success)
-				console.log('CP_Edit_Documents onInit():', success)
-
-			},
-			function (error) {
-				console.error("CP_Edit_Documents: onInit", error);
-			}
-		)
-	},
-	onChange: function (cmp, event, hlpr) {
-		var oldValue = event.getParam("oldValue"),
-			value = event.getParam("value"),
-			formData = cmp.get("v.formData");
+	doneRendering: function (cmp, evt, hlpr) {
+		var body = document.querySelector("body");
+		body.className = "igcp-utils__display--block";
 	},
 	onComplete: function (cmp, evt, hlpr) {
 		var events = cmp.find("CP_Events");
@@ -32,16 +15,20 @@
 			services = cmp.find("CP_Services"),
 			payload = evt.getParam("payload");
 
-		if (payload.id === "tos_agree_button") {
-
-			var formData = JSON.stringify(cmp.get("v.formData"));
+		if(payload.id === "tos_agree_button") {
+			var formData = JSON.stringify({
+				"allDocumentPreference" : false , 
+				"documentPreferences" : [{ "clientNumber" : "0987654","investmentStatements" : true, "taxReceipts" : true, "tradeConfirmation" : false },{"clientNumber" : "0987653",    "investmentStatements" : false, "taxReceipts" : true, "tradeConfirmation" : false },{ "clientNumber" : "0987652","investmentStatements" : true, "taxReceipts" : true, "tradeConfirmation" : true }],
+				"documentPreferencesLoan" : [{"loanNumber" : "76568", "mortgageDocument" : true},{"loanNumber" : "7656800", "mortgageDocument" : false}],
+				"documentPreferencesPolicy" : [{"policyNumber" : "7656811", "mortgageDocument" : true},{"policyNumber" : "765680022", "policyDocument" : false}]
+			});
 
 			services.updateAssets(
 				formData,
 				cmp,
 				function (success) {
 					// ToDo: on success logic
-					console.log('CP_Edit_Documents: UpdateAssets():', success)
+					console.log('edit_docs UpdateAssets():', success)
 				},
 				function (error) {
 

@@ -5,10 +5,6 @@
 		cmp.set("v.inputErrors", false);
 		cmp.set("v.inputsReceived", 0);
 
-		console.info("SUBMIT");
-		console.log(cmp.get("v.password"));
-		console.log(cmp.get("v.confirmPassword"));
-
 		var events = cmp.find('CP_Events');
 		events.fire("CP_Evt_Get_Input_Value", {
 			'formId': cmp.get("v.pageId")
@@ -16,39 +12,29 @@
 	},
 	onInputValueReceived: function (cmp, evt, hlpr) {
 
-		try {
-			var inputs = cmp.get("v.inputsReceived");
+		var inputs = cmp.get("v.inputsReceived");
 
-			hlpr.validatePassword(cmp, evt.getParam("payload"));
+		hlpr.validatePassword(cmp, evt.getParam("payload"));
 
-			cmp.set("v.inputsReceived", (inputs += 1));
+		cmp.set("v.inputsReceived", (inputs += 1));
 
-			//if all inputs received and inputErrors = false
-			//we are ready to submit to the backend
-			if (cmp.get("v.inputsReceived") === cmp.get("v.numberOfInputs") && cmp.get("v.inputErrors") === false) {
+		//if all inputs received and inputErrors = false
+		//we are ready to submit to the backend
+		if (cmp.get("v.inputsReceived") === 1 && cmp.get("v.inputErrors") === false) {
 
-				cmp.set("v.payload", {
-					"username": cmp.get("v.username"),
-					"password": cmp.get("v.password"),
-					"confirmPassword": cmp.get("v.confirmPassword")
-				});
+			cmp.set("v.payload", {
+				"username": cmp.get("v.username"),
+				"password": cmp.get("v.password"),
+				"confirmPassword": cmp.get("v.confirmPassword")
+			});
 
-				console.info("PAYLOAD");
-				console.log(cmp.get("v.payload"))
+			hlpr.showLoading(cmp);
 
-				hlpr.showLoading(cmp);
-				cmp.onSubmitForm();
-			}
-		} catch (err) {
-			console.error(err);
+			cmp.onSubmitForm();
 		}
 	},
 	onInputBlur: function (cmp, evt, hlpr) {
-		try {
-			hlpr.validatePassword(cmp, evt.getParam("payload"));
-		} catch(err) {
-			console.error(err);
-		}
+		hlpr.validateInput(cmp, evt.getParam("payload"));
 	},
 	submitForm: function (cmp, evt, hlpr) {
 
@@ -62,12 +48,8 @@
 				"StepThree",
 				cmp,
 				function (evt) {
-					try {
-						window._aa.track('forgot-password-success', '{"component": {"name": "CP_Forgot_Pass_Step_3Controller"}}');
-					} catch (err) {
-						console.error(err);
-					}
 					hlpr.hideLoading(cmp);
+					window._aa.track('forgot-password-success', '{"component": {"name": "CP_Forgot_Pass_Step_3Controller"}}');
 					cmp.gotoNextStep();
 				},
 				function (error) {
@@ -83,27 +65,13 @@
 						},
 						function (obj) {
 
-							if (obj.fields && obj.messages) {
-								obj.fields.forEach(function(errorType, i) {
-	
-									var msgArr = [];
-	
-									if (errorType === "confirmPassword") {
-										events.fire("CP_Evt_Toast_Error", {
-											"id": "forgot-pass-step-3-toast-error",
-											"message": $A.get("$Label.c.CP_Error_Confirm_Password_Match")
-										});
-									}
-	
-									if(errorType === "password") {
-										msgArr.push({ "msg": obj.messages[i] });
-										events.fire("CP_Evt_Input_Error", {
-											"id": "password-input",
-											"type": "no-spaces",
-											"errors": msgArr
-										});
-									}
-								});
+							if (obj.fields) {
+								if (obj.fields[0] === "confirmPassword" && error.type === "error") {
+									events.fire("CP_Evt_Toast_Error", {
+										"id": "forgot-pass-step-3-toast-error",
+										"message": $A.get("$Label.c.CP_Error_Confirm_Password_Match")
+									});
+								}
 							}
 						}
 					);
@@ -128,8 +96,15 @@
 		}
 	},
 	onButtonClick: function (cmp, evt, hlpr) {
-		if (evt.getParam("payload").id === "cancel_button") {
-			cmp.find("CP_Utils").gotoLogin();
+		if (evt.getParam("payload").id === "back_button") {
+			var utils = cmp.find("CP_Utils");
+			utils.gotoLogin(cmp.get("v.lang"));
+		}
+	},
+	doneRendering: function (cmp, evt, hlpr) {
+		window._aa.registerHandlers();
+		if (cmp.get("v.renderComplete") === false) {
+			cmp.set("v.renderComplete", true);
 		}
 	}
 })

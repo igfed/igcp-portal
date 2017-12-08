@@ -1,11 +1,5 @@
 <aura:component controller="CP_ForgotUserNameController">
 
-	<!-- INCLUDES -->
-	<c:CP_Events aura:id="CP_Events" />
-	<c:CP_Utils aura:id="CP_Utils" />
-	<c:CP_Validation aura:id="CP_Validation" />
-	<c:CP_Services aura:id="CP_Services" />
-
 	<!-- ATTRS -->
 	<aura:attribute name="pageId" type="String" default="forgot-user-step-2"></aura:attribute>
 	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
@@ -23,10 +17,16 @@
 	<aura:attribute name="isamStateId" type="String"></aura:attribute>
 	<aura:attribute name="questionId" type="String"></aura:attribute>
 
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Utils aura:id="CP_Utils" />
+	<c:CP_Validation aura:id="CP_Validation" />
+	<c:CP_Services aura:id="CP_Services" />
+
 	<!-- HANDLER -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
-	<aura:handler event="c:CP_Evt_Click" action="{!c.onButtonClick}" />
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
 
@@ -39,7 +39,7 @@
 	</aura:method>
 	
 	<!-- MARKUP -->
-	<div data-aa-component="CP_Forgot_User_Step_2" class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large" aria-live="assertive">
+	<div data-aa-component="CP_Forgot_User_Step_2" class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
 
 	    <c:CP_Cmp_Loading_Icon id="forgot-user-2-spinner" hasBG="true" show="false"/>
 
@@ -66,7 +66,7 @@
 					<div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 				</div>
 				<!--CTAS-->
-				<c:CP_Cmp_Form_Back_Next dcname1="forgot-username-cancel" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" backType="cancel" form="{!v.pageId}" />
+				<c:CP_Cmp_Form_Back_Next dcname1="forgot-username-cancel" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" form="{!v.pageId}" />
 			</div>
 		</div>
 		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>

@@ -1,15 +1,17 @@
 <aura:component >
+	
+	<!-- ATTRS -->
+	<aura:attribute name="id" type="String" default="" ></aura:attribute>
+	<aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
+	<aura:attribute name="class" type="String" default="igcp-utils__width--100 slds-m-bottom--medium"></aura:attribute>
 
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
 	
-	<!-- ATTRS -->
-	<aura:attribute name="id" type="String" default="" ></aura:attribute>
-	<aura:attribute name="class" type="String" default="igcp-utils__width--100 slds-m-bottom--medium"></aura:attribute>
-	
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Set_Graph" action="{!c.onSetGraph}"></aura:handler>
+	<aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
 	
 	<!-- MARKUP -->
 	<div class="{!'igcp-utils__position--relative slds-grid slds-wrap ' + v.class}">

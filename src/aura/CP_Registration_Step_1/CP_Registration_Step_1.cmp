@@ -10,7 +10,6 @@
 	<aura:attribute name="pageId" type="String" default="registration-step-1"></aura:attribute>
 	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="inputsReceived" type="Integer" default="0"></aura:attribute>
-	<aura:attribute name="numberOfInputs" type="Integer" default="0"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 
 	<!-- Step 1 -->
@@ -19,6 +18,7 @@
 	<aura:attribute name="dob" type="String"></aura:attribute>
 	
 	<!-- HANDLERS -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
 	<aura:handler event="c:CP_Evt_Send_Input_Value" action="{!c.onInputValueReceived}" />
 	<aura:handler event="c:CP_Evt_Input_Blur" action="{!c.onInputBlur}" />
@@ -33,7 +33,7 @@
 	</aura:method>
 	
 	<!-- MARKUP -->
-	<div data-aa-component="CP_Registration_Step_1" class="igcp-registration__step-1 igcp-background igcp-utils__position--relative" aria-live="assertive">
+	<div data-aa-component="CP_Registration_Step_1" class="igcp-background igcp-utils__position--relative">
 	
 		<c:CP_Cmp_Loading_Icon id="registration-step-1-spinner" hasBG="true" show="false"/>
 		
@@ -56,9 +56,8 @@
                 		type="error"
                 		class="slds-m-top--x-small slds-m-bottom--xxx-small"/>
 					
-
 					<!-- CLIENT NUMBER -->
-					<c:CP_Cmp_Input_Text id="client-number" maxLength="13" type="client-number" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Client_Policy_Loan}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" hasFocus="true" modalID="view-sample" modalLabel="{!$Label.c.CP_Registration_Where_Do_I_Find_This}"/>
+					<c:CP_Cmp_Input_Text id="client-number" maxLength="13" type="client-number" form="{!v.pageId}" label="{!$Label.c.CP_Generic_Label_Client_Number}" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" hasFocus="true"/>
 					
 					<!-- POSTAL CODE -->
 					<c:CP_Cmp_Input_Text id="postal-code" maxLength="7" type="postal" label="{!$Label.c.CP_Generic_Label_Postal_Zip_Code}" form="{!v.pageId}" class="slds-size_12-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
@@ -67,7 +66,7 @@
 					<c:CP_Cmp_Input_Date id="dob" label="{!$Label.c.CP_Generic_Label_Date_of_Birth}" form="{!v.pageId}" type="date" example="{!$Label.c.CP_Generic_Label_DOB_Example}" class="slds-size_12-of-12 slds-large-size_5-of-12 slds-m-vertical--medium" />
 					
 					<!-- FORM BACK NEXT -->
-					<c:CP_Cmp_Form_Back_Next dcname1="register-cancel" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" backType="cancel" form="{!v.pageId}" />
+					<c:CP_Cmp_Form_Back_Next dcname1="register-cancel" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" form="{!v.pageId}" />
 				</div>
 			<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
 		</div>

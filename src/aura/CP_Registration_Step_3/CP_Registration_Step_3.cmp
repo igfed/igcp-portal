@@ -38,7 +38,8 @@
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="c:CP_Evt_Complete" action="{!c.onRegistrationComplete}" />
 	<aura:handler event="c:CP_Evt_Click" action="{!c.onAgreeTOS}" />
-	<aura:handler event="c:CP_Evt_Input_Checkbox" action="{!c.onAgreeChecked}" />
+	<aura:handler event="c:CP_Evt_Input_Checkbox_Checked" action="{!c.onAgreeChecked}" />
+	<aura:handler event="c:CP_Evt_Input_Checkbox_Unchecked" action="{!c.onAgreeChecked}" />
 	<aura:handler event="c:CP_Evt_Modal_Open" action="{!c.onModalOpen}" />
 	<aura:handler event="c:CP_Evt_Modal_Close" action="{!c.onModalClose}" />
 	
@@ -61,7 +62,7 @@
 	
 	
 	<!-- MARKUP -->
-	<div data-aa-component="CP_Registration_Step_3" class="igcp-utils__position--relative igcp-background" aria-live="assertive">
+	<div data-aa-component="CP_Registration_Step_3" class="igcp-utils__position--relative igcp-background">
 
 		<c:CP_Cmp_Loading_Icon id="registration-step-3-spinner" hasBG="true" show="false" />
 
@@ -71,10 +72,7 @@
 				<h1>{!$Label.c.CP_Registration_Step_3_h1}</h1>
 				<c:CP_Cmp_Progress_Indicator currentStep="3" totalSteps="3" />
 				<div class="igcp-label--small">{!$Label.c.CP_Generic_Step_3}</div>
-				<div class="slds-grid slds-wrap">
-					<h2 class="slds-size_8-of-12">{!$Label.c.CP_Registration_Step_3_h2}</h2>
-					<c:CP_Cmp_Link id="back_button" class="igcp-utils__text-align--right slds-size_4-of-12" label="{!$Label.c.CP_Generic_Button_Edit_Profile}" standalone="true" hasChevron="false" icon="utility:edit" />
-				</div>
+				<h2>{!$Label.c.CP_Registration_Step_3_h2}</h2>
 				<p class="igcp-utils__width--100 igcp-large-utils__width--75">{!$Label.c.CP_Registration_Step_3_Instructions}</p>
 				<!-- TOAST ERROR -->
 				<c:CP_Cmp_Toast id="registration-step-3-toast-error" type="error" class="slds-m-top--x-small slds-m-bottom--xxx-small" />
@@ -83,7 +81,7 @@
 					<c:CP_Cmp_Name_Value_List id="{!v.pageId}" class="slds-size_12-of-12 slds-m-vertical--medium" variant="a" />
 					<div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 					<!--CTAS-->
-					<c:CP_Cmp_Form_Back_Next dcname1="register-cancel" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" backType="cancel" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="complete" modalID="registration-tos" />
+					<c:CP_Cmp_Form_Back_Next dcname1="register-cancel" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Edit_Profile}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="complete" modalID="registration-tos" />
 				</div>
 			</div>
 			<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>

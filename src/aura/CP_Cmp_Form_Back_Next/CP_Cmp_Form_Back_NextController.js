@@ -1,5 +1,5 @@
 ({
-	onInit: function (cmp, evt, hlpr) {
+	onInit: function(cmp, evt, hlpr) {
 
 		if (cmp.get("v.id") === "default") {
 			console.error("CP_Cmp_Form_Back_Next: 'id' needs to be set.");
@@ -13,51 +13,41 @@
 		}
 
 	},
-	onButtonClick: function (cmp, evt, hlpr) {
+	onButtonClick: function(cmp, evt, hlpr) {
 		var payload = evt.getParam("payload");
-		
 
 		if (payload.id === "start_button") {
 			cmp.onStart();
 		} else if (payload.id === "complete_button") {
 			cmp.onComplete();
-		} else if (payload.id === "back_button") {
+		} else if(payload.id === "back_button") {
 			cmp.onBackStep();
-		} else if (payload.id === "cancel_button") {
-			cmp.onCancel();
 		}
 	},
-	onStart: function (cmp, evt, hlpr) {
+	onStart: function(cmp, evt, hlpr) {
 		var event = cmp.find("CP_Events");
 		event.fire("CP_Evt_Start", {
 			"id": cmp.get("v.id")
 		});
 	},
-	onNext: function (cmp, evt, hlpr) {
+	onNext: function(cmp, evt, hlpr) {
 
 		var event = cmp.find("CP_Events");
 		event.fire("CP_Evt_Next_Step", {
 			"id": cmp.get("v.id")
 		});
 	},
-	onBack: function (cmp, evt, hlpr) {
+	onBack: function(cmp, evt, hlpr) {
 
 		var event = cmp.find("CP_Events");
 		event.fire("CP_Evt_Back_Step", {
 			"id": cmp.get("v.id")
 		});
 	},
-	onComplete: function (cmp, evt, hlpr) {
+	onComplete: function(cmp, evt, hlpr) {
 
 		var event = cmp.find("CP_Events");
 		event.fire("CP_Evt_Complete", {
-			"id": cmp.get("v.id")
-		});
-	},
-	onCancel: function (cmp, evt, hlpr) {
-
-		var event = cmp.find("CP_Events");
-		event.fire("CP_Evt_Cancel", {
 			"id": cmp.get("v.id")
 		});
 	}

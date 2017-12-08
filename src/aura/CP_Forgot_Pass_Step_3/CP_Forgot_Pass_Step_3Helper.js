@@ -1,40 +1,64 @@
 ({
-	validatePassword: function (cmp, payload) {
-		try {
+	validateInput: function (cmp, payload) {
 
-			var
-				validator = cmp.find('CP_Validation'),
-				events = cmp.find('CP_Events');
+		var
+			validator = cmp.find('CP_Validation'),
+			events = cmp.find('CP_Events');
 
-			validator.validate(payload, function (obj) {
 
-				if (obj.isValid === false) {
+		validator.validate(payload, function (obj) {
 
-					events.fire("CP_Evt_Input_Error", {
-						"id": obj.id,
-						"type": obj.type !== undefined ? obj.type : "",
-						"errors": obj.errors
-					});
+			if (obj.isValid === false) {
 
-					cmp.set("v.inputErrors", true);
+				cmp.set("v.inputErrors", true);
 
-				} else {
+				events.fire("CP_Evt_Input_Error", {
+					"id": obj.id,
+					"errors": obj.errors
+				});
 
-					//Capture values
-					if (payload.id === "password-input") {
-						cmp.set("v.password", payload.value);
-						cmp.set("v.confirmPassword", payload.confirmValue);
-					}
+			} else {
 
-					events.fire("CP_Evt_Input_Valid", {
-						"id": obj.id
-					});
-					cmp.set("v.inputErrors", false);
+				var
+					inputId = payload.id,
+					inputValue = payload.value;
+
+				//Capture values
+				if (inputId === "password-input") {
+					cmp.set("v.password", inputValue);
+					cmp.set("v.confirmPassword", payload.confirmValue);
 				}
-			});
-		} catch (err) {
-			console.error(err);
-		}
+
+				//Fire valid evt	
+				events.fire("CP_Evt_Input_Valid", {
+					"id": obj.id
+				});
+			}
+		});
+	},
+	validatePassword: function (cmp, payload) {
+		var
+			validator = cmp.find('CP_Validation'),
+			events = cmp.find('CP_Events');
+
+		validator.validate(payload, function (obj) {
+
+			if (obj.isValid === false) {
+
+				events.fire("CP_Evt_Input_Error", {
+					"id": obj.id,
+					"errors": obj.errors
+				});
+
+				cmp.set("v.inputErrors", true);
+
+			} else {
+				events.fire("CP_Evt_Input_Valid", {
+					"id": obj.id
+				});
+				cmp.set("v.inputErrors", false);
+			}
+		});
 	},
 	showLoading: function (cmp) {
 		cmp.find("CP_Events").fire("CP_Evt_Loading_Show", {

@@ -1,30 +1,43 @@
 ({
-	render: function (cmp, hlpr) {
-		var ret = this.superRender();
-		return ret;
-	},
-	rerender: function (cmp, hlpr) {},
-	afterRender: function (cmp, helper) {
-		this.superAfterRender();
+	validateInput : function(cmp, payload) {
 
-		try {
-			var parent = document.querySelector(".igcp-forgot-pass__step-3");
-			cmp.set("v.numberOfInputs", parent.querySelectorAll("input").length);
-		} catch (err) {
-			console.error("CP_Forgot_Pass_Step_2: afterRender");
-			console.error(err);
-		}
+		var
+			validator = cmp.find('CP_Validation'),
+			events = cmp.find('CP_Events');
 
 
-		try {
-			var analytics = setInterval(function () {
-				if (window && window._aa) {
-					window._aa.registerHandlers();
-					clearInterval(analytics);
+		validator.validate(payload, function(obj) {
+
+			if (obj.isValid === false) {
+
+				cmp.set("v.inputErrors", true);
+
+				console.error("Input Errors: " + obj.id);
+				console.error(obj.errors);
+
+				events.fire("CP_Evt_Input_Error", {
+					"id": obj.id,
+					"errors": obj.errors
+				});
+
+			} else {
+
+				var
+					inputId = payload.id,
+					inputValue = payload.value;
+
+				//Capture values
+				if (inputId === "password1") {
+					cmp.set("v.password1", inputValue);
+				} else if (inputId === "password2") {
+					cmp.set("v.password2", inputValue);
 				}
-			}, 500);
-		} catch (err) {
-			console.error(err);
-		}
+
+				//Fire valid evt	
+				events.fire("CP_Evt_Input_Valid", {
+					"id": obj.id
+				});
+			}
+		});
 	}
 })

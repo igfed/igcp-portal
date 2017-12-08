@@ -23,11 +23,26 @@
 
 		var payload = evt.getParam("payload");
 
-		try {
-			window.digitalData.error = payload;
-			window._satellite('server-error');
-		} catch(err) {
-			console.error(err);
+		window.digitalData.error = payload;
+		window._satellite('server-error');
+	},
+	doneRendering: function (cmp, evt, hlpr) {
+		if (cmp.get("v.renderComplete") === false) {
+
+			// var utils = cmp.find("CP_Utils");
+
+			// utils.waitForDefined(cmp, "v.userInfo", function(userInfo) {
+			// 	utils.forEach(userInfo, function(key, val) {
+			// 		if(key !== "clientBPID") {
+			// 			$('head').append("<meta name=" + 'igcp:' + key + " content=" + val + ">");
+			// 		} else {
+			// 			console.log("BPID");
+			// 			console.log(val);
+			// 		}
+			// 	});
+			// });
+
+			cmp.set("v.renderComplete", true);
 		}
 	}
 })

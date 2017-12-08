@@ -19,7 +19,7 @@
 			},
 			{
 				"label": $A.get("$Label.c.CP_Generic_Label_Notification"),
-				"detail": cmp.get("v.emailOptIn") === true ? $A.get("$Label.c.CP_Generic_Opted_In") : $A.get("$Label.c.CP_Generic_Opted_Out"),
+				"detail": cmp.get("v.emailOptIn"),
 				"type": ""
 			},
 			{
@@ -79,6 +79,9 @@
 			itemsArr = [];
 			itemsArr = arrOne.concat(arrTwo);
 		}
+
+		console.log("ITEMS");
+		console.log(itemsArr);
 
 		events.fire("CP_Evt_Set_List", {
 			"id": cmp.get("v.pageId"),
@@ -145,14 +148,8 @@
 			"StepThree",
 			cmp,
 			function (success) {
-				console.info("CP_Registration_Step_3: submitForm: SUCCESS");
-				console.log(success);
 				hlpr.hideLoading(cmp);
-				try {
-					window._aa.track('register-complete', '{"component": {"name": "CP_Registration_Step_3Controller"}}');
-				} catch(err) {
-					console.error(err);
-				}
+				window._aa.track('register-complete', '{"component": {"name": "CP_Registration_Step_3Controller"}}');
 				cmp.onNextStep();
 			},
 			function (error) {
