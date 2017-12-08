@@ -26,7 +26,7 @@
 
 						try {
 							var analytics = setInterval(function () {
-								if (window._aa) {
+								if (window && window._aa) {
 									window._aa.track('signin-start', '{"component": {"name": "CP_User_InfoController"}}');
 									clearInterval(analytics);
 								}

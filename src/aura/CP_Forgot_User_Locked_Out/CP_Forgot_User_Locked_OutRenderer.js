@@ -17,6 +17,7 @@
 						"code": "500",
 						"description": "Forgot Username Locked Out"
 					};
+					window._aa.track('page_load', '{"component": {"name": "CP_Forgot_User_Locked_Out"}}');
 					window._satellite.track('salesforce-error');
 					clearInterval(analytics);
 				}

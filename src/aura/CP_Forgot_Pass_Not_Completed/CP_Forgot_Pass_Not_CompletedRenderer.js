@@ -16,6 +16,7 @@
 						"code": "500",
 						"description": "Forgot Password Not Completed"
 					};
+					window._aa.track('page_load', '{"component": {"name": "CP_Forgot_Pass_Not_Completed"}}');
 					window._satellite.track('salesforce-error');
 					clearInterval(analytics);
 				}

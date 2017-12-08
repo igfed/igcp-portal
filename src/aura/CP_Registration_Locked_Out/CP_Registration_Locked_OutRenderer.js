@@ -17,6 +17,7 @@
 						"description": "Forgot Registration Locked Out"
 					};
 					window._satellite.track('salesforce-error');
+					window._aa.track('page_load', '{"component": {"name": "CP_Registration_Locked_Out"}}');
 					clearInterval(analytics);
 				}
 			}, 500);

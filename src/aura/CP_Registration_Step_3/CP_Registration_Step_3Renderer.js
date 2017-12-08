@@ -11,6 +11,7 @@
 			var analytics = setInterval(function () {
 				if (window && window._aa) {
 					window._aa.registerHandlers();
+					window._aa.track('page_load', '{"component": {"name": "CP_Registration_Step_3"}}');
 					clearInterval(analytics);
 				}
 			}, 500);

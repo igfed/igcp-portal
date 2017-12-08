@@ -15,6 +15,7 @@
 						"code": "500",
 						"description": "Forgot Password Locked Out"
 					};
+					window._aa.track('page_load', '{"component": {"name": "CP_Forgot_Pass_Locked_Out"}}');
 					window._satellite.track('salesforce-error');
 					clearInterval(analytics);
 				}
