@@ -86,9 +86,6 @@
 					var graphArr = [];
 
 					previewArr.forEach(function (item, i) {
-						console.log(item);
-
-						//graphArr.push({ "label" : item.theLabel, "detail" : item.theValue });
 
 						if (item.theLabel === "Equity") {
 							graphArr.push({ 
