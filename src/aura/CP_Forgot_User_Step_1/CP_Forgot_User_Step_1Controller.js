@@ -25,7 +25,7 @@
 
 			//if all inputs received and inputErrors = false
 			//we are ready to submit to the backend
-			if (cmp.get("v.inputsReceived") === 2 && cmp.get("v.inputErrors") === false) {
+			if (cmp.get("v.inputsReceived") === cmp.get("v.numberOfInputs") && cmp.get("v.inputErrors") === false) {
 
 				try {
 					cmp.set("v.payload", {
@@ -55,24 +55,24 @@
 
 		try {
 
+			console.info("CP_Forgot_User_Step_1: submitForm: Submitting to backend");
+
 			var services = cmp.find("CP_Services");
 
 			services.submitForm(
 				"StepOne",
 				cmp,
 				function (evt) {
-					console.log("CALLBACK SUCCESS");
+					console.info("CP_Forgot_User_Step_1: submitForm: Success");
 					hlpr.hideLoading(cmp);
 					if (evt.payload.State.IsCAVUser) {
-						//console.log('[CP_Forgot_User_Step_1Controller] IsCAVUSer is true')
 						cmp.goToLastStep();
 					} else {
-						//console.log('[CP_Forgot_User_Step_1Controller] IsCAVUSer is true')
 						cmp.onNextStep();
 					}
 				},
 				function (error) {
-					console.error("Forgot User: Step 1: Error");
+					console.error("CP_Forgot_User_Step_1: Error");
 					console.error(error);
 
 					hlpr.hideLoading(cmp);

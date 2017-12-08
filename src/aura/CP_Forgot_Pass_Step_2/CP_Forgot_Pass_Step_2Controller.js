@@ -79,10 +79,6 @@
 						cmp.set("v.isamStateId", error.payload.question.stateId);
 						hlpr.addToCurrentPayload(cmp, "stateId", cmp.get("v.isamStateId"));
 					}
-	
-					if(error.payload.State.isLocked === true) {
-						cmp.find("CP_Events").fire("CP_Evt_Error_Locked_Out", {});
-					}
 
 					hlpr.hideLoading(cmp);
 					

@@ -727,6 +727,9 @@
 
 			if (isValid === false) {
 
+				console.warn("CP_Services: onHandleServerSideError: isValid = false");
+				console.warn(payload);
+
 				//Backend returned value is not valid
 				if (isLocked === true) {
 
@@ -913,16 +916,6 @@
 					"Password failed to update.",
 					"unknown-error"
 				);
-
-				/*
-				// These methods are already in the helpr function
-				action.setCallback(this, function (response){
-					console.log('server response: ', response.returnValue);
-				});
-
-				$A.enqueueAction(action);*/
-
-
 			} catch (err) {
 				console.error("CP_Services: onUpdatePassword: controller not found, make sure it is attached to parent component.");
 				console.log(err);

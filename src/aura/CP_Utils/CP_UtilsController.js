@@ -112,7 +112,7 @@
 					$A.get("$Label.c.CP_Date_Month_December")
 				];
 
-			if(params.lang === "fr_CA") {
+			if (params.lang === "fr_CA") {
 				formattedString = (splitArr[2] + " " + monthNames[(splitArr[1] - 1)] + " " + splitArr[0]);
 			} else {
 				formattedString = (monthNames[(splitArr[1] - 1)] + " " + splitArr[2] + ", " + splitArr[0]);
@@ -330,18 +330,22 @@
 
 		if (params) {
 
-			var
-				obj = params.obj,
-				isEmpty = true;
+			try {
+				var
+					obj = JSON.parse(params.obj),
+					isEmpty = true;
 
-			for (var key in obj) {
-				if (params.hasOwnProperty(key)) {
-					isEmpty = false;
+				for (var key in obj) {
+					if (obj.hasOwnProperty(key)) {
+						isEmpty = false;
+					}
 				}
+
+				params.callback(isEmpty);
+			} catch (err) {
+				console.error("CP_Utils: objectIsEmpty");
+				console.error(err);
 			}
-
-			params.callback(isEmpty);
-
 		}
 
 	},
@@ -459,10 +463,9 @@
 		var
 			params = evt.getParam("arguments");
 
-			if (params) {
-				//No working debounce method yet
-				//Sorry
-				
-			}
+		if (params) {
+			//No working debounce method yet
+			//Sorry
+		}
 	}
 })

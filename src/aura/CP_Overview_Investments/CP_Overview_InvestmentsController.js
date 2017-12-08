@@ -12,13 +12,22 @@
 				function (previewObj) {
 
 					if (previewObj) {
-						utils.convertToMDY(previewObj.asOfDate, function (obj) {
-							cmp.set("v.asOfDate", obj.formattedString);
-						}, cmp.get("v.lang"));
 
-						utils.formatToCurrency(previewObj.totalValue, function (formattedValue) {
-							cmp.set("v.totalValue", formattedValue);
-						}, cmp.get("v.lang"));
+						if(previewObj.asOfDate) {
+							utils.convertToMDY(previewObj.asOfDate, function (obj) {
+								cmp.set("v.asOfDate", obj.formattedString);
+							}, cmp.get("v.lang"));
+						} else {
+							cmp.set("v.asOfDate", $A.get("$Label.c.CP_Generic_Not_Available"));
+						}
+
+						if(previewObj.totalValue) {
+							utils.formatToCurrency(previewObj.totalValue, function (formattedValue) {
+								cmp.set("v.totalValue", formattedValue);
+							}, cmp.get("v.lang"));
+						} else {
+							cmp.set("v.totalValue", $A.get("$Label.c.CP_Generic_Not_Available"));
+						}
 
 						//FOR NOW WE ARE COMMENTING OUT TOTAL LOSS/GAIN BECAUSE IT IS NOT READY FOR UAT
 						// utils.formatToCurrency(previewObj.totalGainLoss, function (formattedValue) {
@@ -49,12 +58,16 @@
 
 					if (previewObj) {
 
-						// console.info(previewObj);
-						// console.log(JSON.parse(previewObj));
-
-						utils.forEach(JSON.parse(previewObj), function (key, value) {
-							hlpr.addAccounts(key, value, cmp);
-						})
+						utils.objectIsEmpty(previewObj, function(isEmpty) {
+							if(isEmpty === false) {
+								utils.forEach(JSON.parse(previewObj), function (key, value) {
+									hlpr.addAccounts(key, value, cmp);
+								})
+							} else {
+								//show marketing view
+								cmp.set("v.showMarketing", true);
+							}
+						});
 
 						cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", {
 							"id": "overview-investments-spinner"

@@ -2137,6 +2137,14 @@
         <value>Find the mortgage that best fits your needs.</value>
     </labels>
     <labels>
+        <fullName>CP_Overview_Investments_Marketing_Tagline</fullName>
+        <categories>CP Overview</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Overview Investments Marketing Tagline</shortDescription>
+        <value>Find the investments that best fits your needs.</value>
+    </labels>
+    <labels>
         <fullName>CP_Overview_Mortgage_h2</fullName>
         <categories>CP Overview</categories>
         <language>en_US</language>

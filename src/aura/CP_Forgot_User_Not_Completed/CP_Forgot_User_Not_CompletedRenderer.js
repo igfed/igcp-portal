@@ -3,9 +3,7 @@
 		var ret = this.superRender();
 		return ret;
 	},
-	rerender: function (cmp, hlpr) {
-		//console.warn('Registration was re-rendered');
-	},
+	rerender: function (cmp, hlpr) {},
 	afterRender: function (cmp, hlpr) {
 		this.superAfterRender();
 

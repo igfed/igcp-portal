@@ -10,6 +10,7 @@
 	<aura:attribute name="pageId" type="String" default="forgot-user-step-2"></aura:attribute>
 	<aura:attribute name="inputErrors" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="inputsReceived" type="Integer" default="0"></aura:attribute>
+	<aura:attribute name="numberOfInputs" type="Integer" default="0"></aura:attribute>
 	<aura:attribute name="payload" type="Map" default="{}"></aura:attribute>
 	<aura:attribute name="lang" type="String"></aura:attribute>
 
@@ -56,7 +57,7 @@
 			</div>
 			<p class="igcp-utils__width--100 igcp-large-utils__width--75">{!v.question}</p>
 			<div class="slds-grid slds-wrap">
-				<div class="slds-form slds-size_12-of-12">
+				<div class="igcp-forgot-user__step-2 slds-form slds-size_12-of-12">
 					<!-- TOAST ERROR -->
                 	<c:CP_Cmp_Toast id="forgot-user-step-2-toast-error"
                 		type="error"
@@ -66,7 +67,7 @@
 					<div class="igcp-utils__display--none igcp-large-utils__display--flex slds-size_7-of-12"></div>
 				</div>
 				<!--CTAS-->
-				<c:CP_Cmp_Form_Back_Next dcname1="forgot-username-cancel" dcname="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" backType="cancel" form="{!v.pageId}" />
+				<c:CP_Cmp_Form_Back_Next dcname1="forgot-username-cancel" dcname2="" dctype="click" id="{!v.pageId}" backLabel="{!$Label.c.CP_Generic_Button_Cancel}" nextLabel="{!$Label.c.CP_Generic_Button_Next}" nextType="submit" backType="cancel" form="{!v.pageId}" />
 			</div>
 		</div>
 		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>

@@ -83,6 +83,8 @@
 		}
 	},
 	onLockedOut: function (cmp, evt, hlpr) {
+		console.info("LOCKED OUT");
+		console.log(evt.getParams());
 		cmp.set("v.currentStep", 4);
 	}
 })

@@ -5,7 +5,6 @@
 			validator = cmp.find('CP_Validation'),
 			events = cmp.find('CP_Events');
 
-
 		validator.validate(payload, function(obj) {
 
 			if (obj.isValid === false) {
@@ -50,12 +49,13 @@
 		try {
 
 			var services = cmp.find("CP_Services");
-
-			console.log("GET SECURITY QUESTION")
+			console.info("CP_Forgot_User_Step_2: getSecurityQuestion");
 
 			services.getSecurityQuestion(
 				cmp,
 				function(evt) {
+
+					console.info("CP_Forgot_User_Step_2: getSecurityQuestion: Success");
 
 					hlpr.hideLoading(cmp);
 
