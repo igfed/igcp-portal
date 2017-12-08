@@ -2,14 +2,6 @@
     Author: Dennis Erny 
     Version: Salesforce v1.0.3 */
 
-var adobeScript = setInterval(function () {
-  if (window._satellite) {
-    console.log('page bottom loading');
-    window._satellite.pageBottom();
-    clearInterval(adobeScript);
-  }
-}, 500);
-
 jQuery(document).ready(function () {
   (function ($) {
     window.digitalData = window.digitalData || {};
@@ -45,6 +37,8 @@ jQuery(document).ready(function () {
       console.log(window.digitalData.page);
       // Register click event handlers
       _registerHandlers();
+
+      _executeDirectCall('page_load');
     }
 
     function _getPageName() {
