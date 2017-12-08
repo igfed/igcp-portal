@@ -272,6 +272,29 @@
 	fill: $ig-red;
 }
 
+//DOLLAR SIGN
+:lang(en) {
+	.#{$namespace}-currency__dollar {
+		
+		&:before {
+			position: relative;
+			content: "$";
+			font-size: 70%;
+			top: -0.25em;
+		}
+	}
+}
+
+:lang(fr) {
+	.#{$namespace}-currency__dollar {
+		
+		&:after {
+			content: "$";
+			padding-left: $ig-space--xx-small;
+		}
+	}
+}
+
 //LABEL
 .#{$namespace}-label {
 	font-family: $ig-whitney-semibold;

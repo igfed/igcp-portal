@@ -3717,6 +3717,16 @@ table {
 .igcp-value--loss use {
   fill: #ea051c; }
 
+:lang(en) .igcp-currency__dollar:before {
+  position: relative;
+  content: "$";
+  font-size: 70%;
+  top: -0.25em; }
+
+:lang(fr) .igcp-currency__dollar:after {
+  content: "$";
+  padding-left: 8px; }
+
 .igcp-label {
   font-family: "WhitneySemibold", Arial, sans-serif;
   font-size: 16px;

@@ -49,8 +49,8 @@
 
 					if (previewObj) {
 
-						console.info(previewObj);
-						console.log(JSON.parse(previewObj));
+						// console.info(previewObj);
+						// console.log(JSON.parse(previewObj));
 
 						utils.forEach(JSON.parse(previewObj), function (key, value) {
 							hlpr.addAccounts(key, value, cmp);
@@ -86,9 +86,6 @@
 					var graphArr = [];
 
 					previewArr.forEach(function (item, i) {
-						console.log(item);
-
-						//graphArr.push({ "label" : item.theLabel, "detail" : item.theValue });
 
 						if (item.theLabel === "Equity") {
 							graphArr.push({ 

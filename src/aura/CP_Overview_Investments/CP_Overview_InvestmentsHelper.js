@@ -15,6 +15,7 @@
 
 		cmp.find("CP_Utils").createComponent(
 			"CP_Overview_Account_Group", {
+				"lang" : cmp.get("v.lang"),
 				"groupTitle": dealerName,
 				"accounts": accounts
 			},
