@@ -27,7 +27,7 @@
 						try {
 							var analytics = setInterval(function () {
 								if (window && window._aa) {
-									window._aa.track('signin-start', '{"component": {"name": "CP_User_InfoController"}}');
+									window._aa.track('signin-success', '{"component": {"name": "CP_User_InfoController"}}');
 									clearInterval(analytics);
 								}
 							}, 500);
