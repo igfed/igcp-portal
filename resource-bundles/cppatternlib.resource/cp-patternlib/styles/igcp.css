@@ -1851,6 +1851,17 @@ table {
     margin-left: auto;
     margin-right: auto; }
 
+.igcp-header--error {
+  height: auto;
+  overflow: hidden;
+  padding: 80px 0 60px;
+  text-align: center; }
+  .igcp-header--error .header-link {
+    display: inline-block; }
+  .igcp-header--error .header-logo {
+    height: auto;
+    width: 140px; }
+
 .top-bar {
   padding: 0;
   background-color: transparent; }
@@ -2307,6 +2318,11 @@ table {
   padding-top: 0;
   padding-bottom: 32px;
   background-color: #0d263c; }
+  .igcp-footer.igcp-footer--basic {
+    background-color: #FFF;
+    color: #545454;
+    font-size: 11px;
+    text-align: center; }
   .igcp-footer a {
     color: #fff; }
   .igcp-footer .footer-link {
@@ -4435,5 +4451,10 @@ table {
   .igcp-modal-foundation.large.reveal {
     width: 75%;
     max-width: 960px; } }
+.comm-page-custom-error-503 {
+  background-color: #FFF; }
+
+.igcp-heading--large {
+  color: #0d263c; }
 
 /*# sourceMappingURL=igcp.css.map */

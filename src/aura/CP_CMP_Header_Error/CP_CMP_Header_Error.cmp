@@ -1,0 +1,9 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+
+    <header role="banner" class="igcp-header--error">    
+            <a class="header-link" href="/">
+                <img class="header-logo" src="{!$Resource.igcpresources + '/igcp-resources/images/IG_EN.svg'}" alt="" />
+            </a>
+    </header>
+
+</aura:component>

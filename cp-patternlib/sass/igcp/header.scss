@@ -19,6 +19,22 @@
   }
 }
 
+.#{$namespace}-header--error {
+  height: auto;
+  overflow: hidden;
+  padding: 80px 0 60px;
+  text-align: center;
+
+  .header-link {
+    display: inline-block;
+  }
+
+  .header-logo {
+    height: auto;
+    width: 140px;
+  }
+}
+
 .top-bar {
 
   padding: 0;
