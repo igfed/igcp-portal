@@ -60,7 +60,14 @@
 				var loanBalance = "";
 
 				utils.formatToCurrency(account.loanBalance, function (formattedValue) {
-					loanBalance = "$" + formattedValue;
+					if (cmp.get("v.lang") === "en_US" || cmp.get("v.lang") === "en_CA") {
+						formattedValue = "$" + formattedValue;
+					} else if (cmp.get("v.lang") === "fr_CA") {
+						formattedValue = formattedValue + " $";
+					} else {
+						formattedValue = "$" + formattedValue;
+					}
+					loanBalance = formattedValue;
 				}, cmp.get("v.lang"));
 
 				cmp.set("v.val2", loanBalance);

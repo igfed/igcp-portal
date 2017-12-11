@@ -65,10 +65,22 @@
 						dataArr = [],
 						dataObjArr = [];
 
-					holdingsArr.forEach(function (item, i) {
-						dataArr.push([item.productName, item.holdingNumber, "N/A", "N/A", item.marketValueCad]);
-						dataObjArr.push(item);
+					
 
+					holdingsArr.forEach(function (item, i) {
+
+						var bookCost = "", marketValue = "";
+
+						utils.formatToCurrency(item.bookCostCad, function(formattedValue) {
+							bookCost = formattedValue;
+						}, cmp.get("v.lang"), true);
+
+						utils.formatToCurrency(item.marketValueCad, function(formattedValue) {
+							marketValue = formattedValue;
+						}, cmp.get("v.lang"), true);
+
+						dataArr.push([item.productName, (item.marketValuePerc + "%"), bookCost, "N/A", marketValue]);
+						dataObjArr.push(item);
 					});
 
 					events.fire(
@@ -76,7 +88,7 @@
 							"id": "holdings-table",
 							"headers": [
 								$A.get("$Label.c.CP_Generic_Label_Name"),
-								$A.get("$Label.c.CP_Generic_Label_Holding"),
+								$A.get("$Label.c.CP_Generic_Label_Percentage"),
 								$A.get("$Label.c.CP_Generic_Label_Book_Cost"),
 								$A.get("$Label.c.CP_Generic_Label_Change"),
 								$A.get("$Label.c.CP_Generic_Label_Market_Value")

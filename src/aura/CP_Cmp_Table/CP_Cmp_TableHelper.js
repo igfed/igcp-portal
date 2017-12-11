@@ -13,6 +13,7 @@
 				}
 			);
 		} catch (err) {
+			console.error("CP_Cmp_Table: generateHeader");
 			console.error(err);
 		}
 	},
@@ -22,6 +23,9 @@
 			var tableData = payload.data;
 
 			tableData.forEach(function(row, i) {
+
+				console.log(row);
+
 				utils.createComponent(
 					"CP_Cmp_Table_Row", {
 						"data": row,
@@ -34,6 +38,7 @@
 				);
 			});
 		} catch (err) {
+			console.error("CP_Cmp_Table: generateTable");
 			console.error(err);
 		}
 	}

@@ -809,6 +809,14 @@
         <value>1yr</value>
     </labels>
     <labels>
+        <fullName>CP_Generic_Label_Percentage</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Percentage</shortDescription>
+        <value>Percentage</value>
+    </labels>
+    <labels>
         <fullName>CP_Generic_Label_2016_Contributions</fullName>
         <categories>CP Generic</categories>
         <language>en_US</language>
@@ -2113,6 +2121,14 @@
         <value>Interest</value>
     </labels>
     <labels>
+        <fullName>CP_Overview_Investments_Marketing_Tagline</fullName>
+        <categories>CP Overview</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Overview Investments Marketing Tagline</shortDescription>
+        <value>Find the investments that best fits your needs.</value>
+    </labels>
+    <labels>
         <fullName>CP_Overview_Investments_h2</fullName>
         <categories>CP Overview</categories>
         <language>en_US</language>
@@ -2135,14 +2151,6 @@
         <protected>false</protected>
         <shortDescription>CP Overview Mortgage Marketing Tagline</shortDescription>
         <value>Find the mortgage that best fits your needs.</value>
-    </labels>
-    <labels>
-        <fullName>CP_Overview_Investments_Marketing_Tagline</fullName>
-        <categories>CP Overview</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Overview Investments Marketing Tagline</shortDescription>
-        <value>Find the investments that best fits your needs.</value>
     </labels>
     <labels>
         <fullName>CP_Overview_Mortgage_h2</fullName>

@@ -4,6 +4,7 @@
 		var
 			data = cmp.get("v.data"),
 			utils = cmp.find("CP_Utils"),
+			sanitizedItem = "",
 			tdClass = "",
 			style = cmp.get("v.style");
 
@@ -23,24 +24,28 @@
 				tdClass += ("igcp-utils__text-align--" + style.textAlign[i] + " ");
 			}
 
-			utils.createComponent(
-				"aura:html", {
-					"tag": "td",
-					"body": item,
-					"HTMLAttributes": {
-						"class": tdClass
-					}
-				},
-				cmp,
-				function(ready) {}
-			);
+			sanitizedItem = item.toString();
+			
+
+			try {
+				utils.createComponent(
+					"aura:html", {
+						"tag": "td",
+						"body": sanitizedItem,
+						"HTMLAttributes": {
+							"class": tdClass
+						}
+					},
+					cmp,
+					function(ready) {}
+				);
+			} catch (err) {
+				console.error("CP_Cmp_Table_Row: onInit");
+				console.error(err);
+			}
 		});
 	},
 	onClick: function(cmp, evt, hlpr) {
-		console.log(cmp.get("v.dataObj"))
-
-		console.log(cmp.get("v.modalId"));
-
 		var events = cmp.find("CP_Events");
 
 		//open modal

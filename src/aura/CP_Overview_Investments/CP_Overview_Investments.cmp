@@ -39,7 +39,7 @@
 		
 		<div class="slds-grid slds-wrap slds-m-bottom--xx-small">
 			<h2 class="slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-m-top--small slds-medium-p-left--small slds-m-bottom--zero">{!$Label.c.CP_Overview_Investments_h2}</h2>
-			<aura:if isTrue="{!v.showMarketing == 'false'}">
+			<aura:if isTrue="{!v.showMarketing == false}">
 				<p class="igcp-medium-utils__text-align--right slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-m-top--small slds-large-m-bottom--medium slds-medium-p-right--small slds-p-top--zero slds-medium-p-top--x-small igcp-utils__font-size--x-mini">{!$Label.c.CP_Date_Label_As_Of + ' ' + v.asOfDate}</p>
 			</aura:if>
 		</div>
