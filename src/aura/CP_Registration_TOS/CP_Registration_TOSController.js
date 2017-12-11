@@ -10,6 +10,17 @@
 		var payload = evt.getParam("payload");
 
 		if(payload.id === "read_and_agree_checkbox") {
+			try {
+				var analytics = setInterval(function () {
+					if (window && window._aa) {			
+						window._aa.registerHandlers();
+						clearInterval(analytics);
+					}
+				}, 500);
+			} catch(err) {
+				console.error(err);
+			}
+	
 			console.log(payload);
 			cmp.set("v.userAgrees", payload.checked);			
 		}
