@@ -1,0 +1,11 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    
+    <footer aura:id="igcp-footer" id="igcp-footer" class="igcp-footer igcp-footer--basic site-footer" role="contentinfo">        
+        
+        <div class="row footer-copyright">
+            <div class="columns footer-copyright-border-top">
+                © 2017 Investors Group Inc. All rights Reserved
+            </div>
+        </div>
+    </footer>
+</aura:component>
