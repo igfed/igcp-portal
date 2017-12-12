@@ -18,7 +18,7 @@
 
 		try {
 			var analytics = setInterval(function () {
-				if (window && window._aa) {
+				if (window && window._satellite) {
 					window.digitalData.error = {
 						"type": "server",
 						"code": "500",
