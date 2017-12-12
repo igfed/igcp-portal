@@ -8,7 +8,6 @@
 	<aura:attribute name="data" type="Map"></aura:attribute>
 	<aura:attribute name="style" type="Map"></aura:attribute>
 	<aura:attribute name="dataObj" type="String" default=""></aura:attribute>
-	<aura:attribute name="renderComplete" type="Boolean" default="false"></aura:attribute>
 	<aura:attribute name="modalId" type="String" default=""></aura:attribute>
 	
 	<!-- HANDLERS -->

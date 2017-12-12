@@ -22,6 +22,7 @@
 				});
 
 				utils.formatToCurrency(totalValue, function (val) {
+					console.info(cmp.get("v.lang"));
 					if (cmp.get("v.lang") === "en_US" || cmp.get("v.lang") === "en_CA") {
 						formattedValue = "$" + val;
 					} else if (cmp.get("v.lang") === "fr_CA") {
