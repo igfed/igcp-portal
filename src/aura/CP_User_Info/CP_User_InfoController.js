@@ -25,6 +25,18 @@
 						localStorage.setItem('igcp_lastLogin', date);
 					});
 
+					try {
+						var analytics = setInterval(function () {
+							if (window._satellite) {
+								window._satellite.track('signin-success');
+								clearInterval(analytics);
+							}
+						}, 500);
+					} catch (err) {
+						console.error("CP_User_Info: onInit: analytics");
+						console.error(err);
+					}
+
 				},
 				function (error) {
 					console.error(error);
