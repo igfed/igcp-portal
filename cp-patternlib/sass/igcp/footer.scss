@@ -12,8 +12,12 @@
 
 	&.#{$namespace}-footer--basic {
 		background-color: #FFF;
+		bottom: 0;
 		color: #545454;
 		font-size: 11px;
+		left: 0;
+		position: absolute;
+		right: 0;
 		text-align: center;
 	}
 

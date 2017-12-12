@@ -1,6 +1,12 @@
 // page level
+.comm-page-error,
 .comm-page-custom-error-503{
-	background-color: #FFF;
+    background-color: #FFF;
+    
+    .cClient_Portal_Theme_Layout {
+        height: 100%;
+        overflow: hidden;
+    }
 }
 
 // headings
