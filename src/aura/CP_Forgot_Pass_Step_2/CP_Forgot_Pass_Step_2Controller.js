@@ -95,6 +95,11 @@
 									"id": "forgot-pass-step-2-toast-error",
 									"message": $A.get("$Label.c.CP_Error_Please_Try_Again")
 								});
+							} else if (obj.isLocked === false && obj.isValid === false) {
+								cmp.find("CP_Events").fire("CP_Evt_Toast_Error", {
+									"id": "forgot-pass-step-2-toast-error",
+									"message": $A.get("$Label.c.CP_Forgot_Pass_Not_Completed_Instructions")
+								});
 							}
 						}
 					);

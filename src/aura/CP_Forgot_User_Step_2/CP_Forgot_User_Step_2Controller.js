@@ -28,7 +28,7 @@
 
 		//if all inputs received and inputErrors = false
 		//we are ready to submit to the backend
-		if (cmp.get("v.inputsReceived") === cmp.get("v.numberOfInputs") && cmp.get("v.inputErrors") === false) {
+		if (cmp.get("v.inputsReceived") >= cmp.get("v.numberOfInputs") && cmp.get("v.inputErrors") === false) {
 
 			hlpr.addToCurrentPayload(cmp, "answer", cmp.get("v.answer"));
 
@@ -93,6 +93,11 @@
 								events.fire("CP_Evt_Toast_Error", {
 									"id": "forgot-user-step-2-toast-error",
 									"message": $A.get("$Label.c.CP_Error_Please_Try_Again")
+								});
+							} else if (obj.isLocked === false && obj.isValid === false) {
+								events.fire("CP_Evt_Toast_Error", {
+									"id": "forgot-user-step-2-toast-error",
+									"message": $A.get("$Label.c.CP_Forgot_User_Not_Completed_Instructions")
 								});
 							}
 						}
