@@ -126,6 +126,15 @@
 		<aura:attribute name="includeDollarSign" type="Boolean" default="false"></aura:attribute>
 	</aura:method>
 
+	<!-- FORMAT PERCENTAGE -->
+	<!-- Takes a normal number string representing a percentage and returns it formatted -->
+	<aura:method name="formatPercentage" action="{!c.onFormatPercentage}">
+		<aura:attribute name="rawValue" type="String"></aura:attribute>
+		<aura:attribute name="callback" type="function" default="" />
+		<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
+		<aura:attribute name="includePercentSymbol" type="Boolean" default="true"></aura:attribute>
+	</aura:method>
+
 	<!-- OBJECT IS EMPTY -->
 	<!-- Checks if an object is empty -->
 	<aura:method name="objectIsEmpty" action="{!c.onObjectIsEmpty}">

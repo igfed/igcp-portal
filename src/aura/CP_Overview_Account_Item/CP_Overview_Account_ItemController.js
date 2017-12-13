@@ -50,7 +50,10 @@
 			}
 
 			if (account.interestRate) {
-				cmp.set("v.val1", (account.interestRate + "%"));
+				utils.formatPercentage(account.interestRate, function(formattedValue){
+					console.log(formattedValue);
+					cmp.set("v.val1", formattedValue);
+				}, cmp.get("v.lang"));
 			} else {
 				cmp.set("v.val1", $A.get("$Label.c.CP_Generic_Not_Available"));
 			}

@@ -325,6 +325,41 @@
 			params.callback(formattedValue);
 		}
 	},
+	onFormatPercentage: function (cmp, evt, hlpr) {
+		var params = evt.getParam("arguments"),
+			lang, formattedValue;
+
+		if (params) {
+			lang = params.lang;
+			try {
+				if (hlpr.isNumber(params.rawValue) === true) {
+					
+					if (lang === "en_CA" || lang === "en_US") {
+						if (params.includePercentSymbol) {
+							formattedValue = hlpr.formatCurrency(params.rawValue) + "%";
+						} else {
+							formattedValue = hlpr.formatCurrency(params.rawValue);
+						}
+					} else if (lang === "fr_CA") {
+						if (params.includePercentSymbol) {
+							formattedValue = hlpr.formatCurrency(params.rawValue, 2, 3, ' ', ',') + " %";
+						} else {
+							formattedValue = hlpr.formatCurrency(params.rawValue, 2, 3, ' ', ',');
+						}
+					} else {
+						console.warn("CP_Utils: formatPercentage: language unrecognized.");
+					}
+				} else {
+					formattedValue = params.rawValue;
+				}
+
+				params.callback(formattedValue);
+			} catch (err) {
+				console.error("CP_Utils: formatPercentage");
+				console.error(err);
+			}
+		}
+	},
 	onObjectIsEmpty: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 
