@@ -10,6 +10,13 @@
 	padding-bottom: $ig-space--large;
 	background-color: $ig-dark-blue;
 
+	&.#{$namespace}-footer--basic {
+		background-color: #FFF;
+		color: #545454;
+		font-size: 11px;
+		text-align: center;
+	}
+
 	a {
 		color: $ig-white;
 	}

@@ -105,7 +105,7 @@
             } else {
                 localStorage.removeItem('usernameStorage');
             }
-            
+
             document.getElementById("login-form").submit();
             var username = $('input#username').val().toLowerCase();
             $('input#username').val(username);
@@ -141,7 +141,7 @@
                     "aemHost": [
                         'https://igfs-stage.adobecqms.net/en/portal/', // QA
                         'https://igfs-stage.adobecqms.net/en/portal/', // UAT
-                        'https://www.investorsgroup.com/en/portal/' // PROD
+                        'https://igfs-stage.adobecqms.net/en/portal/' // PROD
                     ],
                     "targetUrls": [
                         'forgot-username',
@@ -168,7 +168,7 @@
                     "aemHost": [
                         'https://igfs-stage.adobecqms.net/fr/', // QA
                         'https://igfs-stage.adobecqms.net/fr/', // UAT
-                        'https://www.groupeinvestors.com/fr/' // PROD
+                        'https://igfs-stage.adobecqms.net/fr/portal' // PROD
                     ],
                     "targetUrls": [
                         'forgot-username',
@@ -287,7 +287,7 @@
                 </div>
 
                 <div class="igcp-login__sidebar-wrapper">
-                    <h3 class="slds-m-bottom--large">FR--Sign in to Online Access</h3>
+                    <h3 class="slds-m-bottom--large">Connexion à accès en ligne</h3>
 
                     <div id="error-box" class="igcp-login__error error-box">
                         <div class="slds-notify_container slds-is-relative">
@@ -310,13 +310,13 @@
                                 <span class="slds-icon_container slds-icon-utility-user" title="Description of icon when needed">
                                     <span class="slds-assistive-text">Username Icon</span>
                                 </span>
-                                FR-Username
+                                Nom d'utilisateur
                             </label>
                             <div class="slds-form-element__control">
                                 <input type="text" id="username" class="slds-input igcp-input input uiInput uiInputText uiInput--default uiInput--input" required="true" name="username">
                             </div>
                             <div class="igcp-input__help-link slds-float--right">
-                                <a data-aa-dcname="forgot-username-start" data-aa-type="click" id="forgot-username" href="https://portalint-portalint.cs70.force.com/customers/s/forgot-username" class="igcp-link__variant--a">Forgot username</a>
+                                <a data-aa-dcname="forgot-username-start" data-aa-type="click" id="forgot-username" href="https://portalint-portalint.cs70.force.com/customers/s/forgot-username" class="igcp-link__variant--a">Nom d'utilisateur oublié?</a>
                             </div>
 
                             <!--REMEMBER USERNAME -->
@@ -326,7 +326,7 @@
                                         <input type="checkbox" name="options" id="checkbox-644" />
                                         <label class="slds-checkbox__label" for="checkbox-644">
                                             <span class="slds-checkbox--faux"></span>
-                                    <span class="slds-form-element__label igcp-login__username-checkbox input-label">Remember username</span>
+                                    <span class="slds-form-element__label igcp-login__username-checkbox input-label">Mémoriser le nom d'utilisateur</span>
                                     </label>
                                     </span>
                                 </div>
@@ -339,7 +339,7 @@
                                 <span class="slds-icon_container slds-icon-utility-lock" title="Password Icon">
                                     <span class="slds-assistive-text">Password Icon</span>
                                 </span>
-                                Password
+                                Mot de passe
                             </label>
                             <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
                                 <input type="password" id="password" class="igcp-input slds-input" name="password" autocomplete="off">
@@ -351,13 +351,15 @@
                         </div>
                         <!-- LEGAL -->
                         <div class="igcp-login__legal">
-                            <p>FR-I have read and agree to be bound by the
-                                <a id="user-agreement" href="#">User Agreement</a> as of August 2017.</p>
+                            <p>J'ai lu et j'accepte les modalités de
+                                <a id="user-agreement" href="#">l'Entente d'utilisation</a> (révision : octobre 2017)</p>
+
+
                         </div>
 
                         <!--SIGN IN-->
                         <div class="slds-form-element slds-m-top--large slds-m-bottom--medium">
-                            <button data-aa-dcname="signin-start" data-aa-type="click" class="slds-button slds-button--brand slds-p-vertical--xxx-small slds-p-horizontal--xx-large" onclick="submitForm()">Sign In
+                            <button data-aa-dcname="signin-start" data-aa-type="click" class="slds-button slds-button--brand slds-p-vertical--xxx-small slds-p-horizontal--xx-large" onclick="submitForm()">Connexion
                             </button>
                         </div>
 
@@ -370,7 +372,7 @@
                     </form>
 
                     <div class="igcp-login__register-link slds-text-align--center">
-                        <a id="registration" href="https://portalint-portalint.cs70.force.com/customers/s/registration" class="igcp-link__variant--a">Register for Online Access</a>
+                        <a id="registration" href="https://portalint-portalint.cs70.force.com/customers/s/registration" class="igcp-link__variant--a">Première utilisation? Inscrivez-vous</a>
                     </div>
 
                 </div>
@@ -393,19 +395,19 @@
                             <a id="privacy-footer" href="#">Privacy</a>
                         </li>
                         <li class="igcp-login__footer-link">
-                            <a id="user-agreement-footer" href="#">User Agreement</a>
+                            <a id="user-agreement-footer" href="#">Entente d’utilisation</a>
                         </li>
                         <li class="igcp-login__footer-link">
-                            <a id="investor-performance-footer" href="#">Investor Performance</a>
+                            <a id="investor-performance-footer" href="#">Rendement des placements</a>
                         </li>
                         <li class="igcp-login__footer-link">
-                            <a id="help-footer" href="#">Help</a>
+                            <a id="help-footer" href="#">Aide</a>
                         </li>
                     </ul>
 
                     <div class="igcp-login__footer-copyright">
                         <ul class="menu">
-                            <li>&copy; 2017 IGM Financial Inc. All rights Reserved</li>
+                            <li>&copy; 2017 Groupe Investors. Tous droits réservés.</li>
                         </ul>
                     </div>
                 </div>
@@ -417,12 +419,12 @@
 
                 <div class="igcp-login__ad igcp-login__ad--desktop">
 
-                    <h1 class="igcp-login__ad-heading">When it comes to RRSPs, the word “contribution” is key.</h1>
+                    <h1 class="igcp-login__ad-heading">Bienvenue au nouveau site accès en ligne!</h1>
 
-                    <p class="igcp-login__ad-copy">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    <p class="igcp-login__ad-copy">Consultez tous vos comptes de placement, de prêt hypothécaire et d'assurance en un seul endroit, quand vous le voulez, et sur n'importe quel appareil.
                     </p>
 
-                    <a class="igcp-login__ad-link" href="#">Learn More</a>
+                    <a class="igcp-login__ad-link" href="#">En savoir plus</a>
                     <span class="arrow">&gt;</span>
 
                 </div>

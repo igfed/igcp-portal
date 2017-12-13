@@ -1,0 +1,20 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+ 
+    <!-- ATTRS -->
+	<aura:attribute name="pageId" type="String" default="error-503" />
+	
+	<!-- INCLUDES -->
+	<c:CP_Events aura:id="CP_Events" />
+	<c:CP_Services aura:id="CP_Services" />
+
+	<!-- HANDLERS -->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+    <div class="igcp-wrapper slds-grid slds-grid--align-center">
+	    <div class="igcp-container slds-text-align_center">
+		    <h1 class="slds-m-bottom--small igcp-heading--large slds-text-heading_large">{!$Label.c.CP_Error_503}</h1>
+            <h2 class="slds-text-heading_small">{!$Label.c.CP_Error_503_instructions}</h2>
+        </div>
+    </div>    
+
+</aura:component>
