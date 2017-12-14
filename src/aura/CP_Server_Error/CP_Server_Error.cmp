@@ -1,4 +1,4 @@
-<aura:component >
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
 	<!-- INCLUDES -->
 	<c:CP_Utils aura:id="CP_Utils" />
 	<c:CP_Events aura:id="CP_Events" />
@@ -9,15 +9,10 @@
 	<!-- HANDLERS -->
 	
 	<!-- MARKUP -->
-	<div data-aa-component="CP_Forgot_User_Locked_Out" class="igcp-wrapper slds-grid slds-wrap slds-grid--align-center slds-grid_pull-padded slds-p-top--small slds-medium-p-top--xx-large">
-		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
-		<div class="slds-p-around--small slds-medium-p-around--zero slds-size_12-of-12 slds-medium-size_6-of-12">
-			<h1>Error Type</h1>
-			<p class="igcp-utils__width--100 igcp-large-utils__width--75">Error Description goes here</p>
-			<div class="slds-grid slds-wrap">
-				<c:CP_Cmp_Button id="locked-out-ok" class="slds-size_12-of-12 slds-large-size_4-of-12 slds-grid slds-p-bottom--x-large slds-m-top--x-large" label="{!$Label.c.CP_Generic_Button_Ok}" />
-			</div>
-		</div>
-		<div class="igcp-utils__display--none igcp-utils__display--block slds-medium-size_3-of-12"></div>
-	</div>
+	<div class="slds-grid slds-grid--align-center">
+	    <div class="igcp-container slds-text-align_center">
+		    <h1 class="slds-m-bottom--small igcp-heading--large slds-text-heading_large">{!$Label.c.CP_Error_500}</h1>
+            <h2 class="slds-text-heading_small">{!$Label.c.CP_Error_500_instructions}</h2>
+        </div>
+    </div>  
 </aura:component>

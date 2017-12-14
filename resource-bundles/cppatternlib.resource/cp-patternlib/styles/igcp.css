@@ -2320,8 +2320,12 @@ table {
   background-color: #0d263c; }
   .igcp-footer.igcp-footer--basic {
     background-color: #FFF;
+    bottom: 0;
     color: #545454;
     font-size: 11px;
+    left: 0;
+    position: absolute;
+    right: 0;
     text-align: center; }
   .igcp-footer a {
     color: #fff; }
@@ -4451,8 +4455,13 @@ table {
   .igcp-modal-foundation.large.reveal {
     width: 75%;
     max-width: 960px; } }
+.comm-page-error,
 .comm-page-custom-error-503 {
   background-color: #FFF; }
+  .comm-page-error .cClient_Portal_Theme_Layout,
+  .comm-page-custom-error-503 .cClient_Portal_Theme_Layout {
+    height: 100%;
+    overflow: hidden; }
 
 .igcp-heading--large {
   color: #0d263c; }
