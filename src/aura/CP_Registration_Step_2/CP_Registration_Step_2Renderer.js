@@ -8,8 +8,13 @@
 		this.superAfterRender();
 
 		try {
-			var parent = document.querySelector(".igcp-registration__step-2");
-			cmp.set("v.numberOfInputs", parent.querySelectorAll("input").length);
+			var 
+				parent = document.querySelector(".igcp-registration__step-2"),
+				inputLength = parent.querySelectorAll("input").length,
+				selectLength = parent.querySelectorAll("select").length,
+				totalInputLength = inputLength + selectLength;
+
+			cmp.set("v.numberOfInputs", totalInputLength);
 		} catch (err) {
 			console.error("CP_Registration_Step_2: afterRender");
 			console.error(err);
