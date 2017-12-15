@@ -199,11 +199,18 @@
 						res = JSON.parse(response.getReturnValue());
 						console.log(res);
 
-						if (res.question.question.length > 0) {
-							params.validCB({
-								"payload": res,
-								"type": "success"
-							});
+						if(res.question.question !== null) {
+							if (res.question.question.length > 0) {
+								params.validCB({
+									"payload": res,
+									"type": "success"
+								});
+							} else {
+								params.errorCB({
+									"payload": res,
+									"type": "error"
+								});
+							}
 						} else {
 							params.errorCB({
 								"payload": res,

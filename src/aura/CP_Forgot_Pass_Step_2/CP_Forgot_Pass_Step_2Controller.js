@@ -89,13 +89,20 @@
 						},
 						function(obj) {
 
+							console.warn(obj);
+
 							if (obj.fields[0] === "answer" && obj.isLocked === false && obj.isValid === false) {
+
+								console.warn("obj.fields[0] === \"answer\" && obj.isLocked === false && obj.isValid === false");
 
 								cmp.find("CP_Events").fire("CP_Evt_Toast_Error", {
 									"id": "forgot-pass-step-2-toast-error",
-									"message": $A.get("$Label.c.CP_Error_Please_Try_Again")
+									"message": $A.get("$Label.c.CP_Forgot_Pass_Not_Completed_Instructions")
 								});
 							} else if (obj.isLocked === false && obj.isValid === false) {
+
+								console.warn("obj.isLocked === false && obj.isValid === false");
+
 								cmp.find("CP_Events").fire("CP_Evt_Toast_Error", {
 									"id": "forgot-pass-step-2-toast-error",
 									"message": $A.get("$Label.c.CP_Forgot_Pass_Not_Completed_Instructions")

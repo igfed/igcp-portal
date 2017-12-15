@@ -92,7 +92,7 @@
 							if (obj.fields[0] === "answer" && obj.isLocked === false && obj.isValid === false) {
 								events.fire("CP_Evt_Toast_Error", {
 									"id": "forgot-user-step-2-toast-error",
-									"message": $A.get("$Label.c.CP_Error_Please_Try_Again")
+									"message": $A.get("$Label.c.CP_Forgot_User_Not_Completed_Instructions")
 								});
 							} else if (obj.isLocked === false && obj.isValid === false) {
 								events.fire("CP_Evt_Toast_Error", {
