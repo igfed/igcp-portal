@@ -744,6 +744,10 @@
 					events.fire("CP_Evt_Error_Not_Completed", {
 						"id": payload.id
 					});
+					events.fire("CP_Evt_Toast_Error", {
+						"id": payload.toastId,
+						"message": errorObj.State.Messages[0]
+					});
 
 				} else if (errorObj.State.Fields.length !== 0 && errorObj.State.Messages.length !== 0) {
 
@@ -755,7 +759,8 @@
 					params.callback(callbackObj);
 
 				} else if (errorObj.State.Fields.length === 0 && errorObj.State.Messages.length !== 0) {
-
+					console.error("CP_Services: handleServerSideError: Toast Error: error with message");
+					console.error(errorObj);
 					//if there are only messages
 					events.fire("CP_Evt_Toast_Error", {
 						"id": payload.toastId,
@@ -763,6 +768,8 @@
 					});
 
 				} else if (errorObj.type === "server-side-error") {
+					console.error("CP_Services: handleServerSideError: Toast Error: Not Completed");
+					console.error(errorObj);
 					events.fire("CP_Evt_Error_Not_Completed", {
 						"id": payload.id
 					});
@@ -773,6 +780,9 @@
 						"id": payload.toastId,
 						"message": $A.get("$Label.c.CP_Error_Server_Side_Generic")
 					});
+
+					console.error("CP_Services: handleServerSideError: Toast Error: Fallback Error");
+					console.error(errorObj);
 				}
 			}
 		}

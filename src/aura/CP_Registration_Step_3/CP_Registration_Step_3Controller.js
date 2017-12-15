@@ -148,21 +148,19 @@
 				console.info("CP_Registration_Step_3: submitForm: SUCCESS");
 				console.log(success);
 				hlpr.hideLoading(cmp);
+				cmp.onNextStep();
 				try {
 					window._aa.track('register-complete', '{"component": {"name": "CP_Registration_Step_3Controller"}}');
 				} catch(err) {
 					console.error(err);
 				}
-				cmp.onNextStep();
 			},
 			function (error) {
 
 				hlpr.hideLoading(cmp);
 
 				var services = cmp.find("CP_Services");
-
 				console.error(error);
-
 				services.handleServerSideError({
 						"error": error,
 						"id": cmp.get("v.pageId"),
