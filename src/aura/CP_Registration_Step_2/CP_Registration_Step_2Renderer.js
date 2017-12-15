@@ -12,7 +12,7 @@
 				parent = document.querySelector(".igcp-registration__step-2"),
 				inputLength = parent.querySelectorAll("input").length,
 				selectLength = parent.querySelectorAll("select").length,
-				totalInputLength = inputLength + selectLength;
+				totalInputLength = (inputLength + selectLength) + 1;
 
 			cmp.set("v.numberOfInputs", totalInputLength);
 		} catch (err) {
