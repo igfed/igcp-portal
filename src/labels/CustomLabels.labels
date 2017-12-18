@@ -945,12 +945,28 @@
         <value>Change</value>
     </labels>
     <labels>
+        <fullName>CP_Generic_Label_Client_Information</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Generic_Label_Client_Information</shortDescription>
+        <value>Client Information</value>
+    </labels>
+    <labels>
         <fullName>CP_Generic_Label_Client_Number</fullName>
         <categories>CP Generic</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Label Client Number</shortDescription>
         <value>Client Number</value>
+    </labels>
+    <labels>
+        <fullName>CP_Generic_Label_Client_Policy_Loan_Number</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Generic_Label_Client_Policy_Loan_Number</shortDescription>
+        <value>Client, Policy and/or Loan Number(s)</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Closing_Value</fullName>
@@ -967,6 +983,14 @@
         <protected>false</protected>
         <shortDescription>CP Generic Label Confirm Password</shortDescription>
         <value>Confirm Password</value>
+    </labels>
+    <labels>
+        <fullName>CP_Generic_Label_Confirmations</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Generic_Label_Confirmations</shortDescription>
+        <value>Confirmations</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Contributor_Spouse_Name</fullName>
@@ -1001,12 +1025,28 @@
         <value>Date of Birth</value>
     </labels>
     <labels>
+        <fullName>CP_Generic_Label_Documents</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Generic_Label_Documents</shortDescription>
+        <value>Documents</value>
+    </labels>
+    <labels>
         <fullName>CP_Generic_Label_Email</fullName>
         <categories>CP Generic</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Label Email</shortDescription>
         <value>Email</value>
+    </labels>
+    <labels>
+        <fullName>CP_Generic_Label_Email_Address</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Generic_Label_Email_Address</shortDescription>
+        <value>Email Address</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Equity</fullName>
@@ -1079,6 +1119,14 @@
         <protected>false</protected>
         <shortDescription>CP Generic Label Holdings</shortDescription>
         <value>Holdings</value>
+    </labels>
+    <labels>
+        <fullName>CP_Generic_Label_Insurance_Statements</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Generic_Label_Insurance_Statements</shortDescription>
+        <value>Insurance Statements</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_International</fullName>
@@ -1425,6 +1473,22 @@
         <value>RRSP</value>
     </labels>
     <labels>
+        <fullName>CP_Generic_Label_Receive_Email_Promotions</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Generic_Label_Receive_Email_Promotions</shortDescription>
+        <value>Receive Email Promotions</value>
+    </labels>
+    <labels>
+        <fullName>CP_Generic_Label_Receive_SMS_Promotions</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Generic_Label_Receive_SMS_Promotions</shortDescription>
+        <value>Receive SMS Promotions</value>
+    </labels>
+    <labels>
         <fullName>CP_Generic_Label_Registered</fullName>
         <categories>CP Generic</categories>
         <language>en_US</language>
@@ -1439,6 +1503,14 @@
         <protected>false</protected>
         <shortDescription>CP Generic Label Security Question</shortDescription>
         <value>Security Question</value>
+    </labels>
+    <labels>
+        <fullName>CP_Generic_Label_Security_Questions</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Generic_Label_Security_Questions</shortDescription>
+        <value>Security Questions</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Since</fullName>
@@ -1479,6 +1551,14 @@
         <protected>false</protected>
         <shortDescription>CP Generic Label TFSA</shortDescription>
         <value>TFSA</value>
+    </labels>
+    <labels>
+        <fullName>CP_Generic_Label_Tax_Documents</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Generic_Label_Tax_Documents</shortDescription>
+        <value>Tax Documents</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Tax_Receipts</fullName>

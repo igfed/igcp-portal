@@ -6,6 +6,9 @@
     <aura:attribute name="documents" type="Map" default="{}" />
     <aura:attribute name="notification" type="Map" default="{}" />
     <aura:attribute name="security" type="Map" default="{}" />
+
+    <c:CP_CSS_Includes />
+	<c:CP_JS_Includes />
 	
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />

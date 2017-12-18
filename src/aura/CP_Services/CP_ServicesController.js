@@ -866,5 +866,62 @@
 				console.log(err);
 			}
 		}
+	},
+	onGetAddrPhone: function (cmp, evt, hlpr) {
+
+		var params = evt.getParam("arguments");
+		if (params) {
+			var
+				component = params.component,
+				action;
+
+			try {
+				action = component.get("c.getAddrPhone");
+				action.setParams({
+					payload: ""
+				});
+
+				hlpr.setCallbackPromise(
+					params,
+					action,
+					this,
+					"Assets failed to update.",
+					"unknown-error"
+				);
+			} catch (err) {
+				console.error("CP_Services: getAddrPhone: controller not found, make sure it is attached to parent component.");
+				console.log(err);
+			}
+		}
+	},
+	onUpdateAddrPhone: function (cmp, evt, hlpr) {
+		
+		var params = evt.getParam("arguments");
+		if (params) {
+			var
+			component = params.component,
+			action;
+		
+			console.log('[CP_Services] onUpdateAddrPhone params.payload', params.payload);
+		
+			try {
+				action = component.get("c.updateAddrPhone");
+		
+				action.setParams({
+					payload: params.payload
+				});
+				
+				hlpr.setCallback(
+					params,
+					action,
+					this,
+					"on Update Phone & Address failed to update.",
+					"unknown-error"
+				);
+			} catch (err) {
+				console.error("CP_Services: onUpdateAddrPhone: controller not found, make sure it is attached to parent component.");
+				console.log(err);
+			}
+		}
 	}
 })

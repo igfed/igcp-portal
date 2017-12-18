@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="EmailPrefController">
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="UserProfileAddressPhoneController">
  
     <!-- ATTRS -->
 	<aura:attribute name="countries" type="String[]" default="[]" />
@@ -16,6 +16,10 @@
     <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="c:CP_Evt_Submit" action="{!c.onSubmit}" />
 
+	<aura:method name="navigateTo" action="{!c.onNavigateTo}" description="navigate to url">
+		<aura:attribute name="url" type="String" default="/"></aura:attribute>
+	</aura:method>
+	
     <div class="igcp-background__tiled ">
         <div class="igcp-wrapper igcp-edit-documents slds-grid slds-wrap slds-grid--align-center slds-p-around--small slds-large-p-around--medium">
 			<div class="igcp-utils__display--none igcp-utils__display--block"></div>
@@ -28,7 +32,7 @@
 						<!-- ADDRESS -->
 			    		<c:CP_Cmp_Input_Text aura:id="address-input" 
 							id="address-input" 
-							inputValue="{!v.formData.address}" 
+							inputValue="{!v.formData.streetAddress}" 
 							form="{!v.pageId}" 
 							type="text" 
 							label="{!$Label.c.CP_Change_Personal_Street}" 
@@ -51,12 +55,12 @@
 							label="{!$Label.c.CP_Change_Personal_Province}" 
 							placeholder="{!$Label.c.CP_Change_Personal_Province_Placeholder}"
 							options="{!v.provinces}"
-							defaultOptions="{!v.formData.province}"
+							defaultOptions="{!v.formData.state}"
 						/>
 						<!-- POSTAL/ZIP -->
 						<c:CP_Cmp_Input_Text aura:id="postal-input" 
 							id="postal-input" 
-							inputValue="{!v.formData.postal}" 
+							inputValue="{!v.formData.postalCode}" 
 							form="{!v.pageId}" 
 							type="text" 
 							label="{!$Label.c.CP_Change_Personal_Postal}" 
@@ -77,7 +81,7 @@
 						<!-- HOME PHONE -->
 						<c:CP_Cmp_Input_Text aura:id="phone-input" 
 							id="phone-input" 
-							inputValue="{!v.formData.phone}" 
+							inputValue="{!v.formData.homePhone}" 
 							form="{!v.pageId}" 
 							type="text" 
 							label="{!$Label.c.CP_Change_Personal_Phone}" 

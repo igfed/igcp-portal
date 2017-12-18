@@ -25,6 +25,10 @@
         <name>CP_Change_Personal_Country</name>
     </customLabels>
     <customLabels>
+        <label><!-- CP_Change_Personal_Country_Placeholder --></label>
+        <name>CP_Change_Personal_Country_Placeholder</name>
+    </customLabels>
+    <customLabels>
         <label><!-- CP_Change_Personal_Phone --></label>
         <name>CP_Change_Personal_Phone</name>
     </customLabels>
@@ -35,6 +39,10 @@
     <customLabels>
         <label><!-- CP_Change_Personal_Province --></label>
         <name>CP_Change_Personal_Province</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CP_Change_Personal_Province_Placeholder --></label>
+        <name>CP_Change_Personal_Province_Placeholder</name>
     </customLabels>
     <customLabels>
         <label><!-- CP_Change_Personal_Street --></label>
@@ -107,6 +115,10 @@
     <customLabels>
         <label><!-- CP Disclaimer Overview --></label>
         <name>CP_Disclaimer_Overview</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CP_Edit_Address_Title --></label>
+        <name>CP_Edit_Address_Title</name>
     </customLabels>
     <customLabels>
         <label><!-- CP Error Client Number Numbers Only --></label>
@@ -461,8 +473,16 @@
         <name>CP_Generic_Label_Change</name>
     </customLabels>
     <customLabels>
+        <label><!-- CP_Generic_Label_Client_Information --></label>
+        <name>CP_Generic_Label_Client_Information</name>
+    </customLabels>
+    <customLabels>
         <label><!-- CP Generic Label Client Number --></label>
         <name>CP_Generic_Label_Client_Number</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CP_Generic_Label_Client_Policy_Loan_Number --></label>
+        <name>CP_Generic_Label_Client_Policy_Loan_Number</name>
     </customLabels>
     <customLabels>
         <label><!-- CP Generic Label Closing Value --></label>
@@ -471,6 +491,10 @@
     <customLabels>
         <label><!-- CP Generic Label Confirm Password --></label>
         <name>CP_Generic_Label_Confirm_Password</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CP_Generic_Label_Confirmations --></label>
+        <name>CP_Generic_Label_Confirmations</name>
     </customLabels>
     <customLabels>
         <label><!-- CP Generic Label Contributor Spouse Name --></label>
@@ -489,8 +513,16 @@
         <name>CP_Generic_Label_Date_of_Birth</name>
     </customLabels>
     <customLabels>
+        <label><!-- CP_Generic_Label_Documents --></label>
+        <name>CP_Generic_Label_Documents</name>
+    </customLabels>
+    <customLabels>
         <label><!-- CP Generic Label Email --></label>
         <name>CP_Generic_Label_Email</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CP_Generic_Label_Email_Address --></label>
+        <name>CP_Generic_Label_Email_Address</name>
     </customLabels>
     <customLabels>
         <label><!-- CP Generic Label Equity --></label>
@@ -527,6 +559,10 @@
     <customLabels>
         <label><!-- CP Generic Label Holdings --></label>
         <name>CP_Generic_Label_Holdings</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CP_Generic_Label_Insurance_Statements --></label>
+        <name>CP_Generic_Label_Insurance_Statements</name>
     </customLabels>
     <customLabels>
         <label><!-- CP Generic Label International --></label>
@@ -701,12 +737,24 @@
         <name>CP_Generic_Label_RRSP</name>
     </customLabels>
     <customLabels>
+        <label><!-- CP_Generic_Label_Receive_Email_Promotions --></label>
+        <name>CP_Generic_Label_Receive_Email_Promotions</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CP_Generic_Label_Receive_SMS_Promotions --></label>
+        <name>CP_Generic_Label_Receive_SMS_Promotions</name>
+    </customLabels>
+    <customLabels>
         <label><!-- CP Generic Label Registered --></label>
         <name>CP_Generic_Label_Registered</name>
     </customLabels>
     <customLabels>
         <label><!-- CP Generic Label Security Question --></label>
         <name>CP_Generic_Label_Security_Question</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CP_Generic_Label_Security_Questions --></label>
+        <name>CP_Generic_Label_Security_Questions</name>
     </customLabels>
     <customLabels>
         <label><!-- CP Generic Label Since --></label>
@@ -727,6 +775,10 @@
     <customLabels>
         <label><!-- CP Generic Label TFSA --></label>
         <name>CP_Generic_Label_TFSA</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CP_Generic_Label_Tax_Documents --></label>
+        <name>CP_Generic_Label_Tax_Documents</name>
     </customLabels>
     <customLabels>
         <label><!-- CP_Generic_Label_Tax_Receipts --></label>
@@ -987,6 +1039,10 @@
     <customLabels>
         <label><!-- CP Overview Total Market Value --></label>
         <name>CP_Overview_Total_Market_Value</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CP Profile Settings Title --></label>
+        <name>CP_Profile_Settings_Title</name>
     </customLabels>
     <customLabels>
         <label><!-- CP Registration Client Already Registered --></label>

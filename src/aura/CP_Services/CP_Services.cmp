@@ -169,4 +169,17 @@
 		<aura:attribute name="errorCB" type="function" default="" />
 	</aura:method>
 
+	<aura:method name="getAddrPhone" action="{!c.onGetAddrPhone}">
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
+	<aura:method name="updateAddrPhone" action="{!c.onUpdateAddrPhone}">
+		<aura:attribute name="payload" type="String"></aura:attribute>
+		<aura:attribute name="component" type="Aura.Component[]"></aura:attribute>
+		<aura:attribute name="successCB" type="function" default="" />
+		<aura:attribute name="errorCB" type="function" default="" />
+	</aura:method>
+
 </aura:component>
