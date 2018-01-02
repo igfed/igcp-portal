@@ -158,7 +158,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Date Month April</shortDescription>
-        <value>April</value>
+        <value>Apr</value>
     </labels>
     <labels>
         <fullName>CP_Date_Month_August</fullName>
@@ -166,7 +166,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Date Month August</shortDescription>
-        <value>August</value>
+        <value>Aug</value>
     </labels>
     <labels>
         <fullName>CP_Date_Month_December</fullName>
@@ -174,7 +174,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Date Month December</shortDescription>
-        <value>December</value>
+        <value>Dec</value>
     </labels>
     <labels>
         <fullName>CP_Date_Month_February</fullName>
@@ -182,7 +182,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Date Month February</shortDescription>
-        <value>February</value>
+        <value>Feb</value>
     </labels>
     <labels>
         <fullName>CP_Date_Month_January</fullName>
@@ -190,7 +190,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Date Month January</shortDescription>
-        <value>January</value>
+        <value>Jan</value>
     </labels>
     <labels>
         <fullName>CP_Date_Month_July</fullName>
@@ -198,7 +198,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Date Month July</shortDescription>
-        <value>July</value>
+        <value>Jul</value>
     </labels>
     <labels>
         <fullName>CP_Date_Month_June</fullName>
@@ -206,7 +206,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Date Month June</shortDescription>
-        <value>June</value>
+        <value>Jun</value>
     </labels>
     <labels>
         <fullName>CP_Date_Month_March</fullName>
@@ -214,7 +214,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Date Month March</shortDescription>
-        <value>March</value>
+        <value>Mar</value>
     </labels>
     <labels>
         <fullName>CP_Date_Month_May</fullName>
@@ -230,7 +230,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Date Month November</shortDescription>
-        <value>November</value>
+        <value>Nov</value>
     </labels>
     <labels>
         <fullName>CP_Date_Month_October</fullName>
@@ -238,7 +238,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Date Month October</shortDescription>
-        <value>October</value>
+        <value>Oct</value>
     </labels>
     <labels>
         <fullName>CP_Date_Month_September</fullName>
@@ -246,7 +246,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Date Month September</shortDescription>
-        <value>September</value>
+        <value>Sep</value>
     </labels>
     <labels>
         <fullName>CP_Disclaimer_Overview</fullName>
@@ -263,6 +263,38 @@
         <protected>false</protected>
         <shortDescription>CP_Edit_Address_Title</shortDescription>
         <value>Edit Client Address</value>
+    </labels>
+    <labels>
+        <fullName>CP_Error_500</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Error_500</shortDescription>
+        <value>Sorry, something went wrong</value>
+    </labels>
+    <labels>
+        <fullName>CP_Error_500_instructions</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Error_500_instructions</shortDescription>
+        <value>Try that again, if it still does not work, let us know</value>
+    </labels>
+    <labels>
+        <fullName>CP_Error_503</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Error_503</shortDescription>
+        <value>We&apos;ll be back soon!</value>
+    </labels>
+    <labels>
+        <fullName>CP_Error_503_instructions</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP_Error_503_instructions</shortDescription>
+        <value>Sorry for the inconvenience but we&apos;re performing some maintenance at the moment.</value>
     </labels>
     <labels>
         <fullName>CP_Error_Client_Number_Numbers_Only</fullName>
@@ -807,14 +839,6 @@
         <protected>false</protected>
         <shortDescription>CP Generic Label 1yr</shortDescription>
         <value>1yr</value>
-    </labels>
-    <labels>
-        <fullName>CP_Generic_Label_Percentage</fullName>
-        <categories>CP Generic</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Generic Label Percentage</shortDescription>
-        <value>Percentage</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_2016_Contributions</fullName>
@@ -1431,6 +1455,14 @@
         <protected>false</protected>
         <shortDescription>CP Generic Label Password</shortDescription>
         <value>Password</value>
+    </labels>
+    <labels>
+        <fullName>CP_Generic_Label_Percentage</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Percentage</shortDescription>
+        <value>Percentage</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Phone</fullName>

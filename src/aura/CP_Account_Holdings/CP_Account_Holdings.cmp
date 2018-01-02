@@ -9,8 +9,8 @@
 		<c:CP_Cmp_Table id="holdings-table" 
 			tableClass="igcp-table__holdings"
 			styleConfig="{
-				'grid' : ['3', '2', '2', '2', '3'],
-				'textAlign' : ['left', 'right', 'right', 'right', 'right']
+				'grid' : ['6', '2', '2', '2'],
+				'textAlign' : ['left', 'right', 'right', 'right']
 			}"
 			modalId="{!v.modalId}"/>
 	</div>

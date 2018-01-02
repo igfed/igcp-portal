@@ -48,15 +48,15 @@
 	onClick: function(cmp, evt, hlpr) {
 		var events = cmp.find("CP_Events");
 
-		//open modal
-		events.fire("CP_Evt_Modal_Open", {
-			"id": cmp.get("v.modalId")
-		});
+		// //open modal
+		// events.fire("CP_Evt_Modal_Open", {
+		// 	"id": cmp.get("v.modalId")
+		// });
 
 		//fire data to details modal
-		events.fire("CP_Evt_Set_Details", {
-			"id": cmp.get("v.modalId"),
-			"data": cmp.get("v.dataObj")
-		});
+		// events.fire("CP_Evt_Set_Details", {
+		// 	"id": cmp.get("v.modalId"),
+		// 	"data": cmp.get("v.dataObj")
+		// });
 	}
 })

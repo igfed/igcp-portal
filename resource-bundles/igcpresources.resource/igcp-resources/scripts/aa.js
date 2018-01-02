@@ -167,7 +167,10 @@ jQuery(document).ready(function () {
     }
 
     function _executeDirectCall(name) {
-      console.log(window.digitalData);
+      //@Erny we're still seeing the infinite 
+      //console.log commenting this so 
+      //I can actually see logs in the console
+      //console.log(window.digitalData);
       window._satellite.track(name);
     }
 

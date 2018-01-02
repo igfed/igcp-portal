@@ -116,6 +116,7 @@
 		<div class="slds-size_12-of-12">
 			<c:CP_Account_Instructions />
 		</div>
-		<c:CP_Cmp_Modal id="{!v.pageId}" modalType="details"/>
+		<!-- <c:CP_Cmp_Modal id="{!v.pageId}" modalType="details"/> -->
+		<!-- <c:CP_Cmp_Modal_Foundation  id="{!v.pageId}" /> -->
 	</div>
 </aura:component>

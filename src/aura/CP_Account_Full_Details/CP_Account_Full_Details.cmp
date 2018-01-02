@@ -8,6 +8,7 @@
 	<aura:attribute name="id" type="String" default="account-full-details" ></aura:attribute>
 	<aura:attribute name="accountTitle" type="String" default="Account Details"></aura:attribute>
 	<aura:attribute name="detailsList" type="List" default=""></aura:attribute>
+	<aura:attribute name="lang" type="String" default=""></aura:attribute>
 
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Set_Details" action="{!c.onDetailsSet}"></aura:handler>

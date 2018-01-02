@@ -79,7 +79,7 @@
 							marketValue = formattedValue;
 						}, cmp.get("v.lang"), true);
 
-						dataArr.push([item.productName, (item.marketValuePerc + "%"), bookCost, "N/A", marketValue]);
+						dataArr.push([item.productName, (item.marketValuePerc + "%"), bookCost, marketValue]);
 						dataObjArr.push(item);
 					});
 
@@ -90,7 +90,6 @@
 								$A.get("$Label.c.CP_Generic_Label_Name"),
 								$A.get("$Label.c.CP_Generic_Label_Percentage"),
 								$A.get("$Label.c.CP_Generic_Label_Book_Cost"),
-								$A.get("$Label.c.CP_Generic_Label_Change"),
 								$A.get("$Label.c.CP_Generic_Label_Market_Value")
 							],
 							"data": dataArr,

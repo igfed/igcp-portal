@@ -24,8 +24,6 @@
 
 			tableData.forEach(function(row, i) {
 
-				console.log(row);
-
 				utils.createComponent(
 					"CP_Cmp_Table_Row", {
 						"data": row,

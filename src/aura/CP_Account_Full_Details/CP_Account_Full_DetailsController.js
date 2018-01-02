@@ -12,9 +12,13 @@
 
 		utils.forEach(JSON.parse(payload.data), function(key, val) {
 
-			detailArr.push({
-				"label": key,
-				"detail": val
+			hlpr.checkForExemptions(key, function(){
+				//hlpr.formatValue(utils, key, val, function(formattedValue){
+					detailArr.push({
+						"label": key,
+						"detail": val
+					});
+				//});
 			});
 		});
 
