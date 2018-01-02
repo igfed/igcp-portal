@@ -873,6 +873,22 @@
         <value>5yr</value>
     </labels>
     <labels>
+        <fullName>CP_Generic_Label_Account_Number</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Account Number</shortDescription>
+        <value>Account Number</value>
+    </labels>
+    <labels>
+        <fullName>CP_Generic_Label_Current_Price</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Current Price</shortDescription>
+        <value>Current Price</value>
+    </labels>
+    <labels>
         <fullName>CP_Generic_Label_Accounts</fullName>
         <categories>CP Generic</categories>
         <language>en_US</language>
@@ -935,6 +951,14 @@
         <protected>false</protected>
         <shortDescription>CP Generic Label Answer 3</shortDescription>
         <value>Answer 3</value>
+    </labels>
+    <labels>
+        <fullName>CP_Generic_Label_As_Of_Date</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label As Of Date</shortDescription>
+        <value>As Of Date</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Asset_Mix</fullName>

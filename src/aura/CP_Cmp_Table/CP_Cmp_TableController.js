@@ -4,6 +4,10 @@
 			console.warn("CP_Cmp_Table: An id is required.");
 		}
 	},
+	onDataChange: function(cmp, evt, hlpr) {
+		console.info("CP_Cmp_Table");
+		console.log("current value: " + event.getParam("value"));
+	},
 	onSetTable: function (cmp, evt, hlpr) {
 
 		var

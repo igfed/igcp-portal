@@ -20,8 +20,5 @@
 			<h3 class="slds-m-vertical--medium">{!v.accountTitle}</h3>
 			<c:CP_Cmp_Name_Value_List id="account-details-list" gridSizing="6"/>
 		</div>
-		<div class="slds-size_2-of-12 slds-p-around--small">
-			<button class="igcp-modal__button--close close-button" type="button" onclick="{!c.onClose}"></button>
-		</div>
 	</div>
 </aura:component>

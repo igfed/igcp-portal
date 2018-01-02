@@ -1,24 +1,25 @@
 ({
 	onDetailsSet: function(cmp, evt, hlpr) {
 		console.log("onDetailsSet");
-
 		console.log(evt.getParam("payload"));
 
 		var
-			utils = cmp.find("CP_Utils"),
 			events = cmp.find("CP_Events"),
 			payload = evt.getParam("payload"),
 			detailArr = [];
 
-		utils.forEach(JSON.parse(payload.data), function(key, val) {
+			cmp.find("CP_Utils").forEach(JSON.parse(payload.data), function(key, val) {
 
 			hlpr.checkForExemptions(key, function(){
-				//hlpr.formatValue(utils, key, val, function(formattedValue){
-					detailArr.push({
-						"label": key,
-						"detail": val
-					});
-				//});
+				hlpr.formatValue(cmp, key, val, function(formattedKey, formattedVal){
+					console.info(formattedKey);
+					console.info(formattedVal);
+				});
+
+				detailArr.push({
+					"label": key,
+					"detail": val
+				});
 			});
 		});
 

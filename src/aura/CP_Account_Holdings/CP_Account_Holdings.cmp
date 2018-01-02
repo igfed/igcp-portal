@@ -2,6 +2,7 @@
 
 	<!-- ATTRS -->
 	<aura:attribute name="modalId" type="String" default=""></aura:attribute>
+	<aura:attribute name="modalData" type="Map" default="{}"></aura:attribute>
 
 	<!-- MARKUP -->
 	<div class="igcp-container slds-p-around--small slds-m-bottom--medium">
@@ -12,6 +13,6 @@
 				'grid' : ['6', '2', '2', '2'],
 				'textAlign' : ['left', 'right', 'right', 'right']
 			}"
-			modalId="{!v.modalId}"/>
+			modalId="{!v.modalId}" data="{!v.modalData}"/>
 	</div>
 </aura:component>

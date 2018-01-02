@@ -99,12 +99,15 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_4-of-12">
 			<c:CP_Cmp_Card_Performance id="account-details-performance-chart"/>
 		</div>
+
 		<div class="slds-size_12-of-12">
 			<c:CP_Account_Investment_Profile profile="{!v.investmentProfileObj}"/>
 		</div>
+
 		<div class="slds-size_12-of-12">
 			<c:CP_Account_Holdings modalId="{!v.pageId}"/>
 		</div>
@@ -116,7 +119,7 @@
 		<div class="slds-size_12-of-12">
 			<c:CP_Account_Instructions />
 		</div>
-		<!-- <c:CP_Cmp_Modal id="{!v.pageId}" modalType="details"/> -->
-		<!-- <c:CP_Cmp_Modal_Foundation  id="{!v.pageId}" /> -->
+
+		<c:CP_Cmp_Modal_Table id="{!v.pageId}" lang="{!v.lang}"/>
 	</div>
 </aura:component>

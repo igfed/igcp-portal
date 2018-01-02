@@ -22,6 +22,9 @@
 
 			var tableData = payload.data;
 
+			// console.info("TABLE DATA");
+			// console.log(tableData);
+
 			tableData.forEach(function(row, i) {
 
 				utils.createComponent(

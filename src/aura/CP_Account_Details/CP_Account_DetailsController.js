@@ -65,8 +65,6 @@
 						dataArr = [],
 						dataObjArr = [];
 
-					
-
 					holdingsArr.forEach(function (item, i) {
 
 						var bookCost = "", marketValue = "";

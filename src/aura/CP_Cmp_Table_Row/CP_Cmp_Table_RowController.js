@@ -4,7 +4,6 @@
 		var
 			data = cmp.get("v.data"),
 			utils = cmp.find("CP_Utils"),
-			sanitizedItem = "",
 			tdClass = "",
 			style = cmp.get("v.style");
 
@@ -24,14 +23,11 @@
 				tdClass += ("igcp-utils__text-align--" + style.textAlign[i] + " ");
 			}
 
-			sanitizedItem = item.toString();
-			
-
 			try {
 				utils.createComponent(
 					"aura:html", {
 						"tag": "td",
-						"body": sanitizedItem,
+						"body": item.toString(),
 						"HTMLAttributes": {
 							"class": tdClass
 						}
@@ -48,15 +44,10 @@
 	onClick: function(cmp, evt, hlpr) {
 		var events = cmp.find("CP_Events");
 
-		// //open modal
-		// events.fire("CP_Evt_Modal_Open", {
-		// 	"id": cmp.get("v.modalId")
-		// });
-
 		//fire data to details modal
-		// events.fire("CP_Evt_Set_Details", {
-		// 	"id": cmp.get("v.modalId"),
-		// 	"data": cmp.get("v.dataObj")
-		// });
+		events.fire("CP_Evt_Set_Details", {
+			"id": cmp.get("v.modalId"),
+			"data": cmp.get("v.dataObj")
+		});
 	}
 })
