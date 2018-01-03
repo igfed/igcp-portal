@@ -12,13 +12,10 @@
 
 			hlpr.checkForExemptions(key, function(){
 				hlpr.formatValue(cmp, key, val, function(formattedKey, formattedVal){
-					console.info(formattedKey);
-					console.info(formattedVal);
-				});
-
-				detailArr.push({
-					"label": key,
-					"detail": val
+					detailArr.push({
+						"label": formattedKey,
+						"detail": formattedVal
+					});
 				});
 			});
 		});

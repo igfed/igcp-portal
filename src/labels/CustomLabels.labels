@@ -881,14 +881,6 @@
         <value>Account Number</value>
     </labels>
     <labels>
-        <fullName>CP_Generic_Label_Current_Price</fullName>
-        <categories>CP Generic</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CP Generic Label Current Price</shortDescription>
-        <value>Current Price</value>
-    </labels>
-    <labels>
         <fullName>CP_Generic_Label_Accounts</fullName>
         <categories>CP Generic</categories>
         <language>en_US</language>
@@ -1105,12 +1097,28 @@
         <value>Confirmations</value>
     </labels>
     <labels>
+        <fullName>CP_Generic_Label_Consultant_Number</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Consultant Number</shortDescription>
+        <value>Consultant Number</value>
+    </labels>
+    <labels>
         <fullName>CP_Generic_Label_Contributor_Spouse_Name</fullName>
         <categories>CP Generic</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Label Contributor Spouse Name</shortDescription>
         <value>Contributor</value>
+    </labels>
+    <labels>
+        <fullName>CP_Generic_Label_Current_Price</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Current Price</shortDescription>
+        <value>Current Price</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_DOB_Example</fullName>
@@ -1209,6 +1217,22 @@
         <value>Frequency</value>
     </labels>
     <labels>
+        <fullName>CP_Generic_Label_Fund_Name</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Fund Name</shortDescription>
+        <value>Fund Name</value>
+    </labels>
+     <labels>
+        <fullName>CP_Generic_Label_Fund_Number</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Fund Number</shortDescription>
+        <value>Fund Number</value>
+    </labels>
+    <labels>
         <fullName>CP_Generic_Label_Group_Sponsor_Name</fullName>
         <categories>CP Generic</categories>
         <language>en_US</language>
@@ -1231,6 +1255,14 @@
         <protected>false</protected>
         <shortDescription>CP Generic Label Holdings</shortDescription>
         <value>Holdings</value>
+    </labels>
+    <labels>
+        <fullName>CP_Generic_Label_Holding_Number</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Holding Number</shortDescription>
+        <value>Holding Number</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Insurance</fullName>
@@ -1344,6 +1376,92 @@
         <shortDescription>CP Generic Label Minimum Payment Amount</shortDescription>
         <value>Minimum Payment Amount</value>
     </labels>
+
+    <labels>
+        <fullName>CP_Generic_Label_Fund_Load_Type</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Fund Load Type</shortDescription>
+        <value>Fund Load Type</value>
+    </labels>
+
+    <labels>
+        <fullName>CP_Generic_Label_Holding_Percent</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Holding Percent</shortDescription>
+        <value>Holding Percent</value>
+    </labels>
+
+     <labels>
+        <fullName>CP_Generic_Label_Reporting_Date</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Reporting Date</shortDescription>
+        <value>Reporting Date</value>
+    </labels>
+
+    <labels>
+        <fullName>CP_Generic_Label_Series</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Series</shortDescription>
+        <value>Series</value>
+    </labels>
+
+    <labels>
+        <fullName>CP_Generic_Label_Settled_Units</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Settled Units</shortDescription>
+        <value>Settled Units</value>
+    </labels>
+
+
+    <labels>
+        <fullName>CP_Generic_Label_Total_Contributed_Amount</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Total Contributed Amount</shortDescription>
+        <value>Total Contributed Amount</value>
+    </labels>
+
+
+    <labels>
+        <fullName>CP_Generic_Label_Total_Distributed_Amount</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Total Distributed Amount</shortDescription>
+        <value>Total Distributed Amount</value>
+    </labels>
+
+    <labels>
+        <fullName>CP_Generic_Label_Total_Redeemed_Amount</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Total Redeemed Amount</shortDescription>
+        <value>Total Redeemed Amount</value>
+    </labels>
+
+     <labels>
+        <fullName>CP_Generic_Label_Total_Reinvested_Amount</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Total Reinvested Amount</shortDescription>
+        <value>Total Reinvested Amount</value>
+    </labels>
+
+
+
     <labels>
         <fullName>CP_Generic_Label_Mobile_Phone_Optional</fullName>
         <categories>CP Generic</categories>
