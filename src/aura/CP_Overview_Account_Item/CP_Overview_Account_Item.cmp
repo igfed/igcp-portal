@@ -2,6 +2,7 @@
 	
 	<!-- INCLUDES -->
 	<c:CP_Utils aura:id="CP_Utils" />
+	
 	<!-- ATTRS -->
 	<aura:attribute name="lang" type="String"></aura:attribute>
 	<aura:attribute name="accountName" type="String" default="" />
@@ -9,7 +10,9 @@
 	<aura:attribute name="val1" type="String" default="" />
 	<aura:attribute name="val2" type="String" default="" />
 	<aura:attribute name="itemType" type="String" default="investments"></aura:attribute>
+	<aura:attribute name="class" type="String" default="igcp-account__item igcp-underline__thin--grey slds-grid slds-wrap slds-p-horizontal--xx-small slds-medium-p-horizontal--small slds-p-bottom-x-small" />
 	<aura:attribute name="account" type="Map"></aura:attribute>
+	
 	<!-- HANDLER -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 
@@ -17,7 +20,7 @@
 	<aura:method name="onItemClick" action="{!c.onItemClick}" description=""></aura:method>
 
 	<!-- MARKUP -->
-	<div aura:id="account-item" class="igcp-account__item igcp-underline__thin--grey slds-grid slds-wrap slds-p-horizontal--xx-small slds-medium-p-horizontal--small slds-p-bottom-x-small" onclick="{!c.onItemClick}" tabindex="0" onkeyup="{!c.onKey}">
+	<div aura:id="account-item" class="{!v.class}" onclick="{!c.onItemClick}" tabindex="0" onkeyup="{!c.onKey}">
 		
 		<div class="slds-p-vertical--small slds-size_6-of-12"><span class="igcp-utils__colour--link-blue">{!v.accountName}</span></div>
 		

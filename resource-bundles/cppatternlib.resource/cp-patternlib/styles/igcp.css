@@ -2653,8 +2653,17 @@ table {
   .igcp-utils__position--static {
     position: static; }
 
+  .igcp-utils__cursor--default,
+  .igcp-utils__cursor--auto {
+    cursor: auto; }
+    .igcp-utils__cursor--default:hover,
+    .igcp-utils__cursor--auto:hover {
+      cursor: auto; }
+
   .igcp-utils__cursor--pointer {
-    cursor: pointer; } }
+    cursor: pointer; }
+    .igcp-utils__cursor--pointer:hover {
+      cursor: pointer; } }
 @media (min-width: 480px) {
   .igcp-small-utils__font--light {
     font-family: "WhitneyLight", Arial, sans-serif; }
@@ -2949,8 +2958,17 @@ table {
   .igcp-small-utils__position--static {
     position: static; }
 
+  .igcp-small-utils__cursor--default,
+  .igcp-small-utils__cursor--auto {
+    cursor: auto; }
+    .igcp-small-utils__cursor--default:hover,
+    .igcp-small-utils__cursor--auto:hover {
+      cursor: auto; }
+
   .igcp-small-utils__cursor--pointer {
-    cursor: pointer; } }
+    cursor: pointer; }
+    .igcp-small-utils__cursor--pointer:hover {
+      cursor: pointer; } }
 @media (min-width: 768px) {
   .igcp-medium-utils__font--light {
     font-family: "WhitneyLight", Arial, sans-serif; }
@@ -3245,8 +3263,17 @@ table {
   .igcp-medium-utils__position--static {
     position: static; }
 
+  .igcp-medium-utils__cursor--default,
+  .igcp-medium-utils__cursor--auto {
+    cursor: auto; }
+    .igcp-medium-utils__cursor--default:hover,
+    .igcp-medium-utils__cursor--auto:hover {
+      cursor: auto; }
+
   .igcp-medium-utils__cursor--pointer {
-    cursor: pointer; } }
+    cursor: pointer; }
+    .igcp-medium-utils__cursor--pointer:hover {
+      cursor: pointer; } }
 @media (min-width: 1024px) {
   .igcp-large-utils__font--light {
     font-family: "WhitneyLight", Arial, sans-serif; }
@@ -3541,8 +3568,17 @@ table {
   .igcp-large-utils__position--static {
     position: static; }
 
+  .igcp-large-utils__cursor--default,
+  .igcp-large-utils__cursor--auto {
+    cursor: auto; }
+    .igcp-large-utils__cursor--default:hover,
+    .igcp-large-utils__cursor--auto:hover {
+      cursor: auto; }
+
   .igcp-large-utils__cursor--pointer {
-    cursor: pointer; } }
+    cursor: pointer; }
+    .igcp-large-utils__cursor--pointer:hover {
+      cursor: pointer; } }
 .igcp-main .slds-col--padded {
   padding: 0; }
 
@@ -3771,8 +3807,12 @@ table {
     width: 35%;
     float: right; }
 
-.igcp-account__item sup {
+.igcp-account__item sup,
+.igcp-account__item--static sup {
   top: -3px; }
+
+.igcp-account__item--static:hover {
+  background-color: #f8f8f9; }
 
 .igcp-account__item:hover {
   cursor: pointer;

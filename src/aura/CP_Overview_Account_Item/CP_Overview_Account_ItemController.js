@@ -82,6 +82,9 @@
 		//Insurance
 		if (cmp.get("v.itemType") === "insurance") {
 
+			//turn off pointer cursor
+			cmp.set("v.class", "igcp-account__item--static igcp-underline__thin--grey slds-grid slds-wrap slds-p-horizontal--xx-small slds-medium-p-horizontal--small slds-p-bottom-x-small")
+
 			if (account.insuranceType) {
 				cmp.set("v.accountName", account.insuranceType);
 			} else {
@@ -115,8 +118,9 @@
 			loanEnc = cmp.get("v.account").loanNumber;
 			utils.navigateToURL("/customers/s/mortgage-details?loanEnc=" + loanEnc);
 		} else if (cmp.get("v.itemType") === "insurance") {
-			policyEnc = cmp.get("v.account").policyNumber;
-			utils.navigateToURL("/customers/s/insurance-details?policyEnc=" + policyEnc);
+			//Do nothing for now, there isn't an insurance page
+			// policyEnc = cmp.get("v.account").policyNumber;
+			// utils.navigateToURL("/customers/s/insurance-details?policyEnc=" + policyEnc);
 		}
 	},
 	onKey: function(cmp, evt, hlpr) {

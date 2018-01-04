@@ -391,8 +391,21 @@
 			position: static;
 		}
 
+		.#{getNamespace($value)}-utils__cursor--default,
+		.#{getNamespace($value)}-utils__cursor--auto {
+			cursor: auto;
+
+			&:hover {
+				cursor: auto;
+			}
+		}
+
 		.#{getNamespace($value)}-utils__cursor--pointer {
 			cursor: pointer;
+
+			&:hover {
+				cursor: pointer;
+			}
 		}
 	}
 }

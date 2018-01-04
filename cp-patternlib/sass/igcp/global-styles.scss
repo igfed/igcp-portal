@@ -329,10 +329,15 @@
 	}
 }
 
-.#{$namespace}-account__item {
+.#{$namespace}-account__item,
+.#{$namespace}-account__item--static {
 	sup {
 		top: -3px;
 	}
+}
+
+.#{$namespace}-account__item--static:hover {
+	background-color: $ig-light-grey;
 }
 
 .#{$namespace}-account__item:hover {
