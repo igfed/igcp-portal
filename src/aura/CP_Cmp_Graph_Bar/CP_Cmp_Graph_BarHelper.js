@@ -35,9 +35,6 @@
 		},
 		generateGraph: function(payload) {
 
-			console.log("Generate Graph");
-			console.log(payload);
-
 			var
 				ctx = document.getElementById("bar-chart").getContext('2d'),
 				bar,

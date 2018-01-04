@@ -1,19 +1,11 @@
 ({
+	onDataChange: function(cmp, evt, hlpr) {
+		hlpr.generateGraph(cmp.get("v.data"));
+	},
 	onSetGraph: function (cmp, evt, hlpr) {
-
-		var
-			payload = evt.getParam("payload"),
-			utils = cmp.find("CP_Utils");
-
+		var payload = evt.getParam("payload");
 		if (payload.id === cmp.get("v.id")) {
-
-			utils.waitFor(
-				cmp,
-				"v.renderComplete",
-				function () {
-					hlpr.generateGraph(payload);
-				}
-			);
+			cmp.set("v.data", payload);
 		}
 	}
 })

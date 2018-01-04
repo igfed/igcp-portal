@@ -3,6 +3,7 @@
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="" ></aura:attribute>
 	<aura:attribute name="class" type="String" default="igcp-utils__width--100"></aura:attribute>
+	<aura:attribute name="data" type="Map" default="{}"></aura:attribute>
 
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
@@ -10,6 +11,7 @@
 	
 	<!-- HANDLERS -->
 	<aura:handler event="c:CP_Evt_Set_Graph" action="{!c.onSetGraph}"></aura:handler>
+	<aura:handler name="change" value="{!v.data}" action="{!c.onDataChange}"/>
 	
 	<!-- MARKUP -->
 	<div class="{!'slds-grid slds-wrap ' + v.class}">
