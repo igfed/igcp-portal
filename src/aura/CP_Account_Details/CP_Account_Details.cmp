@@ -83,12 +83,13 @@
 				<div class="slds-grid slds-wrap">
 					
 					<c:CP_Cmp_Total_Value label="{!$Label.c.CP_Generic_Label_Market_Value}" value="{!v.marketValue}" />				
-
-					<c:CP_Cmp_Gain_Loss label="{!$Label.c.CP_Generic_Label_Change}" 
+ 
+					<!--Commenting out for now - will be added back in a future release-->
+					<!-- <c:CP_Cmp_Gain_Loss label="{!$Label.c.CP_Generic_Label_Change}" 
 						description="{!$Label.c.CP_Generic_Label_Year_To_Date}" 
 						value="{!v.totalGainLoss}" 
 						percentage="{!v.gainLossPercentage}" 
-						gainLossType="{!v.gainLossType}" />
+						gainLossType="{!v.gainLossType}" /> -->
 					
 					<div class="igcp-separator--large slds-size_12-of-12 slds-m-vertical--xxx-small slds-large-m-vertical--large "></div>
 					<div class="slds-grid slds-wrap">

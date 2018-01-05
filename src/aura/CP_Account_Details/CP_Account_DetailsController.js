@@ -77,7 +77,7 @@
 							marketValue = formattedValue;
 						}, cmp.get("v.lang"), true);
 
-						dataArr.push([item.productName, (item.marketValuePerc + "%"), bookCost, marketValue]);
+						dataArr.push([(item.fundName || item.productName), (item.marketValuePerc + "%"), bookCost, marketValue]);
 						dataObjArr.push(item);
 					});
 
