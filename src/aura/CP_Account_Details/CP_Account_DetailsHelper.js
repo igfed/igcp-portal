@@ -120,7 +120,9 @@
 
 			//Balance Date
 			if (obj.asOfDate) {
-				cmp.set("v.balanceDate", obj.asOfDate);
+				utils.convertToMDY(obj.asOfDate, function(obj){
+					cmp.set("v.balanceDate", obj.formattedString);
+				}, cmp.get("v.lang"));
 			} else {
 				cmp.set("v.balanceDate", $A.get("$Label.c.CP_Generic_Not_Available"));
 			}
