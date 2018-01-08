@@ -193,6 +193,7 @@
 				obj.accountTypeLabel === "RSP" ||
 				obj.accountTypeLabel === "Locked-RSP" ||
 				obj.accountTypeLabel === "Spousal RSP" ||
+				obj.accountTypeLabel === "RSP (N)" ||
 				obj.accountTypeLabel === "RLSP") {
 				hlpr.setRRSPList(obj, cmp);
 			}
@@ -393,14 +394,11 @@
 			//Contributor Spouse Name
 			if (obj.contributorSpouseName) {
 				cmp.set("v.contributorSpouseName", obj.contributorSpouseName);
-			} else {
-				cmp.set("v.contributorSpouseName", $A.get("$Label.c.CP_Generic_Not_Available"));
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Contributor_Spouse_Name"),
+					"detail": cmp.get("v.contributorSpouseName")
+				});
 			}
-
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_Contributor_Spouse_Name"),
-				"detail": cmp.get("v.contributorSpouseName")
-			});
 
 		} catch (err) {
 			console.error("CP_Account_Details: setRRSPList");
