@@ -176,8 +176,12 @@
 				hlpr.setRDSPList(obj, cmp);
 			}
 
+			console.info(obj.accountTypeLabel);
+
 			//TFSA Specific
-			if (obj.accountTypeLabel === "TFSA" || obj.accountTypeLabel === "Group TFSA") {
+			if (obj.accountTypeLabel === "TFSA" || 
+			obj.accountTypeLabel === "Group TFSA" || 
+			obj.accountTypeLabel === "TFSA iProfile") {
 				hlpr.setTFSAList(obj, cmp);
 			}
 
@@ -328,14 +332,11 @@
 			//Plan Sponsor
 			if (obj.groupSponsorName) {
 				cmp.set("v.planSponsor", obj.groupSponsorName);
-			} else {
-				cmp.set("v.planSponsor", $A.get("$Label.c.CP_Generic_Not_Available"));
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Plan_Sponsor"),
+					"detail": cmp.get("v.planSponsor")
+				});
 			}
-
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_Plan_Sponsor"),
-				"detail": cmp.get("v.planSponsor")
-			});
 		} catch (err) {
 			console.error("CP_Account_Details: setTFSAList");
 			console.error(err);
