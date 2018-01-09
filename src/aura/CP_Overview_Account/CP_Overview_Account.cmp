@@ -13,8 +13,14 @@
 	<aura:attribute name="col1Name" type="String" default="{!$Label.c.CP_Overview_Change}" />
 	<aura:attribute name="col2Name" type="String" default="{!$Label.c.CP_Overview_Market_Value}" />
 	<aura:attribute name="itemType" type="String" default="investments"></aura:attribute>
+	<aura:attribute name="class" type="String" default="igcp-overview--account slds-size_12-of-12 slds-m-top--small"></aura:attribute>
+
+	<!-- METHODS -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+
 	<!-- MARKUP -->
-	<div class="igcp-overview--account slds-size_12-of-12 slds-m-bottom--small slds-large-m-bottom--large">
+	<div class="{!v.class}">
 		<!-- ACCOUNT TITLE -->
 		<aura:if isTrue="{!v.accountTitle}">
 			<h3 class="slds-m-top--x-small slds-m-bottom--small slds-large-m-bottom--large slds-p-horizontal--xx-small slds-medium-p-horizontal--small">{!v.accountTitle}</h3>

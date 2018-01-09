@@ -58,7 +58,6 @@
 				cmp.get("v.accountNumberEnc"),
 				cmp,
 				function (success) {
-					hlpr.logReturned("Get Holdings", success);
 
 					var
 						holdingsArr = success,
@@ -105,7 +104,6 @@
 				cmp.get("v.accountNumberEnc"),
 				cmp,
 				function (success) {
-					//hlpr.logReturned("Get Transactions", success);
 
 					var
 						transactionsArr = success,
@@ -143,7 +141,6 @@
 				cmp.get("v.accountNumberEnc"),
 				cmp,
 				function (success) {
-					//hlpr.logReturned("Get Instructions", success);
 
 					var
 						instructionsArr = success,

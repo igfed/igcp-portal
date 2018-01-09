@@ -14,7 +14,7 @@
     
     <!-- MARKUP -->
     <div class="slds-size_12-of-12">
-        <h3 class="slds-m-top--x-small slds-m-bottom--small slds-large-m-bottom--large slds-p-horizontal--xx-small slds-medium-p-horizontal--small">{!v.groupTitle}</h3>
+        <h3 class="slds-m-top--medium slds-medium-m-top--x-small slds-m-bottom--small slds-p-horizontal--xx-small slds-medium-p-horizontal--small">{!v.groupTitle}</h3>
     </div>
     {!v.body}
     <div class="igcp-account__grand-total slds-grid slds-grid_align-end">

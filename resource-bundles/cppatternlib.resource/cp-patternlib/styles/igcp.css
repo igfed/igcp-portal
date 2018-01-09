@@ -62,7 +62,9 @@ p {
 body {
   font-family: "WhitneyBook", Arial, sans-serif;
   background-color: #f8f8f9;
-  color: #282828; }
+  color: #282828;
+  background-image: url("../images/bg-tile.jpg");
+  background-repeat: repeat; }
 
 a {
   color: #0e75d5;

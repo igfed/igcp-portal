@@ -19,8 +19,6 @@
 	formatValue: function (cmp, key, val, callback) {
 		try {
 
-			console.info(key);
-
 			if (key === "accountNumber") {
 				//Account Number
 				callback($A.get("$Label.c.CP_Generic_Label_Account_Number"), val);
