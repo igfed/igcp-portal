@@ -26,7 +26,9 @@
 				callback($A.get("$Label.c.CP_Generic_Label_Account_Number"), val);
 			} else if (key === "asOfDate") {
 				//As Of Date
-				callback($A.get("$Label.c.CP_Generic_Label_As_Of_Date"), val);
+				cmp.find("CP_Utils").convertToMDY(val, function(obj){
+					callback($A.get("$Label.c.$Label.c.CP_Generic_Label_As_Of_Date"), obj.formattedString);
+				}, cmp.get("v.lang"));
 			} else if (key === "bookCostCad") {
 				//Book Cost
 				cmp.find("CP_Utils").formatToCurrency(val.toString(), function (returnedValue) {
@@ -67,7 +69,9 @@
 				}, cmp.get("v.lang"), true);
 			} else if(key === "reportingDate") {
 				//Reporting Date
-				callback($A.get("$Label.c.CP_Generic_Label_Reporting_Date"), val);
+				cmp.find("CP_Utils").convertToMDY(val, function(obj){
+					callback($A.get("$Label.c.CP_Generic_Label_Reporting_Date"), obj.formattedString);
+				}, cmp.get("v.lang"));
 			} else if(key === "series") {
 				//Series
 				callback($A.get("$Label.c.CP_Generic_Label_Series"), val);
