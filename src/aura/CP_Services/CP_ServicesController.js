@@ -275,7 +275,7 @@
 
 				action = component.get("c.getUserFirstName");
 
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
@@ -299,7 +299,7 @@
 
 				action = component.get("c.getUserName");
 
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
@@ -324,7 +324,7 @@
 
 				action = component.get("c.getInvestmentPreviewDTO");
 
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
@@ -349,7 +349,7 @@
 
 				action = component.get("c.getInvestmentPreviewJSON");
 
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
@@ -382,7 +382,7 @@
 					"dealerName": params.dealerName
 				});
 
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
@@ -415,7 +415,7 @@
 					"dealerName": params.dealerName
 				});
 
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
@@ -440,7 +440,7 @@
 
 				action = component.get("c.getMortgagePreviewDTO");
 
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
@@ -466,7 +466,7 @@
 
 				action = component.get("c.getInsurancePreviewDTO");
 
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
@@ -493,7 +493,7 @@
 
 				action = component.get("c.getAssetMixSortedList");
 
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
@@ -524,7 +524,7 @@
 				});
 
 
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
@@ -554,7 +554,7 @@
 					accountNumberEnc: params.accountNumber
 				});
 
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
@@ -585,7 +585,7 @@
 					accountNumberEnc: params.accountNumber
 				});
 
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
@@ -616,7 +616,7 @@
 					accountNumberEnc: params.accountNumber
 				});
 
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
@@ -647,7 +647,7 @@
 					accountNumberEnc: params.accountNumber
 				});
 
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
@@ -678,7 +678,7 @@
 					accountNumberEnc: params.accountNumber
 				});
 
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
@@ -704,7 +704,7 @@
 
 				action = component.get("c.getUserInfoDTO");
 
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
@@ -807,7 +807,7 @@
 				action.setParams({
 					loanNumber: params.loanNumber
 				});
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
@@ -892,7 +892,7 @@
 					payload: ""
 				});
 
-				hlpr.setCallbackPromise(
+				hlpr.setCallback(
 					params,
 					action,
 					this,
