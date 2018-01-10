@@ -6,10 +6,14 @@
 			utils = cmp.find("CP_Utils");
 
 		try {
+			console.log("HELLO");
 			//GET INVESTMENT PREVIEW
 			services.getInvestmentsPreview(
 				cmp,
 				function (previewObj) {
+
+					console.info("GET INVESTMENTS!!!");
+					console.log(previewObj)
 
 					if (previewObj) {
 						console.info("$$$$$");

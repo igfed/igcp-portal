@@ -88,8 +88,7 @@
 				<c:CP_Cmp_Input_Text id="phone-input" form="{!v.pageId}" type="phone" label="{!$Label.c.CP_Generic_Label_Phone}" placeholder="" class="slds-size_12-of-12 slds-large-size_9-of-12 slds-m-vertical--medium" tooltip="{!$Label.c.CP_Tooltip_Phone}" maxLength="20" />
 
 				<!-- SECURITY QUESTIONS -->
-				<c:CP_Registration_Security_Questions
-					securityQuestion1="{!v.securityQuestion1}" 
+				<c:CP_Registration_Security_Questions securityQuestion1="{!v.securityQuestion1}" 
 					securityQuestion2="{!v.securityQuestion2}" 
 					securityQuestion3="{!v.securityQuestion3}" 
 					form="{!v.pageId}" 

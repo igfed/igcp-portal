@@ -3,17 +3,18 @@
         try {
             var action = component.get("c.getSessionVal");
             action.setCallback(this, function (response) {
-                var ans = response.getReturnValue();
+                var newVal = response.getReturnValue();
 
-                console.log(ans);
-                component.set("v.mySessionVal", ans);
+                console.log(newVal);
+                component.set("v.mySessionVal", newVal);
             })
             $A.enqueueAction(action);
         } catch (err) {
             console.error(err);
         }
 
-    },
+    }
+    /*,
     updateSessionVal: function (component, event, helper) {
         try {
             var action = component.get("c.setSessionVal");
@@ -39,8 +40,6 @@
                     } else {
                         console.log("Success: But response is null :(")
                     }
-
-                    component.set("v.result", response.getReturnValue());
     
                     // You would typically fire a event here to trigger 
                     // client-side notification that the server-side 
@@ -59,6 +58,8 @@
                         console.error("UNknown error");
                     }
                 }
+
+                component.set("v.result", r);
             })
             $A.enqueueAction(action);
         } catch (err) {
@@ -66,5 +67,5 @@
         }
 
     }
-
+    */
 })

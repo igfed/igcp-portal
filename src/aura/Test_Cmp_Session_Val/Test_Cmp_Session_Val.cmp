@@ -1,15 +1,8 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes"  access="global" controller="Test_SessionController" >
-	<aura:attribute name="mySessionVal" type="String" default="Chrome" />
-    <aura:attribute name="result" type="String" default="" />
 	
-	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	<aura:attribute name="mySessionVal" type="String" default="0" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
-    <lightning:input name="Answer" label="Answer" value="{!v.mySessionVal}"/>
-
-    <button onclick="{!c.updateSessionVal}" class="btn btn-primary">Update</button>
-    
     Session Value: {!v.mySessionVal} <br />
     
-    Result : {!v.result}
-
 </aura:component>

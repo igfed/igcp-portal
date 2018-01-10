@@ -75,7 +75,12 @@
 		cmp.set("v.currentStep", nextStep);
 	},
 	onBackStep: function (cmp, evt, hlpr) {
-		cmp.find("CP_Utils").gotoLogin();
+		console.log("onBackStep");
+		try {
+			cmp.find("CP_Utils").gotoLogin();
+		} catch(err) {
+			console.error(err);
+		}
 	},
 	onNotCompleted: function (cmp, evt, hlpr) {
 		if (evt.getParam("payload").id === cmp.get("v.id")) {

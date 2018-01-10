@@ -3,6 +3,7 @@
 	<!-- ATTTRS -->
 	<aura:attribute name="id" type="String" default="default"></aura:attribute>
 	<aura:attribute name="class" type="String" default=""></aura:attribute>
+	<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
 	<aura:attribute name="modalType" type="String" default="full"></aura:attribute>
 	<!-- INCLUDES -->
 	<c:CP_Events aura:id="CP_Events" />
@@ -22,7 +23,7 @@
 	<aura:if isTrue="{!v.modalType == 'full'}">
 		<div class="{!'igcp-modal igcp-modal__full slds-grid slds-wrap slds-p-around--medium slds-medium-p-around--xx-large ' + v.class}">
 			<aura:if isTrue="{!v.id == 'registration-tos'}">
-				<c:CP_Registration_TOS id="{!v.id}"/>
+				<c:CP_Registration_TOS id="{!v.id}" lang="{!v.lang}"/>
 			</aura:if>
 			<!-- Todo: v.id == 'editDocuments-tos'> -->
 			<aura:if isTrue="{!v.id == 'editDocument-tos'}">

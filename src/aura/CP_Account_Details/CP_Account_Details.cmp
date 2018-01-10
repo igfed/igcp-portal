@@ -109,6 +109,7 @@
 			<c:CP_Account_Investment_Profile profile="{!v.investmentProfileObj}"/>
 		</div>
 
+		
 		<div class="slds-size_12-of-12">
 			<c:CP_Account_Holdings modalId="{!v.pageId}"/>
 		</div>

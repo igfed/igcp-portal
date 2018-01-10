@@ -314,29 +314,52 @@
 		}
 	},
 	onGetInvestmentsPreview: function (cmp, evt, hlpr) {
+		console.info("getInvestmentPreview");
 		var params = evt.getParam("arguments");
-		if (params) {
-			var
-				component = params.component,
-				action;
+		// if (params) {
+
+		// 	var
+		// 		component = params.component,
+		// 		action;
 
 			try {
+				var request = $A.get("e.c:ContinuationRequest");
+				console.info("getInvestmentPreview: start");
+				request.setParams({ 
+					methodName: "getInvestmentPreview",
+					methodParams: [],
+					callback: function(result) {
+						//your code here to process the returned data
 
-				action = component.get("c.getInvestmentPreviewDTO");
+						console.info('returned data from getInvestmentsPreview');
+						console.log(result);
+					}
 
-				hlpr.setCallback(
-					params,
-					action,
-					this,
-					"No BPID was found in Salesforce",
-					"no-record"
-				);
-			} catch (err) {
-				console.error("CP_Services: onGetInvestmentsPreview: controller not found, make sure it is attached to parent component.");
-				console.log(err);
+				});
+				request.fire();
+				console.info("getInvestmentPreview: end");
+			} catch(err) {
+				console.error("CP_Services: getInvestmentPreview");
+				console.error(err);
 			}
 
-		}
+			// try {
+
+			// 	action = component.get("c.getInvestmentPreviewDTO");
+
+			// 	hlpr.setCallback(
+			// 		params,
+			// 		action,
+			// 		this,
+			// 		"No BPID was found in Salesforce",
+			// 		"no-record"
+			// 	);
+			// } catch (err) {
+			// 	console.error("CP_Services: onGetInvestmentsPreview: controller not found, make sure it is attached to parent component.");
+			// 	console.log(err);
+			// }
+
+		//}
 	},
 	onGetInvestmentAccounts: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");

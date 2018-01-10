@@ -4,6 +4,10 @@
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
 
+	<c:ContinuationBroker />
+
+	<aura:registerEvent name="continuationRequest" type="c:ContinuationRequest" />
+
 	<!-- SUBMIT FORM -->
 	<aura:method name="submitForm" action="{!c.onSubmitForm}">
 		<aura:attribute name="serviceName" type="String" default="default" />

@@ -7,6 +7,7 @@
 	<!-- ATTRS -->
 	<aura:attribute name="id" type="String" default="default" ></aura:attribute>
 	<aura:attribute name="userAgrees" type="Boolean" default="false"></aura:attribute>
+	<aura:attribute name="lang" type="String" default="en_CA"></aura:attribute>
 	
 	<!-- HANDLERS -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
@@ -21,7 +22,7 @@
 		<div class="slds-size_12-of-12">
 			<button class="igcp-modal__button--close close-button" type="button" onclick="{!c.onClose}"></button>
 		</div>
-		<h1 class="slds-size_12-of-12 slds-m-bottom--x-small">{!$Label.c.CP_Registration_TOS_h1}</h1>
+		<h1 class="slds-size_12-of-12 slds-m-bottom--x-small">{!$Label.c.CP_Registration_TOS_h1} {!v.lang}</h1>
 		<c:CP_Cmp_Link_Print container="tos-print-container"/>
 		<div class="slds-size_9-of-12"></div>
 		<p class="slds-size_12-of-12 slds-m-bottom--large">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae turpis et velit semper convallis. Integer dictum mi in ligula mollis rutrum. Etiam sed malesuada nibh. Vestibulum aliquet in diam non fermentum. Duis consequat, ante a imperdiet venenatis, turpis urna feugiat ex, blandit vehicula ante sapien at erat. Cras finibus finibus fermentum. Ut id vestibulum nibh. Duis non tempor metus. Morbi lobortis quis augue sed sodales. Nullam laoreet nunc a condimentum pulvinar. Vestibulum tempor ipsum a lacus sodales, a rhoncus orci porta. Cras tincidunt neque sit amet lacus blandit vulputate. Pellentesque nibh justo, rutrum et mi nec, pretium eleifend massa.</p>

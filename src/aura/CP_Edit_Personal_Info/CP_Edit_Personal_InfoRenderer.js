@@ -4,7 +4,7 @@
 		return ret;
 	},
 	rerender: function (cmp, hlpr) {},
-	afterRender: function (cmp, hlpr) {
+	afterRender: function (component, helper) {
 		this.superAfterRender();
 		try {
 			var body = document.querySelector("body");
