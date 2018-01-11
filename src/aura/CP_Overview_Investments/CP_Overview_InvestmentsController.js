@@ -6,7 +6,6 @@
 			utils = cmp.find("CP_Utils");
 
 		try {
-			console.log("HELLO");
 			//GET INVESTMENT PREVIEW
 			services.getInvestmentsPreview(
 				cmp,
