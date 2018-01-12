@@ -58,6 +58,11 @@
 	<aura:attribute name="ytdContributionAmt" type="String" default=""></aura:attribute>
 	<aura:attribute name="craPlanId" type="String" default=""></aura:attribute>
 
+	<!-- RRIF -->
+	<aura:attribute name="rrifYtdWithdrawalAmount" type="String" default=""></aura:attribute>
+	<aura:attribute name="rrifMinimumWithdrawalAmount" type="String" default=""></aura:attribute>
+	<aura:attribute name="spousalContributorName" type="String" default=""></aura:attribute>
+
 	<!-- SHARED  -->
 	<aura:attribute name="beneficiaryName" type="String" default=""></aura:attribute>
 

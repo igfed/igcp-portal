@@ -200,9 +200,7 @@
 
 			//RESP specific
 			if (obj.accountTypeLabel === "RESP" ||
-				obj.accountTypeLabel === "RESP-Individual Plan" ||
-				obj.accountTypeLabel === "Family Plan" ||
-				obj.accountTypeLabel === "RESP-Individual Plan and Family Plan"
+				obj.accountTypeLabel === "RESP-Individual Plan"
 			) {
 				hlpr.setRESPList(obj, cmp);
 			}
@@ -213,13 +211,16 @@
 				obj.accountTypeLabel === "LRIF" ||
 				obj.accountTypeLabel === "PRIF" ||
 				obj.accountTypeLabel === "RLIF" ||
-				obj.accountTypeLabel === "Spousal RIF") {
+				obj.accountTypeLabel === "Spousal RIF" ||
+				obj.accountTypeLabel === "LIF (N)" ||
+				obj.accountTypeLabel === "iProfile - LIF (N)") {
 				hlpr.setRRIFList(obj, cmp);
 			}
 
 			//Group RRSP
 			if (obj.accountTypeLabel === "Group RRSP" ||
-				obj.accountTypeLabel === "Spousal Group RSP") {
+				obj.accountTypeLabel === "Spousal Group RSP" ||
+				obj.accountTypeLabel === "Grp RSP") {
 				hlpr.setGroupRRSPList(obj, cmp);
 			}
 
@@ -473,7 +474,12 @@
 
 			//RRIF YTD Withdrawal Amount
 			if (obj.rrifYtdWithdrawalAmount != undefined) {
+
 				utils.formatToCurrency(obj.rrifYtdWithdrawalAmount, function (formattedValue) {
+
+					console.log("AHAHHA");
+					console.log(formattedValue);
+
 					cmp.set("v.rrifYtdWithdrawalAmount", formattedValue);
 				}, cmp.get("v.lang"), true);
 			} else {
