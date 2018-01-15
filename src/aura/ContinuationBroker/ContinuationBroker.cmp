@@ -1,4 +1,4 @@
-<aura:component controller="PreviewContinuationController" implements="flexipage:availableForAllPageTypes" access="global">
+<aura:component controller="PreviewContinuationController" implements="forceCommunity:availableForAllPageTypes" access="global">
 
     <aura:handler event="c:ContinuationRequest" action="{!c.onContinuationRequest}"/>
 

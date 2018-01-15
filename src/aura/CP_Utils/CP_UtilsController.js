@@ -179,9 +179,9 @@
 			var
 				component = params.component,
 				timer = setInterval(function () {
-					if (component.get(params.attr) !== null || component.get(params.attr) !== undefined) {
-						params.callback(component.get(params.attr));
+					if (component.get(params.attr) !== null && component.get(params.attr) !== undefined) {
 						clearInterval(timer);
+						params.callback(component.get(params.attr));
 					}
 				}, 500);
 

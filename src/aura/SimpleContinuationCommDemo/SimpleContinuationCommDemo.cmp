@@ -1,0 +1,17 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+
+    <!-- This value could be calculated: see ContinuationProxy for an example -->
+    <aura:attribute name="vfHost" type="String" default="portaldev3-portaldev3.cs70.force.com" access="global"/>
+    <aura:attribute name="productId" type="Integer" default="1" access="global"/>
+    <aura:attribute name="latency" type="Integer" default="2000" access="global"/>
+    <aura:attribute name="result" type="String" access="global"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+        <lightning:card title="Simple Apex Continuation Example">
+            <input type="text" id="text-input-id-1" class="slds-input" label="Simulated latency (ms):" value="{!v.latency}"/>
+            <input type="text" id="text-input-id-2" class="slds-input" label="Product Id:" value="{!v.productId}"/>
+            <lightning:button label="Get Product" onclick="{!c.getProduct}"/>
+            <textarea id="textarea-id-01" class="slds-textarea" label="Result:" value="{!v.result}"></textarea>
+            <iframe aura:id="vfFrame" src="https://portaldev3-portaldev3.cs70.force.com/customers/SimpleContinuationComm" frameborder="0" width="1" height="1"/>
+        </lightning:card>
+</aura:component>

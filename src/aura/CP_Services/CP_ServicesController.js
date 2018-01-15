@@ -314,7 +314,10 @@
 		}
 	},
 	onGetInvestmentsPreview: function (cmp, evt, hlpr) {
+		console.info("##############");
 		console.info("getInvestmentPreview");
+		console.info("##############");
+		
 		var params = evt.getParam("arguments");
 		// if (params) {
 

@@ -65,10 +65,10 @@
 
 					if (previewObj) {
 
-						console.info("$$$$$");
-						console.info("c.getInvestmentPreviewJSON");
-						console.log(previewObj);
-						console.info("$$$$$");
+						// console.info("$$$$$");
+						// console.info("c.getInvestmentPreviewJSON");
+						// console.log(previewObj);
+						// console.info("$$$$$");
 
 						utils.objectIsEmpty(previewObj, function(isEmpty) {
 							if(isEmpty === false) {

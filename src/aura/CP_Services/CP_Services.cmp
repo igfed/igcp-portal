@@ -1,12 +1,10 @@
-<aura:component >
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
 
 	<!-- Includes -->
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />
 
-	<c:ContinuationBroker />
-
-	<aura:registerEvent name="continuationRequest" type="c:ContinuationRequest" />
+	<aura:registerEvent name="continuationRequest" type="c:ContinuationRequest"/>
 
 	<!-- SUBMIT FORM -->
 	<aura:method name="submitForm" action="{!c.onSubmitForm}">
@@ -192,5 +190,7 @@
 		<aura:attribute name="successCB" type="function" default="" />
 		<aura:attribute name="errorCB" type="function" default="" />
 	</aura:method>
+
+	<c:ContinuationBroker />
 
 </aura:component>
