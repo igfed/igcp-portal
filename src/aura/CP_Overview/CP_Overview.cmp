@@ -2,7 +2,9 @@
 
 	<!-- INCLUDES -->
 	<c:CP_JS_Includes />
-    <c:CP_User_Info />
+	<c:CP_User_Info />
+	
+	<c:ContinuationBroker />
 
 	<c:CP_Events aura:id="CP_Events" />
 	<c:CP_Utils aura:id="CP_Utils" />

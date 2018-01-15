@@ -191,6 +191,6 @@
 		<aura:attribute name="errorCB" type="function" default="" />
 	</aura:method>
 
-	<c:ContinuationBroker />
+	<!-- <c:ContinuationBroker /> -->
 
 </aura:component>

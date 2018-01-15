@@ -184,11 +184,6 @@
 						params.callback(component.get(params.attr));
 					}
 				}, 500);
-
-			// setTimeout(function(){
-			// 	clearInterval(timer);
-			// 	params.timeoutCallback(params.attr + " is still not defined and has timed out after 15 seconds.");
-			// }, 15000);
 		}
 	},
 	onGetURLParams: function (cmp, evt, hlpr) {
@@ -333,7 +328,7 @@
 			lang = params.lang;
 			try {
 				if (hlpr.isNumber(params.rawValue) === true) {
-					
+
 					if (lang === "en_CA" || lang === "en_US") {
 						if (params.includePercentSymbol) {
 							formattedValue = hlpr.formatCurrency(params.rawValue) + "%";

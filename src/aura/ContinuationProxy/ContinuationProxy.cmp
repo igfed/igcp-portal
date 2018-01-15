@@ -4,6 +4,7 @@
     
     <aura:attribute name="topic" type="String" default="com.investorsgroup.portal.proxy" access="global" />
     <aura:attribute name="vfBaseURL" type="String" />
+    <aura:attribute name="contentWindow" type="Map" />
 
     <aura:method name="invoke" action="{!c.doInvoke}">
         <aura:attribute name="methodName" type="String" />
@@ -13,6 +14,5 @@
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
-    <iframe aura:id="vfFrame" src="/customers/PreviewContinuationProxy" frameborder="0" width="1" height="1" />
-
+    <iframe id="vfFrame" aura:id="vfFrame" src="/customers/PreviewContinuationProxy" frameborder="0" width="1" height="1" onload="{!c.onIFrameLoaded}"/>
 </aura:component>
