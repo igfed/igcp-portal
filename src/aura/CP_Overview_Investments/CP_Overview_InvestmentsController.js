@@ -15,12 +15,7 @@
 					console.log(previewObj)
 
 					if (previewObj) {
-						console.info("$$$$$");
-						console.info("c.getInvestmentPreviewDTO");
-						console.log(previewObj);
-						console.info("$$$$$");
-
-						if(previewObj.asOfDate) {
+						if (previewObj.asOfDate) {
 							utils.convertToMDY(previewObj.asOfDate, function (obj) {
 								cmp.set("v.asOfDate", obj.formattedString);
 							}, cmp.get("v.lang"));
@@ -28,13 +23,37 @@
 							cmp.set("v.asOfDate", $A.get("$Label.c.CP_Generic_Not_Available"));
 						}
 
-						if(previewObj.totalValue) {
+						if (previewObj.totalValue) {
 							utils.formatToCurrency(previewObj.totalValue, function (formattedValue) {
 								cmp.set("v.totalValue", formattedValue);
 							}, cmp.get("v.lang"));
 						} else {
 							cmp.set("v.totalValue", $A.get("$Label.c.CP_Generic_Not_Available"));
 						}
+
+						//Holdings
+						if (previewObj.holdings) {
+
+							var holdings = JSON.parse(previewObj.holdings.replace(/&quot;/g, '\"'));
+							try {
+								//utils.objectIsEmpty(holdings, function (isEmpty) {
+									//if (isEmpty === false) {
+										utils.forEach(holdings, function (key, value) {
+											hlpr.addAccounts(key, value, cmp);
+										})
+									// } else {
+									// 	//show marketing view
+									// 	cmp.set("v.showMarketing", true);
+									// }
+								//});
+							} catch (err) {
+								console.error(err);
+							}
+						}
+
+						cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", {
+							"id": "overview-investments-spinner"
+						});
 
 						//FOR NOW WE ARE COMMENTING OUT TOTAL LOSS/GAIN BECAUSE IT IS NOT READY FOR UAT
 						// utils.formatToCurrency(previewObj.totalGainLoss, function (formattedValue) {
@@ -58,47 +77,47 @@
 		}
 
 		//GET INVESTMENT ACCOUNTS
-		try {
-			services.getInvestmentAccounts(
-				cmp,
-				function (previewObj) {
+		// try {
+		// 	services.getInvestmentAccounts(
+		// 		cmp,
+		// 		function (previewObj) {
 
-					if (previewObj) {
+		// 			if (previewObj) {
 
-						// console.info("$$$$$");
-						// console.info("c.getInvestmentPreviewJSON");
-						// console.log(previewObj);
-						// console.info("$$$$$");
+		// 				// console.info("$$$$$");
+		// 				// console.info("c.getInvestmentPreviewJSON");
+		// 				// console.log(previewObj);
+		// 				// console.info("$$$$$");
 
-						utils.objectIsEmpty(previewObj, function(isEmpty) {
-							if(isEmpty === false) {
-								utils.forEach(JSON.parse(previewObj), function (key, value) {
-									hlpr.addAccounts(key, value, cmp);
-								})
-							} else {
-								//show marketing view
-								cmp.set("v.showMarketing", true);
-							}
-						});
+		// 				utils.objectIsEmpty(previewObj, function(isEmpty) {
+		// 					if(isEmpty === false) {
+		// 						utils.forEach(JSON.parse(previewObj), function (key, value) {
+		// 							hlpr.addAccounts(key, value, cmp);
+		// 						})
+		// 					} else {
+		// 						//show marketing view
+		// 						cmp.set("v.showMarketing", true);
+		// 					}
+		// 				});
 
-						cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", {
-							"id": "overview-investments-spinner"
-						});
+		// 				cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", {
+		// 					"id": "overview-investments-spinner"
+		// 				});
 
-					} else {
-						console.warn("CP_Overview_Investments: getInvestmentAccounts: previewObj was null.")
-					}
+		// 			} else {
+		// 				console.warn("CP_Overview_Investments: getInvestmentAccounts: previewObj was null.")
+		// 			}
 
-				},
-				function (error) {
-					console.error("CP_Overview: getInvestmentAccounts");
-					console.error(error);
-				}
-			);
-		} catch (err) {
-			console.error("Get Investment Accounts");
-			console.error(err)
-		}
+		// 		},
+		// 		function (error) {
+		// 			console.error("CP_Overview: getInvestmentAccounts");
+		// 			console.error(error);
+		// 		}
+		// 	);
+		// } catch (err) {
+		// 	console.error("Get Investment Accounts");
+		// 	console.error(err)
+		// }
 
 
 		//Commenting this out for now while we do performance testing
@@ -110,7 +129,7 @@
 		// 		if (previewArr) {
 
 		// 			var graphArr = [];
- 
+
 		// 			previewArr.forEach(function (item, i) {
 
 		// 				if (item.theLabel === "Equity") {
