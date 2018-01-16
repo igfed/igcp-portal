@@ -314,32 +314,14 @@
 		}
 	},
 	onGetInvestmentsPreview: function (cmp, evt, hlpr) {
-		console.info("##############");
-		console.info("getInvestmentPreview");
-		console.info("##############");
-		
 		var params = evt.getParam("arguments");
 		if (params) {
-			try {
-				var request = $A.get("e.c:ContinuationRequest");
-				console.info("getInvestmentPreview: start");
-				request.setParams({ 
-					methodName: "getInvestmentPreview",
-					methodParams: [],
-					callback: function(result) {
-						//your code here to process the returned data
-						params.successCB(result);
-					}
-				});
-				request.fire();
-				console.info("getInvestmentPreview: end");
-			} catch(err) {
-				console.error("CP_Services: getInvestmentPreview");
-				console.error(err);
-			}
+			hlpr.setAsyncRequest("getInvestmentPreview", params);
 		}
 	},
 	onGetInvestmentAccounts: function (cmp, evt, hlpr) {
+		//These are old and possibly not in use
+		//TODO: Remove
 		var params = evt.getParam("arguments");
 		if (params) {
 			var
@@ -365,6 +347,8 @@
 		}
 	},
 	onGetInvestmentsPreviewRegistered: function (cmp, evt, hlpr) {
+		//These are old and possibly not in use
+		//TODO: Remove
 		var params = evt.getParam("arguments");
 		if (params) {
 			var
@@ -398,6 +382,8 @@
 		}
 	},
 	onGetInvestmentsPreviewNonRegistered: function (cmp, evt, hlpr) {
+		//These are old and possibly not in use
+		//TODO: Remove
 		var params = evt.getParam("arguments");
 		if (params) {
 			var
@@ -433,79 +419,20 @@
 	onGetMortgagePreview: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
-			var
-				component = params.component,
-				action;
-
-			try {
-
-				action = component.get("c.getMortgagePreviewDTO");
-
-				hlpr.setCallback(
-					params,
-					action,
-					this,
-					"No BPID was found in Salesforce",
-					"no-record"
-				);
-
-			} catch (err) {
-				console.error("CP_Services: onGetMortgagePreview: controller not found, make sure it is attached to parent component.");
-				console.log(err);
-			}
-
+			hlpr.setAsyncRequest("getMortgagePreview", params);
 		}
 	},
 	onGetInsurancePreview: function (cmp, evt, hlpr) {
 		var params = evt.getParam("arguments");
 		if (params) {
-			var
-				component = params.component,
-				action;
-
-			try {
-
-				action = component.get("c.getInsurancePreviewDTO");
-
-				hlpr.setCallback(
-					params,
-					action,
-					this,
-					"No BPID was found in Salesforce",
-					"no-record"
-				);
-
-			} catch (err) {
-				console.error("CP_Services: onGetInsurancePreview: controller not found, make sure it is attached to parent component.");
-				console.log(err);
-			}
-
+			hlpr.setAsyncRequest("getInsurancePreview", params);
 		}
 	},
 	onGetAssetMix: function (cmp, evt, hlpr) {
 
 		var params = evt.getParam("arguments");
 		if (params) {
-			var
-				component = params.component,
-				action;
-
-			try {
-
-				action = component.get("c.getAssetMixSortedList");
-
-				hlpr.setCallback(
-					params,
-					action,
-					this,
-					"No BPID was found in Salesforce",
-					"no-record"
-				);
-
-			} catch (err) {
-				console.error("CP_Services: onGetAssetMix: controller not found, make sure it is attached to parent component.");
-				console.log(err);
-			}
+			hlpr.setAsyncRequest("getAssetMixPreview", params);
 		}
 	},
 	onGetAccountDetail: function (cmp, evt, hlpr) {

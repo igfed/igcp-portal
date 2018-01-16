@@ -50,5 +50,22 @@
 		})).catch(function(err) {
 			params.errorCB(err);
 		});
+	},
+	setAsyncRequest: function(methodName, params) {
+		//Calls continuation proxy in order to make calls to the back end asynchronously
+		try {
+			var request = $A.get("e.c:ContinuationRequest");
+			request.setParams({ 
+				methodName: methodName,
+				methodParams: [],
+				callback: function(result) {
+					//your code here to process the returned data
+					params.successCB(result);
+				}
+			});
+			request.fire();
+		} catch(err) {
+			console.error("CP_Services: setAsyncRequest");
+		}
 	}
 })

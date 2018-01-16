@@ -25,17 +25,20 @@
 
 						hlpr.addAccounts(mortgageAccountsArr, cmp);
 
-					} else {
-						//client doesn't have a mortgage
-						//show marketing view
-						cmp.set("v.showMarketing", true);
 					}
-
-
+					
 					cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", {
 						"id": "overview-mortgages-spinner"
 					});
 				} else {
+					
+						//client doesn't have a mortgage
+						//show marketing view
+						cmp.set("v.showMarketing", true);
+						cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", {
+							"id": "overview-mortgages-spinner"
+						});
+					
 					console.warn("CP_Overview_Mortgages: getMortgagePreview: previewObj was null.");
 				}
 			},

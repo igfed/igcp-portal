@@ -10,10 +10,6 @@
 			services.getInvestmentsPreview(
 				cmp,
 				function (previewObj) {
-
-					console.info("GET INVESTMENTS!!!");
-					console.log(previewObj)
-
 					if (previewObj) {
 						if (previewObj.asOfDate) {
 							utils.convertToMDY(previewObj.asOfDate, function (obj) {
@@ -32,23 +28,21 @@
 						}
 
 						//Holdings
-						if (previewObj.holdings) {
+						if (previewObj.holdings !== "{}") {
 
 							var holdings = JSON.parse(previewObj.holdings.replace(/&quot;/g, '\"'));
 							try {
-								//utils.objectIsEmpty(holdings, function (isEmpty) {
-									//if (isEmpty === false) {
-										utils.forEach(holdings, function (key, value) {
-											hlpr.addAccounts(key, value, cmp);
-										})
-									// } else {
-									// 	//show marketing view
-									// 	cmp.set("v.showMarketing", true);
-									// }
-								//});
+
+								utils.forEach(holdings, function (key, value) {
+									hlpr.addAccounts(key, value, cmp);
+								})
+
 							} catch (err) {
 								console.error(err);
 							}
+						} else {
+							//show marketing view
+							cmp.set("v.showMarketing", true);
 						}
 
 						cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", {
@@ -76,107 +70,62 @@
 			console.error(err)
 		}
 
-		//GET INVESTMENT ACCOUNTS
-		// try {
-		// 	services.getInvestmentAccounts(
-		// 		cmp,
-		// 		function (previewObj) {
-
-		// 			if (previewObj) {
-
-		// 				// console.info("$$$$$");
-		// 				// console.info("c.getInvestmentPreviewJSON");
-		// 				// console.log(previewObj);
-		// 				// console.info("$$$$$");
-
-		// 				utils.objectIsEmpty(previewObj, function(isEmpty) {
-		// 					if(isEmpty === false) {
-		// 						utils.forEach(JSON.parse(previewObj), function (key, value) {
-		// 							hlpr.addAccounts(key, value, cmp);
-		// 						})
-		// 					} else {
-		// 						//show marketing view
-		// 						cmp.set("v.showMarketing", true);
-		// 					}
-		// 				});
-
-		// 				cmp.find("CP_Events").fire("CP_Evt_Loading_Hide", {
-		// 					"id": "overview-investments-spinner"
-		// 				});
-
-		// 			} else {
-		// 				console.warn("CP_Overview_Investments: getInvestmentAccounts: previewObj was null.")
-		// 			}
-
-		// 		},
-		// 		function (error) {
-		// 			console.error("CP_Overview: getInvestmentAccounts");
-		// 			console.error(error);
-		// 		}
-		// 	);
-		// } catch (err) {
-		// 	console.error("Get Investment Accounts");
-		// 	console.error(err)
-		// }
-
-
-		//Commenting this out for now while we do performance testing
 		//GET ASSET MIX
-		// services.getAssetMix(
-		// 	cmp,
-		// 	function (previewArr) {
+		services.getAssetMix(
+			cmp,
+			function (previewArr) {
 
-		// 		if (previewArr) {
+				if (previewArr) {
 
-		// 			var graphArr = [];
+					var graphArr = [];
 
-		// 			previewArr.forEach(function (item, i) {
+					previewArr.forEach(function (item, i) {
 
-		// 				if (item.theLabel === "Equity") {
-		// 					graphArr.push({ 
-		// 						"label": $A.get("$Label.c.CP_Generic_Label_Equity"), 
-		// 						"detail" : item.theValue 
-		// 					});
-		// 				} else if (item.theLabel === "Fixed_Income") {
-		// 					graphArr.push({ 
-		// 						"label": $A.get("$Label.c.CP_Generic_Label_Fixed_Income"), 
-		// 						"detail" : item.theValue 
-		// 					});
-		// 				} else if (item.theLabel === "Balanced") {
-		// 					graphArr.push({ 
-		// 						"label": $A.get("$Label.c.CP_Generic_Label_Balanced"), 
-		// 						"detail" : item.theValue 
-		// 					});
-		// 				} else if (item.theLabel === "Cash") {
-		// 					graphArr.push({ 
-		// 						"label": $A.get("$Label.c.CP_Generic_Label_Cash"), 
-		// 						"detail" : item.theValue 
-		// 					});
-		// 				} else if (item.theLabel === "Specialty") {
-		// 					graphArr.push({ 
-		// 						"label": $A.get("$Label.c.CP_Generic_Label_Specialty"), 
-		// 						"detail" : item.theValue 
-		// 					});
-		// 				}
-		// 			});
+						if (item.theLabel === "Equity") {
+							graphArr.push({ 
+								"label": $A.get("$Label.c.CP_Generic_Label_Equity"), 
+								"detail" : item.theValue 
+							});
+						} else if (item.theLabel === "Fixed_Income") {
+							graphArr.push({ 
+								"label": $A.get("$Label.c.CP_Generic_Label_Fixed_Income"), 
+								"detail" : item.theValue 
+							});
+						} else if (item.theLabel === "Balanced") {
+							graphArr.push({ 
+								"label": $A.get("$Label.c.CP_Generic_Label_Balanced"), 
+								"detail" : item.theValue 
+							});
+						} else if (item.theLabel === "Cash") {
+							graphArr.push({ 
+								"label": $A.get("$Label.c.CP_Generic_Label_Cash"), 
+								"detail" : item.theValue 
+							});
+						} else if (item.theLabel === "Specialty") {
+							graphArr.push({ 
+								"label": $A.get("$Label.c.CP_Generic_Label_Specialty"), 
+								"detail" : item.theValue 
+							});
+						}
+					});
 
-		// 			var events = cmp.find("CP_Events");
-		// 			events.fire(
-		// 				"CP_Evt_Set_Graph", {
-		// 					"id": "investments-asset-mix",
-		// 					"type": "doughnut",
-		// 					"data": graphArr,
-		// 					"total": 100
-		// 				}
-		// 			);
-		// 		} else {
-		// 			console.warn("CP_Overview_Investments: getAssetMix: previewObj was null.");
-		// 		}
-		// 	},
-		// 	function (error) {
-		// 		console.error("Get Asset Mix");
-		// 		console.error(error);
-		// 	}
-		// );
+					var events = cmp.find("CP_Events");
+					events.fire(
+						"CP_Evt_Set_Graph", {
+							"id": "investments-asset-mix",
+							"type": "doughnut",
+							"data": graphArr,
+							"total": 100
+						}
+					);
+				} else {
+					console.warn("CP_Overview_Investments: getAssetMix: previewObj was null.");
+				}
+			},
+			function (error) {
+				console.error("Get Asset Mix");
+				console.error(error);
+			}
+		);
 	}
 })
