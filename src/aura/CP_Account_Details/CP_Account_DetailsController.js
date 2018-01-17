@@ -63,6 +63,9 @@
 						holdingsArr = success,
 						dataArr = [],
 						dataObjArr = [];
+					console.info("HOLDINGS");
+					console.log(holdingsArr);
+					console.log("^^^^^^^^^^^^^^^^^^^^^");
 
 					holdingsArr.forEach(function (item, i) {
 
@@ -76,7 +79,7 @@
 							marketValue = formattedValue;
 						}, cmp.get("v.lang"), true);
 
-						dataArr.push([(item.fundName || item.productName), (item.marketValuePerc + "%"), bookCost, marketValue]);
+						dataArr.push([(item.productNameDisplay || item.productName), (item.marketValuePerc + "%"), bookCost, marketValue]);
 						dataObjArr.push(item);
 					});
 
