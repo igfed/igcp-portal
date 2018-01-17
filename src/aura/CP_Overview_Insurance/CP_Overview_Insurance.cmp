@@ -20,7 +20,10 @@
 		<h2 class="slds-m-top--small slds-m-bottom--medium slds-medium-p-horizontal--small">{!$Label.c.CP_Overview_Insurance_h2}</h2>
 		<div class="slds-grid slds-wrap">
 			<aura:if isTrue="{!v.showMarketing}">
-				<c:CP_Overview_Marketing_View tagline="{!$Label.c.CP_Overview_Insurance_Marketing_Tagline}" cta="{!$Label.c.CP_Generic_Link_Learn_More}" href="#" />
+				<c:CP_Overview_Marketing_View 
+				tagline="{!$Label.c.CP_Overview_Insurance_Marketing_Tagline}" 
+				cta="{!$Label.c.CP_Generic_Link_Learn_More}" 
+				href="{!$Label.c.CP_URL_Insurance}" />
 				<aura:set attribute="else">
 					{!v.body}
 				</aura:set>

@@ -17,7 +17,10 @@
 		<div class="slds-grid slds-wrap">
 			<aura:if isTrue="{!v.showMarketing}">
 
-				<c:CP_Overview_Marketing_View tagline="{!$Label.c.CP_Overview_Mortgage_Marketing_Tagline}" cta="{!$Label.c.CP_Generic_Link_Learn_More}" href="#" />
+				<c:CP_Overview_Marketing_View 
+				tagline="{!$Label.c.CP_Overview_Mortgage_Marketing_Tagline}" 
+				cta="{!$Label.c.CP_Generic_Link_Talk_To_An_Advisor}" 
+				href="{!$Label.c.CP_URL_Mortgage}" />
 				<aura:set attribute="else">
 					{!v.body}
 				</aura:set>

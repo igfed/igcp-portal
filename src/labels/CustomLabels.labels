@@ -1928,6 +1928,14 @@
         <shortDescription>CP Generic Link Learn More</shortDescription>
         <value>Learn more</value>
     </labels>
+     <labels>
+        <fullName>CP_Generic_Link_Talk_To_An_Advisor</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Link Talk To An Advisor</shortDescription>
+        <value>Talk to an advisor</value>
+    </labels>
     <labels>
         <fullName>CP_Generic_Not_Available</fullName>
         <categories>CP Generic</categories>
@@ -2310,7 +2318,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Overview Mortgage Marketing Tagline</shortDescription>
-        <value>Find the mortgage that best fits your needs.</value>
+        <value>Buying a home? We can help.</value>
     </labels>
     <labels>
         <fullName>CP_Overview_Mortgage_h2</fullName>
@@ -2961,12 +2969,36 @@
         <value>Enter the email address you used when you created your profile.</value>
     </labels>
     <labels>
+        <fullName>CP_URL_Find_An_Advisor</fullName>
+        <categories>CP URL</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP URL Find An Advisor</shortDescription>
+        <value>https://www.investorsgroup.com/en/find-an-advisor</value>
+    </labels>
+    <labels>
+        <fullName>CP_URL_Insurance</fullName>
+        <categories>CP URL</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP URL Insurance</shortDescription>
+        <value>https://www.investorsgroup.com/en/insurance</value>
+    </labels>
+    <labels>
         <fullName>CP_URL_Login</fullName>
         <categories>CP URL</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP URL Login</shortDescription>
         <value>/customers/s/</value>
+    </labels>
+    <labels>
+        <fullName>CP_URL_Mortgage</fullName>
+        <categories>CP URL</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP URL Mortgage</shortDescription>
+        <value>https://www.investorsgroup.com/en/find-an-advisor</value>
     </labels>
     <labels>
         <fullName>ec_Detail_View_Back_Button_Text</fullName>
