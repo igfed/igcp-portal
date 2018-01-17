@@ -171,7 +171,7 @@
 			}
 
 			//ADDING ACCOUNT SPECIFIC DETAILS
-			hlpr.getAccountType(obj, function(returnedVal){
+			hlpr.getAccountType(obj, function (returnedVal) {
 
 				console.log("GET ACCOUNT TYPE: ", returnedVal);
 
@@ -187,7 +187,7 @@
 					hlpr.setRRIFList(obj, cmp);
 				} else if (returnedVal === "GROUP_RRSP") {
 					hlpr.setGroupRRSPList(obj, cmp);
-				} else if( returnedVal === "GIF") {
+				} else if (returnedVal === "GIF") {
 					hlpr.setGifList(obj, cmp);
 				}
 			});
@@ -213,14 +213,12 @@
 
 			if (obj.beneficiaryNames != "" || obj.beneficiaryNames != undefined) {
 				cmp.set("v.beneficiaryNames", obj.beneficiaryNames);
-			} else {
-				cmp.set("v.beneficiaryNames", $A.get("$Label.c.CP_Generic_Not_Available"));
-			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_Beneficiary_Name"),
-				"detail": cmp.get("v.beneficiaryNames")
-			});
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Beneficiary_Name"),
+					"detail": cmp.get("v.beneficiaryNames")
+				});
+			}
 		} catch (err) {
 			console.error("CP_Account_Details: setRDSPList");
 			console.error(err);
@@ -241,68 +239,58 @@
 				utils.formatToCurrency(obj.netContributionsYtd, function (formattedValue) {
 					cmp.set("v.netContributionsYTD", formattedValue);
 				}, cmp.get("v.lang"), true);
-			} else {
-				cmp.set("v.netContributionsYTD", $A.get("$Label.c.CP_Generic_Not_Available"));
-			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_Net_Contributions_YTD"),
-				"detail": cmp.get("v.netContributionsYTD")
-			});
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Net_Contributions_YTD"),
+					"detail": cmp.get("v.netContributionsYTD")
+				});
+			}
 
 			//Net Redemptions
 			if (obj.netTransfersOutYtd != undefined) {
 				utils.formatToCurrency(obj.netTransfersOutYtd, function (formattedValue) {
 					cmp.set("v.netRedemptionsYTD", formattedValue);
 				}, cmp.get("v.lang"), true);
-			} else {
-				cmp.set("v.netRedemptionsYTD", $A.get("$Label.c.CP_Generic_Not_Available"));
-			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_Net_Redemptions_YTD"),
-				"detail": cmp.get("v.netRedemptionsYTD")
-			});
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Net_Redemptions_YTD"),
+					"detail": cmp.get("v.netRedemptionsYTD")
+				});
+			}
 
 			//Net Contributions Inception
 			if (obj.netContributionsInception != undefined) {
 				utils.formatToCurrency(obj.netContributionsInception, function (formattedValue) {
 					cmp.set("v.netContributionsInception", formattedValue);
 				}, cmp.get("v.lang"), true);
-			} else {
-				cmp.set("v.netContributionsInception", $A.get("$Label.c.CP_Generic_Not_Available"));
-			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_Net_Contributions_Inception"),
-				"detail": cmp.get("v.netContributionsInception")
-			});
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Net_Contributions_Inception"),
+					"detail": cmp.get("v.netContributionsInception")
+				});
+			}
 
 			//Net Contributions Inception
 			if (obj.netWithdrawalsInception != undefined) {
 				utils.formatToCurrency(obj.netWithdrawalsInception, function (formattedValue) {
 					cmp.set("v.netWithdrawalsInception", formattedValue);
 				}, cmp.get("v.lang"), true);
-			} else {
-				cmp.set("v.netWithdrawalsInception", $A.get("$Label.c.CP_Generic_Not_Available"));
-			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_Net_Withdrawals_Inception"),
-				"detail": cmp.get("v.netContributionsInception")
-			});
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Net_Withdrawals_Inception"),
+					"detail": cmp.get("v.netContributionsInception")
+				});
+			}
 
 			//Successor Holder
 			if (obj.successorHolderName != undefined) {
 				cmp.set("v.successorHolder", obj.successorHolderName);
-			} else {
-				cmp.set("v.successorHolder", $A.get("$Label.c.CP_Generic_Not_Available"));
-			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_Successor_Holder"),
-				"detail": cmp.get("v.successorHolder")
-			});
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Successor_Holder"),
+					"detail": cmp.get("v.successorHolder")
+				});
+			}
 
 			//Plan Sponsor
 			if (obj.groupSponsorName != undefined) {
@@ -331,40 +319,34 @@
 				utils.formatToCurrency(obj.first60DayContributionAmount, function (formattedValue) {
 					cmp.set("v.first60DayContributionAmount", formattedValue);
 				}, cmp.get("v.lang"), true);
-			} else {
-				cmp.set("v.first60DayContributionAmount", $A.get("$Label.c.CP_Generic_Not_Available"));
-			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_First_60_Day_Contribution"),
-				"detail": cmp.get("v.first60DayContributionAmount")
-			});
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_First_60_Day_Contribution"),
+					"detail": cmp.get("v.first60DayContributionAmount")
+				});
+			}
 
 			//Last 10 Month Contribution Amount
 			if (obj.last10MonthContributionAmount != undefined) {
 				utils.formatToCurrency(obj.last10MonthContributionAmount, function (formattedValue) {
 					cmp.set("v.last10MonthContributionAmount", formattedValue);
 				}, cmp.get("v.lang"), true);
-			} else {
-				cmp.set("v.last10MonthContributionAmount", $A.get("$Label.c.CP_Generic_Not_Available"));
-			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_Last_10_Month_Contribution"),
-				"detail": cmp.get("v.last10MonthContributionAmount")
-			});
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Last_10_Month_Contribution"),
+					"detail": cmp.get("v.last10MonthContributionAmount")
+				});
+			}
 
 			//Beneficiary Name
 			if (obj.beneficiaryName != undefined) {
 				cmp.set("v.beneficiaryName", obj.beneficiaryName);
-			} else {
-				cmp.set("v.beneficiaryName", $A.get("$Label.c.CP_Generic_Not_Available"));
-			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_Beneficiary"),
-				"detail": cmp.get("v.beneficiaryName")
-			});
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Beneficiary"),
+					"detail": cmp.get("v.beneficiaryName")
+				});
+			}
 
 			//Contributor Spouse Name
 			if (obj.contributorSpouseName != undefined) {
@@ -390,38 +372,32 @@
 			//YTD Contribution Amount
 			if (obj.ytdContributionAmount != undefined) {
 				cmp.set("v.ytdContributionAmt", obj.ytdContributionAmount);
-			} else {
-				cmp.set("v.ytdContributionAmt", $A.get("$Label.c.CP_Generic_Not_Available"));
-			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_YTD_Contribution_Amount"),
-				"detail": cmp.get("v.ytdContributionAmt")
-			});
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_YTD_Contribution_Amount"),
+					"detail": cmp.get("v.ytdContributionAmt")
+				});
+			}
 
 			//CRA Plan Id
 			if (obj.craPlanId != undefined) {
 				cmp.set("v.craPlanId", obj.craPlanId);
-			} else {
-				cmp.set("v.craPlanId", $A.get("$Label.c.CP_Generic_Not_Available"));
-			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_CRA_Plan_Id"),
-				"detail": cmp.get("v.craPlanId")
-			});
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_CRA_Plan_Id"),
+					"detail": cmp.get("v.craPlanId")
+				});
+			}
 
 			//Beneficiary Name
 			if (obj.beneficiaryName != undefined) {
 				cmp.set("v.beneficiaryName", obj.beneficiaryName);
-			} else {
-				cmp.set("v.beneficiaryName", $A.get("$Label.c.CP_Generic_Not_Available"));
-			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_Beneficiary"),
-				"detail": cmp.get("v.beneficiaryName")
-			});
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Beneficiary"),
+					"detail": cmp.get("v.beneficiaryName")
+				});
+			}
 
 		} catch (err) {
 			console.error("CP_Account_Details: setRESPList");
@@ -444,42 +420,37 @@
 
 					cmp.set("v.rrifYtdWithdrawalAmount", formattedValue);
 				}, cmp.get("v.lang"), true);
-			} else {
-				cmp.set("v.rrifYtdWithdrawalAmount", $A.get("$Label.c.CP_Generic_Not_Available"));
-			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_RRIF_YTD_Withdrawal"),
-				"detail": cmp.get("v.rrifYtdWithdrawalAmount")
-			});
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_RRIF_YTD_Withdrawal"),
+					"detail": cmp.get("v.rrifYtdWithdrawalAmount")
+				});
+			}
 
 			//RRIF Minimum Withdrawal Amount
 			if (obj.rrifMinimumWithdrawalAmount != undefined) {
 				utils.formatToCurrency(obj.rrifMinimumWithdrawalAmount, function (formattedValue) {
 					cmp.set("v.rrifMinimumWithdrawalAmount", formattedValue);
 				}, cmp.get("v.lang"), true);
-			} else {
-				cmp.set("v.rrifMinimumWithdrawalAmount", $A.get("$Label.c.CP_Generic_Not_Available"));
-			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_RRIF_Minimum_Withdrawal"),
-				"detail": cmp.get("v.rrifMinimumWithdrawalAmount")
-			});
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_RRIF_Minimum_Withdrawal"),
+					"detail": cmp.get("v.rrifMinimumWithdrawalAmount")
+				});
+			}
 
 			//Spousal Contributor Name
 			if (obj.spousalContributorName != undefined) {
 				utils.formatToCurrency(obj.spousalContributorName, function (formattedValue) {
 					cmp.set("v.spousalContributorName", formattedValue);
 				}, cmp.get("v.lang"), true);
-			} else {
-				cmp.set("v.spousalContributorName", $A.get("$Label.c.CP_Generic_Not_Available"));
+
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Spousal_Contributor_Name"),
+					"detail": cmp.get("v.spousalContributorName")
+				});
 			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_Spousal_Contributor_Name"),
-				"detail": cmp.get("v.spousalContributorName")
-			});
 		} catch (err) {
 			console.error("CP_Account_Details: setRRIFList");
 			console.error(err);
@@ -495,38 +466,32 @@
 			//Group Sponsor Name
 			if (obj.groupSponsorName != undefined) {
 				cmp.set("v.groupSponsorName", obj.groupSponsorName);
-			} else {
-				cmp.set("v.groupSponsorName", $A.get("$Label.c.CP_Generic_Not_Available"));
-			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_Group_Sponsor_Name"),
-				"detail": cmp.get("v.groupSponsorName")
-			});
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Group_Sponsor_Name"),
+					"detail": cmp.get("v.groupSponsorName")
+				});
+			}
 
 			//Beneficiary Name
 			if (obj.beneficiaryName != undefined) {
 				cmp.set("v.beneficiaryName", obj.beneficiaryName);
-			} else {
-				cmp.set("v.beneficiaryName", $A.get("$Label.c.CP_Generic_Not_Available"));
-			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_Beneficiary"),
-				"detail": cmp.get("v.beneficiaryName")
-			});
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Beneficiary"),
+					"detail": cmp.get("v.beneficiaryName")
+				});
+			}
 
 			//Contributor Spouse Name
 			if (obj.contributorSpouseName != undefined) {
 				cmp.set("v.contributorSpouseName", obj.contributorSpouseName);
-			} else {
-				cmp.set("v.contributorSpouseName", $A.get("$Label.c.CP_Generic_Not_Available"));
-			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_Contributor_Spouse_Name"),
-				"detail": cmp.get("v.contributorSpouseName")
-			});
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Contributor_Spouse_Name"),
+					"detail": cmp.get("v.contributorSpouseName")
+				});
+			}
 
 		} catch (err) {
 			console.error("CP_Account_Details: setGroupRRSP");
