@@ -75,6 +75,9 @@
 			cmp,
 			function (previewArr) {
 
+				console.info("GET ASSET MIX");
+				console.log(previewArr)
+
 				if (previewArr) {
 
 					var graphArr = [];

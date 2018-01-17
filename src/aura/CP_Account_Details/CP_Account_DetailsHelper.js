@@ -25,7 +25,7 @@
 			return $A.get("$Label.c.CP_Generic_Not_Available");
 		}
 	},
-	setGeneralOverview: function (obj, cmp) {
+	setGeneralOverview: function (obj, cmp, hlpr) {
 
 		try {
 			var utils = cmp.find("CP_Utils");
@@ -120,7 +120,7 @@
 
 			//Balance Date
 			if (obj.asOfDate !== undefined) {
-				utils.convertToMDY(obj.asOfDate, function(obj){
+				utils.convertToMDY(obj.asOfDate, function (obj) {
 					cmp.set("v.balanceDate", obj.formattedString);
 				}, cmp.get("v.lang"));
 			} else {
@@ -171,61 +171,26 @@
 			}
 
 			//ADDING ACCOUNT SPECIFIC DETAILS
+			hlpr.getAccountType(obj, function(returnedVal){
 
-			//RDSP Specific
-			if (obj.accountTypeLabel === "RDSP" ||
-				obj.accountTypeLabel === "Registered Disability Savings Plan") {
-				hlpr.setRDSPList(obj, cmp);
-			}
+				console.log("GET ACCOUNT TYPE: ", returnedVal);
 
-			console.info(obj.accountTypeLabel);
-
-			//TFSA Specific
-			if (obj.accountTypeLabel === "TFSA" || 
-			obj.accountTypeLabel === "Group TFSA" || 
-			obj.accountTypeLabel === "TFSA iProfile") {
-				hlpr.setTFSAList(obj, cmp);
-			}
-
-			//RRSP specific
-			if (obj.accountTypeLabel === "RRSP" ||
-				obj.accountTypeLabel === "LIRA" ||
-				obj.accountTypeLabel === "RSP" ||
-				obj.accountTypeLabel === "Locked-RSP" ||
-				obj.accountTypeLabel === "Spousal RSP" ||
-				obj.accountTypeLabel === "RSP (N)" ||
-				obj.accountTypeLabel === "RLSP") {
-				hlpr.setRRSPList(obj, cmp);
-			}
-
-			//RESP specific
-			if (obj.accountTypeLabel === "RESP" ||
-				obj.accountTypeLabel === "RESP-Individual Plan"
-			) {
-				hlpr.setRESPList(obj, cmp);
-			}
-
-			//RRIF
-			if (obj.accountTypeLabel === "RRIF" ||
-				obj.accountTypeLabel === "LIF" ||
-				obj.accountTypeLabel === "LRIF" ||
-				obj.accountTypeLabel === "PRIF" ||
-				obj.accountTypeLabel === "RLIF" ||
-				obj.accountTypeLabel === "Spousal RIF" ||
-				obj.accountTypeLabel === "LIF (N)" ||
-				obj.accountTypeLabel === "iProfile - LIF (N)") {
-				hlpr.setRRIFList(obj, cmp);
-			}
-
-			//Group RRSP
-			if (obj.accountTypeLabel === "Group RRSP" ||
-				obj.accountTypeLabel === "Spousal Group RSP" ||
-				obj.accountTypeLabel === "Grp RSP") {
-				hlpr.setGroupRRSPList(obj, cmp);
-			}
-
-			//GIF
-			//hlpr.setGifList(obj, cmp);
+				if (returnedVal === "RRSP") {
+					hlpr.setRRSPList(obj, cmp);
+				} else if (returnedVal === "RDSP") {
+					hlpr.setRDSPList(obj, cmp);
+				} else if (returnedVal === "TFSA") {
+					hlpr.setTFSAList(obj, cmp);
+				} else if (returnedVal === "RESP") {
+					hlpr.setRESPList(obj, cmp);
+				} else if (returnedVal === "RRIF") {
+					hlpr.setRRIFList(obj, cmp);
+				} else if (returnedVal === "GROUP_RRSP") {
+					hlpr.setGroupRRSPList(obj, cmp);
+				} else if( returnedVal === "GIF") {
+					hlpr.setGifList(obj, cmp);
+				}
+			});
 
 			//Populate account details list
 			events.fire(
@@ -467,7 +432,7 @@
 		try {
 
 			console.info("CP_Account_Details: setRRIFList");
-			
+
 			var
 				utils = cmp.find("CP_Utils"),
 				listArr = cmp.get("v.detailsListArr");
@@ -476,9 +441,6 @@
 			if (obj.rrifYtdWithdrawalAmount != undefined) {
 
 				utils.formatToCurrency(obj.rrifYtdWithdrawalAmount, function (formattedValue) {
-
-					console.log("AHAHHA");
-					console.log(formattedValue);
 
 					cmp.set("v.rrifYtdWithdrawalAmount", formattedValue);
 				}, cmp.get("v.lang"), true);
@@ -583,7 +545,7 @@
 			//Policy number
 			if (obj.policyNumber != undefined) {
 				cmp.set("v.policyNumber", obj.policyNumber);
-				
+
 				listArr.push({
 					"label": $A.get("$Label.c.CP_Generic_Label_Policy_Name"),
 					"detail": cmp.get("v.policyNumber")
@@ -593,7 +555,7 @@
 			//Annuitant/Joint annuitant
 			if (obj.jointAnnuitantName != undefined) {
 				cmp.set("v.jointAnnuitantName", obj.jointAnnuitantName);
-				
+
 				listArr.push({
 					"label": $A.get("$Label.c.CP_Generic_Label_Joint_Annuitant_Name"),
 					"detail": cmp.get("v.jointAnnuitantName")
@@ -606,7 +568,7 @@
 				utils.formatToCurrency(obj.lifetimeIncomeAmount, function (formattedValue) {
 					cmp.set("v.lifetimeIncomeAmount", formattedValue);
 				}, cmp.get("v.lang"), true);
-				
+
 				listArr.push({
 					"label": $A.get("$Label.c.CP_Generic_Label_Lifetime_Income_Amount"),
 					"detail": cmp.get("v.lifetimeIncomeAmount")
@@ -619,7 +581,7 @@
 				utils.formatToCurrency(obj.libMinimumAmount, function (formattedValue) {
 					cmp.set("v.libMinimumAmount", formattedValue);
 				}, cmp.get("v.lang"), true);
-				
+
 				listArr.push({
 					"label": $A.get("$Label.c.CP_Generic_Label_Minimum_Payment_Amount"),
 					"detail": cmp.get("v.libMinimumAmount")
@@ -628,9 +590,9 @@
 
 			//Maturity Guarantee Date
 			if (obj.maturityGuaranteeDate != undefined) {
-				
+
 				cmp.set("v.maturityGuaranteeDate", obj.maturityGuaranteeDate);
-				
+
 				listArr.push({
 					"label": $A.get("$Label.c.CP_Generic_Label_Maturity_Guarantee_Date"),
 					"detail": cmp.get("v.maturityGuaranteeDate")
@@ -642,7 +604,7 @@
 				utils.formatToCurrency(obj.maturityGuaranteeAmount, function (formattedValue) {
 					cmp.set("v.maturityGuaranteeAmount", formattedValue);
 				}, cmp.get("v.lang"), true);
-				
+
 				listArr.push({
 					"label": $A.get("$Label.c.CP_Generic_Label_Maturity_Guarantee_Amount"),
 					"detail": cmp.get("v.maturityGuaranteeAmount")
@@ -654,7 +616,7 @@
 				utils.formatToCurrency(obj.deathBenefitGuaranteeAmount, function (formattedValue) {
 					cmp.set("v.deathBenefitGuaranteeAmount", formattedValue);
 				}, cmp.get("v.lang"), true);
-				
+
 				listArr.push({
 					"label": $A.get("$Label.c.CP_Generic_Label_Maturity_Guarantee_Amount"),
 					"detail": cmp.get("v.deathBenefitGuaranteeAmount")
@@ -664,7 +626,7 @@
 			//Guarantee Level
 			if (obj.guaranteeLevel != undefined) {
 				cmp.set("v.guaranteeLevel", obj.guaranteeLevel);
-				
+
 				listArr.push({
 					"label": $A.get("$Label.c.CP_Generic_Label_Guarantee_Level"),
 					"detail": cmp.get("v.guaranteeLevel")
@@ -678,10 +640,91 @@
 					"label": $A.get("$Label.c.CP_Generic_Label_Beneficiary"),
 					"detail": cmp.get("v.beneficiaryName")
 				});
-			} 
+			}
 
 		} catch (err) {
 			console.error("CP_Account_Details: setGifList");
+			console.error(err);
+		}
+	},
+	getAccountType: function (obj, callback) {
+
+		console.info("CP_Account_Details: getAccountType");
+
+		try {
+			var
+				rrspTypesArr = [2, 9, 19, 20, 24],
+				tfsaTypesArr = [16, 25],
+				respTypesArr = [4, 5],
+				rrifTypesArr = [3, 8, 10, 12, 18, 23],
+				rdspTypesArr = [17],
+				groupRRSPTypesArr = [21, 22],
+				gifTypesArr = [1, 2, 3, 8, 9, 10, 12, 16, 18, 19, 20, 23, 24];
+
+
+
+			if (obj.dealerName === "3488") {
+				//GIF
+				gifTypesArr.forEach(function (val) {
+					if (val === parseInt(obj.accountType)) {
+						callback("GIF");
+						return;
+					}
+				});
+			} else {
+
+				console.info("CP_Account_Details: getAccountType: RRSP");
+				//Everything else
+				//RRSP
+				rrspTypesArr.forEach(function (val) {
+					if (val === parseInt(obj.accountType)) {
+						callback("RRSP");
+						return;
+					}
+				});
+
+				//GROUP RRSP
+				groupRRSPTypesArr.forEach(function (val) {
+					if (val === parseInt(obj.accountType)) {
+						callback("GROUP_RRSP");
+						return;
+					}
+				});
+
+				//TFSA
+				tfsaTypesArr.forEach(function (val) {
+					if (val === parseInt(obj.accountType)) {
+						callback("TFSA");
+						return;
+					}
+				});
+
+				//RESP
+				respTypesArr.forEach(function (val) {
+					if (val === parseInt(obj.accountType)) {
+						callback("RESP");
+						return;
+					}
+				});
+
+				//RRIF
+				rrifTypesArr.forEach(function (val) {
+					if (val === parseInt(obj.accountType)) {
+						callback("RRIF");
+						return;
+					}
+				});
+
+				//RDSP
+				rdspTypesArr.forEach(function (val) {
+					if (val === parseInt(obj.accountType)) {
+						callback("RDSP");
+						return;
+					}
+				});
+
+			}
+		} catch (err) {
 			console.error(err);
 		}
 	}

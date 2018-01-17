@@ -31,7 +31,7 @@
 				function (success) {
 					hlpr.logReturned("Get Account Detail", success);
 					if (success) {
-						hlpr.setGeneralOverview(success, cmp);
+						hlpr.setGeneralOverview(success, cmp, hlpr);
 						hlpr.setDetailsList(success, cmp, hlpr);
 					}
 				},
