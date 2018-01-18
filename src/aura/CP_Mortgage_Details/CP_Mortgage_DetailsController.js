@@ -24,21 +24,48 @@
 			cmp,
 			function (success) {
 				if (success !== null) {
-					
-					utils.formatToCurrency(success.paymentAmount, function(returnedVal){
+
+					console.info("MORTGAGE DETAIL");
+					console.log(success);
+
+					utils.formatPercentage(
+						success.interestRate,
+						function (returnedVal) {
+							hlpr.setAttr("v.interestRate", returnedVal, cmp);
+						},
+						cmp.get("v.lang"),
+						true
+					);
+
+					utils.formatToCurrency(success.loanBalance, function (returnedVal) {
+						hlpr.setAttr("v.loanBalance", returnedVal, cmp);
+					}, cmp.get("v.lang"));
+
+					//ADDRESS
+					cmp.set("v.addressObj", {
+						"street" : success.propertyAddress,
+						"city" : success.propertyCity,
+						"province" : success.propertyProvince,
+						"postalCode" : success.propertyPostalCode
+					});
+
+					console.info("ADDRESS");
+					console.log(cmp.get("v.addressObj"));
+
+					utils.formatToCurrency(success.paymentAmount, function (returnedVal) {
 						hlpr.setAttr("v.payment", returnedVal, cmp);
 					}, cmp.get("v.lang"), true);
-					
+
 					hlpr.setAttr("v.frequency", success.paymentFrequency, cmp);
 					hlpr.setAttr("v.lastPaymentDate", success.lastPaymentDate, cmp);
 					hlpr.setAttr("v.nextPaymentDate", success.nextPaymentDate, cmp);
 
-					utils.formatToCurrency(success.loanAmount, function(returnedVal){
+					utils.formatToCurrency(success.loanAmount, function (returnedVal) {
 						hlpr.setAttr("v.loanAmount", returnedVal, cmp);
 					}, cmp.get("v.lang"), true);
 
 					//ASK MARWAN IF HE CAN RETURN DOLLAR VALUES WITH CENTS ALWAYS ADDED
-					utils.formatToCurrency(success.prePaymentPrivilege, function(returnedVal){
+					utils.formatToCurrency(success.prePaymentPrivilege, function (returnedVal) {
 						hlpr.setAttr("v.prePaymentPrivilege", returnedVal, cmp);
 					}, cmp.get("v.lang"), true);
 
@@ -50,8 +77,7 @@
 					events.fire(
 						"CP_Evt_Set_List", {
 							"id": "mortgage-list",
-							"values": [
-								{
+							"values": [{
 									label: $A.get("$Label.c.CP_Mortgage_Label_Payment"),
 									detail: cmp.get("v.payment")
 								},

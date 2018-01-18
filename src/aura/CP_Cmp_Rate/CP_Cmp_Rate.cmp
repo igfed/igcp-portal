@@ -3,7 +3,8 @@
     <!-- ATTRS -->
     <aura:attribute name="class" type="String" default=""></aura:attribute>
     <aura:attribute name="label" type="String" default="{!$Label.c.CP_Mortgage_Label_Fixed_Rate}"></aura:attribute>
-	<aura:attribute name="value" type="String" default="3.19%"></aura:attribute>
+    <aura:attribute name="value" type="String"></aura:attribute>
+    <aura:attribute name="lang" type="String"></aura:attribute>
 
     <!-- MARKUP -->
     <div class="{!v.class}">

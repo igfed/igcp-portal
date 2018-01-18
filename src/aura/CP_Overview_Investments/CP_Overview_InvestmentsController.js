@@ -11,8 +11,8 @@
 				cmp,
 				function (previewObj) {
 					if (previewObj) {
-						if (previewObj.asOfDate) {
-							utils.convertToMDY(previewObj.asOfDate, function (obj) {
+						if (previewObj.asOfDateStr) {
+							utils.convertToMDY(previewObj.asOfDateStr, function (obj) {
 								cmp.set("v.asOfDate", obj.formattedString);
 							}, cmp.get("v.lang"));
 						} else {

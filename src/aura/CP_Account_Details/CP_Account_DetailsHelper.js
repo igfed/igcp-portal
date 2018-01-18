@@ -119,8 +119,10 @@
 			});
 
 			//Balance Date
-			if (obj.asOfDate !== undefined) {
-				utils.convertToMDY(obj.asOfDate, function (obj) {
+			// console.info("DATE")
+			// console.info(obj.asOfDateStr);
+			if (obj.asOfDateStr !== undefined) {
+				utils.convertToMDY(obj.asOfDateStr, function (obj) {
 					cmp.set("v.balanceDate", obj.formattedString);
 				}, cmp.get("v.lang"));
 			} else {
@@ -133,42 +135,44 @@
 			});
 
 			//Net Contributions
-			if (obj.netContributions !== undefined) {
+			if (obj.netContributions !== undefined && obj.sourceSystem === "SAS") {
 				utils.formatToCurrency(obj.netContributions, function (formattedValue) {
 					cmp.set("v.netContributions", formattedValue);
 				}, cmp.get("v.lang"), true);
-			} else {
-				cmp.set("v.netContributions", $A.get("$Label.c.CP_Generic_Not_Available"));
+
+				listArr.push({
+					"label": $A.get("$Label.c.CP_Generic_Label_Net_Contributions"),
+					"detail": cmp.get("v.netContributions")
+				});
 			}
 
-			listArr.push({
-				"label": $A.get("$Label.c.CP_Generic_Label_Net_Contributions"),
-				"detail": cmp.get("v.netContributions")
-			});
-
+			//Not sure if and when we are going to displaying this
+			//Commenting out for now
 			//Canadian Income -- only show if this is present in the returned obj
-			if (obj.canadianIncome !== undefined) {
-				utils.formatToCurrency(obj.canadianIncome, function (formattedValue) {
-					cmp.set("v.canadianIncome", formattedValue);
-				}, cmp.get("v.lang"), true);
+			// if (obj.canadianIncome !== undefined) {
+			// 	utils.formatToCurrency(obj.canadianIncome, function (formattedValue) {
+			// 		cmp.set("v.canadianIncome", formattedValue);
+			// 	}, cmp.get("v.lang"), true);
 
-				listArr.push({
-					"label": $A.get("$Label.c.CP_Generic_Label_Canadian_Income"),
-					"detail": cmp.get("v.canadianIncome")
-				});
-			}
+			// 	listArr.push({
+			// 		"label": $A.get("$Label.c.CP_Generic_Label_Canadian_Income"),
+			// 		"detail": cmp.get("v.canadianIncome")
+			// 	});
+			// }
 
+			//Not sure if and when we are going to displaying this
+			//Commenting out for now
 			//Foreign Income -- only show if this is present in the returned obj
-			if (obj.foreignIncome !== undefined) {
-				utils.formatToCurrency(obj.foreignIncome, function (formattedValue) {
-					cmp.set("v.foreignIncome", formattedValue);
-				}, cmp.get("v.lang"), true);
+			// if (obj.foreignIncome !== undefined) {
+			// 	utils.formatToCurrency(obj.foreignIncome, function (formattedValue) {
+			// 		cmp.set("v.foreignIncome", formattedValue);
+			// 	}, cmp.get("v.lang"), true);
 
-				listArr.push({
-					"label": $A.get("$Label.c.CP_Generic_Label_Foreign_Income"),
-					"detail": cmp.get("v.foreignIncome")
-				});
-			}
+			// 	listArr.push({
+			// 		"label": $A.get("$Label.c.CP_Generic_Label_Foreign_Income"),
+			// 		"detail": cmp.get("v.foreignIncome")
+			// 	});
+			// }
 
 			//ADDING ACCOUNT SPECIFIC DETAILS
 			hlpr.getAccountType(obj, function (returnedVal) {
@@ -278,7 +282,7 @@
 
 				listArr.push({
 					"label": $A.get("$Label.c.CP_Generic_Label_Net_Withdrawals_Inception"),
-					"detail": cmp.get("v.netContributionsInception")
+					"detail": cmp.get("v.netWithdrawalsInception")
 				});
 			}
 

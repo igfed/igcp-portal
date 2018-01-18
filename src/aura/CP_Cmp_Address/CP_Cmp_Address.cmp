@@ -2,11 +2,17 @@
 
     <!-- ATTRS -->
     <aura:attribute name="class" type="String" default=""></aura:attribute>
-    <aura:attribute name="label" type="String" default="Address"></aura:attribute>
-	<aura:attribute name="street" type="String" default="12-180 Queen Street"></aura:attribute>
-    <aura:attribute name="city" type="String" default="Toronto"></aura:attribute>
-    <aura:attribute name="province" type="String" default="Ontario"></aura:attribute>
-    <aura:attribute name="postalCode" type="String" default="L3Y 5Y5"></aura:attribute>
+    <aura:attribute name="label" type="String" default="{!$Label.c.CP_Mortgage_Label_Fixed_Rate}"></aura:attribute>
+    <aura:attribute name="data" type="Map"></aura:attribute>
+	<aura:attribute name="street" type="String"></aura:attribute>
+    <aura:attribute name="city" type="String"></aura:attribute>
+    <aura:attribute name="province" type="String"></aura:attribute>
+    <aura:attribute name="postalCode" type="String"></aura:attribute>
+    <aura:attribute name="lang" type="String"></aura:attribute>
+
+    <!-- HANDLERS -->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <aura:handler name="change" value="{!v.data}" action="{!c.onDataChange}"/>
 
     <!-- MARKUP -->
     <div class="{!'igcp-address ' + v.class}">
