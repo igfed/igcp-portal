@@ -119,10 +119,12 @@
 			});
 
 			//Balance Date
-			// console.info("DATE")
-			// console.info(obj.asOfDateStr);
 			if (obj.asOfDateStr !== undefined) {
 				utils.convertToMDY(obj.asOfDateStr, function (obj) {
+					cmp.set("v.balanceDate", obj.formattedString);
+				}, cmp.get("v.lang"));
+			} else if(obj.asOfDate != undefined) {
+				utils.convertToMDY(obj.asOfDate, function (obj) {
 					cmp.set("v.balanceDate", obj.formattedString);
 				}, cmp.get("v.lang"));
 			} else {
@@ -506,6 +508,7 @@
 		try {
 
 			console.info("CP_Account_Details: setGifList");
+			console.log(obj);
 
 			var
 				utils = cmp.find("CP_Utils"),
@@ -516,7 +519,7 @@
 				cmp.set("v.policyNumber", obj.policyNumber);
 
 				listArr.push({
-					"label": $A.get("$Label.c.CP_Generic_Label_Policy_Name"),
+					"label": $A.get("$Label.c.CP_Generic_Label_Policy_Number"),
 					"detail": cmp.get("v.policyNumber")
 				});
 			}
@@ -560,7 +563,9 @@
 			//Maturity Guarantee Date
 			if (obj.maturityGuaranteeDate != undefined) {
 
-				cmp.set("v.maturityGuaranteeDate", obj.maturityGuaranteeDate);
+				utils.convertToMDY(obj.maturityGuaranteeDate, function (obj) {
+					cmp.set("v.maturityGuaranteeDate", obj.formattedString);
+				}, cmp.get("v.lang"));
 
 				listArr.push({
 					"label": $A.get("$Label.c.CP_Generic_Label_Maturity_Guarantee_Date"),
@@ -587,7 +592,7 @@
 				}, cmp.get("v.lang"), true);
 
 				listArr.push({
-					"label": $A.get("$Label.c.CP_Generic_Label_Maturity_Guarantee_Amount"),
+					"label": $A.get("$Label.c.CP_Generic_Label_Death_Benefit_Guarantee_Amount"),
 					"detail": cmp.get("v.deathBenefitGuaranteeAmount")
 				});
 			}
@@ -630,9 +635,7 @@
 				groupRRSPTypesArr = [21, 22],
 				gifTypesArr = [1, 2, 3, 8, 9, 10, 12, 16, 18, 19, 20, 23, 24];
 
-
-
-			if (obj.dealerName === "3488") {
+			if (obj.dealerNumber === "3488") {
 				//GIF
 				gifTypesArr.forEach(function (val) {
 					if (val === parseInt(obj.accountType)) {

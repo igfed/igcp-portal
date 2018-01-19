@@ -992,6 +992,18 @@
         <shortDescription>CP Generic Label Beneficiary Name</shortDescription>
         <value>Beneficiary Name</value>
     </labels>
+
+
+    <labels>
+        <fullName>CP_Generic_Label_Beneficiary_Beneficiaries</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Beneficiary Beneficiaries</shortDescription>
+        <value>Beneficiary/Beneficiaries</value>
+    </labels>
+
+
     <labels>
         <fullName>CP_Generic_Label_Book_Cost</fullName>
         <categories>CP Generic</categories>
@@ -1249,6 +1261,14 @@
         <value>Plan Sponsor</value>
     </labels>
     <labels>
+        <fullName>CP_Generic_Label_Guarantee_Level</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Guarantee Level</shortDescription>
+        <value>Guarantee Level</value>
+    </labels>
+    <labels>
         <fullName>CP_Generic_Label_Holding</fullName>
         <categories>CP Generic</categories>
         <language>en_US</language>
@@ -1353,6 +1373,14 @@
         <value>Contribution amount remainder of year</value>
     </labels>
     <labels>
+        <fullName>CP_Generic_Label_Lifetime_Income_Amount</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Lifetime Income Amount</shortDescription>
+        <value>Lifetime Income Amount</value>
+    </labels>
+    <labels>
         <fullName>CP_Generic_Label_Loan_Number</fullName>
         <categories>CP Generic</categories>
         <language>en_US</language>
@@ -1382,7 +1410,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CP Generic Label Maturity Guarantee Date</shortDescription>
-        <value>Maturity Guarantee Date</value>
+        <value>Maturity Date</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Minimum_Payment_Amount</fullName>
@@ -1392,6 +1420,18 @@
         <shortDescription>CP Generic Label Minimum Payment Amount</shortDescription>
         <value>Minimum Payment Amount</value>
     </labels>
+
+    <labels>
+        <fullName>CP_Generic_Label_Death_Benefit_Guarantee_Amount</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Death Benefit Guarantee Amount</shortDescription>
+        <value>Death Benefit Guarantee Amount</value>
+    </labels>
+
+
+
     <labels>
         <fullName>CP_Generic_Label_Mobile_Phone_Optional</fullName>
         <categories>CP Generic</categories>
@@ -1551,6 +1591,14 @@
         <protected>false</protected>
         <shortDescription>CP Generic Label Plan Sponsor</shortDescription>
         <value>Plan Sponsor</value>
+    </labels>
+    <labels>
+        <fullName>CP_Generic_Label_Policy_Name</fullName>
+        <categories>CP Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP Generic Label Policy Name</shortDescription>
+        <value>Policy Name</value>
     </labels>
     <labels>
         <fullName>CP_Generic_Label_Policy_Number</fullName>

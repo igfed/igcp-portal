@@ -63,6 +63,15 @@
 	<aura:attribute name="rrifMinimumWithdrawalAmount" type="String" default=""></aura:attribute>
 	<aura:attribute name="spousalContributorName" type="String" default=""></aura:attribute>
 
+	<!-- GIF -->
+	<aura:attribute name="policyNumber" type="String" default=""></aura:attribute>
+	<aura:attribute name="lifetimeIncomeAmount" type="String" default=""></aura:attribute>
+	<aura:attribute name="libMinimumAmount" type="String" default=""></aura:attribute>
+	<aura:attribute name="maturityGuaranteeDate" type="String" default=""></aura:attribute>
+	<aura:attribute name="maturityGuaranteeAmount" type="String" default=""></aura:attribute>
+	<aura:attribute name="deathBenefitGuaranteeAmount" type="String" default=""></aura:attribute>
+	<aura:attribute name="guaranteeLevel" type="String" default=""></aura:attribute>
+
 	<!-- SHARED  -->
 	<aura:attribute name="beneficiaryName" type="String" default=""></aura:attribute>
 
